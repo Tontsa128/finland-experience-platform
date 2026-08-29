@@ -1,4 +1,3 @@
-// Domain Types
 export type Language = 'es' | 'fi';
 
 export type ExperienceStatus = 'draft' | 'published' | 'archived';
@@ -121,6 +120,39 @@ export interface Addon {
   updatedAt: Date;
 }
 
+export interface Inclusion {
+  id: number;
+  experienceId: number;
+  titleEs: string;
+  titleFi: string;
+  sortOrder: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Exclusion {
+  id: number;
+  experienceId: number;
+  titleEs: string;
+  titleFi: string;
+  sortOrder: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface FAQ {
+  id: number;
+  experienceId: number | null;
+  destinationId: number | null;
+  questionEs: string;
+  questionFi: string;
+  answerEs: string;
+  answerFi: string;
+  sortOrder: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Customer {
   id: number;
   email: string;
@@ -238,4 +270,11 @@ export interface Media {
   isHero: boolean;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface Tag {
+  id: number;
+  slug: string;
+  nameEs: string;
+  nameFi: string;
 }
