@@ -9,7 +9,7 @@
     "lint": "next lint",
     "seed": "node ./scripts/seed.ts",
     "typecheck": "tsc --noEmit",
-    "test": "node ./scripts/test-media.js && node ./scripts/test-pricing.js"
+    "test": "node ./scripts/test-media.js && node ./scripts/test-pricing.js && node ./scripts/test-availability.js"
   },
   "dependencies": {
     "next": "13.5.6",

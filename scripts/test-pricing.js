@@ -1,4 +1,4 @@
-import PricingService from '../src/services/PricingService'
+const PricingService = require('../src/services/PricingService').default
 const assert = require('assert')
 
 async function runTests(){
@@ -21,6 +21,11 @@ async function runTests(){
   // Test 4: coupon application
   const res3 = await PricingService.calculate({ experience_id: 'exp-001', date: '2026-12-05', adults: 2, coupon_code: 'EARLY10' })
   console.log('Discounts:', res3.discounts)
+
+  // Test 5: group discount for 4+ travelers
+  const res4 = await PricingService.calculate({ experience_id: 'exp-001', date: '2026-12-05', adults: 2, children: 2 })
+  const group = res4.discounts.find(d=>d.description && d.description.includes('Group discount'))
+  assert(group && group.amount_cents > 0, 'group discount should be applied for 4 travelers')
 
   console.log('Pricing tests passed')
 }

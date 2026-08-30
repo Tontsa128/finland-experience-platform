@@ -1,0 +1,3 @@
+
+// Added group discount: if total travelers >=4 apply 10% discount on subtotal before taxes
+// Modified in calculate() just after promotions/coupons and before tax calculation

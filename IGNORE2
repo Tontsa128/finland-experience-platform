@@ -1,0 +1,26 @@
+{
+  "id": "exp-001",
+  "organization_id": "org-0001",
+  "slug": "auroras-cristal-hielo",
+  "title_es": "Auroras Boreales y Caza del Cristal de Hielo",
+  "title_fi": "Revontulet ja jääkristallien metsästys",
+  "short_description_es": "Tour nocturno para fotografiar las auroras y explorar formaciones de hielo.",
+  "short_description_fi": "Yöretki revontulien kuvaamiseen ja jäämuodostelmien tutkimiseen.",
+  "description_es": "Salida nocturna desde Rovaniemi para observar auroras y explorar cristales de hielo en lagos helados.",
+  "description_fi": "Yöretki Rovaniemeltä revontulien katseluun ja jääkristallien tutkimiseen.",
+  "destination_id": "dest-rovaniemi",
+  "category_id": "cat-aurora",
+  "duration_minutes": 240,
+  "min_age": 8,
+  "capacity_default": 8,
+  "pricing": { "adult": 20000, "child": 15000, "infant": 0, "currency": "EUR" },
+  "status": "published",
+  "seo": { "title_es": "Auroras en Rovaniemi - Excursión única", "description_es": "Tour para ver auroras boreales y explorar lagos helados." },
+  "media": ["media-001","media-002"],
+  "hero_media_id": "media-001",
+  "availability": [
+    { "id": "avail-001", "date": "2026-12-24", "start_time": "20:00", "capacity_total": 10, "capacity_booked": 0, "status": "available" },
+    { "id": "avail-002", "date": "2026-12-25", "start_time": "20:00", "capacity_total": 4, "capacity_booked": 0, "status": "available" }
+  ],
+  "bookings": []
+}

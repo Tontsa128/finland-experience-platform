@@ -68,8 +68,11 @@ export default class PricingService {
         const addon = (db.addons || []).find((x: any) => x.id === a.id)
         if (!addon) continue
         let unit = addon.price_cents || 0
-        if (addon.pricing_model === 'per_person') unit = unit * (adults + children + infants)
-        const qty = addon.pricing_model === 'per_booking' ? 1 : (a.quantity || 1)
+        let qty = a.quantity || 1
+        if (addon.pricing_model === 'per_person') {
+          qty = (adults + children + infants) || 0
+          // keep unit as price_cents
+        }
         const lineTotal = unit * qty
         const taxRate = PricingService.getTaxRateForAddon(db, addon)
         addonsLines.push({ description: addon.title_es || addon.title_fi || addon.id, unit_price_cents: unit, quantity: qty, line_total_cents: lineTotal, tax_rate: taxRate, tax_cents: 0 })
@@ -107,7 +110,17 @@ export default class PricingService {
     }
 
     const discountTotal = discounts.reduce((s, d) => s + d.amount_cents, 0)
-    const taxedSubtotal = Math.max(0, subtotal - discountTotal)
+    let taxedSubtotal = Math.max(0, subtotal - discountTotal)
+
+    // Group discount: if total travelers >= 4 apply 10% discount on subtotal before taxes
+    const totalTravelers = adults + children + infants
+    if (totalTravelers >= 4) {
+      const groupAmount = Math.round(taxedSubtotal * 0.10)
+      if (groupAmount > 0) {
+        discounts.push({ description: 'Group discount (4+ pax)', amount_cents: groupAmount })
+        taxedSubtotal = Math.max(0, taxedSubtotal - groupAmount)
+      }
+    }
 
     // Calculate taxes per line
     let totalTax = 0
