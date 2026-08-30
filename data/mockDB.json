@@ -59,7 +59,8 @@
       "pricing": { "adult": 20000, "child": 15000, "infant": 0, "currency": "EUR" },
       "status": "published",
       "seo": { "title_es": "Auroras en Rovaniemi - Excursión única", "description_es": "Tour para ver auroras boreales y explorar lagos helados." },
-      "media": ["media-001","media-002"]
+      "media": ["media-001","media-002"],
+      "hero_media_id": "media-001"
     },
     {
       "id": "exp-002",
@@ -79,7 +80,8 @@
       "pricing": { "adult": 18000, "child": 0, "infant": 0, "currency": "EUR" },
       "status": "published",
       "seo": { "title_es": "Retiro VIP Sauna - Tampere", "description_es": "Experiencia privada de sauna y bienestar en Tampere." },
-      "media": ["media-003"]
+      "media": ["media-003"],
+      "hero_media_id": "media-003"
     },
     {
       "id": "exp-003",
@@ -99,7 +101,8 @@
       "pricing": { "adult": 22000, "child": 17000, "infant": 0, "currency": "EUR" },
       "status": "draft",
       "seo": { "title_es": "Husky Safari Inari", "description_es": "Expedición en trineo de huskies en Inari." },
-      "media": []
+      "media": [],
+      "hero_media_id": null
     }
   ],
   "media": [
@@ -149,5 +152,45 @@
       "sort_order": 0
     }
   ],
-  "addons": []
+  "addons": [
+    { "id": "addon-thermal", "title_es": "Alquiler de ropa térmica", "title_fi": "Lämmitysvaatteet vuokra", "price_cents": 2500, "pricing_model": "per_person", "type_tax": "vat-25_5" },
+    { "id": "addon-transfer", "title_es": "Traslado aeropuerto", "title_fi": "Lentokenttäkuljetus", "price_cents": 5000, "pricing_model": "per_booking", "type_tax": "vat-10" },
+    { "id": "addon-photo", "title_es": "Fotógrafo profesional", "title_fi": "Ammattikuvaaja", "price_cents": 9000, "pricing_model": "per_booking", "type_tax": "vat-25_5" }
+  ],
+  "seasons": [
+    {
+      "id": "season-winter",
+      "name": "Winter",
+      "start_date": "2026-12-01",
+      "end_date": "2027-03-31",
+      "multiplier": 1.20,
+      "description": "Winter season: higher demand"
+    },
+    {
+      "id": "season-christmas",
+      "name": "Christmas",
+      "start_date": "2026-12-20",
+      "end_date": "2027-01-07",
+      "multiplier": 1.35,
+      "description": "Peak Christmas season"
+    },
+    {
+      "id": "season-spring",
+      "name": "Spring (Semana Santa)",
+      "start_date": "2027-03-15",
+      "end_date": "2027-04-15",
+      "multiplier": 1.15,
+      "description": "Spring break / Semana Santa"
+    }
+  ],
+  "vat_rates": [
+    { "id": "vat-10", "rate": 0.10, "description": "Majoitus & henkilökuljetus (10%)" },
+    { "id": "vat-25_5", "rate": 0.255, "description": "General rate (25.5%)" }
+  ],
+  "promotions": [
+    { "id": "promo-winter10", "name": "Winter promo 10%", "discount_percent": 10, "target": { "type": "season", "season_id": "season-winter" }, "active": true }
+  ],
+  "coupons": [
+    { "id": "coupon-earlybird", "code": "EARLY10", "discount_percent": 10, "min_purchase_cents": 10000, "expires_at": "2027-06-01T00:00:00Z", "active": true }
+  ]
 }
