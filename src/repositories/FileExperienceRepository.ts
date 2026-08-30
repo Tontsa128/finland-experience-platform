@@ -51,6 +51,7 @@ export default class FileExperienceRepository {
       status: data.status || 'draft',
       seo: data.seo || {},
       media: data.media || [],
+      hero_media_id: data.hero_media_id || null,
       created_at: now,
       updated_at: now
     }

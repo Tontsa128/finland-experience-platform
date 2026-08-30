@@ -5,15 +5,25 @@ interface Props { id?: string }
 
 export default function ExperienceForm({ id }: Props) {
   const [loading, setLoading] = useState(false)
-  const [data, setData] = useState<any>({ title_es: '', title_fi: '', slug: '', short_description_es: '', short_description_fi: '', description_es: '', description_fi: '', pricing: { adult: 0, currency: 'EUR' }, status: 'draft' })
+  const [data, setData] = useState<any>({ title_es: '', title_fi: '', slug: '', short_description_es: '', short_description_fi: '', description_es: '', description_fi: '', pricing: { adult: 0, currency: 'EUR' }, status: 'draft', media: [], hero_media_id: null })
   const [message, setMessage] = useState<string | null>(null)
+  const [mediaList, setMediaList] = useState<any[]>([])
 
   useEffect(() => {
+    fetchMediaList()
     if (id) {
       setLoading(true)
       fetch(`/api/admin/experiences?id=${id}`).then(r => r.json()).then(d => { setData(d); setLoading(false) }).catch(() => setLoading(false))
     }
   }, [id])
+
+  async function fetchMediaList(){
+    try{
+      const res = await fetch('/api/admin/media')
+      const j = await res.json()
+      setMediaList(j || [])
+    }catch{}
+  }
 
   async function onSave(e:any){
     e.preventDefault()
@@ -37,6 +47,16 @@ export default function ExperienceForm({ id }: Props) {
   }
 
   function setField(k:string, v:any){ setData((s:any)=>({ ...s, [k]: v })) }
+
+  function toggleMedia(mid:string){
+    setData((s:any)=>{
+      const arr = s.media || []
+      if (arr.includes(mid)) return { ...s, media: arr.filter((x:string)=>x!==mid) }
+      return { ...s, media: [...arr, mid] }
+    })
+  }
+
+  function setHero(mid:string|null){ setData((s:any)=>({ ...s, hero_media_id: mid })) }
 
   if (loading) return <div>Cargando...</div>
 
@@ -76,8 +96,19 @@ export default function ExperienceForm({ id }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm">Descripción larga (FI)</label>
-        <textarea className="w-full border p-2 rounded" rows={6} value={data.description_fi||''} onChange={e=>setField('description_fi', e.target.value)} />
+        <label className="block text-sm">Galería de media</label>
+        <div className="grid grid-cols-3 gap-3">
+          {mediaList.map(m => (
+            <div key={m.id} className={`p-2 border rounded ${ (data.media||[]).includes(m.id) ? 'ring-2 ring-aurora' : '' }`}>
+              <img src={m.url} alt={m.alt_text} className="w-full h-24 object-cover rounded" />
+              <div className="mt-2 text-sm">{m.title || m.filename}</div>
+              <div className="mt-2 flex items-center gap-2">
+                <label className="text-sm"><input type="checkbox" checked={(data.media||[]).includes(m.id)} onChange={()=>toggleMedia(m.id)} /> Añadir</label>
+                <label className="text-sm"><input type="radio" name="hero" checked={data.hero_media_id===m.id} onChange={()=>setHero(m.id)} /> Hero</label>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-3 gap-4">

@@ -29,6 +29,7 @@ export interface Experience {
   status?: ExperienceStatus
   seo?: { title_es?: string; description_es?: string; title_fi?: string; description_fi?: string }
   media?: string[]
+  hero_media_id?: string | null
   created_at?: string
   updated_at?: string
 }
