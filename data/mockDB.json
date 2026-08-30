@@ -1,0 +1,104 @@
+{
+  "organizations": [
+    {
+      "id": "org-0001",
+      "name": "Finland Experience Demo",
+      "slug": "finland-experience-demo"
+    }
+  ],
+  "destinations": [
+    {
+      "id": "dest-rovaniemi",
+      "slug": "rovaniemi",
+      "name_es": "Rovaniemi",
+      "name_fi": "Rovaniemi",
+      "description_es": "Centro de Laponia, puerta a la aurora boreal.",
+      "description_fi": "Lappi-alueen keskus, revontulien portti.",
+      "seo": {}
+    },
+    {
+      "id": "dest-inari",
+      "slug": "inari",
+      "name_es": "Inari",
+      "name_fi": "Inari",
+      "description_es": "Naturaleza salvaje y cultura sámi.",
+      "description_fi": "Erämaan luontoa ja saamelaista kulttuuria.",
+      "seo": {}
+    },
+    {
+      "id": "dest-tampere",
+      "slug": "tampere",
+      "name_es": "Tampere",
+      "name_fi": "Tampere",
+      "description_es": "Sauna- ja järvialue, wellness-elämyksiä.",
+      "description_fi": "Sauna- ja järvialue, hyvinvointielämyksiä.",
+      "seo": {}
+    }
+  ],
+  "categories": [
+    { "id": "cat-aurora", "slug": "aurora", "name_es": "Auroras", "name_fi": "Revontulet" },
+    { "id": "cat-sauna", "slug": "sauna", "name_es": "Sauna & Wellness", "name_fi": "Sauna & Hyvinvointi" },
+    { "id": "cat-husky", "slug": "husky", "name_es": "Husky", "name_fi": "Husky" }
+  ],
+  "experiences": [
+    {
+      "id": "exp-001",
+      "organization_id": "org-0001",
+      "slug": "auroras-cristal-hielo",
+      "title_es": "Auroras Boreales y Caza del Cristal de Hielo",
+      "title_fi": "Revontulet ja jääkristallien metsästys",
+      "short_description_es": "Tour nocturno para fotografiar las auroras y explorar formaciones de hielo.",
+      "short_description_fi": "Yöretki revontulien kuvaamiseen ja jäämuodostelmien tutkimiseen.",
+      "description_es": "Salida nocturna desde Rovaniemi para observar auroras y explorar cristales de hielo en lagos helados.",
+      "description_fi": "Yöretki Rovaniemeltä revontulien katseluun ja jääkristallien tutkimiseen.",
+      "destination_id": "dest-rovaniemi",
+      "category_id": "cat-aurora",
+      "duration_minutes": 240,
+      "min_age": 8,
+      "capacity_default": 8,
+      "pricing": { "adult": 20000, "child": 15000, "infant": 0, "currency": "EUR" },
+      "status": "published",
+      "seo": { "title_es": "Auroras en Rovaniemi - Excursión única", "description_es": "Tour para ver auroras boreales y explorar lagos helados." }
+    },
+    {
+      "id": "exp-002",
+      "organization_id": "org-0001",
+      "slug": "retiro-vip-sauna",
+      "title_es": "Retiro VIP de Sauna Finlandesa y Baño Helado",
+      "title_fi": "VIP-suomalainen sauna- ja avantouintiretki",
+      "short_description_es": "Experiencia privada de sauna con guía y piscina de hielo opcional.",
+      "short_description_fi": "Yksityinen saunaelämys oppaan kanssa ja avantouintimahdollisuus.",
+      "description_es": "Relájate en una experiencia de sauna privada con tratamientos y baño en hielo opcional.",
+      "description_fi": "Rentoudu yksityisessä saunassa hoidoilla ja mahdollisuudella avantouintiin.",
+      "destination_id": "dest-tampere",
+      "category_id": "cat-sauna",
+      "duration_minutes": 180,
+      "min_age": 16,
+      "capacity_default": 6,
+      "pricing": { "adult": 18000, "child": 0, "infant": 0, "currency": "EUR" },
+      "status": "published",
+      "seo": { "title_es": "Retiro VIP Sauna - Tampere", "description_es": "Experiencia privada de sauna y bienestar en Tampere." }
+    },
+    {
+      "id": "exp-003",
+      "organization_id": "org-0001",
+      "slug": "husky-expedition-inari",
+      "title_es": "Expedición en Trineo de Huskies en la Naturaleza Salvaje",
+      "title_fi": "Huskyrekiretki erämaan sydämessä",
+      "short_description_es": "Aventura en trineo tirado por huskies a través de paisajes nevados.",
+      "short_description_fi": "Huskysafaree lumisten maisemien halki.",
+      "description_es": "Paseo en trineo por senderos nevados, con guía profesional y fotos incluidas.",
+      "description_fi": "Koiravaljakkoajelu lumisten reittien läpi ammattiohjaajan kanssa.",
+      "destination_id": "dest-inari",
+      "category_id": "cat-husky",
+      "duration_minutes": 240,
+      "min_age": 10,
+      "capacity_default": 10,
+      "pricing": { "adult": 22000, "child": 17000, "infant": 0, "currency": "EUR" },
+      "status": "draft",
+      "seo": { "title_es": "Husky Safari Inari", "description_es": "Expedición en trineo de huskies en Inari." }
+    }
+  ],
+  "media": [],
+  "addons": []
+}
