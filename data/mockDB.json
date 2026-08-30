@@ -58,7 +58,8 @@
       "capacity_default": 8,
       "pricing": { "adult": 20000, "child": 15000, "infant": 0, "currency": "EUR" },
       "status": "published",
-      "seo": { "title_es": "Auroras en Rovaniemi - Excursión única", "description_es": "Tour para ver auroras boreales y explorar lagos helados." }
+      "seo": { "title_es": "Auroras en Rovaniemi - Excursión única", "description_es": "Tour para ver auroras boreales y explorar lagos helados." },
+      "media": ["media-001","media-002"]
     },
     {
       "id": "exp-002",
@@ -77,7 +78,8 @@
       "capacity_default": 6,
       "pricing": { "adult": 18000, "child": 0, "infant": 0, "currency": "EUR" },
       "status": "published",
-      "seo": { "title_es": "Retiro VIP Sauna - Tampere", "description_es": "Experiencia privada de sauna y bienestar en Tampere." }
+      "seo": { "title_es": "Retiro VIP Sauna - Tampere", "description_es": "Experiencia privada de sauna y bienestar en Tampere." },
+      "media": ["media-003"]
     },
     {
       "id": "exp-003",
@@ -96,9 +98,56 @@
       "capacity_default": 10,
       "pricing": { "adult": 22000, "child": 17000, "infant": 0, "currency": "EUR" },
       "status": "draft",
-      "seo": { "title_es": "Husky Safari Inari", "description_es": "Expedición en trineo de huskies en Inari." }
+      "seo": { "title_es": "Husky Safari Inari", "description_es": "Expedición en trineo de huskies en Inari." },
+      "media": []
     }
   ],
-  "media": [],
+  "media": [
+    {
+      "id": "media-001",
+      "filename": "aurora-1.jpg",
+      "url": "https://placehold.co/800x600?text=Aurora+1",
+      "alt_text": "Aurora Boreal sobre el bosque",
+      "title": "Aurora en Rovaniemi",
+      "type": "image",
+      "size_bytes": 123456,
+      "width": 800,
+      "height": 600,
+      "tags": ["aurora","noche"],
+      "created_at": "2026-08-30T00:00:00Z",
+      "is_hero": true,
+      "sort_order": 0
+    },
+    {
+      "id": "media-002",
+      "filename": "ice-crystals.jpg",
+      "url": "https://placehold.co/800x600?text=Ice+crystals",
+      "alt_text": "Cristales de hielo en lago",
+      "title": "Cristales de hielo",
+      "type": "image",
+      "size_bytes": 98765,
+      "width": 800,
+      "height": 600,
+      "tags": ["hielo","invierno"],
+      "created_at": "2026-08-30T00:00:00Z",
+      "is_hero": false,
+      "sort_order": 1
+    },
+    {
+      "id": "media-003",
+      "filename": "sauna-vip.jpg",
+      "url": "https://placehold.co/800x600?text=Sauna+VIP",
+      "alt_text": "Sauna privada con vistas al lago",
+      "title": "Sauna VIP",
+      "type": "image",
+      "size_bytes": 54321,
+      "width": 800,
+      "height": 600,
+      "tags": ["sauna","wellness"],
+      "created_at": "2026-08-30T00:00:00Z",
+      "is_hero": true,
+      "sort_order": 0
+    }
+  ],
   "addons": []
 }
