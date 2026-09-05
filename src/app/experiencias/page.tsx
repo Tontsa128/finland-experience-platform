@@ -3,11 +3,24 @@
 import { useEffect, useState } from 'react';
 import { ExperienceService } from '@/services/experience';
 import { DestinationService } from '@/services/destination';
-import type { Experience, Destination } from '@/types';
+
+interface ExperienceCard {
+  id: number;
+  titleEs: string;
+  titleFi: string;
+  shortDescriptionEs: string;
+  shortDescriptionFi: string;
+}
+
+interface DestinationCard {
+  id: number;
+  nameEs: string;
+  nameFi: string;
+}
 
 export default function ExperiencesPage() {
-  const [experiences, setExperiences] = useState<Experience[]>([]);
-  const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [experiences, setExperiences] = useState<ExperienceCard[]>([]);
+  const [destinations, setDestinations] = useState<DestinationCard[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,35 +30,32 @@ export default function ExperiencesPage() {
       try {
         const [exps, dests] = await Promise.all([
           ExperienceService.getExperiences(true),
-          DestinationService.getDestinations(),
+          DestinationService.getDestinations(true),
         ]);
 
         if (!mounted) return;
 
-        const mappedExperiences: Experience[] = exps.map((exp) => {
+        setExperiences(exps.map((exp) => {
           const es = exp.translations?.find((t) => t.languageCode === 'es');
           const fi = exp.translations?.find((t) => t.languageCode === 'fi');
           return {
-            ...exp,
+            id: exp.id,
             titleEs: es?.title ?? '',
             titleFi: fi?.title ?? '',
             shortDescriptionEs: es?.shortDescription ?? '',
             shortDescriptionFi: fi?.shortDescription ?? '',
-          } as Experience;
-        });
+          };
+        }));
 
-        const mappedDestinations: Destination[] = dests.map((dest) => {
+        setDestinations(dests.map((dest) => {
           const es = dest.translations?.find((t) => t.languageCode === 'es');
           const fi = dest.translations?.find((t) => t.languageCode === 'fi');
           return {
-            ...dest,
+            id: dest.id,
             nameEs: es?.name ?? '',
             nameFi: fi?.name ?? '',
-          } as Destination;
-        });
-
-        setExperiences(mappedExperiences);
-        setDestinations(mappedDestinations);
+          };
+        }));
       } catch (error) {
         console.error('Failed to load experiences:', error);
       } finally {
@@ -54,9 +64,7 @@ export default function ExperiencesPage() {
     };
 
     load();
-    return () => {
-      mounted = false;
-    };
+    return () => { mounted = false; };
   }, []);
 
   if (loading) {
@@ -87,9 +95,7 @@ export default function ExperiencesPage() {
           {experiences.map((experience) => (
             <article key={experience.id} className="rounded-lg border p-5">
               <h3 className="font-semibold">{experience.titleEs || experience.titleFi}</h3>
-              <p className="mt-2 text-sm text-gray-600">
-                {experience.shortDescriptionEs || experience.shortDescriptionFi}
-              </p>
+              <p className="mt-2 text-sm text-gray-600">{experience.shortDescriptionEs || experience.shortDescriptionFi}</p>
             </article>
           ))}
         </div>
