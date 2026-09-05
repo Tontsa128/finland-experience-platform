@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Finland Experience Platform - Experiencias Premium en Finlandia',
   description: 'Descubre y reserva experiencias premium de viaje en Finlandia para clientes españoles',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
   },
 };
 
