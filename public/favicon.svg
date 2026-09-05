@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Finland Experience Platform">
+  <rect width="64" height="64" rx="14" fill="#ffffff"/>
+  <path d="M0 20h64v24H0z" fill="#003580"/>
+  <path d="M0 28h64v8H0zM24 0h8v64h-8z" fill="#ffffff"/>
+</svg>
