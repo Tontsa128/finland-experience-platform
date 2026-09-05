@@ -7,9 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node ./scripts/seed.ts",
+    "seed": "tsx ./scripts/seed.ts",
     "typecheck": "tsc --noEmit",
-    "test": "node ./scripts/test-media.js && node ./scripts/test-pricing.js && node ./scripts/test-availability.js"
+    "test": "node ./scripts/test-media.js && node ./scripts/test-pricing.js && node ./scripts/test-availability.js",
+    "db:push": "supabase db push",
+    "db:reset": "supabase db reset",
+    "db:seed": "tsx ./scripts/seed.ts"
   },
   "dependencies": {
     "next": "13.5.6",
@@ -17,7 +20,9 @@
     "react-dom": "18.2.0",
     "clsx": "^1.2.1",
     "swr": "^2.1.3",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "@supabase/supabase-js": "^2.38.0",
+    "@supabase/ssr": "^0.0.10"
   },
   "devDependencies": {
     "@types/node": "^18.16.0",
@@ -27,6 +32,8 @@
     "postcss": "^8.4.26",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.43.0",
-    "eslint-config-next": "^13.5.6"
+    "eslint-config-next": "^13.5.6",
+    "tsx": "^4.4.0",
+    "supabase": "^1.120.0"
   }
 }
