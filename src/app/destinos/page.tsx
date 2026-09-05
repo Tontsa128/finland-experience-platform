@@ -28,7 +28,8 @@ export default function DestinationsPage() {
     const loadData = async () => {
       try {
         const dests = await DestinationService.getDestinations(true);
-        setDestinations(dests as Destination[]);
+        setDestinations(dests as unknown as Destination[]);
+
       } catch (error) {
         console.error('Error loading destinations:', error);
       } finally {
