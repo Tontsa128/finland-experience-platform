@@ -48,7 +48,8 @@ export default function ExperiencesPage() {
         const exps = await ExperienceService.getExperiences(true);
         const dests = await DestinationService.getDestinations(true);
         setExperiences(exps as Experience[]);
-        setDestinations(dests as Destination[]);
+        setDestinations(dests as unknown as Destination[]);
+
       } catch (error) {
         console.error('Error loading experiences:', error);
       } finally {
