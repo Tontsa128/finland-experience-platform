@@ -47,7 +47,8 @@ export default function ExperiencesPage() {
       try {
         const exps = await ExperienceService.getExperiences(true);
         const dests = await DestinationService.getDestinations(true);
-        setExperiences(exps as Experience[]);
+        setExperiences(exps as unknown as Experience[]);
+
 
         setDestinations(dests as unknown as Destination[]);
 
