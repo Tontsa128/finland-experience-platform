@@ -13,6 +13,7 @@ const config: Config = {
         aurora: '#20C997',
         snow: '#F8FAFC',
         slate: '#475569',
+        border: 'hsl(var(--border))',
       },
       boxShadow: {
         card: '0 18px 50px rgba(7, 26, 43, 0.10)',
