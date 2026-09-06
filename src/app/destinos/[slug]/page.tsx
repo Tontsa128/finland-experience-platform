@@ -3,8 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { DestinationService } from '@/services/destination';
-import { ExperienceService } from '@/services/experience';
-import { ChevronRight, MapPin } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+
+interface DestinationExperience {
+  id: number;
+  slug: string;
+  titleEs: string;
+  titleFi: string;
+}
 
 interface Destination {
   id: number;
@@ -15,8 +21,8 @@ interface Destination {
   fullDescriptionFi: string;
   highlightsEs: string;
   highlightsFi: string;
-  media: any[];
-  experiences: any[];
+  media: Array<{ url: string; isHero: boolean }>;
+  experiences: DestinationExperience[];
 }
 
 export default function DestinationDetailPage({ params }: { params: { slug: string } }) {
@@ -25,24 +31,47 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
   const [language, setLanguage] = useState<'es' | 'fi'>('es');
 
   useEffect(() => {
+    let mounted = true;
+
     const loadData = async () => {
       try {
         const dest = await DestinationService.getDestinationBySlug(params.slug, true);
-        setDestination(dest as Destination);
+        if (!mounted || !dest) return;
+
+        setDestination({
+          id: dest.id,
+          slug: dest.slug,
+          nameEs: dest.nameEs,
+          nameFi: dest.nameFi,
+          fullDescriptionEs: dest.fullDescriptionEs,
+          fullDescriptionFi: dest.fullDescriptionFi,
+          highlightsEs: dest.highlightsEs,
+          highlightsFi: dest.highlightsFi,
+          media: dest.media.map((media) => ({ url: media.url, isHero: media.isHero })),
+          experiences: dest.experiences.map((experience) => ({
+            id: experience.id,
+            slug: experience.slug,
+            titleEs: experience.titleEs,
+            titleFi: experience.titleFi,
+          })),
+        });
       } catch (error) {
         console.error('Error loading destination:', error);
       } finally {
-        setLoading(false);
+        if (mounted) setLoading(false);
       }
     };
 
     loadData();
+    return () => {
+      mounted = false;
+    };
   }, [params.slug]);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-aurora"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-aurora" />
       </div>
     );
   }
@@ -70,9 +99,9 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
 
   return (
     <div className="min-h-screen bg-snow">
-      {/* Language Toggle */}
       <div className="fixed top-4 right-4 z-50">
         <button
+          type="button"
           onClick={() => setLanguage(language === 'es' ? 'fi' : 'es')}
           className="bg-aurora text-midnight px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition"
         >
@@ -80,7 +109,6 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
         </button>
       </div>
 
-      {/* Hero */}
       {heroImage && (
         <div className="relative h-96 w-full overflow-hidden">
           <img src={heroImage} alt={title} className="w-full h-full object-cover" />
@@ -93,9 +121,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
 
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Description */}
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-2xl font-bold text-midnight mb-4">
                 {language === 'es' ? 'Descripción' : 'Kuvaus'}
@@ -103,7 +129,6 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
               <p className="text-slate leading-relaxed">{description}</p>
             </div>
 
-            {/* Highlights */}
             {highlights && (
               <div className="bg-white p-6 rounded-lg shadow">
                 <h2 className="text-2xl font-bold text-midnight mb-4">
@@ -113,7 +138,6 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
               </div>
             )}
 
-            {/* Experiences */}
             {destination.experiences.length > 0 && (
               <div className="bg-white p-6 rounded-lg shadow">
                 <h2 className="text-2xl font-bold text-midnight mb-4">
@@ -121,7 +145,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
                 </h2>
                 <div className="space-y-3">
                   {destination.experiences.map((exp) => {
-                    const title = language === 'es' ? exp.titleEs : exp.titleFi;
+                    const experienceTitle = language === 'es' ? exp.titleEs : exp.titleFi;
                     return (
                       <Link
                         key={exp.id}
@@ -129,7 +153,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
                         className="flex items-center justify-between p-3 hover:bg-slate/5 rounded-lg transition group"
                       >
                         <span className="font-semibold text-midnight group-hover:text-aurora transition">
-                          {title}
+                          {experienceTitle || exp.titleFi || exp.titleEs}
                         </span>
                         <ChevronRight className="w-5 h-5 text-aurora" />
                       </Link>
@@ -140,7 +164,6 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
             )}
           </div>
 
-          {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-lg p-6 sticky top-8 space-y-6">
               <h3 className="text-xl font-bold text-midnight">
@@ -157,9 +180,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
                   <p className="text-sm text-slate mb-1">
                     {language === 'es' ? 'Experiencias disponibles' : 'Saatavilla olevat kokemukset'}
                   </p>
-                  <p className="font-semibold text-aurora text-lg">
-                    {destination.experiences.length}
-                  </p>
+                  <p className="font-semibold text-aurora text-lg">{destination.experiences.length}</p>
                 </div>
               </div>
               <Link
