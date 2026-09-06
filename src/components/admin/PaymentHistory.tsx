@@ -1,17 +1,20 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+import React, { useEffect, useState } from 'react';
+import { supabaseAdmin } from '@/lib/supabase';
 import type { Booking } from '@/types';
+
+type PaymentFilter = 'all' | 'paid' | 'unpaid' | 'failed' | 'refunded';
 
 /**
  * Admin Payment History Component
- * Displays all payments and their status
+ * Displays all payments and their status.
+ * Uses the existing lazy server-side Supabase client exported by lib/supabase.
  */
 export default function PaymentHistory() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState<'all' | 'paid' | 'unpaid' | 'failed' | 'refunded'>('all');
+  const [filter, setFilter] = useState<PaymentFilter>('all');
 
   useEffect(() => {
     fetchBookings();
@@ -20,7 +23,7 @@ export default function PaymentHistory() {
   const fetchBookings = async () => {
     setLoading(true);
     try {
-      let query = supabase.from('bookings').select('*');
+      let query = supabaseAdmin.from('bookings').select('*');
 
       if (filter !== 'all') {
         query = query.eq('payment_status', filter);
@@ -29,9 +32,10 @@ export default function PaymentHistory() {
       const { data, error } = await query.order('created_at', { ascending: false });
 
       if (error) throw error;
-      setBookings(data || []);
+      setBookings((data ?? []) as Booking[]);
     } catch (error) {
       console.error('Error fetching bookings:', error);
+      setBookings([]);
     } finally {
       setLoading(false);
     }
@@ -47,7 +51,7 @@ export default function PaymentHistory() {
     return colors[status] || 'bg-gray-100 text-gray-800';
   };
 
-  const filterOptions = [
+  const filterOptions: Array<{ value: PaymentFilter; label: string }> = [
     { value: 'all', label: 'All Payments' },
     { value: 'paid', label: 'Paid' },
     { value: 'unpaid', label: 'Unpaid' },
@@ -61,12 +65,11 @@ export default function PaymentHistory() {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">Payment History</h2>
 
-      {/* Filter Buttons */}
       <div className="flex gap-2 flex-wrap">
         {filterOptions.map((option) => (
           <button
             key={option.value}
-            onClick={() => setFilter(option.value as any)}
+            onClick={() => setFilter(option.value)}
             className={`px-4 py-2 rounded-lg font-medium transition ${
               filter === option.value
                 ? 'bg-blue-600 text-white'
@@ -78,7 +81,6 @@ export default function PaymentHistory() {
         ))}
       </div>
 
-      {/* Payments Table */}
       <div className="bg-white rounded-lg border overflow-hidden">
         <table className="w-full">
           <thead className="bg-gray-50 border-b">
@@ -120,7 +122,6 @@ export default function PaymentHistory() {
         </table>
       </div>
 
-      {/* Summary Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-green-50 p-4 rounded-lg border border-green-200">
           <div className="text-2xl font-bold text-green-600">
