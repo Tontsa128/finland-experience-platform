@@ -1,32 +1,38 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { supabaseAdmin } from '@/lib/supabase';
-import type { Booking } from '@/types';
+
+type PaymentStatus = 'unpaid' | 'paid' | 'refunded' | 'failed';
+
+type AdminBooking = {
+  id: number;
+  booking_number: string;
+  status: string;
+  total_price_eur: number;
+  payment_status: PaymentStatus;
+};
+
+type RefundReason = 'requested_by_customer' | 'duplicate' | 'fraudulent';
 
 export default function RefundManagement() {
-  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [bookings, setBookings] = useState<AdminBooking[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
-  const [refundReason, setRefundReason] = useState('requested_by_customer');
+  const [selectedBooking, setSelectedBooking] = useState<AdminBooking | null>(null);
+  const [refundReason, setRefundReason] = useState<RefundReason>('requested_by_customer');
   const [processing, setProcessing] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
-
-  useEffect(() => {
-    fetchPaidBookings();
-  }, []);
 
   const fetchPaidBookings = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabaseAdmin
-        .from('bookings')
-        .select('*')
-        .eq('payment_status', 'paid')
-        .order('created_at', { ascending: false });
+      const response = await fetch('/api/admin/payments?status=paid', { cache: 'no-store' });
 
-      if (error) throw error;
-      setBookings((data ?? []) as Booking[]);
+      if (!response.ok) {
+        throw new Error('Failed to fetch bookings');
+      }
+
+      const result: { bookings?: AdminBooking[] } = await response.json();
+      setBookings(result.bookings ?? []);
     } catch (error) {
       console.error('Error fetching bookings:', error);
       setMessage({ type: 'error', text: 'Failed to fetch bookings' });
@@ -34,6 +40,10 @@ export default function RefundManagement() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    void fetchPaidBookings();
+  }, []);
 
   const handleRefund = async () => {
     if (!selectedBooking) return;
@@ -51,11 +61,12 @@ export default function RefundManagement() {
         }),
       });
 
+      const result: { error?: string } = await response.json();
+
       if (!response.ok) {
-        throw new Error('Refund failed');
+        throw new Error(result.error || 'Refund failed');
       }
 
-      await response.json();
       setMessage({
         type: 'success',
         text: `Refund processed successfully for booking #${selectedBooking.booking_number}`,
@@ -139,7 +150,7 @@ export default function RefundManagement() {
                 <label className="block text-sm font-medium mb-2">Refund Reason</label>
                 <select
                   value={refundReason}
-                  onChange={(e) => setRefundReason(e.target.value)}
+                  onChange={(e) => setRefundReason(e.target.value as RefundReason)}
                   className="w-full px-3 py-2 border rounded-lg"
                 >
                   <option value="requested_by_customer">Requested by Customer</option>
