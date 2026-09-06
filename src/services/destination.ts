@@ -1,11 +1,11 @@
 import type { Destination, DestinationTranslation } from '@/types';
 import { MOCK_DESTINATIONS, MOCK_DESTINATION_TRANSLATIONS } from '@/lib/mock-data/destinations';
 import { MOCK_MEDIA } from '@/lib/mock-data/media';
-import { MOCK_EXPERIENCES } from '@/lib/mock-data/experiences';
+import { MOCK_EXPERIENCES, MOCK_EXPERIENCE_TRANSLATIONS } from '@/lib/mock-data/experiences';
 
 export class DestinationService {
   /**
-   * Get all destinations
+   * Get all destinations.
    */
   static async getDestinations(published: boolean = false) {
     let destinations = MOCK_DESTINATIONS;
@@ -22,7 +22,7 @@ export class DestinationService {
   }
 
   /**
-   * Get single destination
+   * Get a single destination with fully localized experience summaries.
    */
   static async getDestinationById(id: number) {
     const destination = MOCK_DESTINATIONS.find((d) => d.id === id);
@@ -33,6 +33,24 @@ export class DestinationService {
 
     const esTranslation = byLanguage('es');
     const fiTranslation = byLanguage('fi');
+
+    const experiences = MOCK_EXPERIENCES
+      .filter((experience) => experience.destinationId === id)
+      .map((experience) => {
+        const experienceTranslations = MOCK_EXPERIENCE_TRANSLATIONS.filter(
+          (translation) => translation.experienceId === experience.id,
+        );
+        const es = experienceTranslations.find((translation) => translation.languageCode === 'es');
+        const fi = experienceTranslations.find((translation) => translation.languageCode === 'fi');
+
+        return {
+          ...experience,
+          titleEs: es?.title ?? '',
+          titleFi: fi?.title ?? '',
+          shortDescriptionEs: es?.shortDescription ?? '',
+          shortDescriptionFi: fi?.shortDescription ?? '',
+        };
+      });
 
     return {
       ...destination,
@@ -47,12 +65,12 @@ export class DestinationService {
       travelInformationEs: esTranslation?.travelInformation || '',
       travelInformationFi: fiTranslation?.travelInformation || '',
       media: MOCK_MEDIA.filter((m) => m.destinationId === id),
-      experiences: MOCK_EXPERIENCES.filter((e) => e.destinationId === id),
+      experiences,
     };
   }
 
   /**
-   * Get by slug
+   * Get by slug.
    */
   static async getDestinationBySlug(slug: string, published: boolean = true) {
     const destination = MOCK_DESTINATIONS.find((d) => d.slug === slug);
@@ -63,10 +81,10 @@ export class DestinationService {
   }
 
   /**
-   * Validate destination before publishing
+   * Validate destination before publishing.
    */
   static validateForPublishing(
-    data: any
+    data: any,
   ): { valid: boolean; errors: string[] } {
     const errors: string[] = [];
 
