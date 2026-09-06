@@ -1,45 +1,53 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { supabaseAdmin } from '@/lib/supabase';
-import type { Booking } from '@/types';
 
 type PaymentFilter = 'all' | 'paid' | 'unpaid' | 'failed' | 'refunded';
 
+type AdminBooking = {
+  id: number;
+  booking_number: string;
+  status: string;
+  total_price_eur: number;
+  payment_status: PaymentFilter;
+  created_at: string;
+  payment_intent_id: string | null;
+};
+
 /**
- * Admin Payment History Component
- * Displays all payments and their status.
- * Uses the existing lazy server-side Supabase client exported by lib/supabase.
+ * Admin Payment History Component.
+ * Payment data is loaded through a server API so the Supabase service-role key
+ * never reaches the browser bundle.
  */
 export default function PaymentHistory() {
-  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [bookings, setBookings] = useState<AdminBooking[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<PaymentFilter>('all');
 
   useEffect(() => {
-    fetchBookings();
-  }, [filter]);
+    const fetchBookings = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`/api/admin/payments?status=${filter}`, {
+          cache: 'no-store',
+        });
 
-  const fetchBookings = async () => {
-    setLoading(true);
-    try {
-      let query = supabaseAdmin.from('bookings').select('*');
+        if (!response.ok) {
+          throw new Error('Failed to fetch payments');
+        }
 
-      if (filter !== 'all') {
-        query = query.eq('payment_status', filter);
+        const result: { bookings?: AdminBooking[] } = await response.json();
+        setBookings(result.bookings ?? []);
+      } catch (error) {
+        console.error('Error fetching bookings:', error);
+        setBookings([]);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const { data, error } = await query.order('created_at', { ascending: false });
-
-      if (error) throw error;
-      setBookings((data ?? []) as Booking[]);
-    } catch (error) {
-      console.error('Error fetching bookings:', error);
-      setBookings([]);
-    } finally {
-      setLoading(false);
-    }
-  };
+    void fetchBookings();
+  }, [filter]);
 
   const getStatusBadgeColor = (status: string) => {
     const colors: Record<string, string> = {
@@ -113,7 +121,7 @@ export default function PaymentHistory() {
                     {new Date(booking.created_at).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 text-xs text-gray-500 font-mono">
-                    {booking.payment_intent_id?.slice(0, 20)}...
+                    {booking.payment_intent_id ? `${booking.payment_intent_id.slice(0, 20)}...` : '—'}
                   </td>
                 </tr>
               ))
