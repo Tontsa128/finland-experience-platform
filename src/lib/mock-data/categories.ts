@@ -8,7 +8,7 @@ export const MOCK_CATEGORIES: ExperienceCategory[] = [
     nameFi: 'Talviseikkailu',
     icon: '❄️',
     color: '#00AEEF',
-    createdAt: new Date().toISOString(),
+    createdAt: new Date(),
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const MOCK_CATEGORIES: ExperienceCategory[] = [
     nameFi: 'Kulttuurikokemus',
     icon: '🏛️',
     color: '#FF5733',
-    createdAt: new Date().toISOString(),
+    createdAt: new Date(),
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ export const MOCK_CATEGORIES: ExperienceCategory[] = [
     nameFi: 'Luontoseikkailu',
     icon: '🏕️',
     color: '#10B981',
-    createdAt: new Date().toISOString(),
+    createdAt: new Date(),
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ export const MOCK_CATEGORIES: ExperienceCategory[] = [
     nameFi: 'Rentoutuminen',
     icon: '🧖',
     color: '#8B5CF6',
-    createdAt: new Date().toISOString(),
+    createdAt: new Date(),
   },
   {
     id: 5,
@@ -44,6 +44,6 @@ export const MOCK_CATEGORIES: ExperienceCategory[] = [
     nameFi: 'Ruoka ja gastronomia',
     icon: '🍽️',
     color: '#F59E0B',
-    createdAt: new Date().toISOString(),
+    createdAt: new Date(),
   },
 ];
