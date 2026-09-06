@@ -1,13 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+import React, { useEffect, useState } from 'react';
+import { supabaseAdmin } from '@/lib/supabase';
 import type { Booking } from '@/types';
 
-/**
- * Admin Refund Management Component
- * Allows admins to process refunds for bookings
- */
 export default function RefundManagement() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
@@ -23,14 +19,14 @@ export default function RefundManagement() {
   const fetchPaidBookings = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('bookings')
         .select('*')
         .eq('payment_status', 'paid')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setBookings(data || []);
+      setBookings((data ?? []) as Booking[]);
     } catch (error) {
       console.error('Error fetching bookings:', error);
       setMessage({ type: 'error', text: 'Failed to fetch bookings' });
@@ -55,15 +51,16 @@ export default function RefundManagement() {
         }),
       });
 
-      if (!response.ok) throw new Error('Refund failed');
+      if (!response.ok) {
+        throw new Error('Refund failed');
+      }
 
-      const result = await response.json();
+      await response.json();
       setMessage({
         type: 'success',
         text: `Refund processed successfully for booking #${selectedBooking.booking_number}`,
       });
 
-      // Refresh bookings
       await fetchPaidBookings();
       setSelectedBooking(null);
     } catch (error) {
@@ -96,7 +93,6 @@ export default function RefundManagement() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Paid Bookings List */}
         <div className="bg-white p-6 rounded-lg border">
           <h3 className="text-lg font-semibold mb-4">Paid Bookings</h3>
           <div className="space-y-2 max-h-96 overflow-y-auto">
@@ -123,7 +119,6 @@ export default function RefundManagement() {
           </div>
         </div>
 
-        {/* Refund Details */}
         {selectedBooking && (
           <div className="bg-white p-6 rounded-lg border">
             <h3 className="text-lg font-semibold mb-4">Refund Details</h3>
