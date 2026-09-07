@@ -1,44 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --primary: 162 72% 39%;
-    --primary-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --ring: 162 72% 39%;
-    --radius: 0.75rem;
-  }
-
-  * {
-    @apply border-border;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-slate-50 text-slate-900 antialiased;
-    font-family: var(--font-sans), Inter, ui-sans-serif, system-ui, sans-serif;
-  }
-
-  a {
-    @apply transition-colors;
-  }
-}
-
-@layer components {
-  .container-site {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
-  }
-
-  .glass-nav {
-    @apply border-b border-white/10 bg-slate-950/95 backdrop-blur-xl;
-  }
-}
+@layer base{html{scroll-behavior:smooth}body{@apply bg-snow text-slate-900 antialiased;font-feature-settings:"rlig" 1,"calt" 1}::selection{@apply bg-brand-200 text-brand-900}}
+@layer components{.container-narrow{@apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8}.btn-primary{@apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-900 px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all hover:bg-brand-800 hover:shadow-card}.btn-secondary{@apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-900 px-6 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-900 hover:text-white}.btn-gold{@apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-white hover:bg-gold-600}.card{@apply rounded-2xl bg-white shadow-soft overflow-hidden transition hover:shadow-card}.section-title{@apply font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-900 tracking-tight}.section-subtitle{@apply text-lg text-slate-600 max-w-2xl}.glass{@apply bg-white/80 backdrop-blur-md border border-white/20}}
+@layer utilities{.text-balance{text-wrap:balance}.mask-fade{mask-image:linear-gradient(to bottom,black 60%,transparent 100%)}}

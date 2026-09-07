@@ -1,31 +1,14 @@
-export function cn(...classes: (string | undefined | null | false)[]): string {
-  return classes.filter(Boolean).join(' ');
-}
+import type { Locale } from "@/types";
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-export function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
+export function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)); }
+export function formatPrice(price: number, locale: Locale = "en"): string {
+  return new Intl.NumberFormat(locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-EU", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(price);
 }
-
-export function formatCurrency(amount: number, currency: string = 'EUR'): string {
-  return new Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(amount);
-}
-
-export function formatDate(date: Date, locale: 'es' | 'fi' = 'es'): string {
-  return new Intl.DateTimeFormat(locale === 'es' ? 'es-ES' : 'fi-FI', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(date);
-}
-
-export function getInitials(firstName: string, lastName: string): string {
-  return (firstName?.[0] || '') + (lastName?.[0] || '');
+export const locales: Locale[] = ["fi", "es", "en"];
+export const defaultLocale: Locale = "en";
+export function getLocaleFromPath(pathname: string): Locale {
+  const segment = pathname.split("/")[1];
+  return locales.includes(segment as Locale) ? (segment as Locale) : defaultLocale;
 }
