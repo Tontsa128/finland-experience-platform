@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { ArrowRight, Bot, X } from 'lucide-react';
 
 type Language = 'fi' | 'es' | 'en';
@@ -10,11 +10,13 @@ const answers = {
   en: { button:'Ask the AI', title:'Finland travel advisor', placeholder:'E.g. I want to see the Northern Lights...', send:'Ask', intro:'Tell me what you like and I will recommend a destination.', aurora:'For Northern Lights, I recommend Lapland, especially Inari or Rovaniemi. The best season is generally autumn through spring.', sauna:'For a sauna experience, choose a lakeside sauna around Tampere or Finland’s Lakeland region.', city:'For a city break, combine Helsinki and Turku for design, history, sea and archipelago experiences.', default:'I recommend combining Helsinki, Lapland and one Lakeland destination. Tell me your dates and interests and I can refine the plan.' },
 };
 
-export default function TravelAdvisor({ language }: { language: Language }) {
+export default function TravelAdvisor({ language: initialLanguage }: { language?: Language }) {
+  const [language, setLanguage] = useState<Language>(initialLanguage || 'fi');
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
+  useEffect(() => { const lang = new URLSearchParams(window.location.search).get('lang'); if (lang === 'fi' || lang === 'es' || lang === 'en') setLanguage(lang); }, []);
   const t = answers[language];
   function ask(e: FormEvent) { e.preventDefault(); const q = question.toLowerCase(); if (/revont|aurora|northern lights|luz/.test(q)) setAnswer(t.aurora); else if (/sauna|löyly/.test(q)) setAnswer(t.sauna); else if (/helsinki|turku|kaupunki|city|ciudad/.test(q)) setAnswer(t.city); else setAnswer(t.default); }
-  return <div className="relative"><button type="button" onClick={()=>setOpen(!open)} className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold hover:bg-white/15">{t.button}<ArrowRight className="h-4 w-4" /></button>{open && <div className="absolute bottom-14 left-0 z-40 w-[min(92vw,380px)] overflow-hidden rounded-2xl border border-white/10 bg-white text-slate-900 shadow-2xl"><div className="flex items-center justify-between bg-midnight px-5 py-4 text-white"><div className="flex items-center gap-2 font-bold"><Bot className="h-4 w-4 text-terracotta" /> {t.title}</div><button type="button" onClick={()=>setOpen(false)} aria-label="Close"><X className="h-4 w-4" /></button></div><div className="p-5"><p className="text-sm leading-6 text-slate-600">{t.intro}</p>{answer && <div className="mt-4 rounded-xl bg-slate-50 p-4 text-sm leading-6 text-slate-700">{answer}</div>}<form onSubmit={ask} className="mt-4 flex gap-2"><input value={question} onChange={(e)=>setQuestion(e.target.value)} required placeholder={t.placeholder} className="min-w-0 flex-1 rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand" /><button type="submit" className="rounded-xl bg-brand px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-dark">{t.send}</button></form></div></div>}</div>;
+  return <div className="fixed bottom-5 right-5 z-[60]"><button type="button" onClick={()=>setOpen(!open)} className="flex items-center gap-2 rounded-full bg-brand px-5 py-3.5 text-sm font-extrabold text-white shadow-2xl transition hover:-translate-y-0.5 hover:bg-brand-dark"><Bot className="h-5 w-5" /> {t.button}</button>{open && <div className="absolute bottom-16 right-0 w-[min(92vw,390px)] overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-2xl"><div className="flex items-center justify-between bg-midnight px-5 py-4 text-white"><div className="flex items-center gap-2 font-bold"><Bot className="h-4 w-4 text-terracotta" /> {t.title}</div><button type="button" onClick={()=>setOpen(false)} aria-label="Close"><X className="h-4 w-4" /></button></div><div className="p-5"><p className="text-sm leading-6 text-slate-600">{t.intro}</p>{answer && <div className="mt-4 rounded-xl bg-slate-50 p-4 text-sm leading-6 text-slate-700">{answer}</div>}<form onSubmit={ask} className="mt-4 flex gap-2"><input value={question} onChange={(e)=>setQuestion(e.target.value)} required placeholder={t.placeholder} className="min-w-0 flex-1 rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand" /><button type="submit" className="rounded-xl bg-brand px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-dark">{t.send}</button></form></div></div>}</div>;
 }
