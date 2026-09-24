@@ -1,0 +1,1 @@
+declare function describe(name: string, fn: () => void): void;\ndeclare function it(name: string, fn: () => void): void;\ndeclare function expect<T = any>(actual: T): any;\n
