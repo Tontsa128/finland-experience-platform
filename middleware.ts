@@ -66,7 +66,7 @@ function setLocaleCookie(response: NextResponse, locale: string) {
 function handleLocalizedRequest(req: NextRequest) {
   const response = handleI18n(req);
   const localeMatch = req.nextUrl.pathname.match(/^\/(fi|es|en)(?:\/|$)/);
-  if (localeMatch) return setLocaleCookie(response, localeMatch[1]);
+  if (localeMatch) return setLocaleCookie(response, localeMatch[1] ?? defaultLocale);
   return response;
 }
 
