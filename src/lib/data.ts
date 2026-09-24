@@ -2,11 +2,11 @@ import { Destination, Cabin, Experience, BlogPost, Locale } from "@/types";
 
 const summerMathildedal = "https://cdn-datahub.visitfinland.com/images/f9ad30d0-0a6f-11f0-88da-256e05b1f1a0.jpeg?s=1280";
 const finnishSummerLake = "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=1400";
-const naantaliSummer = "https://images.unsplash.com/photo-FWyzwNiChsg?w=1400";
-const alandSea = "https://images.unsplash.com/photo-zS2iq9zU3sc?w=1400";
-const archipelagoRoad = "https://images.unsplash.com/photo-eA6KLRV6-tE?w=1400";
-const finnishCottage = "https://images.unsplash.com/photo-RyGWtDJHjQE?w=1400";
-const mathildedalHouse = "https://images.unsplash.com/photo-CAW8ij6uhwM?w=1400";
+const naantaliSummer = "https://images.unsplash.com/photo-1478515143454-712b5f547c8c?w=1400";
+const alandSea = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400";
+const archipelagoRoad = "https://images.unsplash.com/photo-1512207736139-6c3ee1990199?w=1400";
+const finnishCottage = "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=1400";
+const mathildedalHouse = "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=1400";
 
 export const destinations: Destination[] = [
   {
@@ -93,7 +93,7 @@ export const destinations: Destination[] = [
       en: "Beaches, sea and western-coast summer"
     },
     region: "Western Finland",
-    images: ["https://images.unsplash.com/photo-JmLHqcAk7Io?w=1400", archipelagoRoad],
+    images: ["https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1400", archipelagoRoad],
     priceFrom: 120,
     featured: false,
     coordinates: { lat: 59.823, lng: 22.969 },
@@ -175,7 +175,7 @@ export const cabins: Cabin[] = [
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
     pricePerNight: 180,
-    images: [mathildedalHouse, "https://images.unsplash.com/photo-LPI-Un6Ch4I?w=1400"],
+    images: [mathildedalHouse, "https://images.unsplash.com/photo-1566073772120-0500485d835d?w=1400"],
     features: ["historic house", "breakfast", "garden", "design", "village centre"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.956 }, type: "hotel",
     bookingUrl: "https://matrihouse.fi/", provider: "Matri House",
@@ -239,7 +239,7 @@ export const cabins: Cabin[] = [
     location: "Kimitoön, near Salo region",
     region: "Southwest Finland",
     pricePerNight: 70,
-    images: ["https://images.unsplash.com/photo-b4s-LLhN-i4?w=1400", finnishSummerLake],
+    images: ["https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1400", finnishSummerLake],
     features: ["glamping", "forest", "smoke sauna", "villas", "slow travel"],
     maxGuests: 6, bedrooms: 1, coordinates: { lat: 60.160, lng: 22.740 }, type: "glamping",
     bookingUrl: "https://www.storfinnhova.com/majoitus/", provider: "Storfinnhova Gård",
@@ -271,7 +271,7 @@ export const cabins: Cabin[] = [
     location: "Naantali archipelago",
     region: "Southwest Finland",
     pricePerNight: 120,
-    images: [finnishCottage, "https://images.unsplash.com/photo-xSNCKuTl24U?w=1400"],
+    images: [finnishCottage, "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=1400"],
     features: ["wood sauna", "fireplace", "forest", "quiet", "breakfast optional"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.450, lng: 21.900 }, type: "cabin",
     bookingUrl: "https://www.taattistentila.fi/lomamkit", provider: "Taattisten tila",
@@ -287,7 +287,7 @@ export const cabins: Cabin[] = [
     location: "Naantali archipelago",
     region: "Southwest Finland",
     pricePerNight: 50,
-    images: ["https://images.unsplash.com/photo-b4s-LLhN-i4?w=1400", finnishSummerLake],
+    images: ["https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1400", finnishSummerLake],
     features: ["tree tent", "nature", "campfire hut", "quiet", "eco"],
     maxGuests: 3, bedrooms: 1, coordinates: { lat: 60.450, lng: 21.900 }, type: "glamping",
     bookingUrl: "https://www.taattistentila.fi/puuteltta", provider: "Taattisten tila",
@@ -319,7 +319,7 @@ export const cabins: Cabin[] = [
     location: "Geta, Åland",
     region: "Åland",
     pricePerNight: 200,
-    images: [alandSea, "https://images.unsplash.com/photo-zS2iq9zU3sc?w=1600"],
+    images: [alandSea, "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600"],
     features: ["sea cliffs", "sauna", "restaurant", "pool", "nature"],
     maxGuests: 4, bedrooms: 2, coordinates: { lat: 60.380, lng: 19.820 }, type: "villa",
     bookingUrl: "https://www.havsvidden.com/en", provider: "Havsvidden Resort",
@@ -351,7 +351,7 @@ export const cabins: Cabin[] = [
     location: "Hanko",
     region: "Western Finland",
     pricePerNight: 120,
-    images: ["https://images.unsplash.com/photo-JmLHqcAk7Io?w=1400", finnishCottage],
+    images: ["https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1400", finnishCottage],
     features: ["beach", "cycling", "sea", "terrace", "summer"],
     maxGuests: 6, bedrooms: 3, coordinates: { lat: 59.823, lng: 22.969 }, type: "villa",
     bookingUrl: "https://visithanko.fi/", provider: "Visit Hanko accommodation network",
@@ -380,7 +380,7 @@ export const experiences: Experience[] = [
   { id:"e2", slug:"teijo-kayaking", name:{fi:"Melonta Teijon vesillä",es:"Kayak en Teijo",en:"Kayaking in Teijo"}, description:{fi:"Vuokraa kanootti, kajakki tai SUP-lauta ja lähde Matildanjärven rauhallisille vesille. Natura Viva tarjoaa välinevuokrausta Teijon kansallispuiston alueella.",es:"Alquila un kayak, canoa o SUP y explora las tranquilas aguas de Teijo.",en:"Rent a kayak, canoe or SUP and explore the calm waters around Teijo National Park."}, shortDescription:{fi:"Vesi, metsä ja oma retki omaan tahtiin",es:"Agua, bosque y aventura a tu ritmo",en:"Water, forest and an adventure at your own pace"}, price:35, duration:"2–6 h", images:[finnishSummerLake], category:"cruise", region:"Southwest Finland", maxParticipants:8 },
   { id:"e3", slug:"archipelago-cycling", name:{fi:"Saaristopyöräily",es:"Ciclismo por el archipiélago",en:"Archipelago Cycling"}, description:{fi:"Rauhallinen pyöräilypäivä saaristoteillä, kylissä ja satamissa. Reitin voi rakentaa lyhyeksi päiväretkeksi tai useamman päivän lomaksi.",es:"Un día tranquilo en bicicleta por islas, pueblos y puertos. Puedes hacer una excursión o varios días.",en:"A relaxed cycling day through islands, villages and harbours, from a day trip to a multi-day ride."}, shortDescription:{fi:"Pyörällä meren, kylien ja saariston keskellä",es:"En bici entre mar, pueblos e islas",en:"Cycle between sea, villages and islands"}, price:25, duration:"1 päivä", images:[archipelagoRoad], category:"hiking", region:"Southwest Finland", maxParticipants:10 },
   { id:"e4", slug:"viking-island-naantali", name:{fi:"Viikinkisaari-päivä",es:"Día en la isla vikinga",en:"Viking Island Day"}, description:{fi:"Kesäinen saaristopäivä, jossa yhdistyvät veneily, saaritunnelma ja historiallinen ohjelma. Saatavuus ja ohjelma tarkistetaan palveluntarjoajalta.",es:"Un día de verano en una isla con barco, ambiente de archipiélago y programa histórico.",en:"A summer island day combining a boat trip, archipelago atmosphere and historical activities."}, shortDescription:{fi:"Saaripäivä ja pala viikinkiajan tunnelmaa",es:"Un día de isla con ambiente vikingo",en:"An island day with a touch of Viking history"}, price:55, duration:"puolipäivä", images:[naantaliSummer], category:"culture", region:"Naantali", maxParticipants:20 },
-  { id:"e5", slug:"moominworld-naantali", name:{fi:"Muumimaailma Naantalissa",es:"Moominworld en Naantali",en:"Moominworld in Naantali"}, description:{fi:"Naantalin kesän klassikko. Tarkista päiväliput ja aukiolo suoraan Muumimaailmasta.",es:"Un clásico del verano en Naantali. Comprueba entradas y horarios directamente con Moominworld.",en:"A classic Naantali summer day. Check tickets and opening times directly with Moominworld."}, shortDescription:{fi:"Kesäpäivä Muumien maailmassa",es:"Un día de verano en el mundo de los Moomins",en:"A summer day in the Moomin world"}, price:0, duration:"1 päivä", images:["https://images.unsplash.com/photo-VXuFfoAz4Ac?w=1400"], category:"culture", region:"Naantali", maxParticipants:0 },
+  { id:"e5", slug:"moominworld-naantali", name:{fi:"Muumimaailma Naantalissa",es:"Moominworld en Naantali",en:"Moominworld in Naantali"}, description:{fi:"Naantalin kesän klassikko. Tarkista päiväliput ja aukiolo suoraan Muumimaailmasta.",es:"Un clásico del verano en Naantali. Comprueba entradas y horarios directamente con Moominworld.",en:"A classic Naantali summer day. Check tickets and opening times directly with Moominworld."}, shortDescription:{fi:"Kesäpäivä Muumien maailmassa",es:"Un día de verano en el mundo de los Moomins",en:"A summer day in the Moomin world"}, price:0, duration:"1 päivä", images:["https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=1400"], category:"culture", region:"Naantali", maxParticipants:0 },
   { id:"e6", slug:"local-food-mathildedal", name:{fi:"Mathildedalin paikalliset maut",es:"Sabores locales de Mathildedal",en:"Local Flavours of Mathildedal"}, description:{fi:"Kyläpanimo, kahvilat, ravintolat, leipomot ja pienet puodit. Rakennetaan lomapäivä paikallisten palveluiden ympärille ilman valmista matkapakettia.",es:"Cervecería, cafés, restaurantes, panadería y pequeñas tiendas. Diseña tu propio día con negocios locales.",en:"Brewery, cafés, restaurants, bakery and small shops. Build your own day around local businesses instead of a package."}, shortDescription:{fi:"Syö, kahvittele ja tutustu ruukkikylän pienyrittäjiin",es:"Come, toma café y descubre los pequeños negocios",en:"Eat, drink coffee and discover local makers"}, price:0, duration:"oma tahti", images:[mathildedalHouse], category:"food", region:"Mathildedal", maxParticipants:0 },
   { id:"e7", slug:"summer-fishing-sarkisalo", name:{fi:"Kalastus Särkisalon saaristossa",es:"Pesca en Särkisalo",en:"Fishing in Särkisalo"}, description:{fi:"Särkisalon saaristo sopii rauhalliseen kalastuslomaan. Mökkimajoitukseen voi yhdistää veneen tai kalastusoppaan palveluntarjoajan kautta.",es:"El archipiélago de Särkisalo es ideal para unas vacaciones tranquilas de pesca.",en:"The Särkisalo archipelago is a strong setting for a quiet fishing holiday, with boats and guides available through local providers."}, shortDescription:{fi:"Meri, mökki, vene ja rauhallinen kalastuspäivä",es:"Mar, cabaña, barco y pesca tranquila",en:"Sea, cottage, boat and a quiet day of fishing"}, price:0, duration:"1 päivä", images:[finnishCottage], category:"cruise", region:"Särkisalo", maxParticipants:6 },
   { id:"e8", slug:"juhannus-by-the-sea", name:{fi:"Juhannus meren rannalla",es:"San Juan junto al mar",en:"Midsummer by the Sea"}, description:{fi:"Kokko, sauna, savukala, uudet perunat, uinti ja valoisa ilta – vain silloin kun palveluntarjoaja järjestää nämä palvelut. Sivusto auttaa löytämään paikan, ei myy pakettia.",es:"Hoguera, sauna, pescado ahumado, patatas nuevas, baño y una noche luminosa, según la oferta local.",en:"Bonfire, sauna, smoked fish, new potatoes, swimming and a bright Nordic evening, depending on local providers."}, shortDescription:{fi:"Suomalainen juhannus – meri, sauna ja valoisa yö",es:"San Juan finlandés: mar, sauna y noche luminosa",en:"Finnish Midsummer: sea, sauna and a bright night"}, price:0, duration:"kesäilta", images:[summerMathildedal], category:"culture", region:"Southern Finland", maxParticipants:0 }
