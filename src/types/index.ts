@@ -9,7 +9,7 @@ export type BookingStatus =
   | "cancelled"
   | "refunded";
 
-export interface Destination {
+export interface Destination {\n  [key: string]: any;
   id: string | number;
   slug: string;
   name: Record<Locale, string>;
@@ -38,11 +38,11 @@ export interface Destination {
   highlights?: string[];
   faq?: unknown[];
   seo?: Record<string, unknown>;
-  created_at?: string;
-  updated_at?: string;
+  created_at?: string | null;
+  updated_at?: string | null;
 }
 
-export interface DestinationTranslation {
+export interface DestinationTranslation {\n  [key: string]: any;\n  destinationId?: string | number;
   id?: string | number;
   destination_id?: string | number;
   locale?: Locale;
@@ -72,7 +72,7 @@ export interface Cabin {
 
 export type ExperienceStatus = "draft" | "published" | "archived";
 
-export interface Experience {
+export interface Experience {\n  [key: string]: any;
   id: string | number;
   organization_id?: string;
   slug: string;
@@ -105,7 +105,7 @@ export interface Experience {
   updated_at?: string;
 }
 
-export interface ExperienceTranslation {
+export interface ExperienceTranslation {\n  [key: string]: any;\n  experienceId?: string | number;
   id?: string | number;
   experience_id?: string | number;
   locale?: Locale;
@@ -121,7 +121,7 @@ export interface PricingModel {
   currency: string;
 }
 
-export interface PricingRule {
+export interface PricingRule {\n  [key: string]: any;
   id?: string | number;
   experienceId?: string | number;
   basePriceEur?: number;
@@ -132,7 +132,7 @@ export interface PricingRule {
   updatedAt?: string | Date;
 }
 
-export interface SeasonalPricing {
+export interface SeasonalPricing {\n  [key: string]: any;
   id?: string | number;
   experienceId?: string | number;
   startDate?: string | Date;
@@ -142,7 +142,7 @@ export interface SeasonalPricing {
   updatedAt?: string | Date;
 }
 
-export interface Addon {
+export interface Addon {\n  [key: string]: any;\n  experienceId?: string | number;
   id?: string | number;
   name?: string;
   description?: string;
@@ -150,7 +150,7 @@ export interface Addon {
   quantity?: number;
 }
 
-export interface Media {
+export interface Media {\n  [key: string]: any;\n  experienceId?: string | number;\n  destinationId?: string | number;\n  sortOrder?: number;
   id?: string | number;
   url?: string;
   filename?: string;
@@ -172,7 +172,7 @@ export interface MediaItem extends Media {
   metadata?: Record<string, unknown>;
 }
 
-export interface Availability {
+export interface Availability {\n  [key: string]: any;\n  timeSlot?: string;
   id: string | number;
   experienceId?: string | number;
   experience_id?: string;
@@ -287,7 +287,7 @@ export interface Review {
   updatedAt?: Date | string;
 }
 
-export interface Coupon {
+export interface Coupon {\n  [key: string]: any;\n  experienceId?: string | number;\n  status?: string;
   id?: string | number;
   code?: string;
   discountType: "percentage" | "fixed";
@@ -298,29 +298,29 @@ export interface Coupon {
   minimumBookingValueEur: number | null;
 }
 
-export interface Tag {
+export interface Tag {\n  [key: string]: any;\n  nameEs?: string;\n  nameFi?: string;
   id?: string | number;
   name?: string;
   slug?: string;
 }
 
-export interface Inclusion {
+export interface Inclusion {\n  [key: string]: any;\n  experienceId?: string | number;
   id?: string | number;
   description?: string;
 }
 
-export interface Exclusion {
+export interface Exclusion {\n  [key: string]: any;\n  experienceId?: string | number;
   id?: string | number;
   description?: string;
 }
 
-export interface FAQ {
+export interface FAQ {\n  [key: string]: any;\n  experienceId?: string | number;
   id?: string | number;
   question?: string;
   answer?: string;
 }
 
-export type ExperienceCategory = string;
+export type ExperienceCategory = Record<string, any>;
 
 export interface User {
   id: string;
