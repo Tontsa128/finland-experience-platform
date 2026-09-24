@@ -6,6 +6,7 @@ export function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)); }
 export function formatPrice(price: number, locale: Locale = "en"): string {
   return new Intl.NumberFormat(locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-EU", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(price);
 }
+export const formatCurrency = formatPrice;
 export const locales: Locale[] = ["fi", "es", "en"];
 export const defaultLocale: Locale = "en";
 export function getLocaleFromPath(pathname: string): Locale {
