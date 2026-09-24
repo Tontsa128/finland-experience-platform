@@ -8,7 +8,7 @@ import { formatPrice } from "@/lib/utils";
 export function CabinCard({ cabin, index = 0 }: { cabin: Cabin; index?: number }) {
   const locale = useLocale();
   const t = useTranslations("common");
-  const price = cabin.pricePerNight > 0 ? formatPrice(cabin.pricePerNight, locale as any) + " / " + t("night") : (locale === "fi" ? "Tarkista hinta" : locale === "es" ? "Consultar precio" : "Check price");
+  const price = cabin.pricePerNight > 0 ? formatPrice(cabin.pricePerNight, locale as any) + " / " + (locale === "fi" ? "yö" : locale === "es" ? "noche" : "night") : (locale === "fi" ? "Tarkista hinta" : locale === "es" ? "Consultar precio" : "Check price");
   return (
     <Link href={"/" + locale + "/accommodations/" + cabin.slug} className="group block overflow-hidden rounded-2xl bg-white shadow-soft hover:shadow-card transition">
       <div className="relative aspect-[16/10] overflow-hidden">
