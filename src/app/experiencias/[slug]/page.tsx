@@ -71,8 +71,8 @@ export default function ExperienceDetailPage({ params }: { params: { slug: strin
           destinationId: exp.destinationId,
           categoryId: exp.categoryId,
           pricing: exp.pricing ? { basePriceEur: exp.pricing.basePriceEur } : undefined,
-          media: exp.media.map((media) => ({ url: media.url, isHero: media.isHero })),
-          addons: exp.addons.map((addon) => ({ id: addon.id })),
+          media: exp.media.map((media: { url: string; isHero: boolean }) => ({ url: media.url, isHero: media.isHero })),
+          addons: exp.addons.map((addon: { id: number }) => ({ id: addon.id })),
           difficultyLevel: exp.difficultyLevel,
         });
 
