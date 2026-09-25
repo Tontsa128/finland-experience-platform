@@ -1,21 +1,24 @@
-import { cabins, getLocalized } from "@/lib/data";
+import type { Metadata } from "next";
+import { cabins } from "@/lib/data";
 import { CabinCard } from "@/components/ui/CabinCard";
 import type { Locale } from "@/types";
+import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 
-export default function AccommodationsPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
-  return (
-    <div className="container-narrow py-16">
-      <p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-600">Southern Finland • Summer</p>
-      <h1 className="mt-2 section-title">{locale === "fi" ? "Majoitukset" : locale === "es" ? "Alojamientos" : "Places to stay"}</h1>
-      <p className="section-subtitle mt-3 mb-10">
-        {locale === "fi" ? "Mökkejä, boutique-majoituksia, glampingia ja merenrantahuviloita Etelä-Suomessa, saaristossa ja Ahvenanmaalla. Hinnat ovat suuntaa-antavia ja saatavuus tarkistetaan palveluntarjoajalta."
-          : locale === "es" ? "Cabañas, boutique stays, glamping y villas junto al mar en el sur de Finlandia, el archipiélago y Åland. Los precios son orientativos y la disponibilidad se confirma con el proveedor."
-          : "Cottages, boutique stays, glamping and seaside villas in southern Finland, the archipelago and Åland. Prices are indicative and availability is confirmed with the provider."}
-      </p>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {cabins.map((c, i) => <CabinCard key={c.id} cabin={c} index={i} />)}
-      </div>
-    </div>
-  );
+const copy = {
+  fi: { title: "Mökit Suomessa | Sauna, luonto ja kesäloma", description: "Löydä mökkejä Suomessa, saaristossa ja järvimaisemissa. Sauna, luonto ja rauhallinen suomalainen kesä.", heading: "Majoitukset" },
+  es: { title: "Cabañas en Finlandia | Sauna, naturaleza y verano", description: "Descubre cabañas en Finlandia, el archipiélago y villas junto al mar. Sauna, naturaleza y auténticas vacaciones finlandesas.", heading: "Alojamientos" },
+  en: { title: "Cabins in Finland | Sauna, Nature and Summer", description: "Discover Finnish cabins, archipelago stays and seaside villas with sauna, nature and authentic summer experiences.", heading: "Places to stay" },
+} as const;
+
+export async function generateMetadata({params}:{params:{locale:string}}):Promise<Metadata>{
+  const locale=params.locale as Locale;
+  const c=copy[locale]||copy.en;
+  return buildLocalizedMetadata({locale,title:c.title,description:c.description,path:"accommodations"});
+}
+
+export default function AccommodationsPage({params}:{params:{locale:string}}){
+ const locale=params.locale as Locale;
+ const c=copy[locale]||copy.en;
+ const jsonLd={"@context":"https://schema.org","@type":"ItemList","name":c.title,"url":siteUrl+"/"+locale+"/accommodations","itemListElement":cabins.map((cabin,index)=>({"@type":"ListItem","position":index+1,"name":cabin.name[locale]||cabin.name.en,"url":siteUrl+"/"+locale+"/accommodations#"+cabin.slug}))};
+ return <div className="container-narrow py-16"><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd)}}/><p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-600">Southern Finland • Summer</p><h1 className="mt-2 section-title">{c.heading}</h1><p className="section-subtitle mt-3 mb-10">{c.description}</p><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{cabins.map((cabin,i)=><CabinCard key={cabin.id} cabin={cabin} index={i}/>)}</div></div>;
 }
