@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { getAdminContext } from '@/lib/admin-auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,6 +27,8 @@ function validatePayload(body: DestinationPayload) {
 
 export async function GET() {
   try {
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
     const { data, error } = await supabaseAdmin
       .from('destinations')
       .select('id, slug, region, hero_image_url, status, published_at, created_at, updated_at, destination_translations(language_code, name, short_description, full_description, highlights, travel_information)')
@@ -40,6 +43,8 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
     const body = (await req.json()) as DestinationPayload;
     const errors = validatePayload(body);
     if (errors.length) return NextResponse.json({ error: 'Validation failed', details: errors }, { status: 400 });
@@ -75,6 +80,8 @@ export async function POST(req: NextRequest) {
 
 export async function PATCH(req: NextRequest) {
   try {
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
     const body = (await req.json()) as DestinationPayload & { id: number };
     if (!body.id) return NextResponse.json({ error: 'id is required' }, { status: 400 });
     const errors = validatePayload(body);
@@ -95,6 +102,8 @@ export async function PATCH(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
     const id = Number(new URL(req.url).searchParams.get('id'));
     if (!Number.isFinite(id)) return NextResponse.json({ error: 'id is required' }, { status: 400 });
     const { error } = await supabaseAdmin.from('destinations').update({ deleted_at: new Date().toISOString(), status: 'draft', updated_at: new Date().toISOString() }).eq('id', id);
