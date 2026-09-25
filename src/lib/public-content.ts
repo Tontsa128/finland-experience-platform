@@ -299,3 +299,18 @@ export async function getPublishedNavigation(locale: Locale, location = "header"
     }));
   } catch { return []; }
 }
+
+
+export type SiteBanner = { id: string; title: string; text: string; ctaLabel: string; ctaUrl: string; imageUrl: string; sortOrder: number };
+
+export async function getActiveBanners(locale: Locale): Promise<SiteBanner[]> {
+  try {
+    const now = new Date().toISOString();
+    const { data, error } = await supabaseAdmin.from("site_banners").select("id,title,text,cta_label,cta_url,image_url,sort_order,start_at,end_at")
+      .eq("locale", locale).eq("active", true).order("sort_order");
+    if (error) return [];
+    return (data || []).filter((b: any) => (!b.start_at || b.start_at <= now) && (!b.end_at || b.end_at >= now)).map((b: any) => ({
+      id: b.id, title: b.title, text: b.text || "", ctaLabel: b.cta_label || "", ctaUrl: b.cta_url || "", imageUrl: b.image_url || "", sortOrder: b.sort_order,
+    }));
+  } catch { return []; }
+}
