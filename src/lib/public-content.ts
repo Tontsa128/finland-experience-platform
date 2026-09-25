@@ -86,6 +86,7 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
       .select("id,slug,region,latitude,longitude,hero_image_url,status,published_at,publish_at,seo_title_fi,seo_title_es,seo_title_en,seo_description_fi,seo_description_es,seo_description_en,destination_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text)),destination_translations(language_code,name,short_description,full_description,highlights,travel_information)")
       .eq("status", "published")
       .is("deleted_at", null)
+      .or(`publish_at.is.null,publish_at.lte.${new Date().toISOString()}`)
       .order("created_at", { ascending: false });
 
     if (error || !data?.length) return [];
@@ -132,7 +133,12 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
             : undefined,
         tags: highlights,
         activities: [],
-        status: destination.status,
+        seo: {
+          fi: { title: destination.seo_title_fi || "", description: destination.seo_description_fi || "" },
+          es: { title: destination.seo_title_es || "", description: destination.seo_description_es || "" },
+          en: { title: destination.seo_title_en || "", description: destination.seo_description_en || "" },
+        },
+              status: destination.status,
         travel_info_fi: translations.find((t: any) => t.language_code === "fi")?.travel_information ?? "",
         travel_info_es: translations.find((t: any) => t.language_code === "es")?.travel_information ?? "",
       } satisfies Destination;
