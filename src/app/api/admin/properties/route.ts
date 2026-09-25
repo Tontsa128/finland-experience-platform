@@ -17,6 +17,7 @@ function validate(body: Payload) {
 
 export async function GET() {
   try {
+    if (!await getAdminContext()) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
     const { data, error } = await supabaseAdmin.from("properties").select("*, property_translations(*), property_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en))").order("created_at",{ascending:false});
     if (error) return NextResponse.json({error:error.message},{status:500});
     return NextResponse.json({properties:data ?? []},{headers:{"Cache-Control":"no-store"}});
