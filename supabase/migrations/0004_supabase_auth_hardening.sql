@@ -33,13 +33,8 @@ CREATE POLICY "profiles own select"
   TO authenticated
   USING (id = auth.uid());
 
-DROP POLICY IF EXISTS "profiles own update" ON public.profiles;
-CREATE POLICY "profiles own update"
-  ON public.profiles
-  FOR UPDATE
-  TO authenticated
-  USING (id = auth.uid())
-  WITH CHECK (id = auth.uid());
+-- There is intentionally no client UPDATE policy on profiles.
+-- Role changes are privileged administrative operations.
 
 REVOKE ALL ON FUNCTION public.handle_new_auth_user() FROM PUBLIC;
 GRANT EXECUTE ON FUNCTION public.handle_new_auth_user() TO service_role;
