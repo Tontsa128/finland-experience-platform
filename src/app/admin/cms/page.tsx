@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, PenSquare, Sparkles, Waves } from "lucide-react";
+import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, PenSquare, Sparkles, Waves, Home } from "lucide-react";
 
 const sections = [
+  { href: "/admin/homepage", label: "Etusivu", text: "Hero-kuva, otsikot, tekstit ja toimintopainikkeet.", icon: Home },
   { href: "/admin/destinos", label: "Matkakohteet", text: "Kohteet, kieliversiot, kuvaukset, URL-osoitteet ja julkaisutila.", icon: MapPinned },
   { href: "/admin/properties", label: "Majoitukset", text: "Mökit, huvilat, hinnat, vierasmäärät ja SEO-tekstit.", icon: FileText },
   { href: "/admin/experiences", label: "Elämykset", text: "Sauna, veneily, kalastus ja muut varattavat elämykset.", icon: Waves },
