@@ -22,13 +22,17 @@ export default function AdminLink() {
       if (mounted && profile?.role) setVisible(true);
     });
 
-    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
-      if (!mounted) return;
-      if (!session?.user) {
-        setVisible(false);
+    const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (!mounted || !session?.user) {
+        if (mounted) setVisible(false);
         return;
       }
-      setVisible(true);
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", session.user.id)
+        .maybeSingle();
+      if (mounted) setVisible(Boolean(profile?.role));
     });
 
     return () => {
