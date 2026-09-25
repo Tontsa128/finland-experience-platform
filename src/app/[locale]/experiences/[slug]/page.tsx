@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { experiences, getLocalized } from "@/lib/data";
+import { experiences as fallbackExperiences, getLocalized } from "@/lib/data";
+import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
 
-export default function ExperienceDetail({ params }: { params: { locale: string; slug: string } }) {
+export default async function ExperienceDetail({ params }: { params: { locale: string; slug: string } }) {
   const locale = params.locale as Locale;
+  const cmsExperiences = await getPublishedExperiences();
+  const experiences = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
   const e = experiences.find((x) => x.slug === params.slug);
   if (!e) notFound();
 
@@ -14,10 +16,14 @@ export default function ExperienceDetail({ params }: { params: { locale: string;
     <div className="container-narrow py-12">
       <div className="grid gap-10 lg:grid-cols-[1fr_380px]">
         <div>
-          <div className="relative aspect-video overflow-hidden rounded-3xl">
-            <Image src={e.images[0]} alt={getLocalized(e.name, locale)} fill sizes="(max-width:1024px) 100vw,70vw" className="object-cover" />
-          </div>
-          <div className="mt-8 flex gap-3 text-sm text-brand-700"><span>{e.region}</span><span>•</span><span>{e.duration}</span></div>
+          {e.images[0] ? (
+            <div className="relative aspect-video overflow-hidden rounded-3xl">
+              <Image src={e.images[0]} alt={getLocalized(e.name, locale)} fill sizes="(max-width:1024px) 100vw,70vw" className="object-cover" />
+            </div>
+          ) : (
+            <div className="flex aspect-video items-center justify-center rounded-3xl bg-brand-50 text-sm text-brand-700">{e.category}</div>
+          )}
+          <div className="mt-8 flex gap-3 text-sm text-brand-700"><span>{e.region || e.category}</span><span>•</span><span>{e.duration}</span></div>
           <h1 className="mt-3 section-title">{getLocalized(e.name, locale)}</h1>
           <p className="mt-4 text-lg leading-relaxed text-slate-600">{getLocalized(e.description, locale)}</p>
         </div>
