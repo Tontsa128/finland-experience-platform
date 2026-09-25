@@ -1,3 +1,5 @@
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import { AvailabilityService } from '@/domain/availability';
 import type { Availability } from '@/types';
 
@@ -17,73 +19,53 @@ describe('AvailabilityService', () => {
 
   describe('canBook', () => {
     it('returns true when availability exists and spots available', () => {
-      const result = AvailabilityService.canBook(mockAvailability, 2, 1, false);
-      expect(result).toBe(true);
+      assert.equal(AvailabilityService.canBook(mockAvailability, 2, 1, false), true);
     });
 
     it('returns false when no availability', () => {
-      const result = AvailabilityService.canBook(null, 2, 1, false);
-      expect(result).toBe(false);
+      assert.equal(AvailabilityService.canBook(null, 2, 1, false), false);
     });
 
     it('returns false when fully booked', () => {
-      const fullBooking: Availability = {
-        ...mockAvailability,
-        booked: 8,
-      };
-      const result = AvailabilityService.canBook(fullBooking, 1, 0, false);
-      expect(result).toBe(false);
+      const fullBooking: Availability = { ...mockAvailability, booked: 8 };
+      assert.equal(AvailabilityService.canBook(fullBooking, 1, 0, false), false);
     });
 
     it('returns false when requesting more spots than available', () => {
-      const result = AvailabilityService.canBook(mockAvailability, 3, 3, false);
-      expect(result).toBe(false);
+      assert.equal(AvailabilityService.canBook(mockAvailability, 3, 3, false), false);
     });
 
     it('returns false for non-instant booking', () => {
-      const inquiryOnly: Availability = {
-        ...mockAvailability,
-        isInstantBooking: false,
-      };
-      const result = AvailabilityService.canBook(inquiryOnly, 1, 0, false);
-      expect(result).toBe(true); // Can inquire
+      const inquiryOnly: Availability = { ...mockAvailability, isInstantBooking: false };
+      assert.equal(AvailabilityService.canBook(inquiryOnly, 1, 0, false), true);
     });
   });
 
   describe('getAvailableCount', () => {
     it('calculates remaining capacity correctly', () => {
-      const count = AvailabilityService.getAvailableCount(mockAvailability);
-      expect(count).toBe(5); // 8 - 3
+      assert.equal(AvailabilityService.getAvailableCount(mockAvailability), 5);
     });
 
     it('returns 0 when fully booked', () => {
-      const fullBooking: Availability = {
-        ...mockAvailability,
-        booked: 8,
-      };
-      const count = AvailabilityService.getAvailableCount(fullBooking);
-      expect(count).toBe(0);
+      const fullBooking: Availability = { ...mockAvailability, booked: 8 };
+      assert.equal(AvailabilityService.getAvailableCount(fullBooking), 0);
     });
   });
 
   describe('isFullyBooked', () => {
     it('returns false when spots available', () => {
-      expect(AvailabilityService.isFullyBooked(mockAvailability)).toBe(false);
+      assert.equal(AvailabilityService.isFullyBooked(mockAvailability), false);
     });
 
     it('returns true when fully booked', () => {
-      const fullBooking: Availability = {
-        ...mockAvailability,
-        booked: 8,
-      };
-      expect(AvailabilityService.isFullyBooked(fullBooking)).toBe(true);
+      const fullBooking: Availability = { ...mockAvailability, booked: 8 };
+      assert.equal(AvailabilityService.isFullyBooked(fullBooking), true);
     });
   });
 
   describe('getBookedPercentage', () => {
     it('calculates booking percentage', () => {
-      const percentage = AvailabilityService.getBookedPercentage(mockAvailability);
-      expect(percentage).toBe(37.5); // 3/8 * 100
+      assert.equal(AvailabilityService.getBookedPercentage(mockAvailability), 37.5);
     });
   });
 });
