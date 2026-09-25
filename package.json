@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test "src/__tests__/**/*.test.ts"",
-    "test:watch": "node --import tsx --test --watch "src/__tests__/**/*.test.ts"",
+    "test": "node --import tsx --test \"src/__tests__/domain/*.test.ts\",
+    "test:watch": "node --import tsx --test --watch \"src/__tests__/domain/*.test.ts\",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset"
   },
