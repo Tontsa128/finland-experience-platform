@@ -16,8 +16,8 @@ finland-experience-platform/
 │   ├── services/            # Liiketoimintalogiikka
 │   └── types/               # TypeScript-tyypit
 ├── supabase/
-│   └── migrations/           # Tietokannan migraatiot
-├── scripts/                  # Testi- ja apuskriptit
+│   └── migrations/           # Tietokannan ainoa migraatiolähde
+├── scripts/                  # Legacy-/apuskriptit, joita ei käytetä CI:n unit-testeissä
 ├── public/                   # Staattiset resurssit
 ├── docs/                     # Projektin ohjeistus
 ├── package.json
@@ -38,7 +38,7 @@ finland-experience-platform/
 
 ### Vaatimukset
 
-- Node.js 18+
+- Node.js 20 LTS
 - npm
 - Supabase-projekti
 - Stripe-tili, jos maksutoimintoja käytetään
@@ -72,13 +72,29 @@ Sovellus avautuu osoitteessa `http://localhost:3000`.
 ```bash
 npm run dev         # Kehityspalvelin
 npm run build       # Tuotantobuild
-npm start           # Tuotantopalvelin
+npm start            # Tuotantopalvelin
 npm run lint        # ESLint
 npm run typecheck   # TypeScript-tarkistus
-npm test            # Projektin testit
-npm run db:push     # Supabase-migraatiot
-npm run db:reset    # Supabase-tietokannan nollaus
+npm test             # TypeScript-yksikkötestit
+npm run test:watch   # Testit watch-tilassa
+npm run db:push      # Supabase-migraatiot
+npm run db:reset     # Supabase-tietokannan nollaus
 ```
+
+## Testaus ja CI
+
+Yksikkötestit käyttävät Node.js:n natiivia test runneria ja projektissa jo olevaa `tsx`-riippuvuutta. Testit löytyvät hakemistosta `src/__tests__/`.
+
+Paikallinen tarkistus:
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
+
+GitHub Actions suorittaa samat neljä tarkistusta jokaisella main-haaran pushilla ja pull requestilla.
 
 ## Monikielisyys
 
@@ -116,18 +132,24 @@ Lisätietoja:
 - Stripe-webhookit varmennetaan allekirjoituksella.
 - Oikeat ympäristömuuttujat ja salaisuudet pidetään pois Gitistä.
 
-## Testaus ja CI
+## Migraatiot
 
-Paikallisesti:
+Supabase CLI käyttää vain hakemistoa `supabase/migrations/`. Vanha erillinen `db/migrations/`-migraatiokokonaisuus on poistettu, jotta tietokannan lähde pysyy yksiselitteisenä.
+
+Puhdas tietokantatarkistus tehdään paikallisessa Supabase-ympäristössä:
 
 ```bash
-npm run lint
-npm run typecheck
-npm test
-npm run build
+supabase db reset
+supabase db push
 ```
 
-GitHub Actions suorittaa projektin CI-tarkistukset myös muutosten yhteydessä.
+## Riippuvuudet
+
+Projektissa käytetään npm:ää. Riippuvuudet tulee asentaa ja lock-tiedosto päivittää aina riippuvuuksia muutettaessa. CI käyttää Node 20 LTS:ää ja samaa npm-pohjaista asennusta.
+
+## Reitit ja legacy-koodi
+
+Julkisen sovelluksen ensisijaiset reitit ovat `src/app/[locale]/...`. Lokalisoimattomia vanhoja reittejä ei pidetä uutena toteutuksena; ennen poistamista ne tulee tarkistaa käytössä olevien linkkien ja redirectien osalta.
 
 ## Lisenssi
 
