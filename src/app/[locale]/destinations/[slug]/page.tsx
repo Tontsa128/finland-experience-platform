@@ -1,9 +1,21 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getPublishedDestinations } from "@/lib/public-content";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
+
+
+export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const destination = (await getPublishedDestinations()).find((item) => item.slug === params.slug);
+  if (!destination) return {};
+  const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
+  const title = seo?.title || getLocalized(destination.name, locale);
+  const description = seo?.description || getLocalized(destination.shortDescription, locale);
+  return { title, description };
+}
 
 export default async function DestinationDetail({ params }: { params: { locale: string; slug: string } }) {
   const locale = params.locale as Locale;
