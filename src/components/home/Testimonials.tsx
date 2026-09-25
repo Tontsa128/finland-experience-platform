@@ -72,7 +72,7 @@ export function Testimonials() {
               </div>
 
               <p className="text-slate-700 leading-relaxed mb-6 relative z-10">
-                &ldquo;{item.text[locale as keyof typeof item.text] || item.text.en}&rdquo;
+                {item.text[locale as keyof typeof item.text] || item.text.en}
               </p>
 
               <div className="flex items-center gap-3">
