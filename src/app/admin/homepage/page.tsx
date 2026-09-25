@@ -25,6 +25,9 @@ const initial: Settings = {
   hero_secondary_label_es: "Explorar destinos",
   hero_secondary_label_en: "Explore destinations",
   hero_secondary_url: "/destinations",
+  homepage_featured_destination_ids: [],
+  homepage_featured_property_ids: [],
+  homepage_featured_experience_ids: [],
 };
 
 const languages = [
@@ -38,6 +41,7 @@ export default function HomepageCmsPage() {
   const [mediaIds, setMediaIds] = useState<string[]>([]);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
+  const [catalog, setCatalog] = useState<{ destinations: any[]; properties: any[]; experiences: any[] }>({ destinations: [], properties: [], experiences: [] });
 
   useEffect(() => {
     fetch("/api/admin/settings", { cache: "no-store" })
@@ -47,6 +51,12 @@ export default function HomepageCmsPage() {
         setSettings((current) => ({ ...current, ...(body.settings || {}) }));
       })
       .catch((e) => setError(e instanceof Error ? e.message : "Lataus epäonnistui"));
+  }, []);
+
+  useEffect(() => {
+    Promise.all([fetch("/api/admin/destinations"), fetch("/api/admin/properties"), fetch("/api/admin/experiences")])
+      .then(async ([d,p,e]) => setCatalog({ destinations: (await d.json()).destinations || [], properties: (await p.json()).properties || [], experiences: (await e.json()).experiences || [] }))
+      .catch(() => undefined);
   }, []);
 
   const set = (key: string, value: string) => setSettings((current) => ({ ...current, [key]: value }));
