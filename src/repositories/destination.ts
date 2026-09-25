@@ -21,7 +21,8 @@ export class MockDestinationRepository implements IDestinationRepository {
   ) {
     this.destinations = initialDestinations;
     this.translations = initialTranslations;
-    this.nextId = Math.max(...initialDestinations.map((d) => d.id), 0) + 1;
+    const numericIds = initialDestinations.map((d) => Number(d.id)).filter((id) => Number.isFinite(id));
+    this.nextId = Math.max(...numericIds, 0) + 1;
   }
 
   async getAll(): Promise<Destination[]> {
@@ -36,15 +37,13 @@ export class MockDestinationRepository implements IDestinationRepository {
     return this.destinations.find((d) => d.slug === slug) || null;
   }
 
-  async create(
-    destination: Omit<Destination, 'id' | 'createdAt' | 'updatedAt'>
-  ): Promise<Destination> {
-    const newDestination: Destination = {
+  async create(destination: Partial<Destination>): Promise<Destination> {
+    const newDestination = {
       ...destination,
       id: this.nextId++,
       createdAt: new Date(),
       updatedAt: new Date(),
-    };
+    } as Destination;
     this.destinations.push(newDestination);
     return newDestination;
   }
