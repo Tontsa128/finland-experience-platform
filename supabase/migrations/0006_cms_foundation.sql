@@ -15,10 +15,7 @@ CREATE INDEX IF NOT EXISTS idx_destinations_deleted_at ON public.destinations(de
 CREATE INDEX IF NOT EXISTS idx_media_storage_path ON public.media(storage_path);
 
 -- Public images are readable; uploads/deletes stay server-side through the protected admin API.
-CREATE POLICY IF NOT EXISTS "Public read cms media"
+CREATE POLICY "Public read cms media"
   ON storage.objects FOR SELECT
   USING (bucket_id = 'cms-media');
 
-CREATE POLICY IF NOT EXISTS "Public read media metadata"
-  ON public.media FOR SELECT
-  USING (TRUE);
