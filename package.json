@@ -8,12 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "tsx ./scripts/seed.ts",
     "typecheck": "tsc --noEmit",
-    "test": "node ./scripts/test-media.js && node ./scripts/test-pricing.js && node ./scripts/test-availability.js",
+    "test": "node ./scripts/test-media.js && node ./scripts/test-pricing.js && node ./scripts/test-availability.js && node ./scripts/test-destination.js",
     "db:push": "supabase db push",
-    "db:reset": "supabase db reset",
-    "db:seed": "tsx ./scripts/seed.ts"
+    "db:reset": "supabase db reset"
   },
   "dependencies": {
     "next": "14.2.35",
