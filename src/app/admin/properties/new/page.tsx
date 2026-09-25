@@ -1,4 +1,5 @@
 "use client";
+import MediaPicker from "@/components/admin/MediaPicker";
 import {useState} from "react";import{useRouter}from"next/navigation";
 type Locale="fi"|"es"|"en";const locales:Locale[]=["fi","es","en"];type T={name:string;shortDescription:string;description:string;locationName:string;seoTitle:string;seoDescription:string};
 const empty=():T=>({name:"",shortDescription:"",description:"",locationName:"",seoTitle:"",seoDescription:""});
