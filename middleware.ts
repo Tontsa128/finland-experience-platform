@@ -103,11 +103,15 @@ export function middleware(req: NextRequest) {
   // then Vercel's visitor country, then the browser language, with English as fallback.
   if (pathname === "/") {
     const savedLocale = req.cookies.get("NEXT_LOCALE")?.value;
-    const locale = locales.includes(savedLocale as (typeof locales)[number])
-      ? savedLocale
-      : getLocaleFromCountry(req.headers.get("x-vercel-ip-country"))
-        ?? getLocaleFromBrowser(req)
-        ?? defaultLocale;
+    const preferredLocale =
+      savedLocale && locales.includes(savedLocale as (typeof locales)[number])
+        ? (savedLocale as (typeof locales)[number])
+        : null;
+    const locale =
+      preferredLocale
+      ?? getLocaleFromCountry(req.headers.get("x-vercel-ip-country"))
+      ?? getLocaleFromBrowser(req)
+      ?? defaultLocale;
 
     const redirectUrl = req.nextUrl.clone();
     redirectUrl.pathname = `/${locale}`;
