@@ -142,6 +142,24 @@ export default function HomepageCmsPage() {
           </div>
         </section>
 
+        <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-slate-950">Etusivun nostot</h2>
+          <p className="mt-1 text-sm text-slate-500">Valitse enintään kolme kohdetta jokaiseen etusivun nostoon. Tyhjä valinta käyttää automaattisia julkaistuja sisältöjä.</p>
+          {([
+            ["homepage_featured_destination_ids", "Kohteet", catalog.destinations, (item: any) => item.destination_translations?.find((t: any) => t.language_code === "fi")?.name || item.slug],
+            ["homepage_featured_property_ids", "Majoitukset", catalog.properties, (item: any) => item.property_translations?.find((t: any) => t.locale === "fi")?.name || item.slug],
+            ["homepage_featured_experience_ids", "Elämykset", catalog.experiences, (item: any) => item.experience_translations?.find((t: any) => t.language_code === "fi")?.title || item.slug],
+          ] as const).map(([key, label, items, getName]) => {
+            const selected = Array.isArray(settings[key]) ? (settings[key] as unknown[]).map(String) : [];
+            return <label key={key} className="mt-5 block text-sm font-medium text-slate-700">{label}
+              <select multiple value={selected} onChange={(e) => set(key, Array.from(e.target.selectedOptions).slice(0, 3).map((option) => option.value))} className="mt-2 min-h-36 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-emerald-500">
+                {items.map((item: any) => <option key={item.id} value={String(item.id)}>{getName(item)}</option>)}
+              </select>
+              <span className="mt-1 block text-xs text-slate-400">Ctrl/Cmd + klikkaus valitsee useita vaihtoehtoja.</span>
+            </label>;
+          })}
+        </section>
+
         <div className="sticky bottom-4 mt-6 flex flex-wrap items-center gap-4 rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-lg backdrop-blur">
           <button onClick={save} className="rounded-xl bg-slate-950 px-6 py-3 font-semibold text-white">Tallenna etusivu</button>
           <Link href="/" target="_blank" className="text-sm font-semibold text-emerald-700">Esikatsele sivustoa ↗</Link>
