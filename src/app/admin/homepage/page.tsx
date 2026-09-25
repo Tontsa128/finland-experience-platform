@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { MediaPicker } from "@/components/admin/MediaPicker";
+import MediaPicker from "@/components/admin/MediaPicker";
 
 type Settings = Record<string, string | null | undefined>;
 
@@ -96,7 +96,7 @@ export default function HomepageCmsPage() {
           <h2 className="text-xl font-semibold text-slate-950">Hero-kuva</h2>
           <p className="mt-1 text-sm text-slate-500">Valitse kuvapankista yksi kuva. Jos et valitse kuvaa, sivusto käyttää oletuskuvaa.</p>
           <div className="mt-5">
-            <MediaPicker selectedIds={mediaIds} onChange={(ids) => {
+            <MediaPicker value={mediaIds} onChange={(ids: string[]) => {
               setMediaIds(ids.slice(-1));
               if (ids.length) {
                 fetch("/api/admin/media", { cache: "no-store" }).then((r) => r.json()).then((body) => {
