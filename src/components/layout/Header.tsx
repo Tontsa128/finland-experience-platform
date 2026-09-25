@@ -30,9 +30,9 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
     ["contact", "contact"],
   ] as const;
 
-  const items = navigation.length ? navigation.map((item) => [item.id, item.href.replace(/^\/(fi|es|en)(?=\/|$)/, "").replace(/^\//, "")] as const) : fallbackItems;
+  const items = navigation.length ? navigation.map((item) => [item.id, item.href] as const) : fallbackItems;
   const labels = new Map(navigation.map((item) => [item.id, item.label]));
-  const href = (l: string) => `/${locale}${l ? `/${l}` : ""}`;
+  const href = (value: string) => {\n    if (/^https?:\\/\\//i.test(value)) return value;\n    const normalized = value.replace(/^\\/(fi|es|en)(?=\\/|$)/, "").replace(/^\\//, "");\n    return `/${locale}${normalized ? `/${normalized}` : ""}`;\n  };
   const languageHref = (targetLocale: string) => {
     const withoutLocale = path.replace(/^\/(fi|es|en)(?=\/|$)/, "");
     return `/${targetLocale}${withoutLocale || ""}`;
