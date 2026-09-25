@@ -1,19 +1,51 @@
 "use client";
-import { useEffect, useState } from "react";
-const types = [["destinations","Kohteet"],["properties","Majoitukset"],["experiences","Elämykset"],["media","Kuvat"],["site_pages","Sivut"],["site_banners","Bannerit"],["blog_posts","Blogi"],["customer_reviews","Arvostelut"],["certifications","Luottamuselementit"],["site_navigation","Valikko"],["site_settings","Asetukset"]] as const;
+
+import Link from "next/link";
+import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, PenSquare, Sparkles, Waves } from "lucide-react";
+
+const sections = [
+  { href: "/admin/destinos", label: "Matkakohteet", text: "Kohteet, kieliversiot, kuvaukset, URL-osoitteet ja julkaisutila.", icon: MapPinned },
+  { href: "/admin/properties", label: "Majoitukset", text: "Mökit, huvilat, hinnat, vierasmäärät ja SEO-tekstit.", icon: FileText },
+  { href: "/admin/experiences", label: "Elämykset", text: "Sauna, veneily, kalastus ja muut varattavat elämykset.", icon: Waves },
+  { href: "/admin/media", label: "Kuvapankki", text: "Lataa kuvia ja hallitse FI/ES/EN-alt-tekstejä.", icon: ImageIcon },
+  { href: "/admin/blog", label: "Blogi", text: "Matkaoppaat, artikkelit ja hakukoneystävällinen sisältö.", icon: PenSquare },
+  { href: "/admin/navigation", label: "Navigaatio", text: "Päävalikko, CTA-linkit ja sivuston rakenteen hallinta.", icon: Menu },
+];
 
 export default function CmsPage() {
-  const [type,setType]=useState<typeof types[number][0]>("destinations"); const [rows,setRows]=useState<Record<string,unknown>[]>([]);
-  const [json,setJson]=useState(""); const [error,setError]=useState(""); const [busy,setBusy]=useState(false);
-  async function load(){setError("");const r=await fetch("/api/admin/cms?table="+type,{cache:"no-store"});const b=await r.json();if(!r.ok)return setError(b.error||"Lataus epäonnistui");setRows(b.data||[]);}
-  useEffect(()=>{void load()},[type]);
-  async function save(){setBusy(true);setError("");try{const parsed=JSON.parse(json);const method=parsed.id?"PATCH":"POST";const r=await fetch("/api/admin/cms",{method,headers:{"Content-Type":"application/json"},body:JSON.stringify({...parsed,table:type})});const b=await r.json();if(!r.ok)throw new Error(b.error||"Tallennus epäonnistui");setJson("");await load();}catch(e){setError(e instanceof Error?e.message:"Virhe");}finally{setBusy(false);}}
-  async function remove(id:string){if(!confirm("Poistetaanko sisältö?"))return;const r=await fetch("/api/admin/cms",{method:"DELETE",headers:{"Content-Type":"application/json"},body:JSON.stringify({table:type,id})});if(r.ok)await load();}
-  return <main className="min-h-screen bg-slate-50 p-4 sm:p-8"><div className="mx-auto max-w-7xl">
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-sm font-semibold text-emerald-700">CMS</p><h1 className="text-3xl font-bold">Sisällönhallinta</h1><p className="mt-2 text-slate-500">Muokkaa sivuston sisältöä ilman koodimuutoksia.</p></div><a href="/admin" className="text-sm font-semibold text-emerald-700">← Hallinta</a></div>
-    <div className="mt-8 grid gap-6 lg:grid-cols-[220px_1fr]"><nav className="space-y-1">{types.map(([key,label])=><button key={key} onClick={()=>setType(key)} className={`block w-full rounded-xl px-3 py-2 text-left text-sm font-medium ${type===key?"bg-slate-900 text-white":"bg-white hover:bg-slate-100"}`}>{label}</button>)}</nav>
-      <section className="rounded-2xl border bg-white p-5 shadow-sm"><div className="flex items-center justify-between"><h2 className="text-lg font-semibold">{types.find(x=>x[0]===type)?.[1]}</h2><button onClick={()=>setJson("{}")} className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white">+ Uusi</button></div>
-      {error&&<p className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</p>}<div className="mt-5 space-y-2">{rows.map(row=><div key={String(row.id)} className="flex items-center gap-2 rounded-xl border p-3"><button onClick={()=>setJson(JSON.stringify(row,null,2))} className="min-w-0 flex-1 truncate text-left"><strong>{String(row.name||row.title||row.slug||row.filename||row.site_name||row.customer_name||row.id)}</strong><span className="ml-2 text-xs text-slate-400">{String(row.status||"")}</span></button><button onClick={()=>remove(String(row.id))} className="rounded-lg px-2 py-1 text-sm text-red-600 hover:bg-red-50">Poista</button></div>)}</div>
-      {json!==""&&<div className="mt-6"><label className="text-sm font-semibold">Sisältö</label><textarea value={json} onChange={e=>setJson(e.target.value)} className="mt-2 min-h-[420px] w-full rounded-xl border bg-slate-950 p-4 font-mono text-sm text-white" spellCheck={false}/><div className="mt-3 flex gap-2"><button disabled={busy} onClick={save} className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">{busy?"Tallennetaan…":"Tallenna"}</button><button onClick={()=>setJson("")} className="rounded-lg border px-4 py-2 text-sm font-semibold">Peruuta</button></div></div>}</section>
-    </div></div></main>;
+  return (
+    <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-700">Finland Experience · CMS</p>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Sisällönhallinta</h1>
+            <p className="mt-2 max-w-2xl text-slate-500">Yksi paikka matkailusivuston sisällölle. Kaikki muutokset tallennetaan palvelimelle ja julkaisutila pidetään erillään luonnoksista.</p>
+          </div>
+          <Link href="/admin" className="text-sm font-semibold text-emerald-700 hover:text-emerald-800">← Hallinnan etusivu</Link>
+        </div>
+
+        <section className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {sections.map(({ href, label, text, icon: Icon }) => (
+            <Link key={href} href={href} className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700"><Icon className="h-5 w-5" /></div>
+              <h2 className="mt-5 text-xl font-semibold text-slate-950">{label}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-500">{text}</p>
+              <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-emerald-700">Avaa <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" /></span>
+            </Link>
+          ))}
+        </section>
+
+        <section className="mt-8 rounded-2xl border border-slate-200 bg-slate-950 p-6 text-white">
+          <div className="flex items-start gap-4">
+            <Sparkles className="mt-1 h-5 w-5 text-emerald-300" />
+            <div>
+              <h2 className="font-semibold">Julkaisutyön periaate</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">Sisältö kannattaa kirjoittaa ensin luonnokseksi, tarkistaa kaikilla kolmella kielellä ja julkaista vasta sen jälkeen. Näin sivuston julkinen sisältö ei vaihdu vahingossa keskeneräiseksi.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
 }
