@@ -9,7 +9,10 @@ const LANGUAGES = ['fi', 'es', 'en'] as const;
 type DestinationPayload = {
   slug: string;
   region: string;
-  heroImageUrl: string;
+  heroImageUrl?: string;
+  mediaIds?: string[];
+  publishAt?: string | null;
+  seo?: Record<string, { title?: string; description?: string }>;
   status?: 'draft' | 'published';
   translations: Record<string, { name: string; shortDescription?: string; fullDescription?: string; highlights?: string; travelInformation?: string }>;
 };
@@ -18,7 +21,6 @@ function validatePayload(body: DestinationPayload) {
   const errors: string[] = [];
   if (!body.slug?.trim()) errors.push('slug is required');
   if (!body.region?.trim()) errors.push('region is required');
-  if (!body.heroImageUrl?.trim()) errors.push('heroImageUrl is required');
   for (const lang of LANGUAGES) {
     if (!body.translations?.[lang]?.name?.trim()) errors.push(`${lang} name is required`);
   }
@@ -31,7 +33,7 @@ export async function GET() {
     if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
     const { data, error } = await supabaseAdmin
       .from('destinations')
-      .select('id, slug, region, hero_image_url, status, published_at, created_at, updated_at, destination_translations(language_code, name, short_description, full_description, highlights, travel_information)')
+      .select('id, slug, region, hero_image_url, status, published_at, publish_at, seo_title_fi, seo_title_es, seo_title_en, seo_description_fi, seo_description_es, seo_description_en, created_at, updated_at, destination_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en)), destination_translations(language_code, name, short_description, full_description, highlights, travel_information)')
       .is('deleted_at', null)
       .order('created_at', { ascending: false });
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -52,7 +54,7 @@ export async function POST(req: NextRequest) {
     const status = body.status === 'published' ? 'published' : 'draft';
     const { data: destination, error: destinationError } = await supabaseAdmin
       .from('destinations')
-      .insert({ slug: body.slug.trim(), region: body.region.trim(), hero_image_url: body.heroImageUrl.trim(), status, published_at: status === 'published' ? new Date().toISOString() : null })
+      .insert({ slug: body.slug.trim(), region: body.region.trim(), hero_image_url: body.heroImageUrl?.trim() || null, status, published_at: status === 'published' ? (body.publishAt || new Date().toISOString()) : null, publish_at: body.publishAt || null, seo_title_fi: body.seo?.fi?.title || null, seo_title_es: body.seo?.es?.title || null, seo_title_en: body.seo?.en?.title || null, seo_description_fi: body.seo?.fi?.description || null, seo_description_es: body.seo?.es?.description || null, seo_description_en: body.seo?.en?.description || null })
       .select('id, slug, region, hero_image_url, status, published_at')
       .single();
     if (destinationError) return NextResponse.json({ error: destinationError.message }, { status: 400 });
@@ -72,6 +74,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: translationError.message }, { status: 400 });
     }
 
+    if (body.mediaIds?.length) await supabaseAdmin.from('destination_media').insert(body.mediaIds.map((media_id, sort_order) => ({ destination_id: destination.id, media_id, sort_order })));
     return NextResponse.json({ destination }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Invalid request' }, { status: 400 });
@@ -87,13 +90,15 @@ export async function PATCH(req: NextRequest) {
     const errors = validatePayload(body);
     if (errors.length) return NextResponse.json({ error: 'Validation failed', details: errors }, { status: 400 });
     const status = body.status === 'published' ? 'published' : 'draft';
-    const { data: destination, error } = await supabaseAdmin.from('destinations').update({ slug: body.slug.trim(), region: body.region.trim(), hero_image_url: body.heroImageUrl.trim(), status, published_at: status === 'published' ? new Date().toISOString() : null, updated_at: new Date().toISOString() }).eq('id', body.id).select('id, slug, region, hero_image_url, status, published_at').single();
+    const { data: destination, error } = await supabaseAdmin.from('destinations').update({ slug: body.slug.trim(), region: body.region.trim(), hero_image_url: body.heroImageUrl?.trim() || null, status, published_at: status === 'published' ? (body.publishAt || new Date().toISOString()) : null, publish_at: body.publishAt || null, seo_title_fi: body.seo?.fi?.title || null, seo_title_es: body.seo?.es?.title || null, seo_title_en: body.seo?.en?.title || null, seo_description_fi: body.seo?.fi?.description || null, seo_description_es: body.seo?.es?.description || null, seo_description_en: body.seo?.en?.description || null, updated_at: new Date().toISOString() }).eq('id', body.id).select('id, slug, region, hero_image_url, status, published_at').single();
     if (error) return NextResponse.json({ error: error.message }, { status: 400 });
     for (const language_code of LANGUAGES) {
       const value = body.translations[language_code];
       const { error: translationError } = await supabaseAdmin.from('destination_translations').upsert({ destination_id: body.id, language_code, name: value.name.trim(), short_description: value.shortDescription?.trim() || null, full_description: value.fullDescription?.trim() || null, highlights: value.highlights?.trim() || null, travel_information: value.travelInformation?.trim() || null, updated_at: new Date().toISOString() }, { onConflict: 'destination_id,language_code' });
       if (translationError) return NextResponse.json({ error: translationError.message }, { status: 400 });
     }
+    await supabaseAdmin.from('destination_media').delete().eq('destination_id', body.id);
+    if (body.mediaIds?.length) await supabaseAdmin.from('destination_media').insert(body.mediaIds.map((media_id, sort_order) => ({ destination_id: body.id, media_id, sort_order })));
     return NextResponse.json({ destination });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Invalid request' }, { status: 400 });
