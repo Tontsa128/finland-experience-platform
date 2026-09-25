@@ -1,113 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createPaymentIntent } from '@/services/payment.service';
 import { supabaseAdmin } from '@/lib/supabase';
-import { PricingCalculator } from '@/domain/pricing';
 
 export const runtime = 'nodejs';
 
-interface CreatePaymentIntentRequest {
-  bookingId: number;
-  adultCount: number;
-  childCount: number;
-  adultPriceEur: number;
-  childPriceEur: number;
-  basePriceEur: number;
-  privateGroup: boolean;
-  privateGroupMultiplier: number;
-  seasonalMultiplier: number;
-  addons: Array<{ quantity: number; priceEur: number }>;
-  couponDiscountEur: number;
-  customerEmail: string;
-  customerName: string;
-  experienceTitle: string;
-}
-
-/**
- * POST /api/checkout/create-payment-intent
- * 
- * Safely calculates pricing on the backend and creates a Stripe Payment Intent
- * This ensures prices cannot be manipulated by the client
- */
 export async function POST(request: NextRequest) {
   try {
-    // Parse request body
-    const body: CreatePaymentIntentRequest = await request.json();
+    const body = await request.json();
+    const bookingId = Number(body.bookingId);
+    const customerEmail = String(body.customerEmail || '').trim();
+    const customerName = String(body.customerName || '').trim();
 
-    // Validate required fields
-    if (!body.bookingId || !body.customerEmail || !body.customerName) {
-      return NextResponse.json(
-        { error: 'Missing required fields: bookingId, customerEmail, customerName' },
-        { status: 400 }
-      );
-    }
+    if (!Number.isInteger(bookingId) || bookingId <= 0) return NextResponse.json({ error: 'Valid bookingId is required' }, { status: 400 });
+    if (!/^\S+@\S+\.\S+$/.test(customerEmail)) return NextResponse.json({ error: 'Valid customer email is required' }, { status: 400 });
+    if (!customerName) return NextResponse.json({ error: 'Customer name is required' }, { status: 400 });
 
-    // Verify booking exists
-    const { data: booking, error: bookingError } = await supabaseAdmin
-      .from('bookings')
-      .select('*')
-      .eq('id', body.bookingId)
-      .single();
+    const { data: booking, error } = await supabaseAdmin.from('bookings')
+      .select('id,total_price_eur,booking_number').eq('id', bookingId).maybeSingle();
 
-    if (bookingError || !booking) {
-      return NextResponse.json(
-        { error: 'Booking not found' },
-        { status: 404 }
-      );
-    }
+    if (error) return NextResponse.json({ error: 'Unable to validate booking' }, { status: 500 });
+    if (!booking) return NextResponse.json({ error: 'Booking not found' }, { status: 404 });
 
-    // Calculate pricing securely on backend
-    const pricingBreakdown = PricingCalculator.calculateBreakdown({
-      basePriceEur: body.basePriceEur,
-      adultCount: body.adultCount,
-      childCount: body.childCount,
-      adultPriceEur: body.adultPriceEur,
-      childPriceEur: body.childPriceEur,
-      privateGroup: body.privateGroup,
-      privateGroupMultiplier: body.privateGroupMultiplier,
-      seasonalMultiplier: body.seasonalMultiplier,
-      addons: body.addons,
-      couponDiscountEur: body.couponDiscountEur,
+    const amount = Math.round(Number(booking.total_price_eur) * 100);
+    if (!Number.isFinite(amount) || amount < 50) return NextResponse.json({ error: 'Booking has an invalid total amount' }, { status: 409 });
+
+    const payment = await createPaymentIntent({
+      bookingId,
+      amount,
+      customerEmail,
+      customerName,
+      description: `Finland Experience booking #${booking.booking_number || booking.id}`,
     });
 
-    // Convert to cents (Stripe expects integer amounts)
-    const amountCents = Math.round(pricingBreakdown.totalEur * 100);
-
-    // Create payment intent
-    const paymentIntentResponse = await createPaymentIntent({
-      bookingId: body.bookingId,
-      amount: amountCents,
-      customerEmail: body.customerEmail,
-      customerName: body.customerName,
-      description: `${body.experienceTitle} - Booking #${booking.booking_number}`,
-    });
-
-    // Update booking with total price
-    await supabaseAdmin
-      .from('bookings')
-      .update({
-        total_price_eur: pricingBreakdown.totalEur,
-        payment_status: 'unpaid',
-        updated_at: new Date(),
-      })
-      .eq('id', body.bookingId);
-
-    return NextResponse.json(
-      {
-        clientSecret: paymentIntentResponse.clientSecret,
-        paymentIntentId: paymentIntentResponse.paymentIntentId,
-        amount: amountCents,
-        amountEur: pricingBreakdown.totalEur,
-        breakdown: pricingBreakdown,
-      },
-      { status: 200 }
-    );
+    return NextResponse.json(payment);
   } catch (error) {
     console.error('Payment intent creation error:', error);
-
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return NextResponse.json(
-      { error: `Failed to create payment intent: ${errorMessage}` },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to create payment intent' }, { status: 500 });
   }
 }
