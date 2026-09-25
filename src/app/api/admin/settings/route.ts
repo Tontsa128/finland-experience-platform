@@ -12,7 +12,7 @@ const allowed = [
   "hero_description_fi","hero_description_es","hero_description_en",
   "hero_cta_label_fi","hero_cta_label_es","hero_cta_label_en","hero_cta_url",
   "hero_secondary_label_fi","hero_secondary_label_es","hero_secondary_label_en","hero_secondary_url",
-  "homepage_intro_fi","homepage_intro_es","homepage_intro_en",
+  "homepage_intro_fi","homepage_intro_es","homepage_intro_en","homepage_featured_destination_ids","homepage_featured_property_ids","homepage_featured_experience_ids",
 ] as const;
 
 export async function GET() {
