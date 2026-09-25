@@ -1,53 +1,55 @@
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import { BookingWorkflow } from '@/domain/booking';
 
 describe('BookingWorkflow', () => {
   describe('canTransition', () => {
     it('allows valid transitions', () => {
-      expect(BookingWorkflow.canTransition('inquiry', 'pending')).toBe(true);
-      expect(BookingWorkflow.canTransition('pending', 'payment_pending')).toBe(true);
-      expect(BookingWorkflow.canTransition('payment_pending', 'confirmed')).toBe(true);
-      expect(BookingWorkflow.canTransition('confirmed', 'completed')).toBe(true);
+      assert.equal(BookingWorkflow.canTransition('inquiry', 'pending'), true);
+      assert.equal(BookingWorkflow.canTransition('pending', 'payment_pending'), true);
+      assert.equal(BookingWorkflow.canTransition('payment_pending', 'confirmed'), true);
+      assert.equal(BookingWorkflow.canTransition('confirmed', 'completed'), true);
     });
 
     it('prevents invalid transitions', () => {
-      expect(BookingWorkflow.canTransition('confirmed', 'pending')).toBe(false);
-      expect(BookingWorkflow.canTransition('completed', 'confirmed')).toBe(false);
-      expect(BookingWorkflow.canTransition('cancelled', 'confirmed')).toBe(false);
+      assert.equal(BookingWorkflow.canTransition('confirmed', 'pending'), false);
+      assert.equal(BookingWorkflow.canTransition('completed', 'confirmed'), false);
+      assert.equal(BookingWorkflow.canTransition('cancelled', 'confirmed'), false);
     });
 
     it('allows cancellation from certain states', () => {
-      expect(BookingWorkflow.canTransition('inquiry', 'cancelled')).toBe(true);
-      expect(BookingWorkflow.canTransition('pending', 'cancelled')).toBe(true);
-      expect(BookingWorkflow.canTransition('confirmed', 'cancelled')).toBe(true);
-      expect(BookingWorkflow.canTransition('completed', 'cancelled')).toBe(true);
+      assert.equal(BookingWorkflow.canTransition('inquiry', 'cancelled'), true);
+      assert.equal(BookingWorkflow.canTransition('pending', 'cancelled'), true);
+      assert.equal(BookingWorkflow.canTransition('confirmed', 'cancelled'), true);
+      assert.equal(BookingWorkflow.canTransition('completed', 'cancelled'), true);
     });
   });
 
   describe('canCancel', () => {
     it('returns true for cancellable statuses', () => {
-      expect(BookingWorkflow.canCancel('inquiry')).toBe(true);
-      expect(BookingWorkflow.canCancel('pending')).toBe(true);
-      expect(BookingWorkflow.canCancel('payment_pending')).toBe(true);
-      expect(BookingWorkflow.canCancel('confirmed')).toBe(true);
+      assert.equal(BookingWorkflow.canCancel('inquiry'), true);
+      assert.equal(BookingWorkflow.canCancel('pending'), true);
+      assert.equal(BookingWorkflow.canCancel('payment_pending'), true);
+      assert.equal(BookingWorkflow.canCancel('confirmed'), true);
     });
 
     it('returns false for non-cancellable statuses', () => {
-      expect(BookingWorkflow.canCancel('completed')).toBe(false);
-      expect(BookingWorkflow.canCancel('cancelled')).toBe(false);
-      expect(BookingWorkflow.canCancel('refunded')).toBe(false);
+      assert.equal(BookingWorkflow.canCancel('completed'), false);
+      assert.equal(BookingWorkflow.canCancel('cancelled'), false);
+      assert.equal(BookingWorkflow.canCancel('refunded'), false);
     });
   });
 
   describe('canRefund', () => {
     it('returns true for refundable statuses', () => {
-      expect(BookingWorkflow.canRefund('confirmed')).toBe(true);
-      expect(BookingWorkflow.canRefund('completed')).toBe(true);
+      assert.equal(BookingWorkflow.canRefund('confirmed'), true);
+      assert.equal(BookingWorkflow.canRefund('completed'), true);
     });
 
     it('returns false for non-refundable statuses', () => {
-      expect(BookingWorkflow.canRefund('inquiry')).toBe(false);
-      expect(BookingWorkflow.canRefund('pending')).toBe(false);
-      expect(BookingWorkflow.canRefund('cancelled')).toBe(false);
+      assert.equal(BookingWorkflow.canRefund('inquiry'), false);
+      assert.equal(BookingWorkflow.canRefund('pending'), false);
+      assert.equal(BookingWorkflow.canRefund('cancelled'), false);
     });
   });
 
@@ -55,10 +57,9 @@ describe('BookingWorkflow', () => {
     it('generates unique booking numbers', () => {
       const num1 = BookingWorkflow.generateBookingNumber();
       const num2 = BookingWorkflow.generateBookingNumber();
-
-      expect(num1).toMatch(/^FEP-/);
-      expect(num2).toMatch(/^FEP-/);
-      expect(num1).not.toBe(num2);
+      assert.match(num1, /^FEP-/);
+      assert.match(num2, /^FEP-/);
+      assert.notEqual(num1, num2);
     });
   });
 });
