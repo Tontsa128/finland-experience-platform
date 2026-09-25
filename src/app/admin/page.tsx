@@ -9,7 +9,7 @@ const cards=[
  {href:"/admin/experiences",label:"Experiences",text:"Sauna, veneily, kalastus ja muut elämykset.",icon:CalendarDays},
  {href:"/admin/media",label:"Media",text:"Kuvapankki ja FI/ES/EN alt-tekstit.",icon:ImageIcon},
  {href:"/admin/inquiries",label:"Yhteydenotot",text:"Varaus- ja yhteydenottopyynnöt.",icon:MessageSquare},
- {href:"/admin/settings",label:"Asetukset",text:"Brändi, fontit, WhatsApp ja globaalit asetukset.",icon:Settings2}
+ {href:"/admin/cms",label:"Sisällönhallinta",text:"Muokkaa sivuja, kohteita, kuvia, blogia, arvosteluja ja valikkoa.",icon:Sparkles},{href:"/admin/settings",label:"Asetukset",text:"Brändi, fontit, WhatsApp ja globaalit asetukset.",icon:Settings2}
 ];
 
 export default function AdminDashboard(){
