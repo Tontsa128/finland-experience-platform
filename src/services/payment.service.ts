@@ -28,9 +28,16 @@ export async function createPaymentIntent(
   }
 
   const stripe = getStripe();
+  const { data: booking, error: bookingError } = await supabaseAdmin.from('bookings').select('id,total_amount,currency,status,payment_status').eq('id', input.bookingId).maybeSingle();
+  if (bookingError) throw new Error(`Failed to validate booking: ${bookingError.message}`);
+  if (!booking) throw new Error('Booking not found');
+  if (booking.status === 'cancelled' || booking.status === 'refunded') throw new Error('Booking is not payable');
+  const expectedAmount = Math.round(Number(booking.total_amount) * 100);
+  if (!Number.isFinite(expectedAmount) || expectedAmount !== input.amount) throw new Error('Payment amount does not match booking total');
+
   const paymentIntent = await stripe.paymentIntents.create({
     amount: input.amount,
-    currency: 'eur',
+    currency: (booking.currency || 'EUR').toLowerCase(),
     receipt_email: input.customerEmail,
     description: input.description || `Finland Experience booking #${input.bookingId}`,
     metadata: {
