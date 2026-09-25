@@ -6,19 +6,21 @@ import { usePathname } from "next/navigation";
 import { Globe, Menu, X } from "lucide-react";
 import { useState } from "react";
 
+type NavigationItem = { id: string; label: string; href: string; sortOrder: number };
+
 const languageOptions = [
   { locale: "fi", label: "Suomi", flag: "🇫🇮" },
   { locale: "es", label: "Español", flag: "🇪🇸" },
   { locale: "en", label: "English", flag: "🇬🇧" },
 ] as const;
 
-export function Header() {
+export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   const locale = useLocale();
   const t = useTranslations("nav");
   const path = usePathname();
   const [open, setOpen] = useState(false);
 
-  const items = [
+  const fallbackItems = [
     ["home", ""],
     ["destinations", "destinations"],
     ["accommodations", "accommodations"],
@@ -28,6 +30,8 @@ export function Header() {
     ["contact", "contact"],
   ] as const;
 
+  const items = navigation.length ? navigation.map((item) => [item.id, item.href.replace(/^\/(fi|es|en)(?=\/|$)/, "").replace(/^\//, "")] as const) : fallbackItems;
+  const labels = new Map(navigation.map((item) => [item.id, item.label]));
   const href = (l: string) => `/${locale}${l ? `/${l}` : ""}`;
   const languageHref = (targetLocale: string) => {
     const withoutLocale = path.replace(/^\/(fi|es|en)(?=\/|$)/, "");
@@ -88,7 +92,7 @@ export function Header() {
                   path === href(p) ? "text-brand-700" : "text-slate-600"
                 }`}
               >
-                {t(key)}
+                {labels.get(key) || t(key)}
               </Link>
             ))}
           </nav>
