@@ -11,6 +11,7 @@ const sections = [
   { href: "/admin/media", label: "Kuvapankki", text: "Lataa kuvia ja hallitse FI/ES/EN-alt-tekstejä.", icon: ImageIcon },
   { href: "/admin/blog", label: "Blogi", text: "Matkaoppaat, artikkelit ja hakukoneystävällinen sisältö.", icon: PenSquare },
   { href: "/admin/navigation", label: "Navigaatio", text: "Päävalikko, CTA-linkit ja sivuston rakenteen hallinta.", icon: Menu },
+  { href: "/admin/banners", label: "Bannerit", text: "Kampanjat, sesonkiviestit ja ajastetut CTA-bannerit.", icon: Sparkles },
 ];
 
 export default function CmsPage() {
