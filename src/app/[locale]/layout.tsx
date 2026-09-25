@@ -8,6 +8,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AIChat } from "@/components/ai/AIChat";
 import { Toaster } from "sonner";
+import { CookieConsent } from "@/components/legal/CookieConsent";
+import { WhatsAppButton } from "@/components/contact/WhatsAppButton";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -51,6 +53,8 @@ export default async function LocaleLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <AIChat />
+        <WhatsAppButton locale={locale} />
+        <CookieConsent />
         <Toaster position="top-center" richColors />
       </div>
     </NextIntlClientProvider>
