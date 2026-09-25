@@ -162,8 +162,8 @@ export interface Addon {
 
 export interface Media {
   [key: string]: any;
-  experienceId?: string | number;
-  destinationId?: string | number;
+  experienceId?: string | number | null;
+  destinationId?: string | number | null;
   sortOrder?: number;
   id?: string | number;
   url?: string;
@@ -305,7 +305,7 @@ export interface Review {
 
 export interface Coupon {
   [key: string]: any;
-  experienceId?: string | number;
+  experienceId?: string | number | null;
   status?: string;
   id?: string | number;
   code?: string;
