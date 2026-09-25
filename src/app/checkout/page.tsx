@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function LegacyCheckoutPage() {
-  redirect("/es/experiences");
+  redirect("/fi/experiences");
 }
