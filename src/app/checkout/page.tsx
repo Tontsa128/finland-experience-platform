@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ExperienceService } from '@/services/experience';
@@ -30,7 +30,7 @@ interface BookingState {
   bookingNumber: string;
 }
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [state, setState] = useState<BookingState>({
@@ -760,5 +760,14 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<main className="flex min-h-screen items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-b-2 border-emerald-500" /></main>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }
