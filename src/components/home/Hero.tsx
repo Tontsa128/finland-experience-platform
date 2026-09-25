@@ -14,7 +14,7 @@ function localized(values: Record<string, string>, locale: string, fallback: str
 
 function localizedHref(value: string, locale: string, fallback: string) {
   if (!value) return `/${locale}${fallback}`;
-  if (/^https?:\\/\\//i.test(value)) return value;
+  if (value.startsWith("http://") || value.startsWith("https://")) return value;
   return value.startsWith(`/${locale}/`) ? value : `/${locale}${value.startsWith("/") ? value : `/${value}`}`;
 }
 
