@@ -1,0 +1,11 @@
+"use client";
+import{useEffect,useState}from"react";
+type Inquiry={id:string;first_name:string;last_name:string|null;email:string;phone:string|null;locale:string;arrival_date:string|null;departure_date:string|null;guests:number|null;status:string;message:string|null;created_at:string};
+const statuses=["new","contacted","quoted","confirmed","cancelled","completed"];
+export default function InquiriesPage(){
+ const[items,setItems]=useState<Inquiry[]>([]);const[error,setError]=useState("");
+ function load(){fetch("/api/admin/inquiries",{cache:"no-store"}).then(async r=>{const b=await r.json();if(!r.ok)throw new Error(b.error||"Yhteydenottoja ei voitu ladata");setItems(b.inquiries||[])}).catch(e=>setError(e instanceof Error?e.message:"Lataus epäonnistui"))}
+ useEffect(load,[]);
+ async function update(id:string,status:string){const r=await fetch("/api/admin/inquiries",{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,status})});if(r.ok)load();}
+ return <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-8"><div className="mx-auto max-w-7xl"><p className="text-sm font-semibold text-emerald-700">CMS / Varaustiedustelut</p><h1 className="mt-1 text-3xl font-bold text-slate-950">Yhteydenotot</h1>{error&&<div className="mt-6 rounded-xl bg-red-50 p-4 text-red-700">{error}</div>}<div className="mt-8 space-y-4">{items.length===0?<div className="rounded-2xl border bg-white p-8 text-slate-500">Ei uusia yhteydenottoja.</div>:items.map(item=><article key={item.id} className="rounded-2xl border bg-white p-5 shadow-sm"><div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between"><div><h2 className="font-semibold text-slate-950">{item.first_name} {item.last_name||""}</h2><p className="text-sm text-slate-600">{item.email}{item.phone?" · "+item.phone:""} · {item.locale.toUpperCase()}</p><p className="mt-2 text-sm text-slate-700">{item.message||"Ei viestiä."}</p><p className="mt-2 text-xs text-slate-400">{item.arrival_date||"—"} → {item.departure_date||"—"} · {item.guests||"?"} vierasta</p></div><select value={item.status} onChange={e=>update(item.id,e.target.value)} className="rounded-xl border px-3 py-2 text-sm">{statuses.map(s=><option key={s} value={s}>{s}</option>)}</select></div></article>)}</div></div></main>;
+}

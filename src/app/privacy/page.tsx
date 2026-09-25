@@ -1,0 +1,1 @@
+export default function PrivacyPage(){return <main className="mx-auto max-w-3xl px-5 py-16"><h1 className="text-4xl font-bold">Tietosuoja</h1><p className="mt-6 leading-8 text-slate-600">Tälle sivulle lisätään tuotannossa yrityksen virallinen tietosuojaseloste, rekisterinpitäjän tiedot, käsittelyperusteet, säilytysajat, rekisteröidyn oikeudet ja yhteydenottokanavat.</p></main>}

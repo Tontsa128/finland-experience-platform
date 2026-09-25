@@ -1,0 +1,8 @@
+"use client";
+import { useEffect,useState } from "react";
+type Media={id:string;filename:string;url:string;alt_text:string|null;alt_fi:string|null;alt_es:string|null;alt_en:string|null;type:string;created_at:string};
+export default function MediaAdminPage(){
+ const [items,setItems]=useState<Media[]>([]); const [error,setError]=useState("");
+ useEffect(()=>{fetch("/api/admin/media",{cache:"no-store"}).then(async r=>{const b=await r.json();if(!r.ok)throw new Error(b.error||"Mediaa ei voitu ladata");setItems(b.media||[]);}).catch(e=>setError(e instanceof Error?e.message:"Lataus epäonnistui"));},[]);
+ return <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-8"><div className="mx-auto max-w-7xl"><p className="text-sm font-semibold text-emerald-700">CMS / Media</p><h1 className="mt-1 text-3xl font-bold text-slate-950">Kuvapankki</h1><p className="mt-2 text-slate-500">Media näyttää nykyisen tietokannan sisällön ja kielikohtaiset alt-tekstit.</p>{error&&<div className="mt-6 rounded-xl bg-red-50 p-4 text-red-700">{error}</div>}<div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{items.map(m=><article key={m.id} className="overflow-hidden rounded-2xl border bg-white shadow-sm"><div className="aspect-[4/3] bg-slate-100">{m.url&&<img src={m.url} alt={m.alt_es||m.alt_text||m.filename} className="h-full w-full object-cover"/>}</div><div className="p-4"><p className="truncate text-sm font-semibold">{m.filename}</p><p className="mt-1 text-xs text-slate-500">FI: {m.alt_fi||"—"}</p><p className="text-xs text-slate-500">ES: {m.alt_es||"—"}</p><p className="text-xs text-slate-500">EN: {m.alt_en||"—"}</p></div></article>)}</div></div></main>;
+}
