@@ -14,7 +14,7 @@ function generateAvailability(experienceId: number, startDate: Date, daysToGener
       availableDate: date,
       capacity: 8,
       booked: Math.floor(Math.random() * 5),
-      timeSlot: i % 2 === 0 ? '14:00' : null,
+      timeSlot: i % 2 === 0 ? '14:00' : undefined,
       isInstantBooking: true,
       status: 'available',
       createdAt: new Date(),

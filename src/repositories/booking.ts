@@ -22,8 +22,14 @@ export class MockBookingRepository implements IBookingRepository {
   constructor(initialBookings: Booking[], initialItems: BookingItem[]) {
     this.bookings = initialBookings;
     this.bookingItems = initialItems;
-    this.nextBookingId = Math.max(...initialBookings.map((b) => b.id), 0) + 1;
-    this.nextItemId = Math.max(...initialItems.map((i) => i.id), 0) + 1;
+    const bookingIds = initialBookings
+      .map((b) => (typeof b.id === 'number' ? b.id : Number(b.id)))
+      .filter((id) => Number.isFinite(id));
+    const itemIds = initialItems
+      .map((i) => (typeof i.id === 'number' ? i.id : Number(i.id)))
+      .filter((id) => Number.isFinite(id));
+    this.nextBookingId = Math.max(...bookingIds, 0) + 1;
+    this.nextItemId = Math.max(...itemIds, 0) + 1;
   }
 
   async getAll(): Promise<Booking[]> {

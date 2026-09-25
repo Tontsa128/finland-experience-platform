@@ -5,7 +5,7 @@ export const MOCK_MEDIA: Media[] = [
   {
     id: 1,
     experienceId: 1,
-    destinationId: null,
+    destinationId: undefined,
     mediaType: 'image',
     url: 'https://images.unsplash.com/photo-1579033100235-ba666c8cb4d0?w=1200&h=800&fit=crop',
     altTextEs: 'Aurora boreal verde en el cielo nocturno de Laponia',
@@ -21,7 +21,7 @@ export const MOCK_MEDIA: Media[] = [
   {
     id: 2,
     experienceId: 1,
-    destinationId: null,
+    destinationId: undefined,
     mediaType: 'image',
     url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop',
     altTextEs: 'Grupo viendo auroras boreales en la noche',
@@ -38,7 +38,7 @@ export const MOCK_MEDIA: Media[] = [
   {
     id: 3,
     experienceId: 2,
-    destinationId: null,
+    destinationId: undefined,
     mediaType: 'image',
     url: 'https://images.unsplash.com/photo-1544161515-81e9b8d4db5b?w=1200&h=800&fit=crop',
     altTextEs: 'Interior de sauna finlandesa tradicional',
@@ -54,7 +54,7 @@ export const MOCK_MEDIA: Media[] = [
   {
     id: 4,
     experienceId: 2,
-    destinationId: null,
+    destinationId: undefined,
     mediaType: 'image',
     url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop',
     altTextEs: 'Vista de lago helado desde la sauna',
@@ -71,7 +71,7 @@ export const MOCK_MEDIA: Media[] = [
   {
     id: 5,
     experienceId: 3,
-    destinationId: null,
+    destinationId: undefined,
     mediaType: 'image',
     url: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=1200&h=800&fit=crop',
     altTextEs: 'Trineo tirado por huskies en bosque nevado',
@@ -87,7 +87,7 @@ export const MOCK_MEDIA: Media[] = [
   {
     id: 6,
     experienceId: 3,
-    destinationId: null,
+    destinationId: undefined,
     mediaType: 'image',
     url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop',
     altTextEs: 'Huskies descansando entre la nieve',

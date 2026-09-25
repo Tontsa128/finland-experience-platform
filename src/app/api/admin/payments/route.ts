@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 const PAYMENT_STATUSES = ['paid', 'unpaid', 'failed', 'refunded'] as const;
 type PaymentStatus = (typeof PAYMENT_STATUSES)[number];

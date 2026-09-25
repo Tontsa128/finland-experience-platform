@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Compass, LockKeyhole } from 'lucide-react';
 
-export default function AdminLoginPage() {
+function AdminLoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get('redirect') || '/admin/destinos';
@@ -43,5 +43,14 @@ export default function AdminLoginPage() {
         <p className="mt-5 text-center text-xs text-slate-400">Demo-MVP · oikea käyttäjähallinta liitetään myöhemmin.</p>
       </section>
     </main>
+  );
+}
+
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense fallback={<main className="flex min-h-[75vh] items-center justify-center bg-slate-50"><div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-emerald-500" /></main>}>
+      <AdminLoginContent />
+    </Suspense>
   );
 }
