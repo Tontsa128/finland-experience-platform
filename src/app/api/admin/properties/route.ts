@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { getAdminContext } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 const locales = ["fi", "es", "en"] as const;
@@ -26,6 +27,8 @@ export async function GET() {
 
 export async function POST(req:NextRequest) {
   try {
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
     const body = await req.json() as Payload;
     const errors=validate(body);
     if(errors.length) return NextResponse.json({error:"Validation failed",details:errors},{status:400});
@@ -49,6 +52,8 @@ export async function POST(req:NextRequest) {
 
 export async function PATCH(req:NextRequest) {
   try {
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
     const body=await req.json() as Payload & {id:string};
     if(!body.id) return NextResponse.json({error:"id is required"},{status:400});
     const errors=validate(body); if(errors.length) return NextResponse.json({error:"Validation failed",details:errors},{status:400});
