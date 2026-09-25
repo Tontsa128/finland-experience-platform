@@ -18,7 +18,8 @@ export class MockExperienceRepository implements IExperienceRepository {
   constructor(initialExperiences: Experience[], initialTranslations: ExperienceTranslation[]) {
     this.experiences = initialExperiences;
     this.translations = initialTranslations;
-    this.nextId = Math.max(...initialExperiences.map((e) => e.id), 0) + 1;
+    const numericIds = initialExperiences.map((e) => Number(e.id)).filter((id) => Number.isFinite(id));
+    this.nextId = Math.max(...numericIds, 0) + 1;
   }
 
   async getAll(): Promise<Experience[]> {
@@ -33,15 +34,13 @@ export class MockExperienceRepository implements IExperienceRepository {
     return this.experiences.find((e) => e.slug === slug) || null;
   }
 
-  async create(
-    experience: Omit<Experience, 'id' | 'createdAt' | 'updatedAt'>
-  ): Promise<Experience> {
-    const newExperience: Experience = {
+  async create(experience: Partial<Experience>): Promise<Experience> {
+    const newExperience = {
       ...experience,
       id: this.nextId++,
       createdAt: new Date(),
       updatedAt: new Date(),
-    };
+    } as Experience;
     this.experiences.push(newExperience);
     return newExperience;
   }
