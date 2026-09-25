@@ -263,13 +263,16 @@ export type HomepageSettings = {
   heroCtaUrl: string;
   heroSecondaryLabel: Record<Locale, string>;
   heroSecondaryUrl: string;
+  featuredDestinationIds: string[];
+  featuredPropertyIds: string[];
+  featuredExperienceIds: string[];
 };
 
 export async function getHomepageSettings(): Promise<HomepageSettings | null> {
   try {
     const { data, error } = await supabaseAdmin
       .from("site_settings")
-      .select("hero_image_url,hero_eyebrow_fi,hero_eyebrow_es,hero_eyebrow_en,hero_title_fi,hero_title_es,hero_title_en,hero_description_fi,hero_description_es,hero_description_en,hero_cta_label_fi,hero_cta_label_es,hero_cta_label_en,hero_cta_url,hero_secondary_label_fi,hero_secondary_label_es,hero_secondary_label_en,hero_secondary_url")
+      .select("hero_image_url,hero_eyebrow_fi,hero_eyebrow_es,hero_eyebrow_en,hero_title_fi,hero_title_es,hero_title_en,hero_description_fi,hero_description_es,hero_description_en,hero_cta_label_fi,hero_cta_label_es,hero_cta_label_en,hero_cta_url,hero_secondary_label_fi,hero_secondary_label_es,hero_secondary_label_en,hero_secondary_url,homepage_featured_destination_ids,homepage_featured_property_ids,homepage_featured_experience_ids")
       .eq("singleton", true)
       .maybeSingle();
 
@@ -285,6 +288,9 @@ export async function getHomepageSettings(): Promise<HomepageSettings | null> {
       heroCtaUrl: value("hero_cta_url") || "/accommodations",
       heroSecondaryLabel: { fi: value("hero_secondary_label_fi"), es: value("hero_secondary_label_es"), en: value("hero_secondary_label_en") },
       heroSecondaryUrl: value("hero_secondary_url") || "/destinations",
+      featuredDestinationIds: Array.isArray((data as any).homepage_featured_destination_ids) ? (data as any).homepage_featured_destination_ids.map(String) : [],
+      featuredPropertyIds: Array.isArray((data as any).homepage_featured_property_ids) ? (data as any).homepage_featured_property_ids.map(String) : [],
+      featuredExperienceIds: Array.isArray((data as any).homepage_featured_experience_ids) ? (data as any).homepage_featured_experience_ids.map(String) : [],
     };
   } catch {
     return null;
