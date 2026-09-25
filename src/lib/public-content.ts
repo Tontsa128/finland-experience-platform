@@ -83,7 +83,7 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
   try {
     const { data, error } = await supabaseAdmin
       .from("destinations")
-      .select("id,slug,region,latitude,longitude,hero_image_url,status,published_at,destination_translations(language_code,name,short_description,full_description,highlights,travel_information)")
+      .select("id,slug,region,latitude,longitude,hero_image_url,status,published_at,publish_at,seo_title_fi,seo_title_es,seo_title_en,seo_description_fi,seo_description_es,seo_description_en,destination_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text)),destination_translations(language_code,name,short_description,full_description,highlights,travel_information)")
       .eq("status", "published")
       .is("deleted_at", null)
       .order("created_at", { ascending: false });
@@ -102,7 +102,8 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
         ""
       ).split(",").map((item) => item.trim()).filter(Boolean);
 
-      const image = destination.hero_image_url || "";
+      const gallery = (destination.destination_media ?? []).slice().sort((a: any, b: any) => a.sort_order - b.sort_order).map((item: any) => item.media?.url).filter(Boolean);
+      const image = destination.hero_image_url || gallery[0] || "";
       return {
         id: destination.id,
         slug: destination.slug,
@@ -122,7 +123,7 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
           en: descriptions.en || descriptions.fi || firstDescription,
         },
         region: destination.region,
-        images: image ? [image] : [],
+        images: Array.from(new Set([image, ...gallery].filter(Boolean))),
         priceFrom: 0,
         featured: false,
         coordinates:
