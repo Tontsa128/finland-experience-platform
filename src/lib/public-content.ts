@@ -283,3 +283,19 @@ export async function getHomepageSettings(): Promise<HomepageSettings | null> {
     return null;
   }
 }
+
+
+export type NavigationItem = { id: string; locale: Locale; label: string; href: string; sortOrder: number };
+
+export async function getPublishedNavigation(locale: Locale, location = "header"): Promise<NavigationItem[]> {
+  try {
+    const { data, error } = await supabaseAdmin.from("site_navigation")
+      .select("id,locale,label,href,sort_order")
+      .eq("location", location).eq("locale", locale).eq("active", true)
+      .order("sort_order");
+    if (error) return [];
+    return (data || []).map((item) => ({
+      id: item.id, locale: item.locale as Locale, label: item.label, href: item.href, sortOrder: item.sort_order,
+    }));
+  } catch { return []; }
+}
