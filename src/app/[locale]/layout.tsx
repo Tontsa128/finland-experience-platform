@@ -10,6 +10,7 @@ import { AIChat } from "@/components/ai/AIChat";
 import { Toaster } from "sonner";
 import { CookieConsent } from "@/components/legal/CookieConsent";
 import { WhatsAppButton } from "@/components/contact/WhatsAppButton";
+import { getPublishedNavigation } from "@/lib/public-content";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -45,11 +46,11 @@ export default async function LocaleLayout({
   const { locale } = params;
   if (!locales.includes(locale as (typeof locales)[number])) notFound();
   setRequestLocale(locale);
-  const messages = await getMessages();
+  const [messages, navigation] = await Promise.all([getMessages(), getPublishedNavigation(locale as "fi" | "es" | "en")]);
   return (
     <NextIntlClientProvider messages={messages}>
       <div className="flex min-h-screen flex-col">
-        <Header />
+        <Header navigation={navigation} />
         <main className="flex-1">{children}</main>
         <Footer />
         <AIChat />
