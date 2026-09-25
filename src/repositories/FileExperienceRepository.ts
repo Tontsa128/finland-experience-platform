@@ -42,8 +42,8 @@ export default class FileExperienceRepository {
       short_description_fi: data.short_description_fi || '',
       description_es: data.description_es || '',
       description_fi: data.description_fi || '',
-      destination_id: data.destination_id || null,
-      category_id: data.category_id || null,
+      destination_id: data.destination_id || undefined,
+      category_id: data.category_id || undefined,
       duration_minutes: data.duration_minutes || 0,
       min_age: data.min_age || 0,
       capacity_default: data.capacity_default || 0,
@@ -51,7 +51,7 @@ export default class FileExperienceRepository {
       status: data.status || 'draft',
       seo: data.seo || {},
       media: data.media || [],
-      hero_media_id: data.hero_media_id || null,
+      hero_media_id: data.hero_media_id || undefined,
       created_at: now,
       updated_at: now
     }
