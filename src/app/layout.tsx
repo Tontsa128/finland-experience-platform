@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    locale: "en_EU",
+    locale: "en_IE",
     siteName: "Nordic Escape",
   },
   manifest: "/manifest.json",
