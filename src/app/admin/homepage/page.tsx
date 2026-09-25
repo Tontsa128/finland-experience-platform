@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import MediaPicker from "@/components/admin/MediaPicker";
 
-type Settings = Record<string, string | null | undefined>;
+type Settings = Record<string, unknown>;
 
 const initial: Settings = {
   hero_image_url: "",
@@ -59,7 +59,7 @@ export default function HomepageCmsPage() {
       .catch(() => undefined);
   }, []);
 
-  const set = (key: string, value: string) => setSettings((current) => ({ ...current, [key]: value }));
+  const set = (key: string, value: unknown) => setSettings((current) => ({ ...current, [key]: value }));
 
   async function save() {
     setSaved(false);
@@ -82,7 +82,7 @@ export default function HomepageCmsPage() {
     <label className="grid gap-2 text-sm font-medium text-slate-700">
       <span>{label}</span>
       <input
-        value={settings[key] || ""}
+        value={String(settings[key] ?? "")}
         placeholder={placeholder}
         onChange={(e) => set(key, e.target.value)}
         className="rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-emerald-500"
