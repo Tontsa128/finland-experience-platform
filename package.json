@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "node ./scripts/test-media.js && node ./scripts/test-pricing.js && node ./scripts/test-availability.js && node ./scripts/test-destination.js",
+    "test": "node --import tsx --test "src/__tests__/**/*.test.ts"",
+    "test:watch": "node --import tsx --test --watch "src/__tests__/**/*.test.ts"",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset"
   },
