@@ -145,7 +145,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
   try {
     const { data, error } = await supabaseAdmin
       .from("experiences")
-      .select("id,destination_id,category_id,slug,duration_minutes,min_group_size,max_group_size,difficulty_level,status,experience_translations(language_code,title,short_description,full_description),pricing_rules(base_price_eur,adult_price_eur,child_price_eur),experience_categories(slug,name_fi,name_es)")
+      .select("id,destination_id,category_id,slug,duration_minutes,min_group_size,max_group_size,difficulty_level,status,experience_translations(language_code,title,short_description,full_description),pricing_rules(base_price_eur,adult_price_eur,child_price_eur),experience_categories(slug,name_fi,name_es),experience_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
       .eq("status", "published")
       .order("created_at", { ascending: false });
 
@@ -157,6 +157,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
       const descriptions = localized(translations, "full_description");
       const shorts = localized(translations, "short_description");
       const pricing = experience.pricing_rules?.[0];
+      const images = (experience.experience_media ?? []).slice().sort((a: any, b: any) => a.sort_order - b.sort_order).map((item: any) => item.media?.url).filter(Boolean);
       const category = experience.experience_categories?.slug || "experience";
 
       return {
@@ -179,7 +180,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
         },
         price: Number(pricing?.adult_price_eur ?? pricing?.base_price_eur ?? 0),
         duration: experience.duration_minutes ? `${experience.duration_minutes} min` : "",
-        images: [],
+        images,
         category,
         region: "",
         maxParticipants: Number(experience.max_group_size || 0),
