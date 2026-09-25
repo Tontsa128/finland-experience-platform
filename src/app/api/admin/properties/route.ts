@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 const locales = ["fi", "es", "en"] as const;
 type Locale = typeof locales[number];
 type Translation = { name: string; shortDescription?: string; description?: string; locationName?: string; seoTitle?: string; seoDescription?: string };
-type Payload = { id?: string; slug: string; propertyType?: string; region?: string; maxGuests?: number; bedrooms?: number; bathrooms?: number; basePriceEur?: number | null; featured?: boolean; status?: "draft"|"published"|"archived"; translations: Record<Locale, Translation> };
+type Payload = { id?: string; slug: string; propertyType?: string; region?: string; maxGuests?: number; bedrooms?: number; bathrooms?: number; basePriceEur?: number | null; featured?: boolean; status?: "draft"|"published"|"archived"; mediaIds?: string[]; translations: Record<Locale, Translation> };
 
 function validate(body: Payload) {
   const errors: string[] = [];
@@ -17,7 +17,7 @@ function validate(body: Payload) {
 
 export async function GET() {
   try {
-    const { data, error } = await supabaseAdmin.from("properties").select("*, property_translations(*)").order("created_at",{ascending:false});
+    const { data, error } = await supabaseAdmin.from("properties").select("*, property_translations(*), property_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en))").order("created_at",{ascending:false});
     if (error) return NextResponse.json({error:error.message},{status:500});
     return NextResponse.json({properties:data ?? []},{headers:{"Cache-Control":"no-store"}});
   } catch (error) {
@@ -46,6 +46,10 @@ export async function POST(req:NextRequest) {
     };});
     const {error:translationError}=await supabaseAdmin.from("property_translations").insert(rows);
     if(translationError){await supabaseAdmin.from("properties").delete().eq("id",property.id);return NextResponse.json({error:translationError.message},{status:400});}
+    if (body.mediaIds?.length) {
+      const { error: mediaError } = await supabaseAdmin.from("property_media").insert(body.mediaIds.map((media_id, sort_order) => ({ property_id: property.id, media_id, sort_order })));
+      if (mediaError) return NextResponse.json({error:mediaError.message},{status:400});
+    }
     return NextResponse.json({property},{status:201});
   } catch(error) { return NextResponse.json({error:error instanceof Error?error.message:"Invalid request"},{status:400}); }
 }
@@ -63,6 +67,11 @@ export async function PATCH(req:NextRequest) {
       base_price_eur:body.basePriceEur??null,featured:Boolean(body.featured),status:body.status??"draft",updated_at:new Date().toISOString()
     }).eq("id",body.id).select().single();
     if(error) return NextResponse.json({error:error.message},{status:400});
+    await supabaseAdmin.from("property_media").delete().eq("property_id", body.id);
+    if (body.mediaIds?.length) {
+      const { error: mediaError } = await supabaseAdmin.from("property_media").insert(body.mediaIds.map((media_id, sort_order) => ({ property_id: body.id, media_id, sort_order })));
+      if (mediaError) return NextResponse.json({error:mediaError.message},{status:400});
+    }
     for(const locale of locales){
       const t=body.translations[locale];
       const {error:translationError}=await supabaseAdmin.from("property_translations").upsert({
