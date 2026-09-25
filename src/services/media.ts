@@ -31,7 +31,7 @@ export class MediaService {
    */
   static async getExperienceMedia(experienceId: number) {
     return MOCK_MEDIA.filter((m) => m.experienceId === experienceId).sort(
-      (a, b) => a.sortOrder - b.sortOrder
+      (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)
     );
   }
 
@@ -40,7 +40,7 @@ export class MediaService {
    */
   static async getDestinationMedia(destinationId: number) {
     return MOCK_MEDIA.filter((m) => m.destinationId === destinationId).sort(
-      (a, b) => a.sortOrder - b.sortOrder
+      (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)
     );
   }
 
@@ -53,7 +53,8 @@ export class MediaService {
     destinationId: number | null,
     data: MediaUploadInput
   ): Promise<Media> {
-    const maxId = Math.max(...MOCK_MEDIA.map((m) => m.id), 0);
+    const numericIds = MOCK_MEDIA.map((m) => Number(m.id)).filter((id) => Number.isFinite(id));
+    const maxId = Math.max(...numericIds, 0);
     const media: Media = {
       id: maxId + 1,
       experienceId,
@@ -65,7 +66,7 @@ export class MediaService {
       captionEs: data.captionEs || '',
       captionFi: data.captionFi || '',
       copyright: data.copyright || '',
-      sortOrder: Math.max(...MOCK_MEDIA.map((m) => m.sortOrder), 0) + 1,
+      sortOrder: Math.max(...MOCK_MEDIA.map((m) => m.sortOrder ?? 0), 0) + 1,
       isHero: data.isHero || false,
       createdAt: new Date(),
       updatedAt: new Date(),
