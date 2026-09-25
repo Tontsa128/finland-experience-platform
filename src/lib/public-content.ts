@@ -245,3 +245,41 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
     return [];
   }
 }
+
+
+export type HomepageSettings = {
+  heroImageUrl: string;
+  heroEyebrow: Record<Locale, string>;
+  heroTitle: Record<Locale, string>;
+  heroDescription: Record<Locale, string>;
+  heroCtaLabel: Record<Locale, string>;
+  heroCtaUrl: string;
+  heroSecondaryLabel: Record<Locale, string>;
+  heroSecondaryUrl: string;
+};
+
+export async function getHomepageSettings(): Promise<HomepageSettings | null> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from("site_settings")
+      .select("hero_image_url,hero_eyebrow_fi,hero_eyebrow_es,hero_eyebrow_en,hero_title_fi,hero_title_es,hero_title_en,hero_description_fi,hero_description_es,hero_description_en,hero_cta_label_fi,hero_cta_label_es,hero_cta_label_en,hero_cta_url,hero_secondary_label_fi,hero_secondary_label_es,hero_secondary_label_en,hero_secondary_url")
+      .eq("singleton", true)
+      .maybeSingle();
+
+    if (error || !data) return null;
+
+    const value = (key: string) => String((data as Record<string, unknown>)[key] ?? "");
+    return {
+      heroImageUrl: value("hero_image_url"),
+      heroEyebrow: { fi: value("hero_eyebrow_fi"), es: value("hero_eyebrow_es"), en: value("hero_eyebrow_en") },
+      heroTitle: { fi: value("hero_title_fi"), es: value("hero_title_es"), en: value("hero_title_en") },
+      heroDescription: { fi: value("hero_description_fi"), es: value("hero_description_es"), en: value("hero_description_en") },
+      heroCtaLabel: { fi: value("hero_cta_label_fi"), es: value("hero_cta_label_es"), en: value("hero_cta_label_en") },
+      heroCtaUrl: value("hero_cta_url") || "/accommodations",
+      heroSecondaryLabel: { fi: value("hero_secondary_label_fi"), es: value("hero_secondary_label_es"), en: value("hero_secondary_label_en") },
+      heroSecondaryUrl: value("hero_secondary_url") || "/destinations",
+    };
+  } catch {
+    return null;
+  }
+}
