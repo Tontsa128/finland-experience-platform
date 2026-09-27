@@ -6,7 +6,12 @@ import { usePathname } from "next/navigation";
 import { Globe, Menu, X } from "lucide-react";
 import { useState } from "react";
 
-type NavigationItem = { id: string; label: string; href: string; sortOrder: number };
+type NavigationItem = {
+  id: string;
+  label: string;
+  href: string;
+  sortOrder: number;
+};
 
 const languageOptions = [
   { locale: "fi", label: "Suomi", flag: "🇫🇮" },
@@ -30,13 +35,28 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
     ["contact", "contact"],
   ] as const;
 
-  const items = navigation.length ? navigation.map((item) => [item.id, item.href] as const) : fallbackItems;
+  const items = navigation.length
+    ? navigation.map((item) => [item.id, item.href] as const)
+    : fallbackItems;
+
   const labels = new Map(navigation.map((item) => [item.id, item.label]));
-  const href = (value: string) => {\n    if (/^https?:\\/\\//i.test(value)) return value;\n    const normalized = value.replace(/^\\/(fi|es|en)(?=\\/|$)/, "").replace(/^\\//, "");\n    return `/${locale}${normalized ? `/${normalized}` : ""}`;\n  };
+
+  const href = (value: string) => {
+    if (/^https?:\/\//i.test(value)) return value;
+
+    const normalized = value
+      .replace(/^\/(fi|es|en)(?=\/|$)/, "")
+      .replace(/^\//, "");
+
+    return `/${locale}${normalized ? `/${normalized}` : ""}`;
+  };
+
   const languageHref = (targetLocale: string) => {
     const withoutLocale = path.replace(/^\/(fi|es|en)(?=\/|$)/, "");
     return `/${targetLocale}${withoutLocale || ""}`;
   };
+
+  const labelFor = (key: string) => labels.get(key) || t(key);
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
@@ -71,6 +91,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
           </div>
 
           <button
+            type="button"
             className="rounded-lg p-2 lg:hidden"
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -92,7 +113,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                   path === href(p) ? "text-brand-700" : "text-slate-600"
                 }`}
               >
-                {labels.get(key) || t(key)}
+                {labelFor(key)}
               </Link>
             ))}
           </nav>
@@ -100,7 +121,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
       </div>
 
       {open && (
-        <nav className="border-t border-slate-100 bg-white p-4 space-y-2 lg:hidden">
+        <nav className="space-y-2 border-t border-slate-100 bg-white p-4 lg:hidden">
           {items.map(([key, p]) => (
             <Link
               key={key}
@@ -108,7 +129,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
               href={href(p)}
               className="block rounded-lg px-3 py-2 text-slate-700 hover:bg-brand-50"
             >
-              {t(key)}
+              {labelFor(key)}
             </Link>
           ))}
         </nav>
