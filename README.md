@@ -17,7 +17,6 @@ finland-experience-platform/
 │   └── types/               # TypeScript-tyypit
 ├── supabase/
 │   └── migrations/           # Tietokannan ainoa migraatiolähde
-├── scripts/                  # Legacy-/apuskriptit, joita ei käytetä CI:n unit-testeissä
 ├── public/                   # Staattiset resurssit
 ├── docs/                     # Projektin ohjeistus
 ├── package.json
