@@ -1,2 +1,2 @@
-import { redirect } from "next/navigation";
-export default function LegacyDestinationsPage(){ redirect("/fi/destinations"); }
+import { permanentRedirect } from "next/navigation";
+export default function LegacyDestinationsPage(){ permanentRedirect("/fi/destinations"); }
