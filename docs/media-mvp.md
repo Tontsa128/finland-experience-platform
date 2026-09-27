@@ -30,7 +30,6 @@ Validation
 - Deleting media also removes references from experiences in mockDB.json to avoid dangling references.
 
 Testing
-- scripts/test-media.js runs a sequence of tests using the FileMediaRepository:
   - create
   - read
   - update
