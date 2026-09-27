@@ -9,7 +9,6 @@ Files added:
 - src/services/BookingService.ts
 - app/api/admin/availability/route.ts (admin CRUD)
 - app/api/bookings/route.ts (public booking create/cancel)
-- scripts/test-availability.js (tests)
 
 Features:
 - Availability CRUD (create, list, update, delete)
@@ -22,5 +21,4 @@ Notes:
 - Replace File-backed repos with DB-backed (Postgres/Supabase) and use DB transactions for production.
 
 Testing:
-- npm run test will now run media, pricing and availability tests (scripts/test-media.js, scripts/test-pricing.js, scripts/test-availability.js).
 
