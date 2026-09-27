@@ -20,7 +20,6 @@ API
 
 Testing
 - Run: npm run test
-- The test suite runs media tests and pricing tests (scripts/test-media.js and scripts/test-pricing.js).
 
 Notes for production
 - Replace File-based repositories with Supabase/Postgres-backed repositories for concurrency and persistence.
