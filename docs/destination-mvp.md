@@ -17,5 +17,4 @@ Integration notes:
 - To replace with Supabase adapter, implement same repository interface and swap in API route.
 
 Testing:
-- Run: node ./scripts/test-destination.js
 
