@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 export default function AdminLink() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);\n  const adminRoles = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"]);
 
   useEffect(() => {
     let mounted = true;
@@ -19,7 +19,7 @@ export default function AdminLink() {
         .select("role")
         .eq("id", data.user.id)
         .maybeSingle();
-      if (mounted && profile?.role) setVisible(true);
+      if (mounted && profile?.role && adminRoles.has(profile.role)) setVisible(true);
     });
 
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
@@ -32,7 +32,7 @@ export default function AdminLink() {
         .select("role")
         .eq("id", session.user.id)
         .maybeSingle();
-      if (mounted) setVisible(Boolean(profile?.role));
+      if (mounted) setVisible(Boolean(profile?.role && adminRoles.has(profile.role)));
     });
 
     return () => {
