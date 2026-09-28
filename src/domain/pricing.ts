@@ -26,6 +26,9 @@ export interface PricingBreakdown {
   totalEur: number;
 }
 
+/** Round to whole cents so floating point noise (39.99999999999999) never reaches prices or Stripe amounts. */
+const cents = (n: number) => Math.round((n + Number.EPSILON) * 100) / 100;
+
 /**
  * Core pricing calculation engine
  * All pricing logic MUST go through this module, not in React components
@@ -46,15 +49,16 @@ export class PricingCalculator {
 
     // Private group surcharge
     const privateGroupSurcharge = input.privateGroup
-      ? (adultTotal + childTotal) * (input.privateGroupMultiplier - 1)
+      ? cents((adultTotal + childTotal) * (input.privateGroupMultiplier - 1))
       : 0;
 
     // Subtotal before seasonal adjustment
     const subtotal = basePrice + adultTotal + childTotal + privateGroupSurcharge;
 
     // Seasonal adjustment
-    const seasonalAdjustment =
-      (adultTotal + childTotal) * (input.seasonalMultiplier - 1);
+    const seasonalAdjustment = cents(
+      (adultTotal + childTotal) * (input.seasonalMultiplier - 1)
+    );
 
     // Add-ons
     const addonsTotal = input.addons.reduce(
@@ -79,7 +83,7 @@ export class PricingCalculator {
       addonsTotalEur: addonsTotal,
       couponDiscountEur: input.couponDiscountEur,
       taxesEur: taxes,
-      totalEur: Math.max(0, subtotalWithAddons + taxes),
+      totalEur: cents(Math.max(0, subtotalWithAddons + taxes)),
     };
   }
 
@@ -91,7 +95,7 @@ export class PricingCalculator {
     coupon: { discountType: 'percentage' | 'fixed'; discountValue: number }
   ): number {
     if (coupon.discountType === 'percentage') {
-      return (subtotalEur * coupon.discountValue) / 100;
+      return cents((subtotalEur * coupon.discountValue) / 100);
     }
     return coupon.discountValue;
   }

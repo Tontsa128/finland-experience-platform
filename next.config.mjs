@@ -13,6 +13,8 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "commons.wikimedia.org" },
+      { protocol: "https", hostname: "upload.wikimedia.org" },
       { protocol: "https", hostname: "cdn-datahub.visitfinland.com" },
       ...(supabaseHostname ? [{ protocol: "https", hostname: supabaseHostname }] : []),
     ],
