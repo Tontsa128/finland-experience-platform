@@ -1,12 +1,12 @@
 import { Destination, Cabin, Experience, BlogPost, Locale } from "@/types";
 
-const summerMathildedal = "https://cdn-datahub.visitfinland.com/images/f9ad30d0-0a6f-11f0-88da-256e05b1f1a0.jpeg?s=1280";
-const finnishSummerLake = "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=1400";
-const naantaliSummer = "https://images.unsplash.com/photo-1478515143454-712b5f547c8c?w=1400";
-const alandSea = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400";
-const archipelagoRoad = "https://images.unsplash.com/photo-1512207736139-6c3ee1990199?w=1400";
+const summerMathildedal = "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg";
+const finnishSummerLake = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Punassuo2.jpg";
+const naantaliSummer = "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg";
+const alandSea = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholm_2026-08-09_image12.jpg";
+const archipelagoRoad = "https://upload.wikimedia.org/wikipedia/commons/6/6c/Aura_river_in_Turku.jpg";
 const finnishCottage = "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=1400";
-const mathildedalHouse = "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=1400";
+const mathildedalHouse = "https://upload.wikimedia.org/wikipedia/commons/0/08/Anttipoffi_workers%27_quarters_in_Mathildedal.jpg";
 
 export const destinations: Destination[] = [
   {
@@ -47,7 +47,7 @@ export const destinations: Destination[] = [
       en: "Old town, archipelago, Moominworld and long summer evenings"
     },
     region: "Southwest Finland",
-    images: [naantaliSummer, "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1400"],
+    images: [naantaliSummer, naantaliSummer],
     priceFrom: 69,
     featured: true,
     coordinates: { lat: 60.467, lng: 22.025 },
@@ -70,7 +70,7 @@ export const destinations: Destination[] = [
       en: "Sea, red granite, cycling and island calm"
     },
     region: "Åland",
-    images: [alandSea, finnishCottage],
+    images: [alandSea, alandSea],
     priceFrom: 180,
     featured: true,
     coordinates: { lat: 60.178, lng: 19.915 },
@@ -93,7 +93,7 @@ export const destinations: Destination[] = [
       en: "Beaches, sea and western-coast summer"
     },
     region: "Western Finland",
-    images: ["https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1400", archipelagoRoad],
+    images: [archipelagoRoad, archipelagoRoad],
     priceFrom: 120,
     featured: false,
     coordinates: { lat: 59.823, lng: 22.969 },
@@ -139,7 +139,7 @@ export const destinations: Destination[] = [
       en: "Aura River, history and gateway to the islands"
     },
     region: "Southwest Finland",
-    images: ["https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=1400", archipelagoRoad],
+    images: [archipelagoRoad, archipelagoRoad],
     priceFrom: 110,
     featured: false,
     coordinates: { lat: 60.452, lng: 22.267 },
