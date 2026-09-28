@@ -46,15 +46,16 @@ export class PricingCalculator {
 
     // Private group surcharge
     const privateGroupSurcharge = input.privateGroup
-      ? (adultTotal + childTotal) * (input.privateGroupMultiplier - 1)
+      ? (adultTotal + childTotal) * Math.max(0, input.privateGroupMultiplier - 1)
       : 0;
 
     // Subtotal before seasonal adjustment
     const subtotal = basePrice + adultTotal + childTotal + privateGroupSurcharge;
 
     // Seasonal adjustment
-    const seasonalAdjustment =
-      (adultTotal + childTotal) * (input.seasonalMultiplier - 1);
+    const seasonalAdjustment = Math.round(
+      (adultTotal + childTotal) * (input.seasonalMultiplier - 1) * 100
+    ) / 100;
 
     // Add-ons
     const addonsTotal = input.addons.reduce(
