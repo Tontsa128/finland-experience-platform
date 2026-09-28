@@ -24,12 +24,12 @@
     "admin": "Hallinta"
   },
   "hero": {
-    "title": "Rauhallisempi tapa viettää Suomen kesää",
-    "subtitle": "Revontulet, koskematon luonto, designkaupungit ja aito sauna. Unohtumaton pohjoismainen seikkailusi alkaa täältä.",
-    "cta": "Etsi majoitus",
-    "ctaSecondary": "Katso elämykset",
-    "eyebrow": "Suomen kesä • Slow travel",
-    "description": "Majoitu meren äärellä, nuku mökissä, lämmitä sauna ja anna pitkän pohjoisen kesäillan kulua rauhassa. Tutustu Mathildedaliin, Saloon, Naantaliin, Ahvenanmaahan ja etelärannikkoon.",
+    "title": "Löydä Suomen loputtomat kesäyöt",
+    "subtitle": "Järven rannalla, saunan lämmössä ja keskiyön auringon alla suomalainen kesä tuntuu enemmän kokemukselta kuin vuodenajalta.",
+    "cta": "Varaa kesämajoitus",
+    "ctaSecondary": "Löydä elämyksiä",
+    "eyebrow": "Suomen kesä • yöttömät yöt",
+    "description": "Nuku mökissä veden äärellä, ui ilta-auringossa, lämmitä sauna ja anna valon jatkua pitkälle yöhön. Löydä mökkilomat, kaupunkiviikonloput ja saariston kesäelämykset.",
     "explore": "Tutustu kesäkohteisiin"
   },
   "sections": {
@@ -149,5 +149,25 @@
     "delete": "Poista",
     "save": "Tallenna",
     "cancel": "Peruuta"
+  },
+  "summerHome": {
+    "eyebrow": "Elä kesä, jota muistat",
+    "title": "Miltä sinun Suomen kesäsi tuntuu?",
+    "subtitle": "Valitse oma rytmisi: mökin rauha, kaupungin syke tai yöttömän yön elämykset.",
+    "midnight": "Yötön yö",
+    "midnightDesc": "Musiikkia, festivaaleja, tanssia ja keskiyön aurinkoa.",
+    "sauna": "Sauna & järvi",
+    "saunaDesc": "Löyly, laituri ja viileä vesi – suomalaisen kesän klassikko.",
+    "cities": "Kaupunkiviikonloppu",
+    "citiesDesc": "Helsinki, Turku ja Tampere yhdistävät kulttuurin, ruoan ja pitkät illat.",
+    "cabins": "Mökkiloma",
+    "cabinsDesc": "Oma laituri, metsäpolku ja hiljainen aamu veden äärellä.",
+    "storyEyebrow": "Kun aurinko ei laske",
+    "storyTitle": "Suomessa kesä on kokemus, ei vain vuodenaika.",
+    "storyText": "Kun aurinko viipyy horisontissa lähes koko yön, päivällä ei ole kiire loppua. Soutureissu voi jatkua iltauinniksi, grilli lämpenee uudelleen ja sauna odottaa rannassa. Tule viettämään kesää tavalla, joka jää mieleen.",
+    "storyCta": "Löydä oma kesäsi",
+    "advisorEyebrow": "Anna meidän auttaa",
+    "advisorTitle": "Millainen kesäelämys kiinnostaa sinua?",
+    "advisorText": "Mökki, kaupunki vai yötön yö? Suomen kesäloma-avustaja auttaa löytämään seuraavan idean."
   }
 }
