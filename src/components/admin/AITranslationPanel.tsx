@@ -2,6 +2,17 @@
 
 import { useState } from "react";
 
+export async function translateFinnishText(text: string, context: "travel" | "seo" | "button" | "general" = "travel") {
+  const response = await fetch("/api/admin/translate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, context }),
+  });
+  const body = await response.json();
+  if (!response.ok) throw new Error(body.error || "Käännös epäonnistui.");
+  return { english: String(body.english || ""), spanish: String(body.spanish || "") };
+}
+
 type Props = {
   valueFi: string;
   valueEn: string;
