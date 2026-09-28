@@ -65,8 +65,8 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
             ? { lat: Number(property.latitude), lng: Number(property.longitude) }
             : undefined,
         type: property.property_type as Cabin["type"],
-        bookingUrl: undefined,
-        provider: undefined,
+        bookingUrl: property.provider_url || undefined,
+        provider: property.provider_name || undefined,
         priceNote: {
           fi: property.base_price_eur ? `Alkaen ${property.base_price_eur} €/yö. Tarkista ajantasainen hinta.` : "Tarkista ajantasainen hinta.",
           es: property.base_price_eur ? `Desde ${property.base_price_eur} € por noche. Consulta el precio actual.` : "Consulta el precio actual.",
