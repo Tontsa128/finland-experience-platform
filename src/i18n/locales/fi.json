@@ -100,13 +100,13 @@
     }
   },
   "booking": {
-    "title": "Varaa elämys",
+    "title": "Palveluntarjoajan kautta",
     "selectDates": "Valitse päivämäärät",
     "guests": "Henkilöt",
-    "total": "Yhteensä",
+    "total": "Hinta",
     "proceedToPayment": "Siirry maksamaan",
     "success": "Varaus vahvistettu!",
-    "successDesc": "Saat vahvistusviestin sähköpostiisi pian."
+    "successDesc": "Varaus tehdään suoraan palveluntarjoajan kanssa."
   },
   "contact": {
     "title": "Ota yhteyttä",
