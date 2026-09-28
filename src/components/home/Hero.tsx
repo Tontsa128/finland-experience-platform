@@ -12,13 +12,6 @@ function localized(values: Record<string, string>, locale: string, fallback: str
   return values[locale] || values.en || values.fi || fallback;
 }
 
-function localizedHref(value: string, locale: string, fallback: string) {
-  if (!value) return `/${locale}${fallback}`;
-  if (value.startsWith("http://") || value.startsWith("https://")) return value;
-  const normalized = value.replace(/^\/(fi|es|en)(?=\/|$)/, "");
-  return `/${locale}${normalized || "/"}`.replace(/\/$/, "");
-}
-
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale();
   const t = useTranslations("hero");
