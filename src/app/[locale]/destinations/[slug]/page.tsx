@@ -7,6 +7,7 @@ import { getPublishedDestinations } from "@/lib/public-content";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
@@ -101,6 +102,7 @@ export default async function DestinationDetail({ params }: { params: { locale: 
       </section>
 
       {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} /> : null}
+      {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
 
       <section className="bg-slate-50">
         <div className="container-narrow py-14 sm:py-18">
