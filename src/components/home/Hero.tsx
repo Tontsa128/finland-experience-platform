@@ -15,7 +15,8 @@ function localized(values: Record<string, string>, locale: string, fallback: str
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale();
   const t = useTranslations("hero");
-  // Keep the first screen visually curated: use a real Finnish lake/cottage photo rather than an arbitrary CMS image.\n  const image = fallbackImage;
+  // Keep the first screen visually curated: use a real Finnish lake/cottage photo rather than an arbitrary CMS image.
+  const image = fallbackImage;
   const eyebrow = settings ? localized(settings.heroEyebrow, locale, t("eyebrow")) : t("eyebrow");
   const title = settings ? localized(settings.heroTitle, locale, t("title")) : t("title");
   const description = settings ? localized(settings.heroDescription, locale, t("description")) : t("description");
@@ -26,8 +27,10 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
   return (
     <section className="relative flex min-h-[calc(100svh-4rem)] w-full items-center overflow-hidden sm:min-h-[620px]">
-      <Image src={image} alt={title} fill priority sizes="100vw" className="object-cover" />\n      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-black/5" />\n      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/35 to-transparent" />\n      <div className="absolute bottom-4 right-4 rounded-full bg-black/35 px-3 py-1.5 text-[11px] text-white/75 backdrop-blur-sm">Photo: Tomi Blasic / Unsplash</div>
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/90 via-brand-900/60 to-transparent" />
+      <Image src={image} alt={title} fill priority sizes="100vw" className="object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-black/5" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/35 to-transparent" />
+      <div className="absolute bottom-4 right-4 rounded-full bg-black/35 px-3 py-1.5 text-[11px] text-white/75 backdrop-blur-sm">Photo: Tomi Blasic / Unsplash</div>
       <div className="container-narrow relative z-10 w-full py-14 text-white sm:py-28">
         <div className="max-w-3xl">
           <p className="mb-4 inline-flex rounded-full border border-white/25 bg-black/20 px-4 py-2 text-xs font-semibold uppercase tracking-[.18em] text-white/90 backdrop-blur-md sm:text-sm">{eyebrow}</p>
