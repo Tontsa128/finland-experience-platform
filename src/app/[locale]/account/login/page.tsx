@@ -24,6 +24,23 @@ export default function CustomerLoginPage() {
         setError("Kirjautuminen epäonnistui. Tarkista sähköposti ja salasana.");
         return;
       }
+
+      const { data: userData } = await supabase.auth.getUser();
+      if (userData.user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("id", userData.user.id)
+          .maybeSingle();
+
+        const adminRoles = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"]);
+        if (profile?.role && adminRoles.has(profile.role)) {
+          router.replace("/admin");
+          router.refresh();
+          return;
+        }
+      }
+
       router.replace(`/${locale}/account`);
       router.refresh();
     } catch (e) {
