@@ -23,8 +23,6 @@
     "uuid": "^9.0.0",
     "@supabase/supabase-js": "^2.114.0",
     "@supabase/ssr": "^0.12.7",
-    "stripe": "^14.0.0",
-    "@stripe/stripe-js": "^2.0.0",
     "lucide-react": "^0.400.0",
     "next-intl": "^3.17.0",
     "framer-motion": "^11.3.0",
