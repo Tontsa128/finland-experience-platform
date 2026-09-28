@@ -4,9 +4,10 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { photoLibrary } from "@/lib/photo-library";
 import { LuxuryDirectory } from "@/components/luxury/LuxuryDirectory";
 
-const heroImage = "https://images.unsplash.com/photo-1742639008187-0294cf3fdf93?auto=format&fit=crop&fm=jpg&q=82&w=2400";
+const heroImage = photoLibrary.mathildedalHarbour;
 
 const copy = {
   fi: {
