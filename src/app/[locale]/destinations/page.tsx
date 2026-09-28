@@ -52,6 +52,22 @@ export default async function DestinationsPage({ params }: { params: { locale: s
         </div>
       </section>
 
+      <section className="bg-white py-16 sm:py-24">
+        <div className="container-narrow overflow-hidden rounded-[2rem] bg-brand-950 p-8 text-white sm:p-12">
+          <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">Luxury & Authentic Finland</p>
+          <h2 className="mt-4 max-w-4xl font-display text-4xl font-bold leading-tight sm:text-5xl">
+            {locale === "fi" ? "Sauna, saaristo, lähiruoka ja uniikit yöpymiset." : locale === "es" ? "Sauna, archipiélago, gastronomía local y estancias únicas." : "Sauna, archipelago, local food and unique stays."}
+          </h2>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-white/70">
+            {locale === "fi" ? "Kuratoitu hakemisto Salon, Naantalin, Turun saariston ja Etelä-Suomen elämyksistä. Varaat jokaisen kohteen itse suoraan palveluntarjoajalta." : locale === "es" ? "Un directorio curado de experiencias en Salo, Naantali, el archipiélago de Turku y el sur de Finlandia. Reservas directamente con cada proveedor." : "A curated directory of experiences in Salo, Naantali, the Turku archipelago and Southern Finland. Book directly with each provider."}
+          </p>
+          <Link href={`/${locale}/luxury-finland`} className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">
+            {locale === "fi" ? "Avaa Luxury & Authentic Finland" : locale === "es" ? "Abrir Luxury & Authentic Finland" : "Open Luxury & Authentic Finland"}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
       <section className="bg-brand-50 py-16 sm:py-24">
         <div className="container-narrow grid items-center gap-8 lg:grid-cols-[1.1fr_.9fr]">
           <div><p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">Slow down · Stay longer</p><h2 className="mt-4 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{copy.story}</h2><p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">{copy.intro}</p></div>
