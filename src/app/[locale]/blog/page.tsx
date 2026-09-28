@@ -1,3 +1,4 @@
+import { IMG } from "@/lib/images";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Compass, Moon, Sparkles, Sun, Waves } from "lucide-react";
@@ -6,9 +7,9 @@ import { getPublishedBlogPosts } from "@/lib/public-content";
 import type { Locale } from "@/types";
 
 const editorialImages = [
-  "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=1800",
-  "https://images.unsplash.com/photo-1478515143454-712b5f547c8c?w=1800",
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800",
+  IMG.lake,
+  IMG.naantali,
+  IMG.aland,
 ];
 
 export default async function BlogPage({ params }: { params: { locale: string } }) {

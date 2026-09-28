@@ -44,7 +44,7 @@
     "testimonials": "What our guests say",
     "blog": "Travel Inspiration",
     "newsletter": "Get travel inspiration",
-    "newsletterDesc": "Tips, special offers and Northern Lights alerts straight to your inbox."
+    "newsletterDesc": "Tips, special offers and summer deals straight to your inbox."
   },
   "why": {
     "nature": {
@@ -75,9 +75,9 @@
   },
   "accommodations": {
     "title": "Accommodations",
-    "subtitle": "Cabins, glass igloos, design hotels and more",
+    "subtitle": "Cottages, seaside villas, design hotels and more",
     "cabin": "Cabin",
-    "igloo": "Glass Igloo",
+    "igloo": "Seaside Villa",
     "hotel": "Hotel",
     "villa": "Villa",
     "guests": "guests",
@@ -88,8 +88,8 @@
     "subtitle": "Create memories that last a lifetime",
     "duration": "Duration",
     "category": {
-      "northern-lights": "Northern Lights",
-      "husky": "Husky",
+      "northern-lights": "Midnight Sun",
+      "husky": "Archipelago",
       "sauna": "Sauna",
       "cruise": "Cruise",
       "hiking": "Hiking",

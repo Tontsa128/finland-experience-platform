@@ -44,7 +44,7 @@
     "testimonials": "Mitä vieraamme sanovat",
     "blog": "Matkainspiraatiota",
     "newsletter": "Saa matkainspiraatiota",
-    "newsletterDesc": "Vinkkejä, erikoistarjouksia ja revontulihälytyksiä suoraan sähköpostiisi."
+    "newsletterDesc": "Vinkkejä, erikoistarjouksia ja kesäkohteiden uutuuksia suoraan sähköpostiisi."
   },
   "why": {
     "nature": {
@@ -75,9 +75,9 @@
   },
   "accommodations": {
     "title": "Majoitukset",
-    "subtitle": "Mökit, lasi-iglut, designhotellit ja paljon muuta",
+    "subtitle": "Mökit, merenrantahuvilat, designhotellit ja paljon muuta",
     "cabin": "Mökki",
-    "igloo": "Lasi-iglu",
+    "igloo": "Merenrantavilla",
     "hotel": "Hotelli",
     "villa": "Huvila",
     "guests": "henkilöä",
@@ -88,8 +88,8 @@
     "subtitle": "Luo muistoja, jotka kestävät eliniän",
     "duration": "Kesto",
     "category": {
-      "northern-lights": "Revontulet",
-      "husky": "Husky",
+      "northern-lights": "Yötön yö",
+      "husky": "Saaristo",
       "sauna": "Sauna",
       "cruise": "Risteily",
       "hiking": "Vaellus",

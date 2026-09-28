@@ -44,7 +44,7 @@
     "testimonials": "Lo que dicen nuestros huéspedes",
     "blog": "Inspiración de viaje",
     "newsletter": "Recibe inspiración de viaje",
-    "newsletterDesc": "Consejos, ofertas especiales y alertas de auroras directamente en tu bandeja de entrada."
+    "newsletterDesc": "Consejos, ofertas especiales y novedades del verano directamente en tu bandeja de entrada."
   },
   "why": {
     "nature": {
@@ -75,9 +75,9 @@
   },
   "accommodations": {
     "title": "Alojamientos",
-    "subtitle": "Cabañas, iglús de cristal, hoteles de diseño y más",
+    "subtitle": "Cabañas, villas junto al mar, hoteles de diseño y más",
     "cabin": "Cabaña",
-    "igloo": "Iglú de cristal",
+    "igloo": "Villa junto al mar",
     "hotel": "Hotel",
     "villa": "Villa",
     "guests": "huéspedes",
@@ -88,8 +88,8 @@
     "subtitle": "Crea recuerdos que durarán toda la vida",
     "duration": "Duración",
     "category": {
-      "northern-lights": "Auroras boreales",
-      "husky": "Husky",
+      "northern-lights": "Sol de medianoche",
+      "husky": "Archipiélago",
       "sauna": "Sauna",
       "cruise": "Crucero",
       "hiking": "Senderismo",

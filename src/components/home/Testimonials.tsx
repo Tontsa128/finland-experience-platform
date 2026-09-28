@@ -3,14 +3,15 @@ import { useLocale, useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
+// PLACEHOLDER copy – replace with real customer reviews before showing this section publicly.
 const testimonials = [
   {
     name: "María González",
     location: "Madrid, Spain",
     text: {
-      en: "The glass igloo and Northern Lights hunt were magical. Everything was perfectly organized. Best trip of our lives!",
-      es: "El iglú de cristal y la caza de auroras fueron mágicos. Todo perfectamente organizado. ¡El mejor viaje de nuestras vidas!",
-      fi: "Lasi-iglu ja revontulijahti olivat maagisia. Kaikki täydellisesti järjestetty. Elämämme paras matka!",
+      en: "A lakeside cottage, a wood-fired sauna and light evenings that never ended. Everything was easy to book. Best summer trip we have taken!",
+      es: "Una cabaña junto al lago, sauna de leña y noches luminosas que no terminaban nunca. Todo fue fácil de reservar. ¡El mejor viaje de verano!",
+      fi: "Mökki järven rannalla, puusauna ja valoisat illat, jotka eivät loppuneet. Varaaminen oli helppoa. Paras kesämatkamme!",
     },
     rating: 5,
     avatar: "MG",
@@ -19,9 +20,9 @@ const testimonials = [
     name: "Carlos Ruiz",
     location: "Barcelona, Spain",
     text: {
-      en: "Husky safari with the kids was unforgettable. The cabin by the lake felt like a dream. Highly recommend Nordic Escape.",
-      es: "El safari en husky con los niños fue inolvidable. La cabaña junto al lago parecía un sueño. Recomendamos Nordic Escape.",
-      fi: "Huskyajelu lasten kanssa oli unohtumaton. Järvimökki tuntui unelmalta. Suosittelemme lämpimästi.",
+      en: "Island hopping by bike and kayak with the kids was unforgettable. The archipelago felt like a dream. Highly recommended.",
+      es: "Recorrer las islas en bici y kayak con los niños fue inolvidable. El archipiélago parecía un sueño. Muy recomendable.",
+      fi: "Saaristopyöräily ja melonta lasten kanssa oli unohtumatonta. Saaristo tuntui unelmalta. Suosittelemme lämpimästi.",
     },
     rating: 5,
     avatar: "CR",
@@ -30,9 +31,9 @@ const testimonials = [
     name: "Laura Fernández",
     location: "Valencia, Spain",
     text: {
-      en: "Authentic Finnish sauna experience and beautiful Helsinki. The team helped us plan every detail. Will definitely return!",
-      es: "Experiencia auténtica de sauna finlandesa y precioso Helsinki. El equipo nos ayudó a planificar cada detalle. ¡Volveremos!",
-      fi: "Aito suomalainen saunaelämys ja kaunis Helsinki. Tiimi auttoi suunnittelemaan kaiken. Palaamme ehdottomasti!",
+      en: "Naantali old town, the harbour at sunset and a swim before dinner. Finnish summer is a secret worth sharing.",
+      es: "El casco antiguo de Naantali, el puerto al atardecer y un baño antes de cenar. El verano finlandés es un secreto que vale la pena compartir.",
+      fi: "Naantalin vanha kaupunki, satama auringonlaskussa ja uinti ennen illallista. Suomalainen kesä on salaisuus, joka kannattaa jakaa.",
     },
     rating: 5,
     avatar: "LF",

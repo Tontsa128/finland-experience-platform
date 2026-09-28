@@ -2,10 +2,13 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/home/Hero";
+import { ValueStrip } from "@/components/home/ValueStrip";
+import { FinalCta } from "@/components/home/FinalCta";
 import { DestinationCard } from "@/components/ui/DestinationCard";
 import { CabinCard } from "@/components/ui/CabinCard";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
 import TravelAdvisor from "@/components/TravelAdvisor";
+import { SUMMER_FALLBACK } from "@/lib/images";
 import { destinations, cabins, experiences } from "@/lib/data";
 import {
   getHomepageSettings,
@@ -21,8 +24,7 @@ import {
   TreePine,
 } from "lucide-react";
 
-const fallbackSummerImage =
-  "https://cdn-datahub.visitfinland.com/images/f9ad30d0-0a6f-11f0-88da-256e05b1f1a0.jpeg?s=1800";
+const fallbackSummerImage = SUMMER_FALLBACK;
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -115,6 +117,11 @@ export default async function HomePage({ params }: { params: { locale: string } 
   return (
     <>
       <Hero settings={homepage} />
+      <ValueStrip
+        destinations={(cmsDestinations.length ? cmsDestinations : destinations).length}
+        stays={(cmsCabins.length ? cmsCabins : cabins).length}
+        experiences={(cmsExperiences.length ? cmsExperiences : experiences).length}
+      />
 
       <section className="relative overflow-hidden bg-brand-950 py-16 text-white sm:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,183,72,.22),transparent_35%)]" />
@@ -264,6 +271,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
       </section>
 
 
+      <FinalCta locale={locale} />
     </>
   );
 }

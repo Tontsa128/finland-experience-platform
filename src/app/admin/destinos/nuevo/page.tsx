@@ -1,4 +1,5 @@
 'use client';
+import { SUMMER_FALLBACK } from '@/lib/images';
 
 import { FormEvent, useState } from 'react';
 import Link from 'next/link';
@@ -8,7 +9,7 @@ import MediaPicker from '@/components/admin/MediaPicker';
 import type { ManagedDestination } from '../page';
 
 const STORAGE_KEY = 'finland-experience-managed-destinations';
-const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600&q=85';
+const FALLBACK_IMAGE = SUMMER_FALLBACK;
 function slugify(value: string) { return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
 
 export default function NewDestinationPage() {
