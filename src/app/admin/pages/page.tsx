@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect,useState } from "react";
+import { translateFinnishText } from "@/components/admin/AITranslationPanel";
 
 type Page={id:string;slug:string;locale:string;title:string;content:string|null;seo_title:string|null;seo_description:string|null;canonical_url:string|null;noindex:boolean;published:boolean};
 const empty:Page={id:"",slug:"",locale:"fi",title:"",content:"",seo_title:"",seo_description:"",canonical_url:"",noindex:false,published:false};
@@ -9,7 +10,7 @@ export default function PagesAdminPage(){
  const [pages,setPages]=useState<Page[]>([]); const [form,setForm]=useState<Page>(empty); const [error,setError]=useState(""); const [notice,setNotice]=useState(""); const [busy,setBusy]=useState(false);
  async function load(){const r=await fetch("/api/admin/pages",{cache:"no-store"});const b=await r.json();if(!r.ok)throw new Error(b.error||"Sivuja ei voitu ladata.");setPages(b.pages||[]);}
  useEffect(()=>{load().catch(e=>setError(e.message));},[]);
- async function save(){setBusy(true);setError("");setNotice("");try{const r=await fetch("/api/admin/pages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(form)});const b=await r.json();if(!r.ok)throw new Error(b.error||"Tallennus epäonnistui.");setNotice("Sivu tallennettu.");setForm(b.page);await load();}catch(e){setError(e instanceof Error?e.message:"Tallennus epäonnistui.");}finally{setBusy(false);}}
+ async function save(){setBusy(true);setError("");setNotice("");try{let next={...form}; if(next.locale==="fi" && next.title.trim()){const others=pages.filter(p=>p.slug===next.slug&&p.id!==next.id); const en=others.find(p=>p.locale==="en"); const es=others.find(p=>p.locale==="es"); const t=await translateFinnishText(next.title,"travel"); if(!en||!en.title.trim()) next.title=t.english; if(!es||!es.title.trim()) next.title=t.spanish;} const r=await fetch("/api/admin/pages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(form)});const b=await r.json();if(!r.ok)throw new Error(b.error||"Tallennus epäonnistui.");setNotice("Sivu tallennettu.");setForm(b.page);await load();}catch(e){setError(e instanceof Error?e.message:"Tallennus epäonnistui.");}finally{setBusy(false);}}
  async function remove(page:Page){if(!confirm(`Poistetaanko sivu "${page.title}"?`))return;const r=await fetch(`/api/admin/pages?slug=${encodeURIComponent(page.slug)}&locale=${page.locale}`,{method:"DELETE"});const b=await r.json();if(!r.ok){setError(b.error||"Poisto epäonnistui.");return;}if(form.id===page.id)setForm(empty);await load();}
  return <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-8"><div className="mx-auto max-w-7xl">
   <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-sm font-semibold text-emerald-700">CMS / Sivut</p><h1 className="mt-1 text-3xl font-bold text-slate-950">Luo ja muokkaa sivuja</h1><p className="mt-2 max-w-2xl text-slate-500">Luo uusia sisältösivuja ilman koodimuutoksia. Julkaisematon sivu ei näy julkisella sivustolla.</p></div><Link href="/admin/cms" className="text-sm font-semibold text-emerald-700">← CMS</Link></div>
