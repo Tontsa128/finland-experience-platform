@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { PricingCalculator } from '@/domain/pricing';
+import { PricingCalculator } from '../../domain/pricing';
 
 describe('PricingCalculator', () => {
   describe('calculateBreakdown', () => {
