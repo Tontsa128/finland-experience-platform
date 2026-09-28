@@ -61,7 +61,7 @@ function handleLocalizedRequest(req: NextRequest) {
 }
 
 async function getAdminRole(req: NextRequest) {
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !(process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)) {
     return { role: null, response: null as NextResponse | null, configured: false };
   }
 
