@@ -176,7 +176,7 @@ export default function ContentStudioPage() {
           maxGuests:selected.raw.max_guests, bedrooms:selected.raw.bedrooms, bathrooms:selected.raw.bathrooms,
           basePriceEur:selected.raw.base_price_eur, providerName:selected.raw.provider_name, providerUrl:selected.raw.provider_url,
           featured:selected.raw.featured, status:selected.status === "published" ? "published" : "draft",
-          mediaIds:(selected.raw.property_media||[]).map((x:any)=>x.media?.id).filter(Boolean),
+          mediaIds:Array.from(new Set([selected.raw.selected_media_id,...(selected.raw.property_media||[]).map((x:any)=>x.media?.id).filter(Boolean)].filter(Boolean))),
           translations:{
             fi:{name:t.fi.name,shortDescription:t.fi.shortDescription,description:t.fi.description,locationName:selected.raw.property_translations?.find((x:any)=>x.locale==="fi")?.location_name,seoTitle:t.fi.seoTitle,seoDescription:t.fi.seoDescription},
             en:{name:t.en.name,shortDescription:t.en.shortDescription,description:t.en.description,locationName:selected.raw.property_translations?.find((x:any)=>x.locale==="en")?.location_name,seoTitle:t.en.seoTitle,seoDescription:t.en.seoDescription},
@@ -189,7 +189,7 @@ export default function ContentStudioPage() {
           id:Number(selected.id), destinationId:selected.raw.destination_id, categoryId:selected.raw.category_id, slug:selected.slug,
           durationMinutes:selected.raw.duration_minutes,minGroupSize:selected.raw.min_group_size,maxGroupSize:selected.raw.max_group_size,
           difficultyLevel:selected.raw.difficulty_level,status:selected.status === "published" ? "published" : "draft",
-          mediaIds:(selected.raw.experience_media||[]).map((x:any)=>x.media?.id).filter(Boolean),
+          mediaIds:Array.from(new Set([selected.raw.selected_media_id,...(selected.raw.experience_media||[]).map((x:any)=>x.media?.id).filter(Boolean)].filter(Boolean))),
           pricing:selected.raw.pricing_rules?.[0] ? {basePriceEur:selected.raw.pricing_rules[0].base_price_eur,adultPriceEur:selected.raw.pricing_rules[0].adult_price_eur,childPriceEur:selected.raw.pricing_rules[0].child_price_eur} : undefined,
           translations:{
             fi:{title:t.fi.name,shortDescription:t.fi.shortDescription,fullDescription:t.fi.fullDescription,whatToBring:t.fi.whatToBring,safetyInformation:t.fi.safetyInformation},
