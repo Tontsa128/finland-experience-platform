@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, PenSquare, Sparkles, Waves, Home, Files } from "lucide-react";
 
 const sections = [
+  { href: "/admin/content-studio", label: "✦ Content Studio", text: "Keskitetty editori FI/EN/ES-sisällölle, AI-käännökset, SEO ja julkaisu.", icon: Sparkles },
   { href: "/admin/homepage", label: "Etusivu", text: "Hero-kuva, otsikot, tekstit ja toimintopainikkeet.", icon: Home },
   { href: "/admin/destinos", label: "Matkakohteet", text: "Kohteet, kieliversiot, kuvaukset, URL-osoitteet ja julkaisutila.", icon: MapPinned },
   { href: "/admin/properties", label: "Majoitukset", text: "Mökit, huvilat, hinnat, vierasmäärät ja SEO-tekstit.", icon: FileText },
