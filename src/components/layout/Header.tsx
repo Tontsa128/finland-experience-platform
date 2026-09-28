@@ -22,7 +22,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
 
   const fallbackItems = [
     ["home", ""], ["destinations", "destinations"], ["accommodations", "accommodations"],
-    ["experiences", "experiences"], ["cityBreaks", "city-breaks"], ["blog", "blog"], ["contact", "contact"],
+    ["experiences", "experiences"], ["events", "events"], ["cityBreaks", "city-breaks"], ["blog", "blog"], ["contact", "contact"],
   ] as const;
 
   const items = navigation.length ? navigation.map((item) => [item.id, item.href] as const) : fallbackItems;
