@@ -17,6 +17,7 @@ const nextConfig = {
       { protocol: "https", hostname: "kohteet.visitsalo.fi" },
       { protocol: "https", hostname: "matrihouse.fi" },
       { protocol: "https", hostname: "visitnaantali.com" },
+      { protocol: "https", hostname: "static.wixstatic.com" },
       ...(supabaseHostname ? [{ protocol: "https", hostname: supabaseHostname }] : []),
     ],
   },
