@@ -21,6 +21,7 @@ Nämä ovat projektin pysyvät säännöt uusille sivuille, kohteille, majoituks
 - Elämyksen sivu: `/[locale]/experiences/[slug]`
 - Kaupunkilomat: `/[locale]/city-breaks`
 - Blogi: `/[locale]/blog`
+- Luxury & Authentic Finland -hakemisto: `/[locale]/luxury-finland`
 - Yhteystiedot: `/[locale]/contact`
 - Asiakastili: `/[locale]/account`
 - Kirjautuminen: `/[locale]/account/login`
