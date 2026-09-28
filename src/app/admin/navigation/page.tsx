@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { translateFinnishText } from "@/components/admin/AITranslationPanel";
 
 type Item = {
   id: string;
@@ -43,6 +44,16 @@ export default function NavigationAdmin() {
 
   async function save() {
     setError("");
+    if (!editing && form.locale === "fi") {
+      try {
+        const t = await translateFinnishText(form.label, "button");
+        for (const payload of [{ ...form, locale: "fi" }, { ...form, locale: "en", label: t.english }, { ...form, locale: "es", label: t.spanish }]) {
+          const r = await fetch("/api/admin/navigation", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+          const b = await r.json(); if (!r.ok) throw new Error(b.error || "Tallennus epäonnistui");
+        }
+        setEditing(null); setForm(empty); await load(); return;
+      } catch (e) { setError(e instanceof Error ? e.message : "Käännös epäonnistui"); return; }
+    }
     const r = await fetch("/api/admin/navigation", {
       method: editing ? "PATCH" : "POST",
       headers: { "Content-Type": "application/json" },
