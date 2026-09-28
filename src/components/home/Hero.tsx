@@ -15,7 +15,8 @@ function localized(values: Record<string, string>, locale: string, fallback: str
 function localizedHref(value: string, locale: string, fallback: string) {
   if (!value) return `/${locale}${fallback}`;
   if (value.startsWith("http://") || value.startsWith("https://")) return value;
-  return value.startsWith(`/${locale}/`) ? value : `/${locale}${value.startsWith("/") ? value : `/${value}`}`;
+  const normalized = value.replace(/^\/(fi|es|en)(?=\/|$)/, "");
+  return `/${locale}${normalized || "/"}`.replace(/\/$/, "");
 }
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
