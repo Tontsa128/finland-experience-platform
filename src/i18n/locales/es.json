@@ -104,9 +104,9 @@
     "selectDates": "Selecciona fechas",
     "guests": "Huéspedes",
     "total": "Total",
-    "proceedToPayment": "Proceder al pago",
-    "success": "¡Reserva confirmada!",
-    "successDesc": "Recibirás un correo de confirmación en breve."
+    "proceedToPayment": "Ir al proveedor",
+    "success": "Continuar al proveedor",
+    "successDesc": "La reserva y el pago se realizan directamente con el proveedor."
   },
   "contact": {
     "title": "Contáctanos",
