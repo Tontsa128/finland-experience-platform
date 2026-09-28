@@ -7,7 +7,7 @@ The admin area now uses Supabase Auth instead of the old demo session cookie.
 Set these in Vercel and local development:
 
 - `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (recommended)\n- `NEXT_PUBLIC_SUPABASE_ANON_KEY` (legacy alias, also supported)
 - `SUPABASE_SERVICE_ROLE_KEY`
 
 The service-role key is server-only and must never be exposed to the browser.
@@ -26,7 +26,7 @@ The auth hardening migration creates a profile automatically for every new Supab
 
 Create a user in **Supabase Dashboard → Authentication → Users**.
 
-The new account starts with role `EDITOR`. Promote the intended administrator from the SQL editor:
+Public account registration creates a `CUSTOMER` account. It must never grant admin access automatically. Create/promote the intended administrator explicitly from the SQL editor:
 
 ```sql
 update public.profiles
