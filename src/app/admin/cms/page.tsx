@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, PenSquare, Sparkles, Waves, Home } from "lucide-react";
+import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, PenSquare, Sparkles, Waves, Home, Files } from "lucide-react";
 
 const sections = [
   { href: "/admin/homepage", label: "Etusivu", text: "Hero-kuva, otsikot, tekstit ja toimintopainikkeet.", icon: Home },
@@ -10,6 +10,7 @@ const sections = [
   { href: "/admin/experiences", label: "Elämykset", text: "Sauna, veneily, kalastus ja muut varattavat elämykset.", icon: Waves },
   { href: "/admin/media", label: "Kuvapankki", text: "Lataa kuvia ja hallitse FI/ES/EN-alt-tekstejä.", icon: ImageIcon },
   { href: "/admin/blog", label: "Blogi", text: "Matkaoppaat, artikkelit ja hakukoneystävällinen sisältö.", icon: PenSquare },
+  { href: "/admin/pages", label: "Sivut", text: "Luo uusia sivuja, muokkaa tekstejä ja julkaise ne ilman koodia.", icon: Files },
   { href: "/admin/navigation", label: "Navigaatio", text: "Päävalikko, CTA-linkit ja sivuston rakenteen hallinta.", icon: Menu },
   { href: "/admin/banners", label: "Bannerit", text: "Kampanjat, sesonkiviestit ja ajastetut CTA-bannerit.", icon: Sparkles },
 ];
