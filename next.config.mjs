@@ -18,6 +18,8 @@ const nextConfig = {
       { protocol: "https", hostname: "matrihouse.fi" },
       { protocol: "https", hostname: "visitnaantali.com" },
       { protocol: "https", hostname: "static.wixstatic.com" },
+      { protocol: "https", hostname: "upload.wikimedia.org" },
+      { protocol: "https", hostname: "commons.wikimedia.org" },
       ...(supabaseHostname ? [{ protocol: "https", hostname: supabaseHostname }] : []),
     ],
   },
