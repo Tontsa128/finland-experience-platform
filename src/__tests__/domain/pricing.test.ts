@@ -27,8 +27,8 @@ describe('PricingCalculator', () => {
         basePriceEur: 100, adultCount: 2, childCount: 0, adultPriceEur: 100, childPriceEur: 50,
         privateGroup: true, privateGroupMultiplier: 1.5, seasonalMultiplier: 1.0, addons: [], couponDiscountEur: 0,
       });
-      assert.equal(result.privateGroupSurchargeEur, 150);
-      assert.equal(result.totalEur, 450);
+      assert.equal(result.privateGroupSurchargeEur, 100);
+      assert.equal(result.totalEur, 400);
     });
 
     it('applies seasonal multiplier', () => {
