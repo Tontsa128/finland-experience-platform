@@ -1,6 +1,8 @@
 -- Customer accounts and publishable custom pages.
 -- Customer sign-ups must never receive an admin role.
 
+ALTER TYPE public.language_code ADD VALUE IF NOT EXISTS 'en';
+
 ALTER TABLE public.profiles DROP CONSTRAINT IF EXISTS profiles_role_check;
 ALTER TABLE public.profiles ALTER COLUMN role SET DEFAULT 'CUSTOMER';
 ALTER TABLE public.profiles ADD CONSTRAINT profiles_role_check
