@@ -47,7 +47,7 @@ export const MOCK_SEASONAL_PRICING: SeasonalPricing[] = [
     seasonNameFi: 'Revontuli-huippukausi',
     priceMultiplier: 1.4,
     startDate: new Date('2026-09-01'),
-    endDate: new Date('2026-03-31'),
+    endDate: new Date('2027-03-31'),
     createdAt: new Date(),
     updatedAt: new Date(),
   },
