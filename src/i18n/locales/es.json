@@ -24,12 +24,12 @@
     "admin": "Admin"
   },
   "hero": {
-    "title": "Un verano finlandés sin prisas",
-    "subtitle": "Auroras boreales, naturaleza virgen, ciudades de diseño y auténticas saunas. Tu aventura nórdica inolvidable empieza aquí.",
-    "cta": "Buscar alojamiento",
-    "ctaSecondary": "Ver Experiencias",
-    "eyebrow": "Verano finlandés • Slow travel",
-    "description": "Duerme junto al mar, disfruta de una cabaña, calienta la sauna y deja que la larga tarde nórdica pase despacio. Descubre Mathildedal, Salo, Naantali, Åland y la costa sur.",
+    "title": "Descubre las noches infinitas del verano finlandés",
+    "subtitle": "Junto al lago, en la sauna y bajo el sol de medianoche, el verano finlandés se convierte en una experiencia.",
+    "cta": "Reservar alojamiento",
+    "ctaSecondary": "Descubrir experiencias",
+    "eyebrow": "Verano finlandés • noches infinitas",
+    "description": "Duerme junto al agua, nada bajo la luz de la tarde, disfruta de la sauna y deja que el día continúe hasta bien entrada la noche. Descubre cabañas, escapadas urbanas y experiencias del archipiélago.",
     "explore": "Explorar destinos de verano"
   },
   "sections": {
@@ -149,5 +149,25 @@
     "delete": "Eliminar",
     "save": "Guardar",
     "cancel": "Cancelar"
+  },
+  "summerHome": {
+    "eyebrow": "Vive un verano para recordar",
+    "title": "¿Cómo quieres sentir tu verano en Finlandia?",
+    "subtitle": "Elige tu ritmo: la calma de una cabaña, la energía de la ciudad o la magia del sol de medianoche.",
+    "midnight": "Noches infinitas",
+    "midnightDesc": "Música, festivales, baile y el sol de medianoche.",
+    "sauna": "Sauna y lago",
+    "saunaDesc": "Sauna, muelle y un baño fresco: el clásico verano finlandés.",
+    "cities": "Escapada urbana",
+    "citiesDesc": "Helsinki, Turku y Tampere combinan cultura, gastronomía y tardes largas.",
+    "cabins": "Vacaciones en cabaña",
+    "cabinsDesc": "Tu propio muelle, senderos del bosque y mañanas tranquilas junto al agua.",
+    "storyEyebrow": "Cuando el sol no se pone",
+    "storyTitle": "En Finlandia, el verano es una experiencia, no solo una estación.",
+    "storyText": "Cuando el sol permanece cerca del horizonte durante casi toda la noche, el día no tiene por qué terminar. Un paseo en barca puede convertirse en un baño nocturno, la parrilla vuelve a encenderse y la sauna espera junto al agua. Ven a vivir un verano que recordarás.",
+    "storyCta": "Encuentra tu verano",
+    "advisorEyebrow": "Déjanos ayudarte",
+    "advisorTitle": "¿Qué experiencia de verano buscas?",
+    "advisorText": "¿Cabaña, ciudad o noches infinitas? El asistente de verano finlandés te ayuda a encontrar tu próxima idea."
   }
 }
