@@ -14,6 +14,8 @@ const nextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "cdn-datahub.visitfinland.com" },
+      { protocol: "https", hostname: "kohteet.visitsalo.fi" },
+      { protocol: "https", hostname: "matrihouse.fi" },
       ...(supabaseHostname ? [{ protocol: "https", hostname: supabaseHostname }] : []),
     ],
   },
