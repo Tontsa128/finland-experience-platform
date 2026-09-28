@@ -30,7 +30,7 @@ finland-experience-platform/
 - Tailwind CSS
 - next-intl (suomi, espanja ja englanti)
 - Supabase PostgreSQL + Auth
-- Stripe-maksut
+- Palveluntarjoajalle ohjaava varauspolku (ei omaa checkoutia)
 - GitHub Actions CI
 
 ## Käyttöönotto
@@ -40,7 +40,7 @@ finland-experience-platform/
 - Node.js 20 LTS
 - npm
 - Supabase-projekti
-- Stripe-tili, jos maksutoimintoja käytetään
+- Palveluntarjoajien omat varaus- ja maksukanavat
 
 ### Asenna riippuvuudet
 
@@ -114,21 +114,19 @@ Lisätietoja:
 - [Supabase Auth -asetukset](./docs/SUPABASE_AUTH_SETUP.md)
 - [Supabase-ohje](./SUPABASE_SETUP.md)
 
-## Stripe
+## Varaus ja maksu
 
-Stripe-integraatio käyttää palvelinpuolella salaista API-avainta ja webhook-allekirjoituksen tarkistusta.
+Julkinen sivusto ei myy matkapaketteja eikä käsittele asiakkaan varausta tai maksua omassa checkoutissa. Sivusto toimii inspiraatio- ja ohjauspalveluna: käyttäjä tutustuu kohteeseen ja siirtyy lopuksi suoraan palveluntarjoajan omalle sivulle, jossa varaus, sopimus ja maksu tehdään.
 
-Lisätietoja:
-
-- [Stripe-asetukset](./STRIPE_SETUP.md)
-- [Stripe-toteutus](./STRIPE_IMPLEMENTATION.md)
+Projektissa on edelleen Stripeen liittyviä legacy/admin-tietorakenteita ja dokumentaatiota vanhaa maksupolkua varten. Niitä ei tule käyttää julkisessa varauspolussa ilman erillistä käyttöönottoa ja liiketoimintamallin muutosta.
 
 ## Tietoturva
 
 - Palvelimen Supabase service-role -avain pidetään palvelinpuolella.
 - Admin-reitit tarkistavat Supabase Auth -istunnon ja profiilin roolin.
 - Kirjoitusoikeudet rajataan käyttäjän roolin perusteella.
-- Stripe-webhookit varmennetaan allekirjoituksella.
+- Julkinen varauspolku ei käsittele maksukorttitietoja.
+- Mahdolliset legacy-maksutiedot käsitellään vain palvelinpuolen/admin-kontekstissa.
 - Oikeat ympäristömuuttujat ja salaisuudet pidetään pois Gitistä.
 
 ## Migraatiot
