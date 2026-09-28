@@ -7,7 +7,7 @@ export type PhotoCredit = {
 
 export const photoLibrary = {
   hero: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
-  mathildedalVillage: "https://upload.wikimedia.org/wikipedia/commons/9/2e/Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
+  mathildedalVillage: "https://upload.wikimedia.org/wikipedia/commons/0/08/Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
   mathildedalHarbour: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
   naantaliOldTown: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg",
   turkuAura: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Aura_river_in_Turku.jpg",
