@@ -99,7 +99,7 @@ export default async function EventsPage({ params }: { params: { locale: string 
             <p className="text-xs font-bold uppercase tracking-[.18em] text-gold-300">Salo</p>
             <h2 className="mt-3 font-display text-3xl font-bold">Tarkista ajantasainen kalenteri ennen matkaa</h2>
             <p className="mt-4 leading-7 text-white/70">Finland Experience Platform toimii inspiraatio- ja löytöpalveluna. Tapahtuman järjestäjä vastaa tapahtumasta, lipuista, varauksista ja maksuista.</p>
-            <Link href={`/${locale}/salo`} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-gold-300">Tutustu Salon kohteisiin <ArrowRight className="h-4 w-4" /></Link>
+            <Link href={`/${locale}/destinations/salo-mathildedal`} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-gold-300">Tutustu Salon kohteisiin <ArrowRight className="h-4 w-4" /></Link>
           </div>
         </div>
       </section>
