@@ -14,10 +14,10 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
   if (!e) notFound();
 
   const copy = locale === "fi"
-    ? { eyebrow: "Yksi kesäpäivä, jonka muistat", dream: "Tee tästä päivästä tarina.", book: "Kysy saatavuudesta", more: "Löydä lisää elämyksiä", info: "Elämys alkaa jo ennen kuin saavut.", text: "Suomen kesässä parhaat hetket syntyvät usein yksinkertaisista asioista: luonnosta, vedestä, saunasta, ihmisistä ja valosta.", note: "Näytämme paikallisia palveluita ja ohjaamme varaukseen palveluntarjoajalle." }
+    ? { eyebrow: "Yksi kesäpäivä, jonka muistat", dream: "Tee tästä päivästä tarina.", book: "Kysy saatavuudesta", more: "Löydä lisää elämyksiä", info: "Elämys alkaa jo ennen kuin saavut.", text: "Suomen kesässä parhaat hetket syntyvät usein yksinkertaisista asioista: luonnosta, vedestä, saunasta, ihmisistä ja valosta.", note: "Näytämme paikallisia palveluita ja ohjaamme varaukseen palveluntarjoajalle.", provider: "Siirry palveluntarjoajalle" }
     : locale === "es"
-      ? { eyebrow: "Un día de verano que recordarás", dream: "Convierte este día en una historia.", book: "Preguntar disponibilidad", more: "Descubrir más experiencias", info: "La experiencia empieza antes de llegar.", text: "En el verano finlandés, los mejores momentos nacen de cosas sencillas: naturaleza, agua, sauna, personas y luz.", note: "Mostramos servicios locales y dirigimos al proveedor para reservar." }
-      : { eyebrow: "One summer day you will remember", dream: "Turn this day into a story.", book: "Ask about availability", more: "Discover more experiences", info: "The experience starts before you arrive.", text: "In a Finnish summer, the best moments often come from simple things: nature, water, sauna, people and light.", note: "We show local services and direct you to the provider to book." };
+      ? { eyebrow: "Un día de verano que recordarás", dream: "Convierte este día en una historia.", book: "Preguntar disponibilidad", more: "Descubrir más experiencias", info: "La experiencia empieza antes de llegar.", text: "En el verano finlandés, los mejores momentos nacen de cosas sencillas: naturaleza, agua, sauna, personas y luz.", note: "Mostramos servicios locales y dirigimos al proveedor para reservar.", provider: "Ir al proveedor" }
+      : { eyebrow: "One summer day you will remember", dream: "Turn this day into a story.", book: "Ask about availability", more: "Discover more experiences", info: "The experience starts before you arrive.", text: "In a Finnish summer, the best moments often come from simple things: nature, water, sauna, people and light.", note: "We show local services and direct you to the provider to book.", provider: "Visit provider" };
 
   return (
     <div className="bg-white">
@@ -48,7 +48,11 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
             <div className="mt-1 text-3xl font-bold text-brand-950">{e.price > 0 ? "€" + e.price : "—"}</div>
             <p className="mt-1 text-sm text-slate-500">{locale === "fi" ? "Tarkista ajantasainen hinta palveluntarjoajalta." : locale === "es" ? "Confirma el precio actual con el proveedor." : "Confirm the current price with the provider."}</p>
             <div className="mt-6 rounded-2xl bg-brand-50 p-4 text-sm leading-relaxed text-brand-900">{copy.note}</div>
-            <Link href={`/${locale}/contact`} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{copy.book}<CalendarDays className="h-4 w-4" /></Link>
+            {e.providerUrl ? (
+              <a href={e.providerUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{copy.provider}<CalendarDays className="h-4 w-4" /></a>
+            ) : (
+              <Link href={`/${locale}/contact`} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{copy.book}<CalendarDays className="h-4 w-4" /></Link>
+            )}
             <Link href={`/${locale}/experiences`} className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">{copy.more}<ArrowRight className="h-4 w-4" /></Link>
           </aside>
         </div>
