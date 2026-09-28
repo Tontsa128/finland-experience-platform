@@ -50,6 +50,12 @@ Jokaisen varattavan elämyksen tulee sisältää:
 - saatavuus/pricing-tiedot projektin nykyisen booking-arkkitehtuurin mukaisesti
 - CTA:n pitää johtaa oikeaan varaus-/maksupolkuun, ei mock-onnistumiseen
 
+### Ulkoinen palveluntarjoajahakemisto
+- Luxury & Authentic Finland -hakemiston kohteissa Finland Experience Platform ei ota varausta eikä maksua.
+- CTA johtaa aina palveluntarjoajan tai virallisen matkailusivuston omalle sivulle.
+- Hinta näytetään vain silloin, kun se on tarkistettu palveluntarjoajan tai virallisen matkailulähteen sivulta.
+- Hakemiston kuvissa käytetään ensisijaisesti palveluntarjoajan tai virallisen matkailutoimijan kuvia ja ilmoitetaan kuvalähde.
+
 ## 4. Linkityssääntö
 
 Kun uusi sisältökortti luodaan:
