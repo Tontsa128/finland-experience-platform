@@ -97,7 +97,13 @@ export default async function EventsPage({ params }: { params: { locale: string 
             <p className="mt-4 leading-7 text-slate-600">Mathildedalin oma tapahtumasivu päivittyy jatkuvasti. Sieltä löydät kylän pienemmät joogat, saunat, ravintolaillat ja muut ohjelmat.</p>
             <a href="https://visitmathildedal.fi/fi/tapahtumat" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-800">Visit Mathildedalin tapahtumat <ArrowRight className="h-4 w-4" /></a>
           </div>
-          <div className="rounded-[2rem] bg-white p-8 shadow-soft">\n            <p className="text-xs font-bold uppercase tracking-[.18em] text-terracotta">Naantali</p>\n            <h2 className="mt-3 font-display text-3xl font-bold text-brand-950">Naantalin oma tapahtumakalenteri</h2>\n            <p className="mt-4 leading-7 text-slate-600">Naantalin tapahtumat päivittyvät Visit Naantalin kalenteriin. Tarkista aina järjestäjän oma sivu ennen matkaa.</p>\n            <a href="https://visitnaantali.com/tapahtumat/" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-800">Visit Naantalin tapahtumat <ArrowRight className="h-4 w-4" /></a>\n          </div>\n          <div className="rounded-[2rem] bg-brand-950 p-8 text-white">
+          <div className="rounded-[2rem] bg-white p-8 shadow-soft">
+            <p className="text-xs font-bold uppercase tracking-[.18em] text-terracotta">Naantali</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-brand-950">Naantalin oma tapahtumakalenteri</h2>
+            <p className="mt-4 leading-7 text-slate-600">Naantalin tapahtumat päivittyvät Visit Naantalin kalenteriin. Tarkista aina järjestäjän oma sivu ennen matkaa.</p>
+            <a href="https://visitnaantali.com/tapahtumat/" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-800">Visit Naantalin tapahtumat <ArrowRight className="h-4 w-4" /></a>
+          </div>
+          <div className="rounded-[2rem] bg-brand-950 p-8 text-white">
             <p className="text-xs font-bold uppercase tracking-[.18em] text-gold-300">Salo & Naantali</p>
             <h2 className="mt-3 font-display text-3xl font-bold">Tarkista ajantasainen kalenteri ennen matkaa</h2>
             <p className="mt-4 leading-7 text-white/70">Finland Experience Platform toimii inspiraatio- ja löytöpalveluna. Tapahtuman järjestäjä vastaa tapahtumasta, lipuista, varauksista ja maksuista.</p>
