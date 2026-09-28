@@ -13,7 +13,7 @@ async function getUser() {
     { cookies: { getAll: () => cookieStore.getAll(), setAll: () => undefined } }
   );
   const { data: { user }, error } = await supabase.auth.getUser();
-  if (error || !user) return null;
+  if (error || !user?.email) return null;
   return user;
 }
 
@@ -22,18 +22,14 @@ export async function GET() {
   if (!user) return NextResponse.json({ error: "Kirjautuminen vaaditaan." }, { status: 401 });
 
   try {
-    const admin = getSupabaseAdmin();
-    const { data: customer, error } = await admin
+    const { data: customer, error } = await getSupabaseAdmin()
       .from("customers")
       .select("id,first_name,last_name,email,phone,language_preference")
       .eq("auth_user_id", user.id)
       .maybeSingle();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-    return NextResponse.json({
-      user: { id: user.id, email: user.email },
-      customer,
-    });
+    return NextResponse.json({ user: { id: user.id, email: user.email }, customer });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Palvelinvirhe." }, { status: 503 });
   }
@@ -41,7 +37,7 @@ export async function GET() {
 
 export async function PATCH(request: NextRequest) {
   const user = await getUser();
-  if (!user) return NextResponse.json({ error: "Kirjautuminen vaaditaan." }, { status: 401 });
+  if (!user?.email) return NextResponse.json({ error: "Kirjautuminen vaaditaan." }, { status: 401 });
 
   try {
     const body = await request.json();
@@ -55,22 +51,47 @@ export async function PATCH(request: NextRequest) {
     }
 
     const admin = getSupabaseAdmin();
-    const { data: customer, error } = await admin
-      .from("customers")
-      .upsert({
-        auth_user_id: user.id,
+    const existing = await admin.from("customers").select("id").eq("auth_user_id", user.id).maybeSingle();
+    if (existing.error) return NextResponse.json({ error: existing.error.message }, { status: 500 });
+
+    let result;
+    if (existing.data) {
+      result = await admin.from("customers").update({
         first_name: firstName,
         last_name: lastName,
-        email: user.email,
         phone: phone || null,
         language_preference: language,
         updated_at: new Date().toISOString(),
-      }, { onConflict: "auth_user_id" })
-      .select("id,first_name,last_name,email,phone,language_preference")
-      .single();
+      }).eq("id", existing.data.id)
+        .select("id,first_name,last_name,email,phone,language_preference").single();
+    } else {
+      const byEmail = await admin.from("customers").select("id").eq("email", user.email).maybeSingle();
+      if (byEmail.error) return NextResponse.json({ error: byEmail.error.message }, { status: 500 });
 
-    if (error) return NextResponse.json({ error: error.message }, { status: 400 });
-    return NextResponse.json({ customer });
+      if (byEmail.data) {
+        result = await admin.from("customers").update({
+          auth_user_id: user.id,
+          first_name: firstName,
+          last_name: lastName,
+          phone: phone || null,
+          language_preference: language,
+          updated_at: new Date().toISOString(),
+        }).eq("id", byEmail.data.id)
+          .select("id,first_name,last_name,email,phone,language_preference").single();
+      } else {
+        result = await admin.from("customers").insert({
+          auth_user_id: user.id,
+          first_name: firstName,
+          last_name: lastName,
+          email: user.email,
+          phone: phone || null,
+          language_preference: language,
+        }).select("id,first_name,last_name,email,phone,language_preference").single();
+      }
+    }
+
+    if (result.error) return NextResponse.json({ error: result.error.message }, { status: 400 });
+    return NextResponse.json({ customer: result.data });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Virheellinen pyyntö." }, { status: 400 });
   }
