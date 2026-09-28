@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { AvailabilityService } from '@/domain/availability';
-import type { Availability } from '@/types';
+import { AvailabilityService } from '../../domain/availability';
+import type { Availability } from '../../types';
 
 describe('AvailabilityService', () => {
   const mockAvailability: Availability = {
