@@ -1,9 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
-export default function LegacyExperienceDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  redirect(`/es/experiences/${encodeURIComponent(params.slug)}`);
+export default function LegacyExperienceDetailPage({ params }: { params: { slug: string } }) {
+  permanentRedirect(`/fi/experiences/${encodeURIComponent(params.slug)}`);
 }
