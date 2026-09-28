@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Globe, Menu, X } from "lucide-react";
+import { Globe, Menu, UserRound, X } from "lucide-react";
 import { useState } from "react";
 
 type NavigationItem = { id: string; label: string; href: string; sortOrder: number };
@@ -65,6 +65,15 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
             ))}
           </div>
 
+          <Link
+            href={`/${locale}/account/login`}
+            aria-label="Asiakastili"
+            title="Asiakastili"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm hover:border-brand-300"
+          >
+            <UserRound className="h-5 w-5" />
+          </Link>
+
           <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -79,6 +88,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                 {labelFor(key)}
               </Link>
             ))}
+            <Link href={`/${locale}/account/login`} className="ml-auto text-sm font-semibold text-brand-700">Kirjaudu</Link>
           </nav>
         </div>
       </div>
@@ -86,6 +96,9 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
       {open && (
         <nav className="border-t border-slate-100 bg-white px-4 py-3 shadow-lg lg:hidden">
           <div className="container-narrow space-y-1">
+            <Link href={`/${locale}/account/login`} onClick={() => setOpen(false)} className="block rounded-xl bg-brand-50 px-3 py-3 text-base font-semibold text-brand-900">
+              Asiakastili / Kirjaudu
+            </Link>
             {items.map(([key, p]) => (
               <Link key={key} onClick={() => setOpen(false)} href={href(p)} className="block rounded-xl px-3 py-3 text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900">
                 {labelFor(key)}
