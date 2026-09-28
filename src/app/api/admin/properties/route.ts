@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 const locales = ["fi", "es", "en"] as const;
 type Locale = typeof locales[number];
 type Translation = { name: string; shortDescription?: string; description?: string; locationName?: string; seoTitle?: string; seoDescription?: string };
-type Payload = { id?: string; slug: string; propertyType?: string; region?: string; maxGuests?: number; bedrooms?: number; bathrooms?: number; basePriceEur?: number | null; featured?: boolean; status?: "draft"|"published"|"archived"; mediaIds?: string[]; translations: Record<Locale, Translation> };
+type Payload = { id?: string; slug: string; propertyType?: string; region?: string; maxGuests?: number; bedrooms?: number; bathrooms?: number; basePriceEur?: number | null; providerName?: string; providerUrl?: string; featured?: boolean; status?: "draft"|"published"|"archived"; mediaIds?: string[]; translations: Record<Locale, Translation> };
 
 function validate(body: Payload) {
   const errors: string[] = [];
@@ -37,7 +37,7 @@ export async function POST(req:NextRequest) {
     const {data:property,error}=await supabaseAdmin.from("properties").insert({
       slug:body.slug.trim(),property_type:body.propertyType?.trim()||"cabin",region:body.region?.trim()||null,
       max_guests:body.maxGuests??2,bedrooms:body.bedrooms??1,bathrooms:body.bathrooms??1,
-      base_price_eur:body.basePriceEur??null,featured:Boolean(body.featured),status
+      base_price_eur:body.basePriceEur??null,provider_name:body.providerName?.trim()||null,provider_url:body.providerUrl?.trim()||null,featured:Boolean(body.featured),status
     }).select().single();
     if(error) return NextResponse.json({error:error.message},{status:400});
     const rows=locales.map((locale)=>{const t=body.translations[locale];return {
@@ -65,7 +65,7 @@ export async function PATCH(req:NextRequest) {
     const {data:property,error}=await supabaseAdmin.from("properties").update({
       slug:body.slug.trim(),property_type:body.propertyType?.trim()||"cabin",region:body.region?.trim()||null,
       max_guests:body.maxGuests??2,bedrooms:body.bedrooms??1,bathrooms:body.bathrooms??1,
-      base_price_eur:body.basePriceEur??null,featured:Boolean(body.featured),status:body.status??"draft",updated_at:new Date().toISOString()
+      base_price_eur:body.basePriceEur??null,provider_name:body.providerName?.trim()||null,provider_url:body.providerUrl?.trim()||null,featured:Boolean(body.featured),status:body.status??"draft",updated_at:new Date().toISOString()
     }).eq("id",body.id).select().single();
     if(error) return NextResponse.json({error:error.message},{status:400});
     await supabaseAdmin.from("property_media").delete().eq("property_id", body.id);
