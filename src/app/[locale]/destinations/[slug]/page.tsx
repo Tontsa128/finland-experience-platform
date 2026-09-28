@@ -27,42 +27,70 @@ export default async function DestinationDetail({ params }: { params: { locale: 
   const d = destinations.find((x) => x.slug === params.slug);
   if (!d) notFound();
 
+  const isCoastal = ["salo-mathildedal", "naantali", "turku", "hanko", "aland"].includes(d.slug);
+  const isNaantali = d.slug === "naantali";
+  const isMathildedal = d.slug === "salo-mathildedal";
+
   const copy = locale === "fi"
     ? {
         eyebrow: "Suomen kesä alkaa tästä",
         dream: "Kuvittele itsesi täällä.",
-        dreamText: "Järvi, metsä, pitkät valoisat illat ja tunne siitä, ettei mihinkään ole kiire.",
+        dreamText: isNaantali
+          ? "Vanha puukaupunki, satama, meri ja saariston valo – päivä, jossa kävely, kahvi ja meri kuuluvat samaan rytmiin."
+          : isMathildedal
+            ? "Vanha ruukkikylä, meri, metsät ja käsityöläisten pieni maailma – paikka, jossa päivä hidastuu luonnostaan."
+            : isCoastal
+              ? "Meri, kallio, saariston valo ja pitkät kesäillat – maisema, jossa ei tarvitse kiirehtiä."
+              : "Järvet, metsät, pitkät valoisat illat ja tunne siitä, ettei mihinkään ole kiire.",
         exploreStays: "Löydä majoitus",
         exploreExperiences: "Etsi elämyksiä",
         tips: "Näin koet kohteen",
         tipText: d.travel_info_fi || "Yhdistä tähän kohteeseen sauna, luonto, paikallinen ruoka ja yksi elämyksellinen kesäpäivä.",
         summerIdea: "Täydellinen kesäpäivä",
-        summerText: "Aloita aamulla luonnosta, vietä iltapäivä järven rannalla ja anna illan jatkua auringonlaskuun asti.",
+        summerText: isCoastal
+          ? "Aloita kävelyllä rannalla tai vanhassa kylässä, vietä iltapäivä meren äärellä ja anna illan jatkua valoisassa kesäillassa."
+          : "Aloita aamulla luonnosta, vietä iltapäivä veden äärellä ja anna illan jatkua auringonlaskuun asti.",
         back: "Takaisin kohteisiin",
       }
     : locale === "es"
       ? {
           eyebrow: "Así empieza tu verano en Finlandia",
           dream: "Imagínate aquí.",
-          dreamText: "Un lago tranquilo, bosques infinitos y noches tan luminosas que el tiempo parece detenerse.",
+          dreamText: isNaantali
+          ? "Casas de madera, puerto, mar y luz del archipiélago: un día para caminar, parar a tomar un café y disfrutar de la costa."
+          : isMathildedal
+            ? "Un antiguo pueblo siderúrgico, mar, bosques y pequeños talleres: un lugar para bajar el ritmo."
+            : isCoastal
+              ? "Mar, rocas, luz del archipiélago y largas tardes de verano: un paisaje para ir sin prisas."
+              : "Un lago tranquilo, bosques infinitos y noches tan luminosas que el tiempo parece detenerse.",
           exploreStays: "Encontrar alojamiento",
           exploreExperiences: "Descubrir experiencias",
           tips: "Cómo vivir el destino",
           tipText: d.travel_info_es || "Combina naturaleza, sauna, gastronomía local y una experiencia especial de verano.",
           summerIdea: "Un día de verano perfecto",
-          summerText: "Empieza entre naturaleza, disfruta del lago por la tarde y deja que la noche continúe bajo el sol de medianoche.",
+          summerText: isCoastal
+          ? "Empieza junto al mar o en el casco histórico, pasa la tarde en la costa y deja que la luz del verano continúe hasta tarde."
+          : "Empieza entre naturaleza, disfruta del agua por la tarde y deja que la noche continúe bajo el sol de medianoche.",
           back: "Volver a destinos",
         }
       : {
           eyebrow: "This is where your Finnish summer begins",
           dream: "Imagine yourself here.",
-          dreamText: "A quiet lake, endless forests and bright summer evenings when there is simply no need to hurry.",
+          dreamText: isNaantali
+          ? "Wooden houses, a guest harbour, the sea and archipelago light — a place made for walking, lingering and discovering."
+          : isMathildedal
+            ? "A historic ironworks village, sea, forest and small makers — a place where the day naturally slows down."
+            : isCoastal
+              ? "Sea, granite rocks, archipelago light and long summer evenings — a landscape with room to breathe."
+              : "A quiet lake, endless forests and bright summer evenings when there is simply no need to hurry.",
           exploreStays: "Find a place to stay",
           exploreExperiences: "Discover experiences",
           tips: "How to experience it",
           tipText: "Combine nature, sauna, local food and one unforgettable summer experience.",
           summerIdea: "Your perfect summer day",
-          summerText: "Start in nature, spend the afternoon by the water and let the evening stretch beneath the midnight sun.",
+          summerText: isCoastal
+          ? "Start by the sea or in the old town, spend the afternoon on the coast and let the bright summer evening stretch late."
+          : "Start in nature, spend the afternoon by the water and let the evening stretch beneath the midnight sun.",
           back: "Back to destinations",
         };
 
