@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Play } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
 
-const fallbackImage = "https://images.unsplash.com/photo-1742639008187-0294cf3fdf93?auto=format&fit=crop&fm=jpg&q=88&w=2400";
+const fallbackImage = "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg";
 
 function localized(values: Record<string, string>, locale: string, fallback: string) {
   return values[locale] || values.en || values.fi || fallback;
@@ -25,7 +25,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/5" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/55 to-transparent" />
-      <div className="absolute bottom-4 right-4 rounded-full bg-black/35 px-3 py-1.5 text-[11px] text-white/75 backdrop-blur-sm">Photo: Tomi Blasic / Unsplash</div>
+      <div className="absolute bottom-4 right-4 rounded-full bg-black/35 px-3 py-1.5 text-[11px] text-white/75 backdrop-blur-sm">Photo: Kotivalo / Wikimedia Commons</div>
 
       <div className="container-narrow relative z-10 w-full pb-16 pt-28 sm:pb-24 lg:pb-28">
         <div className="max-w-4xl">
