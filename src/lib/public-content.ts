@@ -16,7 +16,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
   try {
     const { data, error } = await supabaseAdmin
       .from("properties")
-      .select("id,slug,property_type,region,latitude,longitude,max_guests,bedrooms,base_price_eur,property_translations(locale,name,short_description,description,location_name,amenities_text),property_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
+      .select("id,slug,property_type,region,latitude,longitude,max_guests,bedrooms,base_price_eur,provider_name,provider_url,property_translations(locale,name,short_description,description,location_name,amenities_text),property_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
       .eq("status", "published")
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false });
