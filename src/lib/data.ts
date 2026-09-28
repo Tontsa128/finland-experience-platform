@@ -1,12 +1,13 @@
 import { Destination, Cabin, Experience, BlogPost, Locale } from "@/types";
+import { photoLibrary } from "@/lib/photo-library";
 
-const summerMathildedal = "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg";
-const finnishSummerLake = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Punassuo2.jpg";
-const naantaliSummer = "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg";
-const alandSea = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholm_2026-08-09_image12.jpg";
-const archipelagoRoad = "https://upload.wikimedia.org/wikipedia/commons/6/6c/Aura_river_in_Turku.jpg";
-const finnishCottage = "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=1400";
-const mathildedalHouse = "https://upload.wikimedia.org/wikipedia/commons/0/08/Anttipoffi_workers%27_quarters_in_Mathildedal.jpg";
+const summerMathildedal = photoLibrary.mathildedalHarbour;
+const finnishSummerLake = photoLibrary.teijoNationalPark;
+const naantaliSummer = photoLibrary.naantaliOldTown;
+const alandSea = photoLibrary.aland;
+const archipelagoRoad = photoLibrary.turkuAura;
+const finnishCottage = photoLibrary.sarkisalo;
+const mathildedalHouse = photoLibrary.mathildedalVillage;
 
 export const destinations: Destination[] = [
   {
@@ -93,7 +94,7 @@ export const destinations: Destination[] = [
       en: "Beaches, sea and western-coast summer"
     },
     region: "Western Finland",
-    images: [archipelagoRoad, archipelagoRoad],
+    images: [photoLibrary.hankoAerial, photoLibrary.hanko],
     priceFrom: 120,
     featured: false,
     coordinates: { lat: 59.823, lng: 22.969 },
@@ -116,7 +117,7 @@ export const destinations: Destination[] = [
       en: "Archipelago, history and quiet nature"
     },
     region: "Southeast Finland",
-    images: ["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400", finnishSummerLake],
+    images: [photoLibrary.hamina, photoLibrary.porvoo],
     priceFrom: 100,
     featured: false,
     coordinates: { lat: 60.466, lng: 26.945 },
@@ -175,7 +176,7 @@ export const cabins: Cabin[] = [
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
     pricePerNight: 180,
-    images: [mathildedalHouse, "https://images.unsplash.com/photo-1566073772120-0500485d835d?w=1400"],
+    images: [mathildedalHouse, photoLibrary.mathildedalHarbour],
     features: ["historic house", "breakfast", "garden", "design", "village centre"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.956 }, type: "hotel",
     bookingUrl: "https://matrihouse.fi/", provider: "Matri House",
@@ -191,7 +192,7 @@ export const cabins: Cabin[] = [
     location: "Mathildedal harbour",
     region: "Southwest Finland",
     pricePerNight: 179,
-    images: ["https://images.unsplash.com/photo-1566073772120-0500485d835d?w=1400", summerMathildedal],
+    images: [photoLibrary.mathildedalHarbour, photoLibrary.mathildedalVillage],
     features: ["harbour", "breakfast", "sea view", "restaurant", "wifi"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.960 }, type: "hotel",
     bookingUrl: "https://mathildanmarina.fi/majoitus/", provider: "Mathildan Marina",
@@ -239,7 +240,7 @@ export const cabins: Cabin[] = [
     location: "Kimitoön, near Salo region",
     region: "Southwest Finland",
     pricePerNight: 70,
-    images: ["https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1400", finnishSummerLake],
+    images: [photoLibrary.sarkisalo, photoLibrary.teijoNationalPark],
     features: ["glamping", "forest", "smoke sauna", "villas", "slow travel"],
     maxGuests: 6, bedrooms: 1, coordinates: { lat: 60.160, lng: 22.740 }, type: "glamping",
     bookingUrl: "https://www.storfinnhova.com/majoitus/", provider: "Storfinnhova Gård",
@@ -319,7 +320,7 @@ export const cabins: Cabin[] = [
     location: "Geta, Åland",
     region: "Åland",
     pricePerNight: 200,
-    images: [alandSea, "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600"],
+    images: [alandSea, photoLibrary.aland],
     features: ["sea cliffs", "sauna", "restaurant", "pool", "nature"],
     maxGuests: 4, bedrooms: 2, coordinates: { lat: 60.380, lng: 19.820 }, type: "villa",
     bookingUrl: "https://www.havsvidden.com/en", provider: "Havsvidden Resort",
@@ -351,7 +352,7 @@ export const cabins: Cabin[] = [
     location: "Hanko",
     region: "Western Finland",
     pricePerNight: 120,
-    images: ["https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1400", finnishCottage],
+    images: [photoLibrary.hankoAerial, photoLibrary.hanko],
     features: ["beach", "cycling", "sea", "terrace", "summer"],
     maxGuests: 6, bedrooms: 3, coordinates: { lat: 59.823, lng: 22.969 }, type: "villa",
     bookingUrl: "https://visithanko.fi/", provider: "Visit Hanko accommodation network",
@@ -367,7 +368,7 @@ export const cabins: Cabin[] = [
     location: "Kotka–Hamina–Loviisa area",
     region: "Southeast Finland",
     pricePerNight: 100,
-    images: [finnishSummerLake, archipelagoRoad],
+    images: [photoLibrary.teijoNationalPark, photoLibrary.turkuArchipelago],
     features: ["sauna", "lake/sea", "privacy", "nature", "long stay"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.470, lng: 26.950 }, type: "cabin",
     bookingUrl: "https://www.visitkotka.fi/", provider: "Regional accommodation providers",
