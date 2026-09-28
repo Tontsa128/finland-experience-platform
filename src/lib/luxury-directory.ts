@@ -70,7 +70,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
       en: "AuroraHut igloo accommodation with sea views, sunsets and panoramic views of the night sky."
     },
     url: "https://www.archipelagolive.fi",
-    image: "https://static.wixstatic.com/media/fcabc2_794847b2185d4a65b6a6c8eae56fc0a3~mv2.jpg/v1/fill/w_980%2Ch_654%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/fcabc2_794847b2185d4a65b6a6c8eae56fc0a3~mv2.jpg",
+    image: "https://static.wixstatic.com/media/fcabc2_794847b2185d4a65b6a6c8eae56fc0a3~mv2.jpg",
     imageCredit: "Archipelago Live",
     tags: ["igloo", "archipelago", "romantic", "sunset"]
   },
