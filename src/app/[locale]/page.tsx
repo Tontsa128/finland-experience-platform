@@ -111,10 +111,82 @@ export default async function HomePage({ params }: { params: { locale: string } 
     },
   ] as const;
 
+  const coastalHighlights = ["salo-mathildedal", "naantali", "turku", "hanko", "aland"]
+    .map((slug) => (cmsDestinations.length ? cmsDestinations : destinations).find((item) => item.slug === slug))
+    .filter(Boolean)
+    .slice(0, 5) as typeof destinations;
 
   return (
     <>
       <Hero settings={homepage} />
+      <section className="border-y border-brand-100 bg-white py-7 sm:py-8">
+        <div className="container-narrow">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+            {[
+              [Building2, "featureStays", `/${locale}/accommodations`],
+              [Sparkles, "featureSauna", `/${locale}/experiences`],
+              [Waves, "featureFood", `/${locale}/experiences`],
+              [TreePine, "featureNature", `/${locale}/destinations`],
+              [Waves, "featureArchipelago", `/${locale}/destinations`],
+              [Sparkles, "featureSummer", "#find-your-finland"],
+            ].map(([Icon, key, href]) => {
+              const FeatureIcon = Icon as typeof Sparkles;
+              return (
+                <Link key={key as string} href={href as string} className="group flex items-center gap-3 rounded-2xl px-3 py-3 transition hover:bg-brand-50">
+                  <FeatureIcon className="h-7 w-7 shrink-0 text-brand-700" />
+                  <span className="text-xs font-bold uppercase leading-5 tracking-[.12em] text-brand-950 group-hover:text-brand-700">
+                    {sh(key as string)}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-950 py-16 text-white sm:py-20">
+        <div className="container-narrow">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{sh("coastalEyebrow")}</p>
+              <h2 className="mt-3 font-display text-4xl font-bold leading-tight sm:text-5xl">{sh("coastalTitle")}</h2>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">{sh("coastalText")}</p>
+            </div>
+            <Link href={`/${locale}/destinations`} className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-gold-300 hover:text-white">
+              {sh("coastalCta")} <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {coastalHighlights.map((destination) => (
+              <Link
+                key={destination.id}
+                href={`/${locale}/destinations/${destination.slug}`}
+                className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
+              >
+                <Image
+                  src={destination.images?.[0] || fallbackSummerImage}
+                  alt={destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
+                  <h3 className="mt-2 font-display text-2xl font-bold">
+                    {destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                  </h3>
+                  <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
+                    {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="find-your-finland" className="bg-snow py-16 sm:py-24">
         <div className="container-narrow">
           <div className="mx-auto max-w-3xl text-center"><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("findEyebrow")}</p><h2 className="mt-4 section-title">{sh("findTitle")}</h2><p className="mt-4 section-subtitle mx-auto">{sh("findText")}</p></div>
