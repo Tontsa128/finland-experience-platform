@@ -16,7 +16,6 @@ import {
 import {
   ArrowRight,
   Building2,
-  Flame,
   Sparkles,
   Waves,
   TreePine,
