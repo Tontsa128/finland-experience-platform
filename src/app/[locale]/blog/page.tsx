@@ -4,11 +4,12 @@ import { ArrowRight, Compass, Moon, Sparkles, Sun, Waves } from "lucide-react";
 import { blogPosts as fallbackPosts, getLocalized } from "@/lib/data";
 import { getPublishedBlogPosts } from "@/lib/public-content";
 import type { Locale } from "@/types";
+import { photoLibrary } from "@/lib/photo-library";
 
 const editorialImages = [
-  "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=1800",
-  "https://images.unsplash.com/photo-1478515143454-712b5f547c8c?w=1800",
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800",
+  photoLibrary.mathildedalHarbour,
+  photoLibrary.naantaliOldTown,
+  photoLibrary.aland,
 ];
 
 export default async function BlogPage({ params }: { params: { locale: string } }) {
