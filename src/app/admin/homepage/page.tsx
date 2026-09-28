@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MediaPicker from "@/components/admin/MediaPicker";
+import AITranslationPanel from "@/components/admin/AITranslationPanel";
 
 type Settings = Record<string, unknown>;
 
@@ -119,13 +120,30 @@ export default function HomepageCmsPage() {
           {field("hero_image_url", "Hero-kuvan URL", "https://...")}
         </section>
 
+        <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-slate-950">✨ AI-käännös</h2>
+          <p className="mt-1 text-sm text-slate-500">Kirjoita tai muokkaa suomenkielinen hero-teksti. AI tekee englannin ja espanjan version, jonka voit tarkistaa ennen tallennusta.</p>
+          <div className="mt-5">
+            <AITranslationPanel
+              valueFi={String(settings.hero_description_fi ?? "")}
+              valueEn={String(settings.hero_description_en ?? "")}
+              valueEs={String(settings.hero_description_es ?? "")}
+              onChange={({ fi, en, es }) => {
+                set("hero_description_fi", fi);
+                set("hero_description_en", en);
+                set("hero_description_es", es);
+              }}
+            />
+          </div>
+        </section>
+
         {languages.map(([code, name]) => (
           <section key={code} className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <h2 className="text-xl font-semibold text-slate-950">{name}</h2>
             <div className="mt-5 grid gap-5">
               {field(`hero_eyebrow_${code}`, "Pieni otsikko")}
               {field(`hero_title_${code}`, "Pääotsikko")}
-              {field(`hero_description_${code}`, "Kuvaus")}
+              {code !== "fi" && field(`hero_description_${code}`, "Kuvaus")}
               <div className="grid gap-5 md:grid-cols-2">
                 {field(`hero_cta_label_${code}`, "Ensimmäinen painike")}
                 {field(`hero_secondary_label_${code}`, "Toinen painike")}
