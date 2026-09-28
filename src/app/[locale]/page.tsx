@@ -5,7 +5,6 @@ import { Hero } from "@/components/home/Hero";
 import { DestinationCard } from "@/components/ui/DestinationCard";
 import { CabinCard } from "@/components/ui/CabinCard";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
-import { Testimonials } from "@/components/home/Testimonials";
 import TravelAdvisor from "@/components/TravelAdvisor";
 import { destinations, cabins, experiences } from "@/lib/data";
 import {
@@ -13,14 +12,12 @@ import {
   getPublishedDestinations,
   getPublishedProperties,
   getPublishedExperiences,
-  getActiveBanners,
 } from "@/lib/public-content";
 import {
   ArrowRight,
   Building2,
   Flame,
   Sparkles,
-  Sun,
   Waves,
   TreePine,
 } from "lucide-react";
@@ -32,17 +29,15 @@ export default async function HomePage({ params }: { params: { locale: string } 
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [homepage, cmsDestinations, cmsCabins, cmsExperiences, banners] =
+  const [homepage, cmsDestinations, cmsCabins, cmsExperiences] =
     await Promise.all([
       getHomepageSettings(),
       getPublishedDestinations(),
       getPublishedProperties(),
       getPublishedExperiences(),
-      getActiveBanners(locale as "fi" | "es" | "en"),
     ]);
 
   const t = await getTranslations({ locale, namespace: "sections" });
-  const tw = await getTranslations({ locale, namespace: "why" });
   const tc = await getTranslations({ locale, namespace: "common" });
   const sh = await getTranslations({ locale, namespace: "summerHome" });
 
@@ -79,7 +74,6 @@ export default async function HomePage({ params }: { params: { locale: string } 
         .slice(0, 3) as typeof experiences
     : (cmsExperiences.length ? cmsExperiences : experiences).slice(0, 3);
 
-  const storyImage = featuredDestinations[0]?.images?.[0] || fallbackSummerImage;
   const summerImages = [
     featuredDestinations[1]?.images?.[0] || fallbackSummerImage,
     featuredDestinations[0]?.images?.[1] || fallbackSummerImage,
@@ -118,12 +112,6 @@ export default async function HomePage({ params }: { params: { locale: string } 
     },
   ] as const;
 
-  const whyItems = [
-    { key: "nature", icon: TreePine },
-    { key: "lights", icon: Sparkles },
-    { key: "sauna", icon: Waves },
-    { key: "design", icon: Building2 },
-  ] as const;
 
   return (
     <>
@@ -178,59 +166,6 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
-      {banners[0] && (
-        <section className="bg-brand-900 text-white">
-          <div className="container-narrow flex flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-lg font-semibold">{banners[0].title}</p>
-              <p className="text-sm text-white/80">{banners[0].text}</p>
-            </div>
-            {banners[0].ctaUrl && (
-              <Link href={banners[0].ctaUrl} className="btn-gold shrink-0">
-                {banners[0].ctaLabel || tc("viewAll")}
-              </Link>
-            )}
-          </div>
-        </section>
-      )}
-
-      <section className="bg-white py-20 sm:py-24">
-        <div className="container-narrow grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
-          <div className="relative min-h-[430px] overflow-hidden rounded-[2rem]">
-            <Image
-              src={storyImage}
-              alt={sh("storyTitle")}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-950/65 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 rounded-2xl bg-white/10 px-4 py-3 text-sm font-semibold text-white backdrop-blur-md">
-              <Sun className="mr-2 inline h-4 w-4 text-gold-400" />
-              {sh("storyEyebrow")}
-            </div>
-          </div>
-
-          <div className="max-w-xl">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-terracotta">
-              {sh("storyEyebrow")}
-            </p>
-            <h2 className="font-display text-3xl font-bold leading-tight text-brand-950 sm:text-5xl">
-              {sh("storyTitle")}
-            </h2>
-            <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg">
-              {sh("storyText")}
-            </p>
-            <Link
-              href={`/${locale}/destinations`}
-              className="btn-gold mt-7 inline-flex items-center gap-2"
-            >
-              {sh("storyCta")}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       <section className="bg-brand-50 py-20">
         <div className="container-narrow">
@@ -249,33 +184,6 @@ export default async function HomePage({ params }: { params: { locale: string } 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featuredDestinations.map((d, i) => (
               <DestinationCard key={d.id} destination={d} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-20">
-        <div className="container-narrow">
-          <div className="mb-14 text-center">
-            <h2 className="section-title mb-3">{t("whyFinland")}</h2>
-            <p className="section-subtitle mx-auto">{t("whyFinlandDesc")}</p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {whyItems.map(({ key, icon: Icon }) => (
-              <div
-                key={key}
-                className="rounded-2xl bg-brand-50 p-6 text-center shadow-soft transition hover:-translate-y-1 hover:shadow-card"
-              >
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-100 text-brand-900">
-                  <Icon className="h-7 w-7" />
-                </div>
-                <h3 className="mb-2 font-display text-lg font-semibold text-brand-900">
-                  {tw(`${key}.title`)}
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-600">
-                  {tw(`${key}.desc`)}
-                </p>
-              </div>
             ))}
           </div>
         </div>
@@ -356,45 +264,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
-      <Testimonials />
 
-      <section className="py-20">
-        <div className="container-narrow">
-          <div className="relative overflow-hidden rounded-3xl bg-hero-gradient px-6 py-16 text-center text-white sm:px-12">
-            <div className="relative z-10 mx-auto max-w-2xl">
-              <h2 className="mb-4 font-display text-3xl font-bold sm:text-4xl">
-                {t("newsletter")}
-              </h2>
-              <p className="mb-8 text-lg text-white/90">{t("newsletterDesc")}</p>
-              <form className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
-                <input
-                  type="email"
-                  placeholder="email@example.com"
-                  className="flex-1 rounded-full border-0 px-5 py-3.5 text-sm text-slate-900"
-                />
-                <button type="submit" className="btn-gold whitespace-nowrap px-8">
-                  {locale === "fi" ? "Tilaa" : locale === "es" ? "Suscribirme" : "Subscribe"}
-                </button>
-              </form>
-              <div className="mt-10 border-t border-white/20 pt-8">
-                <p className="mb-4 text-white/80">
-                  {locale === "fi"
-                    ? "Valmis aloittamaan kesäseikkailun?"
-                    : locale === "es"
-                      ? "¿Listo para comenzar tu aventura de verano?"
-                      : "Ready to start your summer adventure?"}
-                </p>
-                <Link
-                  href={`/${locale}/contact`}
-                  className="inline-flex rounded-full border-2 border-white/80 bg-white/10 px-8 py-3 text-sm font-semibold text-white hover:bg-white hover:text-brand-900"
-                >
-                  {tc("contact")}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
