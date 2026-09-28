@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MediaPicker from "@/components/admin/MediaPicker";
-import AITranslationPanel from "@/components/admin/AITranslationPanel";
+import AITranslationPanel, { translateFinnishText } from "@/components/admin/AITranslationPanel";
 
 type Settings = Record<string, unknown>;
 
@@ -39,6 +39,7 @@ const languages = [
 
 export default function HomepageCmsPage() {
   const [settings, setSettings] = useState<Settings>(initial);
+  const [originalSettings, setOriginalSettings] = useState<Settings>(initial);
   const [mediaIds, setMediaIds] = useState<string[]>([]);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -50,6 +51,7 @@ export default function HomepageCmsPage() {
         const body = await r.json();
         if (!r.ok) throw new Error(body.error || "Asetuksia ei voitu ladata");
         setSettings((current) => ({ ...current, ...(body.settings || {}) }));
+        setOriginalSettings((current) => ({ ...current, ...(body.settings || {}) }));
       })
       .catch((e) => setError(e instanceof Error ? e.message : "Lataus epäonnistui"));
   }, []);
@@ -65,10 +67,29 @@ export default function HomepageCmsPage() {
   async function save() {
     setSaved(false);
     setError("");
-    const response = await fetch("/api/admin/settings", {
+    try {
+      const next = { ...settings };
+      const pairs = [
+        ["hero_eyebrow_fi", "hero_eyebrow_en", "hero_eyebrow_es", "button"],
+        ["hero_title_fi", "hero_title_en", "hero_title_es", "travel"],
+        ["hero_description_fi", "hero_description_en", "hero_description_es", "travel"],
+        ["hero_cta_label_fi", "hero_cta_label_en", "hero_cta_label_es", "button"],
+        ["hero_secondary_label_fi", "hero_secondary_label_en", "hero_secondary_label_es", "button"],
+      ] as const;
+      for (const [fiKey, enKey, esKey, context] of pairs) {
+        const fi = String(next[fiKey] ?? "").trim();
+        const previousFi = String(originalSettings[fiKey] ?? "").trim();
+        if (fi && fi !== previousFi) {
+          const translated = await translateFinnishText(fi, context);
+          next[enKey] = translated.english;
+          next[esKey] = translated.spanish;
+        }
+      }
+      setSettings(next);
+      const response = await fetch("/api/admin/settings", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(settings),
+      body: JSON.stringify(next),
     });
     const body = await response.json();
     if (!response.ok) {
@@ -76,7 +97,11 @@ export default function HomepageCmsPage() {
       return;
     }
     setSettings((current) => ({ ...current, ...(body.settings || {}) }));
+    setOriginalSettings((current) => ({ ...current, ...(body.settings || {}) }));
     setSaved(true);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Käännös tai tallennus epäonnistui");
+    }
   }
 
   const field = (key: string, label: string, placeholder = "") => (
