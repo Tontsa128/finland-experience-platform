@@ -45,6 +45,7 @@ export default function NavigationAdmin() {
   async function save() {
     setError("");
     if (!editing && form.locale === "fi") {
+      if (!form.label.trim()) { setError("Kirjoita ensin valikkoteksti."); return; }
       try {
         const t = await translateFinnishText(form.label, "button");
         for (const payload of [{ ...form, locale: "fi" }, { ...form, locale: "en", label: t.english }, { ...form, locale: "es", label: t.spanish }]) {
