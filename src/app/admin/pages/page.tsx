@@ -14,11 +14,11 @@ export default function PagesAdminPage(){
   if(form.locale==="fi"){
     const tr=await translateFinnishText(form.content||"", "travel");
     const titleTr=await translateFinnishText(form.title, "travel");
-    const base={...form};
+    const {id: _id, ...base}=form;
     const requests=[
       {...base,locale:"fi"},
-      {...base,id:"",locale:"en",title:titleTr.english,content:tr.english},
-      {...base,id:"",locale:"es",title:titleTr.spanish,content:tr.spanish}
+      {...base,locale:"en",title:titleTr.english,content:tr.english},
+      {...base,locale:"es",title:titleTr.spanish,content:tr.spanish}
     ];
     for(const payload of requests){
       const r=await fetch("/api/admin/pages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
