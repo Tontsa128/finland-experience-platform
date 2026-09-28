@@ -24,12 +24,12 @@
     "admin": "Admin"
   },
   "hero": {
-    "title": "A quieter kind of Finnish summer",
-    "subtitle": "Northern Lights, pristine nature, design cities and authentic saunas. Your unforgettable Nordic adventure starts here.",
-    "cta": "Find a place to stay",
-    "ctaSecondary": "View Experiences",
-    "eyebrow": "Finnish summer • Slow travel",
-    "description": "Stay by the sea, sleep in a cottage, heat a sauna and let the long Nordic evening unfold. Discover Mathildedal, Salo, Naantali, Åland and the southern coast.",
+    "title": "Discover Finland's Endless Summer Nights",
+    "subtitle": "By the lake, in the sauna and beneath the midnight sun, Finnish summer becomes an experience.",
+    "cta": "Book Your Stay",
+    "ctaSecondary": "Explore Experiences",
+    "eyebrow": "Finnish summer • endless nights",
+    "description": "Sleep by the water, swim in the evening light, warm up the sauna and let the day drift deep into the night. Discover cottage escapes, city weekends and archipelago adventures.",
     "explore": "Explore summer destinations"
   },
   "sections": {
@@ -149,5 +149,25 @@
     "delete": "Delete",
     "save": "Save",
     "cancel": "Cancel"
+  },
+  "summerHome": {
+    "eyebrow": "Live a summer worth remembering",
+    "title": "How do you want your Finnish summer to feel?",
+    "subtitle": "Choose your rhythm: a peaceful cottage, a lively city break or the magic of the midnight sun.",
+    "midnight": "Endless summer nights",
+    "midnightDesc": "Music, festivals, dancing and the midnight sun.",
+    "sauna": "Sauna & lake",
+    "saunaDesc": "Steam, a wooden pier and a cool swim – the Finnish summer classic.",
+    "cities": "City weekend",
+    "citiesDesc": "Helsinki, Turku and Tampere blend culture, food and long Nordic evenings.",
+    "cabins": "Cottage escape",
+    "cabinsDesc": "Your own pier, forest paths and quiet mornings beside the water.",
+    "storyEyebrow": "When the sun doesn't set",
+    "storyTitle": "In Finland, summer is an experience, not just a season.",
+    "storyText": "When the sun lingers near the horizon for almost the whole night, the day does not need to end. A boat ride can become a midnight swim, the grill can be lit again and the sauna waits by the shore. Come and spend a summer that stays with you.",
+    "storyCta": "Find your kind of summer",
+    "advisorEyebrow": "Let us help",
+    "advisorTitle": "What kind of summer experience are you looking for?",
+    "advisorText": "Cottage, city or endless nights? The Finnish summer advisor helps you find your next idea."
   }
 }
