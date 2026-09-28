@@ -31,17 +31,17 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const secondaryHref = localizedHref(settings?.heroSecondaryUrl || "", locale, "/destinations");
 
   return (
-    <section className="relative min-h-[620px] flex items-center overflow-hidden">
+    <section className="relative flex min-h-[calc(100svh-4rem)] w-full items-center overflow-hidden sm:min-h-[620px]">
       <Image src={image} alt={title} fill priority sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-brand-950/90 via-brand-900/60 to-transparent" />
-      <div className="container-narrow relative z-10 py-28 text-white">
+      <div className="container-narrow relative z-10 w-full py-14 text-white sm:py-28">
         <div className="max-w-2xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[.2em] text-gold-400">{eyebrow}</p>
-          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">{title}</h1>
-          <p className="mt-6 max-w-xl text-lg text-white/85 leading-relaxed">{description}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href={ctaHref} className="btn-gold inline-flex items-center gap-2">{cta}<ArrowRight className="h-4 w-4" /></Link>
-            <Link href={secondaryHref} className="rounded-full border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-semibold backdrop-blur hover:bg-white hover:text-brand-900 transition">{secondary}</Link>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[.18em] text-gold-400 sm:text-sm sm:tracking-[.2em]">{eyebrow}</p>
+          <h1 className="font-display text-4xl font-bold leading-[1.08] sm:text-6xl lg:text-7xl">{title}</h1>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg">{description}</p>
+          <div className="mt-7 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center">
+            <Link href={ctaHref} className="btn-gold inline-flex w-full items-center justify-center gap-2 sm:w-auto">{cta}<ArrowRight className="h-4 w-4" /></Link>
+            <Link href={secondaryHref} className="inline-flex w-full items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-semibold backdrop-blur transition hover:bg-white hover:text-brand-900 sm:w-auto">{secondary}</Link>
           </div>
         </div>
       </div>
