@@ -92,6 +92,8 @@ export default function ContentStudioPage() {
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
   const [search, setSearch] = useState("");
+  const [media, setMedia] = useState<any[]>([]);
+  const [showMedia, setShowMedia] = useState(false);
 
   async function load() {
     setError("");
@@ -207,7 +209,7 @@ export default function ContentStudioPage() {
     finally { setBusy(false); }
   }
 
-  const tr = selected?.translations[locale];
+  function selectMedia(id: string) {\n    if (!selected) return;\n    const raw = { ...selected.raw };\n    const image = media.find(m => m.id === id);\n    if (!image) return;\n    raw.hero_image_url = image.url;\n    raw.selected_media_id = id;\n    setSelected({ ...selected, raw });\n    setShowMedia(false);\n  }\n\n  const tr = selected?.translations[locale];
   const fields = selected?.kind === "destination"
     ? [["name","Nimi"],["shortDescription","Lyhyt kuvaus"],["fullDescription","Kuvaus"],["highlights","Kohokohdat"],["travelInformation","Matkatieto"],["seoTitle","SEO-otsikko"],["seoDescription","SEO-kuvaus"]]
     : selected?.kind === "property"
@@ -256,6 +258,15 @@ export default function ContentStudioPage() {
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <span className="text-sm font-semibold text-slate-600">Käännösten tila:</span>
               {(["fi","en","es"] as Locale[]).map(l=>{const count=Object.values(selected.translations[l]).filter(Boolean).length; const total=Object.keys(selected.translations[l]).length; return <span key={l} className={"rounded-full px-3 py-1 text-xs font-semibold "+(count===total?"bg-emerald-100 text-emerald-800":count?"bg-amber-100 text-amber-800":"bg-red-100 text-red-700")}>{l.toUpperCase()} {count}/{total}</span>})}
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div><p className="text-sm font-semibold text-slate-900">Pääkuva</p><p className="text-xs text-slate-500">Valitse kuva keskitetystä kuvapankista.</p></div>
+                <button type="button" onClick={()=>setShowMedia(!showMedia)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700">{showMedia?"Sulje kuvapankki":"Valitse kuva"}</button>
+              </div>
+              {selected.raw.hero_image_url && <div className="mt-4 overflow-hidden rounded-xl bg-slate-200"><img src={selected.raw.hero_image_url} alt="" className="h-52 w-full object-cover" /></div>}
+              {showMedia && <div className="mt-4 grid max-h-72 grid-cols-2 gap-3 overflow-auto sm:grid-cols-4">{media.map(m=><button type="button" key={m.id} onClick={()=>selectMedia(m.id)} className="overflow-hidden rounded-xl border border-slate-200 bg-white text-left hover:border-emerald-400"><img src={m.url} alt={m.alt_fi || m.filename} className="aspect-[4/3] w-full object-cover" /><span className="block truncate p-2 text-xs font-medium">{m.filename}</span></button>)}</div>}
             </div>
 
             <div className="mt-6 grid gap-5">
