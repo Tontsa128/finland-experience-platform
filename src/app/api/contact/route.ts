@@ -1,8 +1,16 @@
 import { NextResponse } from "next/server";
+import { rateLimit, requestKey } from "@/lib/rate-limit";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
+  const limit = rateLimit(requestKey(request, "contact"), 10, 60_000);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(Math.max(1, Math.ceil((limit.resetAt - Date.now()) / 1000))) } },
+    );
+  }
   try {
     const body = await request.json();
     const name = String(body.name || "").trim();
