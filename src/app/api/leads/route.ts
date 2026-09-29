@@ -3,6 +3,8 @@ import { supabaseAdmin } from "@/lib/supabase";
 
 const locales = new Set(["fi","es","en"]);
 const leadTypes = new Set(["inquiry","booking_redirect","planner","concierge"]);
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const DATE_PATTERN = /^\\d{4}-\\d{2}-\\d{2}$/;
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,18 +18,32 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Please provide a valid name, email and locale." }, { status: 400 });
     }
 
-    const providerId = body.providerId ? String(body.providerId) : null;
-    const propertyId = body.propertyId ? String(body.propertyId) : null;
+    const providerId = body.providerId ? String(body.providerId).trim() : null;
+    const propertyId = body.propertyId ? String(body.propertyId).trim() : null;
     const experienceId = body.experienceId == null || body.experienceId === ""
       ? null
       : Number(body.experienceId);
     const guests = body.guests == null || body.guests === "" ? null : Number(body.guests);
+    const arrivalDate = body.arrivalDate ? String(body.arrivalDate).trim() : null;
+    const departureDate = body.departureDate ? String(body.departureDate).trim() : null;
 
+    if (providerId && !UUID_PATTERN.test(providerId)) {
+      return NextResponse.json({ error: "Invalid provider." }, { status: 400 });
+    }
+    if (propertyId && !UUID_PATTERN.test(propertyId)) {
+      return NextResponse.json({ error: "Invalid property." }, { status: 400 });
+    }
     if (experienceId !== null && (!Number.isInteger(experienceId) || experienceId < 1)) {
       return NextResponse.json({ error: "Invalid experience." }, { status: 400 });
     }
     if (guests !== null && (!Number.isInteger(guests) || guests < 1 || guests > 100)) {
       return NextResponse.json({ error: "Invalid guest count." }, { status: 400 });
+    }
+    if ((arrivalDate && !DATE_PATTERN.test(arrivalDate)) || (departureDate && !DATE_PATTERN.test(departureDate))) {
+      return NextResponse.json({ error: "Invalid date." }, { status: 400 });
+    }
+    if (arrivalDate && departureDate && departureDate < arrivalDate) {
+      return NextResponse.json({ error: "Departure date cannot be before arrival date." }, { status: 400 });
     }
 
     const providerIdForInsert = providerId;
@@ -45,6 +61,15 @@ export async function POST(request: NextRequest) {
     const leadType = String(body.leadType || "inquiry");
     if (!leadTypes.has(leadType)) return NextResponse.json({ error: "Invalid lead type." }, { status: 400 });
 
+    const tripDays = body.tripDays == null || body.tripDays === "" ? null : Number(body.tripDays);
+    const tripBudgetEur = body.tripBudgetEur == null || body.tripBudgetEur === "" ? null : Number(body.tripBudgetEur);
+    if (tripDays !== null && (!Number.isInteger(tripDays) || tripDays < 1 || tripDays > 30)) {
+      return NextResponse.json({ error: "Invalid trip length." }, { status: 400 });
+    }
+    if (tripBudgetEur !== null && (!Number.isFinite(tripBudgetEur) || tripBudgetEur < 0 || tripBudgetEur > 100000)) {
+      return NextResponse.json({ error: "Invalid trip budget." }, { status: 400 });
+    }
+
     const { data, error } = await supabaseAdmin.from("bookings_inquiries").insert({
       provider_id: providerIdForInsert,
       property_id: propertyId,
@@ -55,15 +80,15 @@ export async function POST(request: NextRequest) {
       email,
       phone: body.phone ? String(body.phone).trim().slice(0, 40) : null,
       whatsapp: Boolean(body.whatsapp),
-      arrival_date: body.arrivalDate || null,
-      departure_date: body.departureDate || null,
+      arrival_date: arrivalDate,
+      departure_date: departureDate,
       guests,
       message: body.message ? String(body.message).trim().slice(0, 5000) : null,
       lead_type: leadType,
       source: body.source ? String(body.source).slice(0, 120) : "website",
       source_path: body.sourcePath ? String(body.sourcePath).slice(0, 500) : null,
-      trip_days: Number.isFinite(Number(body.tripDays)) ? Math.min(Math.max(Number(body.tripDays), 1), 30) : null,
-      trip_budget_eur: Number.isFinite(Number(body.tripBudgetEur)) ? Math.min(Math.max(Number(body.tripBudgetEur), 0), 100000) : null,
+      trip_days: tripDays,
+      trip_budget_eur: tripBudgetEur,
       trip_interests: Array.isArray(body.tripInterests) ? body.tripInterests.map((x: unknown) => String(x).slice(0, 50)).slice(0, 10) : [],
       trip_question: body.tripQuestion ? String(body.tripQuestion).trim().slice(0, 1200) : null,
       recommended_items: Array.isArray(body.recommendedItems)
