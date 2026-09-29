@@ -7,10 +7,11 @@ export async function GET(_req: NextRequest, { params }: { params: { slug: strin
   try {
     const { data, error } = await supabaseAdmin
       .from('destinations')
-      .select('id, slug, region, hero_image_url, status, destination_translations(language_code, name, short_description, full_description, highlights, travel_information), experiences(id, slug, experience_translations(language_code, title, short_description))')
+      .select('id, slug, region, hero_image_url, status, publish_at, destination_translations(language_code, name, short_description, full_description, highlights, travel_information), experiences(id, slug, status, experience_translations(language_code, title, short_description))')
       .eq('slug', params.slug)
       .eq('status', 'published')
       .is('deleted_at', null)
+      .or(`publish_at.is.null,publish_at.lte.${new Date().toISOString()}`)
       .maybeSingle();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -18,7 +19,7 @@ export async function GET(_req: NextRequest, { params }: { params: { slug: strin
 
     const translations = data.destination_translations || [];
     const byLanguage = (language: string) => translations.find((item: any) => item.language_code === language);
-    const experiences = (data.experiences || []).map((experience: any) => {
+    const experiences = (data.experiences || []).filter((experience: any) => experience.status === 'published').map((experience: any) => {
       const expEs = experience.experience_translations?.find((item: any) => item.language_code === 'es');
       const expFi = experience.experience_translations?.find((item: any) => item.language_code === 'fi');
       return { id: experience.id, slug: experience.slug, titleEs: expEs?.title || '', titleFi: expFi?.title || '', shortDescriptionEs: expEs?.short_description || '', shortDescriptionFi: expFi?.short_description || '' };
