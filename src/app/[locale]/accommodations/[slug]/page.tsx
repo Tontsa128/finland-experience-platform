@@ -5,11 +5,12 @@ import { ArrowRight, ArrowUpRight, BedDouble, MapPin, Sparkles, Users } from "lu
 import { getPublishedProperties } from "@/lib/public-content";
 import { cabins as fallbackCabins, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
+import { allowDemoFallback } from "@/lib/utils";
 
 export default async function CabinDetail({ params }: { params: { locale: string; slug: string } }) {
   const locale = params.locale as Locale;
   const cmsCabins = await getPublishedProperties();
-  const cabins = cmsCabins.length ? cmsCabins : fallbackCabins;
+  const cabins = cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
   const c = cabins.find((x) => x.slug === params.slug);
   if (!c) notFound();
 
