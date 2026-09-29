@@ -41,5 +41,10 @@
     "eslint-config-next": "14.2.35",
     "tsx": "^4.4.0",
     "supabase": "^1.120.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "next/core-web-vitals"
+    ]
   }
 }
