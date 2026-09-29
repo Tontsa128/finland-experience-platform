@@ -35,6 +35,16 @@ export async function POST(request:Request) {
     }
   }
   if(!Object.keys(changes).length) return NextResponse.json({error:"Muutoksia ei annettu."},{status:400});
+  const { data: pendingRequest, error: pendingError } = await supabaseAdmin
+    .from("provider_change_requests")
+    .select("id")
+    .eq("provider_id", context.provider.id)
+    .eq("status", "pending")
+    .limit(1)
+    .maybeSingle();
+  if (pendingError) return NextResponse.json({error: pendingError.message},{status:500});
+  if (pendingRequest) return NextResponse.json({error:"Sinulla on jo odottava muutospyyntö."},{status:409});
+
   const { data, error } = await supabaseAdmin.from("provider_change_requests").insert({
     provider_id:context.provider.id, requested_by:context.user.id, changes
   }).select("id,changes,status,created_at").single();
