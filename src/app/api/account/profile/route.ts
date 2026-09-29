@@ -69,6 +69,11 @@ export async function PATCH(request: NextRequest) {
       if (byEmail.error) return NextResponse.json({ error: byEmail.error.message }, { status: 500 });
 
       if (byEmail.data) {
+        const existingByEmail = await admin.from("customers").select("id,auth_user_id").eq("id", byEmail.data.id).single();
+        if (existingByEmail.error) return NextResponse.json({ error: existingByEmail.error.message }, { status: 500 });
+        if (existingByEmail.data.auth_user_id && existingByEmail.data.auth_user_id !== user.id) {
+          return NextResponse.json({ error: "Sähköpostiosoite on jo liitetty toiseen asiakastiliin." }, { status: 409 });
+        }
         result = await admin.from("customers").update({
           auth_user_id: user.id,
           first_name: firstName,
