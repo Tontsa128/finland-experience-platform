@@ -4,6 +4,7 @@ import { ArrowRight, Compass, Moon, Sparkles, Sun, Waves } from "lucide-react";
 import { blogPosts as fallbackPosts, getLocalized } from "@/lib/data";
 import { getPublishedBlogPosts } from "@/lib/public-content";
 import type { Locale } from "@/types";
+import { allowDemoFallback } from "@/lib/utils";
 import { photoLibrary } from "@/lib/photo-library";
 
 const editorialImages = [
@@ -15,7 +16,7 @@ const editorialImages = [
 export default async function BlogPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
   const cmsPosts = await getPublishedBlogPosts();
-  const posts = cmsPosts.length ? cmsPosts : fallbackPosts;
+  const posts = cmsPosts.length || !allowDemoFallback ? cmsPosts : fallbackPosts;
 
   const copy =
     locale === "fi"
