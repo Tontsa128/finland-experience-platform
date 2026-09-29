@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const firstName = String(body.firstName || "").trim();
     const email = String(body.email || "").trim().toLowerCase();
     const locale = String(body.locale || "es");
-    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!firstName || firstName.length > 100 || !emailPattern.test(email) || email.length > 254 || !locales.has(locale)) {
       return NextResponse.json({ error: "Please provide a valid name, email and locale." }, { status: 400 });
     }
