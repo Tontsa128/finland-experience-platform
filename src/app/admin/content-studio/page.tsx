@@ -93,7 +93,8 @@ export default function ContentStudioPage() {
   const [busy, setBusy] = useState(false);
   const [search, setSearch] = useState("");
   const [media, setMedia] = useState<any[]>([]);
-  const [showMedia, setShowMedia] = useState(false);\n  const [mediaQuery, setMediaQuery] = useState("");
+  const [showMedia, setShowMedia] = useState(false);
+  const [mediaQuery, setMediaQuery] = useState("");
 
   async function load() {
     setError("");
@@ -209,7 +210,18 @@ export default function ContentStudioPage() {
     finally { setBusy(false); }
   }
 
-  function selectMedia(id: string) {\n    if (!selected) return;\n    const raw = { ...selected.raw };\n    const image = media.find(m => m.id === id);\n    if (!image) return;\n    raw.hero_image_url = image.url;\n    raw.selected_media_id = id;\n    setSelected({ ...selected, raw });\n    setShowMedia(false);\n  }\n\n  const tr = selected?.translations[locale];
+  function selectMedia(id: string) {
+    if (!selected) return;
+    const raw = { ...selected.raw };
+    const image = media.find(m => m.id === id);
+    if (!image) return;
+    raw.hero_image_url = image.url;
+    raw.selected_media_id = id;
+    setSelected({ ...selected, raw });
+    setShowMedia(false);
+  }
+
+  const tr = selected?.translations[locale];
   const fields = selected?.kind === "destination"
     ? [["name","Nimi"],["shortDescription","Lyhyt kuvaus"],["fullDescription","Kuvaus"],["highlights","Kohokohdat"],["travelInformation","Matkatieto"],["seoTitle","SEO-otsikko"],["seoDescription","SEO-kuvaus"]]
     : selected?.kind === "property"
