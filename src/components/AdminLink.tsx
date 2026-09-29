@@ -5,9 +5,10 @@ import { ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
 
+const ADMIN_ROLES = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"]);
+
 export default function AdminLink() {
   const [visible, setVisible] = useState(false);
-  const adminRoles = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"]);
 
   useEffect(() => {
     let mounted = true;
