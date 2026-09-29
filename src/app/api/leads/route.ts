@@ -46,6 +46,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Departure date cannot be before arrival date." }, { status: 400 });
     }
 
+    if (propertyId) {
+      const { data: property, error } = await supabaseAdmin
+        .from("properties")
+        .select("id")
+        .eq("id", propertyId)
+        .eq("status", "published")
+        .maybeSingle();
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+      if (!property) return NextResponse.json({ error: "Property not found." }, { status: 404 });
+    }
+    if (experienceId !== null) {
+      const { data: experience, error } = await supabaseAdmin
+        .from("experiences")
+        .select("id")
+        .eq("id", experienceId)
+        .eq("status", "published")
+        .maybeSingle();
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+      if (!experience) return NextResponse.json({ error: "Experience not found." }, { status: 404 });
+    }
+
     const providerIdForInsert = providerId;
     if (providerIdForInsert) {
       const { data: provider, error } = await supabaseAdmin
