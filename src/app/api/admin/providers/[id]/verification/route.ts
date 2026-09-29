@@ -2,40 +2,48 @@ import { NextResponse } from "next/server";
 import { getAdminContext } from "@/lib/admin-auth";
 import { supabaseAdmin } from "@/lib/supabase";
 
+const fields = ["company_checked","contact_checked","pricing_checked","booking_flow_checked","spanish_content_checked","photos_checked"] as const;
+const allowedRoles = ["SUPER_ADMIN","ADMIN","CONTENT_MANAGER"] as const;
+
 export const dynamic = "force-dynamic";
 
-const fields = [
-  "company_checked",
-  "contact_checked",
-  "pricing_checked",
-  "booking_flow_checked",
-  "spanish_content_checked",
-  "photos_checked",
-] as const;
+export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const admin = await getAdminContext();
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!allowedRoles.includes(admin.profile.role as typeof allowedRoles[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  const { id } = await params;
+  const { data, error } = await supabaseAdmin.from("provider_verification_checks").select("*").eq("provider_id", id).maybeSingle();
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  return NextResponse.json({ verification: data || Object.fromEntries(fields.map((field) => [field, false])) });
+}
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const admin = await getAdminContext();
-  if (!admin || !["SUPER_ADMIN","ADMIN","CONTENT_MANAGER"].includes(admin.profile.role)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!allowedRoles.includes(admin.profile.role as typeof allowedRoles[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const { id } = await params;
   const body = await req.json().catch(() => ({}));
-  const updates: Record<string, boolean | string | null> = {};
-  for (const field of fields) if (typeof body[field] === "boolean") updates[field] = body[field];
-  if (typeof body.notes === "string") updates.notes = body.notes.slice(0, 5000);
   const existing = await supabaseAdmin.from("provider_verification_checks").select("*").eq("provider_id", id).maybeSingle();
   if (existing.error) return NextResponse.json({ error: existing.error.message }, { status: 500 });
+
+  const updates: Record<string, boolean | string | null> = {};
+  for (const field of fields) if (typeof body[field] === "boolean") updates[field] = body[field];
+  if (typeof body.notes === "string" || body.notes === null) updates.notes = body.notes === null ? null : body.notes.slice(0, 5000);
+  if (!Object.keys(updates).length) return NextResponse.json({ error: "No verification changes supplied." }, { status: 400 });
+
   const merged = { ...(existing.data || {}), ...updates };
   const complete = fields.every((field) => merged[field] === true);
   const payload = {
     provider_id: id,
     ...updates,
     checked_by: complete ? admin.user.id : (existing.data?.checked_by || null),
-    checked_at: complete ? new Date().toISOString() : (existing.data?.checked_at || null),
+    checked_at: complete ? new Date().toISOString() : null,
   };
-  const { data, error } = await supabaseAdmin.from("provider_verification_checks").upsert(payload).select("*").single();
+  const { data, error } = await supabaseAdmin.from("provider_verification_checks").upsert(payload, { onConflict: "provider_id" }).select("*").single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  if (complete) await supabaseAdmin.from("providers").update({ verified: true, verified_at: new Date().toISOString() }).eq("id", id);
-  else await supabaseAdmin.from("providers").update({ verified: false }).eq("id", id);
+
+  const providerUpdate = complete ? { verified: true, verified_at: new Date().toISOString() } : { verified: false, verified_at: null };
+  const providerResult = await supabaseAdmin.from("providers").update(providerUpdate).eq("id", id);
+  if (providerResult.error) return NextResponse.json({ error: providerResult.error.message }, { status: 500 });
   return NextResponse.json({ verification: data, verified: complete });
 }
