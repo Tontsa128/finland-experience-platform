@@ -49,7 +49,7 @@ export class PricingCalculator {
 
     // Private group surcharge
     const privateGroupSurcharge = input.privateGroup
-      ? cents((adultTotal + childTotal) * (input.privateGroupMultiplier - 1))
+      ? cents(basePrice * input.privateGroupMultiplier)
       : 0;
 
     // Subtotal before seasonal adjustment
