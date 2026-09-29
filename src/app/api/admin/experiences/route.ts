@@ -70,8 +70,20 @@ export async function POST(req:NextRequest) {
     const translations=locales.map((language_code)=>{const t=body.translations[language_code];return {experience_id:experience.id,language_code,title:t.title.trim(),short_description:t.shortDescription?.trim()||null,full_description:t.fullDescription?.trim()||null,what_to_bring:t.whatToBring?.trim()||null,safety_information:t.safetyInformation?.trim()||null};});
     const {error:translationError}=await supabaseAdmin.from("experience_translations").insert(translations);
     if(translationError){await supabaseAdmin.from("experiences").delete().eq("id",experience.id);return NextResponse.json({error:translationError.message},{status:400});}
-    if (body.mediaIds?.length) { const { error: mediaError } = await supabaseAdmin.from("experience_media").insert(body.mediaIds.map((media_id, sort_order) => ({ experience_id: experience.id, media_id, sort_order }))); if (mediaError) return NextResponse.json({error:mediaError.message},{status:400}); }
-    if(body.pricing){const {error:pricingError}=await supabaseAdmin.from("pricing_rules").insert({experience_id:experience.id,base_price_eur:body.pricing.basePriceEur??0,adult_price_eur:body.pricing.adultPriceEur??null,child_price_eur:body.pricing.childPriceEur??null});if(pricingError)return NextResponse.json({error:pricingError.message},{status:400});}
+    if (body.mediaIds?.length) {
+      const { error: mediaError } = await supabaseAdmin.from("experience_media").insert(body.mediaIds.map((media_id, sort_order) => ({ experience_id: experience.id, media_id, sort_order })));
+      if (mediaError) {
+        await supabaseAdmin.from("experiences").delete().eq("id", experience.id);
+        return NextResponse.json({error:mediaError.message},{status:400});
+      }
+    }
+    if(body.pricing){
+      const {error:pricingError}=await supabaseAdmin.from("pricing_rules").insert({experience_id:experience.id,base_price_eur:body.pricing.basePriceEur??0,adult_price_eur:body.pricing.adultPriceEur??null,child_price_eur:body.pricing.childPriceEur??null});
+      if(pricingError){
+        await supabaseAdmin.from("experiences").delete().eq("id", experience.id);
+        return NextResponse.json({error:pricingError.message},{status:400});
+      }
+    }
     return NextResponse.json({experience},{status:201});
   } catch(error){return NextResponse.json({error:error instanceof Error?error.message:"Invalid request"},{status:400});}
 }
