@@ -4,11 +4,12 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { experiences as fallbackExperiences, getLocalized } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
+import { allowDemoFallback } from "@/lib/utils";
 
 export default async function ExperiencesPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
   const cmsExperiences = await getPublishedExperiences();
-  const experiences = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
+  const experiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
   const copy = locale === "fi"
     ? { eyebrow: "Suomen kesä odottaa", title: "Tee lomastasi tarina", intro: "Sauna järven rannalla. Veneily auringon alla. Yöttömän yön hetki, jonka muistat vielä pitkään.", idea: "Miltä sinun kesäsi tuntuu?", more: "Tutustu kaikkiin elämyksiin" }
     : locale === "es"
