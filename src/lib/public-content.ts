@@ -35,7 +35,7 @@ async function getVerifiedExperienceIds(): Promise<Set<string>> {
     supabaseAdmin.from("provider_experience_links").select("experience_id,provider_id"),
     supabaseAdmin.from("providers").select("id").eq("active", true).eq("verified", true),
   ]);
-  const verifiedIds = new Set((providers ?? []).map((provider: any) => String(provider.id)));
+  const verifiedIds = new Set((providers as IdRow[] ?? []).map((provider) => String(provider.id)));
   return new Set((links as ProviderLinkRow[] ?? []).filter((link) => link.experience_id != null && verifiedIds.has(String(link.provider_id))).map((link) => String(link.experience_id)));
 }
 
