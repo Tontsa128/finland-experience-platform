@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   if (!admin || !roles.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const body = await req.json();
   const sortOrder = Number(body.sort_order ?? 0);
-  if (!["fi","es","en"].includes(item.locale) || !item.label || !item.href || !Number.isInteger(sortOrder) || sortOrder < 0 || !/^(\/|https?:\/\//i.test(item.href)) return NextResponse.json({ error: "locale, label ja href ovat pakollisia" }, { status: 400 });
+  if (!["fi","es","en"].includes(item.locale) || !item.label || !item.href || !Number.isInteger(sortOrder) || sortOrder < 0 || !/^(\/|https?:\/\/)/i.test(item.href)) return NextResponse.json({ error: "locale, label ja href ovat pakollisia" }, { status: 400 });
   if (!["fi","es","en"].includes(item.locale) || !item.label || !item.href || !Number.isInteger(sortOrder) || sortOrder < 0 || !/^(\/|https?:\\/\\/)/i.test(item.href)) return NextResponse.json({ error: "locale, label ja href ovat pakollisia" }, { status: 400 });
   const { data, error } = await supabaseAdmin.from("site_navigation").insert(item).select("*").single();
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
