@@ -28,6 +28,10 @@ export default function TripPlanner({language,catalog}:{language:Lang;catalog:{d
   const [budget,setBudget]=useState('200');
   const [selected,setSelected]=useState<string[]>(['nature','sauna','sea']);
   const [submitted,setSubmitted]=useState(false);
+  const [leadName,setLeadName]=useState('');
+  const [leadEmail,setLeadEmail]=useState('');
+  const [leadSent,setLeadSent]=useState(false);
+  const [leadError,setLeadError]=useState('');
 
   const toggle=(key:string)=>setSelected(v=>v.includes(key)?v.filter(x=>x!==key):[...v,key]);
   const result=useMemo(()=>{
@@ -46,6 +50,7 @@ export default function TripPlanner({language,catalog}:{language:Lang;catalog:{d
   },[catalog,language,selected]);
 
   function submit(e:FormEvent){e.preventDefault();setSubmitted(true);document.getElementById('trip-result')?.scrollIntoView({behavior:'smooth',block:'start'});}
+  async function sendLead(e:FormEvent){e.preventDefault();setLeadError('');const message=`Trip planner: ${days} days, ${people} people, budget €${budget}/night. Interests: ${selected.join(', ')}. Suggested destination: ${result.destination?.name[language]||''}. Stay: ${result.stay?.name[language]||''}. Experience: ${result.experience?.name[language]||''}.`;const r=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName:leadName,email:leadEmail,locale:language,leadType:'planner',message,source:'trip-planner',sourcePath:`/${language}/plan`})});const b=await r.json();if(!r.ok){setLeadError(b.error||'Unable to send request.');return;}setLeadSent(true);}
 
   return <div>
     <section className="rounded-[2rem] bg-brand-950 p-6 text-white shadow-2xl sm:p-10">
@@ -66,6 +71,9 @@ export default function TripPlanner({language,catalog}:{language:Lang;catalog:{d
       <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{t.result}</p>
       <div className="mt-5 grid gap-4 lg:grid-cols-3">
         {[[t.destination,result.destination,'/destinations/'],[t.stay,result.stay,'/accommodations/'],[t.experience,result.experience,'/experiences/']].map(([label,item,path])=>item&&<Link key={path as string} href={`/${language}${path}${(item as Item).slug}`} className="group rounded-[1.75rem] border border-brand-100 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-card"><div className="flex items-center justify-between"><span className="text-xs font-bold uppercase tracking-[.16em] text-slate-400">{label as string}</span><Check className="h-4 w-4 text-emerald-600"/></div><h2 className="mt-5 font-display text-2xl font-bold text-brand-950">{(item as Item).name[language]||(item as Item).name.en}</h2><p className="mt-3 line-clamp-4 text-sm leading-6 text-slate-600">{(item as Item).description[language]||(item as Item).description.en}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-700">{t.discover}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1"/></span></Link>)}
+      </div>
+      <div className="mt-8 rounded-[1.5rem] border border-brand-100 bg-brand-50 p-5">
+        {leadSent ? <div className="flex items-start gap-3"><Check className="mt-0.5 h-5 w-5 text-emerald-600"/><div><p className="font-bold text-brand-950">{language==='fi'?'Suunnitelma lähetetty.':language==='es'?'Tu solicitud ha sido enviada.':'Your request has been sent.'}</p><p className="mt-1 text-sm text-slate-600">{language==='fi'?'Palaamme asiaan ja voimme auttaa jatkosuunnittelussa.':language==='es'?'Te ayudaremos con los siguientes pasos.':'We can help you with the next steps.'}</p></div></div> : <form onSubmit={sendLead} className="grid gap-3 sm:grid-cols-[1fr_1fr_auto]"><input required value={leadName} onChange={e=>setLeadName(e.target.value)} placeholder={language==='es'?'Tu nombre':'Nimesi'} className="rounded-xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-gold-300"/><input required type="email" value={leadEmail} onChange={e=>setLeadEmail(e.target.value)} placeholder={language==='es'?'Correo electrónico':'Sähköposti'} className="rounded-xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-gold-300"/><button className="rounded-xl bg-brand-950 px-5 py-3 text-sm font-bold text-white hover:bg-brand-800">{language==='fi'?'Lähetä suunnitelma':language==='es'?'Enviar mi plan':'Send my plan'}</button>{leadError&&<p className="text-sm text-red-700 sm:col-span-3">{leadError}</p>}</form>}
       </div>
       <p className="mt-5 text-xs leading-5 text-slate-500">{t.note}</p>
     </section>}
