@@ -26,10 +26,12 @@ export async function POST(req:NextRequest) {
     const slug=String(body.slug||"").trim().toLowerCase().replace(/[^a-z0-9-]+/g,"-").replace(/^-|-$/g,"").slice(0,80);
     const locale=String(body.locale||"fi");
     const title=String(body.title||"").trim().slice(0,160);
+    const canonicalUrl=String(body.canonical_url||"").trim().slice(0,500);
     if(!slug||!locales.includes(locale as typeof locales[number])||!title)return NextResponse.json({error:"Slug, kieli ja otsikko ovat pakollisia."},{status:400});
+    if(canonicalUrl && !/^(\/|https?:\/\/)/i.test(canonicalUrl))return NextResponse.json({error:"Virheellinen canonical URL."},{status:400});
     const {data,error}=await supabaseAdmin.from("site_pages").upsert({
-      slug,locale,title,content:String(body.content||""),seo_title:String(body.seo_title||"").slice(0,160)||null,
-      seo_description:String(body.seo_description||"").slice(0,320)||null,canonical_url:String(body.canonical_url||"").slice(0,500)||null,
+      slug,locale,title,content:String(body.content||"").slice(0,50000),seo_title:String(body.seo_title||"").slice(0,160)||null,
+      seo_description:String(body.seo_description||"").slice(0,320)||null,canonical_url:canonicalUrl||null,
       noindex:Boolean(body.noindex),published:Boolean(body.published),updated_at:new Date().toISOString()
     },{onConflict:"slug,locale"}).select("*").single();
     if(error)return NextResponse.json({error:error.message},{status:400});
