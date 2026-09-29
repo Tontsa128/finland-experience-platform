@@ -35,7 +35,7 @@ export async function POST(request:Request) {
       if ((key === "website_url" || key === "booking_url") && value && !/^https?:\/\//i.test(value)) {
         return NextResponse.json({error:"Verkkosivun ja varauslinkin tulee olla HTTP(S)-osoitteita."},{status:400});
       }
-      if (key === "email" && value && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value)) {
+      if (key === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
         return NextResponse.json({error:"Virheellinen sähköpostiosoite."},{status:400});
       }
       changes[key]=value.slice(0,5000);
