@@ -27,7 +27,7 @@ function validate(body: Payload) {
   if (body.basePriceEur != null && (!Number.isFinite(body.basePriceEur) || body.basePriceEur < 0)) {
     errors.push("basePriceEur must be a non-negative number");
   }
-  if (body.providerUrl && !/^https?:\\/\\//i.test(body.providerUrl.trim())) errors.push("providerUrl must be an http(s) URL");
+  if (body.providerUrl && !/^https?:\/\//i.test(body.providerUrl.trim())) errors.push("providerUrl must be an http(s) URL");
   if (body.mediaIds && (!Array.isArray(body.mediaIds) || body.mediaIds.some((id) => typeof id !== "string" || !id.trim()))) {
     errors.push("mediaIds must contain non-empty IDs");
   }
