@@ -7,7 +7,7 @@ const naantaliSummer = IMG.naantali;
 const alandSea = IMG.aland;
 const archipelagoRoad = IMG.alandAlt;
 const finnishCottage = IMG.lake;
-const mathildedalHouse = IMG.village;
+const mathildedalHouse = IMG.mathildedal;
 
 export const destinations: Destination[] = [
   {
@@ -94,7 +94,7 @@ export const destinations: Destination[] = [
       en: "Beaches, sea and western-coast summer"
     },
     region: "Western Finland",
-    images: [IMG.coast, archipelagoRoad],
+    images: [IMG.kultaranta, archipelagoRoad],
     priceFrom: 120,
     featured: false,
     coordinates: { lat: 59.823, lng: 22.969 },
@@ -117,7 +117,7 @@ export const destinations: Destination[] = [
       en: "Archipelago, history and quiet nature"
     },
     region: "Southeast Finland",
-    images: [IMG.coast, finnishSummerLake],
+    images: [IMG.kultaranta, finnishSummerLake],
     priceFrom: 100,
     featured: false,
     coordinates: { lat: 60.466, lng: 26.945 },
@@ -240,7 +240,7 @@ export const cabins: Cabin[] = [
     location: "Kimitoön, near Salo region",
     region: "Southwest Finland",
     pricePerNight: 70,
-    images: [IMG.forestStay, finnishSummerLake],
+    images: [IMG.kemionsaari, finnishSummerLake],
     features: ["glamping", "forest", "smoke sauna", "villas", "slow travel"],
     maxGuests: 6, bedrooms: 1, coordinates: { lat: 60.160, lng: 22.740 }, type: "glamping",
     bookingUrl: "https://www.storfinnhova.com/majoitus/", provider: "Storfinnhova Gård",
@@ -288,7 +288,7 @@ export const cabins: Cabin[] = [
     location: "Naantali archipelago",
     region: "Southwest Finland",
     pricePerNight: 50,
-    images: [IMG.forestStay, finnishSummerLake],
+    images: [IMG.kemionsaari, finnishSummerLake],
     features: ["tree tent", "nature", "campfire hut", "quiet", "eco"],
     maxGuests: 3, bedrooms: 1, coordinates: { lat: 60.450, lng: 21.900 }, type: "glamping",
     bookingUrl: "https://www.taattistentila.fi/puuteltta", provider: "Taattisten tila",
@@ -352,7 +352,7 @@ export const cabins: Cabin[] = [
     location: "Hanko",
     region: "Western Finland",
     pricePerNight: 120,
-    images: [IMG.coast, finnishCottage],
+    images: [IMG.kultaranta, finnishCottage],
     features: ["beach", "cycling", "sea", "terrace", "summer"],
     maxGuests: 6, bedrooms: 3, coordinates: { lat: 59.823, lng: 22.969 }, type: "villa",
     bookingUrl: "https://visithanko.fi/", provider: "Visit Hanko accommodation network",

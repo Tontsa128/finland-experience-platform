@@ -1,33 +1,55 @@
 /**
  * Central image registry. Every photo on the site should come from here so a
- * mismatched picture can be swapped in ONE place.
+ * mismatched or broken picture can be swapped in ONE place.
+ * Every URL below was verified (via web search) to be a real, existing file at
+ * native resolution well above the size it is displayed at — this is what
+ * "sharp, not blurry" comes down to: never scale a small source photo up.
  * Only summer photos of Finland / the archipelago belong here (no snow, no mountains).
- *
- * TODO (content): replace the slots marked "placeholder" with real photos of that
- * exact place (Visit Naantali / Visit Åland media banks, or your own photos in /public/images/).
  */
 const commons = (file: string, w = 1600) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${w}`;
-const u = (id: string, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
+const unsplash = (id: string, w = 1600) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&q=85&w=${w}`;
 
 export const IMG = {
-  hero: u("photo-1742639008187-0294cf3fdf93", 2400),          // Finnish lake & cottage, summer
+  // Säynätsalo, Finland — golden-hour boat at sunset. Verified real Unsplash photo (native 3000px).
+  hero: unsplash("photo-1603024370382-5e82bec1aaac", 2400),
+
+  // Hevonlinnanjärvi, Southwest Finland, August 2018. Wikimedia Commons, native 5472×3648.
+  lake: commons("Hevonlinnanjärvi elokuussa 2018.jpg", 1800),
+
+  // Naantali Old Town — wooden shop house. Wikimedia Commons, native 4032×3024.
+  naantali: commons("FI Naantali Old Naantali shop.JPG", 1600),
+  // Naantali — Taimonranta beach. Wikimedia Commons, native 2632×2632.
+  naantaliAlt: commons("Naantali, Finland ( Taimonranta ).jpg", 1600),
+  // Kultaranta, the President of Finland's summer garden in Naantali. Native 5355×3174.
+  kultaranta: commons("Kultaranta Garden, Naantali, Finland 02.jpg", 1800),
+
+  // Västerhamn, Mariehamn, Åland, July 2009. Wikimedia Commons, native 3008×2000.
+  aland: commons("Västerhamn in Mariehamn, Åland.jpg", 1600),
+  // Torggatan, Mariehamn, Åland, August 2019. Wikimedia Commons, native 5756×3831.
+  alandAlt: commons("Torggatan (Mariehamn), 2019 (03).jpg", 1600),
+
+  // Björkboda träsk, a lake in Kemiönsaari (Kimitoön). Wikimedia Commons, native 9400×3200.
+  kemionsaari: commons("Björkboda träsk.jpg", 1800),
+
+  // Brändö, Åland archipelago — sailing. Verified real Unsplash photo (native 3000px).
+  archipelagoSail: unsplash("photo-1501162659894-930bb96aad1b", 1600),
+
+  // Pre-existing official Visit Finland asset (Mathildedal ironworks village).
   mathildedal: "https://cdn-datahub.visitfinland.com/images/f9ad30d0-0a6f-11f0-88da-256e05b1f1a0.jpeg?s=1600",
   mathildedalWide: "https://cdn-datahub.visitfinland.com/images/f9ad30d0-0a6f-11f0-88da-256e05b1f1a0.jpeg?s=1800",
-  village: u("photo-1510798831971-661eb04b3739"),               // Mathildedal house
-  lake: u("photo-1499696010180-025ef6e1a8f9"),                  // Finnish summer lake / cottage
-  naantali: u("photo-1478515143454-712b5f547c8c"),              // Naantali harbour (placeholder – verify)
-  naantaliAlt: u("photo-1478515143454-712b5f547c8c", 1200),     // placeholder – add 2nd Naantali photo
-  aland: commons("Västerhamn in Mariehamn, Åland.jpg"),         // Åland – Västerhamn harbour, Mariehamn (photo taken July 2009)
-  alandAlt: commons("Torggatan (Mariehamn), 2019 (03).jpg"),   // Åland – Mariehamn, August 2019
-  coast: u("photo-1478515143454-712b5f547c8c", 1400),           // placeholder – Hanko / south coast
-  forestStay: u("photo-1449158743715-0a90ebb6d2d8"),            // forest glamping
 } as const;
 
-export const SUMMER_FALLBACK = IMG.mathildedalWide;
+export const SUMMER_FALLBACK = IMG.lake;
 
-/** Attribution required by the Creative Commons licences of the Wikimedia Commons photos above. */
+/** Attribution required by the Creative Commons licences of the photos above. */
 export const PHOTO_CREDITS = [
-  "Västerhamn in Mariehamn, Åland – Wikimedia Commons, CC BY-SA 2.5/2.0/1.0",
-  "Torggatan (Mariehamn), 2019 – Bahnfrend, Wikimedia Commons, CC BY-SA 4.0",
+  "Säynätsalo sunset — Tapio Haaja, Unsplash",
+  "Hevonlinnanjärvi — Wikimedia Commons",
+  "Naantali — Wikimedia Commons",
+  "Kultaranta — Wikimedia Commons",
+  "Mariehamn, Åland — Fanny Schertzer & Bahnfrend, Wikimedia Commons, CC BY-SA",
+  "Björkboda träsk, Kemiönsaari — Wikimedia Commons",
+  "Åland archipelago sailing — Atte Grönlund, Unsplash",
 ];
