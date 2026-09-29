@@ -41,6 +41,7 @@ export interface Destination {
   seo?: Record<string, unknown>;
   created_at?: string | null;
   updated_at?: string | null;
+  verified?: boolean;
 }
 
 export interface DestinationTranslation {
@@ -71,6 +72,7 @@ export interface Cabin {
   bookingUrl?: string;
   provider?: string;
   priceNote?: Record<Locale, string>;
+  verified?: boolean;
 }
 
 export type ExperienceStatus = "draft" | "published" | "archived";
@@ -107,6 +109,7 @@ export interface Experience {
   hero_media_id?: string | null;
   created_at?: string;
   updated_at?: string;
+  verified?: boolean;
 }
 
 export interface ExperienceTranslation {
