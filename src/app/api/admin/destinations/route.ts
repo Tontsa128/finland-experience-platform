@@ -117,7 +117,12 @@ export async function PATCH(req: NextRequest) {
       if (translationError) return NextResponse.json({ error: translationError.message }, { status: 400 });
     }
     await supabaseAdmin.from('destination_media').delete().eq('destination_id', body.id);
-    if (body.mediaIds?.length) await supabaseAdmin.from('destination_media').insert(body.mediaIds.map((media_id, sort_order) => ({ destination_id: body.id, media_id, sort_order })));
+    if (body.mediaIds?.length) {
+      const { error: mediaError } = await supabaseAdmin
+        .from('destination_media')
+        .insert(body.mediaIds.map((media_id, sort_order) => ({ destination_id: body.id, media_id, sort_order })));
+      if (mediaError) return NextResponse.json({ error: mediaError.message }, { status: 400 });
+    }
     return NextResponse.json({ destination });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Invalid request' }, { status: 400 });
