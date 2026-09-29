@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
-import { getSupabaseAdmin } from "@/lib/supabase";
+import {
+  getPublishedDestinations,
+  getPublishedProperties,
+  getPublishedExperiences,
+} from "@/lib/public-content";
 
 const languages = new Set(["fi", "en", "es"]);
 
-type CatalogItem = { slug: string };
-type CatalogResponse = { data: CatalogItem[] | null; error: unknown };
 type Recommendation = {
   type: "destination" | "accommodation" | "experience";
   slug: string;
@@ -45,55 +47,61 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Question is required." }, { status: 400 });
   }
 
-  let supabase;
-  try {
-    supabase = getSupabaseAdmin();
-  } catch {
-    return NextResponse.json(
-      { error: "Verified catalogue is temporarily unavailable." },
-      { status: 503 },
-    );
-  }
-
   const [destinations, properties, experiences] = await Promise.all([
-    supabase
-      .from("destinations")
-      .select(
-        "slug,name_fi,name_en,name_es,description_fi,description_en,description_es,tags,activities,verified",
-      )
-      .eq("status", "PUBLISHED")
-      .eq("verified", true)
-      .limit(100),
-    supabase
-      .from("properties")
-      .select(
-        "slug,name_fi,name_en,name_es,description_fi,description_en,description_es,location,features,price,verified",
-      )
-      .eq("status", "PUBLISHED")
-      .eq("verified", true)
-      .limit(100),
-    supabase
-      .from("experiences")
-      .select(
-        "slug,name_fi,name_en,name_es,description_fi,description_en,description_es,region,tags,price,verified",
-      )
-      .eq("status", "PUBLISHED")
-      .eq("verified", true)
-      .limit(100),
+    getPublishedDestinations(),
+    getPublishedProperties(),
+    getPublishedExperiences(),
   ]);
 
-  if (destinations.error || properties.error || experiences.error) {
+  const catalog = {
+    destinations: destinations
+      .filter((item) => item.verified === true)
+      .slice(0, 100)
+      .map((item) => ({
+        slug: item.slug,
+        name: item.name,
+        description: item.description,
+        tags: item.tags,
+        activities: item.activities,
+        verified: true,
+      })),
+    accommodations: properties
+      .filter((item) => item.verified === true)
+      .slice(0, 100)
+      .map((item) => ({
+        slug: item.slug,
+        name: item.name,
+        description: item.description,
+        location: item.location,
+        features: item.features,
+        price: item.pricePerNight,
+        verified: true,
+      })),
+    experiences: experiences
+      .filter((item) => item.verified === true)
+      .slice(0, 100)
+      .map((item) => ({
+        slug: item.slug,
+        name: item.name,
+        description: item.description,
+        region: item.region,
+        tags: [item.category],
+        price: item.price,
+        verified: true,
+      })),
+  };
+
+  if (
+    !catalog.destinations.length &&
+    !catalog.accommodations.length &&
+    !catalog.experiences.length
+  ) {
     return NextResponse.json(
       { error: "Verified catalogue is temporarily unavailable." },
       { status: 503 },
     );
   }
 
-  const catalog = {
-    destinations: destinations.data || [],
-    accommodations: properties.data || [],
-    experiences: experiences.data || [],
-  };
   const langName =
     language === "es" ? "European Spanish" : language === "en" ? "English" : "Finnish";
 
@@ -130,6 +138,7 @@ export async function POST(request: Request) {
           "gpt-5.6-luna",
         input: prompt,
         max_output_tokens: 1400,
+        store: false,
       }),
       signal: AbortSignal.timeout(20000),
     });
@@ -167,9 +176,9 @@ export async function POST(request: Request) {
   }
 
   const valid = new Set<string>([
-    ...(destinations.data || []).map((item) => "destination:" + item.slug),
-    ...(properties.data || []).map((item) => "accommodation:" + item.slug),
-    ...(experiences.data || []).map((item) => "experience:" + item.slug),
+    ...catalog.destinations.map((item) => "destination:" + item.slug),
+    ...catalog.accommodations.map((item) => "accommodation:" + item.slug),
+    ...catalog.experiences.map((item) => "experience:" + item.slug),
   ]);
 
   const cleanRecommendation = (value: unknown): Recommendation | null => {
