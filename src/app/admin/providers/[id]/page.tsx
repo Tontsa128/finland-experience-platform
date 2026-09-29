@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Save, ShieldCheck } from "lucide-react";
+import ProviderChangeRequests from "@/components/admin/ProviderChangeRequests";
 
 const fields = [
   ["company_checked","Yritys ja perustiedot"],
@@ -66,5 +67,6 @@ export default function ProviderVerificationPage({ params }: { params: Promise<{
       {message&&<p className="mt-4 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">{message}</p>}
       <button onClick={save} disabled={saving} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-midnight px-5 py-3 font-semibold text-white shadow-lg disabled:opacity-60"><Save className="h-4 w-4"/>{saving?"Tallennetaan...":"Tallenna tarkistukset"}</button>
     </div>
+    <ProviderChangeRequests providerId={id}/>
   </div></main>;
 }
