@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
             slug: typeof x.slug === "string" ? x.slug.trim().slice(0, 200) : "",
             reason: typeof x.reason === "string" ? x.reason.trim().slice(0, 300) : "",
           }))
-          .filter((x) => ["destination", "accommodation", "experience"].includes(x.type) && x.slug)
+          .filter((x: { type: string; slug: string }) => ["destination", "accommodation", "experience"].includes(x.type) && Boolean(x.slug))
           .slice(0, 3)
       : [];
 
