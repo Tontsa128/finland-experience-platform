@@ -34,8 +34,60 @@ export async function PATCH(req: NextRequest) {
   }
   try {
     const body = await req.json();
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return NextResponse.json({ error: "Invalid settings payload" }, { status: 400 });
+    }
+
     const patch: Record<string, unknown> = {};
-    for (const key of allowed) if (key in body) patch[key] = body[key];
+    const textFields = new Set<string>(allowed.filter((key) => !key.endsWith("_ids")));
+    const colorFields = new Set(["primary_color", "secondary_color", "accent_color"]);
+    const urlFields = new Set([
+      "instagram_url", "facebook_url", "default_og_image", "hero_image_url",
+      "hero_cta_url", "hero_secondary_url",
+    ]);
+    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+    for (const key of allowed) {
+      if (!(key in body)) continue;
+      const value = body[key];
+
+      if (key.endsWith("_ids")) {
+        if (!Array.isArray(value) || value.some((id) => !(typeof id === "string" || typeof id === "number"))) {
+          return NextResponse.json({ error: key + " must be an array of IDs" }, { status: 400 });
+        }
+        patch[key] = value.slice(0, 50).map(String);
+        continue;
+      }
+
+      if (typeof value !== "string") {
+        return NextResponse.json({ error: key + " must be a string" }, { status: 400 });
+      }
+
+      const normalized = value.trim();
+      const maxLength = key.includes("description") ? 2000 : key.includes("title") || key.includes("eyebrow") || key.includes("label") ? 300 : 500;
+      if (normalized.length > maxLength) {
+        return NextResponse.json({ error: key + " is too long" }, { status: 400 });
+      }
+
+      if (colorFields.has(key) && !/^#[0-9a-f]{6}$/i.test(normalized)) {
+        return NextResponse.json({ error: key + " must be a 6-digit hex color" }, { status: 400 });
+      }
+
+      if (urlFields.has(key) && normalized && !/^(\\/|https?:\\/\\/)/i.test(normalized)) {
+        return NextResponse.json({ error: key + " must be a relative path or http(s) URL" }, { status: 400 });
+      }
+
+      if (key === "contact_email" && normalized && (!emailPattern.test(normalized) || normalized.length > 254)) {
+        return NextResponse.json({ error: "contact_email is invalid" }, { status: 400 });
+      }
+
+      patch[key] = normalized || null;
+    }
+
+    if ("site_name" in body && !patch.site_name) {
+      return NextResponse.json({ error: "site_name is required" }, { status: 400 });
+    }
+
     patch.updated_at = new Date().toISOString();
     const { data, error } = await supabaseAdmin.from("site_settings").upsert(
       { singleton: true, ...patch },
