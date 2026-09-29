@@ -215,13 +215,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
   language={locale as "fi"|"es"|"en"}
   catalog={{
     destinations: (cmsDestinations.length ? cmsDestinations : destinations).map((d) => ({
-      slug: d.slug, name: d.name, description: d.shortDescription, tags: d.tags || [], activities: d.activities || [],
+      slug: d.slug, name: d.name, description: d.shortDescription, tags: d.tags || [], activities: d.activities || [], verified: d.verified,
     })),
     accommodations: (cmsCabins.length ? cmsCabins : cabins).map((c) => ({
-      slug: c.slug, name: c.name, description: c.description, location: c.location, features: c.features || [], price: c.pricePerNight,
+      slug: c.slug, name: c.name, description: c.description, location: c.location, features: c.features || [], price: c.pricePerNight, verified: c.verified,
     })),
     experiences: (cmsExperiences.length ? cmsExperiences : experiences).map((e) => ({
-      slug: e.slug, name: e.name, description: e.shortDescription, region: e.region, tags: e.tags || [], price: e.price,
+      slug: e.slug, name: e.name, description: e.shortDescription, region: e.region, tags: e.tags || [], price: e.price, verified: e.verified,
     })),
   }}
 /></div></div></div></section>
