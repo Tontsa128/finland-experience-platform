@@ -9,6 +9,7 @@ const statuses = ["new","contacted","qualified","referred","booked","lost"] as c
 export async function GET() {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!["SUPER_ADMIN", "ADMIN", "BOOKING_MANAGER"].includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   const { data, error } = await supabaseAdmin
     .from("bookings_inquiries")
@@ -35,7 +36,7 @@ export async function PATCH(request: Request) {
 
   const { data, error } = await supabaseAdmin
     .from("bookings_inquiries")
-    .update({ lead_status: leadStatus })
+    .update({ lead_status: leadStatus, updated_at: new Date().toISOString() })
     .eq("id", id)
     .in("lead_type", ["planner", "concierge"])
     .select("id,lead_status")
