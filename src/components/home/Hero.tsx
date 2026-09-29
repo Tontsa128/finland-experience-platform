@@ -22,18 +22,22 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   return (
     <section className="relative flex min-h-[calc(100svh-4rem)] w-full items-end overflow-hidden bg-brand-950 text-white sm:min-h-[760px]">
       <Image src={image} alt={title} fill priority sizes="100vw" className="object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/5" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/5" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/55 to-transparent" />
       <div className="absolute bottom-4 right-4 rounded-full bg-black/35 px-3 py-1.5 text-[11px] text-white/75 backdrop-blur-sm">Photo: Kotivalo / Wikimedia Commons</div>
+      <div aria-hidden="true" className="absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-bold uppercase tracking-[.28em] text-white/65 sm:flex">
+        <span className="animate-pulse">{locale === "fi" ? "Tutustu" : locale === "es" ? "Descubre" : "Discover"}</span>
+        <span className="h-10 w-px bg-gradient-to-b from-white/70 to-transparent" />
+      </div>
 
       <div className="container-narrow relative z-10 w-full pb-16 pt-28 sm:pb-24 lg:pb-28">
         <div className="max-w-4xl">
           <p className="mb-5 text-xs font-bold uppercase tracking-[.24em] text-gold-300">{t("eyebrow")}</p>
-          <h1 className="max-w-4xl font-display text-5xl font-bold leading-[.98] sm:text-7xl lg:text-[5.8rem]">{title}</h1>
+          <h1 className="max-w-4xl font-display text-5xl font-bold leading-[.94] tracking-[-.03em] sm:text-7xl lg:text-[5.8rem]">{title}</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/90 sm:text-2xl sm:leading-9">{description}</p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link href={`/${locale}/destinations`} className="btn-gold px-7 py-4">
               {t("cta")} <ArrowRight className="h-4 w-4" />
             </Link>
