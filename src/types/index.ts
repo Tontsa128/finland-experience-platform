@@ -190,7 +190,6 @@ export interface MediaItem extends Media {
 }
 
 export interface Availability {
-  [key: string]: any;
   timeSlot?: string;
   id: string | number;
   experienceId?: string | number;
@@ -200,7 +199,7 @@ export interface Availability {
   startTime?: string;
   capacity: number;
   booked: number;
-  status: "available" | "sold_out" | "cancelled" | string;
+  status: "available" | "sold_out" | "cancelled";
   isInstantBooking: boolean;
   createdAt?: string | Date;
   updatedAt?: string | Date;
