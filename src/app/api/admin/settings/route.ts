@@ -39,7 +39,6 @@ export async function PATCH(req: NextRequest) {
     }
 
     const patch: Record<string, unknown> = {};
-    const textFields = new Set<string>(allowed.filter((key) => !key.endsWith("_ids")));
     const colorFields = new Set(["primary_color", "secondary_color", "accent_color"]);
     const urlFields = new Set([
       "instagram_url", "facebook_url", "default_og_image", "hero_image_url",
