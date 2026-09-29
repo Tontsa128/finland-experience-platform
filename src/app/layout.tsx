@@ -12,10 +12,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: { default: "Nordic Escape | Finnish Summer & Slow Travel", template: "%s | Nordic Escape" },
+  title: { default: "Finland Experience | Finnish Summer & Slow Travel", template: "%s | Finland Experience" },
   description: "Discover peaceful Finnish summer stays: Mathildedal, Salo, Naantali, the archipelago, Åland and the western and southeastern coast. Accommodation and activities are booked directly with local providers.",
   keywords: ["Finland summer","Mathildedal","Salo accommodation","Naantali cottages","Åland cottages","Finnish archipelago","Finnish sauna","glamping Finland"],
-  openGraph: { type: "website", locale: "en_IE", siteName: "Nordic Escape" },
+  openGraph: { type: "website", locale: "en_IE", siteName: "Finland Experience" },
   manifest: "/manifest.json",
 };
 
