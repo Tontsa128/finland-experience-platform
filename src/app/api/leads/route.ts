@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, requestKey } from "@/lib/rate-limit";
 import { supabaseAdmin } from "@/lib/supabase";
 
 const locales = new Set(["fi","es","en"]);
@@ -7,6 +8,13 @@ const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 export async function POST(request: NextRequest) {
+  const limit = rateLimit(requestKey(request,"leads"),20,60_000);
+  if (!limit.ok) {
+    return NextResponse.json({ error: "Too many requests. Please try again later." }, {
+      status: 429,
+      headers: { "Retry-After": String(Math.max(1, Math.ceil((limit.resetAt - Date.now()) / 1000))) },
+    });
+  }
   try {
     const body = await request.json();
     if (body.website) return NextResponse.json({ inquiry: null }, { status: 201 });
