@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/seo";
 import { locales } from "@/lib/utils";
 import {
-  getPublishedBlogPosts,
   getPublishedDestinations,
   getPublishedExperiences,
   getPublishedProperties,
@@ -24,11 +23,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   try {
-    const [destinations, properties, experiences, blogPosts, pagesResult] = await Promise.all([
+    const [destinations, properties, experiences, pagesResult] = await Promise.all([
       getPublishedDestinations(),
       getPublishedProperties(),
       getPublishedExperiences(),
-      getPublishedBlogPosts(),
       supabaseAdmin
         .from("site_pages")
         .select("slug,locale,updated_at")
@@ -59,14 +57,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
-        })),
-      ),
-      ...blogPosts.flatMap((item) =>
-        locales.map((locale) => ({
-          url: siteUrl + "/" + locale + "/blog",
-          lastModified: item.publishedAt ? new Date(item.publishedAt) : new Date(),
-          changeFrequency: "weekly" as const,
-          priority: 0.6,
         })),
       ),
       ...((pagesResult.data ?? []).map((page) => ({
