@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 
 interface Props { id?: string }
@@ -100,7 +101,7 @@ export default function ExperienceForm({ id }: Props) {
         <div className="grid grid-cols-3 gap-3">
           {mediaList.map(m => (
             <div key={m.id} className={`p-2 border rounded ${ (data.media||[]).includes(m.id) ? 'ring-2 ring-aurora' : '' }`}>
-              <img src={m.url} alt={m.alt_text} className="w-full h-24 object-cover rounded" />
+              <div className="relative h-24 w-full overflow-hidden rounded"><Image src={m.url} alt={m.alt_text || m.title || m.filename} fill sizes="(max-width: 768px) 33vw, 200px" className="object-cover" /></div>
               <div className="mt-2 text-sm">{m.title || m.filename}</div>
               <div className="mt-2 flex items-center gap-2">
                 <label className="text-sm"><input type="checkbox" checked={(data.media||[]).includes(m.id)} onChange={()=>toggleMedia(m.id)} /> Añadir</label>
