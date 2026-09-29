@@ -48,6 +48,11 @@ export async function POST(request: NextRequest) {
       lead_type: leadType,
       source: body.source ? String(body.source).slice(0, 120) : "website",
       source_path: body.sourcePath ? String(body.sourcePath).slice(0, 500) : null,
+      trip_days: Number.isFinite(Number(body.tripDays)) ? Math.min(Math.max(Number(body.tripDays), 1), 30) : null,
+      trip_budget_eur: Number.isFinite(Number(body.tripBudgetEur)) ? Math.min(Math.max(Number(body.tripBudgetEur), 0), 100000) : null,
+      trip_interests: Array.isArray(body.tripInterests) ? body.tripInterests.map((x: unknown) => String(x).slice(0, 50)).slice(0, 10) : [],
+      trip_question: body.tripQuestion ? String(body.tripQuestion).trim().slice(0, 1200) : null,
+      recommended_items: Array.isArray(body.recommendedItems) ? body.recommendedItems.slice(0, 3) : [],
     }).select("id,status,created_at").single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
