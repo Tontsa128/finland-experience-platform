@@ -104,7 +104,7 @@ export default function ContentStudioPage() {
     const b = await r.json();
     if (!r.ok) throw new Error(b.error || "Sisältöä ei voitu ladata.");
     const source = kind === "destination" ? b.destinations : kind === "property" ? b.properties : b.experiences;
-    const normalized = (source || []).map((x:any) => normalize(kind, x));
+    const normalized: Item[] = (source || []).map((x: any): Item => normalize(kind, x));
     setItems(normalized);
     return normalized;
   }, [kind]);
