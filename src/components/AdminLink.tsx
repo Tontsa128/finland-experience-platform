@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 export default function AdminLink() {
-  const [visible, setVisible] = useState(false);\n  const adminRoles = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"]);
+  const [visible, setVisible] = useState(false);
+  const adminRoles = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"]);
 
   useEffect(() => {
     let mounted = true;
