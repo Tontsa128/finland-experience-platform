@@ -13,8 +13,8 @@ function validate(body: Payload) {
   if (!body.slug?.trim() || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(body.slug.trim())) {
     errors.push("slug must contain lowercase letters, numbers and single hyphens");
   }
-  if (!Number.isInteger(Number(body.destinationId)) || Number(body.destinationId) < 1) errors.push("destinationId must be a positive integer");
-  if (!Number.isInteger(Number(body.categoryId)) || Number(body.categoryId) < 1) errors.push("categoryId must be a positive integer");
+  if (!Number.isInteger(body.destinationId) || body.destinationId < 1) errors.push("destinationId must be a positive integer");
+  if (!Number.isInteger(body.categoryId) || body.categoryId < 1) errors.push("categoryId must be a positive integer");
 
   const min = body.minGroupSize ?? 1;
   const max = body.maxGroupSize ?? 100;
