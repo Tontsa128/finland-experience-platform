@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { Building2, ExternalLink, LogOut, Mail, ShieldCheck } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
 
@@ -54,7 +55,7 @@ export default function PartnerPage() {
   return <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-8"><div className="mx-auto max-w-6xl">
     <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
       <div><p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-600">Partner Portal</p><h1 className="mt-1 text-3xl font-bold text-midnight">{profile?.provider.name}</h1><p className="mt-1 text-slate-500">{profile?.provider.region || "Finland"} · {profile?.membership.role}</p></div>
-      <button onClick={logout} className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"><LogOut className="h-4 w-4"/>Kirjaudu ulos</button>
+      <Link href="/partner/profile" className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700">Yritysprofiili</Link><button onClick={logout} className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"><LogOut className="h-4 w-4"/>Kirjaudu ulos</button>
     </header>
     {error && <div className="mt-6 rounded-xl bg-red-50 p-4 text-sm text-red-700">{error}</div>}
     <section className="mt-8 grid gap-5 md:grid-cols-3">
