@@ -19,6 +19,9 @@ export default function TravelAdvisor({ language: initialLanguage, catalog }: { 
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState('');
   const [results, setResults] = useState<{type:'destination'|'accommodation'|'experience'; slug:string; title:string; description:string; meta:string; href:string}[]>([]);
+  const [aiAnswer, setAiAnswer] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState('');
   useEffect(() => { const lang = new URLSearchParams(window.location.search).get('lang'); if (lang === 'fi' || lang === 'es' || lang === 'en') setLanguage(lang); }, []);
   const t = answers[language];
   function score(text: string, q: string) {
@@ -26,23 +29,26 @@ export default function TravelAdvisor({ language: initialLanguage, catalog }: { 
     const hay = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     return words.reduce((n, word) => n + (hay.includes(word) ? 2 : 0), 0);
   }
-  function ask(e: FormEvent) {
-    e.preventDefault(); const q = question.trim(); if (!q) return;
-    const ranked = [
-      ...catalog.destinations.map((d) => ({ type:'destination' as const, slug:d.slug, title:d.name[language] || d.name.en, description:d.description[language] || d.description.en, meta:d.tags.slice(0,3).join(' · '), href:'/'+language+'/destinations/'+d.slug, rank:score([d.name[language] || '', d.description[language] || '', ...d.tags, ...d.activities].join(' '), q) })),
-      ...catalog.accommodations.filter((a) => a.verified).map((a) => ({ type:'accommodation' as const, slug:a.slug, title:a.name[language] || a.name.en, description:a.description[language] || a.description.en, meta:a.price ? '€'+a.price+'/night · '+a.location : a.location, href:'/'+language+'/accommodations/'+a.slug, rank:score([a.name[language] || '', a.description[language] || '', a.location, ...a.features].join(' '), q) })),
-      ...catalog.experiences.filter((x) => x.verified).map((x) => ({ type:'experience' as const, slug:x.slug, title:x.name[language] || x.name.en, description:x.description[language] || x.description.en, meta:x.price ? '€'+x.price : x.region, href:'/'+language+'/experiences/'+x.slug, rank:score([x.name[language] || '', x.description[language] || '', x.region, ...x.tags].join(' '), q) })),
-    ].sort((a,b) => b.rank-a.rank).filter((x) => x.rank > 0).slice(0,3);
-    const duration = q.match(/\d+\s*(?:päivä|paiva|days?|dias?)/i)?.[0];
-    const hasDuration = Boolean(duration);
-    if (hasDuration && duration) ranked.forEach((item) => { item.meta = (item.meta ? item.meta + ' · ' : '') + duration; });
-    setResults(ranked.length ? ranked : catalog.destinations.filter((d) => d.verified).slice(0,2).map((d) => ({ type:'destination' as const, slug:d.slug, title:d.name[language] || d.name.en, description:d.description[language] || d.description.en, meta:d.tags.slice(0,3).join(' · '), href:'/'+language+'/destinations/'+d.slug })));
+  async function ask(e: FormEvent) {
+    e.preventDefault(); const q = question.trim(); if (!q || aiLoading) return;
+    setAiLoading(true); setAiError(''); setAiAnswer(''); setResults([]);
+    try {
+      const response = await fetch('/api/travel-advisor', { method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({ question:q, language }) });
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.error || 'Advisor unavailable.');
+      setAiAnswer(body.answer || '');
+    } catch (error) {
+      setAiError(language === 'fi' ? 'Avustaja ei ole juuri nyt saatavilla.' : language === 'es' ? 'El asistente no está disponible ahora.' : 'The advisor is unavailable right now.');
+    } finally { setAiLoading(false); }
   }
   return <div className="fixed bottom-5 right-5 z-[60]">
     {!open && <button type="button" onClick={()=>setOpen(true)} aria-expanded="false" className="group flex items-center gap-2 rounded-full border border-white/20 bg-brand-950/95 px-5 py-3.5 text-sm font-extrabold text-white shadow-2xl shadow-black/20 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-brand-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-300"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold-400 text-brand-950"><Sparkles className="h-4 w-4" /></span>{t.button}<ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></button>}
     {open && <div className="absolute bottom-0 right-0 w-[min(92vw,430px)] overflow-hidden rounded-[1.5rem] border border-white/20 bg-white text-slate-900 shadow-2xl shadow-black/25">
       <div className="flex items-center justify-between bg-brand-950 px-5 py-4 text-white"><div className="flex items-center gap-2 font-bold"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-gold-400 text-brand-950"><Sparkles className="h-4 w-4" /></span><div><div className="text-sm">{t.title}</div><div className="text-[10px] font-medium uppercase tracking-[.16em] text-white/55">Finland Experience</div></div></div><button type="button" onClick={()=>setOpen(false)} aria-label="Close" className="rounded-full p-2 hover:bg-white/10"><X className="h-4 w-4" /></button></div>
       <div className="p-5"><p className="text-sm leading-6 text-slate-600">{t.intro}</p><div className="mt-3 inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[.14em] text-emerald-800">{language === "fi" ? "Tarkistettu katalogi" : language === "es" ? "Catálogo verificado" : "Verified catalogue"}</div>
+        {aiLoading && <div className="mt-4 rounded-xl bg-slate-50 p-4 text-sm text-slate-500">{language === 'fi' ? 'Etsin varmennetusta katalogista...' : language === 'es' ? 'Buscando en el catálogo verificado...' : 'Searching the verified catalogue...'}</div>}
+        {aiError && <div className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-700">{aiError}</div>}
+        {aiAnswer && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-slate-700"><p className="mb-2 text-[10px] font-bold uppercase tracking-[.16em] text-emerald-800">{language === 'fi' ? 'Varmennettuun tietoon perustuva vastaus' : language === 'es' ? 'Respuesta basada en información verificada' : 'Answer based on verified information'}</p><p className="whitespace-pre-wrap">{aiAnswer}</p></div>}
         {results.length > 0 && <div className="mt-4 space-y-2"><p className="text-[10px] font-bold uppercase tracking-[.18em] text-brand-600">{language === 'fi' ? 'Sinulle sopivia ideoita' : language === 'es' ? 'Ideas para ti' : 'Ideas for you'}</p>{results.map((r) => <Link key={r.type+r.slug} href={r.href} className="group block rounded-xl border border-slate-200 p-3 transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50"><div className="flex items-start justify-between gap-3"><div><div className="font-display text-lg font-bold text-brand-950">{r.title}</div><p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-600">{r.description}</p><div className="mt-2 text-[10px] font-bold uppercase tracking-[.12em] text-slate-400">{r.meta}</div></div><ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-brand-700 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div></Link>)}</div>}
         <form onSubmit={ask} className="mt-4 flex gap-2"><input value={question} onChange={(e)=>setQuestion(e.target.value)} required placeholder={t.placeholder} aria-label={t.placeholder} className="min-w-0 flex-1 rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/15" /><button type="submit" className="rounded-xl bg-brand-900 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-brand-800">{t.send}</button></form>
       </div></div>}
