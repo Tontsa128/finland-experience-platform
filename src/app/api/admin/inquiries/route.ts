@@ -3,7 +3,7 @@ import {supabaseAdmin} from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
 export const dynamic="force-dynamic";
 export async function GET(){
- try{const admin=await getAdminContext();if(!admin)return NextResponse.json({error:"Unauthorized"},{status:401});const{data,error}=await supabaseAdmin.from("bookings_inquiries").select("*").order("created_at",{ascending:false});if(error)return NextResponse.json({error:error.message},{status:500});return NextResponse.json({inquiries:data??[]},{headers:{"Cache-Control":"no-store"}});}
+ try{const admin=await getAdminContext();if(!admin)return NextResponse.json({error:"Unauthorized"},{status:401});if(!["SUPER_ADMIN","ADMIN","BOOKING_MANAGER"].includes(admin.profile.role))return NextResponse.json({error:"Forbidden"},{status:403});const{data,error}=await supabaseAdmin.from("bookings_inquiries").select("*").order("created_at",{ascending:false});if(error)return NextResponse.json({error:error.message},{status:500});return NextResponse.json({inquiries:data??[]},{headers:{"Cache-Control":"no-store"}});}
  catch(error){return NextResponse.json({error:error instanceof Error?error.message:"Supabase is not configured"},{status:503});}
 }
 export async function PATCH(req:NextRequest){
