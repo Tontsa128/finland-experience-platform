@@ -5,7 +5,7 @@ import { FormEvent, useMemo, useState } from 'react';
 import { ArrowRight, Check, Compass, Heart, Sparkles, Waves, TreePine, Utensils } from 'lucide-react';
 
 type Lang = 'fi' | 'es' | 'en';
-type Item = { slug:string; name:Record<string,string>; description:Record<string,string>; location?:string; region?:string; features?:string[]; tags?:string[]; activities?:string[]; price?:number };
+type Item = { slug:string; name:Record<string,string>; description:Record<string,string>; location?:string; region?:string; features?:string[]; tags?:string[]; activities?:string[]; price?:number; verified?:boolean };
 
 const ui = {
   fi:{title:'Suunnittele oma Suomen-escapesi',intro:'Kerro muutama asia lomastasi. Saat ehdotuksen kohteesta, majoituksesta ja elämyksestä.',days:'Päivät',people:'Henkilöt',budget:'Budjetti / yö',interests:'Mitä haluat kokea?',plan:'Luo matkasuunnitelma',result:'Sinulle sopiva lähtökohta',destination:'Kohde',stay:'Majoitus',experience:'Elämys',discover:'Tutustu',note:'Suositukset perustuvat sivuston nykyiseen sisältökatalogiin. Hinnat ja saatavuus tarkistetaan palveluntarjoajalta.'},
@@ -34,7 +34,7 @@ export default function TripPlanner({language,catalog}:{language:Lang;catalog:{d
   const [leadError,setLeadError]=useState('');
 
   const toggle=(key:string)=>setSelected(v=>v.includes(key)?v.filter(x=>x!==key):[...v,key]);
-  const result=useMemo(()=>{
+  const result=useMemo(()=>{\n    const verifiedCatalog = {\n      destinations: catalog.destinations.filter((x) => x.verified !== false),\n      accommodations: catalog.accommodations.filter((x) => x.verified !== false),\n      experiences: catalog.experiences.filter((x) => x.verified !== false),\n    };
     const keywords:Record<string,string[]>={
       nature:['nature','luonto','forest','metsä','teijo','hiking','quiet'],
       sauna:['sauna','savusauna'],
@@ -49,7 +49,7 @@ export default function TripPlanner({language,catalog}:{language:Lang;catalog:{d
       return score+(matched?2:0);
     },0);
     const best=(items:Item[])=>[...items].sort((a,b)=>rank(b)-rank(a))[0];
-    return {destination:best(catalog.destinations),stay:best(catalog.accommodations),experience:best(catalog.experiences)};
+    return {destination:best(verifiedCatalog.destinations),stay:best(verifiedCatalog.accommodations),experience:best(verifiedCatalog.experiences)};
   },[catalog,language,selected]);
 
   function submit(e:FormEvent){e.preventDefault();setSubmitted(true);document.getElementById('trip-result')?.scrollIntoView({behavior:'smooth',block:'start'});}
