@@ -37,7 +37,7 @@ finland-experience-platform/
 
 ### Vaatimukset
 
-- Node.js 20 LTS
+- Node.js 22
 - npm
 - Supabase-projekti
 - Palveluntarjoajien omat varaus- ja maksukanavat
@@ -142,7 +142,7 @@ supabase db push
 
 ## Riippuvuudet
 
-Projektissa käytetään npm:ää. Riippuvuudet tulee asentaa ja lock-tiedosto päivittää aina riippuvuuksia muutettaessa. CI käyttää Node 20 LTS:ää ja samaa npm-pohjaista asennusta.
+Projektissa käytetään npm:ää. Riippuvuudet tulee asentaa ja lock-tiedosto päivittää aina riippuvuuksia muutettaessa. CI käyttää Node 22:ta ja samaa npm-pohjaista asennusta.
 
 ## Reitit ja legacy-koodi
 
