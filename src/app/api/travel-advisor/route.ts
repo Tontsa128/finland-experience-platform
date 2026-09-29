@@ -20,9 +20,9 @@ export async function POST(request: Request) {
   }
 
   const [destinations, properties, experiences] = await Promise.all([
-    supabase.from("destinations").select("slug,name_fi,name_en,name_es,description_fi,description_en,description_es,tags,activities,verified").eq("status", "PUBLISHED").eq("verified", true).limit(100),
-    supabase.from("properties").select("slug,name_fi,name_en,name_es,description_fi,description_en,description_es,location,features,price,verified").eq("status", "PUBLISHED").eq("verified", true).limit(100),
-    supabase.from("experiences").select("slug,name_fi,name_en,name_es,description_fi,description_en,description_es,region,tags,price,verified").eq("status", "PUBLISHED").eq("verified", true).limit(100),
+    supabase.from("destinations").select("slug,name_fi,name_en,name_es,description_fi,description_en,description_es,tags,activities,verified").eq("status", "published").eq("verified", true).limit(100),
+    supabase.from("properties").select("slug,name_fi,name_en,name_es,description_fi,description_en,description_es,location,features,price,verified").eq("status", "published").eq("verified", true).limit(100),
+    supabase.from("experiences").select("slug,name_fi,name_en,name_es,description_fi,description_en,description_es,region,tags,price,verified").eq("status", "published").eq("verified", true).limit(100),
   ]);
 
   if (destinations.error || properties.error || experiences.error) {
