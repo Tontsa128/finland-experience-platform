@@ -20,7 +20,7 @@ export default function AdminLink() {
         .select("role")
         .eq("id", data.user.id)
         .maybeSingle();
-      if (mounted && profile?.role && adminRoles.has(profile.role)) setVisible(true);
+      if (mounted && profile?.role && ADMIN_ROLES.has(profile.role)) setVisible(true);
     });
 
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
@@ -33,7 +33,7 @@ export default function AdminLink() {
         .select("role")
         .eq("id", session.user.id)
         .maybeSingle();
-      if (mounted) setVisible(Boolean(profile?.role && adminRoles.has(profile.role)));
+      if (mounted) setVisible(Boolean(profile?.role && ADMIN_ROLES.has(profile.role)));
     });
 
     return () => {
