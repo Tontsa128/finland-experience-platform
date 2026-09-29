@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { FormEvent, useEffect, useState } from 'react';
-import { Bot, X, Sparkles, ArrowUpRight } from 'lucide-react';
+import { X, Sparkles, ArrowUpRight } from 'lucide-react';
 type Language = 'fi' | 'es' | 'en';
 const answers = {
   fi: { button:'Kysy avustajalta', title:'Suomen matka-avustaja', placeholder:'Esim. haluan rauhallisen mökkiloman...', send:'Etsi', intro:'Kerro mitä etsit. Näytän vaihtoehtoja vain tarkistetusta sisältökatalogista.' },
@@ -23,7 +23,6 @@ export default function TravelAdvisor({ language: initialLanguage, catalog }: { 
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState('');
   const [aiRecommendations, setAiRecommendations] = useState<{type:'destination'|'accommodation'|'experience'; slug:string; reason:string}[]>([]);
-  const [aiRecommendations, setAiRecommendations] = useState<{type:'destination'|'accommodation'|'experience'; slug:string; reason:string}[]>([]);
   useEffect(() => { const lang = new URLSearchParams(window.location.search).get('lang'); if (lang === 'fi' || lang === 'es' || lang === 'en') setLanguage(lang); }, []);
   const t = answers[language];
   function score(text: string, q: string) {
@@ -39,7 +38,6 @@ export default function TravelAdvisor({ language: initialLanguage, catalog }: { 
       const body = await response.json();
       if (!response.ok) throw new Error(body.error || 'Advisor unavailable.');
       setAiAnswer(body.answer || '');
-      setAiRecommendations(Array.isArray(body.recommendations) ? body.recommendations : []);
       setAiRecommendations(Array.isArray(body.recommendations) ? body.recommendations : []);
     } catch (error) {
       setAiError(language === 'fi' ? 'Avustaja ei ole juuri nyt saatavilla.' : language === 'es' ? 'El asistente no está disponible ahora.' : 'The advisor is unavailable right now.');
@@ -61,15 +59,6 @@ export default function TravelAdvisor({ language: initialLanguage, catalog }: { 
           return <Link key={r.type + r.slug} href={href} className="group block rounded-xl border border-slate-200 p-3 transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50"><div className="flex items-start justify-between gap-3"><div><div className="font-display text-lg font-bold text-brand-950">{title}</div><p className="mt-1 text-xs leading-5 text-slate-600">{r.reason}</p><div className="mt-2 text-[10px] font-bold uppercase tracking-[.12em] text-slate-400">{meta}</div></div><ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-brand-700 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div></Link>;
         })}</div>}
         {aiAnswer && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-slate-700"><p className="mb-2 text-[10px] font-bold uppercase tracking-[.16em] text-emerald-800">{language === 'fi' ? 'Varmennettuun tietoon perustuva vastaus' : language === 'es' ? 'Respuesta basada en información verificada' : 'Answer based on verified information'}</p><p className="whitespace-pre-wrap">{aiAnswer}</p></div>}
-        {aiRecommendations.length > 0 && <div className="mt-4 space-y-2"><p className="text-[10px] font-bold uppercase tracking-[.18em] text-brand-600">{language === 'fi' ? 'Suositukset' : language === 'es' ? 'Recomendaciones' : 'Recommendations'}</p>{aiRecommendations.map((r) => {
-          const source = r.type === 'destination' ? catalog.destinations.find((x) => x.slug === r.slug) : r.type === 'accommodation' ? catalog.accommodations.find((x) => x.slug === r.slug) : catalog.experiences.find((x) => x.slug === r.slug);
-          if (!source || !source.verified) return null;
-          const title = source.name[language] || source.name.en;
-          const description = source.description[language] || source.description.en;
-          const href = '/' + language + '/' + (r.type === 'accommodation' ? 'accommodations' : r.type === 'destination' ? 'destinations' : 'experiences') + '/' + r.slug;
-          const meta = r.type === 'accommodation' ? source.location : r.type === 'experience' ? source.region : source.tags.slice(0,3).join(' · ');
-          return <Link key={r.type + r.slug} href={href} className="group block rounded-xl border border-slate-200 p-3 transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50"><div className="flex items-start justify-between gap-3"><div><div className="font-display text-lg font-bold text-brand-950">{title}</div><p className="mt-1 text-xs leading-5 text-slate-600">{r.reason || description}</p><div className="mt-2 text-[10px] font-bold uppercase tracking-[.12em] text-slate-400">{meta}</div></div><ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-brand-700 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div></Link>;
-        })}</div>}
         {results.length > 0 && <div className="mt-4 space-y-2"><p className="text-[10px] font-bold uppercase tracking-[.18em] text-brand-600">{language === 'fi' ? 'Sinulle sopivia ideoita' : language === 'es' ? 'Ideas para ti' : 'Ideas for you'}</p>{results.map((r) => <Link key={r.type+r.slug} href={r.href} className="group block rounded-xl border border-slate-200 p-3 transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50"><div className="flex items-start justify-between gap-3"><div><div className="font-display text-lg font-bold text-brand-950">{r.title}</div><p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-600">{r.description}</p><div className="mt-2 text-[10px] font-bold uppercase tracking-[.12em] text-slate-400">{r.meta}</div></div><ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-brand-700 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div></Link>)}</div>}
         <form onSubmit={ask} className="mt-4 flex gap-2"><input value={question} onChange={(e)=>setQuestion(e.target.value)} required placeholder={t.placeholder} aria-label={t.placeholder} className="min-w-0 flex-1 rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/15" /><button type="submit" className="rounded-xl bg-brand-900 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-brand-800">{t.send}</button></form>
       </div></div>}
