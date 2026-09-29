@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   const language = languages.has(body.language) ? body.language : "fi";
   if (!question) return NextResponse.json({ error: "Question is required." }, { status: 400 });
 
-  const supabase = getSupabaseAdmin();
+  let supabase;\n  try {\n    supabase = getSupabaseAdmin();\n  } catch {\n    return NextResponse.json({ error: "Verified catalogue is temporarily unavailable." }, { status: 503 });\n  }
   const [destinations, properties, experiences] = await Promise.all([
     supabase.from("destinations").select("slug,name_fi,name_en,name_es,description_fi,description_en,description_es,tags,activities,verified").eq("status","PUBLISHED").eq("verified",true).limit(100),
     supabase.from("properties").select("slug,name_fi,name_en,name_es,description_fi,description_en,description_es,location,features,price,verified").eq("status","PUBLISHED").eq("verified",true).limit(100),
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return NextResponse.json({ error: "AI advisor is not configured." }, { status: 503 });
 
-  const response = await fetch("https://api.openai.com/v1/responses", {
+  let response: Response;\n  try {\n    response = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: { "content-type": "application/json", authorization: "Bearer " + apiKey },
     body: JSON.stringify({
