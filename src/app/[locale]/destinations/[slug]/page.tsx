@@ -6,6 +6,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { getPublishedDestinations } from "@/lib/public-content";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
+import { allowDemoFallback } from "@/lib/utils";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: { locale: string; s
 export default async function DestinationDetail({ params }: { params: { locale: string; slug: string } }) {
   const locale = params.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
-  const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
+  const destinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
   const d = destinations.find((x) => x.slug === params.slug);
   if (!d) notFound();
 
