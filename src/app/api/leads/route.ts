@@ -17,11 +17,25 @@ export async function POST(request: NextRequest) {
     }
 
     const providerId = body.providerId ? String(body.providerId) : null;
-    if (providerId) {
+    const propertyId = body.propertyId ? String(body.propertyId) : null;
+    const experienceId = body.experienceId == null || body.experienceId === ""
+      ? null
+      : Number(body.experienceId);
+    const guests = body.guests == null || body.guests === "" ? null : Number(body.guests);
+
+    if (experienceId !== null && (!Number.isInteger(experienceId) || experienceId < 1)) {
+      return NextResponse.json({ error: "Invalid experience." }, { status: 400 });
+    }
+    if (guests !== null && (!Number.isInteger(guests) || guests < 1 || guests > 100)) {
+      return NextResponse.json({ error: "Invalid guest count." }, { status: 400 });
+    }
+
+    const providerIdForInsert = providerId;
+    if (providerIdForInsert) {
       const { data: provider, error } = await supabaseAdmin
         .from("providers")
         .select("id")
-        .eq("id", providerId)
+        .eq("id", providerIdForInsert)
         .eq("active", true)
         .maybeSingle();
       if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -32,9 +46,9 @@ export async function POST(request: NextRequest) {
     if (!leadTypes.has(leadType)) return NextResponse.json({ error: "Invalid lead type." }, { status: 400 });
 
     const { data, error } = await supabaseAdmin.from("bookings_inquiries").insert({
-      provider_id: providerId,
-      property_id: body.propertyId ? String(body.propertyId) : null,
-      experience_id: body.experienceId ? Number(body.experienceId) : null,
+      provider_id: providerIdForInsert,
+      property_id: propertyId,
+      experience_id: experienceId,
       locale,
       first_name: firstName,
       last_name: body.lastName ? String(body.lastName).trim().slice(0, 100) : null,
@@ -43,7 +57,7 @@ export async function POST(request: NextRequest) {
       whatsapp: Boolean(body.whatsapp),
       arrival_date: body.arrivalDate || null,
       departure_date: body.departureDate || null,
-      guests: body.guests ? Number(body.guests) : null,
+      guests,
       message: body.message ? String(body.message).trim().slice(0, 5000) : null,
       lead_type: leadType,
       source: body.source ? String(body.source).slice(0, 120) : "website",
