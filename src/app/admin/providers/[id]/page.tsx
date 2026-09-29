@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Save, ShieldCheck } from "lucide-react";
 import ProviderChangeRequests from "@/components/admin/ProviderChangeRequests";
@@ -14,8 +15,9 @@ const fields = [
   ["photos_checked","Kuvat ja käyttöoikeudet"],
 ] as const;
 
-export default function ProviderVerificationPage({ params }: { params: Promise<{ id:string }> }) {
-  const [id,setId] = useState("");
+export default function ProviderVerificationPage() {
+  const params = useParams<{ id: string }>();
+  const id = params.id || "";
   const [name,setName] = useState("");
   const [checks,setChecks] = useState<Record<string,boolean>>({});
   const [notes,setNotes] = useState("");
@@ -43,8 +45,16 @@ export default function ProviderVerificationPage({ params }: { params: Promise<{
   },[]);
 
   useEffect(() => {
-    params.then(value => { setId(value.id); load(value.id).catch(e => { setError(e instanceof Error ? e.message : "Lataus epäonnistui"); setLoading(false); }); });
-  },[params,load]);
+    if (!id) {
+      setError("Palveluntarjoajan tunniste puuttuu.");
+      setLoading(false);
+      return;
+    }
+    load(id).catch((error) => {
+      setError(error instanceof Error ? error.message : "Lataus epäonnistui");
+      setLoading(false);
+    });
+  }, [id, load]);
 
   async function save() {
     setSaving(true); setMessage(""); setError("");
