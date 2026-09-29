@@ -25,6 +25,9 @@ export async function GET() {
 export async function PATCH(request: Request) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!["SUPER_ADMIN", "ADMIN", "BOOKING_MANAGER"].includes(admin.profile.role)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
 
   const body = await request.json().catch(() => ({}));
   const id = typeof body.id === "string" ? body.id : "";
