@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { FormEvent, useEffect, useState } from 'react';
 import { Bot, X, Sparkles, ArrowUpRight } from 'lucide-react';
 type Language = 'fi' | 'es' | 'en';
