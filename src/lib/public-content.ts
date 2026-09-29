@@ -236,13 +236,20 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
   try {
     const { data, error } = await supabaseAdmin
       .from("blog_posts")
-      .select("id,slug,author_name,published_at,cover_media_id,blog_post_translations(locale,title,excerpt,content),media:cover_media_id(url,alt_fi,alt_es,alt_en)")
+      .select("id,slug,author_name,published_at,cover_media_id,blog_post_translations(locale,title,excerpt,content)")
       .eq("status", "published")
       .order("published_at", { ascending: false });
 
     if (error || !data?.length) return [];
 
+    const coverIds = data.map((post: any) => post.cover_media_id).filter(Boolean);
+    const { data: mediaRows } = coverIds.length
+      ? await supabaseAdmin.from("media").select("id,url,alt_fi,alt_es,alt_en").in("id", coverIds)
+      : { data: [] };
+    const mediaById = new Map((mediaRows ?? []).map((media: any) => [String(media.id), media]));
+
     return data.map((post: any) => {
+      const cover = post.cover_media_id ? mediaById.get(String(post.cover_media_id)) : null;
       const translations = post.blog_post_translations ?? [];
       const titles = localized(translations, "title");
       const excerpts = localized(translations, "excerpt");
@@ -265,7 +272,7 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
           es: contents.es || contents.en || "",
           en: contents.en || contents.fi || "",
         },
-        image: post.media?.url || "",
+        image: cover?.url || "",
         author: post.author_name || "Finland Experience",
         publishedAt: post.published_at || "",
         tags: [],
