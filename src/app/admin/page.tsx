@@ -8,7 +8,7 @@ const cards=[
  {href:"/admin/destinos",label:"Kohteet",text:"Suomen alueet ja matkakohteet.",icon:Sparkles},
  {href:"/admin/experiences",label:"Experiences",text:"Sauna, veneily, kalastus ja muut elämykset.",icon:CalendarDays},
  {href:"/admin/media",label:"Media",text:"Kuvapankki ja FI/ES/EN alt-tekstit.",icon:ImageIcon},
- {href:"/admin/inquiries",label:"Yhteydenotot",text:"Varaus- ja yhteydenottopyynnöt.",icon:MessageSquare}, {href:"/admin/providers",label:"Verified Partners",text:"Palveluntarjoajat, varmennus ja liidit.",icon:Handshake},
+ {href:"/admin/inquiries",label:"Yhteydenotot",text:"Varaus- ja yhteydenottopyynnöt.",icon:MessageSquare}, {href:"/admin/leads",label:"Concierge-liidit",text:"Matkatoiveet, budjetit, kiinnostukset ja AI-suositukset.",icon:Sparkles}, {href:"/admin/providers",label:"Verified Partners",text:"Palveluntarjoajat, varmennus ja liidit.",icon:Handshake},
  {href:"/admin/cms",label:"Sisällönhallinta",text:"Muokkaa sivuja, kohteita, kuvia, blogia, arvosteluja ja valikkoa.",icon:Sparkles},{href:"/admin/settings",label:"Asetukset",text:"Brändi, fontit, WhatsApp ja globaalit asetukset.",icon:Settings2}
 ];
 
