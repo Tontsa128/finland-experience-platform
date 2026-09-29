@@ -68,7 +68,10 @@ export async function POST(req:NextRequest) {
     if(translationError){await supabaseAdmin.from("properties").delete().eq("id",property.id);return NextResponse.json({error:translationError.message},{status:400});}
     if (body.mediaIds?.length) {
       const { error: mediaError } = await supabaseAdmin.from("property_media").insert(body.mediaIds.map((media_id, sort_order) => ({ property_id: property.id, media_id, sort_order })));
-      if (mediaError) return NextResponse.json({error:mediaError.message},{status:400});
+      if (mediaError) {
+        await supabaseAdmin.from("properties").delete().eq("id", property.id);
+        return NextResponse.json({error:mediaError.message},{status:400});
+      }
     }
     return NextResponse.json({property},{status:201});
   } catch(error) { return NextResponse.json({error:error instanceof Error?error.message:"Invalid request"},{status:400}); }
