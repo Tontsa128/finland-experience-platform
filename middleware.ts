@@ -7,7 +7,7 @@ const handleI18n = createMiddleware({ locales, defaultLocale, localePrefix: "alw
 
 const ADMIN_WRITE_METHODS = ["POST", "PUT", "DELETE", "PATCH"];
 const ADMIN_READ_ROLES = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"]);
-const ADMIN_WRITE_ROLES = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER"]);
+const ADMIN_WRITE_ROLES = new Set(["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"]);
 
 const SPANISH_COUNTRIES = new Set([
   "ES", "MX", "AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC", "SV", "GQ",
