@@ -37,6 +37,7 @@ export async function PATCH(request: Request) {
     .from("bookings_inquiries")
     .update({ lead_status: leadStatus })
     .eq("id", id)
+    .in("lead_type", ["planner", "concierge"])
     .select("id,lead_status")
     .single();
 
