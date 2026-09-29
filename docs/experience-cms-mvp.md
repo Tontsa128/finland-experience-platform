@@ -21,5 +21,5 @@ Implementation notes:
 Next steps:
 - Media Library MVP
 - Destination CMS MVP
-- PricingService implementation
+- Content quality, verification and partner workflow
 
