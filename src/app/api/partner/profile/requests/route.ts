@@ -31,7 +31,14 @@ export async function POST(request:Request) {
       changes[key]=(body[key] as string[]).slice(0,20).map(v=>v.slice(0,80));
     } else {
       if(typeof body[key] !== "string") return NextResponse.json({error:"Virheellinen kenttä."},{status:400});
-      changes[key]=(body[key] as string).trim().slice(0,5000);
+      const value = (body[key] as string).trim();
+      if ((key === "website_url" || key === "booking_url") && value && !/^https?:\/\//i.test(value)) {
+        return NextResponse.json({error:"Verkkosivun ja varauslinkin tulee olla HTTP(S)-osoitteita."},{status:400});
+      }
+      if (key === "email" && value && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value)) {
+        return NextResponse.json({error:"Virheellinen sähköpostiosoite."},{status:400});
+      }
+      changes[key]=value.slice(0,5000);
     }
   }
   if(!Object.keys(changes).length) return NextResponse.json({error:"Muutoksia ei annettu."},{status:400});
