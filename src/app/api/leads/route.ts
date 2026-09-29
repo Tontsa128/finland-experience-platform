@@ -7,11 +7,13 @@ const leadTypes = new Set(["inquiry","booking_redirect","planner","concierge"]);
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    if (body.website) return NextResponse.json({ inquiry: null }, { status: 201 });
     const firstName = String(body.firstName || "").trim();
     const email = String(body.email || "").trim().toLowerCase();
     const locale = String(body.locale || "es");
-    if (!firstName || !email || !locales.has(locale)) {
-      return NextResponse.json({ error: "firstName, email and a valid locale are required." }, { status: 400 });
+    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    if (!firstName || firstName.length > 100 || !emailPattern.test(email) || email.length > 254 || !locales.has(locale)) {
+      return NextResponse.json({ error: "Please provide a valid name, email and locale." }, { status: 400 });
     }
 
     const providerId = body.providerId ? String(body.providerId) : null;
@@ -35,14 +37,14 @@ export async function POST(request: NextRequest) {
       experience_id: body.experienceId ? Number(body.experienceId) : null,
       locale,
       first_name: firstName,
-      last_name: body.lastName ? String(body.lastName).trim() : null,
+      last_name: body.lastName ? String(body.lastName).trim().slice(0, 100) : null,
       email,
-      phone: body.phone ? String(body.phone).trim() : null,
+      phone: body.phone ? String(body.phone).trim().slice(0, 40) : null,
       whatsapp: Boolean(body.whatsapp),
       arrival_date: body.arrivalDate || null,
       departure_date: body.departureDate || null,
       guests: body.guests ? Number(body.guests) : null,
-      message: body.message ? String(body.message).trim() : null,
+      message: body.message ? String(body.message).trim().slice(0, 5000) : null,
       lead_type: leadType,
       source: body.source ? String(body.source).slice(0, 120) : "website",
       source_path: body.sourcePath ? String(body.sourcePath).slice(0, 500) : null,
