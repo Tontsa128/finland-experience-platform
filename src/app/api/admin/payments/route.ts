@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { getAdminContext } from '@/lib/admin-auth';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -15,6 +16,9 @@ type PaymentStatus = (typeof PAYMENT_STATUSES)[number];
  */
 export async function GET(request: NextRequest) {
   try {
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const status = request.nextUrl.searchParams.get('status');
 
     if (status && status !== 'all' && !PAYMENT_STATUSES.includes(status as PaymentStatus)) {
