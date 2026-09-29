@@ -10,7 +10,6 @@ const sections = [
   { href: "/admin/properties", label: "Majoitukset", text: "Mökit, huvilat, hinnat, vierasmäärät ja SEO-tekstit.", icon: FileText },
   { href: "/admin/experiences", label: "Elämykset", text: "Sauna, veneily, kalastus ja muut varattavat elämykset.", icon: Waves },
   { href: "/admin/media", label: "Kuvapankki", text: "Lataa kuvia ja hallitse FI/ES/EN-alt-tekstejä.", icon: ImageIcon },
-  { href: "/admin/blog", label: "Blogi", text: "Matkaoppaat, artikkelit ja hakukoneystävällinen sisältö.", icon: PenSquare },
   { href: "/admin/pages", label: "Sivut", text: "Luo uusia sivuja, muokkaa tekstejä ja julkaise ne ilman koodia.", icon: Files },
   { href: "/admin/navigation", label: "Navigaatio", text: "Päävalikko, CTA-linkit ja sivuston rakenteen hallinta.", icon: Menu },
   { href: "/admin/banners", label: "Bannerit", text: "Kampanjat, sesonkiviestit ja ajastetut CTA-bannerit.", icon: Sparkles },
