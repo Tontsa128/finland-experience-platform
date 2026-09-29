@@ -105,7 +105,7 @@ export default function ContentStudioPage() {
     if (!r.ok) throw new Error(b.error || "Sisältöä ei voitu ladata.");
     const source = kind === "destination" ? b.destinations : kind === "property" ? b.properties : b.experiences;
     setItems((source || []).map((x:any) => normalize(kind, x)));
-  }
+  }, [kind]);
 
   useEffect(() => {
     load().catch(e => setError(e instanceof Error ? e.message : "Lataus epäonnistui."));
