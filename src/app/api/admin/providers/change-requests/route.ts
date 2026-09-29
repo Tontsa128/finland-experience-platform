@@ -8,12 +8,14 @@ const editable = new Set([
 ]);
 
 const statuses = new Set(["approved","rejected"]);
+const allowedRoles = new Set(["SUPER_ADMIN","ADMIN","CONTENT_MANAGER"]);
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error:"Unauthorized" }, { status:401 });
+  if (!allowedRoles.has(admin.profile.role)) return NextResponse.json({ error:"Forbidden" }, { status:403 });
   const { searchParams } = new URL(request.url);
   const providerId = searchParams.get("providerId") || "";
   if (!providerId) return NextResponse.json({ error:"Provider ID is required." }, { status:400 });
@@ -30,6 +32,7 @@ export async function GET(request: Request) {
 export async function PATCH(request: Request) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error:"Unauthorized" }, { status:401 });
+  if (!allowedRoles.has(admin.profile.role)) return NextResponse.json({ error:"Forbidden" }, { status:403 });
   const body = await request.json().catch(()=>({}));
   const id = typeof body.id === "string" ? body.id : "";
   const status = typeof body.status === "string" ? body.status : "";
