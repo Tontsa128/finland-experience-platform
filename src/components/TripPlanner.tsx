@@ -42,9 +42,12 @@ export default function TripPlanner({language,catalog}:{language:Lang;catalog:{d
       food:['food','ruoka','restaurant','ravintola','comida','gastronomia'],
       romance:['romantic','romanttinen','pareja','couple']
     };
-    const q=selected.flatMap(k=>keywords[k]||[]).join(' ');
     const norm=(x:string)=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-    const rank=(x:Item)=>selected.reduce((n,k)=>n+(keywords[k]||[]).some(w=>norm([x.name[language]||'',x.description[language]||'',...(x.features||[]),...(x.tags||[]),...(x.activities||[])].join(' ')).includes(norm(w)))?2:0),0);
+    const rank=(x:Item)=>selected.reduce((score,k)=>{
+      const text=norm([x.name[language]||'',x.description[language]||'',...(x.features||[]),...(x.tags||[]),...(x.activities||[])].join(' '));
+      const matched=(keywords[k]||[]).some(w=>text.includes(norm(w)));
+      return score+(matched?2:0);
+    },0);
     const best=(items:Item[])=>[...items].sort((a,b)=>rank(b)-rank(a))[0];
     return {destination:best(catalog.destinations),stay:best(catalog.accommodations),experience:best(catalog.experiences)};
   },[catalog,language,selected]);
