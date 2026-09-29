@@ -1,6 +1,6 @@
 {
   "common": {
-    "siteName": "Nordic Escape",
+    "siteName": "Finland Experience",
     "tagline": "Suomen kesä, slow travel ja paikalliset majoitukset",
     "bookNow": "Siirry palveluntarjoajalle",
     "learnMore": "Lue lisää",
@@ -121,7 +121,7 @@
     "providerNote": "Näytämme muiden palveluntarjoajien majoituksia ja elämyksiä. Varaus ja sopimus tehdään aina suoraan palveluntarjoajan kanssa."
   },
   "footer": {
-    "about": "Tietoa Nordic Escapestä",
+    "about": "Tietoa Finland Experiencestä",
     "aboutText": "Erikoistumme aitoihin suomalaisiin elämyksiin espanjalaisille ja kansainvälisille matkailijoille.",
     "quickLinks": "Pikalinkit",
     "destinations": "Kohteet",
