@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/home/Hero";
+import { photoLibrary } from "@/lib/photo-library";
 import { DestinationCard } from "@/components/ui/DestinationCard";
 import { CabinCard } from "@/components/ui/CabinCard";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
@@ -21,8 +22,7 @@ import {
   TreePine,
 } from "lucide-react";
 
-const fallbackSummerImage =
-  "https://cdn-datahub.visitfinland.com/images/f9ad30d0-0a6f-11f0-88da-256e05b1f1a0.jpeg?s=1800";
+const fallbackSummerImage = photoLibrary.turkuArchipelago;
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const { locale } = params;
