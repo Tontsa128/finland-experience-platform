@@ -5,11 +5,12 @@ import { ArrowRight, CalendarDays, Sparkles } from "lucide-react";
 import { experiences as fallbackExperiences, getLocalized } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
+import { allowDemoFallback } from "@/lib/utils";
 
 export default async function ExperienceDetail({ params }: { params: { locale: string; slug: string } }) {
   const locale = params.locale as Locale;
   const cmsExperiences = await getPublishedExperiences();
-  const experiences = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
+  const experiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
   const e = experiences.find((x) => x.slug === params.slug);
   if (!e) notFound();
 
