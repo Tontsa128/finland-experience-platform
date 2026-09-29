@@ -16,7 +16,8 @@ export async function POST(req: NextRequest) {
   const admin = await getAdminContext();
   if (!admin || !roles.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const body = await req.json();
-  const item = { location: body.location || "header", locale: body.locale, label: body.label, href: body.href, sort_order: Number(body.sort_order ?? 0), active: body.active !== false };
+  const sortOrder = Number(body.sort_order ?? 0);
+  const item = { location: body.location || "header", locale: body.locale, label: typeof body.label === "string" ? body.label.trim() : "", href: typeof body.href === "string" ? body.href.trim() : "", sort_order: sortOrder, active: body.active !== false };
   if (!["fi","es","en"].includes(item.locale) || !item.label || !item.href || !Number.isInteger(sortOrder) || sortOrder < 0 || !/^(\/|https?:\\/\\/)/i.test(item.href)) return NextResponse.json({ error: "locale, label ja href ovat pakollisia" }, { status: 400 });
   const { data, error } = await supabaseAdmin.from("site_navigation").insert(item).select("*").single();
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
