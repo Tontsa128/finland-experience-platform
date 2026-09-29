@@ -5,6 +5,7 @@ import { cabins as fallbackCabins } from "@/lib/data";
 import { getPublishedProperties } from "@/lib/public-content";
 import { CabinCard } from "@/components/ui/CabinCard";
 import type { Locale } from "@/types";
+import { allowDemoFallback } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 
 const copy = {
@@ -20,7 +21,7 @@ export async function generateMetadata({params}:{params:{locale:string}}):Promis
 
 export default async function AccommodationsPage({params}:{params:{locale:string}}){
  const locale=params.locale as Locale; const c=copy[locale]||copy.en;
- const cmsCabins=await getPublishedProperties(); const cabins=cmsCabins.length?cmsCabins:fallbackCabins;
+  const cmsCabins=await getPublishedProperties(); const cabins=cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
  const jsonLd={"@context":"https://schema.org","@type":"ItemList","name":c.title,"url":siteUrl+"/"+locale+"/accommodations","itemListElement":cabins.map((cabin,index)=>({"@type":"ListItem","position":index+1,"name":cabin.name[locale]||cabin.name.en,"url":siteUrl+"/"+locale+"/accommodations/"+cabin.slug}))};
  return <div className="bg-white">
    <section className="bg-brand-950 text-white"><div className="container-narrow py-16 sm:py-24"><p className="text-sm font-semibold uppercase tracking-[.22em] text-white/60">Finland • Summer</p><h1 className="mt-4 max-w-4xl font-display text-5xl font-bold leading-[1.04] sm:text-7xl">{c.heading}</h1><p className="mt-6 max-w-2xl text-xl leading-relaxed text-white/80">{c.intro}</p><Link href={`/${locale}/experiences`} className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950 hover:bg-brand-50">{c.cta}<ArrowRight className="h-4 w-4"/></Link></div></section>
