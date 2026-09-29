@@ -33,6 +33,7 @@ export default function TravelAdvisor({ language: initialLanguage, catalog }: { 
       ...catalog.accommodations.map((a) => ({ type:'accommodation' as const, slug:a.slug, title:a.name[language] || a.name.en, description:a.description[language] || a.description.en, meta:a.price ? '€'+a.price+'/night · '+a.location : a.location, href:'/'+language+'/accommodations/'+a.slug, rank:score([a.name[language] || '', a.description[language] || '', a.location, ...a.features].join(' '), q) })),
       ...catalog.experiences.map((x) => ({ type:'experience' as const, slug:x.slug, title:x.name[language] || x.name.en, description:x.description[language] || x.description.en, meta:x.price ? '€'+x.price : x.region, href:'/'+language+'/experiences/'+x.slug, rank:score([x.name[language] || '', x.description[language] || '', x.region, ...x.tags].join(' '), q) })),
     ].sort((a,b) => b.rank-a.rank).filter((x) => x.rank > 0).slice(0,3);
+    if (hasDuration) ranked.forEach((item) => { item.meta = (item.meta ? item.meta + ' · ' : '') + q.match(/\\d+\\s*(?:päivä|paiva|days?|dias?)/i)?.[0]; });
     setResults(ranked.length ? ranked : catalog.destinations.slice(0,2).map((d) => ({ type:'destination' as const, slug:d.slug, title:d.name[language] || d.name.en, description:d.description[language] || d.description.en, meta:d.tags.slice(0,3).join(' · '), href:'/'+language+'/destinations/'+d.slug })));
   }
   return <div className="fixed bottom-5 right-5 z-[60]">
