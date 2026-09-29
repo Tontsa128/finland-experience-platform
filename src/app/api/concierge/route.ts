@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { rateLimit, requestKey } from "@/lib/rate-limit";
 import {
   getPublishedDestinations,
   getPublishedProperties,
@@ -19,6 +20,13 @@ type ModelPlan = {
 };
 
 export async function POST(request: Request) {
+  const limit = rateLimit(requestKey(request,"concierge"),20,60_000);
+  if (!limit.ok) {
+    return NextResponse.json({ error: "Too many requests. Please try again later." }, {
+      status: 429,
+      headers: { "Retry-After": String(Math.max(1, Math.ceil((limit.resetAt - Date.now()) / 1000))) },
+    });
+  }
   const body = await request.json().catch(() => ({}));
   const language = languages.has(body.language) ? body.language : "fi";
   const question =
