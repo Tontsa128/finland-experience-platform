@@ -3,6 +3,15 @@ import type { Cabin, Destination, Experience, Locale, BlogPost } from "@/types";
 
 const locales: Locale[] = ["fi", "es", "en"];
 
+type IdRow = { id: string | number };
+type ProviderLinkRow = { provider_id: string | number; property_id?: string | number; experience_id?: string | number };
+
+function idList(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter((item): item is string | number => typeof item === "string" || typeof item === "number").map(String)
+    : [];
+}
+
 function localized<T extends Record<string, unknown>>(translations: Array<T & { locale?: string; language_code?: string }>, field: keyof T) {
   const byLocale = Object.fromEntries(
     translations.map((translation) => [translation.locale ?? translation.language_code, translation])
@@ -17,8 +26,8 @@ async function getVerifiedProviderIds(): Promise<Set<string>> {
     supabaseAdmin.from("provider_property_links").select("property_id,provider_id"),
     supabaseAdmin.from("providers").select("id").eq("active", true).eq("verified", true),
   ]);
-  const verifiedIds = new Set((providers ?? []).map((provider: any) => String(provider.id)));
-  return new Set((links ?? []).filter((link: any) => verifiedIds.has(String(link.provider_id))).map((link: any) => String(link.property_id)));
+  const verifiedIds = new Set((providers as IdRow[] ?? []).map((provider) => String(provider.id)));
+  return new Set((links as ProviderLinkRow[] ?? []).filter((link) => link.property_id != null && verifiedIds.has(String(link.provider_id))).map((link) => String(link.property_id)));
 }
 
 async function getVerifiedExperienceIds(): Promise<Set<string>> {
@@ -27,7 +36,7 @@ async function getVerifiedExperienceIds(): Promise<Set<string>> {
     supabaseAdmin.from("providers").select("id").eq("active", true).eq("verified", true),
   ]);
   const verifiedIds = new Set((providers ?? []).map((provider: any) => String(provider.id)));
-  return new Set((links ?? []).filter((link: any) => verifiedIds.has(String(link.provider_id))).map((link: any) => String(link.experience_id)));
+  return new Set((links as ProviderLinkRow[] ?? []).filter((link) => link.experience_id != null && verifiedIds.has(String(link.provider_id))).map((link) => String(link.experience_id)));
 }
 
 export async function getPublishedProperties(): Promise<Cabin[]> {
@@ -318,9 +327,9 @@ export async function getHomepageSettings(): Promise<HomepageSettings | null> {
       heroCtaUrl: value("hero_cta_url") || "/accommodations",
       heroSecondaryLabel: { fi: value("hero_secondary_label_fi"), es: value("hero_secondary_label_es"), en: value("hero_secondary_label_en") },
       heroSecondaryUrl: value("hero_secondary_url") || "/destinations",
-      featuredDestinationIds: Array.isArray((data as any).homepage_featured_destination_ids) ? (data as any).homepage_featured_destination_ids.map(String) : [],
-      featuredPropertyIds: Array.isArray((data as any).homepage_featured_property_ids) ? (data as any).homepage_featured_property_ids.map(String) : [],
-      featuredExperienceIds: Array.isArray((data as any).homepage_featured_experience_ids) ? (data as any).homepage_featured_experience_ids.map(String) : [],
+      featuredDestinationIds: idList((data as Record<string, unknown>).homepage_featured_destination_ids),
+      featuredPropertyIds: idList((data as Record<string, unknown>).homepage_featured_property_ids),
+      featuredExperienceIds: idList((data as Record<string, unknown>).homepage_featured_experience_ids),
     };
   } catch {
     return null;
