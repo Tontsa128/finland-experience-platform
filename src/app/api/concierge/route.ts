@@ -7,10 +7,13 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
   const language = languages.has(body.language) ? body.language : "fi";
   const question = typeof body.question === "string" ? body.question.trim().slice(0, 1500) : "";
-  const days = Math.min(Math.max(Number(body.days) || 1, 1), 14);
-  const people = Math.min(Math.max(Number(body.people) || 1, 1), 20);
-  const budget = Math.min(Math.max(Number(body.budget) || 0, 0), 100000);
-  const interests = Array.isArray(body.interests) ? body.interests.map((x: unknown) => String(x).slice(0,50)).slice(0,10) : [];
+  const rawDays = Number(body.days);
+  const rawPeople = Number(body.people);
+  const rawBudget = Number(body.budget);
+  const days = Number.isFinite(rawDays) ? Math.min(Math.max(Math.floor(rawDays), 1), 14) : 1;
+  const people = Number.isFinite(rawPeople) ? Math.min(Math.max(Math.floor(rawPeople), 1), 20) : 1;
+  const budget = Number.isFinite(rawBudget) ? Math.min(Math.max(rawBudget, 0), 100000) : 0;
+  const interests = Array.isArray(body.interests) ? body.interests.filter((x: unknown) => typeof x === "string").map((x: string) => x.trim().slice(0,50)).filter(Boolean).slice(0,10) : [];
   if (!question) return NextResponse.json({ error: "Question is required." }, { status: 400 });
 
   const supabase = getSupabaseAdmin();
