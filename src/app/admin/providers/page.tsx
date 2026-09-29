@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 
 type Provider = {
  id:string; name:string; slug:string; provider_type:string; region:string|null;
@@ -17,6 +18,6 @@ export default function ProvidersAdmin(){
   <h1 className="mt-1 text-3xl font-bold text-slate-950">Verified Partners</h1>
   <p className="mt-2 max-w-2xl text-slate-600">Hallitse paikallisia palveluntarjoajia, varmennusta ja liidien määrää. Verified on sivuston oma toimituksellinen tarkistus, ei viranomaissertifikaatti.</p>
   {error&&<div className="mt-6 rounded-xl bg-red-50 p-4 text-red-700">{error}</div>}
-  <div className="mt-8 overflow-hidden rounded-2xl border bg-white shadow-sm"><table className="w-full text-left text-sm"><thead className="bg-slate-50"><tr><th className="p-4">Yritys</th><th className="p-4">Tyyppi</th><th className="p-4">Alue</th><th className="p-4">Verification</th><th className="p-4">Liidit</th></tr></thead><tbody>{items.map(p=><tr key={p.id} className="border-t"><td className="p-4 font-semibold">{p.name}<div className="text-xs font-normal text-slate-500">{p.email||"—"}</div></td><td className="p-4">{p.provider_type}</td><td className="p-4">{p.region||"—"}</td><td className="p-4"><div className="font-semibold">{p.verified?"✓ Verified":"Pending"}</div><div className="text-xs text-slate-500">{p.verification_completed}/{p.verification_total} tarkistusta</div></td><td className="p-4 font-semibold">{p.lead_count}</td></tr>)}</tbody></table>{!items.length&&!error&&<div className="p-8 text-slate-500">Ei kumppaneita vielä.</div>}</div>
+  <div className="mt-8 overflow-hidden rounded-2xl border bg-white shadow-sm"><table className="w-full text-left text-sm"><thead className="bg-slate-50"><tr><th className="p-4">Yritys</th><th className="p-4">Tyyppi</th><th className="p-4">Alue</th><th className="p-4">Verification</th><th className="p-4">Liidit</th><th className="p-4">Toiminto</th></tr></thead><tbody>{items.map(p=><tr key={p.id} className="border-t"><td className="p-4 font-semibold">{p.name}<div className="text-xs font-normal text-slate-500">{p.email||"—"}</div></td><td className="p-4">{p.provider_type}</td><td className="p-4">{p.region||"—"}</td><td className="p-4"><div className="font-semibold">{p.verified?"✓ Verified":"Pending"}</div><div className="text-xs text-slate-500">{p.verification_completed}/{p.verification_total} tarkistusta</div></td><td className="p-4 font-semibold">{p.lead_count}</td><td className="p-4"><Link href={"/admin/providers/"+p.id} className="font-semibold text-emerald-700 hover:underline">Tarkista →</Link></td></tr>)}</tbody></table>{!items.length&&!error&&<div className="p-8 text-slate-500">Ei kumppaneita vielä.</div>}</div>
  </div></main>;
 }
