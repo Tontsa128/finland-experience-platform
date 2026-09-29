@@ -1,6 +1,6 @@
 {
   "common": {
-    "siteName": "Nordic Escape",
+    "siteName": "Finland Experience",
     "tagline": "Verano finlandés, slow travel y alojamientos locales",
     "bookNow": "Ir al proveedor",
     "learnMore": "Saber más",
@@ -121,7 +121,7 @@
     "providerNote": "Mostramos alojamientos y actividades de proveedores locales. La reserva y el contrato se realizan directamente con el proveedor."
   },
   "footer": {
-    "about": "Sobre Nordic Escape",
+    "about": "Sobre Finland Experience",
     "aboutText": "Nos especializamos en experiencias finlandesas auténticas para viajeros de España y de todo el mundo.",
     "quickLinks": "Enlaces rápidos",
     "destinations": "Destinos",
