@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type Media = { id: string; filename: string; url: string; alt_fi?: string | null; alt_es?: string | null; alt_en?: string | null };
@@ -37,7 +38,7 @@ export default function MediaPicker({ value, onChange }: { value: string[]; onCh
             const selected = value.includes(item.id);
             return (
               <button type="button" key={item.id} onClick={() => toggle(item.id)} className={"overflow-hidden rounded-xl border-2 bg-white text-left " + (selected ? "border-emerald-600 ring-2 ring-emerald-100" : "border-transparent")}>
-                <img src={item.url} alt={item.alt_fi || item.alt_es || item.alt_en || item.filename} className="aspect-[4/3] w-full object-cover" />
+                <div className="relative aspect-[4/3] w-full"><Image src={item.url} alt={item.alt_fi || item.alt_es || item.alt_en || item.filename} fill sizes="(max-width: 640px) 50vw, 25vw" className="object-cover" /></div>
                 <div className="truncate px-2 py-2 text-xs font-medium">{item.filename}</div>
               </button>
             );
