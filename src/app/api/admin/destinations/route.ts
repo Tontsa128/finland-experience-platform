@@ -19,8 +19,19 @@ type DestinationPayload = {
 
 function validatePayload(body: DestinationPayload) {
   const errors: string[] = [];
-  if (!body.slug?.trim()) errors.push('slug is required');
+  if (!body.slug?.trim() || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(body.slug.trim())) {
+    errors.push('slug must contain lowercase letters, numbers and single hyphens');
+  }
   if (!body.region?.trim()) errors.push('region is required');
+  if (body.heroImageUrl && !/^https?:\\/\\//i.test(body.heroImageUrl.trim())) {
+    errors.push('heroImageUrl must be an http(s) URL');
+  }
+  if (body.publishAt && Number.isNaN(Date.parse(body.publishAt))) {
+    errors.push('publishAt must be a valid ISO date');
+  }
+  if (body.mediaIds && (!Array.isArray(body.mediaIds) || body.mediaIds.some((id) => typeof id !== 'string' || !id.trim()))) {
+    errors.push('mediaIds must contain non-empty IDs');
+  }
   for (const lang of LANGUAGES) {
     if (!body.translations?.[lang]?.name?.trim()) errors.push(`${lang} name is required`);
   }
