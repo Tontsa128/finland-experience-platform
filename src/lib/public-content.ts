@@ -12,6 +12,24 @@ function localized<T extends Record<string, unknown>>(translations: Array<T & { 
   ) as Record<Locale, string>;
 }
 
+async function getVerifiedProviderIds(): Promise<Set<string>> {
+  const [{ data: links }, { data: providers }] = await Promise.all([
+    supabaseAdmin.from("provider_property_links").select("property_id,provider_id"),
+    supabaseAdmin.from("providers").select("id").eq("active", true).eq("verified", true),
+  ]);
+  const verifiedIds = new Set((providers ?? []).map((provider: any) => String(provider.id)));
+  return new Set((links ?? []).filter((link: any) => verifiedIds.has(String(link.provider_id))).map((link: any) => String(link.property_id)));
+}
+
+async function getVerifiedExperienceIds(): Promise<Set<string>> {
+  const [{ data: links }, { data: providers }] = await Promise.all([
+    supabaseAdmin.from("provider_experience_links").select("experience_id,provider_id"),
+    supabaseAdmin.from("providers").select("id").eq("active", true).eq("verified", true),
+  ]);
+  const verifiedIds = new Set((providers ?? []).map((provider: any) => String(provider.id)));
+  return new Set((links ?? []).filter((link: any) => verifiedIds.has(String(link.provider_id))).map((link: any) => String(link.experience_id)));
+}
+
 export async function getPublishedProperties(): Promise<Cabin[]> {
   try {
     const { data, error } = await supabaseAdmin
@@ -22,6 +40,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
       .order("created_at", { ascending: false });
 
     if (error || !data?.length) return [];
+    const verifiedPropertyIds = await getVerifiedProviderIds();
 
     return data.map((property: any) => {
       const translations = property.property_translations ?? [];
@@ -67,6 +86,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
         type: property.property_type as Cabin["type"],
         bookingUrl: property.provider_url || undefined,
         provider: property.provider_name || undefined,
+        verified: verifiedPropertyIds.has(String(property.id)),
         priceNote: {
           fi: property.base_price_eur ? `Alkaen ${property.base_price_eur} €/yö. Tarkista ajantasainen hinta.` : "Tarkista ajantasainen hinta.",
           es: property.base_price_eur ? `Desde ${property.base_price_eur} € por noche. Consulta el precio actual.` : "Consulta el precio actual.",
@@ -139,6 +159,7 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
           en: { title: destination.seo_title_en || "", description: destination.seo_description_en || "" },
         },
               status: destination.status,
+        verified: true,
         travel_info_fi: translations.find((t: any) => t.language_code === "fi")?.travel_information ?? "",
         travel_info_es: translations.find((t: any) => t.language_code === "es")?.travel_information ?? "",
       } satisfies Destination;
@@ -157,6 +178,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
       .order("created_at", { ascending: false });
 
     if (error || !data?.length) return [];
+    const verifiedExperienceIds = await getVerifiedExperienceIds();
 
     return data.map((experience: any) => {
       const translations = experience.experience_translations ?? [];
@@ -195,6 +217,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
         category_id: String(experience.category_id),
         duration_minutes: experience.duration_minutes ?? undefined,
         status: experience.status,
+        verified: verifiedExperienceIds.has(String(experience.id)),
         pricing: pricing
           ? {
               adult: Number(pricing.adult_price_eur ?? pricing.base_price_eur ?? 0),
