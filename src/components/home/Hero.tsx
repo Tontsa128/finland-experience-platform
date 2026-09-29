@@ -46,9 +46,9 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       </motion.div>
 
       {/* warm golden-hour grade + readability gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(255,190,90,.35),transparent_55%)] mix-blend-soft-light" />
-      <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/10 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_15%,rgba(255,255,255,.25),transparent_55%)] mix-blend-soft-light" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/40 to-transparent" />
 
       <div className="container-narrow relative z-10 w-full py-14 text-white sm:py-28">
         <div className="max-w-3xl">
@@ -109,7 +109,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       </motion.div>
 
       <div className="absolute bottom-4 right-4 rounded-full bg-black/35 px-3 py-1.5 text-[11px] text-white/75 backdrop-blur-sm">
-        Photo: Tomi Blasic / Unsplash
+        Photo: Juho Luomala / Unsplash
       </div>
     </section>
   );

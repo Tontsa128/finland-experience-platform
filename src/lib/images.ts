@@ -12,8 +12,10 @@ const unsplash = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&q=85&w=${w}`;
 
 export const IMG = {
-  // Säynätsalo, Finland — golden-hour boat at sunset. Verified real Unsplash photo (native 3000px).
-  hero: unsplash("photo-1603024370382-5e82bec1aaac", 2400),
+  // Hossa, Finland — bright blue-sky summer morning at a lake dock. Verified real Unsplash photo (native 3000px).
+  hero: unsplash("photo-1615185682771-e8af2a4f2494", 2400),
+  // Säynätsalo, Finland — golden-hour boat at sunset. Kept for accent use, not the hero (too dark for that).
+  sunsetBoat: unsplash("photo-1603024370382-5e82bec1aaac", 1600),
 
   // Hevonlinnanjärvi, Southwest Finland, August 2018. Wikimedia Commons, native 5472×3648.
   lake: commons("Hevonlinnanjärvi elokuussa 2018.jpg", 1800),
@@ -45,6 +47,7 @@ export const SUMMER_FALLBACK = IMG.lake;
 
 /** Attribution required by the Creative Commons licences of the photos above. */
 export const PHOTO_CREDITS = [
+  "Hossa lake dock — Juho Luomala, Unsplash",
   "Säynätsalo sunset — Tapio Haaja, Unsplash",
   "Hevonlinnanjärvi — Wikimedia Commons",
   "Naantali — Wikimedia Commons",
