@@ -10,10 +10,35 @@ type Payload = { id?: number; destinationId: number; categoryId: number; slug: s
 
 function validate(body: Payload) {
   const errors: string[] = [];
-  if (!body.slug?.trim()) errors.push("slug is required");
-  if (!Number.isFinite(Number(body.destinationId))) errors.push("destinationId is required");
-  if (!Number.isFinite(Number(body.categoryId))) errors.push("categoryId is required");
-  for (const locale of locales) if (!body.translations?.[locale]?.title?.trim()) errors.push(locale + " title is required");
+  if (!body.slug?.trim() || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(body.slug.trim())) {
+    errors.push("slug must contain lowercase letters, numbers and single hyphens");
+  }
+  if (!Number.isInteger(Number(body.destinationId)) || Number(body.destinationId) < 1) errors.push("destinationId must be a positive integer");
+  if (!Number.isInteger(Number(body.categoryId)) || Number(body.categoryId) < 1) errors.push("categoryId must be a positive integer");
+
+  const min = body.minGroupSize ?? 1;
+  const max = body.maxGroupSize ?? 100;
+  if (!Number.isInteger(min) || min < 1) errors.push("minGroupSize must be a positive integer");
+  if (!Number.isInteger(max) || max < min) errors.push("maxGroupSize must be an integer greater than or equal to minGroupSize");
+
+  if (body.durationMinutes != null && (!Number.isInteger(body.durationMinutes) || body.durationMinutes <= 0)) {
+    errors.push("durationMinutes must be a positive integer");
+  }
+
+  const prices = body.pricing;
+  if (prices) {
+    for (const [name, value] of Object.entries({
+      basePriceEur: prices.basePriceEur,
+      adultPriceEur: prices.adultPriceEur,
+      childPriceEur: prices.childPriceEur,
+    })) {
+      if (value != null && (!Number.isFinite(value) || value < 0)) errors.push(name + " must be a non-negative number");
+    }
+  }
+
+  for (const locale of locales) {
+    if (!body.translations?.[locale]?.title?.trim()) errors.push(locale + " title is required");
+  }
   return errors;
 }
 
