@@ -23,7 +23,7 @@ CREATE POLICY "provider members can read own change requests"
   USING (
     EXISTS (
       SELECT 1 FROM public.provider_members m
-      WHERE m.provider_id = provider_id
+      WHERE m.provider_id = public.provider_change_requests.provider_id
         AND m.user_id = auth.uid()
         AND m.active = true
     )
