@@ -10,8 +10,27 @@ type Payload = { id?: string; slug: string; propertyType?: string; region?: stri
 
 function validate(body: Payload) {
   const errors: string[] = [];
-  if (!body.slug?.trim()) errors.push("slug is required");
+  if (!body.slug?.trim() || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(body.slug.trim())) {
+    errors.push("slug must contain lowercase letters, numbers and single hyphens");
+  }
   for (const locale of locales) if (!body.translations?.[locale]?.name?.trim()) errors.push(locale + " name is required");
+
+  const integerFields: Array<[string, number | undefined]> = [
+    ["maxGuests", body.maxGuests],
+    ["bedrooms", body.bedrooms],
+    ["bathrooms", body.bathrooms],
+  ];
+  for (const [name, value] of integerFields) {
+    if (value != null && (!Number.isInteger(value) || value < 0)) errors.push(name + " must be a non-negative integer");
+  }
+  if (body.maxGuests != null && body.maxGuests < 1) errors.push("maxGuests must be at least 1");
+  if (body.basePriceEur != null && (!Number.isFinite(body.basePriceEur) || body.basePriceEur < 0)) {
+    errors.push("basePriceEur must be a non-negative number");
+  }
+  if (body.providerUrl && !/^https?:\\/\\//i.test(body.providerUrl.trim())) errors.push("providerUrl must be an http(s) URL");
+  if (body.mediaIds && (!Array.isArray(body.mediaIds) || body.mediaIds.some((id) => typeof id !== "string" || !id.trim()))) {
+    errors.push("mediaIds must contain non-empty IDs");
+  }
   return errors;
 }
 
@@ -33,7 +52,7 @@ export async function POST(req:NextRequest) {
     const body = await req.json() as Payload;
     const errors=validate(body);
     if(errors.length) return NextResponse.json({error:"Validation failed",details:errors},{status:400});
-    const status=body.status==="published"?"published":"draft";
+    const status=body.status==="published"?"published":body.status==="archived"?"archived":"draft";
     const {data:property,error}=await supabaseAdmin.from("properties").insert({
       slug:body.slug.trim(),property_type:body.propertyType?.trim()||"cabin",region:body.region?.trim()||null,
       max_guests:body.maxGuests??2,bedrooms:body.bedrooms??1,bathrooms:body.bathrooms??1,
@@ -65,7 +84,7 @@ export async function PATCH(req:NextRequest) {
     const {data:property,error}=await supabaseAdmin.from("properties").update({
       slug:body.slug.trim(),property_type:body.propertyType?.trim()||"cabin",region:body.region?.trim()||null,
       max_guests:body.maxGuests??2,bedrooms:body.bedrooms??1,bathrooms:body.bathrooms??1,
-      base_price_eur:body.basePriceEur??null,provider_name:body.providerName?.trim()||null,provider_url:body.providerUrl?.trim()||null,featured:Boolean(body.featured),status:body.status??"draft",updated_at:new Date().toISOString()
+      base_price_eur:body.basePriceEur??null,provider_name:body.providerName?.trim()||null,provider_url:body.providerUrl?.trim()||null,featured:Boolean(body.featured),status:body.status==="published"?"published":body.status==="archived"?"archived":"draft",updated_at:new Date().toISOString()
     }).eq("id",body.id).select().single();
     if(error) return NextResponse.json({error:error.message},{status:400});
     await supabaseAdmin.from("property_media").delete().eq("property_id", body.id);
