@@ -2,13 +2,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import type { Cabin } from "@/types";
+import type { Cabin, Locale } from "@/types";
+
 import { formatPrice } from "@/lib/utils";
 
 export function CabinCard({ cabin, index = 0 }: { cabin: Cabin; index?: number }) {
   const locale = useLocale();
   const t = useTranslations("common");
-  const price = cabin.pricePerNight > 0 ? formatPrice(cabin.pricePerNight, locale as any) + " / " + (locale === "fi" ? "yö" : locale === "es" ? "noche" : "night") : (locale === "fi" ? "Tarkista hinta" : locale === "es" ? "Consultar precio" : "Check price");
+  const price = cabin.pricePerNight > 0 ? formatPrice(cabin.pricePerNight, locale as Locale) + " / " + (locale === "fi" ? "yö" : locale === "es" ? "noche" : "night") : (locale === "fi" ? "Tarkista hinta" : locale === "es" ? "Consultar precio" : "Check price");
   return (
     <Link href={"/" + locale + "/accommodations/" + cabin.slug} className="group relative block overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
       <div className="relative aspect-[16/10] overflow-hidden">
