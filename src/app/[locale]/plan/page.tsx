@@ -12,8 +12,8 @@ export default async function PlanPage({ params }: { params: { locale: string } 
     getPublishedExperiences(),
   ]);
   await getTranslations({ locale, namespace: 'common' });
-  const destinationSource = cmsDestinations.length ? cmsDestinations : destinations;
-  const accommodationSource = cmsCabins.length ? cmsCabins : cabins;
-  const experienceSource = cmsExperiences.length ? cmsExperiences : experiences;
+  const destinationSource = (cmsDestinations.length ? cmsDestinations : destinations).filter((item) => item.verified !== false);
+  const accommodationSource = (cmsCabins.length ? cmsCabins : cabins).filter((item) => item.verified !== false);
+  const experienceSource = (cmsExperiences.length ? cmsExperiences : experiences).filter((item) => item.verified !== false);
   return <main className="bg-snow py-12 sm:py-20"><div className="container-narrow"><TripPlanner language={lang} catalog={{destinations: destinationSource, accommodations: accommodationSource, experiences: experienceSource}} /></div></main>;
 }
