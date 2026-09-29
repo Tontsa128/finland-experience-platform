@@ -13,7 +13,7 @@ type DestinationPayload = {
   mediaIds?: string[];
   publishAt?: string | null;
   seo?: Record<string, { title?: string; description?: string }>;
-  status?: 'draft' | 'published';
+  status?: 'draft' | 'published' | 'archived';
   translations: Record<string, { name: string; shortDescription?: string; fullDescription?: string; highlights?: string; travelInformation?: string }>;
 };
 
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     const errors = validatePayload(body);
     if (errors.length) return NextResponse.json({ error: 'Validation failed', details: errors }, { status: 400 });
 
-    const status = body.status === 'published' ? 'published' : 'draft';
+    const status = body.status === 'published' ? 'published' : body.status === 'archived' ? 'archived' : 'draft';
     const { data: destination, error: destinationError } = await supabaseAdmin
       .from('destinations')
       .insert({ slug: body.slug.trim(), region: body.region.trim(), hero_image_url: body.heroImageUrl?.trim() || null, status, published_at: status === 'published' ? (body.publishAt || new Date().toISOString()) : null, publish_at: body.publishAt || null, seo_title_fi: body.seo?.fi?.title || null, seo_title_es: body.seo?.es?.title || null, seo_title_en: body.seo?.en?.title || null, seo_description_fi: body.seo?.fi?.description || null, seo_description_es: body.seo?.es?.description || null, seo_description_en: body.seo?.en?.description || null })
