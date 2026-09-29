@@ -23,7 +23,6 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   const updates: Record<string, boolean | string | null> = {};
   for (const field of fields) if (typeof body[field] === "boolean") updates[field] = body[field];
   if (typeof body.notes === "string") updates.notes = body.notes.slice(0, 5000);
-  const allChecked = fields.every((field) => updates[field] === true);
   const existing = await supabaseAdmin.from("provider_verification_checks").select("*").eq("provider_id", id).maybeSingle();
   if (existing.error) return NextResponse.json({ error: existing.error.message }, { status: 500 });
   const merged = { ...(existing.data || {}), ...updates };
