@@ -1,8 +1,7 @@
 'use client';
-import Link from 'next/link';
 import ConciergeItinerary from './ConciergeItinerary';
 import { FormEvent, useState } from 'react';
-import { ArrowRight, Compass, Heart, Sparkles, Waves, TreePine, Utensils, Check } from 'lucide-react';
+import { ArrowRight, Compass, Heart, Sparkles, Waves, TreePine, Utensils } from 'lucide-react';
 
 type Lang='fi'|'es'|'en';
 type Rec={type:'destination'|'accommodation'|'experience';slug:string;reason:string};
@@ -19,8 +18,6 @@ const choices=[['nature',TreePine,{fi:'Luonto',es:'Naturaleza',en:'Nature'}],['s
 export default function TripPlanner({language,catalog}:{language:Lang;catalog:{destinations:Item[];accommodations:Item[];experiences:Item[]}}){
  const t=ui[language]; const [days,setDays]=useState('5');const [people,setPeople]=useState('2');const [budget,setBudget]=useState('250');const [question,setQuestion]=useState('');const [selected,setSelected]=useState<string[]>(['nature','sauna','sea']);const [plan,setPlan]=useState<Plan[]>([]);const [summary,setSummary]=useState('');const [recommendations,setRecommendations]=useState<Rec[]>([]);const [busy,setBusy]=useState(false);const [error,setError]=useState('');const [name,setName]=useState('');const [email,setEmail]=useState('');const [sent,setSent]=useState(false);
  const toggle=(x:string)=>setSelected(v=>v.includes(x)?v.filter(y=>y!==x):[...v,x]);
- const resolve=(r:Rec)=>{const list=r.type==='destination'?catalog.destinations:r.type==='accommodation'?catalog.accommodations:catalog.experiences;return list.find(x=>x.slug===r.slug)};
- const path=(r:Rec)=>r.type==='destination'?'destinations':r.type==='accommodation'?'accommodations':'experiences';
  async function create(e:FormEvent){e.preventDefault();setBusy(true);setError('');setSent(false);try{const r=await fetch('/api/concierge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({language,days:Number(days),people:Number(people),budget:Number(budget),interests:selected,question})});const b=await r.json();if(!r.ok)throw new Error(b.error||'Plan could not be created.');setSummary(b.summary||'');setPlan(b.days||[]);setRecommendations(b.recommendations||[]);setTimeout(()=>document.getElementById('concierge-result')?.scrollIntoView({behavior:'smooth',block:'start'}),50)}catch(e){setError(e instanceof Error?e.message:'Unable to create plan.')}finally{setBusy(false)}}
  async function send(e:FormEvent){e.preventDefault();setError('');const r=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName:name,email,locale:language,leadType:'concierge',message:question,source:'concierge-planner',sourcePath:`/${language}/plan`,tripDays:Number(days),tripBudgetEur:Number(budget),tripInterests:selected,tripQuestion:question,recommendedItems:recommendations})});const b=await r.json();if(!r.ok){setError(b.error||'Unable to send request.');return}setSent(true)}
  return <div>
