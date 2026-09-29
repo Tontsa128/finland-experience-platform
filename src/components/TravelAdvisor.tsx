@@ -55,7 +55,11 @@ export default function TravelAdvisor({ language: initialLanguage, catalog }: { 
           if (!source || source.verified === false) return null;
           const title = source.name[language] || source.name.en;
           const href = '/' + language + '/' + (r.type === 'accommodation' ? 'accommodations' : r.type === 'destination' ? 'destinations' : 'experiences') + '/' + r.slug;
-          const meta = r.type === 'accommodation' ? source.location : r.type === 'experience' ? source.region : source.tags.slice(0,3).join(' · ');
+          const meta = 'location' in source
+            ? source.location
+            : 'region' in source
+              ? source.region
+              : source.tags.slice(0,3).join(' · ');
           return <Link key={r.type + r.slug} href={href} className="group block rounded-xl border border-slate-200 p-3 transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50"><div className="flex items-start justify-between gap-3"><div><div className="font-display text-lg font-bold text-brand-950">{title}</div><p className="mt-1 text-xs leading-5 text-slate-600">{r.reason}</p><div className="mt-2 text-[10px] font-bold uppercase tracking-[.12em] text-slate-400">{meta}</div></div><ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-brand-700 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div></Link>;
         })}</div>}
         {aiAnswer && <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-slate-700"><p className="mb-2 text-[10px] font-bold uppercase tracking-[.16em] text-emerald-800">{language === 'fi' ? 'Varmennettuun tietoon perustuva vastaus' : language === 'es' ? 'Respuesta basada en información verificada' : 'Answer based on verified information'}</p><p className="whitespace-pre-wrap">{aiAnswer}</p></div>}
