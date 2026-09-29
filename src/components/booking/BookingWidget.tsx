@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ExternalLink, Users } from "lucide-react";
 import { formatPrice } from "@/lib/utils";
+import type { Locale } from "@/types";
 
 interface Props {
   price: number;
@@ -27,7 +28,7 @@ export function BookingWidget({ price, priceLabel, locale, providerUrl, provider
     <aside className="sticky top-28 rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-card">
       <p className="text-sm text-slate-500">{l.from}</p>
       <div className="mt-1 flex items-baseline gap-1">
-        <span className="text-3xl font-bold text-brand-900">{formatPrice(price, locale as any)}</span>
+        <span className="text-3xl font-bold text-brand-900">{formatPrice(price, locale as Locale)}</span>
         <span className="text-sm text-slate-500">{priceLabel}</span>
       </div>
       {duration && <p className="mt-1 text-sm text-slate-500">{duration}</p>}
