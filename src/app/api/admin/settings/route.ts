@@ -72,7 +72,7 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json({ error: key + " must be a 6-digit hex color" }, { status: 400 });
       }
 
-      if (urlFields.has(key) && normalized && !/^(\\/|https?:\\/\\/)/i.test(normalized)) {
+      if (urlFields.has(key) && normalized && !/^(\/|https?:\/\/)/i.test(normalized)) {
         return NextResponse.json({ error: key + " must be a relative path or http(s) URL" }, { status: 400 });
       }
 
