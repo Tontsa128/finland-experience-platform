@@ -1,25 +1,24 @@
-# Finland Experience – production roadmap
+# Finland Experience – tuotantotilanne ja seuraavat vaiheet
 
-## Delivered in the CMS foundation
+## Käytössä
 
-- FI/ES/EN property model with translations.
-- Property status, seasonal pricing and daily availability tables.
-- Media alt/caption fields for all three languages.
-- Inquiry, review, certification and admin profile tables.
-- Site-wide design/contact/SEO settings.
-- RLS policies for public published content.
-- Canonical, hreflang and Open Graph metadata helper.
-- Dynamic sitemap and robots routes.
-- Destination soft-delete compatibility column.
+- FI/ES/EN CMS kohteille, majoituksille ja kokemuksille.
+- Supabase Auth + roolipohjainen admin-hallinta.
+- Supabase Storage -mediakirjasto ja palvelinpuolen upload.
+- Provider-verkosto, toimituksellinen Verified-tarkistus ja partner-portaali.
+- Liidien CRM ja partner-kohtainen liidien käsittely.
+- AI Travel Advisor ja Concierge, jotka käyttävät vain julkaistua ja varmennettua katalogia.
+- Trip Planner / Concierge-polku ja liidien tallennus.
+- Julkinen sisältö, sitemap, robots ja monikielinen SEO-rakenne.
+- Suora palveluntarjoajavaraus: alusta ei käsittele asiakkaan maksua eikä tee pakettimatkavarausta.
 
-## Next hardening steps
+## Seuraavat tekniset hardening-vaiheet
 
-1. Replace the current demo admin cookie with Supabase Auth and profile-role checks.
-2. Add Supabase Storage binary uploads and WebP/AVIF transformations.
-3. Connect public accommodation pages to the new properties tables.
-4. Add dynamic database-backed sitemap entries.
-5. Add JSON-LD for LodgingBusiness, TouristAttraction, Review and BreadcrumbList.
-6. Add GDPR consent management before analytics/marketing scripts.
-7. Add email and WhatsApp notifications for inquiries.
-8. Run Lighthouse/Core Web Vitals and accessibility audits in production.
-9. Upgrade Next.js in a separate controlled migration.
+1. Aja tuotannon Supabase-migraatiot loppuun ja varmista niiden tila.
+2. Aseta Verceliin tuotannon Supabase- ja OpenAI-ympäristömuuttujat.
+3. Testaa FI/ES/EN asiakaspolut sekä admin- ja partner-roolit tuotannossa.
+4. Suorita Lighthouse-, Core Web Vitals-, saavutettavuus- ja mobiilitestaus.
+5. Lisää tarvittaessa JSON-LD-strukturoidut tiedot tärkeimmille sisältösivuille.
+6. Lisää GDPR-suostumus ennen analytiikka- ja markkinointiskriptejä.
+7. Lisää sähköposti-/WhatsApp-ilmoitukset liideille.
+8. Pidä Next.js-päivitys erillisenä hallittuna migraationa.
