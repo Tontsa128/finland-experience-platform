@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { translateFinnishText } from "@/components/admin/AITranslationPanel";
 
 type Locale = "fi" | "en" | "es";
@@ -96,7 +97,7 @@ export default function ContentStudioPage() {
   const [showMedia, setShowMedia] = useState(false);
   const [mediaQuery, setMediaQuery] = useState("");
 
-  async function load() {
+  const load = useCallback(async () => {
     setError("");
     const endpoint = kind === "destination" ? "/api/admin/destinations" : kind === "property" ? "/api/admin/properties" : "/api/admin/experiences";
     const r = await fetch(endpoint, { cache: "no-store" });
@@ -109,7 +110,7 @@ export default function ContentStudioPage() {
   useEffect(() => {
     load().catch(e => setError(e instanceof Error ? e.message : "Lataus epäonnistui."));
     setSelected(null);
-  }, [kind]);
+  }, [kind, load]);
 
   const filtered = useMemo(() => items.filter(x =>
     (x.title + " " + x.slug + " " + x.region).toLowerCase().includes(search.toLowerCase())
@@ -277,8 +278,8 @@ export default function ContentStudioPage() {
                 <div><p className="text-sm font-semibold text-slate-900">Pääkuva</p><p className="text-xs text-slate-500">Valitse kuva keskitetystä kuvapankista.</p></div>
                 <button type="button" onClick={()=>setShowMedia(!showMedia)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700">{showMedia?"Sulje kuvapankki":"Valitse kuva"}</button>
               </div>
-              {selected.raw.hero_image_url && <div className="mt-4 overflow-hidden rounded-xl bg-slate-200"><img src={selected.raw.hero_image_url} alt="" className="h-52 w-full object-cover" /></div>}
-              {showMedia && <><input value={mediaQuery} onChange={e=>setMediaQuery(e.target.value)} placeholder="Hae kuvasta…" className="mt-4 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"/><div className="mt-3 grid max-h-72 grid-cols-2 gap-3 overflow-auto sm:grid-cols-4">{media.filter(m=>(m.filename+" "+(m.alt_fi||"")).toLowerCase().includes(mediaQuery.toLowerCase())).map(m=><button type="button" key={m.id} onClick={()=>selectMedia(m.id)} className="overflow-hidden rounded-xl border border-slate-200 bg-white text-left hover:border-emerald-400"><img src={m.url} alt={m.alt_fi || m.filename} className="aspect-[4/3] w-full object-cover" /><span className="block truncate p-2 text-xs font-medium">{m.filename}</span></button>)}</div></>}
+              {selected.raw.hero_image_url && <div className="mt-4 overflow-hidden rounded-xl bg-slate-200"><div className="relative h-52 w-full"><Image src={selected.raw.hero_image_url} alt="" fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" /></div></div>}
+              {showMedia && <><input value={mediaQuery} onChange={e=>setMediaQuery(e.target.value)} placeholder="Hae kuvasta…" className="mt-4 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"/><div className="mt-3 grid max-h-72 grid-cols-2 gap-3 overflow-auto sm:grid-cols-4">{media.filter(m=>(m.filename+" "+(m.alt_fi||"")).toLowerCase().includes(mediaQuery.toLowerCase())).map(m=><button type="button" key={m.id} onClick={()=>selectMedia(m.id)} className="overflow-hidden rounded-xl border border-slate-200 bg-white text-left hover:border-emerald-400"><div className="relative aspect-[4/3] w-full"><Image src={m.url} alt={m.alt_fi || m.filename} fill sizes="(max-width: 640px) 50vw, 25vw" className="object-cover" /></div><span className="block truncate p-2 text-xs font-medium">{m.filename}</span></button>)}</div></>}
             </div>
 
             <div className="mt-6 grid gap-5">
