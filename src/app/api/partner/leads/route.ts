@@ -29,7 +29,7 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: "Invalid lead status." }, { status: 400 });
     }
     const { data, error } = await supabaseAdmin
-      .from("bookings_inquiries").update({ lead_status: body.leadStatus })
+      .from("bookings_inquiries").update({ lead_status: body.leadStatus, updated_at: new Date().toISOString() })
       .eq("id", body.id).eq("provider_id", context.provider.id)
       .select("id,lead_status").single();
     if (error) return NextResponse.json({ error: error.message }, { status: 400 });
