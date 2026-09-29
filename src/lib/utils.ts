@@ -26,3 +26,7 @@ export function getLocaleFromPath(pathname: string): Locale {
   const segment = pathname.split("/")[1];
   return locales.includes(segment as Locale) ? (segment as Locale) : defaultLocale;
 }
+
+
+/** Demo/fallback content is opt-in and should stay disabled in production. */
+export const allowDemoFallback = process.env.NEXT_PUBLIC_ALLOW_DEMO_FALLBACK === "true";
