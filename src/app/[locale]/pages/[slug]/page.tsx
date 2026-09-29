@@ -4,7 +4,6 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { localizedUrl } from "@/lib/seo";
 import { locales } from "@/lib/utils";
 import type { Locale } from "@/types";
-import { buildLocalizedMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
