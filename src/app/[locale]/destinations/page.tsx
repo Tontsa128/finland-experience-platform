@@ -4,11 +4,12 @@ import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import { getPublishedDestinations } from "@/lib/public-content";
 import type { Locale } from "@/types";
+import { allowDemoFallback } from "@/lib/utils";
 
 export default async function DestinationsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
-  const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
+  const destinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
   const copy = locale === "fi"
     ? { eyebrow:"Suomi, jonka haluat kokea", title:"Valitse maisema, johon haluat herätä.", intro:"Järven hiljaisuus, saariston valo, merenrantakaupungit ja pienet kylät. Löydä paikka, jossa lomasi alkaa tuntua jo ennen kuin saavut.", explore:"Katso kohde", stays:"Löydä majoitus", story:"Jokaisella paikalla on oma rytminsä." }
     : locale === "es"
