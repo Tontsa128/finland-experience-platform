@@ -5,9 +5,9 @@ export async function POST(request: Request) {
     const body = await request.json();
     const name = String(body.name || "").trim();
     const email = String(body.email || "").trim();
-    const message = String(body.message || "").trim();
+    const message = String(body.message || "").trim().slice(0, 5000);
 
-    if (!name || !email || !message) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    if (!name || name.length > 100 || !email || email.length > 254 || !message || message.length < 5) return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Invalid email" }, { status: 400 });
 
     const apiKey = process.env.RESEND_API_KEY;
