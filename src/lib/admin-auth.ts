@@ -4,6 +4,14 @@ import { getSupabaseAdmin } from "@/lib/supabase";
 
 export type AdminRole = "SUPER_ADMIN" | "ADMIN" | "CONTENT_MANAGER" | "BOOKING_MANAGER" | "EDITOR";
 
+const ADMIN_ROLES = new Set<AdminRole>([
+  "SUPER_ADMIN",
+  "ADMIN",
+  "CONTENT_MANAGER",
+  "BOOKING_MANAGER",
+  "EDITOR",
+]);
+
 export async function getAdminContext() {
   const cookieStore = await cookies();
   const supabase = createServerClient(
@@ -13,9 +21,23 @@ export async function getAdminContext() {
   );
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
-  const { data: profile } = await getSupabaseAdmin().from("profiles").select("id,full_name,role").eq("id", user.id).single();
-  if (!profile) return null;
-  return { user, profile: profile as { id: string; full_name: string | null; role: AdminRole } };
+
+  const { data: profile } = await getSupabaseAdmin()
+    .from("profiles")
+    .select("id,full_name,role")
+    .eq("id", user.id)
+    .single();
+
+  if (!profile || !ADMIN_ROLES.has(profile.role as AdminRole)) return null;
+
+  return {
+    user,
+    profile: profile as {
+      id: string;
+      full_name: string | null;
+      role: AdminRole;
+    },
+  };
 }
 
 export async function requireAdmin(roles?: AdminRole[]) {
