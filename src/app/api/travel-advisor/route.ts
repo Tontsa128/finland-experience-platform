@@ -50,7 +50,40 @@ export async function POST(request: Request) {
 
   if (!response.ok) return NextResponse.json({ error: "AI advisor is temporarily unavailable." }, { status: 503 });
   const data = await response.json();
-  const answer = typeof data.output_text === "string" ? data.output_text.trim() : "";
+  const raw = typeof data.output_text === "string" ? data.output_text.trim() : "";
+  if (!raw) return NextResponse.json({ error: "AI advisor returned no answer." }, { status: 503 });
+
+  let parsed: { answer?: unknown; recommendations?: unknown };
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    parsed = { answer: raw, recommendations: [] };
+  }
+
+  const valid = new Set<string>([
+    ...(destinations.data || []).map((x) => "destination:" + x.slug),
+    ...(properties.data || []).map((x) => "accommodation:" + x.slug),
+    ...(experiences.data || []).map((x) => "experience:" + x.slug),
+  ]);
+
+  const recommendations = Array.isArray(parsed.recommendations)
+    ? parsed.recommendations
+        .filter((x): x is { type: string; slug: string; reason?: string } =>
+          !!x &&
+          typeof x === "object" &&
+          typeof (x as { type?: unknown }).type === "string" &&
+          typeof (x as { slug?: unknown }).slug === "string" &&
+          valid.has((x as { type: string }).type + ":" + (x as { slug: string }).slug)
+        )
+        .slice(0, 3)
+        .map((x) => ({
+          type: x.type,
+          slug: x.slug,
+          reason: typeof x.reason === "string" ? x.reason.slice(0, 300) : "",
+        }))
+    : [];
+
+  const answer = typeof parsed.answer === "string" ? parsed.answer.trim() : "";
   if (!answer) return NextResponse.json({ error: "AI advisor returned no answer." }, { status: 503 });
-  return NextResponse.json({ answer, verifiedOnly: true });
+  return NextResponse.json({ answer, recommendations, verifiedOnly: true });
 }
