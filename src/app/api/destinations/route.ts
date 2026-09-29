@@ -7,9 +7,10 @@ export async function GET() {
   try {
     const { data, error } = await supabaseAdmin
       .from('destinations')
-      .select('id, slug, region, hero_image_url, status, destination_translations(language_code, name, short_description, full_description, highlights, travel_information), experiences(id)')
+      .select('id, slug, region, hero_image_url, status, destination_translations(language_code, name, short_description, full_description, highlights, travel_information), experiences(id,status)')
       .eq('status', 'published')
       .is('deleted_at', null)
+      .or(`publish_at.is.null,publish_at.lte.${new Date().toISOString()}`)
       .order('created_at', { ascending: false });
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -21,7 +22,7 @@ export async function GET() {
       heroImageUrl: item.hero_image_url || '',
       status: item.status,
       translations: item.destination_translations || [],
-      experienceCount: Array.isArray(item.experiences) ? item.experiences.length : 0,
+      experienceCount: Array.isArray(item.experiences) ? item.experiences.filter((experience: { status?: string }) => experience.status === 'published').length : 0,
     }));
 
     return NextResponse.json({ destinations }, { headers: { 'Cache-Control': 'no-store' } });
