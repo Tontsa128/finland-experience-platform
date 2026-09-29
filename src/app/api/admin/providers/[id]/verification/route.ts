@@ -21,7 +21,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!allowedRoles.includes(admin.profile.role as typeof allowedRoles[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  const { id } = await params;
+  const { id } = params;
   const body = await req.json().catch(() => ({}));
   const existing = await supabaseAdmin.from("provider_verification_checks").select("*").eq("provider_id", id).maybeSingle();
   if (existing.error) return NextResponse.json({ error: existing.error.message }, { status: 500 });
