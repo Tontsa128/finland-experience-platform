@@ -75,6 +75,28 @@ export async function POST(request: NextRequest) {
       if (!experience) return NextResponse.json({ error: "Experience not found." }, { status: 404 });
     }
 
+    if (providerId && propertyId) {
+      const { data: link, error } = await supabaseAdmin
+        .from("provider_property_links")
+        .select("provider_id")
+        .eq("provider_id", providerId)
+        .eq("property_id", propertyId)
+        .maybeSingle();
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+      if (!link) return NextResponse.json({ error: "Provider is not linked to this property." }, { status: 400 });
+    }
+
+    if (providerId && experienceId !== null) {
+      const { data: link, error } = await supabaseAdmin
+        .from("provider_experience_links")
+        .select("provider_id")
+        .eq("provider_id", providerId)
+        .eq("experience_id", experienceId)
+        .maybeSingle();
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+      if (!link) return NextResponse.json({ error: "Provider is not linked to this experience." }, { status: 400 });
+    }
+
     const providerIdForInsert = providerId;
     if (providerIdForInsert) {
       const { data: provider, error } = await supabaseAdmin
