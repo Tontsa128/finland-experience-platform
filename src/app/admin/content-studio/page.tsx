@@ -104,13 +104,22 @@ export default function ContentStudioPage() {
     const b = await r.json();
     if (!r.ok) throw new Error(b.error || "Sisältöä ei voitu ladata.");
     const source = kind === "destination" ? b.destinations : kind === "property" ? b.properties : b.experiences;
-    setItems((source || []).map((x:any) => normalize(kind, x)));
+    const normalized = (source || []).map((x:any) => normalize(kind, x));
+    setItems(normalized);
+    return normalized;
   }, [kind]);
 
+  const loadMedia = useCallback(async () => {
+    const r = await fetch("/api/admin/media", { cache: "no-store" });
+    const b = await r.json();
+    if (!r.ok) throw new Error(b.error || "Kuvapankkia ei voitu ladata.");
+    setMedia(b.media || []);
+  }, []);
+
   useEffect(() => {
-    load().catch(e => setError(e instanceof Error ? e.message : "Lataus epäonnistui."));
     setSelected(null);
-  }, [kind, load]);
+    Promise.all([load(), loadMedia()]).catch(e => setError(e instanceof Error ? e.message : "Lataus epäonnistui."));
+  }, [kind, load, loadMedia]);
 
   const filtered = useMemo(() => items.filter(x =>
     (x.title + " " + x.slug + " " + x.region).toLowerCase().includes(search.toLowerCase())
@@ -162,7 +171,8 @@ export default function ContentStudioPage() {
         body = {
           id: Number(selected.id), slug: selected.slug, region: selected.region,
           heroImageUrl: selected.raw.hero_image_url,
-          status: selected.status === "published" ? "published" : "draft",
+          publishAt: selected.raw.publish_at || null,
+          status: selected.status === "published" ? "published" : selected.status === "archived" ? "archived" : "draft",
           translations: {
             fi: { name:t.fi.name, shortDescription:t.fi.shortDescription, fullDescription:t.fi.fullDescription, highlights:t.fi.highlights, travelInformation:t.fi.travelInformation },
             en: { name:t.en.name, shortDescription:t.en.shortDescription, fullDescription:t.en.fullDescription, highlights:t.en.highlights, travelInformation:t.en.travelInformation },
@@ -177,7 +187,7 @@ export default function ContentStudioPage() {
           id:selected.id, slug:selected.slug, propertyType:selected.raw.property_type, region:selected.raw.region,
           maxGuests:selected.raw.max_guests, bedrooms:selected.raw.bedrooms, bathrooms:selected.raw.bathrooms,
           basePriceEur:selected.raw.base_price_eur, providerName:selected.raw.provider_name, providerUrl:selected.raw.provider_url,
-          featured:selected.raw.featured, status:selected.status === "published" ? "published" : "draft",
+          featured:selected.raw.featured, status:selected.status === "published" ? "published" : selected.status === "archived" ? "archived" : "draft",
           mediaIds:Array.from(new Set([selected.raw.selected_media_id,...(selected.raw.property_media||[]).map((x:any)=>x.media?.id).filter(Boolean)].filter(Boolean))),
           translations:{
             fi:{name:t.fi.name,shortDescription:t.fi.shortDescription,description:t.fi.description,locationName:selected.raw.property_translations?.find((x:any)=>x.locale==="fi")?.location_name,seoTitle:t.fi.seoTitle,seoDescription:t.fi.seoDescription},
@@ -190,7 +200,7 @@ export default function ContentStudioPage() {
         body = {
           id:Number(selected.id), destinationId:selected.raw.destination_id, categoryId:selected.raw.category_id, slug:selected.slug,
           durationMinutes:selected.raw.duration_minutes,minGroupSize:selected.raw.min_group_size,maxGroupSize:selected.raw.max_group_size,
-          difficultyLevel:selected.raw.difficulty_level,status:selected.status === "published" ? "published" : "draft",
+          difficultyLevel:selected.raw.difficulty_level,status:selected.status === "published" ? "published" : selected.status === "archived" ? "archived" : "draft",
           mediaIds:Array.from(new Set([selected.raw.selected_media_id,...(selected.raw.experience_media||[]).map((x:any)=>x.media?.id).filter(Boolean)].filter(Boolean))),
           pricing:selected.raw.pricing_rules?.[0] ? {basePriceEur:selected.raw.pricing_rules[0].base_price_eur,adultPriceEur:selected.raw.pricing_rules[0].adult_price_eur,childPriceEur:selected.raw.pricing_rules[0].child_price_eur} : undefined,
           translations:{
@@ -204,9 +214,9 @@ export default function ContentStudioPage() {
       const b = await r.json();
       if (!r.ok) throw new Error(b.error || "Tallennus epäonnistui.");
       setNotice("Sisältö tallennettu.");
-      await load();
-      const refreshed = items.find(x => x.id === selected.id);
-      if (refreshed) setSelected({ ...selected });
+      const refreshedItems = await load();
+      const refreshed = refreshedItems.find(x => x.id === selected.id);
+      if (refreshed) setSelected(refreshed);
     } catch(e) { setError(e instanceof Error ? e.message : "Tallennus epäonnistui."); }
     finally { setBusy(false); }
   }
