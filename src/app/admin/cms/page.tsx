@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, PenSquare, Sparkles, Waves, Home, Files } from "lucide-react";
+import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, Sparkles, Waves, Home, Files } from "lucide-react";
 
 const sections = [
   { href: "/admin/content-studio", label: "✦ Content Studio", text: "Keskitetty editori FI/EN/ES-sisällölle, AI-käännökset, SEO ja julkaisu.", icon: Sparkles },
