@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 type Media = { id: string; filename: string; url: string; alt_text: string | null; alt_fi: string | null; alt_es: string | null; alt_en: string | null; type: string; created_at: string };
@@ -66,7 +67,7 @@ export default function MediaAdminPage() {
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((m) => <article key={m.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <div className="aspect-[4/3] bg-slate-100">{m.url && <img src={m.url} alt={m.alt_fi || m.alt_text || m.filename} className="h-full w-full object-cover" />}</div>
+            <div className="relative aspect-[4/3] bg-slate-100">{m.url && <Image src={m.url} alt={m.alt_fi || m.alt_text || m.filename} fill sizes="(max-width: 640px) 50vw, 25vw" className="object-cover" />}</div>
             <div className="p-4"><p className="truncate text-sm font-semibold text-slate-950">{m.filename}</p><p className="mt-1 text-xs text-slate-500">FI: {m.alt_fi || "—"}</p><p className="text-xs text-slate-500">ES: {m.alt_es || "—"}</p><p className="text-xs text-slate-500">EN: {m.alt_en || "—"}</p></div>
           </article>)}
         </div>
