@@ -8,6 +8,7 @@ import { CabinCard } from "@/components/ui/CabinCard";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
 import TravelAdvisor from "@/components/TravelAdvisor";
 import { destinations, cabins, experiences } from "@/lib/data";
+import { allowDemoFallback } from "@/lib/utils";
 import {
   getHomepageSettings,
   getPublishedDestinations,
@@ -36,6 +37,10 @@ export default async function HomePage({ params }: { params: { locale: string } 
       getPublishedExperiences(),
     ]);
 
+  const catalogDestinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : destinations;
+  const catalogCabins = cmsCabins.length || !allowDemoFallback ? cmsCabins : cabins;
+  const catalogExperiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : experiences;
+
   const t = await getTranslations({ locale, namespace: "sections" });
   const tc = await getTranslations({ locale, namespace: "common" });
   const sh = await getTranslations({ locale, namespace: "summerHome" });
@@ -43,35 +48,35 @@ export default async function HomePage({ params }: { params: { locale: string } 
   const featuredDestinations = homepage?.featuredDestinationIds.length
     ? homepage.featuredDestinationIds
         .map((id) =>
-          (cmsDestinations.length ? cmsDestinations : destinations).find(
+          catalogDestinations.find(
             (item) => String(item.id) === id,
           ),
         )
         .filter(Boolean)
         .slice(0, 3) as typeof destinations
-    : (cmsDestinations.length ? cmsDestinations : destinations).slice(0, 3);
+    : catalogDestinations.slice(0, 3);
 
   const featuredCabins = homepage?.featuredPropertyIds.length
     ? homepage.featuredPropertyIds
         .map((id) =>
-          (cmsCabins.length ? cmsCabins : cabins).find(
+          catalogCabins.find(
             (item) => String(item.id) === id,
           ),
         )
         .filter(Boolean)
         .slice(0, 3) as typeof cabins
-    : (cmsCabins.length ? cmsCabins : cabins).slice(0, 3);
+    : catalogCabins.slice(0, 3);
 
   const featuredExperiences = homepage?.featuredExperienceIds.length
     ? homepage.featuredExperienceIds
         .map((id) =>
-          (cmsExperiences.length ? cmsExperiences : experiences).find(
+          catalogExperiences.find(
             (item) => String(item.id) === id,
           ),
         )
         .filter(Boolean)
         .slice(0, 3) as typeof experiences
-    : (cmsExperiences.length ? cmsExperiences : experiences).slice(0, 3);
+    : catalogExperiences.slice(0, 3);
 
   const summerImages = [
     featuredDestinations[1]?.images?.[0] || fallbackSummerImage,
@@ -112,7 +117,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
   ] as const;
 
   const coastalHighlights = ["salo-mathildedal", "naantali", "turku", "hanko", "aland"]
-    .map((slug) => (cmsDestinations.length ? cmsDestinations : destinations).find((item) => item.slug === slug))
+    .map((slug) => catalogDestinations.find((item) => item.slug === slug))
     .filter(Boolean)
     .slice(0, 5) as typeof destinations;
 
@@ -214,13 +219,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
       <section className="bg-snow py-20 sm:py-28"><div className="container-narrow"><div className="mx-auto max-w-3xl text-center"><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("advisorEyebrow")}</p><h2 className="mt-4 section-title">{sh("advisorTitle")}</h2><p className="mt-4 section-subtitle mx-auto">{sh("advisorText")}</p><Link href={`/${locale}/plan`} className="btn-gold mt-6 inline-flex">{locale === "es" ? "Diseña tu viaje" : locale === "en" ? "Plan your trip" : "Suunnittele matkasi"} <ArrowRight className="h-4 w-4"/></Link></div><div className="mx-auto mt-10 max-w-5xl rounded-[2rem] bg-white p-3 shadow-card"><div className="rounded-[1.5rem] bg-brand-50 p-5 sm:p-7"><TravelAdvisor
   language={locale as "fi"|"es"|"en"}
   catalog={{
-    destinations: (cmsDestinations.length ? cmsDestinations : destinations).map((d) => ({
+    destinations: catalogDestinations.map((d) => ({
       slug: d.slug, name: d.name, description: d.shortDescription, tags: d.tags || [], activities: d.activities || [], verified: d.verified,
     })),
-    accommodations: (cmsCabins.length ? cmsCabins : cabins).map((c) => ({
+    accommodations: catalogCabins.map((c) => ({
       slug: c.slug, name: c.name, description: c.description, location: c.location, features: c.features || [], price: c.pricePerNight, verified: c.verified,
     })),
-    experiences: (cmsExperiences.length ? cmsExperiences : experiences).map((e) => ({
+    experiences: catalogExperiences.map((e) => ({
       slug: e.slug, name: e.name, description: e.shortDescription, region: e.region, tags: e.tags || [], price: e.price, verified: e.verified,
     })),
   }}
