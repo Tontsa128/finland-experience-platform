@@ -23,7 +23,7 @@ function validatePayload(body: DestinationPayload) {
     errors.push('slug must contain lowercase letters, numbers and single hyphens');
   }
   if (!body.region?.trim()) errors.push('region is required');
-  if (body.heroImageUrl && !/^https?:\\/\\//i.test(body.heroImageUrl.trim())) {
+  if (body.heroImageUrl && !/^https?:\/\//i.test(body.heroImageUrl.trim())) {
     errors.push('heroImageUrl must be an http(s) URL');
   }
   if (body.publishAt && Number.isNaN(Date.parse(body.publishAt))) {
