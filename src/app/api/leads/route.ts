@@ -99,6 +99,26 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid trip budget." }, { status: 400 });
     }
 
+    const tripInterests = Array.isArray(body.tripInterests)
+      ? body.tripInterests
+          .filter((x: unknown): x is string => typeof x === "string")
+          .map((x: string) => x.trim().slice(0, 50))
+          .filter(Boolean)
+          .slice(0, 10)
+      : [];
+
+    const recommendedItems = Array.isArray(body.recommendedItems)
+      ? body.recommendedItems
+          .filter((x: unknown): x is Record<string, unknown> => !!x && typeof x === "object")
+          .map((x: Record<string, unknown>) => ({
+            type: typeof x.type === "string" ? x.type : "",
+            slug: typeof x.slug === "string" ? x.slug.trim().slice(0, 200) : "",
+            reason: typeof x.reason === "string" ? x.reason.trim().slice(0, 300) : "",
+          }))
+          .filter((x) => ["destination", "accommodation", "experience"].includes(x.type) && x.slug)
+          .slice(0, 3)
+      : [];
+
     const { data, error } = await supabaseAdmin.from("bookings_inquiries").insert({
       provider_id: providerIdForInsert,
       property_id: propertyId,
@@ -118,19 +138,9 @@ export async function POST(request: NextRequest) {
       source_path: body.sourcePath ? String(body.sourcePath).slice(0, 500) : null,
       trip_days: tripDays,
       trip_budget_eur: tripBudgetEur,
-      trip_interests: Array.isArray(body.tripInterests) ? body.tripInterests.map((x: unknown) => String(x).slice(0, 50)).slice(0, 10) : [],
+      trip_interests: tripInterests,
       trip_question: body.tripQuestion ? String(body.tripQuestion).trim().slice(0, 1200) : null,
-      recommended_items: Array.isArray(body.recommendedItems)
-        ? body.recommendedItems
-            .filter((x: unknown): x is Record<string, unknown> => !!x && typeof x === "object")
-            .map((x: Record<string, unknown>) => ({
-              type: typeof x.type === "string" ? x.type.slice(0, 30) : "",
-              slug: typeof x.slug === "string" ? x.slug.slice(0, 200) : "",
-              reason: typeof x.reason === "string" ? x.reason.slice(0, 300) : "",
-            }))
-            .filter((x: { type: string; slug: string }) => ["destination", "accommodation", "experience"].includes(x.type) && x.slug)
-            .slice(0, 3)
-        : [],
+      recommended_items: recommendedItems,
     }).select("id,status,created_at").single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
