@@ -52,7 +52,17 @@ export async function POST(request: NextRequest) {
       trip_budget_eur: Number.isFinite(Number(body.tripBudgetEur)) ? Math.min(Math.max(Number(body.tripBudgetEur), 0), 100000) : null,
       trip_interests: Array.isArray(body.tripInterests) ? body.tripInterests.map((x: unknown) => String(x).slice(0, 50)).slice(0, 10) : [],
       trip_question: body.tripQuestion ? String(body.tripQuestion).trim().slice(0, 1200) : null,
-      recommended_items: Array.isArray(body.recommendedItems) ? body.recommendedItems.slice(0, 3) : [],
+      recommended_items: Array.isArray(body.recommendedItems)
+        ? body.recommendedItems
+            .filter((x: unknown): x is Record<string, unknown> => !!x && typeof x === "object")
+            .map((x) => ({
+              type: typeof x.type === "string" ? x.type.slice(0, 30) : "",
+              slug: typeof x.slug === "string" ? x.slug.slice(0, 200) : "",
+              reason: typeof x.reason === "string" ? x.reason.slice(0, 300) : "",
+            }))
+            .filter((x) => ["destination", "accommodation", "experience"].includes(x.type) && x.slug)
+            .slice(0, 3)
+        : [],
     }).select("id,status,created_at").single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
