@@ -7,6 +7,8 @@ import { DestinationCard } from "@/components/ui/DestinationCard";
 import { CabinCard } from "@/components/ui/CabinCard";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
 import TravelAdvisor from "@/components/TravelAdvisor";
+import LocalIcons from "@/components/home/LocalIcons";
+import SeasonalHighlights from "@/components/home/SeasonalHighlights";
 import { destinations, cabins, experiences } from "@/lib/data";
 import { allowDemoFallback } from "@/lib/utils";
 import {
@@ -191,6 +193,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
           </div>
         </div>
       </section>
+
+      <SeasonalHighlights locale={locale as "fi" | "es" | "en"} />
+      <LocalIcons locale={locale as "fi" | "es" | "en"} />
 
       <section id="find-your-finland" className="bg-snow py-16 sm:py-24">
         <div className="container-narrow">
