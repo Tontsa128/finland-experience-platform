@@ -153,6 +153,35 @@ export default async function DestinationDetail({ params }: { params: { locale: 
       {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} /> : null}
       {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
 
+
+      {d.slug === "porvoo" ? (
+        <section className="bg-brand-50 py-14 sm:py-18">
+          <div className="container-narrow">
+            <div className="grid gap-8 rounded-[2rem] bg-white p-7 shadow-soft sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">
+                  {locale === "fi" ? "Porvoon oma rytmi" : locale === "es" ? "El ritmo de Porvoo" : "Porvoo in its own rhythm"}
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">
+                  {locale === "fi" ? "Vanha Porvoo ja jokiranta" : locale === "es" ? "Casco antiguo y río de Porvoo" : "Old Porvoo & the riverside"}
+                </h2>
+                <p className="mt-4 max-w-3xl leading-7 text-slate-600">
+                  {locale === "fi"
+                    ? "Mutkittelevat mukulakivikadut, punaiset jokimakasiinit, kahvilat, ravintolat ja putiikit tekevät vanhasta kaupungista kohteen, jossa kannattaa viipyä."
+                    : locale === "es"
+                      ? "Calles empedradas, almacenes rojos junto al río, cafés, restaurantes y pequeñas tiendas hacen que el casco antiguo merezca más que una visita rápida."
+                      : "Cobbled streets, red-ochre riverside warehouses, cafés, restaurants and boutiques make Old Porvoo worth more than a quick stop."}
+                </p>
+              </div>
+              <a href="https://www.visitporvoo.fi/en/sights/old-porvoo/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
+                {locale === "fi" ? "Tutustu Visit Porvooseen" : locale === "es" ? "Visitar Visit Porvoo" : "Visit Visit Porvoo"}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {d.slug === "rosala" ? (
         <section className="bg-brand-50 py-14 sm:py-18">
           <div className="container-narrow">
