@@ -32,7 +32,7 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
   const experiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
   const experience = experiences.find((item) => item.slug === params.slug);
   if (!experience) notFound();
-  const providerUrl = experience.providerUrl && /^https?:\\/\\//i.test(experience.providerUrl) ? experience.providerUrl : null;
+  const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
 
   const copy = locale === "fi"
     ? { eyebrow: "Yksi hetki, jonka muistat", dream: "Tee tästä päivästä tarina.", more: "Löydä lisää elämyksiä", info: "Elämys alkaa jo ennen kuin saavut.", text: "Suomen kesässä parhaat hetket syntyvät usein yksinkertaisista asioista: luonnosta, vedestä, saunasta, ihmisistä ja valosta.", note: "Näytämme paikallisia palveluita ja ohjaamme sinut suoraan palveluntarjoajalle. Varaus, maksu ja sopimus tehdään palveluntarjoajan kanssa.", provider: "Siirry palveluntarjoajalle", price: "Hintaesimerkki" }
