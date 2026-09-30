@@ -6,9 +6,8 @@ import { ArrowRight, ArrowUpRight, BedDouble, MapPin, Sparkles, Users } from "lu
 import { getPublishedProperties } from "@/lib/public-content";
 import { cabins as fallbackCabins, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
-import { allowDemoFallback, locales } from "@/lib/utils";
+import { allowDemoFallback, formatPrice, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
-import { formatPrice } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
