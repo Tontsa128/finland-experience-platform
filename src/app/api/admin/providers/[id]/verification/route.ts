@@ -40,7 +40,8 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       .eq("id", id)
       .maybeSingle();
     if (providerError) return NextResponse.json({ error: providerError.message }, { status: 500 });
-    if (!provider || !(String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())) {
+    const providerUrl = String(provider?.booking_url || provider?.website_url || "").trim();
+    if (!provider || !/^https?:\/\//i.test(providerUrl)) {
       return NextResponse.json({ error: "Provider verification requires a valid provider website or booking URL." }, { status: 400 });
     }
   }
