@@ -87,7 +87,7 @@ export default async function CabinDetail({ params }: { params: { locale: string
             <p className="text-sm text-slate-500">{locale === "fi" ? "alkaen / yö" : locale === "es" ? "desde / noche" : "from / night"}</p>
             <div className="mt-6 rounded-2xl bg-brand-50 p-4 text-sm leading-relaxed text-brand-900">{copy.note}</div>
             {c.bookingUrl ? <a href={c.bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{copy.provider}<ArrowUpRight className="h-4 w-4" /></a> : <p className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-center text-xs text-amber-800">{locale === "fi" ? "Vuokraajan linkki lisätään tähän kohteeseen." : locale === "es" ? "El enlace del proveedor se añadirá aquí." : "The provider link will be added here."}</p>}
-            <Link href={`/${locale}/contact`} className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">{copy.ask}</Link>
+            {c.bookingUrl ? null : <p className="mt-3 text-center text-xs leading-5 text-slate-500">{copy.ask}</p>}
             <Link href={`/${locale}/accommodations`} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:text-brand-600">{copy.more}<ArrowRight className="h-4 w-4" /></Link>
           </aside>
         </div>
