@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, requestKey } from "@/lib/rate-limit";
 import { supabaseAdmin } from "@/lib/supabase";
+import { firstValidHttpUrl } from "@/lib/utils";
 
 const locales = new Set(["fi","es","en"]);
 const leadTypes = new Set(["inquiry","booking_redirect","planner","concierge"]);
@@ -108,7 +109,7 @@ export async function POST(request: NextRequest) {
         .maybeSingle();
       if (error) return NextResponse.json({ error: error.message }, { status: 500 });
       if (!provider) return NextResponse.json({ error: "Provider not found." }, { status: 404 });
-      if (!/^https?:\/\//i.test(String(provider.booking_url || provider.website_url || "").trim())) {
+      if (!firstValidHttpUrl(provider.booking_url, provider.website_url)) {
         return NextResponse.json({ error: "Provider is not currently publishable." }, { status: 400 });
       }
     }
