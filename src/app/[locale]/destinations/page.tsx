@@ -10,18 +10,6 @@ import { allowDemoFallback } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
-  const itemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: locale === "fi" ? "Kesäkohteet Suomessa" : locale === "es" ? "Destinos de verano en Finlandia" : "Summer destinations in Finland",
-    itemListElement: destinations.map((destination, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: getLocalized(destination.name, locale),
-      url: "/" + locale + "/destinations/" + destination.slug,
-    })),
-  };
-
   const copy = locale === "fi"
     ? { title: "Kesäkohteet Suomessa | Finland Experience", description: "Löydä saaristo, Mathildedal, Teijo, Naantali, Turku ja muut aidot suomalaiset matkakohteet." }
     : locale === "es"
@@ -34,6 +22,19 @@ export default async function DestinationsPage({ params }: { params: { locale: s
   const locale = params.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: locale === "fi" ? "Kesäkohteet Suomessa" : locale === "es" ? "Destinos de verano en Finlandia" : "Summer destinations in Finland",
+    itemListElement: destinations.map((destination, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: getLocalized(destination.name, locale),
+      url: "/" + locale + "/destinations/" + destination.slug,
+    })),
+  };
+
   const copy = locale === "fi"
     ? { eyebrow:"Suomi, jonka haluat kokea", title:"Valitse maisema, johon haluat herätä.", intro:"Järven hiljaisuus, saariston valo, merenrantakaupungit ja pienet kylät. Löydä paikka, jossa lomasi alkaa tuntua jo ennen kuin saavut.", explore:"Katso kohde", stays:"Löydä majoitus", story:"Jokaisella paikalla on oma rytminsä." }
     : locale === "es"
