@@ -233,7 +233,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
           en: property.base_price_eur ? `From €${property.base_price_eur} per night. Check the current price.` : "Check the current price.",
         },
       } satisfies Cabin;
-    }).filter((cabin) => cabin.images.length > 0);
+    }).filter((cabin) => cabin.images.length > 0 && cabin.verified === true);
   } catch {
     return [];
   }
