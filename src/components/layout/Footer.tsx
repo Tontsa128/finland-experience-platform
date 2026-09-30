@@ -52,8 +52,8 @@ export function Footer() {
         <div>
           <h3 className="mb-4 font-semibold">{t("legal")}</h3>
           <nav className="space-y-2 text-sm text-brand-100" aria-label={t("legal")}>
-            <Link href="/privacy" className="block hover:text-white">{t("privacy")}</Link>
-            <Link href="/terms" className="block hover:text-white">{t("terms")}</Link>
+            <Link href={`/${locale}/privacy`} className="block hover:text-white">{t("privacy")}</Link>
+            <Link href={`/${locale}/terms`} className="block hover:text-white">{t("terms")}</Link>
           </nav>
         </div>
       </div>
