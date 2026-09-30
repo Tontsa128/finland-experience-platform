@@ -87,37 +87,6 @@ export default async function HomePage({ params }: { params: { locale: string } 
     featuredCabins[0]?.images?.[0] || fallbackSummerImage,
   ];
 
-  const summerChoices = [
-    {
-      key: "midnight",
-      image: summerImages[0],
-      icon: Sparkles,
-      href: `/${locale}/experiences`,
-      accent: "from-indigo-950/90 via-indigo-900/45 to-transparent",
-    },
-    {
-      key: "sauna",
-      image: summerImages[1],
-      icon: Waves,
-      href: `/${locale}/experiences`,
-      accent: "from-slate-950/90 via-slate-900/35 to-transparent",
-    },
-    {
-      key: "cities",
-      image: summerImages[2],
-      icon: Building2,
-      href: `/${locale}/destinations`,
-      accent: "from-brand-950/90 via-brand-900/40 to-transparent",
-    },
-    {
-      key: "cabins",
-      image: summerImages[3],
-      icon: TreePine,
-      href: `/${locale}/accommodations`,
-      accent: "from-emerald-950/90 via-emerald-900/35 to-transparent",
-    },
-  ] as const;
-
   const coastalHighlights = ["salo-mathildedal", "naantali", "turku", "hanko", "aland"]
     .map((slug) => catalogDestinations.find((item) => item.slug === slug))
     .filter(Boolean)
