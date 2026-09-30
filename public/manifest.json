@@ -1,1 +1,10 @@
-{"name":"Finland Experience","short_name":"Finland Experience","description":"Finnish travel experiences for Spanish and international travelers","start_url":"/en","display":"standalone","background_color":"#f8fafc","theme_color":"#0A3D62","icons":[]}
+{
+  "name": "Finland Experience",
+  "short_name": "Finland Experience",
+  "description": "Finnish summer, slow travel, local stays and authentic coastal experiences.",
+  "start_url": "/en",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0b2e2a"
+}
