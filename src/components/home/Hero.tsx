@@ -11,8 +11,8 @@ import { photoLibrary } from "@/lib/photo-library";
 const slides = [
   {
     key: "summer",
-    image: photoLibrary.mathildedalHarbour,
-    credit: "Kotivalo / Wikimedia Commons",
+    image: photoLibrary.turkuArchipelagoHouse,
+    credit: "Henri Sivonen / Wikimedia Commons",
     href: "/destinations",
     external: false,
   },
