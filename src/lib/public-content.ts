@@ -144,9 +144,9 @@ async function getVerifiedPropertyProviders(): Promise<Map<string, { name?: stri
     providerRows
       .map((provider) => ({
         ...provider,
-        url: String(provider.booking_url || provider.website_url || "").trim(),
+        url: firstValidHttpUrl(provider.booking_url, provider.website_url),
       }))
-      .filter((provider) => /^https?:\\/\\//i.test(provider.url))
+      .filter((provider): provider is typeof provider & { url: string } => Boolean(provider.url))
       .map((provider) => [
         String(provider.id),
         { name: provider.name || undefined, url: provider.url, region: provider.region || undefined },
