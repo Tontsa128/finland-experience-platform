@@ -524,7 +524,13 @@ export async function getActiveBanners(locale: Locale): Promise<SiteBanner[]> {
     if (error) return [];
     const rows = (data || []) as unknown as BannerRow[];
     return rows.filter((b) => (!b.start_at || b.start_at <= now) && (!b.end_at || b.end_at >= now)).map((b) => ({
-      id: b.id, title: b.title, text: b.text || "", ctaLabel: b.cta_label || "", ctaUrl: b.cta_url || "", imageUrl: b.image_url || "", sortOrder: b.sort_order,
+      id: b.id,
+      title: b.title,
+      text: b.text || "",
+      ctaLabel: b.cta_label || "",
+      ctaUrl: isSafeUrlOrPath(b.cta_url) ? b.cta_url.trim() : "",
+      imageUrl: isSafeUrlOrPath(b.image_url) ? b.image_url.trim() : "",
+      sortOrder: b.sort_order,
     }));
   } catch { return []; }
 }
