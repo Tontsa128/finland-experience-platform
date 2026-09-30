@@ -124,6 +124,28 @@ export const destinations: Destination[] = [
     activities: ["Rosala Viking Centre", "Viking village and exhibitions", "island cycling", "sea and archipelago scenery", "Bengtskär day-trip connections"]
   },
   {
+    id: "porvoo",
+    slug: "porvoo",
+    name: { fi: "Porvoo", es: "Porvoo", en: "Porvoo" },
+    description: {
+      fi: "Porvoon vanhakaupunki yhdistää punamultaiset jokirannan makasiinit, mutkittelevat mukulakivikadut, puutalot, kahvilat, ravintolat ja pienet putiikit. Kaupunki sopii myös luonto- ja saaristopäivän tukikohdaksi.",
+      es: "El casco histórico de Porvoo combina almacenes rojos junto al río, calles empedradas, casas de madera, cafés, restaurantes y pequeñas tiendas. La ciudad también ofrece naturaleza y experiencias de archipiélago.",
+      en: "Old Porvoo brings together red-ochre riverside warehouses, winding cobbled streets, wooden houses, cafés, restaurants and small boutiques. The city also offers nature and archipelago experiences."
+    },
+    shortDescription: {
+      fi: "Vanha Porvoo, jokiranta, kulttuuri ja saariston läheisyys",
+      es: "Casco antiguo, río, cultura y cercanía al archipiélago",
+      en: "Old Town, riverside life, culture and nearby archipelago"
+    },
+    region: "Eastern Uusimaa · Southern Finland",
+    images: [photoLibrary.porvoo],
+    priceFrom: 0,
+    featured: false,
+    coordinates: { lat: 60.393, lng: 25.665 },
+    tags: ["porvoo", "old-town", "culture", "food", "archipelago"],
+    activities: ["Old Porvoo walks", "Porvoo Cathedral", "cafés and restaurants", "design and boutiques", "National Urban Park", "archipelago outings"]
+  },
+  {
     id: "southeast",
     slug: "southeast-finland",
     name: { fi: "Kaakkois-Suomi", es: "Sureste de Finlandia", en: "Southeast Finland" },
