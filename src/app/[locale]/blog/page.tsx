@@ -114,7 +114,7 @@ export default async function BlogPage({ params }: { params: { locale: string } 
                   <p className={index === 0 ? "mt-4 leading-7 text-white/75" : "mt-4 leading-7 text-slate-600"}>
                     {getLocalized(post.excerpt, locale)}
                   </p>
-                  <Link href={`/${locale}/destinations`} className={index === 0 ? "mt-6 inline-flex items-center gap-2 text-sm font-bold text-gold-300" : "mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-800"}>
+                  <Link href={`/${locale}/blog/${post.slug}`} className={index === 0 ? "mt-6 inline-flex items-center gap-2 text-sm font-bold text-gold-300" : "mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-800"}>
                     {copy.read}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                   </Link>
                 </div>
