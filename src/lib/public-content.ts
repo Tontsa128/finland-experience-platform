@@ -177,7 +177,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
       .order("created_at", { ascending: false });
 
     if (error || !data?.length) return [];
-    const verifiedPropertyIds = await getVerifiedProviderIds();
+    const verifiedPropertyProviders = await getVerifiedPropertyProviders();
 
     const properties = data as unknown as PropertyRow[];
     return properties.map((property) => {
