@@ -24,8 +24,6 @@ const basePaths = [
   "events",
   "contact",
   "photo-credits",
-  "privacy",
-  "terms",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -50,6 +48,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .eq("published", true)
         .eq("noindex", false),
     ]);
+
+    const legalEntries: MetadataRoute.Sitemap = [
+      {
+        url: siteUrl + "/privacy",
+        lastModified: new Date(),
+        changeFrequency: "yearly" as const,
+        priority: 0.3,
+      },
+      {
+        url: siteUrl + "/terms",
+        lastModified: new Date(),
+        changeFrequency: "yearly" as const,
+        priority: 0.3,
+      },
+    ];
 
     const dynamicEntries: MetadataRoute.Sitemap = [
       ...destinations.flatMap((item) =>
@@ -92,7 +105,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }))),
     ];
 
-    return [...staticEntries, ...dynamicEntries].filter(
+    return [...staticEntries, ...legalEntries, ...dynamicEntries].filter(
       (entry, index, entries) => entries.findIndex((candidate) => candidate.url === entry.url) === index,
     );
   } catch {
