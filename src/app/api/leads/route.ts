@@ -101,12 +101,16 @@ export async function POST(request: NextRequest) {
     if (providerIdForInsert) {
       const { data: provider, error } = await supabaseAdmin
         .from("providers")
-        .select("id")
+        .select("id,verified,website_url,booking_url")
         .eq("id", providerIdForInsert)
         .eq("active", true)
+        .eq("verified", true)
         .maybeSingle();
       if (error) return NextResponse.json({ error: error.message }, { status: 500 });
       if (!provider) return NextResponse.json({ error: "Provider not found." }, { status: 404 });
+      if (!/^https?:\/\//i.test(String(provider.booking_url || provider.website_url || "").trim())) {
+        return NextResponse.json({ error: "Provider is not currently publishable." }, { status: 400 });
+      }
     }
 
     const leadType = String(body.leadType || "inquiry");
