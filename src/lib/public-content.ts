@@ -6,6 +6,106 @@ const locales: Locale[] = ["fi", "es", "en"];
 type IdRow = { id: string | number };
 type ProviderLinkRow = { provider_id: string | number; property_id?: string | number; experience_id?: string | number };
 
+type PropertyTranslationRow = {
+  locale?: string;
+  name?: string | null;
+  short_description?: string | null;
+  description?: string | null;
+  location_name?: string | null;
+  amenities_text?: string | null;
+};
+type PropertyMediaRow = { sort_order?: number | null; media?: { url?: string | null } | null };
+type PropertyRow = {
+  id: string | number;
+  slug: string;
+  property_type?: string | null;
+  region?: string | null;
+  latitude?: number | string | null;
+  longitude?: number | string | null;
+  max_guests?: number | null;
+  bedrooms?: number | null;
+  base_price_eur?: number | string | null;
+  provider_name?: string | null;
+  provider_url?: string | null;
+  property_translations?: PropertyTranslationRow[] | null;
+  property_media?: PropertyMediaRow[] | null;
+};
+
+type DestinationTranslationRow = {
+  language_code?: string;
+  name?: string | null;
+  short_description?: string | null;
+  full_description?: string | null;
+  highlights?: string | null;
+  travel_information?: string | null;
+};
+type DestinationMediaRow = { sort_order?: number | null; media?: { url?: string | null } | null };
+type DestinationRow = {
+  id: string | number;
+  slug: string;
+  region?: string | null;
+  latitude?: number | string | null;
+  longitude?: number | string | null;
+  hero_image_url?: string | null;
+  status?: string | null;
+  seo_title_fi?: string | null;
+  seo_title_es?: string | null;
+  seo_title_en?: string | null;
+  seo_description_fi?: string | null;
+  seo_description_es?: string | null;
+  seo_description_en?: string | null;
+  destination_media?: DestinationMediaRow[] | null;
+  destination_translations?: DestinationTranslationRow[] | null;
+};
+
+type ExperienceTranslationRow = {
+  language_code?: string;
+  title?: string | null;
+  short_description?: string | null;
+  full_description?: string | null;
+};
+type PricingRow = { base_price_eur?: number | string | null; adult_price_eur?: number | string | null; child_price_eur?: number | string | null };
+type ExperienceMediaRow = { sort_order?: number | null; media?: { url?: string | null } | null };
+type ExperienceCategoryRow = { slug?: string | null };
+type ExperienceRow = {
+  id: string | number;
+  destination_id?: string | number | null;
+  category_id?: string | number | null;
+  slug: string;
+  duration_minutes?: number | null;
+  min_group_size?: number | null;
+  max_group_size?: number | null;
+  difficulty_level?: string | null;
+  status?: string | null;
+  experience_translations?: ExperienceTranslationRow[] | null;
+  pricing_rules?: PricingRow[] | null;
+  experience_categories?: ExperienceCategoryRow | ExperienceCategoryRow[] | null;
+  experience_media?: ExperienceMediaRow[] | null;
+};
+
+type BlogTranslationRow = { locale?: string; title?: string | null; excerpt?: string | null; content?: string | null };
+type BlogPostRow = {
+  id: string | number;
+  slug: string;
+  author_name?: string | null;
+  published_at?: string | null;
+  cover_media_id?: string | null;
+  blog_post_translations?: BlogTranslationRow[] | null;
+};
+type MediaRow = { id: string | number; url?: string | null };
+type NavigationRow = { id: string; locale: string; label: string; href: string; sort_order: number };
+type BannerRow = {
+  id: string;
+  title: string;
+  text?: string | null;
+  cta_label?: string | null;
+  cta_url?: string | null;
+  image_url?: string | null;
+  sort_order: number;
+  start_at?: string | null;
+  end_at?: string | null;
+};
+
 function idList(value: unknown): string[] {
   return Array.isArray(value)
     ? value.filter((item): item is string | number => typeof item === "string" || typeof item === "number").map(String)
@@ -51,13 +151,14 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
     if (error || !data?.length) return [];
     const verifiedPropertyIds = await getVerifiedProviderIds();
 
-    return data.map((property: any) => {
+    const properties = data as unknown as PropertyRow[];
+    return properties.map((property) => {
       const translations = property.property_translations ?? [];
-      const first = translations.find((t: any) => t.locale === "fi") ?? translations[0];
+      const first = translations.find((t) => t.locale === "fi") ?? translations[0];
       const images = (property.property_media ?? [])
         .slice()
-        .sort((a: any, b: any) => a.sort_order - b.sort_order)
-        .map((item: any) => item.media?.url)
+        .sort((a, b) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0))
+        .map((item) => item.media?.url)
         .filter(Boolean);
 
       const names = localized(translations, "name");
@@ -120,19 +221,20 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
 
     if (error || !data?.length) return [];
 
-    return data.map((destination: any) => {
+    const destinations = data as unknown as DestinationRow[];
+    return destinations.map((destination) => {
       const translations = destination.destination_translations ?? [];
       const names = localized(translations, "name");
       const shortDescriptions = localized(translations, "short_description");
       const descriptions = localized(translations, "full_description");
       const firstDescription = descriptions.fi || descriptions.en || shortDescriptions.fi || "";
       const highlights = String(
-        translations.find((t: any) => t.language_code === "fi")?.highlights ??
-        translations.find((t: any) => t.language_code === "en")?.highlights ??
+        translations.find((t) => t.language_code === "fi")?.highlights ??
+        translations.find((t) => t.language_code === "en")?.highlights ??
         ""
       ).split(",").map((item) => item.trim()).filter(Boolean);
 
-      const gallery = (destination.destination_media ?? []).slice().sort((a: any, b: any) => a.sort_order - b.sort_order).map((item: any) => item.media?.url).filter(Boolean);
+      const gallery = (destination.destination_media ?? []).slice().sort((a, b) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0)).map((item) => item.media?.url).filter(Boolean);
       const image = destination.hero_image_url || gallery[0] || "";
       return {
         id: destination.id,
@@ -167,10 +269,10 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
           es: { title: destination.seo_title_es || "", description: destination.seo_description_es || "" },
           en: { title: destination.seo_title_en || "", description: destination.seo_description_en || "" },
         },
-              status: destination.status,
+        status: destination.status,
         verified: true,
-        travel_info_fi: translations.find((t: any) => t.language_code === "fi")?.travel_information ?? "",
-        travel_info_es: translations.find((t: any) => t.language_code === "es")?.travel_information ?? "",
+        travel_info_fi: translations.find((t) => t.language_code === "fi")?.travel_information ?? "",
+        travel_info_es: translations.find((t) => t.language_code === "es")?.travel_information ?? "",
       } satisfies Destination;
     });
   } catch {
@@ -189,14 +291,16 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
     if (error || !data?.length) return [];
     const verifiedExperienceIds = await getVerifiedExperienceIds();
 
-    return data.map((experience: any) => {
+    const experiences = data as unknown as ExperienceRow[];
+    return experiences.map((experience) => {
       const translations = experience.experience_translations ?? [];
       const names = localized(translations, "title");
       const descriptions = localized(translations, "full_description");
       const shorts = localized(translations, "short_description");
       const pricing = experience.pricing_rules?.[0];
-      const images = (experience.experience_media ?? []).slice().sort((a: any, b: any) => a.sort_order - b.sort_order).map((item: any) => item.media?.url).filter(Boolean);
-      const category = experience.experience_categories?.slug || "experience";
+      const images = (experience.experience_media ?? []).slice().sort((a, b) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0)).map((item) => item.media?.url).filter(Boolean);
+      const categoryValue = Array.isArray(experience.experience_categories) ? experience.experience_categories[0] : experience.experience_categories;
+      const category = categoryValue?.slug || "experience";
 
       return {
         id: experience.id,
@@ -251,13 +355,14 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
 
     if (error || !data?.length) return [];
 
-    const coverIds = data.map((post: any) => post.cover_media_id).filter(Boolean);
+    const posts = data as unknown as BlogPostRow[];
+    const coverIds = posts.map((post) => post.cover_media_id).filter(Boolean) as string[];
     const { data: mediaRows } = coverIds.length
       ? await supabaseAdmin.from("media").select("id,url,alt_fi,alt_es,alt_en").in("id", coverIds)
       : { data: [] };
-    const mediaById = new Map((mediaRows ?? []).map((media: any) => [String(media.id), media]));
+    const mediaById = new Map((mediaRows ?? []).map((media) => [String((media as MediaRow).id), media as MediaRow]));
 
-    return data.map((post: any) => {
+    return posts.map((post) => {
       const cover = post.cover_media_id ? mediaById.get(String(post.cover_media_id)) : null;
       const translations = post.blog_post_translations ?? [];
       const titles = localized(translations, "title");
@@ -346,7 +451,8 @@ export async function getPublishedNavigation(locale: Locale, location = "header"
       .eq("location", location).eq("locale", locale).eq("active", true)
       .order("sort_order");
     if (error) return [];
-    return (data || []).map((item) => ({
+    const rows = (data || []) as unknown as NavigationRow[];
+    return rows.map((item) => ({
       id: item.id, locale: item.locale as Locale, label: item.label, href: item.href, sortOrder: item.sort_order,
     }));
   } catch { return []; }
@@ -361,7 +467,8 @@ export async function getActiveBanners(locale: Locale): Promise<SiteBanner[]> {
     const { data, error } = await supabaseAdmin.from("site_banners").select("id,title,text,cta_label,cta_url,image_url,sort_order,start_at,end_at")
       .eq("locale", locale).eq("active", true).order("sort_order");
     if (error) return [];
-    return (data || []).filter((b: any) => (!b.start_at || b.start_at <= now) && (!b.end_at || b.end_at >= now)).map((b: any) => ({
+    const rows = (data || []) as unknown as BannerRow[];
+    return rows.filter((b) => (!b.start_at || b.start_at <= now) && (!b.end_at || b.end_at >= now)).map((b) => ({
       id: b.id, title: b.title, text: b.text || "", ctaLabel: b.cta_label || "", ctaUrl: b.cta_url || "", imageUrl: b.image_url || "", sortOrder: b.sort_order,
     }));
   } catch { return []; }
