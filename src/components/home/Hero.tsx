@@ -88,7 +88,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     bjorkholm: { eyebrow: "Parainen · Archipiélago de Turku", title: "Deja las preocupaciones en tierra firme", text: "Cabaña con sauna, mar, barcos, kayak y la llegada a la isla en ferry.", cta: "Ir al proveedor" },
     pumpkin: { eyebrow: "Salo · 9–18.10.2026", title: "Calabazas, luces y otoño finlandés", text: "Kurpitsapuisto, sabores locales y la temporada de fantasmas de Mathildedal.", cta: "Ver eventos" },
     christmas: { eyebrow: "Mathildedal · 21 y 28.11.2026", title: "La Navidad se siente mejor en un pequeño pueblo", text: "Fábricas iluminadas, artesanía, gastronomía local y mercados navideños.", cta: "Ver eventos" },
-    ferry: { eyebrow: "Archipiélago de Turku", title: "El ferry también forma parte del viaje", text: "Islas, carreteras tranquilas, pequeños ferries y paisajes marítimos.", cta: "Explorar el archipiélago" },
+    archipelago: { eyebrow: "Archipiélago de Turku", title: "Despierta al ritmo del archipiélago", text: "Una pequeña casa, el mar y las islas rocosas crean el ambiente de unas vacaciones que empiezan nada más llegar.", cta: "Explorar el archipiélago" },
   },
   en: {
     summer: { eyebrow: "Hidden Coastal Finland", title: "Finnish summer begins in the small places on the coast", text: "Long evenings, archipelago islands, ironworks villages and quiet cottage days by the water.", cta: "Explore destinations" },
