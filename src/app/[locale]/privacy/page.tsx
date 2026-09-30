@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Tietosuoja | Finland Experience",
-  description: "Finland Experience -sivuston tietosuojan yhteenveto.",
-};
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params.locale === "es" ? "es" : params.locale === "en" ? "en" : "fi";
+  return {
+    title: locale === "es" ? "Privacidad | Finland Experience" : locale === "en" ? "Privacy | Finland Experience" : "Tietosuoja | Finland Experience",
+    description: locale === "es"
+      ? "Resumen de privacidad de Finland Experience."
+      : locale === "en"
+        ? "Finland Experience privacy overview."
+        : "Finland Experience -sivuston tietosuojan yhteenveto.",
+  };
+}
 
 const copy = {
   fi: {
