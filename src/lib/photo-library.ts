@@ -28,6 +28,8 @@ export const photoLibrary = {
   pumpkinWeeks: "https://visitsalo.fi/wp-content/uploads/sites/2/2025/08/Kurpitsapuistossa-pyoraileva-luuranko-450x253.jpg",
   mathildedalChristmas: "https://visitmathildedal.fi/sites/default/files/galleriakuvat/2026/valimo.jpg",
   archipelagoFerry: "https://upload.wikimedia.org/wikipedia/commons/3/30/Petun_lossi.jpg",
+  rosalaVikingCentre: "https://cdn.johku.com/rosala/largefiles/577.jpg",
+  rosalaVikingHall: "https://cdn.johku.com/rosala/largefiles/44-RVC%20hallen%20forneldar%202017.jpg",
 } as const;
 
 export const photoCredits: PhotoCredit[] = [
@@ -52,4 +54,6 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.pumpkinWeeks, credit: "Visit Salo / Kurpitsaviikot", license: "Visit Salo website image", sourcePage: "https://visitsalo.fi/kurpitsaviikot/" },
   { url: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://visitmathildedal.fi/fi/valimo" },
   { url: photoLibrary.archipelagoFerry, credit: "Motopark", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Petun_lossi.jpg" },
+  { url: photoLibrary.rosalaVikingCentre, credit: "Rosala & Bengtskär Booking Office / Rosala Viking Centre", license: "Provider/partner image", sourcePage: "https://rosala.johku.com/fi_FI/tietoa-varaustoimistosta" },
+  { url: photoLibrary.rosalaVikingHall, credit: "Rosala & Bengtskär Booking Office / Rosala Viking Centre", license: "Provider/partner image", sourcePage: "https://rosala.johku.com/fi_FI/tietoa-varaustoimistosta" },
 ];
