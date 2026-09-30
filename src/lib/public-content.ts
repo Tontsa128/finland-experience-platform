@@ -1,5 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabase";
-import { firstValidHttpUrl } from "@/lib/utils";
+import { firstValidHttpUrl, isSafeUrlOrPath } from "@/lib/utils";
 import type { Cabin, Destination, Experience, ExperienceStatus, Locale, BlogPost } from "@/types";
 
 const locales: Locale[] = ["fi", "es", "en"];
