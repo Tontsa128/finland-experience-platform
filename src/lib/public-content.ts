@@ -138,6 +138,25 @@ async function getVerifiedExperienceIds(): Promise<Set<string>> {
   const verifiedIds = new Set((providers as IdRow[] ?? []).map((provider) => String(provider.id)));
   return new Set((links as ProviderLinkRow[] ?? []).filter((link) => link.experience_id != null && verifiedIds.has(String(link.provider_id))).map((link) => String(link.experience_id)));
 }
+async function getVerifiedExperienceProviders(): Promise<Map<string, { name?: string; url?: string; region?: string }>> {
+  const [{ data: links }, { data: providers }] = await Promise.all([
+    supabaseAdmin.from("provider_experience_links").select("experience_id,provider_id"),
+    supabaseAdmin.from("providers").select("id,name,website_url,booking_url,region").eq("active", true).eq("verified", true),
+  ]);
+  const providerRows = (providers ?? []) as unknown as Array<{ id: string | number; name?: string | null; website_url?: string | null; booking_url?: string | null; region?: string | null }>;
+  const providerMap = new Map(providerRows.map((provider) => [
+    String(provider.id),
+    { name: provider.name || undefined, url: provider.booking_url || provider.website_url || undefined, region: provider.region || undefined },
+  ]));
+  const result = new Map<string, { name?: string; url?: string; region?: string }>();
+  for (const link of (links ?? []) as unknown as ProviderLinkRow[]) {
+    if (link.experience_id == null) continue;
+    const provider = providerMap.get(String(link.provider_id));
+    if (provider) result.set(String(link.experience_id), provider);
+  }
+  return result;
+}
+
 
 export async function getPublishedProperties(): Promise<Cabin[]> {
   try {
@@ -290,6 +309,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
 
     if (error || !data?.length) return [];
     const verifiedExperienceIds = await getVerifiedExperienceIds();
+    const verifiedExperienceProviders = await getVerifiedExperienceProviders();
 
     const experiences = data as unknown as ExperienceRow[];
     return experiences.map((experience) => {
@@ -324,7 +344,9 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
         duration: experience.duration_minutes ? `${experience.duration_minutes} min` : "",
         images,
         category,
-        region: "",
+        region: verifiedExperienceProviders.get(String(experience.id))?.region || "",
+        providerName: verifiedExperienceProviders.get(String(experience.id))?.name,
+        providerUrl: verifiedExperienceProviders.get(String(experience.id))?.url,
         maxParticipants: Number(experience.max_group_size || 0),
         destination_id: String(experience.destination_id),
         category_id: String(experience.category_id),
