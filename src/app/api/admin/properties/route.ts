@@ -72,8 +72,11 @@ export async function POST(req:NextRequest) {
       if (status === "published" && (!provider.active || !provider.verified)) {
         return NextResponse.json({error:"Published accommodations require an active verified provider."},{status:400});
       }
-      if (status === "published" && !(String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())) {
-        return NextResponse.json({error:"Published accommodations require a provider website or booking URL."},{status:400});
+      if (status === "published") {
+        const providerUrl = String(provider.booking_url || provider.website_url || "").trim();
+        if (!/^https?:\/\//i.test(providerUrl)) {
+          return NextResponse.json({error:"Published accommodations require a valid provider website or booking URL."},{status:400});
+        }
       }
     } else if (status === "published") {
       return NextResponse.json({error:"Published accommodations require a verified provider."},{status:400});
