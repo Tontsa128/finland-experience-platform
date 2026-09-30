@@ -33,10 +33,10 @@ export default async function CabinDetail({ params }: { params: { locale: string
   if (!c) notFound();
 
   const copy = locale === "fi"
-    ? { eyebrow: "Sinun kesäpaikkasi Suomessa", dream: "Herää järven rannalla.", text: "Avaa ovi, hengitä metsän tuoksua ja anna päivän alkaa ilman kiirettä.", more: "Löydä lisää majoituksia", ask: "Kysy tästä kohteesta", provider: "Siirry vuokraajalle", note: "Emme myy tätä majoitusta. Ohjaamme sinut suoraan palveluntarjoajan omaan varaukseen." }
+    ? { eyebrow: "Sinun kesäpaikkasi Suomessa", sectionEyebrow: "Kohteen tiedot", dream: "Herää järven rannalla.", text: "Avaa ovi, hengitä metsän tuoksua ja anna päivän alkaa ilman kiirettä.", more: "Löydä lisää majoituksia", ask: "Kysy tästä kohteesta", provider: "Siirry vuokraajalle", note: "Emme myy tätä majoitusta. Ohjaamme sinut suoraan palveluntarjoajan omaan varaukseen." }
     : locale === "es"
-      ? { eyebrow: "Tu refugio de verano en Finlandia", dream: "Despierta junto al lago.", text: "Abre la puerta, respira el bosque y deja que el día empiece sin prisas.", more: "Ver más alojamientos", ask: "Preguntar por este lugar", provider: "Ir al proveedor", note: "No vendemos este alojamiento. Te dirigimos directamente a la reserva del proveedor." }
-      : { eyebrow: "Your Finnish summer hideaway", dream: "Wake up by the lake.", text: "Open the door, breathe in the forest and let the day begin without a hurry.", more: "Explore more stays", ask: "Ask about this stay", provider: "Visit provider", note: "We do not sell this accommodation. We send you directly to the provider's own booking." };
+      ? { eyebrow: "Tu refugio de verano en Finlandia", sectionEyebrow: "Detalles del alojamiento", dream: "Despierta junto al lago.", text: "Abre la puerta, respira el bosque y deja que el día empiece sin prisas.", more: "Ver más alojamientos", ask: "Preguntar por este lugar", provider: "Ir al proveedor", note: "No vendemos este alojamiento. Te dirigimos directamente a la reserva del proveedor." }
+      : { eyebrow: "Your Finnish summer hideaway", sectionEyebrow: "Stay details", dream: "Wake up by the lake.", text: "Open the door, breathe in the forest and let the day begin without a hurry.", more: "Explore more stays", ask: "Ask about this stay", provider: "Visit provider", note: "We do not sell this accommodation. We send you directly to the provider's own booking." };
 
   return (
     <div className="bg-white">
@@ -69,7 +69,7 @@ export default async function CabinDetail({ params }: { params: { locale: string
                 {c.images.slice(1, 3).map((image) => <div key={image} className="relative aspect-[16/10] overflow-hidden rounded-2xl"><Image src={image} alt={getLocalized(c.name, locale)} fill sizes="50vw" className="object-cover" /></div>)}
               </div>
             )}
-            <p className="mt-8 text-sm font-semibold uppercase tracking-[.18em] text-brand-600">{copy.dream}</p>
+            <p className="mt-8 text-sm font-semibold uppercase tracking-[.18em] text-brand-600">{copy.sectionEyebrow}</p>
             <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{copy.dream}</h2>
             <p className="mt-6 text-lg leading-relaxed text-slate-700">{getLocalized(c.description, locale)}</p>
             <div className="mt-7 grid gap-3 sm:grid-cols-3">
