@@ -78,7 +78,7 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
             {e.providerUrl ? (
               <a href={e.providerUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{copy.provider}<CalendarDays className="h-4 w-4" /></a>
             ) : (
-              <Link href={`/${locale}/contact`} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{copy.book}<CalendarDays className="h-4 w-4" /></Link>
+              <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-center text-xs leading-5 text-amber-900">{locale === "fi" ? "Palveluntarjoajan varauslinkkiä ei ole vielä julkaistu." : locale === "es" ? "El enlace de reserva del proveedor aún no está publicado." : "The provider booking link has not been published yet."}</div>
             )}
             <Link href={`/${locale}/experiences`} className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">{copy.more}<ArrowRight className="h-4 w-4" /></Link>
           </aside>
