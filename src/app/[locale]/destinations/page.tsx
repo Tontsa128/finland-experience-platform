@@ -10,6 +10,18 @@ import { allowDemoFallback } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: locale === "fi" ? "Kesäkohteet Suomessa" : locale === "es" ? "Destinos de verano en Finlandia" : "Summer destinations in Finland",
+    itemListElement: destinations.map((destination, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: getLocalized(destination.name, locale),
+      url: "/" + locale + "/destinations/" + destination.slug,
+    })),
+  };
+
   const copy = locale === "fi"
     ? { title: "Kesäkohteet Suomessa | Finland Experience", description: "Löydä saaristo, Mathildedal, Teijo, Naantali, Turku ja muut aidot suomalaiset matkakohteet." }
     : locale === "es"
@@ -30,6 +42,7 @@ export default async function DestinationsPage({ params }: { params: { locale: s
 
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <section className="relative overflow-hidden bg-brand-950 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(214,169,72,.2),transparent_30%)]" />
         <div className="container-narrow relative py-16 sm:py-24 lg:py-28">
