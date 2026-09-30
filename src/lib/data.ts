@@ -103,6 +103,27 @@ export const destinations: Destination[] = [
     activities: ["beaches", "cycling", "sailing", "nature trails", "harbour cafés", "day trips along the coast"]
   },
   {
+    id: "rosala",
+    slug: "rosala",
+    name: { fi: "Rosala", es: "Rosala", en: "Rosala" },
+    description: {
+      fi: "Kemiönsaaren Rosala on pieni saaristokohde, jossa historia, meri ja paikallinen kyläelämä kohtaavat. Rosalan Viikinkikeskuksessa voi tutustua viikinkiajan historiaan, viikinkikylään, näyttelyihin, kahvilaan ja museokauppaan.",
+      es: "Rosala, en Kemiönsaari, es un pequeño destino de archipiélago donde se encuentran historia, mar y vida local. El Centro Vikingo de Rosala ofrece un pueblo vikingo reconstruido, exposiciones, café y tienda.",
+      en: "Rosala on Kemiönsaari is a small archipelago destination where history, sea and local village life meet. Rosala Viking Centre brings the area's Viking-age history to life through its reconstructed village, exhibitions, café and shop."
+    },
+    shortDescription: {
+      fi: "Viikinkihistoriaa, saaristoa ja kyläelämää Kemiönsaarella",
+      es: "Historia vikinga, archipiélago y vida local en Kemiönsaari",
+      en: "Viking history, archipelago and local island life on Kemiönsaari"
+    },
+    region: "Kemiönsaari · Southwest Finland",
+    images: [photoLibrary.rosalaVikingCentre, photoLibrary.rosalaVikingHall],
+    priceFrom: 0,
+    featured: false,
+    tags: ["rosala", "viking", "archipelago", "history", "kemionsaari"],
+    activities: ["Rosala Viking Centre", "Viking village and exhibitions", "island cycling", "sea and archipelago scenery", "Bengtskär day-trip connections"]
+  },
+  {
     id: "southeast",
     slug: "southeast-finland",
     name: { fi: "Kaakkois-Suomi", es: "Sureste de Finlandia", en: "Southeast Finland" },
