@@ -17,7 +17,10 @@ function formatDate(value: string, locale: Locale) {
 
 export default async function EventsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
-  const events = [...saloEvents, ...naantaliEvents].sort((a, b) => a.start.localeCompare(b.start));
+  const today = new Date().toISOString().slice(0, 10);
+  const events = [...saloEvents, ...naantaliEvents]
+    .filter((event) => (event.end || event.start) >= today)
+    .sort((a, b) => a.start.localeCompare(b.start));
   const eventSchema = events.slice(0, 40).map((event) => ({
     "@type": "Event",
     name: event.title.en || event.title.fi,
