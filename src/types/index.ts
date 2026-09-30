@@ -36,6 +36,7 @@ export interface Destination {
   best_season?: string;
   travel_info_es?: string;
   travel_info_fi?: string;
+  travel_info_en?: string;
   highlights?: string[];
   faq?: unknown[];
   seo?: Record<string, unknown>;
