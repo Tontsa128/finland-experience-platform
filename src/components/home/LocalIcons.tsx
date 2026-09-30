@@ -94,7 +94,11 @@ export default function LocalIcons({ locale }: { locale: "fi" | "es" | "en" }) {
             return (
               <article key={partner.key} className="group overflow-hidden rounded-[1.6rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
                 <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
-                  <Image src={partner.image} alt={partner.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  {partner.image ? (
+                    <Image src={partner.image} alt={partner.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  ) : (
+                    <div className="flex h-full items-center justify-center bg-brand-950 text-white"><Icon className="h-10 w-10 text-gold-300" /></div>
+                  )}
                   <div className="absolute left-4 top-4 rounded-full bg-black/45 p-2 text-white backdrop-blur-sm"><Icon className="h-4 w-4" /></div>
                 </div>
                 <div className="p-5">
