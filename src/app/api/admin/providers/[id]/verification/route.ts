@@ -33,6 +33,17 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 
   const merged = { ...(existing.data || {}), ...updates };
   const complete = fields.every((field) => merged[field] === true);
+  if (complete) {
+    const { data: provider, error: providerError } = await supabaseAdmin
+      .from("providers")
+      .select("website_url,booking_url")
+      .eq("id", id)
+      .maybeSingle();
+    if (providerError) return NextResponse.json({ error: providerError.message }, { status: 500 });
+    if (!provider || !(String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())) {
+      return NextResponse.json({ error: "Provider verification requires a valid provider website or booking URL." }, { status: 400 });
+    }
+  }
   const payload = {
     provider_id: id,
     ...updates,
