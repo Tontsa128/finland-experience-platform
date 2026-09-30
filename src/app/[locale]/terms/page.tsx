@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Käyttöehdot | Finland Experience",
-  description: "Finland Experience -sivuston käyttöehdot ja palvelumalli.",
-};
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params.locale === "es" ? "es" : params.locale === "en" ? "en" : "fi";
+  return {
+    title: locale === "es" ? "Términos de uso | Finland Experience" : locale === "en" ? "Terms of Use | Finland Experience" : "Käyttöehdot | Finland Experience",
+    description: locale === "es"
+      ? "Condiciones generales de uso de Finland Experience y su modelo de servicio."
+      : locale === "en"
+        ? "Finland Experience terms of use and service model."
+        : "Finland Experience -sivuston käyttöehdot ja palvelumalli.",
+  };
+}
 
 const copy = {
   fi: {
