@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAdminContext } from "@/lib/admin-auth";
 import { supabaseAdmin } from "@/lib/supabase";
+import { firstValidHttpUrl } from "@/lib/utils";
 
 const fields = ["company_checked","contact_checked","pricing_checked","booking_flow_checked","spanish_content_checked","photos_checked"] as const;
 const allowedRoles = ["SUPER_ADMIN","ADMIN","CONTENT_MANAGER"] as const;
@@ -40,8 +41,8 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       .eq("id", id)
       .maybeSingle();
     if (providerError) return NextResponse.json({ error: providerError.message }, { status: 500 });
-    const providerUrl = String(provider?.booking_url || provider?.website_url || "").trim();
-    if (!provider || !/^https?:\/\//i.test(providerUrl)) {
+    const providerUrl = firstValidHttpUrl(provider?.booking_url, provider?.website_url);
+    if (!provider || !providerUrl) {
       return NextResponse.json({ error: "Provider verification requires a valid provider website or booking URL." }, { status: 400 });
     }
   }
