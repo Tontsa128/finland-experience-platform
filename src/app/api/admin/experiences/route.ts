@@ -130,8 +130,8 @@ export async function PATCH(req:NextRequest) {
         .maybeSingle();
       if (providerError) return NextResponse.json({error:providerError.message},{status:500});
       if (!provider || !provider.active || !provider.verified) return NextResponse.json({error:"Published experiences require an active verified provider."},{status:400});
-      const providerUrl = String(provider.booking_url || provider.website_url || "").trim();
-      if (!/^https?:\\/\\//i.test(providerUrl)) return NextResponse.json({error:"Published experiences require a valid provider website or booking URL."},{status:400});
+      const providerUrl = firstValidHttpUrl(provider.booking_url, provider.website_url);
+      if (!providerUrl) return NextResponse.json({error:"Published experiences require a valid provider website or booking URL."},{status:400});
     } else if (!body.providerId && status === "published") {
       return NextResponse.json({error:"Published experiences require a verified provider."},{status:400});
     }
