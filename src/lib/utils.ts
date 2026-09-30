@@ -6,6 +6,21 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function firstValidHttpUrl(...values: unknown[]): string | null {
+  for (const value of values) {
+    if (typeof value !== "string") continue;
+    const candidate = value.trim();
+    if (!candidate) continue;
+    try {
+      const url = new URL(candidate);
+      if ((url.protocol === "http:" || url.protocol === "https:") && url.hostname) return url.toString();
+    } catch {
+      // Ignore malformed URLs and continue with the next candidate.
+    }
+  }
+  return null;
+}
+
 export function formatPrice(price: number, locale: Locale = "en"): string {
   const numberLocale = locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-IE";
 
