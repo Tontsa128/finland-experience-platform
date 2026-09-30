@@ -7,6 +7,8 @@ export type PhotoCredit = {
 
 export const photoLibrary = {
   hero: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
+  helsinkiHarbour: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Helsinki_Harbour,_Satama,_Finland,_Suomi.jpg",
+  tampereTammerkoski: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tammerkoski_Tampere.jpg",
   mathildedalVillage: "https://upload.wikimedia.org/wikipedia/commons/0/08/Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
   mathildedalHarbour: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
   naantaliOldTown: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg",
@@ -33,6 +35,8 @@ export const photoLibrary = {
 } as const;
 
 export const photoCredits: PhotoCredit[] = [
+  { url: photoLibrary.helsinkiHarbour, credit: "Juha Agren", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Helsinki_Harbour,_Satama,_Finland,_Suomi.jpg" },
+  { url: photoLibrary.tampereTammerkoski, credit: "Tiia Monto", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Tammerkoski_Tampere.jpg" },
   { url: photoLibrary.mathildedalHarbour, credit: "Kotivalo", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg" },
   { url: photoLibrary.mathildedalVillage, credit: "Kotivalo", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
   { url: photoLibrary.naantaliOldTown, credit: "Tatu Kosonen", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg" },
