@@ -30,9 +30,9 @@ const items = [
       en: "Ghost Village in Mathildedal",
     },
     text: {
-      fi: "Ruukkikylän syksyyn kuuluvat kummitusmuseo, lasten kummitusmuseo ja kurpitsaviikkojen tunnelma.",
-      es: "Museo de fantasmas, versión infantil y ambiente de Halloween en el antiguo pueblo industrial.",
-      en: "Ghost Museum, children's version and Halloween atmosphere in the historic ironworks village.",
+      fi: "Ruukkikylän syksyyn kuuluvat kummitusmuseo, lasten kummitusmuseo ja Kurpitsaviikkojen tunnelma. Tarkista aukioloajat järjestäjän sivulta.",
+      es: "Museo de fantasmas, versión infantil y ambiente de Halloween en el antiguo pueblo industrial. Comprueba los horarios en la web del organizador.",
+      en: "Ghost Museum, children's version and Halloween atmosphere in the historic ironworks village. Check opening hours on the organizer's site.",
     },
   },
   {
