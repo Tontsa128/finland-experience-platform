@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
@@ -106,14 +106,6 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
   const t = useTranslations("hero");
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (paused || reduced) return;
-    const timer = window.setInterval(() => setActive((current) => (current + 1) % slides.length), 6500);
-    return () => window.clearInterval(timer);
-  }, [paused]);
 
   const slide = slides[active];
   const text = active === 0
@@ -138,8 +130,6 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   return (
     <section
       className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-brand-950 text-white sm:min-h-[760px]"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       {slides.map((item, index) => (
         <div
