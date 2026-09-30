@@ -32,6 +32,18 @@ export default async function DestinationDetail({ params }: { params: { locale: 
   const isNaantali = d.slug === "naantali";
   const isMathildedal = d.slug === "salo-mathildedal";
 
+  const destinationSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    name: getLocalized(d.name, locale),
+    description: getLocalized(d.shortDescription, locale),
+    image: d.images,
+    geo: d.coordinates
+      ? { "@type": "GeoCoordinates", latitude: d.coordinates.lat, longitude: d.coordinates.lng }
+      : undefined,
+    touristType: locale === "es" ? "Spanish travellers" : "International travellers",
+  };
+
   const copy = locale === "fi"
     ? {
         eyebrow: "Suomen kesä alkaa tästä",
@@ -97,6 +109,7 @@ export default async function DestinationDetail({ params }: { params: { locale: 
 
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
       <section className="relative isolate min-h-[68vh] overflow-hidden">
         {d.images[0] ? <Image src={d.images[0]} alt={getLocalized(d.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
