@@ -6,7 +6,7 @@ import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, Sparkles, Waves, Home
 const sections = [
   { href: "/admin/content-studio", label: "✦ Content Studio", text: "Keskitetty editori FI/EN/ES-sisällölle, AI-käännökset, SEO ja julkaisu.", icon: Sparkles },
   { href: "/admin/homepage", label: "Etusivu", text: "Hero-kuva, otsikot, tekstit ja toimintopainikkeet.", icon: Home },
-  { href: "/admin/destinos", label: "Matkakohteet", text: "Kohteet, kieliversiot, kuvaukset, URL-osoitteet ja julkaisutila.", icon: MapPinned },
+  { href: "/admin/destinations", label: "Matkakohteet", text: "Kohteet, kieliversiot, kuvaukset, URL-osoitteet ja julkaisutila.", icon: MapPinned },
   { href: "/admin/properties", label: "Majoitukset", text: "Mökit, huvilat, hinnat, vierasmäärät ja SEO-tekstit.", icon: FileText },
   { href: "/admin/experiences", label: "Elämykset", text: "Sauna, veneily, kalastus ja muut varattavat elämykset.", icon: Waves },
   { href: "/admin/media", label: "Kuvapankki", text: "Lataa kuvia ja hallitse FI/ES/EN-alt-tekstejä.", icon: ImageIcon },
