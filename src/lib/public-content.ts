@@ -373,7 +373,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
             }
           : undefined,
       } satisfies Experience;
-    });
+    }).filter((experience) => experience.images.length > 0 && experience.verified === true);
   } catch {
     return [];
   }
