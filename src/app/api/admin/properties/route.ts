@@ -64,13 +64,16 @@ export async function POST(req:NextRequest) {
     if (body.providerId) {
       const { data: provider, error: providerError } = await supabaseAdmin
         .from("providers")
-        .select("id,verified,active")
+        .select("id,verified,active,website_url,booking_url")
         .eq("id", body.providerId)
         .maybeSingle();
       if (providerError) return NextResponse.json({error:providerError.message},{status:500});
       if (!provider) return NextResponse.json({error:"Provider not found"},{status:400});
       if (status === "published" && (!provider.active || !provider.verified)) {
         return NextResponse.json({error:"Published accommodations require an active verified provider."},{status:400});
+      }
+      if (status === "published" && !(String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())) {
+        return NextResponse.json({error:"Published accommodations require a provider website or booking URL."},{status:400});
       }
     } else if (status === "published") {
       return NextResponse.json({error:"Published accommodations require a verified provider."},{status:400});
