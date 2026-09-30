@@ -62,7 +62,7 @@ export default async function DestinationsPage({ params }: { params: { locale: s
           <Sparkles className="hidden h-8 w-8 text-gold-500 sm:block" />
         </div>
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {destinations.map((destination, index) => (
+          {destinations.length ? destinations.map((destination, index) => (
             <Link key={destination.id} href={`/${locale}/destinations/${destination.slug}`} className={`group overflow-hidden rounded-[2rem] bg-brand-50 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-card ${index === 0 ? "lg:col-span-2" : ""}`}>
               <div className={`relative overflow-hidden ${index === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
                 {destination.images[0] ? <Image src={destination.images[0]} alt={getLocalized(destination.name, locale)} fill sizes={index===0 ? "(max-width:1024px) 100vw, 66vw" : "(max-width:1024px) 50vw, 33vw"} className="object-cover transition duration-700 group-hover:scale-105"/> : <div className="flex h-full items-center justify-center">{destination.region}</div>}
@@ -75,7 +75,11 @@ export default async function DestinationsPage({ params }: { params: { locale: s
                 </div>
               </div>
             </Link>
-          ))}
+          )) : (
+            <div className="col-span-full rounded-3xl border border-slate-200 bg-slate-50 p-8 text-center text-slate-600">
+              {locale === "fi" ? "Kohteita ei ole tällä hetkellä julkaistu." : locale === "es" ? "No hay destinos publicados en este momento." : "No destinations are published at the moment."}
+            </div>
+          )}
         </div>
       </section>
 
