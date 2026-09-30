@@ -178,7 +178,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
         .slice()
         .sort((a, b) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0))
         .map((item) => item.media?.url)
-        .filter(Boolean);
+        .filter((url): url is string => typeof url === "string" && url.length > 0);
 
       const names = localized(translations, "name");
       const descriptions = localized(translations, "description");
@@ -189,7 +189,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
         .filter(Boolean);
 
       return {
-        id: property.id,
+        id: String(property.id),
         slug: property.slug,
         name: {
           fi: names.fi || names.en || property.slug,
@@ -273,8 +273,8 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
           es: descriptions.es || descriptions.en || firstDescription,
           en: descriptions.en || descriptions.fi || firstDescription,
         },
-        region: destination.region,
-        images: Array.from(new Set([image, ...gallery].filter(Boolean))),
+        region: destination.region || "",
+        images: Array.from(new Set([image, ...gallery].filter((url): url is string => typeof url === "string" && url.length > 0))),
         priceFrom: 0,
         featured: false,
         coordinates:
@@ -288,7 +288,7 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
           es: { title: destination.seo_title_es || "", description: destination.seo_description_es || "" },
           en: { title: destination.seo_title_en || "", description: destination.seo_description_en || "" },
         },
-        status: destination.status,
+        status: destination.status || undefined,
         verified: true,
         travel_info_fi: translations.find((t) => t.language_code === "fi")?.travel_information ?? "",
         travel_info_es: translations.find((t) => t.language_code === "es")?.travel_information ?? "",
@@ -318,7 +318,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
       const descriptions = localized(translations, "full_description");
       const shorts = localized(translations, "short_description");
       const pricing = experience.pricing_rules?.[0];
-      const images = (experience.experience_media ?? []).slice().sort((a, b) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0)).map((item) => item.media?.url).filter(Boolean);
+      const images = (experience.experience_media ?? []).slice().sort((a, b) => Number(a.sort_order ?? 0) - Number(b.sort_order ?? 0)).map((item) => item.media?.url).filter((url): url is string => typeof url === "string" && url.length > 0);
       const categoryValue = Array.isArray(experience.experience_categories) ? experience.experience_categories[0] : experience.experience_categories;
       const category = categoryValue?.slug || "experience";
 
@@ -351,7 +351,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
         destination_id: String(experience.destination_id),
         category_id: String(experience.category_id),
         duration_minutes: experience.duration_minutes ?? undefined,
-        status: experience.status,
+        status: experience.status || undefined,
         verified: verifiedExperienceIds.has(String(experience.id)),
         pricing: pricing
           ? {
