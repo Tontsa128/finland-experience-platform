@@ -420,7 +420,7 @@ export const naantaliEvents: NaantaliEvent[] = [
   {
     id: "heli-laaksonen",
     start: "2026-10-15",
-    title: { fi: "Heli Laaksosen sukke­la runoilta – ilon­hilaaja", es: "Noche de poesía de Heli Laaksonen", en: "Heli Laaksonen poetry evening" },
+    title: { fi: "Heli Laaksosen sukkela runoilta – ilonhilaaja", es: "Noche de poesía de Heli Laaksonen", en: "Heli Laaksonen poetry evening" },
     location: "Kristoffer-sali",
     description: {
       fi: "Heli Laaksosen runoilta Naantalissa.",
