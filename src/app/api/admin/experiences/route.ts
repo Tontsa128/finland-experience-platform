@@ -66,12 +66,15 @@ export async function POST(req:NextRequest) {
     if (body.providerId) {
       const { data: provider, error: providerError } = await supabaseAdmin
         .from("providers")
-        .select("id,verified,active")
+        .select("id,verified,active,website_url,booking_url")
         .eq("id", body.providerId)
         .maybeSingle();
       if (providerError) return NextResponse.json({error:providerError.message},{status:500});
       if (!provider) return NextResponse.json({error:"Provider not found"},{status:400});
       if (status === "published" && (!provider.active || !provider.verified)) return NextResponse.json({error:"Published experiences require an active verified provider."},{status:400});
+      if (status === "published" && !(String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())) {
+        return NextResponse.json({error:"Published experiences require a provider website or booking URL."},{status:400});
+      }
     }
     const {data:experience,error}=await supabaseAdmin.from("experiences").insert({
       destination_id:body.destinationId,category_id:body.categoryId,slug:body.slug.trim(),duration_minutes:body.durationMinutes??null,
@@ -113,6 +116,18 @@ export async function PATCH(req:NextRequest) {
     const body=await req.json() as Payload & {id:number}; if(!body.id)return NextResponse.json({error:"id is required"},{status:400});
     const errors=validate(body); if(errors.length)return NextResponse.json({error:"Validation failed",details:errors},{status:400});
     const status=body.status==="published"?"published":body.status==="archived"?"archived":"draft";
+    if (body.providerId && status === "published") {
+      const { data: provider, error: providerError } = await supabaseAdmin
+        .from("providers")
+        .select("id,verified,active,website_url,booking_url")
+        .eq("id", body.providerId)
+        .maybeSingle();
+      if (providerError) return NextResponse.json({error:providerError.message},{status:500});
+      if (!provider || !provider.active || !provider.verified) return NextResponse.json({error:"Published experiences require an active verified provider."},{status:400});
+      if (!(String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())) return NextResponse.json({error:"Published experiences require a provider website or booking URL."},{status:400});
+    } else if (!body.providerId && status === "published") {
+      return NextResponse.json({error:"Published experiences require a verified provider."},{status:400});
+    }
     const {data:experience,error}=await supabaseAdmin.from("experiences").update({
       destination_id:body.destinationId,category_id:body.categoryId,slug:body.slug.trim(),duration_minutes:body.durationMinutes??null,min_group_size:body.minGroupSize??1,max_group_size:body.maxGroupSize??100,difficulty_level:body.difficultyLevel?.trim()||null,status,published_at:status==="published"?new Date().toISOString():null,updated_at:new Date().toISOString()
     }).eq("id",body.id).select().single();
