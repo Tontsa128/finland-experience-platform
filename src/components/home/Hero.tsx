@@ -120,12 +120,17 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const hrefValue = isCmsHero
     ? settings?.heroCtaUrl || "/destinations"
     : slide.href;
-  const isExternal = /^https?:\/\//i.test(hrefValue);
-  const href = isExternal ? hrefValue : `/${locale}/${hrefValue.replace(/^\/+/, "")}`;
+  const toLocalizedHref = (value: string) => {
+    if (/^https?:\/\//i.test(value)) return value;
+    const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, "");
+    return `/${locale}${normalized ? `/${normalized}` : ""}`;
+  };
+  const hrefValueResolved = isCmsHero ? settings?.heroCtaUrl || "/destinations" : slide.href;
+  const href = toLocalizedHref(hrefValueResolved);
+  const isExternal = /^https?:\/\//i.test(href);
   const secondaryHrefValue = isCmsHero ? settings?.heroSecondaryUrl || "/destinations" : "/destinations";
-  const secondaryHref = /^https?:\/\//i.test(secondaryHrefValue)
-    ? secondaryHrefValue
-    : `/${locale}/${secondaryHrefValue.replace(/^\/+/, "")}`;
+  const secondaryHref = toLocalizedHref(secondaryHrefValue);
+  const credit = isCmsHero ? "" : slide.credit;
 
   return (
     <section
@@ -151,9 +156,11 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent" />
 
-      <div className="absolute bottom-4 right-4 z-10 rounded-full bg-black/40 px-3 py-1.5 text-[11px] text-white/80 backdrop-blur-sm">
-        {slide.credit}
-      </div>
+      {credit ? (
+        <div className="absolute bottom-4 right-4 z-10 rounded-full bg-black/40 px-3 py-1.5 text-[11px] text-white/80 backdrop-blur-sm">
+          {credit}
+        </div>
+      ) : null}
 
       <div className="container-narrow relative z-10 flex min-h-[calc(100svh-4rem)] items-end pb-20 pt-32 sm:min-h-[760px] sm:pb-24 lg:pb-28">
         <div className="max-w-4xl">
