@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,7 +6,24 @@ import { ArrowRight, ArrowUpRight, BedDouble, MapPin, Sparkles, Users } from "lu
 import { getPublishedProperties } from "@/lib/public-content";
 import { cabins as fallbackCabins, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
-import { allowDemoFallback } from "@/lib/utils";
+import { allowDemoFallback, locales } from "@/lib/utils";
+import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  if (!locales.includes(locale)) return {};
+  const cmsCabins = await getPublishedProperties();
+  const source = cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
+  const cabin = source.find((item) => item.slug === params.slug);
+  if (!cabin) return {};
+  return buildLocalizedMetadata({
+    locale,
+    title: getLocalized(cabin.name, locale),
+    description: getLocalized(cabin.description, locale),
+    path: "accommodations/" + cabin.slug,
+    image: cabin.images[0],
+  });
+}
 
 export default async function CabinDetail({ params }: { params: { locale: string; slug: string } }) {
   const locale = params.locale as Locale;
@@ -22,6 +40,15 @@ export default async function CabinDetail({ params }: { params: { locale: string
 
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        name: getLocalized(c.name, locale),
+        description: getLocalized(c.description, locale),
+        image: c.images,
+        url: siteUrl + "/" + locale + "/accommodations/" + c.slug,
+        address: { "@type": "PostalAddress", addressCountry: "FI" },
+      }) }} />
       <section className="relative isolate min-h-[62vh] overflow-hidden">
         {c.images[0] ? <Image src={c.images[0]} alt={getLocalized(c.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
