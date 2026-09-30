@@ -35,7 +35,7 @@ export default async function DestinationDetail({ params }: { params: { locale: 
   const d = destinations.find((x) => x.slug === params.slug);
   if (!d) notFound();
 
-  const isCoastal = ["salo-mathildedal", "naantali", "turku", "hanko", "aland"].includes(d.slug);
+  const isCoastal = ["salo-mathildedal", "naantali", "turku", "rosala", "hanko", "aland"].includes(d.slug);
   const isNaantali = d.slug === "naantali";
   const isMathildedal = d.slug === "salo-mathildedal";
 
@@ -152,6 +152,34 @@ export default async function DestinationDetail({ params }: { params: { locale: 
 
       {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} /> : null}
       {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
+
+      {d.slug === "rosala" ? (
+        <section className="bg-brand-50 py-14 sm:py-18">
+          <div className="container-narrow">
+            <div className="grid gap-8 rounded-[2rem] bg-white p-7 shadow-soft sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">
+                  {locale === "fi" ? "Paikallinen kohde" : locale === "es" ? "Lugar local" : "Local highlight"}
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">
+                  {locale === "fi" ? "Rosalan Viikinkikeskus" : locale === "es" ? "Centro Vikingo de Rosala" : "Rosala Viking Centre"}
+                </h2>
+                <p className="mt-4 max-w-3xl leading-7 text-slate-600">
+                  {locale === "fi"
+                    ? "Museo ja viikinkikylä Rosalan saaristossa. Ajantasaiset aukioloajat, liput ja vierailuohjeet tarkistat suoraan palveluntarjoajalta."
+                    : locale === "es"
+                      ? "Museo y pueblo vikingo en el archipiélago de Rosala. Consulta directamente con el proveedor los horarios, entradas y detalles actuales de la visita."
+                      : "A museum and reconstructed Viking village in the Rosala archipelago. Check current opening hours, admission and visit details directly with the provider."}
+                </p>
+              </div>
+              <a href="https://rosala.fi/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
+                {locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider"}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="bg-slate-50">
         <div className="container-narrow py-14 sm:py-18">
