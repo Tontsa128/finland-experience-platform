@@ -59,9 +59,9 @@ const slides = [
     external: false,
   },
   {
-    key: "ferry",
-    image: photoLibrary.archipelagoFerry,
-    credit: "Motopark / Wikimedia Commons",
+    key: "archipelago",
+    image: photoLibrary.turkuArchipelago,
+    credit: "Rob Sinclair / Wikimedia Commons",
     href: "/destinations",
     external: false,
   },
@@ -78,7 +78,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     bjorkholm: { eyebrow: "Parainen · Turun saaristo", title: "Jätä murheet mantereelle", text: "Saunamökki, meri, vene, melonta ja saaristoon saapuminen lossilla.", cta: "Siirry palveluntarjoajalle" },
     pumpkin: { eyebrow: "Salo · 9.–18.10.2026", title: "Kurpitsaviikot tuovat syksyn valoon", text: "Kurpitsapuisto, paikalliset maut, Mathildedalin kummitukset ja koko Salon syyslomakausi.", cta: "Katso tapahtumat" },
     christmas: { eyebrow: "Mathildedal · 21. & 28.11.2026", title: "Joulu tuntuu paremmalta pienessä kylässä", text: "Valaistu ruukkimiljöö, käsityöläiset, lähiruoka ja joulumarkkinat.", cta: "Katso tapahtumat" },
-    ferry: { eyebrow: "Turun saaristo", title: "Lossi on osa matkaa", text: "Saaret eivät ole pelkkä päämäärä. Veneet, lossit ja saaristotiet kuuluvat kokemukseen.", cta: "Aloita saaristomatka" },
+    archipelago: { eyebrow: "Turun saaristo", title: "Herää saariston omaan rytmiin", text: "Pieni mökki, meri ja kalliosaaret tekevät saaristosta paikan, jossa loma alkaa heti.", cta: "Tutustu saaristoon" },
   },
   es: {
     summer: { eyebrow: "Hidden Coastal Finland", title: "El verano finlandés empieza en la costa", text: "Largas tardes, archipiélago, pueblos históricos y cabañas tranquilas junto al agua.", cta: "Explorar destinos" },
@@ -98,7 +98,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     bjorkholm: { eyebrow: "Parainen · Turku Archipelago", title: "Leave your worries on the mainland", text: "A cottage sauna, sea, boats, kayaking and the ferry crossing are part of the island experience.", cta: "Visit provider" },
     pumpkin: { eyebrow: "Salo · 9–18 Oct 2026", title: "Pumpkins bring autumn to life", text: "Kurpitsapuisto, local flavours and the Halloween season in Mathildedal.", cta: "See events" },
     christmas: { eyebrow: "Mathildedal · 21 & 28 Nov 2026", title: "Christmas feels different in a small village", text: "Lit-up ironworks, local crafts, food and traditional Christmas markets.", cta: "See events" },
-    ferry: { eyebrow: "Turku Archipelago", title: "The ferry is part of the journey", text: "Islands, quiet roads, little ferries and open sea views are part of the experience.", cta: "Explore the archipelago" },
+    archipelago: { eyebrow: "Turku Archipelago", title: "Wake up to the rhythm of the islands", text: "A small wooden house, open water and rocky islands create the feeling of a Finnish coastal escape.", cta: "Explore the archipelago" },
   },
 };
 
