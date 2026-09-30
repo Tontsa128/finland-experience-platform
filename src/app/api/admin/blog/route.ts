@@ -64,7 +64,6 @@ export async function POST(request: NextRequest) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!WRITE_ROLES.includes(admin.profile.role as (typeof WRITE_ROLES)[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  if (!CONTENT_ROLES.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   try {
     const body = await request.json();
