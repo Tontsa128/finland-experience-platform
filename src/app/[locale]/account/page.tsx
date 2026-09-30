@@ -44,10 +44,10 @@ export default function AccountPage() {
       const r=await fetch("/api/account/profile",{cache:"no-store"});
       const b=await r.json();
       if(r.status===401){router.replace(`/${locale}/account/login`);return;}
-      if(!r.ok)throw new Error(b.error||copy.loadingError);
+      if(!r.ok)throw new Error(b.error||(language==="fi"?"Tietoja ei voitu ladata.":language==="es"?"No se pudieron cargar tus datos.":"Could not load your details."));
       if(b.customer)setCustomer(b.customer);
       setEmail(b.user?.email||"");
-    }catch(e){setError(e instanceof Error?e.message:copy.genericError);}
+    }catch(e){setError(e instanceof Error?e.message:(language==="fi"?"Lataus epäonnistui.":language==="es"?"No se pudo cargar la cuenta.":"Could not load the account."));}
     finally{setLoading(false);}
   })()},[locale,router]);
 
