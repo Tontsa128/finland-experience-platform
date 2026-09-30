@@ -116,8 +116,24 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   }, [paused]);
 
   const slide = slides[active];
-  const text = copy[locale][slide.key];
-  const href = slide.external ? slide.href : `/${locale}${slide.href}`;
+  const text = active === 0
+    ? {
+        eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow,
+        title: settings?.heroTitle?.[locale] || copy[locale].summer.title,
+        text: settings?.heroDescription?.[locale] || copy[locale].summer.text,
+        cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta,
+      }
+    : copy[locale][slide.key];
+  const isCmsHero = active === 0 && Boolean(settings?.heroImageUrl);
+  const hrefValue = isCmsHero
+    ? settings?.heroCtaUrl || "/destinations"
+    : slide.href;
+  const isExternal = /^https?:\/\//i.test(hrefValue);
+  const href = isExternal ? hrefValue : `/${locale}/${hrefValue.replace(/^\/+/, "")}`;
+  const secondaryHrefValue = isCmsHero ? settings?.heroSecondaryUrl || "/destinations" : "/destinations";
+  const secondaryHref = /^https?:\/\//i.test(secondaryHrefValue)
+    ? secondaryHrefValue
+    : `/${locale}/${secondaryHrefValue.replace(/^\/+/, "")}`;
 
   return (
     <section
@@ -159,17 +175,17 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            {slide.external ? (
+            {isExternal ? (
               <a href={href} target="_blank" rel="noreferrer" className="btn-gold justify-center px-7 py-4">
                 {text.cta} <ExternalLink className="h-4 w-4" />
               </a>
             ) : (
               <Link href={href} className="btn-gold justify-center px-7 py-4">
-                {active === 0 ? t("cta") : text.cta} <ArrowRight className="h-4 w-4" />
+                {text.cta} <ArrowRight className="h-4 w-4" />
               </Link>
             )}
-            <Link href={`#find-your-finland`} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/45 bg-black/15 px-7 py-4 text-sm font-bold backdrop-blur-md hover:bg-white hover:text-brand-950">
-              {locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideoita" : "See the ideas"} <ArrowRight className="h-4 w-4" />
+            <Link href={secondaryHref} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/45 bg-black/15 px-7 py-4 text-sm font-bold backdrop-blur-md hover:bg-white hover:text-brand-950">
+              {settings?.heroSecondaryLabel?.[locale] || (locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
