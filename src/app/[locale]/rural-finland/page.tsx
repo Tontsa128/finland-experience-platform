@@ -43,7 +43,7 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
         how: "Cómo funciona",
         steps: ["Inspírate y elige la zona", "Visita la web del proveedor", "Reserva y paga directamente con él"],
         events: "Otoño y Navidad 2026",
-        eventsText: "Kurpitsaviikot en Salo, Ghost Village y los mercados navideños de Mathildedal convierten la temporada en un motivo para alargar la estancia.",
+        eventsText: "Kurpitsaviikot en Salo se celebran del 9 al 18 de octubre de 2026. En Mathildedal, Kummituksia & Kurpitsoita se celebra del 9 al 18 de octubre y los mercados navideños están anunciados para el 21 y 28 de noviembre.",
         ctaEvents: "Ver eventos",
       }
     : isEn
@@ -55,7 +55,7 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
           how: "How it works",
           steps: ["Get inspired and choose an area", "Visit the provider's own website", "Book and pay directly with the provider"],
           events: "Autumn & Christmas 2026",
-          eventsText: "Pumpkin Weeks in Salo, Ghost Village and Mathildedal's Christmas Markets make the season a reason to stay longer.",
+          eventsText: "Pumpkin Weeks in Salo run from 9–18 October 2026. In Mathildedal, Kummituksia & Kurpitsoita runs 9–18 October, and Christmas Markets are scheduled for 21 and 28 November.",
           ctaEvents: "See events",
         }
       : {
@@ -66,7 +66,7 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
           how: "Näin sivusto toimii",
           steps: ["Inspiroidu ja valitse alue", "Siirry palveluntarjoajan omalle sivulle", "Varaa ja maksa suoraan palveluntarjoajalle"],
           events: "Syksy ja joulu 2026",
-          eventsText: "Salon Kurpitsaviikot, Mathildedalin Kummituskylä ja joulumarkkinat tekevät loppuvuodesta oman matkansa.",
+          eventsText: "Salon Kurpitsaviikot järjestetään 9.–18.10.2026. Mathildedalin Kummituksia & Kurpitsoita -tapahtuma järjestetään 9.–18.10., ja joulumarkkinat on ilmoitettu 21. ja 28.11.",
           ctaEvents: "Katso tapahtumat",
         };
 
