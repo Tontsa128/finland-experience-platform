@@ -9,6 +9,8 @@ const LANGUAGES = ['fi', 'es', 'en'] as const;
 type DestinationPayload = {
   slug: string;
   region: string;
+  latitude?: number | null;
+  longitude?: number | null;
   heroImageUrl?: string;
   mediaIds?: string[];
   publishAt?: string | null;
@@ -23,6 +25,8 @@ function validatePayload(body: DestinationPayload) {
     errors.push('slug must contain lowercase letters, numbers and single hyphens');
   }
   if (!body.region?.trim()) errors.push('region is required');
+  if (body.latitude != null && (!Number.isFinite(body.latitude) || body.latitude < -90 || body.latitude > 90)) errors.push('latitude must be between -90 and 90');
+  if (body.longitude != null && (!Number.isFinite(body.longitude) || body.longitude < -180 || body.longitude > 180)) errors.push('longitude must be between -180 and 180');
   if (body.heroImageUrl && !/^https?:\/\//i.test(body.heroImageUrl.trim())) {
     errors.push('heroImageUrl must be an http(s) URL');
   }
@@ -44,7 +48,7 @@ export async function GET() {
     if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
     const { data, error } = await supabaseAdmin
       .from('destinations')
-      .select('id, slug, region, hero_image_url, status, published_at, publish_at, seo_title_fi, seo_title_es, seo_title_en, seo_description_fi, seo_description_es, seo_description_en, created_at, updated_at, destination_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en)), destination_translations(language_code, name, short_description, full_description, highlights, travel_information)')
+      .select('id, slug, region, latitude, longitude, hero_image_url, status, published_at, publish_at, seo_title_fi, seo_title_es, seo_title_en, seo_description_fi, seo_description_es, seo_description_en, created_at, updated_at, destination_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en)), destination_translations(language_code, name, short_description, full_description, highlights, travel_information)')
       .is('deleted_at', null)
       .order('created_at', { ascending: false });
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -65,7 +69,7 @@ export async function POST(req: NextRequest) {
     const status = body.status === 'published' ? 'published' : body.status === 'archived' ? 'archived' : 'draft';
     const { data: destination, error: destinationError } = await supabaseAdmin
       .from('destinations')
-      .insert({ slug: body.slug.trim(), region: body.region.trim(), hero_image_url: body.heroImageUrl?.trim() || null, status, published_at: status === 'published' ? (body.publishAt || new Date().toISOString()) : null, publish_at: body.publishAt || null, seo_title_fi: body.seo?.fi?.title || null, seo_title_es: body.seo?.es?.title || null, seo_title_en: body.seo?.en?.title || null, seo_description_fi: body.seo?.fi?.description || null, seo_description_es: body.seo?.es?.description || null, seo_description_en: body.seo?.en?.description || null })
+      .insert({ slug: body.slug.trim(), region: body.region.trim(), latitude: body.latitude ?? null, longitude: body.longitude ?? null, hero_image_url: body.heroImageUrl?.trim() || null, status, published_at: status === 'published' ? (body.publishAt || new Date().toISOString()) : null, publish_at: body.publishAt || null, seo_title_fi: body.seo?.fi?.title || null, seo_title_es: body.seo?.es?.title || null, seo_title_en: body.seo?.en?.title || null, seo_description_fi: body.seo?.fi?.description || null, seo_description_es: body.seo?.es?.description || null, seo_description_en: body.seo?.en?.description || null })
       .select('id, slug, region, hero_image_url, status, published_at')
       .single();
     if (destinationError) return NextResponse.json({ error: destinationError.message }, { status: 400 });
@@ -109,7 +113,7 @@ export async function PATCH(req: NextRequest) {
     const errors = validatePayload(body);
     if (errors.length) return NextResponse.json({ error: 'Validation failed', details: errors }, { status: 400 });
     const status = body.status === 'published' ? 'published' : body.status === 'archived' ? 'archived' : 'draft';
-    const { data: destination, error } = await supabaseAdmin.from('destinations').update({ slug: body.slug.trim(), region: body.region.trim(), hero_image_url: body.heroImageUrl?.trim() || null, status, published_at: status === 'published' ? (body.publishAt || new Date().toISOString()) : null, publish_at: body.publishAt || null, seo_title_fi: body.seo?.fi?.title || null, seo_title_es: body.seo?.es?.title || null, seo_title_en: body.seo?.en?.title || null, seo_description_fi: body.seo?.fi?.description || null, seo_description_es: body.seo?.es?.description || null, seo_description_en: body.seo?.en?.description || null, updated_at: new Date().toISOString() }).eq('id', body.id).select('id, slug, region, hero_image_url, status, published_at').single();
+    const { data: destination, error } = await supabaseAdmin.from('destinations').update({ slug: body.slug.trim(), region: body.region.trim(), latitude: body.latitude ?? null, longitude: body.longitude ?? null, hero_image_url: body.heroImageUrl?.trim() || null, status, published_at: status === 'published' ? (body.publishAt || new Date().toISOString()) : null, publish_at: body.publishAt || null, seo_title_fi: body.seo?.fi?.title || null, seo_title_es: body.seo?.es?.title || null, seo_title_en: body.seo?.en?.title || null, seo_description_fi: body.seo?.fi?.description || null, seo_description_es: body.seo?.es?.description || null, seo_description_en: body.seo?.en?.description || null, updated_at: new Date().toISOString() }).eq('id', body.id).select('id, slug, region, hero_image_url, status, published_at').single();
     if (error) return NextResponse.json({ error: error.message }, { status: 400 });
     for (const language_code of LANGUAGES) {
       const value = body.translations[language_code];
