@@ -10,6 +10,18 @@ import { allowDemoFallback } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: locale === "fi" ? "Elämykset Suomessa" : locale === "es" ? "Experiencias en Finlandia" : "Experiences in Finland",
+    itemListElement: experiences.map((experience, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: getLocalized(experience.name, locale),
+      url: "/" + locale + "/experiences/" + experience.slug,
+    })),
+  };
+
   const copy = locale === "fi"
     ? { title: "Elämykset Suomessa | Sauna, saaristo ja luonto", description: "Löydä aitoja sauna-, luonto-, melonta-, pyöräily- ja saaristoelämyksiä Suomessa." }
     : locale === "es"
@@ -30,6 +42,7 @@ export default async function ExperiencesPage({ params }: { params: { locale: st
 
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <section className="bg-brand-950 text-white">
         <div className="container-narrow py-16 sm:py-24">
           <p className="text-sm font-semibold uppercase tracking-[.22em] text-white/60">{copy.eyebrow}</p>
