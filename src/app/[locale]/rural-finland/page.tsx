@@ -141,7 +141,7 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
               {t.steps.map((step) => <div key={step} className="flex gap-3 rounded-2xl bg-white p-4 shadow-soft"><Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-700" /><span className="text-sm font-semibold text-slate-700">{step}</span></div>)}
             </div>
           </div>
-          <div className="relative min-h-[380px] overflow-hidden rounded-[2rem]"><Image src={photoLibrary.archipelagoFerry} alt="" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" /><div className="absolute inset-x-0 bottom-0 p-7 text-white"><p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">Turun saaristo</p><p className="mt-2 max-w-xl font-display text-3xl font-bold">{isEs ? "El ferry también forma parte de la experiencia." : isEn ? "The ferry is part of the experience." : "Lossi on osa saaristokokemusta."}</p></div></div>
+          <div className="relative min-h-[380px] overflow-hidden rounded-[2rem]"><Image src={photoLibrary.turkuArchipelagoHouse} alt="" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" /><div className="absolute inset-x-0 bottom-0 p-7 text-white"><p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">Turun saaristo</p><p className="mt-2 max-w-xl font-display text-3xl font-bold">{isEs ? "El archipiélago forma parte de la experiencia." : isEn ? "The archipelago is part of the experience." : "Saaristo on osa kokemusta."}</p></div></div>
         </div>
       </section>
 
