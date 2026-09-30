@@ -11,7 +11,22 @@ import { supabaseAdmin } from "@/lib/supabase";
 
 export const revalidate = 3600;
 
-const basePaths = ["", "destinations", "accommodations", "experiences", "rural-finland", "blog", "events", "contact"];
+const basePaths = [
+  "",
+  "destinations",
+  "accommodations",
+  "experiences",
+  "rural-finland",
+  "city-breaks",
+  "luxury-finland",
+  "plan",
+  "blog",
+  "events",
+  "contact",
+  "photo-credits",
+  "privacy",
+  "terms",
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries = locales.flatMap((locale) =>
