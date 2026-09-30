@@ -76,7 +76,6 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
     name: t.title,
     description: t.intro,
     touristType: isEs ? "Spanish travellers" : "International slow travellers",
-    itinerary: ["Salo", "Mathildedal", "Teijo National Park", "Naantali", "Turku Archipelago", "Kemiönsaari", "Parainen"],
   };
 
   const providers = [
