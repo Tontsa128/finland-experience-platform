@@ -65,6 +65,7 @@ const partners = [
       en: "Oripää landscapes, e-fatbikes and canoe rental for small outdoor adventures.",
     },
     href: "https://tuuseikkailee.fi/",
+    image: undefined,
     icon: Fish,
   },
 ] as const;
