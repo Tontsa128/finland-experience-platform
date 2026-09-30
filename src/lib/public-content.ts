@@ -171,7 +171,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
   try {
     const { data, error } = await supabaseAdmin
       .from("properties")
-      .select("id,slug,property_type,region,latitude,longitude,max_guests,bedrooms,base_price_eur,provider_name,provider_url,property_translations(locale,name,short_description,description,location_name,amenities_text),property_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
+      .select("id,slug,property_type,region,latitude,longitude,max_guests,bedrooms,base_price_eur,provider_name,property_translations(locale,name,short_description,description,location_name,amenities_text),property_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
       .eq("status", "published")
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false });
@@ -225,7 +225,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
           ? property.property_type as Cabin["type"]
           : "cabin",
         bookingUrl: verifiedPropertyProviders.get(String(property.id))?.url,
-        provider: verifiedPropertyProviders.get(String(property.id))?.name || property.provider_name || undefined,
+        provider: verifiedPropertyProviders.get(String(property.id))?.name,
         verified: verifiedPropertyProviders.has(String(property.id)),
         priceNote: {
           fi: property.base_price_eur ? `Alkaen ${property.base_price_eur} €/yö. Tarkista ajantasainen hinta.` : "Tarkista ajantasainen hinta.",
