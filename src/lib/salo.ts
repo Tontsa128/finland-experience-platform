@@ -254,6 +254,20 @@ export const saloEvents: SaloEvent[] = [
     category: "autumn",
   },
   {
+    id: "ghost-museum-november",
+    start: "2026-10-31",
+    end: "2026-11-01",
+    title: { fi: "Kummitusmuseo Mathildedalissa", es: "Museo de fantasmas en Mathildedal", en: "Ghost Museum in Mathildedal" },
+    location: "Mathildedalin Ruukkitehtaat",
+    description: {
+      fi: "Kummitusmuseon toinen syksyn viikonloppu Mathildedalin Ruukkitehtailla. Tarkista ajantasaiset aukioloajat järjestäjältä.",
+      es: "Segundo fin de semana del Museo de fantasmas en Mathildedal. Comprueba los horarios actuales con el organizador.",
+      en: "The second autumn weekend of the Ghost Museum at Mathildedal ironworks. Check current opening hours with the organizer.",
+    },
+    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    category: "autumn",
+  },
+  {
     id: "ghost-trail",
     start: "2026-10-09",
     end: "2026-10-18",
