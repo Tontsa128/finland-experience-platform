@@ -13,6 +13,7 @@ const slides = [
     key: "summer",
     image: photoLibrary.turkuArchipelagoHouse,
     credit: "Henri Sivonen / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_archipelago_house.jpg",
     href: "/destinations",
     external: false,
   },
@@ -62,6 +63,7 @@ const slides = [
     key: "archipelago",
     image: photoLibrary.turkuArchipelago,
     credit: "Rob Sinclair / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
     href: "/destinations",
     external: false,
   },
@@ -154,7 +156,13 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
       {credit ? (
         <div className="absolute bottom-4 right-4 z-10 rounded-full bg-black/40 px-3 py-1.5 text-[11px] text-white/80 backdrop-blur-sm">
-          {credit}
+          {"creditUrl" in slide && slide.creditUrl ? (
+            <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:text-white">
+              {credit}
+            </a>
+          ) : (
+            credit
+          )}
         </div>
       ) : null}
 
