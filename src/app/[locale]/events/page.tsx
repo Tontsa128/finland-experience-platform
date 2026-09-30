@@ -131,9 +131,9 @@ export default async function EventsPage({ params }: { params: { locale: string 
                 <span>{formatDate(event.start, locale)}</span>
                 {event.end ? <><span>→</span><span>{formatDate(event.end, locale)}</span></> : null}
               </div>
-              <h2 className="mt-3 font-display text-2xl font-bold text-brand-950">{event.title[locale]}</h2>
+              <h2 className="mt-3 font-display text-2xl font-bold text-brand-950">{event.title[locale] || event.title.en || event.title.fi}</h2>
               <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-500"><MapPin className="h-4 w-4" />{event.location}</p>
-              <p className="mt-4 leading-7 text-slate-600">{event.description[locale]}</p>
+              <p className="mt-4 leading-7 text-slate-600">{event.description[locale] || event.description.en || event.description.fi}</p>
               <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
             </article>
           ))}
