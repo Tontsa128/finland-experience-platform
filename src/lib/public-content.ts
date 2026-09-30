@@ -1,5 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabase";
-import type { Cabin, Destination, Experience, Locale, BlogPost } from "@/types";
+import type { Cabin, Destination, Experience, ExperienceStatus, Locale, BlogPost } from "@/types";
 
 const locales: Locale[] = ["fi", "es", "en"];
 
@@ -76,7 +76,7 @@ type ExperienceRow = {
   min_group_size?: number | null;
   max_group_size?: number | null;
   difficulty_level?: string | null;
-  status?: string | null;
+  status?: ExperienceStatus | null;
   experience_translations?: ExperienceTranslationRow[] | null;
   pricing_rules?: PricingRow[] | null;
   experience_categories?: ExperienceCategoryRow | ExperienceCategoryRow[] | null;
