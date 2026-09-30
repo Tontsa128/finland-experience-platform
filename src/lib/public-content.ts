@@ -121,15 +121,6 @@ function localized<T extends Record<string, unknown>>(translations: Array<T & { 
   ) as Record<Locale, string>;
 }
 
-async function getVerifiedProviderIds(): Promise<Set<string>> {
-  const [{ data: links }, { data: providers }] = await Promise.all([
-    supabaseAdmin.from("provider_property_links").select("property_id,provider_id"),
-    supabaseAdmin.from("providers").select("id").eq("active", true).eq("verified", true),
-  ]);
-  const verifiedIds = new Set((providers as IdRow[] ?? []).map((provider) => String(provider.id)));
-  return new Set((links as ProviderLinkRow[] ?? []).filter((link) => link.property_id != null && verifiedIds.has(String(link.provider_id))).map((link) => String(link.property_id)));
-}
-
 async function getVerifiedExperienceIds(): Promise<Set<string>> {
   const [{ data: links }, { data: providers }] = await Promise.all([
     supabaseAdmin.from("provider_experience_links").select("experience_id,provider_id"),
