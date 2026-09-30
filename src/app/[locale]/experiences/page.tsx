@@ -10,18 +10,6 @@ import { allowDemoFallback } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
-  const itemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: locale === "fi" ? "Elämykset Suomessa" : locale === "es" ? "Experiencias en Finlandia" : "Experiences in Finland",
-    itemListElement: experiences.map((experience, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: getLocalized(experience.name, locale),
-      url: "/" + locale + "/experiences/" + experience.slug,
-    })),
-  };
-
   const copy = locale === "fi"
     ? { title: "Elämykset Suomessa | Sauna, saaristo ja luonto", description: "Löydä aitoja sauna-, luonto-, melonta-, pyöräily- ja saaristoelämyksiä Suomessa." }
     : locale === "es"
@@ -34,6 +22,19 @@ export default async function ExperiencesPage({ params }: { params: { locale: st
   const locale = params.locale as Locale;
   const cmsExperiences = await getPublishedExperiences();
   const experiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: locale === "fi" ? "Elämykset Suomessa" : locale === "es" ? "Experiencias en Finlandia" : "Experiences in Finland",
+    itemListElement: experiences.map((experience, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: getLocalized(experience.name, locale),
+      url: "/" + locale + "/experiences/" + experience.slug,
+    })),
+  };
+
   const copy = locale === "fi"
     ? { eyebrow: "Suomen kesä odottaa", title: "Tee lomastasi tarina", intro: "Sauna järven rannalla. Veneily auringon alla. Yöttömän yön hetki, jonka muistat vielä pitkään.", idea: "Miltä sinun kesäsi tuntuu?", more: "Tutustu kaikkiin elämyksiin" }
     : locale === "es"
