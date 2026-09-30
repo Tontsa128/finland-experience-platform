@@ -124,9 +124,13 @@ function localized<T extends Record<string, unknown>>(translations: Array<T & { 
 async function getVerifiedExperienceIds(): Promise<Set<string>> {
   const [{ data: links }, { data: providers }] = await Promise.all([
     supabaseAdmin.from("provider_experience_links").select("experience_id,provider_id"),
-    supabaseAdmin.from("providers").select("id").eq("active", true).eq("verified", true),
+    supabaseAdmin.from("providers").select("id,website_url,booking_url").eq("active", true).eq("verified", true),
   ]);
-  const verifiedIds = new Set((providers as IdRow[] ?? []).map((provider) => String(provider.id)));
+  const verifiedIds = new Set(
+    ((providers as unknown as Array<{ id: string | number; website_url?: string | null; booking_url?: string | null }>) ?? [])
+      .filter((provider) => String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())
+      .map((provider) => String(provider.id)),
+  );
   return new Set((links as ProviderLinkRow[] ?? []).filter((link) => link.experience_id != null && verifiedIds.has(String(link.provider_id))).map((link) => String(link.experience_id)));
 }
 async function getVerifiedPropertyProviders(): Promise<Map<string, { name?: string; url?: string; region?: string }>> {
