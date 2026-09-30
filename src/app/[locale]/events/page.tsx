@@ -18,6 +18,16 @@ function formatDate(value: string, locale: Locale) {
 export default async function EventsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
   const events = [...saloEvents, ...naantaliEvents].sort((a, b) => a.start.localeCompare(b.start));
+  const eventSchema = events.slice(0, 40).map((event) => ({
+    "@type": "Event",
+    name: event.title.en || event.title.fi,
+    startDate: event.start,
+    endDate: event.end || event.start,
+    eventStatus: "https://schema.org/EventScheduled",
+    location: { "@type": "Place", name: event.location, address: { "@type": "PostalAddress", addressCountry: "FI" } },
+    url: event.url,
+  }));
+
   const copy = locale === "fi"
     ? {
         eyebrow: "Salo · Mathildedal · Teijo · Naantali",
@@ -47,6 +57,7 @@ export default async function EventsPage({ params }: { params: { locale: string 
 
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": eventSchema }) }} />
       <section className="relative min-h-[56vh] overflow-hidden bg-brand-950 text-white">
         <Image src={heroImage} alt="Mathildedal, Salo" fill priority sizes="100vw" className="object-cover opacity-65" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/45 to-brand-950/10" />
