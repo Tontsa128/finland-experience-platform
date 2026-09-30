@@ -27,7 +27,7 @@ export const photoLibrary = {
   naturaVivaTeijo: "https://cdn.johku.com/naturaviva/largefiles/676/webp/teijo-national-park-rental-shop.webp",
   pumpkinWeeks: "https://visitsalo.fi/wp-content/uploads/sites/2/2025/08/Kurpitsapuistossa-pyoraileva-luuranko-450x253.jpg",
   mathildedalChristmas: "https://visitmathildedal.fi/sites/default/files/galleriakuvat/2026/valimo.jpg",
-  archipelagoFerry: "https://cdn.sanity.io/images/kz56nv1h/production/732dc5440bfdefe8e6809853a998d5a0fa9dd5c5-1920x1080.jpg?auto=format&h=721&q=70&rect=150%2C0%2C1620%2C1080&w=3840",
+  archipelagoFerry: "https://upload.wikimedia.org/wikipedia/commons/3/30/Petun_lossi.jpg",
 } as const;
 
 export const photoCredits: PhotoCredit[] = [
@@ -51,5 +51,5 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.naturaVivaTeijo, credit: "Natura Viva", license: "Provider website image", sourcePage: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop" },
   { url: photoLibrary.pumpkinWeeks, credit: "Visit Salo / Kurpitsaviikot", license: "Visit Salo website image", sourcePage: "https://visitsalo.fi/kurpitsaviikot/" },
   { url: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://visitmathildedal.fi/fi/valimo" },
-  { url: photoLibrary.archipelagoFerry, credit: "Saaristo.fi", license: "Saaristo.fi website image", sourcePage: "https://saaristo.fi/discover/when-is-the-best-time-to-travel-to-finland" },
+  { url: photoLibrary.archipelagoFerry, credit: "Motopark", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Petun_lossi.jpg" },
 ];
