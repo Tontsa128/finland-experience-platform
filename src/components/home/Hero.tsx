@@ -61,7 +61,7 @@ const slides = [
   {
     key: "ferry",
     image: photoLibrary.archipelagoFerry,
-    credit: "Saaristo.fi",
+    credit: "Motopark / Wikimedia Commons",
     href: "/destinations",
     external: false,
   },
