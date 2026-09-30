@@ -4,7 +4,19 @@ import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import { getPublishedDestinations } from "@/lib/public-content";
 import type { Locale } from "@/types";
+import type { Metadata } from "next";
+import { buildLocalizedMetadata } from "@/lib/seo";
 import { allowDemoFallback } from "@/lib/utils";
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const copy = locale === "fi"
+    ? { title: "Kesäkohteet Suomessa | Finland Experience", description: "Löydä saaristo, Mathildedal, Teijo, Naantali, Turku ja muut aidot suomalaiset matkakohteet." }
+    : locale === "es"
+      ? { title: "Destinos de verano en Finlandia | Finland Experience", description: "Descubre el archipiélago, Mathildedal, Teijo, Naantali, Turku y otros destinos auténticos." }
+      : { title: "Summer Destinations in Finland | Finland Experience", description: "Discover the archipelago, Mathildedal, Teijo, Naantali, Turku and other authentic Finnish destinations." };
+  return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "destinations" });
+}
 
 export default async function DestinationsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
