@@ -98,8 +98,9 @@ export default async function BlogPage({ params }: { params: { locale: string } 
           <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{copy.latestIntro}</h2>
         </div>
 
-        <div className="grid gap-7 lg:grid-cols-2">
-          {posts.map((post, index) => {
+        {posts.length ? (
+          <div className="grid gap-7 lg:grid-cols-2">
+            {posts.map((post, index) => {
             const Icon = icons[index % icons.length];
             return (
               <article key={post.id} className={index === 0 ? "group overflow-hidden rounded-[2rem] bg-brand-950 text-white lg:row-span-2" : "group overflow-hidden rounded-[2rem] bg-brand-50"}>
@@ -132,8 +133,22 @@ export default async function BlogPage({ params }: { params: { locale: string } 
                 </div>
               </article>
             );
-          })}
-        </div>
+            })}
+          </div>
+        ) : (
+          <div className="rounded-[2rem] border border-dashed border-slate-300 bg-brand-50 p-10 text-center">
+            <Compass className="mx-auto h-8 w-8 text-brand-700" />
+            <h2 className="mt-4 font-display text-2xl font-bold text-brand-950">
+              {locale === "fi" ? "Uusia tarinoita on tulossa." : locale === "es" ? "Pronto habrá nuevas historias." : "New stories are coming soon."}
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl leading-7 text-slate-600">
+              {locale === "fi" ? "Tutustu sillä välin kohteisiin ja löydä oma tapasi kokea Suomi." : locale === "es" ? "Mientras tanto, descubre los destinos y encuentra tu propia manera de vivir Finlandia." : "In the meantime, explore the destinations and find your own way to experience Finland."}
+            </p>
+            <Link href={`/${locale}/destinations`} className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white">
+              {locale === "fi" ? "Löydä kohteet" : locale === "es" ? "Descubrir destinos" : "Explore destinations"}<ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </section>
 
       <section className="bg-brand-50 py-16 sm:py-24">
