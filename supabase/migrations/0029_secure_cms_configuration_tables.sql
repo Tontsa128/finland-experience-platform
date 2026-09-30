@@ -4,5 +4,8 @@ ALTER TABLE public.site_settings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.site_navigation ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.site_banners ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "public active navigation" ON public.site_navigation;
+DROP POLICY IF EXISTS "public active banners" ON public.site_banners;
+
 -- Intentionally no public SELECT/INSERT/UPDATE/DELETE policies.
 -- The server-side Supabase service role remains able to manage these records.
