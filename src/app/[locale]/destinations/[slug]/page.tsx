@@ -14,7 +14,9 @@ import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
   if (!locales.includes(locale)) return {};
-  const destination = (await getPublishedDestinations()).find((item) => item.slug === params.slug);
+  const cmsDestinations = await getPublishedDestinations();
+  const source = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
+  const destination = source.find((item) => item.slug === params.slug);
   if (!destination) return {};
   const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
   return buildLocalizedMetadata({
