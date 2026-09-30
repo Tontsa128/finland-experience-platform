@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
+import { isSafeUrlOrPath } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -72,7 +73,7 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json({ error: key + " must be a 6-digit hex color" }, { status: 400 });
       }
 
-      if (urlFields.has(key) && normalized && !/^(\/|https?:\/\/)/i.test(normalized)) {
+      if (urlFields.has(key) && normalized && !isSafeUrlOrPath(normalized)) {
         return NextResponse.json({ error: key + " must be a relative path or http(s) URL" }, { status: 400 });
       }
 
