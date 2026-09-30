@@ -174,7 +174,7 @@ export default async function DestinationDetail({ params }: { params: { locale: 
                 </p>
               </div>
               <a href="https://www.visitporvoo.fi/en/sights/old-porvoo/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
-                {locale === "fi" ? "Tutustu Visit Porvooseen" : locale === "es" ? "Visitar Visit Porvoo" : "Visit Visit Porvoo"}
+                {locale === "fi" ? "Tutustu Visit Porvooseen" : locale === "es" ? "Visitar Porvoo" : "Visit Porvoo"}
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
