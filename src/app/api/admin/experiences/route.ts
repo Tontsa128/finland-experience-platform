@@ -72,9 +72,14 @@ export async function POST(req:NextRequest) {
       if (providerError) return NextResponse.json({error:providerError.message},{status:500});
       if (!provider) return NextResponse.json({error:"Provider not found"},{status:400});
       if (status === "published" && (!provider.active || !provider.verified)) return NextResponse.json({error:"Published experiences require an active verified provider."},{status:400});
-      if (status === "published" && !(String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())) {
-        return NextResponse.json({error:"Published experiences require a provider website or booking URL."},{status:400});
+      if (status === "published") {
+        const providerUrl = String(provider.booking_url || provider.website_url || "").trim();
+        if (!/^https?:\/\//i.test(providerUrl)) {
+          return NextResponse.json({error:"Published experiences require a valid provider website or booking URL."},{status:400});
+        }
       }
+    } else if (status === "published") {
+      return NextResponse.json({error:"Published experiences require a verified provider."},{status:400});
     }
     const {data:experience,error}=await supabaseAdmin.from("experiences").insert({
       destination_id:body.destinationId,category_id:body.categoryId,slug:body.slug.trim(),duration_minutes:body.durationMinutes??null,
