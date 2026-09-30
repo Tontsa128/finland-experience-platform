@@ -44,7 +44,7 @@ export async function PATCH(req: NextRequest) {
       "instagram_url", "facebook_url", "default_og_image", "hero_image_url",
       "hero_cta_url", "hero_secondary_url",
     ]);
-    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     for (const key of allowed) {
       if (!(key in body)) continue;
