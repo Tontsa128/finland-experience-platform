@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
 import { photoLibrary } from "@/lib/photo-library";
@@ -104,7 +104,6 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
-  const t = useTranslations("hero");
   const [active, setActive] = useState(0);
 
   const slide = slides[active];
@@ -117,9 +116,6 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       }
     : copy[locale][slide.key];
   const isCmsHero = active === 0 && Boolean(settings?.heroImageUrl);
-  const hrefValue = isCmsHero
-    ? settings?.heroCtaUrl || "/destinations"
-    : slide.href;
   const toLocalizedHref = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value;
     const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, "");
