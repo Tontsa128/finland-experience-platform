@@ -169,10 +169,10 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         <div className="max-w-4xl">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.24em] text-gold-300">{text.eyebrow}</p>
           <h1 className="max-w-4xl font-display text-5xl font-bold leading-[.94] tracking-[-.03em] sm:text-7xl lg:text-[5.8rem]">
-            {active === 0 ? t("title") : text.title}
+            {text.title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/90 sm:text-2xl sm:leading-9">
-            {active === 0 ? t("description") : text.text}
+            {text.text}
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
