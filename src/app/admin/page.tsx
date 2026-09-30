@@ -5,7 +5,7 @@ import { AdminLogoutButton } from "@/components/admin/AdminLogoutButton";
 
 const cards=[
  {href:"/admin/properties",label:"Majoitukset",text:"Mökit, huvilat, saaristokohteet, hinnat ja saatavuus.",icon:BedDouble},
- {href:"/admin/destinos",label:"Kohteet",text:"Suomen alueet ja matkakohteet.",icon:Sparkles},
+ {href:"/admin/destinations",label:"Kohteet",text:"Suomen alueet ja matkakohteet.",icon:Sparkles},
  {href:"/admin/experiences",label:"Experiences",text:"Sauna, veneily, kalastus ja muut elämykset.",icon:CalendarDays},
  {href:"/admin/media",label:"Media",text:"Kuvapankki ja FI/ES/EN alt-tekstit.",icon:ImageIcon},
  {href:"/admin/inquiries",label:"Yhteydenotot",text:"Varaus- ja yhteydenottopyynnöt.",icon:MessageSquare}, {href:"/admin/leads",label:"Concierge-liidit",text:"Matkatoiveet, budjetit, kiinnostukset ja AI-suositukset.",icon:Sparkles}, {href:"/admin/providers",label:"Verified Partners",text:"Palveluntarjoajat, varmennus ja liidit.",icon:Handshake},
