@@ -128,7 +128,7 @@ async function getVerifiedExperienceIds(): Promise<Set<string>> {
   ]);
   const verifiedIds = new Set(
     ((providers as unknown as Array<{ id: string | number; website_url?: string | null; booking_url?: string | null }>) ?? [])
-      .filter((provider) => String(provider.booking_url || "").trim() || String(provider.website_url || "").trim())
+      .filter((provider) => /^https?:\/\//i.test(String(provider.booking_url || provider.website_url || "").trim()))
       .map((provider) => String(provider.id)),
   );
   return new Set((links as ProviderLinkRow[] ?? []).filter((link) => link.experience_id != null && verifiedIds.has(String(link.provider_id))).map((link) => String(link.experience_id)));
