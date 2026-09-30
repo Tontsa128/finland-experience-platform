@@ -6,19 +6,24 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { getPublishedDestinations } from "@/lib/public-content";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
-import { allowDemoFallback } from "@/lib/utils";
+import { allowDemoFallback, locales } from "@/lib/utils";
+import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
+  if (!locales.includes(locale)) return {};
   const destination = (await getPublishedDestinations()).find((item) => item.slug === params.slug);
   if (!destination) return {};
   const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
-  return {
+  return buildLocalizedMetadata({
+    locale,
     title: seo?.title || getLocalized(destination.name, locale),
     description: seo?.description || getLocalized(destination.shortDescription, locale),
-  };
+    path: "destinations/" + destination.slug,
+    image: destination.images[0],
+  });
 }
 
 export default async function DestinationDetail({ params }: { params: { locale: string; slug: string } }) {
