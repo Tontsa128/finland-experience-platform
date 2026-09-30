@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import type { Locale } from "@/types";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale === "es" ? "es" : params.locale === "en" ? "en" : "fi";
-  return {
-    title: locale === "es" ? "Términos de uso | Finland Experience" : locale === "en" ? "Terms of Use | Finland Experience" : "Käyttöehdot | Finland Experience",
-    description: locale === "es"
-      ? "Condiciones generales de uso de Finland Experience y su modelo de servicio."
-      : locale === "en"
-        ? "Finland Experience terms of use and service model."
-        : "Finland Experience -sivuston käyttöehdot ja palvelumalli.",
-  };
+  const locale = params.locale as Locale;
+  const safeLocale: Locale = locale === "es" ? "es" : locale === "en" ? "en" : "fi";
+  return buildLocalizedMetadata({
+    locale: safeLocale,
+    title: safeLocale === "es" ? "Términos de uso | Finland Experience" : safeLocale === "en" ? "Terms of Use | Finland Experience" : "Käyttöehdot | Finland Experience",
+    description: safeLocale === "es" ? "Condiciones generales de uso de Finland Experience y su modelo de servicio." : safeLocale === "en" ? "Finland Experience terms of use and service model." : "Finland Experience -sivuston käyttöehdot ja palvelumalli.",
+    path: "terms",
+  });
 }
 
 const copy = {
