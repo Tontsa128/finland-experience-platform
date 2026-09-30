@@ -5,6 +5,7 @@ import {
   getPublishedDestinations,
   getPublishedExperiences,
   getPublishedProperties,
+  getPublishedBlogPosts,
 } from "@/lib/public-content";
 import { supabaseAdmin } from "@/lib/supabase";
 
@@ -23,10 +24,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   try {
-    const [destinations, properties, experiences, pagesResult] = await Promise.all([
+    const [destinations, properties, experiences, blogPosts, pagesResult] = await Promise.all([
       getPublishedDestinations(),
       getPublishedProperties(),
       getPublishedExperiences(),
+      getPublishedBlogPosts(),
       supabaseAdmin
         .from("site_pages")
         .select("slug,locale,updated_at")
@@ -57,6 +59,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
+        })),
+      ),
+      ...blogPosts.flatMap((post) =>
+        locales.map((locale) => ({
+          url: siteUrl + "/" + locale + "/blog/" + post.slug,
+          lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
+          changeFrequency: "monthly" as const,
+          priority: 0.6,
         })),
       ),
       ...((pagesResult.data ?? []).map((page) => ({
