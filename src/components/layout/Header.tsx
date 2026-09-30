@@ -29,6 +29,11 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   const withPlan = baseItems.some(([key]) => key === "plan") ? baseItems : [...baseItems, ["plan", "plan"] as const];
   const items = withPlan.some(([key]) => key === "ruralFinland") ? withPlan : [...withPlan, ["ruralFinland", "rural-finland"] as const];
   const labels = new Map(navigation.map((item) => [item.id, item.label]));
+  const ui = locale === "fi"
+    ? { account: "Asiakastili", login: "Kirjaudu", close: "Sulje valikko", open: "Avaa valikko" }
+    : locale === "es"
+      ? { account: "Cuenta", login: "Iniciar sesión", close: "Cerrar menú", open: "Abrir menú" }
+      : { account: "Account", login: "Log in", close: "Close menu", open: "Open menu" };
 
   const href = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value;
@@ -69,14 +74,14 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
 
           <Link
             href={`/${locale}/account/login`}
-            aria-label="Asiakastili"
-            title="Asiakastili"
+            aria-label={ui.account}
+            title={ui.account}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm hover:border-brand-300"
           >
             <UserRound className="h-5 w-5" />
           </Link>
 
-          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
+          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open}>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
@@ -90,7 +95,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                 {labelFor(key)}
               </Link>
             ))}
-            <Link href={`/${locale}/account/login`} className="ml-auto text-sm font-semibold text-brand-700">Kirjaudu</Link>
+            <Link href={`/${locale}/account/login`} className="ml-auto text-sm font-semibold text-brand-700">{ui.login}</Link>
           </nav>
         </div>
       </div>
@@ -99,7 +104,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
         <nav className="border-t border-slate-100 bg-white px-4 py-3 shadow-lg lg:hidden">
           <div className="container-narrow space-y-1">
             <Link href={`/${locale}/account/login`} onClick={() => setOpen(false)} className="block rounded-xl bg-brand-50 px-3 py-3 text-base font-semibold text-brand-900">
-              Asiakastili / Kirjaudu
+              {ui.account} / {ui.login}
             </Link>
             {items.map(([key, p]) => (
               <Link key={key} onClick={() => setOpen(false)} href={href(p)} className="block rounded-xl px-3 py-3 text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900">
