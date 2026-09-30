@@ -11,6 +11,7 @@ export type LuxuryDirectoryEntry = {
   image?: string;
   imageCredit?: string;
   tags: string[];
+  linkLabel?: Record<Locale, string>;
 };
 
 const cdn = "https://cdn-datahub.visitfinland.com/images/";
@@ -115,7 +116,6 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
       en: "Harbour hotel with sauna, sea terrace, restaurant and guest marina."
     },
     url: "https://www.mathildanmarina.fi",
-    price: "2026: 149–269 €/huone/yö, aamiainen sisältyy",
     image: `${cdn}e6b2c520-c1cf-11ed-8fb6-cd05a147400e.jpeg?s=1280`,
     imageCredit: "Visit Salo / Visit Finland DataHub",
     tags: ["harbour", "sauna", "sea", "restaurant"]
@@ -131,7 +131,6 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
       en: "Seasonal archipelago cuisine with fish, game and a five-course tasting menu."
     },
     url: "https://mathildanmarina.fi/ravintola/",
-    price: "Sataman maistelumenu 62 €/hlö",
     image: `${cdn}e6b2c520-c1cf-11ed-8fb6-cd05a147400e.jpeg?s=1280`,
     imageCredit: "Mathildan Marina",
     tags: ["local food", "tasting menu", "fish", "game"]
@@ -161,7 +160,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
       es: "Sidras artesanales elaboradas con manzanas locales. Tienda y terraza en temporada de verano.",
       en: "Handcrafted apple ciders made from local apples, with a shop and terrace in summer."
     },
-    url: "https://visitsalo.fi",
+    url: "https://lepoladrinks.fi",
     tags: ["cider", "local apples", "local food", "Salo"]
   },
   {
@@ -187,7 +186,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
       es: "Pequeño pueblo siderúrgico de la zona de Teijo con experiencias de naturaleza y pesca.",
       en: "A small ironworks village in the Teijo area with local nature and fishing experiences."
     },
-    url: "https://visitsalo.fi",
+    url: "https://www.ruukkikyla.fi/eng/",
     tags: ["village", "fishing", "nature", "slow travel"]
   },
   {
@@ -200,7 +199,8 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
       es: "Lagos, bosques, rocas y senderos. Pesca, kayak, remo y lugares de fuego para una experiencia finlandesa auténtica.",
       en: "Lakes, forests, rocks and trails, with fishing, paddling, rowing and campfire spots for an authentic Finnish day outdoors."
     },
-    url: "https://visitsalo.fi/teijon-kansallispuisto/",
+    url: "https://www.luontoon.fi/fi/kohteet/teijon-kansallispuisto",
+    linkLabel: { fi: "Tutustu Luontoon-palvelussa", es: "Ver el parque en Luontoon", en: "Explore the park on Luontoon" },
     image: `${cdn}40f256f0-6b21-11ed-8b5d-750472ef9a58.jpeg?s=1280`,
     imageCredit: "Visit Salo / Visit Finland DataHub",
     tags: ["national park", "fishing", "campfire", "kayaking"]
