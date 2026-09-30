@@ -49,7 +49,7 @@ export default function AccountPage() {
       setEmail(b.user?.email||"");
     }catch(e){setError(e instanceof Error?e.message:(language==="fi"?"Lataus epäonnistui.":language==="es"?"No se pudo cargar la cuenta.":"Could not load the account."));}
     finally{setLoading(false);}
-  })()},[locale,router]);
+  })()},[language,locale,router]);
 
   async function save(){
     setSaving(true);setSaved(false);setError("");
