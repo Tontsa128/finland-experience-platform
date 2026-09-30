@@ -47,7 +47,7 @@ export async function GET() {
   try {
     if (!await getAdminContext()) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
     const [{data:experiences,error:experienceError},{data:destinations},{data:categories},{data:providers}] = await Promise.all([
-      supabaseAdmin.from("experiences").select("*, experience_translations(*), pricing_rules(*), experience_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en))").order("created_at",{ascending:false}),
+      supabaseAdmin.from("experiences").select("*, experience_translations(*), pricing_rules(*), experience_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en)), provider_experience_links(provider_id)").order("created_at",{ascending:false}),
       supabaseAdmin.from("destinations").select("id,slug,destination_translations(language_code,name)").order("slug"),
       supabaseAdmin.from("experience_categories").select("id,slug,name_fi,name_es,icon").order("slug"),
       supabaseAdmin.from("providers").select("id,name,verified,active").order("name")
