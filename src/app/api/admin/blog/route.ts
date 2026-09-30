@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
 
-const CONTENT_ROLES = ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"];
+const READ_ROLES = ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"] as const;
+const WRITE_ROLES = ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER"] as const;
 
 type Translation = {
   title?: unknown;
@@ -48,7 +49,7 @@ function parseStatus(value: unknown) {
 export async function GET() {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  if (!CONTENT_ROLES.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  if (!READ_ROLES.includes(admin.profile.role as (typeof READ_ROLES)[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   const { data, error } = await supabaseAdmin
     .from("blog_posts")
@@ -62,6 +63,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!WRITE_ROLES.includes(admin.profile.role as (typeof WRITE_ROLES)[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   if (!CONTENT_ROLES.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   try {
@@ -111,6 +113,7 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!WRITE_ROLES.includes(admin.profile.role as (typeof WRITE_ROLES)[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   if (!CONTENT_ROLES.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   try {
@@ -168,6 +171,7 @@ export async function PATCH(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!WRITE_ROLES.includes(admin.profile.role as (typeof WRITE_ROLES)[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   if (!CONTENT_ROLES.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   const id = request.nextUrl.searchParams.get("id");
