@@ -21,6 +21,19 @@ export function firstValidHttpUrl(...values: unknown[]): string | null {
   return null;
 }
 
+export function isSafeUrlOrPath(value: unknown): value is string {
+  if (typeof value !== "string") return false;
+  const candidate = value.trim();
+  if (!candidate) return false;
+  if (candidate.startsWith("/") && !candidate.startsWith("//")) return true;
+  try {
+    const url = new URL(candidate);
+    return (url.protocol === "http:" || url.protocol === "https:") && Boolean(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
 export function formatPrice(price: number, locale: Locale = "en"): string {
   const numberLocale = locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-IE";
 
