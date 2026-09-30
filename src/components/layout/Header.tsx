@@ -22,11 +22,12 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
 
   const fallbackItems = [
     ["home", ""], ["destinations", "destinations"], ["accommodations", "accommodations"],
-    ["experiences", "experiences"], ["events", "events"], ["cityBreaks", "city-breaks"], ["blog", "blog"], ["contact", "contact"],
+    ["experiences", "experiences"], ["events", "events"], ["cityBreaks", "city-breaks"], ["ruralFinland", "rural-finland"], ["blog", "blog"], ["contact", "contact"],
   ] as const;
 
   const baseItems = navigation.length ? navigation.map((item) => [item.id, item.href] as const) : fallbackItems;
-  const items = baseItems.some(([key]) => key === "plan") ? baseItems : [...baseItems, ["plan", "plan"] as const];
+  const withPlan = baseItems.some(([key]) => key === "plan") ? baseItems : [...baseItems, ["plan", "plan"] as const];
+  const items = withPlan.some(([key]) => key === "ruralFinland") ? withPlan : [...withPlan, ["ruralFinland", "rural-finland"] as const];
   const labels = new Map(navigation.map((item) => [item.id, item.label]));
 
   const href = (value: string) => {
