@@ -1,5 +1,18 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import type { Locale } from "@/types";
+import { buildLocalizedMetadata } from "@/lib/seo";
 import { ArrowRight, Building2, Coffee, Sparkles, Waves } from "lucide-react";
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const copy = locale === "fi"
+    ? { title: "Kaupunkiloma Suomessa | Helsinki, Tampere ja Turku", description: "Yhdistä suomalainen kaupunkikulttuuri, ruoka, sauna, meri ja luonto viikonloppulomaksi." }
+    : locale === "es"
+      ? { title: "Escapadas urbanas en Finlandia | Helsinki, Tampere y Turku", description: "Combina cultura urbana, gastronomía, sauna, mar y naturaleza en una escapada finlandesa." }
+      : { title: "City Breaks in Finland | Helsinki, Tampere & Turku", description: "Combine Finnish city culture, food, sauna, sea and nature in a memorable weekend." };
+  return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "city-breaks" });
+}
 
 export default function CityBreaksPage({ params }: { params: { locale: string } }) {
   const locale=params.locale;
