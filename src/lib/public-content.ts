@@ -139,10 +139,18 @@ async function getVerifiedPropertyProviders(): Promise<Map<string, { name?: stri
     supabaseAdmin.from("providers").select("id,name,website_url,booking_url,region").eq("active", true).eq("verified", true).order("name"),
   ]);
   const providerRows = (providers ?? []) as unknown as Array<{ id: string | number; name?: string | null; website_url?: string | null; booking_url?: string | null; region?: string | null }>;
-  const providerMap = new Map(providerRows.map((provider) => [
-    String(provider.id),
-    { name: provider.name || undefined, url: provider.booking_url || provider.website_url || undefined, region: provider.region || undefined },
-  ]));
+  const providerMap = new Map(
+    providerRows
+      .map((provider) => ({
+        ...provider,
+        url: String(provider.booking_url || provider.website_url || "").trim(),
+      }))
+      .filter((provider) => /^https?:\\/\\//i.test(provider.url))
+      .map((provider) => [
+        String(provider.id),
+        { name: provider.name || undefined, url: provider.url, region: provider.region || undefined },
+      ]),
+  );
   const result = new Map<string, { name?: string; url?: string; region?: string }>();
   for (const link of (links ?? []) as unknown as ProviderLinkRow[]) {
     if (link.property_id == null) continue;
@@ -157,10 +165,18 @@ async function getVerifiedExperienceProviders(): Promise<Map<string, { name?: st
     supabaseAdmin.from("providers").select("id,name,website_url,booking_url,region").eq("active", true).eq("verified", true),
   ]);
   const providerRows = (providers ?? []) as unknown as Array<{ id: string | number; name?: string | null; website_url?: string | null; booking_url?: string | null; region?: string | null }>;
-  const providerMap = new Map(providerRows.map((provider) => [
-    String(provider.id),
-    { name: provider.name || undefined, url: provider.booking_url || provider.website_url || undefined, region: provider.region || undefined },
-  ]));
+  const providerMap = new Map(
+    providerRows
+      .map((provider) => ({
+        ...provider,
+        url: String(provider.booking_url || provider.website_url || "").trim(),
+      }))
+      .filter((provider) => /^https?:\\/\\//i.test(provider.url))
+      .map((provider) => [
+        String(provider.id),
+        { name: provider.name || undefined, url: provider.url, region: provider.region || undefined },
+      ]),
+  );
   const result = new Map<string, { name?: string; url?: string; region?: string }>();
   for (const link of (links ?? []) as unknown as ProviderLinkRow[]) {
     if (link.experience_id == null) continue;
@@ -467,7 +483,7 @@ export async function getHomepageSettings(): Promise<HomepageSettings | null> {
       heroTitle: { fi: value("hero_title_fi"), es: value("hero_title_es"), en: value("hero_title_en") },
       heroDescription: { fi: value("hero_description_fi"), es: value("hero_description_es"), en: value("hero_description_en") },
       heroCtaLabel: { fi: value("hero_cta_label_fi"), es: value("hero_cta_label_es"), en: value("hero_cta_label_en") },
-      heroCtaUrl: value("hero_cta_url") || "/accommodations",
+      heroCtaUrl: value("hero_cta_url") || "/destinations",
       heroSecondaryLabel: { fi: value("hero_secondary_label_fi"), es: value("hero_secondary_label_es"), en: value("hero_secondary_label_en") },
       heroSecondaryUrl: value("hero_secondary_url") || "/destinations",
       featuredDestinationIds: idList((data as Record<string, unknown>).homepage_featured_destination_ids),
