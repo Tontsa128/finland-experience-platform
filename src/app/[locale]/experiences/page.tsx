@@ -4,7 +4,19 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { experiences as fallbackExperiences, getLocalized } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
+import type { Metadata } from "next";
+import { buildLocalizedMetadata } from "@/lib/seo";
 import { allowDemoFallback } from "@/lib/utils";
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const copy = locale === "fi"
+    ? { title: "Elämykset Suomessa | Sauna, saaristo ja luonto", description: "Löydä aitoja sauna-, luonto-, melonta-, pyöräily- ja saaristoelämyksiä Suomessa." }
+    : locale === "es"
+      ? { title: "Experiencias en Finlandia | Sauna, naturaleza y archipiélago", description: "Descubre experiencias auténticas de sauna, naturaleza, kayak, ciclismo y archipiélago en Finlandia." }
+      : { title: "Experiences in Finland | Sauna, Nature & Archipelago", description: "Discover authentic sauna, nature, kayaking, cycling and archipelago experiences in Finland." };
+  return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "experiences" });
+}
 
 export default async function ExperiencesPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
