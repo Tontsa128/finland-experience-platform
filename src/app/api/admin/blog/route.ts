@@ -113,7 +113,6 @@ export async function PATCH(request: NextRequest) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!WRITE_ROLES.includes(admin.profile.role as (typeof WRITE_ROLES)[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  if (!CONTENT_ROLES.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   try {
     const body = await request.json();
@@ -171,7 +170,6 @@ export async function DELETE(request: NextRequest) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!WRITE_ROLES.includes(admin.profile.role as (typeof WRITE_ROLES)[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  if (!CONTENT_ROLES.includes(admin.profile.role)) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   const id = request.nextUrl.searchParams.get("id");
   if (!id) return NextResponse.json({ error: "id is required" }, { status: 400 });
