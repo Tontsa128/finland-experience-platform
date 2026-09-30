@@ -21,6 +21,9 @@ Nämä ovat projektin pysyvät säännöt uusille sivuille, kohteille, majoituks
 - Elämyksen sivu: `/[locale]/experiences/[slug]`
 - Kaupunkilomat: `/[locale]/city-breaks`
 - Blogi: `/[locale]/blog`
+- Blogiartikkeli: `/[locale]/blog/[slug]`
+- Tapahtumat: `/[locale]/events`
+- Maaseutu & saaristo -SEO-pilari: `/[locale]/rural-finland`
 - Luxury & Authentic Finland -hakemisto: `/[locale]/luxury-finland`
 - Yhteystiedot: `/[locale]/contact`
 - Asiakastili: `/[locale]/account`
@@ -76,6 +79,7 @@ Kaikki käyttäjän muokattava sisältö tehdään CMS:n kautta aina kun mahdoll
 - julkaisu
 - navigaatio
 - bannerit
+- blogiartikkelit
 - uudet sivut
 - majoittajien linkit
 
