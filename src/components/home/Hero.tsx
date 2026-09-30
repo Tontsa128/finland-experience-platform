@@ -148,11 +148,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           aria-hidden={index !== active}
         >
           <Image
-            src={item.image}
+            src={index === 0 && settings?.heroImageUrl ? settings.heroImageUrl : item.image}
             alt=""
             fill
             priority={index === 0}
             sizes="100vw"
+            unoptimized={Boolean(index === 0 && settings?.heroImageUrl)}
             className="object-cover"
           />
         </div>
