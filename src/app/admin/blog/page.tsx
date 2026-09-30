@@ -79,8 +79,8 @@ export default function AdminBlogPage() {
         title: row.title || "",
         excerpt: row.excerpt || "",
         content: row.content || "",
-        seoTitle: row.seoTitle || "",
-        seoDescription: row.seoDescription || "",
+        seoTitle: (row as Translation & { seo_title?: string }).seo_title || (row as Translation).seoTitle || "",
+        seoDescription: (row as Translation & { seo_description?: string }).seo_description || (row as Translation).seoDescription || "",
       };
     }
     setForm({
