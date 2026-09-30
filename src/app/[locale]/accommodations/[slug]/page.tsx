@@ -33,10 +33,10 @@ export default async function CabinDetail({ params }: { params: { locale: string
   if (!c) notFound();
 
   const copy = locale === "fi"
-    ? { eyebrow: "Sinun kesäpaikkasi Suomessa", sectionEyebrow: "Kohteen tiedot", dream: "Herää järven rannalla.", text: "Avaa ovi, hengitä metsän tuoksua ja anna päivän alkaa ilman kiirettä.", more: "Löydä lisää majoituksia", ask: "Kysy tästä kohteesta", provider: "Siirry vuokraajalle", note: "Emme myy tätä majoitusta. Ohjaamme sinut suoraan palveluntarjoajan omaan varaukseen." }
+    ? { eyebrow: "Sinun kesäpaikkasi Suomessa", sectionEyebrow: "Kohteen tiedot", dream: "Tee majoituksesta osa matkan tunnetta.", text: "Avaa ovi, hengitä metsän tuoksua ja anna päivän alkaa ilman kiirettä.", more: "Löydä lisää majoituksia", provider: "Siirry vuokraajalle", note: "Emme myy tätä majoitusta. Ohjaamme sinut suoraan palveluntarjoajan omaan varaukseen." }
     : locale === "es"
-      ? { eyebrow: "Tu refugio de verano en Finlandia", sectionEyebrow: "Detalles del alojamiento", dream: "Despierta junto al lago.", text: "Abre la puerta, respira el bosque y deja que el día empiece sin prisas.", more: "Ver más alojamientos", ask: "Preguntar por este lugar", provider: "Ir al proveedor", note: "No vendemos este alojamiento. Te dirigimos directamente a la reserva del proveedor." }
-      : { eyebrow: "Your Finnish summer hideaway", sectionEyebrow: "Stay details", dream: "Wake up by the lake.", text: "Open the door, breathe in the forest and let the day begin without a hurry.", more: "Explore more stays", ask: "Ask about this stay", provider: "Visit provider", note: "We do not sell this accommodation. We send you directly to the provider's own booking." };
+      ? { eyebrow: "Tu refugio de verano en Finlandia", sectionEyebrow: "Detalles del alojamiento", dream: "Haz que el alojamiento forme parte del viaje.", text: "Abre la puerta, respira el bosque y deja que el día empiece sin prisas.", more: "Ver más alojamientos", provider: "Ir al proveedor", note: "No vendemos este alojamiento. Te dirigimos directamente a la reserva del proveedor." }
+      : { eyebrow: "Your Finnish summer hideaway", sectionEyebrow: "Stay details", dream: "Let your stay become part of the journey.", text: "Open the door, breathe in the forest and let the day begin without a hurry.", more: "Explore more stays", provider: "Visit provider", note: "We do not sell this accommodation. We send you directly to the provider's own booking." };
 
   return (
     <div className="bg-white">
