@@ -117,6 +117,31 @@ export async function middleware(req: NextRequest) {
     return auth.response ?? NextResponse.next();
   }
 
+  const legacyRoute = ["/destinos", "/experiencias", "/privacy", "/terms"].find(
+    (route) => pathname === route || pathname.startsWith(route + "/"),
+  );
+  if (legacyRoute) {
+    const savedLocale = req.cookies.get("NEXT_LOCALE")?.value;
+    const preferredLocale =
+      savedLocale && locales.includes(savedLocale as (typeof locales)[number])
+        ? (savedLocale as (typeof locales)[number])
+        : null;
+    const locale =
+      preferredLocale ??
+      getLocaleFromCountry(req.headers.get("x-vercel-ip-country")) ??
+      getLocaleFromBrowser(req) ??
+      defaultLocale;
+    const targetBase = legacyRoute === "/destinos"
+      ? "/destinations"
+      : legacyRoute === "/experiencias"
+        ? "/experiences"
+        : legacyRoute;
+    const suffix = pathname.slice(legacyRoute.length);
+    const redirectUrl = req.nextUrl.clone();
+    redirectUrl.pathname = `/${locale}${targetBase}${suffix}`;
+    return setLocaleCookie(NextResponse.redirect(redirectUrl), locale);
+  }
+
   if (pathname === "/") {
     const savedLocale = req.cookies.get("NEXT_LOCALE")?.value;
     const preferredLocale =
