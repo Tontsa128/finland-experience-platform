@@ -107,7 +107,7 @@ export function LuxuryDirectory({ locale }: { locale: Locale }) {
                 </div>
 
                 <a href={entry.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
-                  {l.visit}<ArrowUpRight className="h-4 w-4" />
+                  {entry.linkLabel?.[locale] || l.visit}<ArrowUpRight className="h-4 w-4" />
                 </a>
                 {entry.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">Kuva: {entry.imageCredit}</p> : null}
               </div>
