@@ -21,6 +21,13 @@ export const photoLibrary = {
   naantaliHarbour: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Naantali_harbour_and_church.jpg",
   hamina: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Raittiustalo_Hamina_2026-07-13_a.jpg",
   sauna: "https://cdn-datahub.visitfinland.com/images/a2446f90-7cba-11ef-a1fa-c33120773bf0.png?s=1280",
+  herrankukkaroSauna: "https://le-de.cdn-website.com/437c2bac51dd486c80c3e153a9033393/dms3rep/multi/opt/Kuva8-8066abf8-1920w.jpg",
+  storfinnhova: "https://www.storfinnhova.com/wp-content/uploads/2025/10/080925-Kemio-tilakuvat-web-117_cropped.jpg",
+  bjorkholm: "https://cdn.johku.com/bjorkholm/files/419/w374-h237-s/image.Svartan_Bjorkholm_johku_wallpaper.jpg",
+  naturaVivaTeijo: "https://cdn.johku.com/naturaviva/largefiles/676/webp/teijo-national-park-rental-shop.webp",
+  pumpkinWeeks: "https://visitsalo.fi/wp-content/uploads/sites/2/2025/08/Kurpitsapuistossa-pyoraileva-luuranko-450x253.jpg",
+  mathildedalChristmas: "https://visitmathildedal.fi/sites/default/files/galleriakuvat/2026/valimo.jpg",
+  archipelagoFerry: "https://cdn.sanity.io/images/kz56nv1h/production/732dc5440bfdefe8e6809853a998d5a0fa9dd5c5-1920x1080.jpg?auto=format&h=721&q=70&rect=150%2C0%2C1620%2C1080&w=3840",
 } as const;
 
 export const photoCredits: PhotoCredit[] = [
@@ -38,4 +45,11 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.naantaliHarbour, credit: "Pöllö", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg" },
   { url: photoLibrary.hamina, credit: "Htm", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Raittiustalo_Hamina_2026-07-13_a.jpg" },
   { url: photoLibrary.sauna, credit: "Visit Finland DataHub", license: "Provider/partner image", sourcePage: "https://www.visitfinland.com/" },
+  { url: photoLibrary.herrankukkaroSauna, credit: "Herrankukkaro", license: "Provider website image", sourcePage: "https://www.herrankukkaro.fi/kokous/saunat-ja-kylvyt" },
+  { url: photoLibrary.storfinnhova, credit: "Storfinnhova Gård", license: "Provider website image", sourcePage: "https://www.storfinnhova.com/" },
+  { url: photoLibrary.bjorkholm, credit: "Björkholm mökit Oy", license: "Provider website image", sourcePage: "https://bjorkholm.johku.com/en_US/cottages/svartan-mokki" },
+  { url: photoLibrary.naturaVivaTeijo, credit: "Natura Viva", license: "Provider website image", sourcePage: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop" },
+  { url: photoLibrary.pumpkinWeeks, credit: "Visit Salo / Kurpitsaviikot", license: "Visit Salo website image", sourcePage: "https://visitsalo.fi/kurpitsaviikot/" },
+  { url: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://visitmathildedal.fi/fi/valimo" },
+  { url: photoLibrary.archipelagoFerry, credit: "Saaristo.fi", license: "Saaristo.fi website image", sourcePage: "https://saaristo.fi/discover/when-is-the-best-time-to-travel-to-finland" },
 ];
