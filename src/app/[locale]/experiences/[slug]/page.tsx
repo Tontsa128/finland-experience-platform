@@ -32,6 +32,7 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
   const experiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
   const experience = experiences.find((item) => item.slug === params.slug);
   if (!experience) notFound();
+  const providerUrl = experience.providerUrl && /^https?:\\/\\//i.test(experience.providerUrl) ? experience.providerUrl : null;
 
   const copy = locale === "fi"
     ? { eyebrow: "Yksi hetki, jonka muistat", dream: "Tee tästä päivästä tarina.", more: "Löydä lisää elämyksiä", info: "Elämys alkaa jo ennen kuin saavut.", text: "Suomen kesässä parhaat hetket syntyvät usein yksinkertaisista asioista: luonnosta, vedestä, saunasta, ihmisistä ja valosta.", note: "Näytämme paikallisia palveluita ja ohjaamme sinut suoraan palveluntarjoajalle. Varaus, maksu ja sopimus tehdään palveluntarjoajan kanssa.", provider: "Siirry palveluntarjoajalle", price: "Hintaesimerkki" }
@@ -88,8 +89,8 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
             </p>
             <div className="mt-6 rounded-2xl bg-brand-50 p-4 text-sm leading-relaxed text-brand-900">{copy.note}</div>
 
-            {experience.providerUrl ? (
-              <a href={experience.providerUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
+            {providerUrl ? (
+              <a href={providerUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
                 {copy.provider}
               </a>
             ) : (
