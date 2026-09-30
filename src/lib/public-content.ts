@@ -138,6 +138,24 @@ async function getVerifiedExperienceIds(): Promise<Set<string>> {
   const verifiedIds = new Set((providers as IdRow[] ?? []).map((provider) => String(provider.id)));
   return new Set((links as ProviderLinkRow[] ?? []).filter((link) => link.experience_id != null && verifiedIds.has(String(link.provider_id))).map((link) => String(link.experience_id)));
 }
+async function getVerifiedPropertyProviders(): Promise<Map<string, { name?: string; url?: string; region?: string }>> {
+  const [{ data: links }, { data: providers }] = await Promise.all([
+    supabaseAdmin.from("provider_property_links").select("property_id,provider_id"),
+    supabaseAdmin.from("providers").select("id,name,website_url,booking_url,region").eq("active", true).eq("verified", true).order("name"),
+  ]);
+  const providerRows = (providers ?? []) as unknown as Array<{ id: string | number; name?: string | null; website_url?: string | null; booking_url?: string | null; region?: string | null }>;
+  const providerMap = new Map(providerRows.map((provider) => [
+    String(provider.id),
+    { name: provider.name || undefined, url: provider.booking_url || provider.website_url || undefined, region: provider.region || undefined },
+  ]));
+  const result = new Map<string, { name?: string; url?: string; region?: string }>();
+  for (const link of (links ?? []) as unknown as ProviderLinkRow[]) {
+    if (link.property_id == null) continue;
+    const provider = providerMap.get(String(link.provider_id));
+    if (provider && !result.has(String(link.property_id))) result.set(String(link.property_id), provider);
+  }
+  return result;
+}
 async function getVerifiedExperienceProviders(): Promise<Map<string, { name?: string; url?: string; region?: string }>> {
   const [{ data: links }, { data: providers }] = await Promise.all([
     supabaseAdmin.from("provider_experience_links").select("experience_id,provider_id"),
@@ -212,10 +230,12 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
           property.latitude != null && property.longitude != null
             ? { lat: Number(property.latitude), lng: Number(property.longitude) }
             : undefined,
-        type: property.property_type as Cabin["type"],
-        bookingUrl: property.provider_url || undefined,
-        provider: property.provider_name || undefined,
-        verified: verifiedPropertyIds.has(String(property.id)),
+        type: ["cabin", "igloo", "hotel", "villa", "glamping"].includes(property.property_type || "")
+          ? property.property_type as Cabin["type"]
+          : "cabin",
+        bookingUrl: verifiedPropertyProviders.get(String(property.id))?.url,
+        provider: verifiedPropertyProviders.get(String(property.id))?.name || property.provider_name || undefined,
+        verified: verifiedPropertyProviders.has(String(property.id)),
         priceNote: {
           fi: property.base_price_eur ? `Alkaen ${property.base_price_eur} €/yö. Tarkista ajantasainen hinta.` : "Tarkista ajantasainen hinta.",
           es: property.base_price_eur ? `Desde ${property.base_price_eur} € por noche. Consulta el precio actual.` : "Consulta el precio actual.",
@@ -292,6 +312,7 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
         verified: true,
         travel_info_fi: translations.find((t) => t.language_code === "fi")?.travel_information ?? "",
         travel_info_es: translations.find((t) => t.language_code === "es")?.travel_information ?? "",
+        travel_info_en: translations.find((t) => t.language_code === "en")?.travel_information ?? "",
       } satisfies Destination;
     });
   } catch {
