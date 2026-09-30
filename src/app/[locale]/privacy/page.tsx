@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import type { Locale } from "@/types";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale === "es" ? "es" : params.locale === "en" ? "en" : "fi";
-  return {
-    title: locale === "es" ? "Privacidad | Finland Experience" : locale === "en" ? "Privacy | Finland Experience" : "Tietosuoja | Finland Experience",
-    description: locale === "es"
-      ? "Resumen de privacidad de Finland Experience."
-      : locale === "en"
-        ? "Finland Experience privacy overview."
-        : "Finland Experience -sivuston tietosuojan yhteenveto.",
-  };
+  const locale = params.locale as Locale;
+  const safeLocale: Locale = locale === "es" ? "es" : locale === "en" ? "en" : "fi";
+  return buildLocalizedMetadata({
+    locale: safeLocale,
+    title: safeLocale === "es" ? "Privacidad | Finland Experience" : safeLocale === "en" ? "Privacy | Finland Experience" : "Tietosuoja | Finland Experience",
+    description: safeLocale === "es" ? "Resumen de privacidad de Finland Experience." : safeLocale === "en" ? "Finland Experience privacy overview." : "Finland Experience -sivuston tietosuojan yhteenveto.",
+    path: "privacy",
+  });
 }
 
 const copy = {
