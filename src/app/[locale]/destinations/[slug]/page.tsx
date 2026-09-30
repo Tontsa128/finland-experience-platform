@@ -104,7 +104,7 @@ export default async function DestinationDetail({ params }: { params: { locale: 
           exploreStays: "Find a place to stay",
           exploreExperiences: "Discover experiences",
           tips: "How to experience it",
-          tipText: "Combine nature, sauna, local food and one unforgettable summer experience.",
+          tipText: d.travel_info_en || "Combine nature, sauna, local food and one unforgettable summer experience.",
           summerIdea: "Your perfect summer day",
           summerText: isCoastal
           ? "Start by the sea or in the old town, spend the afternoon on the coast and let the bright summer evening stretch late."
