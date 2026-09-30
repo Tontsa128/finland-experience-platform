@@ -8,6 +8,7 @@ import { cabins as fallbackCabins, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
 import { allowDemoFallback, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
+import { formatPrice } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
@@ -77,17 +78,24 @@ export default async function CabinDetail({ params }: { params: { locale: string
               <div className="rounded-2xl bg-slate-50 p-4"><Users className="h-5 w-5 text-brand-600" /><p className="mt-2 text-sm text-slate-600">{c.maxGuests} {locale === "fi" ? "hlö" : locale === "es" ? "personas" : "guests"}</p></div>
               <div className="rounded-2xl bg-slate-50 p-4"><BedDouble className="h-5 w-5 text-brand-600" /><p className="mt-2 text-sm text-slate-600">{c.bedrooms} {locale === "fi" ? "makuuhuonetta" : locale === "es" ? "habitaciones" : "bedrooms"}</p></div>
             </div>
-            {c.features.length > 0 && <div className="mt-7 flex flex-wrap gap-2">{c.features.map((feature) => <span key={feature} className="rounded-full bg-brand-50 px-4 py-2 text-sm text-brand-800">{feature}</span>)}</div>}
+            {c.features.length > 0 && (
+              <div className="mt-7 flex flex-wrap gap-2">
+                {c.features.map((feature) => (
+                  <span key={feature} className="rounded-full bg-brand-50 px-4 py-2 text-sm text-brand-800">{feature}</span>
+                ))}
+              </div>
+            )}
+            {c.provider ? <p className="mt-6 text-sm text-slate-500">{locale === "fi" ? "Palveluntarjoaja" : locale === "es" ? "Proveedor" : "Provider"}: <span className="font-semibold text-slate-700">{c.provider}</span></p> : null}
           </div>
 
           <aside className="h-fit rounded-[2rem] border bg-white p-7 shadow-card lg:sticky lg:top-28">
             <Sparkles className="h-7 w-7 text-amber-500" />
             <p className="mt-5 text-sm text-slate-500">{locale === "fi" ? "Hintaesimerkki" : locale === "es" ? "Precio orientativo" : "Indicative price"}</p>
-            <div className="mt-1 text-3xl font-bold text-brand-950">{c.pricePerNight > 0 ? "€" + c.pricePerNight : "—"}</div>
-            <p className="text-sm text-slate-500">{locale === "fi" ? "alkaen / yö" : locale === "es" ? "desde / noche" : "from / night"}</p>
+            <div className="mt-1 text-3xl font-bold text-brand-950">{c.pricePerNight > 0 ? formatPrice(c.pricePerNight, locale) : "—"}</div>
+            <p className="text-sm text-slate-500">{c.priceNote?.[locale] || (locale === "fi" ? "Tarkista ajantasainen hinta palveluntarjoajalta." : locale === "es" ? "Consulta el precio actual con el proveedor." : "Check the current price with the provider.")}</p>
             <div className="mt-6 rounded-2xl bg-brand-50 p-4 text-sm leading-relaxed text-brand-900">{copy.note}</div>
             {c.bookingUrl ? <a href={c.bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{copy.provider}<ArrowUpRight className="h-4 w-4" /></a> : <p className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-center text-xs text-amber-800">{locale === "fi" ? "Vuokraajan linkki lisätään tähän kohteeseen." : locale === "es" ? "El enlace del proveedor se añadirá aquí." : "The provider link will be added here."}</p>}
-            {c.bookingUrl ? null : <p className="mt-3 text-center text-xs leading-5 text-slate-500">{copy.ask}</p>}
+            
             <Link href={`/${locale}/accommodations`} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:text-brand-600">{copy.more}<ArrowRight className="h-4 w-4" /></Link>
           </aside>
         </div>
