@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,7 +6,24 @@ import { ArrowRight, CalendarDays, Sparkles } from "lucide-react";
 import { experiences as fallbackExperiences, getLocalized } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
-import { allowDemoFallback } from "@/lib/utils";
+import { allowDemoFallback, locales } from "@/lib/utils";
+import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  if (!locales.includes(locale)) return {};
+  const cmsExperiences = await getPublishedExperiences();
+  const source = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
+  const experience = source.find((item) => item.slug === params.slug);
+  if (!experience) return {};
+  return buildLocalizedMetadata({
+    locale,
+    title: getLocalized(experience.name, locale),
+    description: getLocalized(experience.description, locale),
+    path: "experiences/" + experience.slug,
+    image: experience.images[0],
+  });
+}
 
 export default async function ExperienceDetail({ params }: { params: { locale: string; slug: string } }) {
   const locale = params.locale as Locale;
@@ -22,6 +40,14 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
 
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "TouristAttraction",
+        name: getLocalized(e.name, locale),
+        description: getLocalized(e.description, locale),
+        image: e.images,
+        url: siteUrl + "/" + locale + "/experiences/" + e.slug,
+      }) }} />
       <section className="relative isolate min-h-[64vh] overflow-hidden">
         {e.images[0] ? <Image src={e.images[0]} alt={getLocalized(e.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
