@@ -136,7 +136,7 @@ export default async function DestinationDetail({ params }: { params: { locale: 
       <section className="container-narrow py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-600">{copy.dream}</p>
+            <p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-600">{copy.eyebrow}</p>
             <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-brand-950 sm:text-5xl">{copy.dream}</h2>
             <p className="mt-6 text-xl leading-relaxed text-slate-600">{copy.dreamText}</p>
             <p className="mt-6 text-lg leading-relaxed text-slate-700">{getLocalized(d.description, locale)}</p>
