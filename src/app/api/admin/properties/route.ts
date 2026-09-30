@@ -31,7 +31,7 @@ function validate(body: Payload) {
     errors.push("basePriceEur must be a non-negative number");
   }
   if (body.providerId != null && !UUID_PATTERN.test(body.providerId)) errors.push("providerId must be a valid UUID");
-  if (body.providerUrl && !/^https?:\/\//i.test(body.providerUrl.trim())) errors.push("providerUrl must be an http(s) URL");
+  if (body.providerUrl && !firstValidHttpUrl(body.providerUrl)) errors.push("providerUrl must be an http(s) URL");
   if (body.propertyType != null && !PROPERTY_TYPES.has(body.propertyType.trim())) errors.push("propertyType must be one of cabin, igloo, hotel, villa or glamping");
   if (body.mediaIds && (!Array.isArray(body.mediaIds) || body.mediaIds.some((id) => typeof id !== "string" || !id.trim()))) {
     errors.push("mediaIds must contain non-empty IDs");
@@ -133,8 +133,8 @@ export async function PATCH(req:NextRequest) {
         return NextResponse.json({error:"Published accommodations require an active verified provider."},{status:400});
       }
       if (status === "published") {
-        const providerUrl = String(provider.booking_url || provider.website_url || "").trim();
-        if (!/^https?:\\/\\//i.test(providerUrl)) {
+        const providerUrl = firstValidHttpUrl(provider.booking_url, provider.website_url);
+        if (!providerUrl) {
           return NextResponse.json({error:"Published accommodations require a valid provider website or booking URL."},{status:400});
         }
       }
