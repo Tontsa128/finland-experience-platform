@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
+import { firstValidHttpUrl } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 const locales = ["fi", "es", "en"] as const;
@@ -73,8 +74,8 @@ export async function POST(req:NextRequest) {
         return NextResponse.json({error:"Published accommodations require an active verified provider."},{status:400});
       }
       if (status === "published") {
-        const providerUrl = String(provider.booking_url || provider.website_url || "").trim();
-        if (!/^https?:\/\//i.test(providerUrl)) {
+        const providerUrl = firstValidHttpUrl(provider.booking_url, provider.website_url);
+        if (!providerUrl) {
           return NextResponse.json({error:"Published accommodations require a valid provider website or booking URL."},{status:400});
         }
       }
