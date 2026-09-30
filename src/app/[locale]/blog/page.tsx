@@ -4,6 +4,8 @@ import { ArrowRight, Compass, Moon, Sparkles, Sun, Waves } from "lucide-react";
 import { blogPosts as fallbackPosts, getLocalized } from "@/lib/data";
 import { getPublishedBlogPosts } from "@/lib/public-content";
 import type { Locale } from "@/types";
+import type { Metadata } from "next";
+import { buildLocalizedMetadata } from "@/lib/seo";
 import { allowDemoFallback } from "@/lib/utils";
 import { photoLibrary } from "@/lib/photo-library";
 
@@ -12,6 +14,16 @@ const editorialImages = [
   photoLibrary.naantaliOldTown,
   photoLibrary.aland,
 ];
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const copy = locale === "fi"
+    ? { title: "Matkainspiraatio Suomeen | Finland Experience", description: "Matkatarinoita mökeistä, saunasta, saaristosta, luonnosta, ruoasta ja suomalaisesta elämästä." }
+    : locale === "es"
+      ? { title: "Inspiración para viajar a Finlandia | Finland Experience", description: "Historias sobre cabañas, saunas, archipiélago, naturaleza, gastronomía y vida local finlandesa." }
+      : { title: "Finland Travel Inspiration | Finland Experience", description: "Stories about cottages, sauna, archipelago, nature, food and authentic Finnish life." };
+  return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "blog" });
+}
 
 export default async function BlogPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
