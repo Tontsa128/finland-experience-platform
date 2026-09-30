@@ -87,6 +87,24 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
     { name: "TuuSeikkailee", place: "Oripää · Auranmaa", image: photoLibrary.teijoNationalPark, href: "https://tuuseikkailee.fi/", text: isEs ? "Naturaleza, experiencias y bienestar." : isEn ? "Nature, experience and wellbeing." : "Luonto-, elämys- ja hyvinvointipalvelut." },
   ];
 
+  const pillars = [
+    {
+      Icon: Sparkles,
+      title: isEs ? "Sauna tradicional y bienestar" : isEn ? "Traditional sauna & wellbeing" : "Savusauna ja hyvinvointi",
+      text: isEs ? "Saunas de humo, agua y descanso." : isEn ? "Smoke sauna, water and a slower rhythm." : "Savusauna, vesi ja rauhallinen suomalainen rytmi.",
+    },
+    {
+      Icon: Compass,
+      title: isEs ? "Naturaleza, kayak y bicicleta" : isEn ? "Nature, kayaking & cycling" : "Luonto, melonta ja pyöräily",
+      text: isEs ? "Teijo, islas, senderos, kayak y bicicleta." : isEn ? "Teijo, islands, trails, kayaking and cycling." : "Teijo, saaret, reitit, melonta ja pyöräily.",
+    },
+    {
+      Icon: Utensils,
+      title: isEs ? "Gastronomía local y temporada" : isEn ? "Local food & seasonal life" : "Lähiruoka ja vuodenaika",
+      text: isEs ? "Pescado, pan de archipiélago, bayas y pequeños productores." : isEn ? "Fish, archipelago bread, berries and small local producers." : "Kala, saaristolaisleipä, marjat ja pienet paikalliset tuottajat.",
+    },
+  ];
+
   return (
     <main className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -104,14 +122,13 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
 
       <section className="container-narrow py-16 sm:py-24">
         <div className="grid gap-6 lg:grid-cols-3">
-          {[
-            [Sparkles, isEs ? "Sauna tradicional y bienestar" : isEn ? "Traditional sauna & wellbeing" : "Savusauna ja hyvinvointi", isEs ? "Saunas de humo, agua y descanso." : isEn ? "Smoke sauna, water and a slower rhythm." : "Savusauna, vesi ja rauhallinen suomalainen rytmi."],
-            [Compass, isEs ? "Naturaleza, kayak y bicicleta" : isEn ? "Nature, kayaking & cycling" : "Luonto, melonta ja pyöräily", isEs ? "Teijo, islas, senderos, kayak y bicicleta." : isEn ? "Teijo, islands, trails, kayaking and cycling." : "Teijo, saaret, reitit, melonta ja pyöräily."],
-            [Utensils, isEs ? "Gastronomía local y temporada" : isEn ? "Local food & seasonal life" : "Lähiruoka ja vuodenaika", isEs ? "Pescado, pan de archipiélago, bayas y pequeños productores." : isEn ? "Fish, archipelago bread, berries and small local producers." : "Kala, saaristolaisleipä, marjat ja pienet paikalliset tuottajat."],
-          ].map(([Icon, title, text]) => {
-            const I = Icon as typeof Sparkles;
-            return <article key={title as string} className="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-7"><I className="h-7 w-7 text-brand-700" /><h2 className="mt-6 font-display text-2xl font-bold text-brand-950">{title}</h2><p className="mt-3 leading-7 text-slate-600">{text}</p></article>;
-          })}
+          {pillars.map(({ Icon, title, text }) => (
+            <article key={title} className="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-7">
+              <Icon className="h-7 w-7 text-brand-700" />
+              <h2 className="mt-6 font-display text-2xl font-bold text-brand-950">{title}</h2>
+              <p className="mt-3 leading-7 text-slate-600">{text}</p>
+            </article>
+          ))}
         </div>
       </section>
 
