@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAdminContext } from "@/lib/admin-auth";
 import { supabaseAdmin } from "@/lib/supabase";
+import { firstValidHttpUrl } from "@/lib/utils";
 
 const editable = new Set([
   "description_fi","description_es","description_en","website_url","booking_url",
@@ -59,8 +60,43 @@ export async function PATCH(request: Request) {
         safe[key]=typeof value === "string" ? value.slice(0,5000) : value;
       }
     }
+
+    const urlChanged = Object.prototype.hasOwnProperty.call(safe, "website_url") || Object.prototype.hasOwnProperty.call(safe, "booking_url");
+    if (urlChanged) {
+      const { data: provider, error: providerError } = await supabaseAdmin
+        .from("providers")
+        .select("website_url,booking_url")
+        .eq("id", changeRequest.provider_id)
+        .maybeSingle();
+      if (providerError) return NextResponse.json({error:providerError.message},{status:500});
+      const providerUrl = firstValidHttpUrl(
+        safe.booking_url ?? provider?.booking_url,
+        safe.website_url ?? provider?.website_url,
+      );
+      if (!providerUrl) return NextResponse.json({error:"Approved provider changes require a valid provider website or booking URL."},{status:400});
+      safe.verified = false;
+      safe.verified_at = null;
+    }
+
     const { error:updateError } = await supabaseAdmin.from("providers").update(safe).eq("id",changeRequest.provider_id);
     if(updateError) return NextResponse.json({error:updateError.message},{status:500});
+
+    if (urlChanged) {
+      const { error:verificationResetError } = await supabaseAdmin
+        .from("provider_verification_checks")
+        .update({
+          company_checked: false,
+          contact_checked: false,
+          pricing_checked: false,
+          booking_flow_checked: false,
+          spanish_content_checked: false,
+          photos_checked: false,
+          checked_by: null,
+          checked_at: null,
+        })
+        .eq("provider_id", changeRequest.provider_id);
+      if (verificationResetError) return NextResponse.json({error:verificationResetError.message},{status:500});
+    }
   }
 
   const { data, error } = await supabaseAdmin
