@@ -63,6 +63,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                 key={targetLocale}
                 href={languageHref(targetLocale)}
                 aria-current={targetLocale === locale ? "page" : undefined}
+                aria-label={label}
                 title={label}
                 className={`flex h-8 min-w-8 items-center justify-center rounded-full px-2 text-xs font-semibold transition sm:h-auto sm:min-w-0 sm:px-2.5 sm:py-1.5 ${targetLocale === locale ? "bg-brand-900 text-white shadow-sm" : "text-slate-600 hover:bg-white hover:text-brand-700"}`}
               >
@@ -107,7 +108,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
               {ui.account} / {ui.login}
             </Link>
             {items.map(([key, p]) => (
-              <Link key={key} onClick={() => setOpen(false)} href={href(p)} className="block rounded-xl px-3 py-3 text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900">
+              <Link key={key} onClick={() => setOpen(false)} href={href(p)} aria-current={path === href(p) ? "page" : undefined} className={`block rounded-xl px-3 py-3 text-base font-medium ${path === href(p) ? "bg-brand-50 text-brand-900" : "text-slate-700 hover:bg-brand-50 hover:text-brand-900"}`}>
                 {labelFor(key)}
               </Link>
             ))}
