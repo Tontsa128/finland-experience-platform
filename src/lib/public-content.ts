@@ -406,6 +406,7 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
       .from("blog_posts")
       .select("id,slug,author_name,published_at,cover_media_id,blog_post_translations(locale,title,excerpt,content)")
       .eq("status", "published")
+      .or(`published_at.is.null,published_at.lte.${new Date().toISOString()}`)
       .order("published_at", { ascending: false });
 
     if (error || !data?.length) return [];
