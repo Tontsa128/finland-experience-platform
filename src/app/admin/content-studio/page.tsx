@@ -28,6 +28,7 @@ type Item = {
   title: string;
   status: string;
   region: string;
+  providerId?: string;
   translations: Record<Locale, Translation>;
   raw: any;
 };
@@ -81,7 +82,7 @@ function normalize(kind: Kind, raw: any): Item {
     }
   }
   const title = translations.fi.name || translations.fi.fullDescription.slice(0, 60) || raw.slug;
-  return { id: String(raw.id), kind, slug: raw.slug, title, status: raw.status || "draft", region: raw.region || "", translations, raw };
+  return { id: String(raw.id), kind, slug: raw.slug, title, status: raw.status || "draft", region: raw.region || "", providerId: raw.provider_property_links?.[0]?.provider_id || raw.provider_experience_links?.[0]?.provider_id || "", translations, raw };
 }
 
 export default function ContentStudioPage() {
@@ -105,8 +106,9 @@ export default function ContentStudioPage() {
     if (!r.ok) throw new Error(b.error || "Sisältöä ei voitu ladata.");
     const source = kind === "destination" ? b.destinations : kind === "property" ? b.properties : b.experiences;
     const normalized: Item[] = (source || []).map((x: any): Item => normalize(kind, x));
-    setItems(normalized);
-    return normalized;
+    const enriched = normalized.map(item => kind === "property" ? { ...item, raw: { ...item.raw, _providers: b.providers || [] } } : item);
+    setItems(enriched);
+    return enriched;
   }, [kind]);
 
   const loadMedia = useCallback(async () => {
@@ -184,7 +186,7 @@ export default function ContentStudioPage() {
       } else if (selected.kind === "property") {
         endpoint = "/api/admin/properties";
         body = {
-          id:selected.id, slug:selected.slug, propertyType:selected.raw.property_type, region:selected.raw.region,
+          id:selected.id, providerId:selected.providerId || null, slug:selected.slug, propertyType:selected.raw.property_type, region:selected.raw.region,
           maxGuests:selected.raw.max_guests, bedrooms:selected.raw.bedrooms, bathrooms:selected.raw.bathrooms,
           basePriceEur:selected.raw.base_price_eur, providerName:selected.raw.provider_name, providerUrl:selected.raw.provider_url,
           featured:selected.raw.featured, status:selected.status === "published" ? "published" : selected.status === "archived" ? "archived" : "draft",
@@ -302,6 +304,25 @@ export default function ContentStudioPage() {
 
             {error && <p className="mt-5 rounded-xl bg-red-50 p-4 text-sm text-red-700">{error}</p>}
             {notice && <p className="mt-5 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-700">{notice}</p>}
+
+            {selected.kind === "property" && (
+              <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+                <label className="grid gap-2 text-sm font-semibold text-slate-800">
+                  Varmennettu palveluntarjoaja
+                  <select
+                    value={selected.providerId || ""}
+                    onChange={e => setSelected({ ...selected, providerId: e.target.value })}
+                    className="rounded-xl border border-amber-200 bg-white px-4 py-3 font-normal"
+                  >
+                    <option value="">Valitse palveluntarjoaja ennen julkaisua</option>
+                    {(selected.raw._providers || []).map((p: { id: string; name: string; verified: boolean; active: boolean }) => (
+                      <option key={p.id} value={p.id}>{p.name}{p.verified && p.active ? " · Verified" : p.active ? " · Aktiivinen" : " · Ei aktiivinen"}</option>
+                    ))}
+                  </select>
+                  <span className="text-xs font-normal text-amber-800">Julkaistu majoitus tarvitsee aktiivisen ja varmennetun palveluntarjoajan.</span>
+                </label>
+              </div>
+            )}
 
             <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-5">
               <label className="flex items-center gap-2 text-sm font-semibold"><span>Tila</span>
