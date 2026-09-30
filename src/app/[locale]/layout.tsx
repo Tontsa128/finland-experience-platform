@@ -6,7 +6,6 @@ import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { AIChat } from "@/components/ai/AIChat";
 import { Toaster } from "sonner";
 import { CookieConsent } from "@/components/legal/CookieConsent";
 import { WhatsAppButton } from "@/components/contact/WhatsAppButton";
@@ -53,7 +52,6 @@ export default async function LocaleLayout({
         <Header navigation={navigation} />
         <main className="flex-1">{children}</main>
         <Footer />
-        <AIChat />
         <WhatsAppButton locale={locale} />
         <CookieConsent />
         <Toaster position="top-center" richColors />
