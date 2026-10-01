@@ -55,12 +55,12 @@ export async function POST(request: NextRequest) {
       recommended_items: Array.isArray(body.recommendedItems)
         ? body.recommendedItems
             .filter((x: unknown): x is Record<string, unknown> => !!x && typeof x === "object")
-            .map((x) => ({
+            .map((x: Record<string, unknown>) => ({
               type: typeof x.type === "string" ? x.type.slice(0, 30) : "",
               slug: typeof x.slug === "string" ? x.slug.slice(0, 200) : "",
               reason: typeof x.reason === "string" ? x.reason.slice(0, 300) : "",
             }))
-            .filter((x) => ["destination", "accommodation", "experience"].includes(x.type) && x.slug)
+            .filter((x: { type: string; slug: string }) => ["destination", "accommodation", "experience"].includes(x.type) && x.slug)
             .slice(0, 3)
         : [],
     }).select("id,status,created_at").single();
