@@ -196,6 +196,32 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Visit Salo",
   },
   {
+    id: "saaristomokit-sarkisalo",
+    category: "stay",
+    name: "Saaristomökit Särkisalossa",
+    description: {
+      fi: "Kahdeksan merenrantamökkiä Salon eteläisessä saaristossa. Vaihtoehtoja pienistä mökeistä suurempiin huviloihin, puusauna, laituri ja terassi.",
+      es: "Ocho cabañas junto al mar en el archipiélago de Särkisalo, desde pequeñas cabañas hasta villas, con sauna de leña y embarcadero.",
+      en: "Eight seaside cottages in the Särkisalo archipelago, from compact cabins to larger villas, with wood-fired sauna and pier.",
+    },
+    url: "https://www.ylostalo.fi/vuokramokit",
+    image: "https://cdn-datahub.visitfinland.com/images/2d04f3d0-d2bb-11ed-8ed8-859d0a6307f5.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub",
+  },
+  {
+    id: "matildanjarven-kampat",
+    category: "stay",
+    name: "Matildanjärven kämpät",
+    description: {
+      fi: "Kaksi vuokrattavaa kämppää Teijon kansallispuistossa Luontokeskuksen lähellä. Kummassakin majoittuu enintään kuusi; saunavuoro kuuluu majoitukseen.",
+      es: "Dos alojamientos de alquiler cerca del centro de visitantes del Parque Nacional de Teijo, con capacidad para seis personas cada uno y sauna incluida.",
+      en: "Two rental cabins near the Teijo National Park visitor centre, each sleeping up to six, with a sauna session included.",
+    },
+    url: "https://naturaviva.fi/fi_FI/majoituskohteet-etela-suomessa/matildanjarven-kampat",
+    image: "https://cdn-datahub.visitfinland.com/images/40f256f0-6b21-11ed-8b5d-750472ef9a58.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub",
+  },
+  {
     id: "vuohensaari-camping",
     category: "stay",
     name: "Vuohensaaren leirintäalue",
