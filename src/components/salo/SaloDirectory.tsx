@@ -9,8 +9,9 @@ const labels = {
   en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider" },
 } as const;
 
-export function SaloDirectory({ locale }: { locale: Locale }) {
+export function SaloDirectory({ locale, category }: { locale: Locale; category?: SaloProvider["category"] }) {
   const l = labels[locale];
+  const providers = category ? saloProviders.filter((provider) => provider.category === category) : saloProviders;
   return (
     <section className="bg-brand-50 py-16 sm:py-24">
       <div className="container-narrow">
@@ -25,7 +26,7 @@ export function SaloDirectory({ locale }: { locale: Locale }) {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {saloProviders.map((provider) => (
+          {providers.map((provider) => (
             <article key={provider.id} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
               {provider.image ? (
                 <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
