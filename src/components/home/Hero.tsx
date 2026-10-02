@@ -174,7 +174,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent" />
 
       {credit ? (
-        <div className="absolute right-4 top-[calc(68svh-3rem)] z-20 rounded-full bg-black/40 px-3 py-1.5 text-[11px] text-white/80 backdrop-blur-sm sm:top-[660px] lg:top-[680px]">
+        <div className="absolute bottom-3 right-3 z-20 rounded-full bg-black/45 px-2 py-0.5 text-[8px] leading-3 text-white/65 backdrop-blur-sm sm:bottom-4 sm:right-4 sm:px-2.5 sm:py-1 sm:text-[9px]">
           {"creditUrl" in slide && slide.creditUrl ? (
             <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:text-white">
               {credit}
