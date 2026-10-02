@@ -131,7 +131,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const credit = isCmsHero ? "" : slide.credit;
 
   return (
-    <section className="overflow-hidden bg-white text-white">
+    <section className="relative overflow-hidden bg-white text-white">
       {slides.map((item, index) => (
         <div
           key={item.key}
@@ -153,7 +153,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent" />
 
       {credit ? (
-        <div className="absolute bottom-4 right-4 z-10 rounded-full bg-black/40 px-3 py-1.5 text-[11px] text-white/80 backdrop-blur-sm">
+        <div className="absolute right-4 top-[calc(68svh-3rem)] z-20 rounded-full bg-black/40 px-3 py-1.5 text-[11px] text-white/80 backdrop-blur-sm sm:top-[660px] lg:top-[680px]">
           {"creditUrl" in slide && slide.creditUrl ? (
             <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:text-white">
               {credit}
