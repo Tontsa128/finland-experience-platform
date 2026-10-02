@@ -198,6 +198,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
         </div>
       </div>
+      </div>
 
       <div className="relative z-20 border-t border-slate-200 bg-white text-brand-950 shadow-[0_-10px_30px_rgba(15,23,42,0.08)]">
         <div className="container-narrow flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:py-6">
