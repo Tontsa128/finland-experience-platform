@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight, ExternalLink, Tag } from "lucide-react";
 import type { Locale } from "@/types";
-import { saloProviders } from "@/lib/salo";
+import { saloProviders, type SaloProvider } from "@/lib/salo";
 
 const labels = {
   fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle" },
