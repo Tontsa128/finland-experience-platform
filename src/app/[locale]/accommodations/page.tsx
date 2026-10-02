@@ -9,6 +9,7 @@ import type { Locale } from "@/types";
 import { allowDemoFallback } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
+import { SaloDirectory } from "@/components/salo/SaloDirectory";
 
 const copy = {
   fi: {
@@ -122,6 +123,8 @@ export default async function AccommodationsPage({ params }: { params: { locale:
           </div>
         )}
       </section>
+
+      <SaloDirectory locale={locale} category="stay" />
 
       <section className="bg-slate-50">
         <div className="container-narrow py-14 sm:py-20">
