@@ -131,9 +131,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const credit = isCmsHero ? "" : slide.credit;
 
   return (
-    <section
-      className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-brand-950 text-white sm:min-h-[760px]"
-    >
+    <section className="overflow-hidden bg-white text-white">
       {slides.map((item, index) => (
         <div
           key={item.key}
@@ -166,7 +164,8 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         </div>
       ) : null}
 
-      <div className="container-narrow relative z-10 flex min-h-[calc(100svh-4rem)] items-end pb-20 pt-32 sm:min-h-[760px] sm:pb-24 lg:pb-28">
+      <div className="relative z-10 flex min-h-[68svh] items-end pb-10 pt-28 sm:min-h-[700px] sm:pb-16 lg:min-h-[720px] lg:pb-20">
+        <div className="container-narrow w-full">
         <div className="max-w-4xl">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.24em] text-gold-300">{text.eyebrow}</p>
           <h1 className="max-w-4xl font-display text-5xl font-bold leading-[.94] tracking-[-.03em] sm:text-7xl lg:text-[5.8rem]">
@@ -176,22 +175,27 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             {text.text}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+        </div>
+      </div>
+
+      <div className="relative z-20 border-t border-slate-200 bg-white text-brand-950 shadow-[0_-10px_30px_rgba(15,23,42,0.08)]">
+        <div className="container-narrow flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:py-6">
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
             {isExternal ? (
-              <a href={href} target="_blank" rel="noreferrer" className="btn-gold justify-center px-7 py-4">
+              <a href={href} target="_blank" rel="noreferrer" className="btn-gold w-full justify-center px-7 py-4 sm:w-auto">
                 {text.cta} <ExternalLink className="h-4 w-4" />
               </a>
             ) : (
-              <Link href={href} className="btn-gold justify-center px-7 py-4">
+              <Link href={href} className="btn-gold w-full justify-center px-7 py-4 sm:w-auto">
                 {text.cta} <ArrowRight className="h-4 w-4" />
               </Link>
             )}
-            <Link href={secondaryHref} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/45 bg-black/15 px-7 py-4 text-sm font-bold backdrop-blur-md hover:bg-white hover:text-brand-950">
+            <Link href={secondaryHref} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-7 py-4 text-sm font-bold text-brand-950 hover:bg-brand-100 sm:w-auto">
               {settings?.heroSecondaryLabel?.[locale] || (locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="mt-8 flex items-center gap-3" aria-label={locale === "es" ? "Carrusel de imágenes" : locale === "fi" ? "Kuvakaruselli" : "Image carousel"}>
+          <div className="flex items-center justify-center gap-3" aria-label={locale === "es" ? "Carrusel de imágenes" : locale === "fi" ? "Kuvakaruselli" : "Image carousel"}>
             <button type="button" onClick={() => setActive((current) => (current - 1 + slides.length) % slides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Anterior" : locale === "fi" ? "Edellinen" : "Previous"}>
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -210,7 +214,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             <button type="button" onClick={() => setActive((current) => (current + 1) % slides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Siguiente" : locale === "fi" ? "Seuraava" : "Next"}>
               <ChevronRight className="h-5 w-5" />
             </button>
-            <span className="ml-1 hidden text-xs font-semibold text-white/65 sm:inline">{active + 1} / {slides.length}</span>
+            <span className="ml-1 hidden text-xs font-semibold text-slate-500 sm:inline">{active + 1} / {slides.length}</span>
           </div>
         </div>
       </div>
