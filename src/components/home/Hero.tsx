@@ -102,7 +102,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
   es: {
     sauna: { eyebrow: "Sauna · Finlandia", title: "Calor, silencio y agua", text: "La sauna forma parte de los momentos esenciales del verano finlandés, junto al lago, el mar o el bosque.", cta: "Explorar experiencias" },
     teijo: { eyebrow: "Parque Nacional de Teijo", title: "El bosque empieza cerca de la costa", text: "Lagos, rocas, bosques y rutas tranquilas en la región de Salo.", cta: "Explorar destino" },
-    summer: { eyebrow: "Hidden Coastal Finland", { eyebrow: "Hidden Coastal Finland", title: "El verano finlandés empieza en la costa", text: "Largas tardes, archipiélago, pueblos históricos y cabañas tranquilas junto al agua.", cta: "Explorar destinos" },
+    summer: { eyebrow: "Hidden Coastal Finland", title: "El verano finlandés empieza en la costa", text: "Largas tardes, archipiélago, pueblos históricos y cabañas tranquilas junto al agua.", cta: "Explorar destinos" },
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Sauna de humo junto al mar", text: "Herrankukkaro combina archipiélago, sauna de humo, alojamiento y gastronomía local.", cta: "Ir al proveedor" },
     storfinnhova: { eyebrow: "Kemiönsaari", title: "Duerme en un pueblo del bosque", text: "Sauna de humo de granito subterránea, casas en los árboles y glamping en plena naturaleza.", cta: "Ir al proveedor" },
     natura: { eyebrow: "Parque Nacional de Teijo · Salo", title: "Kayak, bicicleta y fuego en el bosque", text: "Alquila equipo en Natura Viva y descubre el lago Matildanjärvi y las rutas de Teijo.", cta: "Ir al proveedor" },
@@ -114,7 +114,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
   en: {
     sauna: { eyebrow: "Sauna · Finland", title: "Warmth, silence and water", text: "Sauna is one of the essential Finnish summer moments – by a lake, the sea or deep in the woods.", cta: "Explore experiences" },
     teijo: { eyebrow: "Teijo National Park", title: "The forest begins close to the coast", text: "Lakes, rocky landscapes, forests and quiet trails in the Salo region.", cta: "Explore destination" },
-    summer: { eyebrow: "Hidden Coastal Finland", { eyebrow: "Hidden Coastal Finland", title: "Finnish summer begins in the small places on the coast", text: "Long evenings, archipelago islands, ironworks villages and quiet cottage days by the water.", cta: "Explore destinations" },
+    summer: { eyebrow: "Hidden Coastal Finland", title: "Finnish summer begins in the small places on the coast", text: "Long evenings, archipelago islands, ironworks villages and quiet cottage days by the water.", cta: "Explore destinations" },
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Smoke sauna by the sea", text: "Herrankukkaro brings together archipelago nature, smoke sauna, accommodation and local food.", cta: "Visit provider" },
     storfinnhova: { eyebrow: "Kemiönsaari", title: "Sleep in a forest village", text: "An underground granite smoke sauna, tree cabins and glamping in the woods.", cta: "Visit provider" },
     natura: { eyebrow: "Teijo National Park · Salo", title: "Paddle, cycle and stop by the fire", text: "Rent equipment from Natura Viva and explore Lake Matildanjärvi and the Teijo trails.", cta: "Visit provider" },
