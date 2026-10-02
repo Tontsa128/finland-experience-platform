@@ -419,7 +419,7 @@ export const saloProviders: SaloProvider[] = [
       es: "Pequeña cabaña junto al mar para 1–2 personas en Pettu, con sauna interior, chimenea y bote de remos.",
       en: "Small 1–2 person seaside cottage on Pettu island, with indoor sauna, fireplace and rowing boat.",
     },
-    url: "https://www.nettimokki.com",
+    url: "https://www.lonnviken.com/fi/meri-veikko",
   },
 
 ];
