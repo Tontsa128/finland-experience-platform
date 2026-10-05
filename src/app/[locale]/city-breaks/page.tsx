@@ -184,12 +184,6 @@ export default function CityBreaksPage({ params }: { params: { locale: string } 
                   <a href={city.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:text-brand-600">
                     {city.hrefLabel[locale]}<ArrowUpRight className="h-4 w-4" />
                   </a>
-                  {city.key === "hanko" ? <Link href={`/${locale}/hanko`} className="inline-flex items-center gap-2 text-sm font-bold text-brand-900 hover:text-brand-600">
-                    {locale === "fi" ? "Avaa Hanko-opas" : locale === "es" ? "Abrir guía de Hanko" : "Open Hanko guide"}<ArrowRight className="h-4 w-4" />
-                  </Link> : null}
-                  {city.key === "naantali" ? <Link href={`/${locale}/naantali`} className="inline-flex items-center gap-2 text-sm font-bold text-brand-900 hover:text-brand-600">
-                    {locale === "fi" ? "Avaa Naantali-opas" : locale === "es" ? "Abrir guía de Naantali" : "Open Naantali guide"}<ArrowRight className="h-4 w-4" />
-                  </Link> : null}
                   {city.key === "turku" ? <Link href={`/${locale}/turku`} className="inline-flex items-center gap-2 text-sm font-bold text-brand-900 hover:text-brand-600">
                     {locale === "fi" ? "Avaa Turku-opas" : locale === "es" ? "Abrir guía de Turku" : "Open Turku guide"}<ArrowRight className="h-4 w-4" />
                   </Link> : null}
