@@ -65,9 +65,12 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
         iconSize: [selected ? 38 : 30, selected ? 38 : 30],
         iconAnchor: [selected ? 19 : 15, selected ? 19 : 15],
       });
+      const directions = `https://www.google.com/maps/dir/?api=1&destination=${item.coordinates!.lat},${item.coordinates!.lng}`;
+      const navigateLabel = locale === "fi" ? "Navigoi tähän" : locale === "es" ? "Navegar aquí" : "Navigate here";
       const marker = L.marker([item.coordinates!.lat, item.coordinates!.lng], { icon })
         .addTo(map)
-        .bindTooltip(label(item, locale), { direction: "top", offset: [0, -12] });
+        .bindTooltip(label(item, locale), { direction: "top", offset: [0, -12] })
+        .bindPopup(`<strong>${label(item, locale)}</strong><br/><a href="${directions}" target="_blank" rel="noopener noreferrer">${navigateLabel} ↗</a>`);
       marker.on("click", () => onSelect?.(item.slug));
       markersRef.current.set(item.slug, marker);
     });
