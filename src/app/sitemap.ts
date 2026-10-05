@@ -14,6 +14,7 @@ export const revalidate = 3600;
 const basePaths = [
   "",
   "destinations",
+  "salo",
   "accommodations",
   "experiences",
   "rural-finland",
