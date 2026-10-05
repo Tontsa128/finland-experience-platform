@@ -278,6 +278,14 @@ const sarkisaloProviders = saloProviders.filter((provider) => [
   "villa-nennebo",
 ].includes(provider.id));
 
+const internalGuides: Record<string, string> = {
+  mathildedal: "salo",
+  naantali: "naantali",
+  "turku-archipelago": "turku",
+  hanko: "hanko",
+  aland: "aland",
+};
+
 const sectionLabels = {
   fi: { stay: "Majoitus", food: "Ruoka & kahvilat", do: "Tekemistä", nature: "Luonto & meri", sauna: "Sauna", providers: "Poimittuja suoria linkkejä" },
   es: { stay: "Alojamiento", food: "Gastronomía y cafés", do: "Qué hacer", nature: "Naturaleza y mar", sauna: "Sauna", providers: "Enlaces directos seleccionados" },
@@ -361,9 +369,16 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
                 <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{place.region[locale]}</p>
                 <h2 className="mt-3 font-display text-4xl font-bold leading-tight text-brand-950 sm:text-5xl">{place.name[locale]}</h2>
                 <p className="mt-5 text-lg leading-8 text-slate-700">{place.intro[locale]}</p>
-                <a href={place.official} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
-                  {place.officialLabel[locale]}<ArrowUpRight className="h-4 w-4" />
-                </a>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a href={place.official} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
+                    {place.officialLabel[locale]}<ArrowUpRight className="h-4 w-4" />
+                  </a>
+                  {internalGuides[place.slug] ? (
+                    <Link href={`/${locale}/${internalGuides[place.slug]}`} className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-5 py-3.5 text-sm font-bold text-brand-900 hover:border-brand-400">
+                      {locale === "fi" ? "Avaa meidän opas" : locale === "es" ? "Abrir nuestra guía" : "Open our guide"}<ArrowRight className="h-4 w-4" />
+                    </Link>
+                  ) : null}
+                </div>
               </div>
             </div>
 
@@ -464,6 +479,32 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
                 <h3 className="font-semibold text-brand-950">{provider.name}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>
               </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-24">
+        <div className="container-narrow">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Syvennä matkaa" : locale === "es" ? "Profundiza en tu viaje" : "Go deeper"}</p>
+            <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Alueoppaat yhdellä sivulla" : locale === "es" ? "Guías regionales en un solo lugar" : "Regional guides in one place"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-700">{locale === "fi" ? "Aloita tästä ja siirry sitten alueen omaan oppaaseen. Näin löydät enemmän majoituksia, ruokapaikkoja, elämyksiä ja paikallisia palveluita ilman että matkasi muuttuu valmispaketiksi." : locale === "es" ? "Empieza aquí y después entra en la guía específica de cada región. Encontrarás más alojamiento, gastronomía, experiencias y servicios locales sin convertir el viaje en un paquete turístico." : "Start here and then open the dedicated regional guide. Find more accommodation, food, experiences and local services without turning the journey into a package tour."}</p>
+          </div>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              ["Salo", "salo", locale === "fi" ? "Mathildedal, Teijo, Särkisalo, Perniö ja kaupungin palvelut." : locale === "es" ? "Mathildedal, Teijo, Särkisalo, Perniö y servicios de la ciudad." : "Mathildedal, Teijo, Särkisalo, Perniö and town services."],
+              ["Turku", "turku", locale === "fi" ? "Aurajoki, historia, Ruissalo, ruoka, sauna ja saaristo." : locale === "es" ? "Río Aura, historia, Ruissalo, gastronomía, sauna y archipiélago." : "Aura River, history, Ruissalo, food, sauna and archipelago."],
+              ["Naantali", "naantali", locale === "fi" ? "Vanhakaupunki, satama, Kultaranta, Muumimaailma ja pieni saaristoreitti." : locale === "es" ? "Casco antiguo, puerto, Kultaranta, Moominworld y ruta corta del archipiélago." : "Old Town, harbour, Kultaranta, Moominworld and the Small Archipelago Trail."],
+              ["Hanko", "hanko", locale === "fi" ? "Rannat, avomeri, luonto, pyöräily, ruoka ja saunat." : locale === "es" ? "Playas, mar abierto, naturaleza, ciclismo, gastronomía y saunas." : "Beaches, open sea, nature, cycling, food and saunas."],
+              ["Kemiönsaari & Rosala", "kimitoon", locale === "fi" ? "Viikinkikeskus, Kasnäs, Bengtskär, saaristomajoitus ja meri." : locale === "es" ? "Centro Vikingo, Kasnäs, Bengtskär, alojamiento y mar." : "Viking Centre, Kasnäs, Bengtskär, island stays and the sea."],
+              ["Åland", "aland", locale === "fi" ? "Pyöräily, saaristoreitti, mökit, ruoka ja pienet saaret." : locale === "es" ? "Ciclismo, ruta del archipiélago, cabañas, gastronomía e islas." : "Cycling, archipelago trail, cottages, food and small islands."],
+            ].map(([name, href, text]) => (
+              <Link key={href} href={`/${locale}/${href}`} className="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-card">
+                <h3 className="font-display text-2xl font-bold text-brand-950">{name}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa opas" : locale === "es" ? "Abrir guía" : "Open guide"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+              </Link>
             ))}
           </div>
         </div>
