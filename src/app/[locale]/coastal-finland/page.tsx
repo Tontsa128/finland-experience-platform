@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, BedDouble, Bike, Coffee, Leaf, MapPin, Waves,
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
+import { saloProviders } from "@/lib/salo";
 
 type Localized = Record<Locale, string>;
 
@@ -176,7 +177,7 @@ const places: Place[] = [
     region: { fi: "Hanko · Suomen eteläkärki", es: "Hanko · extremo sur de Finlandia", en: "Hanko · southernmost Finland" },
     image: photoLibrary.hanko,
     imageAlt: { fi: "Hanko ilmasta", es: "Hanko desde el aire", en: "Hanko from the air" },
-    gallery: [photoLibrary.hanko, photoLibrary.turkuArchipelagoHouse],
+    gallery: [photoLibrary.hanko],
     intro: {
       fi: "Hanko on meri kolmelta suunnalta. Eteläinen sijainti, hiekkarannat, sileät kalliot, huvilat ja satamat antavat kaupungille oman kylpyläkaupunkimaisen tunnelmansa.",
       es: "Hanko está rodeado por el mar en tres lados. Su costa, playas, rocas, villas y puertos crean una identidad propia de ciudad balnearia.",
@@ -219,7 +220,7 @@ const places: Place[] = [
     region: { fi: "Saaristomeri · Ahvenanmaa", es: "Mar del Archipiélago · Åland", en: "Archipelago Sea · Åland" },
     image: photoLibrary.aland,
     imageAlt: { fi: "Ahvenanmaan saaristomaisema", es: "Paisaje del archipiélago de Åland", en: "Åland archipelago landscape" },
-    gallery: [photoLibrary.turkuArchipelago],
+    gallery: [photoLibrary.aland],
     intro: {
       fi: "Ahvenanmaa on kokonainen saaristomaailma: pienet kylät, sillat, lautat, punainen graniitti, meri, pyöräily ja ruokapaikat tekevät hitaasta liikkumisesta osan itse matkaa.",
       es: "Åland es un mundo de islas, pequeños pueblos, puentes, ferris, granito rojo, mar, ciclismo y restaurantes. El desplazamiento lento forma parte de la experiencia.",
@@ -259,6 +260,23 @@ const places: Place[] = [
     ],
   },
 ];
+
+const sarkisaloProviders = saloProviders.filter((provider) => [
+  "forby-marina",
+  "cafe-vinssi",
+  "saaristoravintola-nixor",
+  "saaristomokit-sarkisalo",
+  "villa-meri-sarkisalo",
+  "krailan-sabrina",
+  "tiiranta",
+  "vuorovetten-jaatelo",
+  "niksaaren-sauna",
+  "sarkisalo-fishing",
+  "forby-rantajooga",
+  "aava-adventures",
+  "lonnviken",
+  "villa-nennebo",
+].includes(provider.id));
 
 const sectionLabels = {
   fi: { stay: "Majoitus", food: "Ruoka & kahvilat", do: "Tekemistä", nature: "Luonto & meri", sauna: "Sauna", providers: "Poimittuja suoria linkkejä" },
@@ -393,6 +411,63 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
           </div>
         </section>
       ))}
+
+
+      <section className="bg-brand-50 py-16 sm:py-24" id="sarkisalo">
+        <div className="container-narrow">
+          <div className="grid gap-9 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+            <div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-card">
+                <Image src={photoLibrary.sarkisalo} alt={locale === "fi" ? "Särkisalon saaristo" : locale === "es" ? "Archipiélago de Särkisalo" : "Särkisalo archipelago"} fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Salo · Särkisalo · Förby" : locale === "es" ? "Salo · Särkisalo · Förby" : "Salo · Särkisalo · Förby"}</p>
+              <h2 className="mt-3 font-display text-4xl font-bold leading-tight text-brand-950 sm:text-5xl">
+                {locale === "fi" ? "Särkisalo – meri on osa arkea" : locale === "es" ? "Särkisalo: el mar como forma de vida" : "Särkisalo – where the sea is part of everyday life"}
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-slate-700">
+                {locale === "fi"
+                  ? "Särkisalo on eteläisen Salon saaristopitäjä, jossa kalastus, merenkulku ja kalkkiteollisuuden historia näkyvät edelleen maisemassa. Nykyinen Särkisalo sopii erityisesti matkailijalle, joka haluaa mökin meren ääreltä, kahvilan satamasta, retken vesille, paikallista ruokaa ja illan saunassa – ilman kiirettä."
+                  : locale === "es"
+                    ? "Särkisalo es una localidad insular del sur de Salo, marcada por la pesca, la navegación y una historia ligada a la industria de la cal. Hoy es especialmente atractiva para quien busca una cabaña junto al mar, un café en el puerto, actividades en el agua, comida local y sauna."
+                    : "Särkisalo is an island community in southern Salo shaped by fishing, seafaring and a history of lime production. Today it suits travellers looking for a seaside cottage, a harbour café, time on the water, local food and sauna without the rush."}
+              </p>
+              <p className="mt-4 text-sm leading-6 text-slate-500">
+                {locale === "fi" ? "VisitSalo nostaa esiin myös vene- ja polkupyörävuokrauksen, melonnan, kalastusretket, juhla- ja kokoustilat, vierassatamat sekä pienet kesäkahvilat ja ravintolat." : locale === "es" ? "La guía de Salo destaca además alquiler de barcos y bicicletas, kayak, pesca guiada, espacios para eventos, puertos de visitantes y pequeños cafés y restaurantes de verano." : "The Salo guide also highlights boat and bicycle rental, kayaking, fishing trips, event spaces, guest harbours and small summer cafés and restaurants."}
+              </p>
+              <a href="https://visitsalo.fi/sarkisalo-ja-meri/" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white">
+                {locale === "fi" ? "Tutustu VisitSalon Särkisalo-oppaaseen" : locale === "es" ? "Ver la guía de Särkisalo" : "Explore Särkisalo with VisitSalo"}<ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {sarkisaloProviders.slice(0, 8).map((provider) => (
+              <a key={provider.id} href={provider.url} target="_blank" rel="noopener noreferrer" className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
+                {provider.image ? (
+                  <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/10] overflow-hidden rounded-t-3xl">
+                    <Image src={provider.image} alt={provider.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  </div>
+                ) : null}
+                <p className="text-[10px] font-bold uppercase tracking-[.16em] text-brand-600">{provider.category}</p>
+                <h3 className="mt-2 font-display text-xl font-bold text-brand-950">{provider.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider"}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {sarkisaloProviders.slice(8, 14).map((provider) => (
+              <a key={provider.id} href={provider.url} target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-white bg-white/80 p-5 shadow-sm">
+                <h3 className="font-semibold text-brand-950">{provider.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="bg-slate-950 py-16 text-white sm:py-20">
         <div className="container-narrow grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
