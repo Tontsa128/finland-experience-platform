@@ -180,9 +180,14 @@ export default function CityBreaksPage({ params }: { params: { locale: string } 
               </div>
               <div className="p-6">
                 <p className="leading-7 text-slate-600">{city.text[locale]}</p>
-                <a href={city.href} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:text-brand-600">
-                  {city.hrefLabel[locale]}<ArrowUpRight className="h-4 w-4" />
-                </a>
+                <div className="mt-5 flex flex-wrap gap-4">
+                  <a href={city.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:text-brand-600">
+                    {city.hrefLabel[locale]}<ArrowUpRight className="h-4 w-4" />
+                  </a>
+                  {city.key === "turku" ? <Link href={`/${locale}/turku`} className="inline-flex items-center gap-2 text-sm font-bold text-brand-900 hover:text-brand-600">
+                    {locale === "fi" ? "Avaa Turku-opas" : locale === "es" ? "Abrir guía de Turku" : "Open Turku guide"}<ArrowRight className="h-4 w-4" />
+                  </Link> : null}
+                </div>
               </div>
             </article>
           ))}
