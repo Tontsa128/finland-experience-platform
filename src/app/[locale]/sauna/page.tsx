@@ -116,6 +116,11 @@ const copy = {
     heritageText: "Saunakulttuuri Suomessa on merkitty UNESCO:n aineettoman kulttuuriperinnön edustavaan luetteloon. Perinne elää kodeissa, mökeillä, yleisissä saunoissa ja uusissa kaupunkisaunoissa.",
     rootsTitle: "Saunan juuret",
     rootsText: "Suomalainen sauna on osa arkista kulttuuria paljon vanhempaa kuin nykyiset sähkökiukaat. Savusauna on yksi perinteen vanhoista muodoista: puut lämmittävät kiukaan kivet, savu tuulettuu ennen kylpemistä ja lämpö jää pitkäksi aikaa tilaan. Sauna on ollut myös puhtauden, levon, yhteisöllisyyden ja tärkeiden elämänvaiheiden paikka.",
+    cinematicTitle: "Hengitä sisään. Jätä kiire ulos.",
+    cinematicText: "Sauna ei tarvitse aikataulua. Ota pyyhe, käy lauteille, kuuntele kiuasta ja anna järven, meren tai metsän olla hetken koko maailma.",
+    loylyPanelEyebrow: "LÖYLY · SUOMI",
+    loylyPanelTitle: "Löyly on tunne, jonka suomalainen oppii tuntemaan.",
+    loylyPanelText: "Vesi kohtaa kuumat kivet. Ilma muuttuu kosteammaksi. Lämpö tuntuu iholla eri tavalla. Hyvä löyly on henkilökohtainen – sen ei tarvitse olla kova ollakseen hyvä.",
     löylyTitle: "Löyly – saunan sydän",
     löylyText: "Kun vettä heitetään kuumille kiville, syntyy löyly. Hyvä löyly ei tarkoita maksimaalista kuumuutta, vaan miellyttävää lämpöä, sopivaa kosteutta ja rauhallista rytmiä. Löyly tarkoittaa suomalaisessa saunaperinteessä myös saunan henkeä ja tunnelmaa.",
     ritualTitle: "Saunan perinteinen rytmi",
@@ -163,6 +168,11 @@ const copy = {
     heritageText: "La cultura de la sauna de Finlandia está inscrita en la lista representativa del patrimonio cultural inmaterial de la UNESCO. Vive en hogares, cabañas, saunas públicas y nuevas saunas urbanas.",
     rootsTitle: "Las raíces de la sauna",
     rootsText: "La sauna finlandesa forma parte de la vida cotidiana desde mucho antes de las estufas eléctricas. La sauna de humo es una forma antigua: la leña calienta las piedras, el humo sale antes del baño y el calor permanece en el espacio. Históricamente, la sauna ha sido también un lugar de limpieza, descanso, comunidad y momentos importantes de la vida.",
+    cinematicTitle: "Respira. Deja fuera las prisas.",
+    cinematicText: "La sauna no necesita un horario. Coge la toalla, siéntate, escucha la estufa y deja que el lago, el mar o el bosque sean el mundo durante un instante.",
+    loylyPanelEyebrow: "LÖYLY · FINLANDIA",
+    loylyPanelTitle: "El löyly es una sensación que se aprende a reconocer.",
+    loylyPanelText: "El agua encuentra las piedras calientes. El aire se vuelve más húmedo. El calor cambia sobre la piel. Un buen löyly es personal: no tiene que ser intenso para ser bueno.",
     löylyTitle: "Löyly – el corazón de la sauna",
     löylyText: "Cuando se vierte agua sobre las piedras calientes, nace el löyly. Un buen löyly no significa el máximo calor posible, sino una combinación agradable de temperatura, humedad y calma. En Finlandia, löyly también describe el espíritu y la atmósfera de la sauna.",
     ritualTitle: "El ritmo tradicional",
@@ -210,6 +220,11 @@ const copy = {
     heritageText: "Sauna culture in Finland is inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity. It lives in homes, cottages, public saunas and new urban sauna spaces.",
     rootsTitle: "The roots of sauna",
     rootsText: "Finnish sauna became part of everyday life long before today's electric heaters. Smoke sauna is an old form: wood heats the stones, smoke is vented before bathing and heat remains in the room. Historically, sauna has been more than washing: it has been a place for cleanliness, rest, community and important moments in life.",
+    cinematicTitle: "Breathe in. Leave the rush outside.",
+    cinematicText: "A sauna does not need a schedule. Take your towel, settle onto the benches, listen to the stove and let the lake, sea or forest become your whole world for a moment.",
+    loylyPanelEyebrow: "LÖYLY · FINLAND",
+    loylyPanelTitle: "Löyly is a feeling you learn to recognise.",
+    loylyPanelText: "Water meets hot stones. The air becomes more humid. Heat changes on the skin. Good löyly is personal – it does not have to be intense to be good.",
     löylyTitle: "Löyly – the heart of sauna",
     löylyText: "When water is thrown onto hot stones, löyly is created. Good löyly is not about maximum heat; it is about a pleasant balance of warmth, humidity and calm. In Finland, löyly also refers to the spirit and atmosphere of the sauna.",
     ritualTitle: "The traditional rhythm",
@@ -325,6 +340,48 @@ export default function SaunaPage({ params }: { params: { locale: string } }) {
           <div className="overflow-hidden rounded-[2rem] bg-brand-950 shadow-card">
             <div className="relative aspect-[4/3]">
               <Image src={photoLibrary.saunaTraditionalSmoke} alt={x.rootsTitle} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative isolate min-h-[68svh] overflow-hidden bg-brand-950 text-white">
+        <Image src={photoLibrary.saunaCottage} alt={x.cinematicTitle} fill sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/5" />
+        <div className="relative z-10 flex min-h-[68svh] items-end">
+          <div className="container-narrow w-full pb-12 pt-24 sm:pb-20">
+            <div className="max-w-3xl rounded-[2rem] border border-white/10 bg-black/25 p-7 backdrop-blur-[2px] sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{x.heritage}</p>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-6xl">{x.cinematicTitle}</h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl">{x.cinematicText}</p>
+              <p className="mt-6 text-[10px] font-semibold uppercase tracking-[.14em] text-white/45">Kuva: Kospo75</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-950 py-16 text-white sm:py-24">
+        <div className="container-narrow">
+          <div className="overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/5 shadow-card">
+            <div className="grid lg:grid-cols-[1.05fr_.95fr] lg:min-h-[520px]">
+              <div className="relative min-h-[360px] lg:min-h-0">
+                <Image src={photoLibrary.saunaWhisking} alt={x.loylyPanelTitle} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent lg:bg-gradient-to-r" />
+                <div className="absolute bottom-0 left-0 p-6 text-xs font-semibold uppercase tracking-[.14em] text-white/55 sm:p-8">Kuva: Ville Kurki</div>
+              </div>
+              <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+                <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{x.loylyPanelEyebrow}</p>
+                <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">{x.loylyPanelTitle}</h2>
+                <p className="mt-5 text-lg leading-8 text-white/80">{x.loylyPanelText}</p>
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                  {[["01", "Vesi"], ["02", "Kivet"], ["03", "Tunne"]].map(([n, label]) => (
+                    <div key={n} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <div className="text-2xl font-display font-bold text-gold-300">{n}</div>
+                      <p className="mt-2 text-sm font-semibold text-white/80">{label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
