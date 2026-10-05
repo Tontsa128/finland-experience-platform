@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 const locales = ["fi","es","en"] as const;
 
 type Translation = { title: string; shortDescription?: string; fullDescription?: string; whatToBring?: string; safetyInformation?: string };
-type Payload = { id?: number; destinationId: number; categoryId: number; providerId?: string | null; slug: string; durationMinutes?: number|null; minGroupSize?: number; maxGroupSize?: number; difficultyLevel?: string; status?: "draft"|"published"|"archived"; mediaIds?: string[]; translations: Record<typeof locales[number], Translation>; pricing?: { basePriceEur?: number|null; adultPriceEur?: number|null; childPriceEur?: number|null } };
+type Payload = { id?: number; destinationId: number; categoryId: number; providerId?: string | null; slug: string; durationMinutes?: number|null; minGroupSize?: number; maxGroupSize?: number; difficultyLevel?: string; status?: "draft"|"published"|"archived"; mediaIds?: string[]; latitude?: number|null; longitude?: number|null; address?: string|null; providerDirectUrl?: string|null; sourceUrl?: string|null; editorialVerified?: boolean; translations: Record<typeof locales[number], Translation>; pricing?: { basePriceEur?: number|null; adultPriceEur?: number|null; childPriceEur?: number|null } };
 
 function validate(body: Payload) {
   const errors: string[] = [];
@@ -22,6 +22,11 @@ function validate(body: Payload) {
   const max = body.maxGroupSize ?? 100;
   if (!Number.isInteger(min) || min < 1) errors.push("minGroupSize must be a positive integer");
   if (!Number.isInteger(max) || max < min) errors.push("maxGroupSize must be an integer greater than or equal to minGroupSize");
+
+  if (body.latitude != null && (!Number.isFinite(body.latitude) || body.latitude < -90 || body.latitude > 90)) errors.push("latitude must be between -90 and 90");
+  if (body.longitude != null && (!Number.isFinite(body.longitude) || body.longitude < -180 || body.longitude > 180)) errors.push("longitude must be between -180 and 180");
+  if (body.providerDirectUrl && !firstValidHttpUrl(body.providerDirectUrl)) errors.push("providerDirectUrl must be a valid http(s) URL");
+  if (body.sourceUrl && !firstValidHttpUrl(body.sourceUrl)) errors.push("sourceUrl must be a valid http(s) URL");
 
   if (body.durationMinutes != null && (!Number.isInteger(body.durationMinutes) || body.durationMinutes <= 0)) {
     errors.push("durationMinutes must be a positive integer");
@@ -85,7 +90,10 @@ export async function POST(req:NextRequest) {
     const {data:experience,error}=await supabaseAdmin.from("experiences").insert({
       destination_id:body.destinationId,category_id:body.categoryId,slug:body.slug.trim(),duration_minutes:body.durationMinutes??null,
       min_group_size:body.minGroupSize??1,max_group_size:body.maxGroupSize??100,difficulty_level:body.difficultyLevel?.trim()||null,status,
-      published_at:status==="published"?new Date().toISOString():null
+      published_at:status==="published"?new Date().toISOString():null,
+      latitude:body.latitude??null,longitude:body.longitude??null,address:body.address?.trim()||null,
+      provider_direct_url:body.providerDirectUrl?.trim()||null,source_url:body.sourceUrl?.trim()||null,
+      editorial_verified:Boolean(body.editorialVerified)
     }).select().single();
     if(error) return NextResponse.json({error:error.message},{status:400});
     const translations=locales.map((language_code)=>{const t=body.translations[language_code];return {experience_id:experience.id,language_code,title:t.title.trim(),short_description:t.shortDescription?.trim()||null,full_description:t.fullDescription?.trim()||null,what_to_bring:t.whatToBring?.trim()||null,safety_information:t.safetyInformation?.trim()||null};});
@@ -136,7 +144,10 @@ export async function PATCH(req:NextRequest) {
       return NextResponse.json({error:"Published experiences require a verified provider."},{status:400});
     }
     const {data:experience,error}=await supabaseAdmin.from("experiences").update({
-      destination_id:body.destinationId,category_id:body.categoryId,slug:body.slug.trim(),duration_minutes:body.durationMinutes??null,min_group_size:body.minGroupSize??1,max_group_size:body.maxGroupSize??100,difficulty_level:body.difficultyLevel?.trim()||null,status,published_at:status==="published"?new Date().toISOString():null,updated_at:new Date().toISOString()
+      destination_id:body.destinationId,category_id:body.categoryId,slug:body.slug.trim(),duration_minutes:body.durationMinutes??null,min_group_size:body.minGroupSize??1,max_group_size:body.maxGroupSize??100,difficulty_level:body.difficultyLevel?.trim()||null,status,published_at:status==="published"?new Date().toISOString():null,updated_at:new Date().toISOString(),
+      latitude:body.latitude??null,longitude:body.longitude??null,address:body.address?.trim()||null,
+      provider_direct_url:body.providerDirectUrl?.trim()||null,source_url:body.sourceUrl?.trim()||null,
+      editorial_verified:Boolean(body.editorialVerified)
     }).eq("id",body.id).select().single();
     if(error)return NextResponse.json({error:error.message},{status:400});
     await supabaseAdmin.from("experience_media").delete().eq("experience_id", body.id);
