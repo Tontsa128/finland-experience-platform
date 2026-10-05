@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, MapPin, Sparkles } from "lucide-react";
 import { getPublishedDestinations } from "@/lib/public-content";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
@@ -36,9 +36,14 @@ export default async function DestinationDetail({ params }: { params: { locale: 
   const d = destinations.find((x) => x.slug === params.slug);
   if (!d) notFound();
 
-  const isCoastal = ["salo-mathildedal", "naantali", "turku", "rosala", "hanko", "aland"].includes(d.slug);
+  const isCoastal = ["salo-mathildedal", "naantali", "turku", "rosala", "hanko", "aland", "southeast-finland"].includes(d.slug);
   const isNaantali = d.slug === "naantali";
   const isMathildedal = d.slug === "salo-mathildedal";
+  const regionalGuides: Record<string, string> = {
+    "salo-mathildedal": "salo", turku: "turku", naantali: "naantali", hanko: "hanko", rosala: "kimitoon", aland: "aland", porvoo: "porvoo", "southeast-finland": "southeast-finland",
+  };
+  const regionalGuidePath = regionalGuides[d.slug];
+  const travelInfo = locale === "fi" ? d.travel_info_fi : locale === "es" ? d.travel_info_es : d.travel_info_en;
 
   const destinationSchema = {
     "@context": "https://schema.org",
@@ -154,6 +159,45 @@ export default async function DestinationDetail({ params }: { params: { locale: 
       {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} /> : null}
       {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
 
+
+      <section className="container-narrow py-14 sm:py-20">
+        <div className="mb-9 max-w-4xl">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Kohdeopas" : locale === "es" ? "Guía del destino" : "Destination guide"}</p>
+          <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Mitä täällä kannattaa kokea?" : locale === "es" ? "Qué merece la pena vivir aquí" : "What is worth experiencing here?"}</h2>
+        </div>
+        {d.activities?.length ? (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {d.activities.map((activity) => (
+              <article key={activity} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+                <Sparkles className="h-5 w-5 text-brand-700" />
+                <h3 className="mt-4 font-display text-xl font-bold text-brand-950">{activity}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{locale === "fi" ? "Tarkista ajantasaiset tiedot ja mahdolliset varaukset suoraan palveluntarjoajalta." : locale === "es" ? "Comprueba la información actual y las posibles reservas directamente con el proveedor." : "Check current details and any booking requirements directly with the provider."}</p>
+              </article>
+            ))}
+          </div>
+        ) : null}
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <article className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+            <MapPin className="h-6 w-6 text-brand-700" />
+            <h3 className="mt-4 font-display text-xl font-bold text-brand-950">{locale === "fi" ? "Sijainti" : locale === "es" ? "Ubicación" : "Location"}</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{d.region}</p>
+            {d.coordinates ? <a href={"https://www.google.com/maps/search/?api=1&query=" + d.coordinates.lat + "," + d.coordinates.lng} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa kartalla" : locale === "es" ? "Abrir en el mapa" : "Open map"} <ArrowUpRight className="h-4 w-4" /></a> : null}
+          </article>
+          <article className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+            <BedDouble className="h-6 w-6 text-brand-700" />
+            <h3 className="mt-4 font-display text-xl font-bold text-brand-950">{locale === "fi" ? "Majoitus" : locale === "es" ? "Alojamiento" : "Accommodation"}</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{d.accommodationIds?.length ? (locale === "fi" ? "Kohteeseen liittyvää majoitusta löytyy Finland Experiencen majoitusosiosta." : locale === "es" ? "Encontrarás alojamientos relacionados con este destino en nuestra sección de alojamiento." : "Related stays are available in the Finland Experience accommodation directory.") : (locale === "fi" ? "Tarkista alueen ajantasainen majoitustarjonta virallisesta matkailuoppaasta." : locale === "es" ? "Consulta la oferta actual de alojamiento en la guía turística oficial." : "Check current accommodation options in the official tourism guide.")}</p>
+            <Link href={"/" + locale + "/accommodations"} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.exploreStays} <ArrowRight className="h-4 w-4" /></Link>
+          </article>
+          <article className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+            <Sparkles className="h-6 w-6 text-brand-700" />
+            <h3 className="mt-4 font-display text-xl font-bold text-brand-950">{locale === "fi" ? "Paikallinen tieto" : locale === "es" ? "Información local" : "Local information"}</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{travelInfo || (locale === "fi" ? "Tarkista reitit, sesonki, aukioloajat ja palveluiden saatavuus ennen matkaa." : locale === "es" ? "Comprueba rutas, temporada, horarios y disponibilidad antes del viaje." : "Check routes, season, opening hours and service availability before travelling.")}</p>
+            {regionalGuidePath ? <Link href={"/" + locale + "/" + regionalGuidePath} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa alueopas" : locale === "es" ? "Abrir guía regional" : "Open regional guide"} <ArrowRight className="h-4 w-4" /></Link> : null}
+          </article>
+        </div>
+        {d.tags?.length ? <div className="mt-8 flex flex-wrap gap-2">{d.tags.map((tag) => <span key={tag} className="rounded-full bg-brand-50 px-4 py-2 text-sm text-brand-800">{tag}</span>)}</div> : null}
+      </section>
 
       {d.slug === "porvoo" ? (
         <section className="bg-brand-50 py-14 sm:py-18">
