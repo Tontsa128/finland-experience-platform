@@ -8,7 +8,7 @@ export async function GET(_req: NextRequest, { params }: { params: { slug: strin
     const { data, error } = await supabaseAdmin
       .from('destinations')
       .select('id, slug, region, hero_image_url, status, publish_at, destination_translations(language_code, name, short_description, full_description, highlights, travel_information), experiences(id, slug, status, experience_translations(language_code, title, short_description))')
-      .eq('slug', params.slug)
+      .in('slug', params.slug === 'mathildedal' ? ['mathildedal', 'salo-mathildedal'] : [params.slug])
       .eq('status', 'published')
       .is('deleted_at', null)
       .or(`publish_at.is.null,publish_at.lte.${new Date().toISOString()}`)
