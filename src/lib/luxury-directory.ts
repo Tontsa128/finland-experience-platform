@@ -29,8 +29,8 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
     },
     url: "https://www.herrankukkaro.fi",
     price: "Majoitus 108–288 €/mökki/yö; savusauna + saaristoruoka 65 €/hlö",
-    image: "https://visitnaantali.com/wp-content/uploads/2026/01/IMG_0650__verkko-870x580.png",
-    imageCredit: "Visit Naantali",
+    image: "https://le-de.cdn-website.com/437c2bac51dd486c80c3e153a9033393/dms3rep/multi/opt/Kuva8-8066abf8-1920w.jpg",
+    imageCredit: "Herrankukkaro",
     tags: ["smoke sauna", "archipelago", "local food", "stay"]
   },
   {
