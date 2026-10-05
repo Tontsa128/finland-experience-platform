@@ -6,7 +6,7 @@ import { ArrowRight, ArrowUpRight, BedDouble, MapPin, Sparkles } from "lucide-re
 import { getPublishedDestinations } from "@/lib/public-content";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
-import { allowDemoFallback, locales } from "@/lib/utils";
+import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   if (!locales.includes(locale)) return {};
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
-  const source = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
+  const source = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
   const destination = source.find((item) => item.slug === params.slug) ?? source.find((item) => item.slug === canonicalSlug);
   if (!destination) return {};
   const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: { locale: string; s
 export default async function DestinationDetail({ params }: { params: { locale: string; slug: string } }) {
   const locale = params.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
-  const destinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
+  const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
   const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
   const d = destinations.find((x) => x.slug === params.slug) ?? destinations.find((x) => x.slug === canonicalSlug);
   if (!d) notFound();
