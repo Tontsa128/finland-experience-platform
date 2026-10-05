@@ -18,6 +18,7 @@ const basePaths = [
   "experiences",
   "rural-finland",
   "city-breaks",
+  "coastal-finland",
   "luxury-finland",
   "plan",
   "blog",
