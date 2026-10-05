@@ -146,21 +146,23 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] },
       }));
   const [active, setActive] = useState(0);
+  const slideCount = activeSlides.length;
+  const activeSlideDuration = activeSlides[active]?.durationMs || 3000;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % activeSlides.length);
-    }, activeSlides[active]?.durationMs || 3000);
+      setActive((current) => (current + 1) % slideCount);
+    }, activeSlideDuration);
 
     return () => window.clearInterval(timer);
-  }, [active, activeSlides.length, activeSlides[active]?.durationMs]);
+  }, [active, slideCount, activeSlideDuration]);
 
   const slide = activeSlides[active];
   const text = cmsSlides.length
     ? slide.copy[locale]
     : active === 0
       ? { eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow, title: settings?.heroTitle?.[locale] || copy[locale].summer.title, text: settings?.heroDescription?.[locale] || copy[locale].summer.text, cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta }
-      : copy[locale][slide.key];
+      : copy[locale][slide.key as keyof typeof copy[typeof locale]];
   const isCmsHero = !cmsSlides.length && active === 0 && Boolean(settings?.heroImageUrl);
   const toLocalizedHref = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value;
