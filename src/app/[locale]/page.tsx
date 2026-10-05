@@ -137,7 +137,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {coastalHighlights.map((destination) => (
               <Link
                 key={destination.id}
-                href={`/${locale}/destinations/${destination.slug}`}
+                href={`/${locale}/coastal-finland#${destination.slug === "salo-mathildedal" ? "mathildedal" : destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
                 className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
               >
                 <Image
