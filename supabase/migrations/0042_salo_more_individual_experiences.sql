@@ -148,7 +148,7 @@ BEGIN
   -- Gentle beach yoga at Förby
   SELECT id INTO cid FROM public.experience_categories WHERE slug='sauna-wellness' LIMIT 1;
   INSERT INTO public.experiences(destination_id,category_id,slug,status,published_at,address,provider_direct_url,source_url,editorial_verified,audience_tags,season_tags,experience_tags)
-  VALUES(did,cid,'gentle-beach-yoga-forby','published',now(),'Förby, 25640 Salo','https://hoitolakukkuvilla.fi/','https://www.visitfinland.com/en/product/f9a436f0-ec70-4097-94be-7ac81bea0a/gentle-beach-yoga-at-forby-marina/',true,ARRAY['couples','friends','adults'],ARRAY['summer'],ARRAY['sea','yoga','wellness','slow'])
+  VALUES(did,cid,'gentle-beach-yoga-forby','published',now(),'Förby, 25640 Salo','https://hoitolakukkuvilla.fi/','https://www.visitfinland.com/en/product/f9a436f0-ec70-4097-94be-fe7ac81bea0a/gentle-beach-yoga-at-forby-marina/',true,ARRAY['couples','friends','adults'],ARRAY['summer'],ARRAY['sea','yoga','wellness','slow'])
   ON CONFLICT(slug) DO UPDATE SET category_id=EXCLUDED.category_id,status='published',address=EXCLUDED.address,provider_direct_url=EXCLUDED.provider_direct_url,source_url=EXCLUDED.source_url,editorial_verified=true,audience_tags=EXCLUDED.audience_tags,season_tags=EXCLUDED.season_tags,experience_tags=EXCLUDED.experience_tags,updated_at=now()
   RETURNING id INTO eid;
   INSERT INTO public.experience_translations(experience_id,language_code,title,short_description,full_description) VALUES
