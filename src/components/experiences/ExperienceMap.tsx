@@ -37,7 +37,7 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
       if (cancelled || !mapRef.current) return;
       leafletRef.current = L;
 
-      const map = L.map(mapRef.current, { scrollWheelZoom: true, zoomControl: true });
+      const map = L.map(mapRef.current, { scrollWheelZoom: true, zoomControl: true }).setView([60.18, 23.02], 10);
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
         attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>',
