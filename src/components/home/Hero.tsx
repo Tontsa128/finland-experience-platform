@@ -104,7 +104,6 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     hankoBeach: { eyebrow: "Hanko · rannikko", title: "Paljain jaloin kesään", text: "Aurinkoinen hiekkaranta ja meri – Suomen etelärannikon kesä parhaimmillaan.", cta: "Tutustu Hankoon" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Suomen kesä alkaa rannikon pienistä paikoista", text: "Pitkiä iltoja, saaristoa, ruukkikyliä ja rauhallisia mökkipäiviä.", cta: "Tutustu kohteisiin" },
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Savusauna meren äärellä", text: "Herrankukkaro yhdistää saariston, savusaunan, majoituksen ja paikalliset maut.", cta: "Siirry palveluntarjoajalle" },
-    archipelago: { eyebrow: "Turun saaristo", title: "Herää saariston omaan rytmiin", text: "Pieni mökki, meri ja kalliosaaret tekevät saaristosta paikan, jossa loma alkaa heti.", cta: "Tutustu saaristoon" },
   },
   es: {
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Un día de verano junto al lago, con sauna privada, embarcadero y naturaleza alrededor.", cta: "Ver alojamientos" },
@@ -117,7 +116,6 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     hankoBeach: { eyebrow: "Hanko · costa", title: "Camina descalzo hacia el verano", text: "Playa soleada y mar abierto en la costa sur de Finlandia.", cta: "Explorar Hanko" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "El verano finlandés empieza en la costa", text: "Largas tardes, archipiélago, pueblos históricos y cabañas tranquilas junto al agua.", cta: "Explorar destinos" },
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Sauna de humo junto al mar", text: "Herrankukkaro combina archipiélago, sauna de humo, alojamiento y gastronomía local.", cta: "Ir al proveedor" },
-    archipelago: { eyebrow: "Archipiélago de Turku", title: "Despierta al ritmo del archipiélago", text: "Una pequeña casa, el mar y las islas rocosas crean el ambiente de unas vacaciones que empiezan nada más llegar.", cta: "Explorar el archipiélago" },
   },
   en: {
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A bright summer day by the lake, with a private sauna, jetty and nature at your doorstep.", cta: "See stays" },
@@ -130,7 +128,6 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     hankoBeach: { eyebrow: "Hanko · coast", title: "Walk barefoot into summer", text: "A sunlit sandy beach and open sea on Finland's southern coast.", cta: "Explore Hanko" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Finnish summer begins in the small places on the coast", text: "Long evenings, archipelago islands, ironworks villages and quiet cottage days by the water.", cta: "Explore destinations" },
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Smoke sauna by the sea", text: "Herrankukkaro brings together archipelago nature, smoke sauna, accommodation and local food.", cta: "Visit provider" },
-    archipelago: { eyebrow: "Turku Archipelago", title: "Wake up to the rhythm of the islands", text: "A small wooden house, open water and rocky islands create the feeling of a Finnish coastal escape.", cta: "Explore the archipelago" },
   },
 };
 
