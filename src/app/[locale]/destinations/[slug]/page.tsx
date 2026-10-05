@@ -255,8 +255,8 @@ export default async function DestinationDetail({ params }: { params: { locale: 
 
             <div className="mt-9 grid gap-4 md:grid-cols-2">
               {[
-                { image: "${photoLibrary.rosalaVikingCentre}", title: locale === "fi" ? "Viikinkikylä" : locale === "es" ? "Poblado vikingo" : "Viking village", text: locale === "fi" ? "Historiallinen ympäristö, jossa voi tutustua viikinkiajan elämään ja näyttelyihin." : locale === "es" ? "Entorno histórico para conocer la vida y la cultura de la época vikinga." : "A historical setting to explore Viking-age life and exhibitions." },
-                { image: "${photoLibrary.rosalaVikingHall}", title: locale === "fi" ? "Yöpyminen & sauna" : locale === "es" ? "Alojamiento & sauna" : "Stay & sauna", text: locale === "fi" ? "Päällikön hallin huoneet, alkovi- tai telttamajoitus sekä iltasauna ja aamiainen." : locale === "es" ? "Habitaciones, alcobas o tienda vikinga, con sauna nocturna y desayuno." : "Rooms, alcoves or a Viking tent, with evening sauna and breakfast." },
+                { image: photoLibrary.rosalaVikingCentre, title: locale === "fi" ? "Viikinkikylä" : locale === "es" ? "Poblado vikingo" : "Viking village", text: locale === "fi" ? "Historiallinen ympäristö, jossa voi tutustua viikinkiajan elämään ja näyttelyihin." : locale === "es" ? "Entorno histórico para conocer la vida y la cultura de la época vikinga." : "A historical setting to explore Viking-age life and exhibitions." },
+                { image: photoLibrary.rosalaVikingHall, title: locale === "fi" ? "Yöpyminen & sauna" : locale === "es" ? "Alojamiento & sauna" : "Stay & sauna", text: locale === "fi" ? "Päällikön hallin huoneet, alkovi- tai telttamajoitus sekä iltasauna ja aamiainen." : locale === "es" ? "Habitaciones, alcobas o tienda vikinga, con sauna nocturna y desayuno." : "Rooms, alcoves or a Viking tent, with evening sauna and breakfast." },
               ].map((item) => (
                 <article key={item.title} className="overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
                   <div className="relative aspect-[16/9]">
