@@ -88,6 +88,9 @@ type ExperienceRow = {
   provider_direct_url?: string | null;
   source_url?: string | null;
   editorial_verified?: boolean | null;
+  audience_tags?: string[] | null;
+  season_tags?: string[] | null;
+  experience_tags?: string[] | null;
 };
 
 type BlogTranslationRow = { locale?: string; title?: string | null; excerpt?: string | null; content?: string | null };
@@ -342,7 +345,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
   try {
     const { data, error } = await supabaseAdmin
       .from("experiences")
-      .select("id,destination_id,category_id,slug,duration_minutes,min_group_size,max_group_size,difficulty_level,status,latitude,longitude,address,provider_direct_url,source_url,editorial_verified,experience_translations(language_code,title,short_description,full_description),pricing_rules(base_price_eur,adult_price_eur,child_price_eur),experience_categories(slug,name_fi,name_es),experience_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
+      .select("id,destination_id,category_id,slug,duration_minutes,min_group_size,max_group_size,difficulty_level,status,latitude,longitude,address,provider_direct_url,source_url,editorial_verified,audience_tags,season_tags,experience_tags,experience_translations(language_code,title,short_description,full_description),pricing_rules(base_price_eur,adult_price_eur,child_price_eur),experience_categories(slug,name_fi,name_es),experience_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
       .eq("status", "published")
       .order("created_at", { ascending: false });
 
@@ -398,6 +401,9 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
         duration_minutes: experience.duration_minutes ?? undefined,
         status: experience.status || undefined,
         verified: Boolean(experience.editorial_verified) || verifiedExperienceIds.has(String(experience.id)),
+        audienceTags: experience.audience_tags ?? [],
+        seasonTags: experience.season_tags ?? [],
+        experienceTags: experience.experience_tags ?? [],
         pricing: pricing
           ? {
               adult: Number(pricing.adult_price_eur ?? pricing.base_price_eur ?? 0),
