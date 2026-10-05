@@ -6,7 +6,7 @@ import { getPublishedDestinations } from "@/lib/public-content";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { allowDemoFallback } from "@/lib/utils";
+import { photoLibrary } from "@/lib/photo-library";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 export default async function DestinationsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
-  const destinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
+  const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -90,26 +90,33 @@ export default async function DestinationsPage({ params }: { params: { locale: s
             <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Aloita kohteesta, syvennä alueella." : locale === "es" ? "Empieza por un destino y descubre toda la región." : "Start with a destination, then explore the region."}</h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">{locale === "fi" ? "Näissä oppaissa kokoamme paikallista tietoa, majoitusta, ruokaa, luontoa ja elämyksiä yhteen. Mahdolliset varaukset tehdään aina suoraan palveluntarjoajalle." : locale === "es" ? "Estas guías reúnen información local, alojamiento, gastronomía, naturaleza y experiencias. Las reservas se realizan siempre directamente con cada proveedor." : "These guides bring together local information, stays, food, nature and experiences. Any booking is always handled directly with the provider."}</p>
           </div>
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ["Salo", "salo", locale === "fi" ? "Mathildedal, Teijo, Särkisalo, Perniö ja kaupungin palvelut." : locale === "es" ? "Mathildedal, Teijo, Särkisalo, Perniö y servicios de Salo." : "Mathildedal, Teijo, Särkisalo, Perniö and Salo services."],
-              ["Turku", "turku", locale === "fi" ? "Aurajoki, Ruissalo, kulttuuri, ruoka ja Turun saaristo." : locale === "es" ? "Río Aura, Ruissalo, cultura, gastronomía y archipiélago." : "Aura River, Ruissalo, culture, food and the Turku Archipelago."],
-              ["Naantali", "naantali", locale === "fi" ? "Vanhakaupunki, satama, Muumimaailma ja pieni saaristoreitti." : locale === "es" ? "Casco antiguo, puerto, Moominworld y la Small Archipelago Trail." : "Old Town, harbour, Moominworld and the Small Archipelago Trail."],
-              ["Hanko", "hanko", locale === "fi" ? "Rannat, avomeri, pyöräily, saunat ja merielämykset." : locale === "es" ? "Playas, mar abierto, ciclismo, saunas y experiencias marinas." : "Beaches, open sea, cycling, saunas and sea experiences."],
-              ["Kemiönsaari & Rosala", "kimitoon", locale === "fi" ? "Viikinkikeskus, Kasnäs, Bengtskär, mökit ja saaristomeri." : locale === "es" ? "Centro Vikingo, Kasnäs, Bengtskär, cabañas y mar." : "Viking Centre, Kasnäs, Bengtskär, cottages and the sea."],
-              ["Åland", "aland", locale === "fi" ? "Pyöräily, saaristoreitti, mökit, ruoka ja pienet saaret." : locale === "es" ? "Ciclismo, rutas, cabañas, gastronomía y pequeñas islas." : "Cycling, island routes, cottages, food and small islands."],
-              ["Porvoo", "porvoo", locale === "fi" ? "Vanha Porvoo, jokiranta, ruoka, kulttuuri ja saariston läheisyys." : locale === "es" ? "Casco antiguo, río, gastronomía, cultura y archipiélago." : "Old Town, riverside life, food, culture and nearby archipelago."],
-              [locale === "fi" ? "Kaakkois-Suomi" : locale === "es" ? "Sureste de Finlandia" : "Southeast Finland", "southeast-finland", locale === "fi" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa ja Itäisen Suomenlahden saaristo." : locale === "es" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa y el archipiélago del Golfo de Finlandia." : "Kotka, Hamina, Loviisa, Strömfors, Valkmusa and the Eastern Gulf of Finland archipelago."],
-            ].map(([name, href, description]) => (
-              <Link key={href} href={"/" + locale + "/" + href} className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
-                <MapPin className="h-6 w-6 text-brand-700" />
-                <h3 className="mt-4 font-display text-2xl font-bold text-brand-950">{name}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa opas" : locale === "es" ? "Abrir guía" : "Open guide"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+              ["Salo", "salo", photoLibrary.mathildedalHarbour, "Mathildedal · Salo", locale === "fi" ? "Mathildedal, Teijo, Särkisalo, Perniö ja kaupungin palvelut." : locale === "es" ? "Mathildedal, Teijo, Särkisalo, Perniö y servicios de Salo." : "Mathildedal, Teijo, Särkisalo, Perniö and Salo services."],
+              ["Turku", "turku", photoLibrary.turkuAura, "Turku · Aurajoki", locale === "fi" ? "Aurajoki, Ruissalo, kulttuuri, ruoka ja Turun saaristo." : locale === "es" ? "Río Aura, Ruissalo, cultura, gastronomía y archipiélago." : "Aura River, Ruissalo, culture, food and the Turku Archipelago."],
+              ["Naantali", "naantali", photoLibrary.naantaliOldTown, "Naantali · vanhakaupunki", locale === "fi" ? "Vanhakaupunki, satama, Muumimaailma ja pieni saaristoreitti." : locale === "es" ? "Casco antiguo, puerto, Moominworld y la Small Archipelago Trail." : "Old Town, harbour, Moominworld and the Small Archipelago Trail."],
+              ["Hanko", "hanko", photoLibrary.hanko, "Hanko · eteläkärki", locale === "fi" ? "Rannat, avomeri, pyöräily, saunat ja merielämykset." : locale === "es" ? "Playas, mar abierto, ciclismo, saunas y experiencias marinas." : "Beaches, open sea, cycling, saunas and sea experiences."],
+              ["Kemiönsaari & Rosala", "kimitoon", photoLibrary.rosalaVikingCentre, "Rosala · Kemiönsaari", locale === "fi" ? "Viikinkikeskus, Kasnäs, Bengtskär, mökit ja Saaristomeri." : locale === "es" ? "Centro Vikingo, Kasnäs, Bengtskär, cabañas y archipiélago." : "Viking Centre, Kasnäs, Bengtskär, cottages and the Archipelago Sea."],
+              ["Åland", "aland", photoLibrary.aland, "Åland · saaristo", locale === "fi" ? "Pyöräily, saaristoreitti, mökit, ruoka ja pienet saaret." : locale === "es" ? "Ciclismo, rutas, cabañas, gastronomía y pequeñas islas." : "Cycling, island routes, cottages, food and small islands."],
+              ["Porvoo", "porvoo", photoLibrary.porvoo, "Porvoo · vanhakaupunki", locale === "fi" ? "Vanha Porvoo, jokiranta, ruoka, kulttuuri ja saariston läheisyys." : locale === "es" ? "Casco antiguo, río, gastronomía, cultura y archipiélago." : "Old Town, riverside life, food, culture and nearby archipelago."],
+              [locale === "fi" ? "Kaakkois-Suomi" : locale === "es" ? "Sureste de Finlandia" : "Southeast Finland", "southeast-finland", photoLibrary.hamina, "Hamina · Itäinen Suomenlahti", locale === "fi" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa ja Itäisen Suomenlahden saaristo." : locale === "es" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa y el archipiélago del Golfo de Finlandia." : "Kotka, Hamina, Loviisa, Strömfors, Valkmusa and the Eastern Gulf of Finland archipelago."],
+            ].map(([name, href, image, location, description]) => (
+              <Link key={href} href={"/" + locale + "/" + href} className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
+                <div className="relative aspect-[4/3] overflow-hidden bg-brand-100">
+                  <Image src={image} alt={name} fill sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/5 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <p className="text-[11px] font-bold uppercase tracking-[.16em] text-white/75">{location}</p>
+                    <h3 className="mt-1 font-display text-2xl font-bold text-white">{name}</h3>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="text-sm leading-6 text-slate-600">{description}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa opas" : locale === "es" ? "Abrir guía" : "Open guide"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+                </div>
               </Link>
             ))}
-          </div>
-        </div>
+          </div>       </div>
       </section>
 
       <section className="bg-white py-16 sm:py-24">
