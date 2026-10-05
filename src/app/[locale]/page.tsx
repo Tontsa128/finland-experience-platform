@@ -128,7 +128,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
               <h2 className="mt-3 font-display text-4xl font-bold leading-tight sm:text-5xl">{sh("coastalTitle")}</h2>
               <p className="mt-4 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">{sh("coastalText")}</p>
             </div>
-            <Link href={`/${locale}/destinations`} className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-gold-300 hover:text-white">
+            <Link href={`/${locale}/coastal-finland`} className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-gold-300 hover:text-white">
               {sh("coastalCta")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
