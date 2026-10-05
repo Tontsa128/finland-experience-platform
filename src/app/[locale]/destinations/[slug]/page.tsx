@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
   const source = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
-  const destination = source.find((item) => item.slug === canonicalSlug);
+  const destination = source.find((item) => item.slug === params.slug) ?? source.find((item) => item.slug === canonicalSlug);
   if (!destination) return {};
   const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
   return buildLocalizedMetadata({
@@ -35,14 +35,15 @@ export default async function DestinationDetail({ params }: { params: { locale: 
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
   const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
-  const d = destinations.find((x) => x.slug === canonicalSlug);
+  const d = destinations.find((x) => x.slug === params.slug) ?? destinations.find((x) => x.slug === canonicalSlug);
   if (!d) notFound();
 
   const isCoastal = ["salo-mathildedal", "naantali", "turku", "rosala", "hanko", "aland", "southeast-finland"].includes(d.slug);
   const isNaantali = d.slug === "naantali";
-  const isMathildedal = d.slug === "salo-mathildedal";
+  const isMathildedal = d.slug === "salo-mathildedal" || d.slug === "mathildedal";
   const regionalGuides: Record<string, string> = {
-    "salo-mathildedal": "salo", turku: "turku", naantali: "naantali", hanko: "hanko", rosala: "kimitoon", aland: "aland", porvoo: "porvoo", "southeast-finland": "southeast-finland",
+    "salo-mathildedal": "salo",
+    "mathildedal": "salo", turku: "turku", naantali: "naantali", hanko: "hanko", rosala: "kimitoon", aland: "aland", porvoo: "porvoo", "southeast-finland": "southeast-finland",
   };
   const regionalGuidePath = regionalGuides[d.slug];
   const travelInfo = locale === "fi" ? d.travel_info_fi : locale === "es" ? d.travel_info_es : d.travel_info_en;
