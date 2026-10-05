@@ -54,6 +54,8 @@ const copy = {
   },
 } satisfies Record<Locale, Record<string, string>>;
 
+type SectionKey = "stay" | "food" | "culture" | "nature";
+
 const sections = {
   fi: [
     ["stay", "Majoitukseen kuuluu pieniä hotelleja, B&B-kohteita ja persoonallisia majoituksia. Vanhan Porvoon tunnelma toimii parhaiten, kun kaupungille antaa aikaa.", "https://www.visitporvoo.fi/fi/"],
@@ -129,7 +131,7 @@ export default function PorvooPage({ params }: { params: { locale: string } }) {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map(([key, text, url], index) => {
             const Icon = icons[index];
-            const title = c[key];
+            const title = c[key as SectionKey];
             return (
               <article key={key} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
                 <Icon className="h-6 w-6 text-brand-700" />
