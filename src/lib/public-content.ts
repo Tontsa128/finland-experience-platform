@@ -466,13 +466,16 @@ export type HomepageSettings = {
   featuredDestinationIds: string[];
   featuredPropertyIds: string[];
   featuredExperienceIds: string[];
+  homepageSlides: HomepageSlide[];
 };
+
+export type HomepageSlide = { id:string; imageUrl:string; credit?:string; creditUrl?:string; href:string; external?:boolean; sortOrder:number; durationMs?:number; enabled?:boolean; copy: Record<Locale,{eyebrow:string;title:string;text:string;cta:string}> };
 
 export async function getHomepageSettings(): Promise<HomepageSettings | null> {
   try {
     const { data, error } = await supabaseAdmin
       .from("site_settings")
-      .select("hero_image_url,hero_eyebrow_fi,hero_eyebrow_es,hero_eyebrow_en,hero_title_fi,hero_title_es,hero_title_en,hero_description_fi,hero_description_es,hero_description_en,hero_cta_label_fi,hero_cta_label_es,hero_cta_label_en,hero_cta_url,hero_secondary_label_fi,hero_secondary_label_es,hero_secondary_label_en,hero_secondary_url,homepage_featured_destination_ids,homepage_featured_property_ids,homepage_featured_experience_ids")
+      .select("hero_image_url,hero_eyebrow_fi,hero_eyebrow_es,hero_eyebrow_en,hero_title_fi,hero_title_es,hero_title_en,hero_description_fi,hero_description_es,hero_description_en,hero_cta_label_fi,hero_cta_label_es,hero_cta_label_en,hero_cta_url,hero_secondary_label_fi,hero_secondary_label_es,hero_secondary_label_en,hero_secondary_url,homepage_slides,homepage_featured_destination_ids,homepage_featured_property_ids,homepage_featured_experience_ids")
       .eq("singleton", true)
       .maybeSingle();
 
@@ -491,6 +494,7 @@ export async function getHomepageSettings(): Promise<HomepageSettings | null> {
       featuredDestinationIds: idList((data as Record<string, unknown>).homepage_featured_destination_ids),
       featuredPropertyIds: idList((data as Record<string, unknown>).homepage_featured_property_ids),
       featuredExperienceIds: idList((data as Record<string, unknown>).homepage_featured_experience_ids),
+      homepageSlides: Array.isArray((data as Record<string, unknown>).homepage_slides) ? (data as Record<string, unknown>).homepage_slides as HomepageSlide[] : [],
     };
   } catch {
     return null;
