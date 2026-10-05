@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 const locales = ["fi","es","en"] as const;
 
 type Translation = { title: string; shortDescription?: string; fullDescription?: string; whatToBring?: string; safetyInformation?: string };
-type Payload = { id?: number; destinationId: number; categoryId: number; providerId?: string | null; slug: string; durationMinutes?: number|null; minGroupSize?: number; maxGroupSize?: number; difficultyLevel?: string; status?: "draft"|"published"|"archived"; mediaIds?: string[]; latitude?: number|null; longitude?: number|null; address?: string|null; providerDirectUrl?: string|null; sourceUrl?: string|null; editorialVerified?: boolean; translations: Record<typeof locales[number], Translation>; pricing?: { basePriceEur?: number|null; adultPriceEur?: number|null; childPriceEur?: number|null } };
+type Payload = { id?: number; destinationId: number; categoryId: number; providerId?: string | null; slug: string; durationMinutes?: number|null; minGroupSize?: number; maxGroupSize?: number; difficultyLevel?: string; status?: "draft"|"published"|"archived"; mediaIds?: string[]; latitude?: number|null; longitude?: number|null; address?: string|null; providerDirectUrl?: string|null; sourceUrl?: string|null; editorialVerified?: boolean; audienceTags?: string[]; seasonTags?: string[]; experienceTags?: string[]; translations: Record<typeof locales[number], Translation>; pricing?: { basePriceEur?: number|null; adultPriceEur?: number|null; childPriceEur?: number|null } };
 
 function validate(body: Payload) {
   const errors: string[] = [];
@@ -93,7 +93,7 @@ export async function POST(req:NextRequest) {
       published_at:status==="published"?new Date().toISOString():null,
       latitude:body.latitude??null,longitude:body.longitude??null,address:body.address?.trim()||null,
       provider_direct_url:body.providerDirectUrl?.trim()||null,source_url:body.sourceUrl?.trim()||null,
-      editorial_verified:Boolean(body.editorialVerified)
+      editorial_verified:Boolean(body.editorialVerified),audience_tags:Array.isArray(body.audienceTags)?body.audienceTags.map(String).slice(0,12):[],season_tags:Array.isArray(body.seasonTags)?body.seasonTags.map(String).slice(0,8):[],experience_tags:Array.isArray(body.experienceTags)?body.experienceTags.map(String).slice(0,16):[]
     }).select().single();
     if(error) return NextResponse.json({error:error.message},{status:400});
     const translations=locales.map((language_code)=>{const t=body.translations[language_code];return {experience_id:experience.id,language_code,title:t.title.trim(),short_description:t.shortDescription?.trim()||null,full_description:t.fullDescription?.trim()||null,what_to_bring:t.whatToBring?.trim()||null,safety_information:t.safetyInformation?.trim()||null};});
