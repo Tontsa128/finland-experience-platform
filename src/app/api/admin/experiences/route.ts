@@ -147,7 +147,7 @@ export async function PATCH(req:NextRequest) {
       destination_id:body.destinationId,category_id:body.categoryId,slug:body.slug.trim(),duration_minutes:body.durationMinutes??null,min_group_size:body.minGroupSize??1,max_group_size:body.maxGroupSize??100,difficulty_level:body.difficultyLevel?.trim()||null,status,published_at:status==="published"?new Date().toISOString():null,updated_at:new Date().toISOString(),
       latitude:body.latitude??null,longitude:body.longitude??null,address:body.address?.trim()||null,
       provider_direct_url:body.providerDirectUrl?.trim()||null,source_url:body.sourceUrl?.trim()||null,
-      editorial_verified:Boolean(body.editorialVerified)
+      editorial_verified:Boolean(body.editorialVerified),audience_tags:Array.isArray(body.audienceTags)?body.audienceTags.map(String).slice(0,12):[],season_tags:Array.isArray(body.seasonTags)?body.seasonTags.map(String).slice(0,8):[],experience_tags:Array.isArray(body.experienceTags)?body.experienceTags.map(String).slice(0,16):[]
     }).eq("id",body.id).select().single();
     if(error)return NextResponse.json({error:error.message},{status:400});
     await supabaseAdmin.from("experience_media").delete().eq("experience_id", body.id);
