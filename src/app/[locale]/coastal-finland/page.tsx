@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BedDouble, Bike, Coffee, Leaf, MapPin, Waves, Utensils, Flame } from "lucide-react";
 import type { Locale } from "@/types";
-import { buildLocalizedMetadata } from "@/lib/seo";
+import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 
 type Localized = Record<Locale, string>;
@@ -280,7 +280,7 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
       "@type": "ListItem",
       position: index + 1,
       name: place.name[locale],
-      url: `https://www.finlandexperience.fi/${locale}/coastal-finland#${place.slug}`,
+      url: `${siteUrl}/${locale}/coastal-finland#${place.slug}`,
     })),
   };
 
