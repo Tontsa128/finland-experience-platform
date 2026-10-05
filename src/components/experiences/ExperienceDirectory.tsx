@@ -20,6 +20,21 @@ const categoryLabels: Record<string, Record<Locale, string>> = {
   fishing: { fi: "Kalastus", es: "Pesca", en: "Fishing" },
 };
 
+const audienceLabels: Record<string, Record<Locale, string>> = {
+  families: { fi: "Perheille", es: "Familias", en: "Families" },
+  couples: { fi: "Pariskunnille", es: "Parejas", en: "Couples" },
+  friends: { fi: "Ystäville", es: "Amigos", en: "Friends" },
+  groups: { fi: "Ryhmille", es: "Grupos", en: "Groups" },
+  adults: { fi: "Aikuisille", es: "Adultos", en: "Adults" },
+};
+
+const seasonLabels: Record<string, Record<Locale, string>> = {
+  spring: { fi: "Kevät", es: "Primavera", en: "Spring" },
+  summer: { fi: "Kesä", es: "Verano", en: "Summer" },
+  autumn: { fi: "Syksy", es: "Otoño", en: "Autumn" },
+  winter: { fi: "Talvi", es: "Invierno", en: "Winter" },
+};
+
 const copy = {
   fi: {
     eyebrow: "Salo · Mathildedal · Teijo · Särkisalo",
@@ -35,6 +50,8 @@ const copy = {
     checked: "Tiedot tarkistettu",
     noResults: "Hakuehdoilla ei löytynyt elämyksiä.",
     direct: "Varaus ja sopimus tehdään suoraan palveluntarjoajan kanssa.",
+    audience: "Sopii",
+    season: "Sesonki",
   },
   es: {
     eyebrow: "Salo · Mathildedal · Teijo · Särkisalo",
@@ -50,6 +67,8 @@ const copy = {
     checked: "Información comprobada",
     noResults: "No se encontraron experiencias.",
     direct: "La reserva y el contrato se realizan directamente con el proveedor.",
+    audience: "Ideal para",
+    season: "Temporada",
   },
   en: {
     eyebrow: "Salo · Mathildedal · Teijo · Särkisalo",
@@ -65,6 +84,8 @@ const copy = {
     checked: "Information checked",
     noResults: "No experiences matched your search.",
     direct: "Booking and the contract take place directly with the provider.",
+    audience: "Great for",
+    season: "Season",
   },
 } as const;
 
@@ -81,6 +102,8 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
   const t = copy[locale];
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
+  const [audience, setAudience] = useState("all");
+  const [season, setSeason] = useState("all");
   const [selectedSlug, setSelectedSlug] = useState<string | undefined>();
 
   const categories = useMemo(
@@ -92,6 +115,8 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
     const q = query.trim().toLocaleLowerCase();
     return experiences.filter((item) => {
       const matchesCategory = category === "all" || item.category === category;
+      const matchesAudience = audience === "all" || item.audienceTags?.includes(audience);
+      const matchesSeason = season === "all" || item.seasonTags?.includes(season);
       const haystack = [
         text(item.name, locale),
         text(item.shortDescription, locale),
@@ -99,7 +124,7 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
         item.address || "",
         item.region || "",
       ].join(" ").toLocaleLowerCase();
-      return matchesCategory && (!q || haystack.includes(q));
+      return matchesCategory && matchesAudience && matchesSeason && (!q || haystack.includes(q));
     });
   }, [experiences, locale, query, category]);
 
@@ -119,23 +144,58 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
           <h2 className="mt-2 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{t.mapTitle}</h2>
           <p className="mt-3 max-w-3xl text-slate-600">{t.mapText}</p>
         </div>
-        <ExperienceMap items={filtered} locale={locale} selectedSlug={selectedSlug} onSelect={setSelectedSlug} />
+        <ExperienceMap
+          items={filtered}
+          locale={locale}
+          selectedSlug={selectedSlug}
+          onSelect={(slug) => {
+            setSelectedSlug(slug);
+            window.setTimeout(() => document.getElementById(slug)?.scrollIntoView({ behavior: "smooth", block: "center" }), 50);
+          }}
+        />
       </section>
 
       <section id="all-experiences" className="container-narrow pb-20">
         <div className="sticky top-16 z-20 -mx-4 mb-8 border-y border-slate-200 bg-white/95 px-4 py-4 backdrop-blur sm:static sm:mx-0 sm:rounded-2xl sm:border sm:px-5">
-          <div className="flex flex-col gap-3 lg:flex-row">
+          <div className="flex flex-col gap-3">
             <label className="relative flex-1">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
               <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.search} className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm outline-none focus:border-brand-500 focus:bg-white" />
             </label>
-            <div className="flex gap-2 overflow-x-auto pb-1">
-              <button onClick={() => setCategory("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${category === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
-              {categories.map((value) => (
-                <button key={value} onClick={() => setCategory(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${category === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
-                  {categoryLabels[value]?.[locale] || value}
-                </button>
-              ))}
+            <div className="grid gap-3 lg:grid-cols-3">
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-slate-400">{locale==="fi"?"Teema":locale==="es"?"Tema":"Theme"}</p>
+                <div className="flex gap-2 overflow-x-auto pb-1">
+                  <button onClick={() => setCategory("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${category === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
+                  {categories.map((value) => (
+                    <button key={value} onClick={() => setCategory(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${category === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
+                      {categoryLabels[value]?.[locale] || value}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-slate-400">{t.audience}</p>
+                <div className="flex gap-2 overflow-x-auto pb-1">
+                  <button onClick={() => setAudience("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${audience === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
+                  {Object.keys(audienceLabels).map((value) => (
+                    <button key={value} onClick={() => setAudience(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${audience === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
+                      {audienceLabels[value][locale]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-slate-400">{t.season}</p>
+                <div className="flex gap-2 overflow-x-auto pb-1">
+                  <button onClick={() => setSeason("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${season === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
+                  {Object.keys(seasonLabels).map((value) => (
+                    <button key={value} onClick={() => setSeason(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${season === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
+                      {seasonLabels[value][locale]}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -158,6 +218,8 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
                     {item.address ? <p className="mt-4 flex gap-2 text-xs font-medium text-slate-500"><MapPin className="mt-0.5 h-4 w-4 shrink-0" />{item.address}</p> : null}
                     <div className="mt-5 flex flex-wrap gap-2">
                       <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800"><Sparkles className="h-3.5 w-3.5" />{t.checked}</span>
+                      {(item.audienceTags || []).slice(0,3).map(tag => audienceLabels[tag]?.[locale] ? <span key={tag} className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700">{audienceLabels[tag][locale]}</span> : null)}
+                      {(item.seasonTags || []).slice(0,2).map(tag => seasonLabels[tag]?.[locale] ? <span key={tag} className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700">{seasonLabels[tag][locale]}</span> : null)}
                     </div>
                     <p className="mt-4 text-xs leading-5 text-slate-500">{t.direct}</p>
                     <div className="mt-5 flex flex-wrap gap-2">
