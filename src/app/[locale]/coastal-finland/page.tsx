@@ -14,6 +14,7 @@ type Place = {
   region: Localized;
   image: string;
   imageAlt: Localized;
+  gallery: string[];
   intro: Localized;
   stay: Localized;
   food: Localized;
@@ -32,6 +33,7 @@ const places: Place[] = [
     region: { fi: "Salo · Lounais-Suomi", es: "Salo · Suroeste de Finlandia", en: "Salo · Southwest Finland" },
     image: photoLibrary.mathildedalHarbour,
     imageAlt: { fi: "Mathildedalin satama ja meri", es: "Puerto y mar de Mathildedal", en: "Mathildedal harbour and sea" },
+    gallery: [photoLibrary.mathildedalVillage, photoLibrary.teijoNationalPark, photoLibrary.sauna],
     intro: {
       fi: "Mathildedal on historiallinen ruukkikylä meren ja Teijon kansallispuiston välissä. Ruukkimiljöö, pienet putiikit, kahvilat, ravintolat ja luonto tekevät paikasta poikkeuksellisen helposti lähestyttävän Slow Finland -kohteen.",
       es: "Mathildedal es un histórico pueblo siderúrgico entre el mar y el Parque Nacional de Teijo. Su mezcla de patrimonio industrial, pequeñas tiendas, cafés, restaurantes y naturaleza convierte el lugar en una escapada muy especial.",
@@ -84,6 +86,7 @@ const places: Place[] = [
     region: { fi: "Naantali · Turun seutu", es: "Naantali · Región de Turku", en: "Naantali · Turku region" },
     image: photoLibrary.naantaliOldTown,
     imageAlt: { fi: "Naantalin vanhakaupunki", es: "Casco antiguo de Naantali", en: "Old Town of Naantali" },
+    gallery: [photoLibrary.naantaliHarbour, photoLibrary.turkuArchipelagoHouse],
     intro: {
       fi: "Naantali yhdistää vanhankaupungin, sataman, meren ja saariston. Se on helppo paikka aloittaa saaristopäivä, ja pienempi Saariston rengastie tarjoaa yhden tai kahden päivän oman retken.",
       es: "Naantali combina casco antiguo, puerto, mar y archipiélago. Es un punto de partida natural para el mar y para la Small Archipelago Trail.",
@@ -128,6 +131,7 @@ const places: Place[] = [
     region: { fi: "Turku · Aurajoki · saaristo", es: "Turku · río Aura · archipiélago", en: "Turku · Aura River · archipelago" },
     image: photoLibrary.turkuAura,
     imageAlt: { fi: "Aurajoki Turussa", es: "Río Aura en Turku", en: "Aura River in Turku" },
+    gallery: [photoLibrary.turkuArchipelago, photoLibrary.turkuArchipelagoHouse],
     intro: {
       fi: "Turku on rannikkokaupunki, jossa kaupungin historia ja saaristo liittyvät toisiinsa luonnollisesti. Aurajoki, Turun linna, museot, ruoka ja saaristopäivät tekevät siitä vahvan tukikohdan.",
       es: "Turku es una ciudad costera donde historia y archipiélago están estrechamente conectados. El río Aura, el castillo, los museos, la gastronomía y las islas forman una base muy completa.",
@@ -172,6 +176,7 @@ const places: Place[] = [
     region: { fi: "Hanko · Suomen eteläkärki", es: "Hanko · extremo sur de Finlandia", en: "Hanko · southernmost Finland" },
     image: photoLibrary.hanko,
     imageAlt: { fi: "Hanko ilmasta", es: "Hanko desde el aire", en: "Hanko from the air" },
+    gallery: [photoLibrary.hanko, photoLibrary.turkuArchipelagoHouse],
     intro: {
       fi: "Hanko on meri kolmelta suunnalta. Eteläinen sijainti, hiekkarannat, sileät kalliot, huvilat ja satamat antavat kaupungille oman kylpyläkaupunkimaisen tunnelmansa.",
       es: "Hanko está rodeado por el mar en tres lados. Su costa, playas, rocas, villas y puertos crean una identidad propia de ciudad balnearia.",
@@ -214,6 +219,7 @@ const places: Place[] = [
     region: { fi: "Saaristomeri · Ahvenanmaa", es: "Mar del Archipiélago · Åland", en: "Archipelago Sea · Åland" },
     image: photoLibrary.aland,
     imageAlt: { fi: "Ahvenanmaan saaristomaisema", es: "Paisaje del archipiélago de Åland", en: "Åland archipelago landscape" },
+    gallery: [photoLibrary.turkuArchipelago],
     intro: {
       fi: "Ahvenanmaa on kokonainen saaristomaailma: pienet kylät, sillat, lautat, punainen graniitti, meri, pyöräily ja ruokapaikat tekevät hitaasta liikkumisesta osan itse matkaa.",
       es: "Åland es un mundo de islas, pequeños pueblos, puentes, ferris, granito rojo, mar, ciclismo y restaurantes. El desplazamiento lento forma parte de la experiencia.",
@@ -363,6 +369,14 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
               <h3 className="mt-4 font-display text-xl font-bold text-brand-950">{sectionLabels[locale].sauna}</h3>
               <p className="mt-3 max-w-4xl text-sm leading-6 text-slate-700">{place.sauna[locale]}</p>
             </article>
+
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {place.gallery.map((image) => (
+                <div key={image} className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-100">
+                  <Image src={image} alt={place.imageAlt[locale]} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
+                </div>
+              ))}
+            </div>
 
             <div className="mt-8">
               <h3 className="font-display text-2xl font-bold text-brand-950">{sectionLabels[locale].providers}</h3>
