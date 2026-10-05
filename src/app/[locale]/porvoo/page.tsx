@@ -138,7 +138,7 @@ export default function PorvooPage({ params }: { params: { locale: string } }) {
                 <h2 className="mt-4 font-display text-2xl font-bold text-brand-950">{title}</h2>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
                 <a href={url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">
-                  {c.direct}<ArrowUpRight className="h-3.5 w-3.5" />
+                  {locale === "fi" ? "Avaa virallinen opas" : locale === "es" ? "Abrir guía oficial" : "Open official guide"}<ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
               </article>
             );
