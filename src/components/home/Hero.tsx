@@ -54,7 +54,7 @@ const slides = [
     image: photoLibrary.mathildedalVillage,
     credit: "Kotivalo / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
-    href: "/destinations/mathildedal",
+    href: "/destinations/salo-mathildedal",
     external: false,
   },
   {
@@ -241,7 +241,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           </div>
 
           <div className="flex items-center justify-center gap-3" aria-label={locale === "es" ? "Carrusel de imágenes" : locale === "fi" ? "Kuvakaruselli" : "Image carousel"}>
-            <button type="button" onClick={() => setActive((current) => (current - 1 + slides.length) % slides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Anterior" : locale === "fi" ? "Edellinen" : "Previous"}>
+            <button type="button" onClick={() => setActive((current) => (current - 1 + activeSlides.length) % activeSlides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Anterior" : locale === "fi" ? "Edellinen" : "Previous"}>
               <ChevronLeft className="h-5 w-5" />
             </button>
             <div className="flex gap-1.5">
@@ -256,7 +256,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
                 />
               ))}
             </div>
-            <button type="button" onClick={() => setActive((current) => (current + 1) % slides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Siguiente" : locale === "fi" ? "Seuraava" : "Next"}>
+            <button type="button" onClick={() => setActive((current) => (current + 1) % activeSlides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Siguiente" : locale === "fi" ? "Seuraava" : "Next"}>
               <ChevronRight className="h-5 w-5" />
             </button>
             <span className="ml-1 hidden text-xs font-semibold text-slate-500 sm:inline">{active + 1} / {activeSlides.length}</span>
