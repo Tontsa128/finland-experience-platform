@@ -4,9 +4,27 @@ DECLARE pid UUID; eid BIGINT; cid BIGINT; did BIGINT; mid UUID;
 BEGIN
   SELECT id INTO did FROM public.destinations WHERE slug='salo-mathildedal' LIMIT 1;
 
-  -- Repoint the existing wellness/nature entries to the actual provider.
-  UPDATE public.providers SET name='LuontoRiihi',slug='luontoriihi-provider',website_url='https://www.luontoriihi.fi/finnish-nature-experiences/',region='Salo',verified=true,verified_at=now(),active=true
-  WHERE slug IN ('forest-bathing-teijo-provider','forest-yoga-teijo-provider') LIMIT 1;
+  -- Use one canonical LuontoRiihi provider and attach the existing nature experiences to it.
+  SELECT id INTO pid FROM public.providers WHERE slug='luontoriihi-provider' LIMIT 1;
+  IF pid IS NULL THEN
+    INSERT INTO public.providers(id,name,slug,provider_type,website_url,region,verified,verified_at,verified_notes,active)
+    VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:luontoriihi'),'LuontoRiihi','luontoriihi-provider','https://www.luontoriihi.fi/finnish-nature-experiences/','Salo',true,now(),'Editorial source checked against current Visit Finland / VisitSalo listings; no commercial partnership claim.',true)
+    RETURNING id INTO pid;
+  ELSE
+    UPDATE public.providers
+    SET name='LuontoRiihi',website_url='https://www.luontoriihi.fi/finnish-nature-experiences/',region='Salo',verified=true,verified_at=now(),active=true
+    WHERE id=pid;
+  END IF;
+
+  DELETE FROM public.provider_experience_links
+  WHERE experience_id IN (
+    SELECT id FROM public.experiences
+    WHERE slug IN ('forest-bathing-teijo','luonnon-tutkimusmatka-teijo')
+  );
+  INSERT INTO public.provider_experience_links(provider_id,experience_id)
+  SELECT pid,id FROM public.experiences
+  WHERE slug IN ('forest-bathing-teijo','luonnon-tutkimusmatka-teijo')
+  ON CONFLICT DO NOTHING;
 
   UPDATE public.experiences
   SET provider_direct_url='https://www.luontoriihi.fi/finnish-nature-experiences/',source_url='https://www.visitfinland.com/en/product/7667a583-9f0d-4b36-b5f0-8e4e685f6912/forest-bathing-well-being-from-nature-in-salo/',experience_tags=ARRAY['wellness','forest','slow'],season_tags=ARRAY['spring','summer','autumn','winter']
