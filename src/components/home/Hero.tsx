@@ -134,15 +134,17 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
   const cmsSlides = (settings?.homepageSlides || []).filter((item) => item.enabled !== false && item.imageUrl);
-  const activeSlides = cmsSlides.length ? cmsSlides : slides.map((item, index) => ({
-    ...item,
-    id: item.key,
-    imageUrl: item.image,
-    sortOrder: index,
-    durationMs: 3000,
-    enabled: true,
-    copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] },
-  }));
+  const activeSlides = cmsSlides.length
+    ? cmsSlides.map((item) => ({ ...item, key: item.id, image: item.imageUrl }))
+    : slides.map((item, index) => ({
+        ...item,
+        id: item.key,
+        imageUrl: item.image,
+        sortOrder: index,
+        durationMs: 3000,
+        enabled: true,
+        copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] },
+      }));
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -176,7 +178,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     <section className="relative overflow-hidden bg-white text-white">
       {(cmsSlides.length ? activeSlides : slides).map((item, index) => (
         <div
-          key={"id" in item ? item.id : item.key}
+          key={item.key}
           className={`absolute inset-0 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`}
           aria-hidden={index !== active}
         >
