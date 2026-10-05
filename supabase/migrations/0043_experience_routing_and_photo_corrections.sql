@@ -17,5 +17,5 @@ WHERE id=uuid_generate_v5(uuid_ns_url(),'finnexprience:media:peltosaari-farm');
 
 -- Keep the public provider link for Peltosaari on its current official site when available.
 UPDATE public.experiences
-SET provider_direct_url=COALESCE(provider_direct_url,'https://peltosaarenluomulammastila.fi/')
+SET provider_direct_url='https://peltosaarenluomulammastila.fi/'
 WHERE slug='peltosaari-farm';
