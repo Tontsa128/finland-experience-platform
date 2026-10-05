@@ -181,7 +181,7 @@ export const saloProviders: SaloProvider[] = [
       es: "Golf en el paisaje costero de Teijo. Consulta directamente el green fee actual.",
       en: "Golf in the coastal landscape of Teijo. Check the current green fee directly with the club.",
     },
-    url: "https://www.meriteijogolf.fi",
+    url: "https://meriteijogolf.com",
   },
   {
     id: "mathildedal-brewery",
