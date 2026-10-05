@@ -43,11 +43,6 @@ export interface Destination {
   created_at?: string | null;
   updated_at?: string | null;
   verified?: boolean;
-  providerName?: string;
-  providerUrl?: string;
-  sourceUrl?: string;
-  address?: string;
-  coordinates?: { lat: number; lng: number };
 }
 
 export interface DestinationTranslation {
@@ -116,6 +111,11 @@ export interface Experience {
   created_at?: string;
   updated_at?: string;
   verified?: boolean;
+  providerName?: string;
+  providerUrl?: string;
+  sourceUrl?: string;
+  address?: string;
+  coordinates?: { lat: number; lng: number };
 }
 
 export interface ExperienceTranslation {
