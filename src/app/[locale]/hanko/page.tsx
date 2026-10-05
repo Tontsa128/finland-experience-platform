@@ -83,6 +83,18 @@ const links = [
   ["Accommodation", "https://visithanko.fi/en/teemasivu/accommodation/"],
 ] as const;
 
+const providers = [
+  { category: { fi: "Majoitus", es: "Alojamiento", en: "Accommodation" }, name: "Villa Maija", text: { fi: "Vuonna 1888 rakennettu pitsihuvila, joka tarjoaa ympäri vuoden huoneistoja, omat keittiöt ja osassa huoneistoista saunan.", es: "Villa histórica de 1888 con apartamentos durante todo el año, cocina propia y sauna en algunos apartamentos.", en: "A historic 1888 villa offering year-round apartments, private kitchens and sauna in some apartments." }, url: "https://villamaija.fi/" },
+  { category: { fi: "Majoitus", es: "Alojamiento", en: "Accommodation" }, name: "Viking Motel", text: { fi: "Pohjois-Hangon ympärivuotinen motelli, jossa on majoitusta, mökkejä, suuri sauna ja polkupyörävuokrausta.", es: "Motel abierto todo el año en el norte de Hanko, con habitaciones, cabañas, una gran sauna y alquiler de bicicletas.", en: "A year-round motel in northern Hanko with rooms, cabins, a large sauna and bicycle rental." }, url: "https://vikingmotel.fi/" },
+  { category: { fi: "Majoitus & hyvinvointi", es: "Alojamiento y bienestar", en: "Stay & wellbeing" }, name: "Regatta SPA", text: { fi: "Hangon merellinen kylpylähotelli, jossa yhdistyvät kylpyläperinne, sauna, hyvinvointi ja meren läheisyys.", es: "Hotel spa junto al mar que recupera la tradición balnearia de Hanko y combina bienestar, sauna y mar.", en: "A seaside spa hotel reviving Hanko's historic spa tradition with wellness, sauna and the sea." }, url: "https://regattaspa.fi/" },
+  { category: { fi: "Majoitus", es: "Alojamiento", en: "Accommodation" }, name: "Silversand Resort & Camping", text: { fi: "Merenrantakohde noin neljän kilometrin päässä keskustasta, oma hiekkaranta ja leirintäpalvelut.", es: "Complejo junto al mar a unos cuatro kilómetros del centro, con playa propia y camping.", en: "A seaside resort about four kilometres from the centre, with its own beach and camping services." }, url: "https://silversand.fi/" },
+  { category: { fi: "Elämys", es: "Experiencia", en: "Experience" }, name: "Outdoor Happiness", text: { fi: "Luontoelämyksiä, opastettuja retkiä ja kajakkivuokrausta. Palvelu sopii myös ryhmille.", es: "Experiencias de naturaleza, excursiones guiadas y alquiler de kayaks, también para grupos.", en: "Nature experiences, guided activities and kayak rental, including group programmes." }, url: "https://visithanko.fi/en/teemasivu/outdoor-happiness/" },
+  { category: { fi: "Elämys", es: "Experiencia", en: "Experience" }, name: "SE-action", text: { fi: "Ryhmäohjelmaa Hangossa: luonnon, yhdessä tekemisen ja ulkoilun ympärille rakennettuja ohjelmia.", es: "Programas para grupos en Hanko centrados en naturaleza, actividad y experiencias compartidas.", en: "Group programmes in Hanko built around nature, outdoor activity and shared experiences." }, url: "https://visithanko.fi/en/tuotesivu/se-action/" },
+  { category: { fi: "Ruoka", es: "Gastronomía", en: "Food" }, name: "Restaurant Segel", text: { fi: "Hangon keskustan elegantti ravintola, jossa sesongin raaka-aineet ja merellinen tunnelma ovat keskiössä.", es: "Restaurante elegante en el centro de Hanko, con ingredientes de temporada y ambiente costero.", en: "An elegant Hanko restaurant focused on seasonal ingredients and a relaxed coastal atmosphere." }, url: "https://visithanko.fi/en/restaurants/" },
+  { category: { fi: "Meri & retket", es: "Mar y excursiones", en: "Sea & excursions" }, name: "Sailing trips in Hanko", text: { fi: "Purjehdus on yksi Hangon luontevimmista tavoista kokea avoin meri, rannikko ja saariston pienet saaret.", es: "La navegación es una de las mejores formas de descubrir el mar abierto, la costa y las pequeñas islas de Hanko.", en: "Sailing is one of the most natural ways to experience Hanko's open sea, coast and small islands." }, url: "https://visithanko.fi/en/favourite-spots-on-the-map/" },
+  { category: { fi: "Sauna", es: "Sauna", en: "Sauna" }, name: "Hanko Saunas", text: { fi: "Hangon matkailutoimiston kooste tilaussaunoista. Mukana ympärivuotisia vaihtoehtoja ja kesäkauden rantasaunoja.", es: "Selección oficial de saunas privadas de Hanko, con opciones durante todo el año y algunas opciones de verano junto al mar.", en: "Hanko's official selection of bookable saunas, including year-round options and summer seaside saunas." }, url: "https://visithanko.fi/en/infosivu/hanko-saunas/" },
+] as const;
+
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
   const x = t[locale] || t.en;
@@ -139,6 +151,24 @@ export default function HankoPage({ params }: { params: { locale: string } }) {
         <div className="grid gap-6 md:grid-cols-2">
           <article className="rounded-[2rem] bg-white p-7 shadow-soft"><Coffee className="h-7 w-7 text-brand-700" /><h2 className="mt-4 font-display text-3xl font-bold text-brand-950">{x.food}</h2><p className="mt-4 leading-8 text-slate-700">{x.foodText}</p></article>
           <article className="rounded-[2rem] bg-white p-7 shadow-soft"><Flame className="h-7 w-7 text-amber-500" /><h2 className="mt-4 font-display text-3xl font-bold text-brand-950">{x.sauna}</h2><p className="mt-4 leading-8 text-slate-700">{x.saunaText}</p></article>
+        </div>
+      </section>
+
+      <section className="container-narrow py-16 sm:py-24">
+        <div className="mb-10 max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Paikalliset palvelut" : locale === "es" ? "Servicios locales" : "Local providers"}</p>
+          <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Valitse oma tapasi kokea Hanko" : locale === "es" ? "Elige cómo vivir Hanko" : "Choose your way to experience Hanko"}</h2>
+          <p className="mt-5 text-lg leading-8 text-slate-700">{locale === "fi" ? "Poimintoja Visit Hangon palveluvalikoimasta. Käyttäjä jatkaa aina palveluntarjoajan tai virallisen kohdesivun kautta; emme ota varausta tai maksua vastaan." : locale === "es" ? "Una selección de servicios de Visit Hanko. El visitante continúa siempre hacia el proveedor o la página oficial; no gestionamos reservas ni pagos." : "A selection from Visit Hanko's service offering. Visitors always continue to the provider or official destination page; we do not take bookings or payments."}</p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {providers.map((provider) => (
+            <a key={provider.name} href={provider.url} target="_blank" rel="noopener noreferrer" className="group rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
+              <p className="text-xs font-bold uppercase tracking-[.16em] text-brand-600">{provider.category[locale]}</p>
+              <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{provider.text[locale]}</p>
+              <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider"}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+            </a>
+          ))}
         </div>
       </section>
 
