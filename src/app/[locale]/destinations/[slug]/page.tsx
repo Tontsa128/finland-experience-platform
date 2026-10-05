@@ -183,34 +183,47 @@ export default async function DestinationDetail({ params }: { params: { locale: 
       ) : null}
 
       {d.slug === "rosala" ? (
-        <section className="bg-brand-50 py-14 sm:py-18">
+        <section className="bg-brand-50 py-14 sm:py-20">
           <div className="container-narrow">
-            <div className="grid gap-8 rounded-[2rem] bg-white p-7 shadow-soft sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">
-                  {locale === "fi" ? "Paikallinen kohde" : locale === "es" ? "Lugar local" : "Local highlight"}
-                </p>
+                <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Rosalan saariston oma elämys" : locale === "es" ? "Una experiencia propia del archipiélago" : "A distinctive archipelago experience"}</p>
                 <h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">
-                  {locale === "fi" ? "Rosalan Viikinkikeskus" : locale === "es" ? "Centro Vikingo de Rosala" : "Rosala Viking Centre"}
+                  {locale === "fi" ? "Rosalan Viikinkikeskus & Bed & Breakfast" : locale === "es" ? "Centro Vikingo de Rosala & Bed & Breakfast" : "Rosala Viking Centre & Bed & Breakfast"}
                 </h2>
-                <p className="mt-4 max-w-3xl leading-7 text-slate-600">
+                <p className="mt-4 max-w-3xl leading-7 text-slate-700">
                   {locale === "fi"
-                    ? "Museo ja viikinkikylä Rosalan saaristossa. Ajantasaiset aukioloajat, liput ja vierailuohjeet tarkistat suoraan palveluntarjoajalta."
+                    ? "Rosalassa voi yöpyä viikinkien maailmaan rakennetussa ympäristössä. Päällikön hallissa on kolme huonetta, lisäksi suuren salin alkoveissa tai viikinkiteltassa voi majoittua. Majoitukseen kuuluu iltasauna ja aamiainen. Viikinkikylässä voi kokeilla esimerkiksi miekkailua, varpa-peliä ja puujalkakävelyä, ja iltaan voi yhdistää Rodeborgin viikinki-illallisen."
                     : locale === "es"
-                      ? "Museo y pueblo vikingo en el archipiélago de Rosala. Consulta directamente con el proveedor los horarios, entradas y detalles actuales de la visita."
-                      : "A museum and reconstructed Viking village in the Rosala archipelago. Check current opening hours, admission and visit details directly with the provider."}
+                      ? "En Rosala puedes alojarte en un entorno inspirado en la época vikinga. El salón del jefe ofrece tres habitaciones, además de alcobas y tiendas vikingas. La estancia incluye sauna nocturna y desayuno. En el poblado se pueden probar actividades inspiradas en la vida vikinga y completar la visita con una cena temática en Rodeborg."
+                      : "Rosala offers accommodation in a Viking-inspired setting. The chieftain's hall has three rooms, with further alcoves and Viking-tent options. The stay includes an evening sauna and breakfast. The village also offers Viking-themed activities, with the option of a themed dinner at Rodeborg."}
+                </p>
+                <p className="mt-4 max-w-3xl text-sm leading-6 text-slate-500">
+                  {locale === "fi" ? "Rosalan Viikinkikeskus sijaitsee Rosalan saarella Kemiönsaaressa. Saarelle pääsee veneellä tai Kasnäsista lautalla." : locale === "es" ? "El Centro Vikingo de Rosala está en la isla de Rosala, en Kemiönsaari. Se puede llegar en barco o en ferry desde Kasnäs." : "Rosala Viking Centre is on Rosala island in Kemiönsaari, reached by boat or ferry from Kasnäs."}
                 </p>
               </div>
-              <a href="https://rosala.fi/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
-                {locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider"}
+              <a href="https://rosala.fi/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-800">
+                {locale === "fi" ? "Siirry Rosalan omille sivuille" : locale === "es" ? "Ir a la web de Rosala" : "Visit Rosala directly"}
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
+
+            <div className="mt-9 grid gap-4 md:grid-cols-2">
+              {[
+                { image: "${photoLibrary.rosalaVikingCentre}", title: locale === "fi" ? "Viikinkikylä" : locale === "es" ? "Poblado vikingo" : "Viking village", text: locale === "fi" ? "Historiallinen ympäristö, jossa voi tutustua viikinkiajan elämään ja näyttelyihin." : locale === "es" ? "Entorno histórico para conocer la vida y la cultura de la época vikinga." : "A historical setting to explore Viking-age life and exhibitions." },
+                { image: "${photoLibrary.rosalaVikingHall}", title: locale === "fi" ? "Yöpyminen & sauna" : locale === "es" ? "Alojamiento & sauna" : "Stay & sauna", text: locale === "fi" ? "Päällikön hallin huoneet, alkovi- tai telttamajoitus sekä iltasauna ja aamiainen." : locale === "es" ? "Habitaciones, alcobas o tienda vikinga, con sauna nocturna y desayuno." : "Rooms, alcoves or a Viking tent, with evening sauna and breakfast." },
+              ].map((item) => (
+                <article key={item.title} className="overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
+                  <div className="relative aspect-[16/9]">
+                    <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                  </div>
+                  <div className="p-5"><h3 className="font-display text-2xl font-bold text-brand-950">{item.title}</h3><p className="mt-2 leading-7 text-slate-600">{item.text}</p></div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
-      ) : null}
-
-      <section className="bg-slate-50">
+      ) : null}      <section className="bg-slate-50">
         <div className="container-narrow py-14 sm:py-18">
           <h2 className="font-display text-3xl font-bold text-brand-950 sm:text-4xl">{copy.tips}</h2>
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">{copy.tipText}</p>
