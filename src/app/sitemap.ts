@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/seo";
-import { locales } from "@/lib/utils";
+import { canonicalDestinationSlug, locales } from "@/lib/utils";
 import {
   getPublishedDestinations,
   getPublishedExperiences,
@@ -64,7 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const dynamicEntries: MetadataRoute.Sitemap = [
       ...destinations.flatMap((item) =>
         locales.map((locale) => ({
-          url: siteUrl + "/" + locale + "/destinations/" + item.slug,
+          url: siteUrl + "/" + locale + "/destinations/" + canonicalDestinationSlug(item.slug),
           lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
