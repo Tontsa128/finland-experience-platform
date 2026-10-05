@@ -24,7 +24,7 @@ type Place = {
   sauna: Localized;
   official: string;
   officialLabel: Localized;
-  providers: Array<{ name: Localized; text: Localized; url: string }>;
+  providers: Array<{ name: Localized; text: Localized; url: string; officialGuide?: boolean }>;
 };
 
 const places: Place[] = [
@@ -166,9 +166,9 @@ const places: Place[] = [
     official: "https://en.visitturku.fi/see-and-do",
     officialLabel: { fi: "Tutustu Visit Turkuun", es: "Descubre Visit Turku", en: "Explore Visit Turku" },
     providers: [
-      { name: { fi: "River Taxi", es: "River Taxi", en: "River Taxi" }, text: { fi: "Puinen jokivene, jolla voi liikkua Aurajoella ja kohti Ruissaloa.", es: "Barco de madera para recorrer el Aura y acercarse a Ruissalo.", en: "A traditional wooden boat experience on the Aura River and towards Ruissalo." }, url: "https://en.visitturku.fi/see-and-do" },
-      { name: { fi: "Nauvo Marina", es: "Nauvo Marina", en: "Nauvo Marina" }, text: { fi: "Saariston satama, josta Turun suunnalta voi jatkaa saaristopäivään.", es: "Puerto del archipiélago para continuar la ruta hacia las islas.", en: "Archipelago harbour for continuing deeper into the islands." }, url: "https://en.visitturku.fi/see-and-do" },
-      { name: { fi: "OOBU", es: "OOBU", en: "OOBU" }, text: { fi: "Saaristovaikutteista ruokaa Aurajoen äärellä.", es: "Cocina con inspiración del archipiélago junto al Aura.", en: "Archipelago-inspired food by the Aura River." }, url: "https://en.visitturku.fi/turkus-unique-spots-and-hidden-gems" },
+      { name: { fi: "River Taxi", es: "River Taxi", en: "River Taxi" }, text: { fi: "Puinen jokivene, jolla voi liikkua Aurajoella ja kohti Ruissaloa.", es: "Barco de madera para recorrer el Aura y acercarse a Ruissalo.", en: "A traditional wooden boat experience on the Aura River and towards Ruissalo." }, url: "https://www.jokitaxi.fi/en" },
+      { name: { fi: "Nauvo Marina", es: "Nauvo Marina", en: "Nauvo Marina" }, text: { fi: "Saariston satama, josta Turun suunnalta voi jatkaa saaristopäivään.", es: "Puerto del archipiélago para continuar la ruta hacia las islas.", en: "Archipelago harbour for continuing deeper into the islands." }, url: "https://www.vierassatamat.fi/fi/kohde/nauvon-vierasvenesatama-nauvo-parainen-7738", officialGuide: true },
+      { name: { fi: "OOBU", es: "OOBU", en: "OOBU" }, text: { fi: "Saaristovaikutteista ruokaa Aurajoen äärellä.", es: "Cocina con inspiración del archipiélago junto al Aura.", en: "Archipelago-inspired food by the Aura River." }, url: "https://www.oobu.fi/en/" },
     ],
   },
   {
@@ -211,7 +211,7 @@ const places: Place[] = [
     official: "https://visithanko.fi/en/",
     officialLabel: { fi: "Tutustu Visit Hankoon", es: "Descubre Visit Hanko", en: "Explore Visit Hanko" },
     providers: [
-      { name: { fi: "Visit Hanko", es: "Visit Hanko", en: "Visit Hanko" }, text: { fi: "Virallinen opas rantoihin, luontoon, tapahtumiin ja majoitukseen.", es: "Guía oficial de playas, naturaleza, eventos y alojamiento.", en: "Official guide to beaches, nature, events and accommodation." }, url: "https://visithanko.fi/en/" },
+      { name: { fi: "Visit Hanko", es: "Visit Hanko", en: "Visit Hanko" }, text: { fi: "Virallinen opas rantoihin, luontoon, tapahtumiin ja majoitukseen.", es: "Guía oficial de playas, naturaleza, eventos y alojamiento.", en: "Official guide to beaches, nature, events and accommodation." }, url: "https://visithanko.fi/en/", officialGuide: true },
     ],
   },
   {
@@ -254,9 +254,9 @@ const places: Place[] = [
     official: "https://visitaland.com/en/",
     officialLabel: { fi: "Tutustu Visit Ålandiin", es: "Descubre Visit Åland", en: "Explore Visit Åland" },
     providers: [
-      { name: { fi: "Visit Åland · mökit", es: "Visit Åland · cabañas", en: "Visit Åland · cottages" }, text: { fi: "Laaja mökki- ja saaristomajoitusten kooste.", es: "Amplia selección de cabañas y alojamientos del archipiélago.", en: "A broad selection of cottages and archipelago accommodation." }, url: "https://visitaland.com/en/accommodation/cottage/" },
-      { name: { fi: "Visit Åland · pyöräily", es: "Visit Åland · ciclismo", en: "Visit Åland · cycling" }, text: { fi: "Pyöräilyreitit ja saaristoreitti lauttoineen.", es: "Rutas en bicicleta y la ruta del archipiélago con ferris.", en: "Cycling routes and the archipelago trail with ferries." }, url: "https://visitaland.com/en/experience/outdoor/cycle-in-aland/" },
-      { name: { fi: "Visit Åland · hotellit", es: "Visit Åland · hoteles", en: "Visit Åland · hotels" }, text: { fi: "Hotelleja kaupungissa ja saaristossa.", es: "Hoteles en Mariehamn y en el archipiélago.", en: "Hotels in Mariehamn and the archipelago." }, url: "https://visitaland.com/en/accommodation/hotel/" },
+      { name: { fi: "Visit Åland · mökit", es: "Visit Åland · cabañas", en: "Visit Åland · cottages" }, text: { fi: "Laaja mökki- ja saaristomajoitusten kooste.", es: "Amplia selección de cabañas y alojamientos del archipiélago.", en: "A broad selection of cottages and archipelago accommodation." }, url: "https://visitaland.com/en/accommodation/cottage/", officialGuide: true },
+      { name: { fi: "Visit Åland · pyöräily", es: "Visit Åland · ciclismo", en: "Visit Åland · cycling" }, text: { fi: "Pyöräilyreitit ja saaristoreitti lauttoineen.", es: "Rutas en bicicleta y la ruta del archipiélago con ferris.", en: "Cycling routes and the archipelago trail with ferries." }, url: "https://visitaland.com/en/experience/outdoor/cycle-in-aland/", officialGuide: true },
+      { name: { fi: "Visit Åland · hotellit", es: "Visit Åland · hoteles", en: "Visit Åland · hotels" }, text: { fi: "Hotelleja kaupungissa ja saaristossa.", es: "Hoteles en Mariehamn y en el archipiélago.", en: "Hotels in Mariehamn and the archipelago." }, url: "https://visitaland.com/en/accommodation/hotel/", officialGuide: true },
     ],
   },
 ];
@@ -418,7 +418,7 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
                   <a key={provider.name.en} href={provider.url} target="_blank" rel="noopener noreferrer" className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
                     <h4 className="font-semibold text-brand-950">{provider.name[locale]}</h4>
                     <p className="mt-2 text-sm leading-6 text-slate-600">{provider.text[locale]}</p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{isFi ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider"}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+                    <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{provider.officialGuide ? (isFi ? "Avaa virallinen opas" : locale === "es" ? "Abrir guía oficial" : "Open official guide") : (isFi ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider")}<ArrowUpRight className="h-3.5 w-3.5" /></span>
                   </a>
                 ))}
               </div>
@@ -468,7 +468,7 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
                 <p className="text-[10px] font-bold uppercase tracking-[.16em] text-brand-600">{provider.category}</p>
                 <h3 className="mt-2 font-display text-xl font-bold text-brand-950">{provider.name}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>
-                <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider"}<ArrowUpRight className="h-3.5 w-3.5" /></span>
+                <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{provider.officialGuide ? (locale === "fi" ? "Avaa virallinen opas" : locale === "es" ? "Abrir guía oficial" : "Open official guide") : (locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider")}<ArrowUpRight className="h-3.5 w-3.5" /></span>
               </a>
             ))}
           </div>
