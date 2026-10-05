@@ -82,6 +82,12 @@ type ExperienceRow = {
   pricing_rules?: PricingRow[] | null;
   experience_categories?: ExperienceCategoryRow | ExperienceCategoryRow[] | null;
   experience_media?: ExperienceMediaRow[] | null;
+  latitude?: number | string | null;
+  longitude?: number | string | null;
+  address?: string | null;
+  provider_direct_url?: string | null;
+  source_url?: string | null;
+  editorial_verified?: boolean | null;
 };
 
 type BlogTranslationRow = { locale?: string; title?: string | null; excerpt?: string | null; content?: string | null };
@@ -336,7 +342,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
   try {
     const { data, error } = await supabaseAdmin
       .from("experiences")
-      .select("id,destination_id,category_id,slug,duration_minutes,min_group_size,max_group_size,difficulty_level,status,experience_translations(language_code,title,short_description,full_description),pricing_rules(base_price_eur,adult_price_eur,child_price_eur),experience_categories(slug,name_fi,name_es),experience_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
+      .select("id,destination_id,category_id,slug,duration_minutes,min_group_size,max_group_size,difficulty_level,status,latitude,longitude,address,provider_direct_url,source_url,editorial_verified,experience_translations(language_code,title,short_description,full_description),pricing_rules(base_price_eur,adult_price_eur,child_price_eur),experience_categories(slug,name_fi,name_es),experience_media(sort_order,media(url,alt_fi,alt_es,alt_en,alt_text))")
       .eq("status", "published")
       .order("created_at", { ascending: false });
 
@@ -379,13 +385,19 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
         category,
         region: verifiedExperienceProviders.get(String(experience.id))?.region || "",
         providerName: verifiedExperienceProviders.get(String(experience.id))?.name,
-        providerUrl: verifiedExperienceProviders.get(String(experience.id))?.url,
+        providerUrl: experience.provider_direct_url || verifiedExperienceProviders.get(String(experience.id))?.url,
+        sourceUrl: experience.source_url || undefined,
+        address: experience.address || undefined,
+        coordinates:
+          experience.latitude != null && experience.longitude != null
+            ? { lat: Number(experience.latitude), lng: Number(experience.longitude) }
+            : undefined,
         maxParticipants: Number(experience.max_group_size || 0),
         destination_id: String(experience.destination_id),
         category_id: String(experience.category_id),
         duration_minutes: experience.duration_minutes ?? undefined,
         status: experience.status || undefined,
-        verified: verifiedExperienceIds.has(String(experience.id)),
+        verified: Boolean(experience.editorial_verified) || verifiedExperienceIds.has(String(experience.id)),
         pricing: pricing
           ? {
               adult: Number(pricing.adult_price_eur ?? pricing.base_price_eur ?? 0),
