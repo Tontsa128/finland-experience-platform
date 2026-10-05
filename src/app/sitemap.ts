@@ -18,6 +18,8 @@ const basePaths = [
   "turku",
   "naantali",
   "hanko",
+  "kimitoon",
+  "aland",
   "accommodations",
   "experiences",
   "rural-finland",
