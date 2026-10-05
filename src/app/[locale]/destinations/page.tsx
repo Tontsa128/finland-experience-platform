@@ -83,6 +83,35 @@ export default async function DestinationsPage({ params }: { params: { locale: s
         </div>
       </section>
 
+      <section className="bg-brand-50 py-16 sm:py-24">
+        <div className="container-narrow">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{locale === "fi" ? "Alueoppaat" : locale === "es" ? "Guías regionales" : "Regional guides"}</p>
+            <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Aloita kohteesta, syvennä alueella." : locale === "es" ? "Empieza por un destino y descubre toda la región." : "Start with a destination, then explore the region."}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{locale === "fi" ? "Näissä oppaissa kokoamme paikallista tietoa, majoitusta, ruokaa, luontoa ja elämyksiä yhteen. Mahdolliset varaukset tehdään aina suoraan palveluntarjoajalle." : locale === "es" ? "Estas guías reúnen información local, alojamiento, gastronomía, naturaleza y experiencias. Las reservas se realizan siempre directamente con cada proveedor." : "These guides bring together local information, stays, food, nature and experiences. Any booking is always handled directly with the provider."}</p>
+          </div>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["Salo", "salo", locale === "fi" ? "Mathildedal, Teijo, Särkisalo, Perniö ja kaupungin palvelut." : locale === "es" ? "Mathildedal, Teijo, Särkisalo, Perniö y servicios de Salo." : "Mathildedal, Teijo, Särkisalo, Perniö and Salo services."],
+              ["Turku", "turku", locale === "fi" ? "Aurajoki, Ruissalo, kulttuuri, ruoka ja Turun saaristo." : locale === "es" ? "Río Aura, Ruissalo, cultura, gastronomía y archipiélago." : "Aura River, Ruissalo, culture, food and the Turku Archipelago."],
+              ["Naantali", "naantali", locale === "fi" ? "Vanhakaupunki, satama, Muumimaailma ja pieni saaristoreitti." : locale === "es" ? "Casco antiguo, puerto, Moominworld y la Small Archipelago Trail." : "Old Town, harbour, Moominworld and the Small Archipelago Trail."],
+              ["Hanko", "hanko", locale === "fi" ? "Rannat, avomeri, pyöräily, saunat ja merielämykset." : locale === "es" ? "Playas, mar abierto, ciclismo, saunas y experiencias marinas." : "Beaches, open sea, cycling, saunas and sea experiences."],
+              ["Kemiönsaari & Rosala", "kimitoon", locale === "fi" ? "Viikinkikeskus, Kasnäs, Bengtskär, mökit ja saaristomeri." : locale === "es" ? "Centro Vikingo, Kasnäs, Bengtskär, cabañas y mar." : "Viking Centre, Kasnäs, Bengtskär, cottages and the sea."],
+              ["Åland", "aland", locale === "fi" ? "Pyöräily, saaristoreitti, mökit, ruoka ja pienet saaret." : locale === "es" ? "Ciclismo, rutas, cabañas, gastronomía y pequeñas islas." : "Cycling, island routes, cottages, food and small islands."],
+              ["Porvoo", "porvoo", locale === "fi" ? "Vanha Porvoo, jokiranta, ruoka, kulttuuri ja saariston läheisyys." : locale === "es" ? "Casco antiguo, río, gastronomía, cultura y archipiélago." : "Old Town, riverside life, food, culture and nearby archipelago."],
+              [locale === "fi" ? "Kaakkois-Suomi" : locale === "es" ? "Sureste de Finlandia" : "Southeast Finland", "southeast-finland", locale === "fi" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa ja Itäisen Suomenlahden saaristo." : locale === "es" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa y el archipiélago del Golfo de Finlandia." : "Kotka, Hamina, Loviisa, Strömfors, Valkmusa and the Eastern Gulf of Finland archipelago."],
+            ].map(([name, href, description]) => (
+              <Link key={href} href={"/" + locale + "/" + href} className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
+                <MapPin className="h-6 w-6 text-brand-700" />
+                <h3 className="mt-4 font-display text-2xl font-bold text-brand-950">{name}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa opas" : locale === "es" ? "Abrir guía" : "Open guide"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-white py-16 sm:py-24">
         <div className="container-narrow overflow-hidden rounded-[2rem] bg-brand-950 p-8 text-white sm:p-12">
           <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">Luxury & Authentic Finland</p>
