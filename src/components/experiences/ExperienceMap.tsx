@@ -22,6 +22,7 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
   const instanceRef = useRef<any>(null);
   const markersRef = useRef<Map<string, any>>(new Map());
   const [ready, setReady] = useState(false);
+  const leafletRef = useRef<typeof import("leaflet") | null>(null);
 
   const points = useMemo(
     () => items.filter((item) => item.coordinates && Number.isFinite(item.coordinates.lat) && Number.isFinite(item.coordinates.lng)),
@@ -34,6 +35,7 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
       if (!mapRef.current || instanceRef.current) return;
       const L = await import("leaflet");
       if (cancelled || !mapRef.current) return;
+      leafletRef.current = L;
 
       const map = L.map(mapRef.current, { scrollWheelZoom: true, zoomControl: true });
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -50,7 +52,8 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
   useEffect(() => {
     const map = instanceRef.current;
     if (!map || !ready) return;
-    const L = require("leaflet") as typeof import("leaflet");
+    const L = leafletRef.current;
+    if (!L) return;
     markersRef.current.forEach((marker) => marker.remove());
     markersRef.current.clear();
 
