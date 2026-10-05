@@ -20,6 +20,7 @@ const basePaths = [
   "hanko",
   "kimitoon",
   "aland",
+  "porvoo",
   "accommodations",
   "experiences",
   "rural-finland",
