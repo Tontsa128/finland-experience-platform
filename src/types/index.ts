@@ -116,6 +116,9 @@ export interface Experience {
   sourceUrl?: string;
   address?: string;
   coordinates?: { lat: number; lng: number };
+  audienceTags?: string[];
+  seasonTags?: string[];
+  experienceTags?: string[];
 }
 
 export interface ExperienceTranslation {
