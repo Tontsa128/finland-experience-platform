@@ -4,9 +4,9 @@ import type { Locale } from "@/types";
 import { saloProviders, type SaloProvider } from "@/lib/salo";
 
 const labels = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", price: "Precio", visit: "Ir al proveedor" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider" },
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider", guide: "Open official guide" },
 } as const;
 
 export function SaloDirectory({ locale, category }: { locale: Locale; category?: SaloProvider["category"] }) {
@@ -48,7 +48,7 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
                   </div>
                 ) : null}
                 <a href={provider.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
-                  {l.visit}<ArrowUpRight className="h-4 w-4" />
+                  {(provider.url.includes("visitsalo.fi") || provider.url.includes("visitmathildedal.fi") || provider.url.includes("luontoon.fi")) ? l.guide : l.visit}<ArrowUpRight className="h-4 w-4" />
                 </a>
                 {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">Kuva: {provider.imageCredit}</p> : null}
               </div>
