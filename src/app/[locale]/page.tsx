@@ -87,7 +87,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
     featuredCabins[0]?.images?.[0] || fallbackSummerImage,
   ];
 
-  const coastalHighlights = ["salo-mathildedal", "naantali", "turku", "rosala", "aland"]
+  const coastalHighlights = ["salo-mathildedal", "naantali", "turku", "hanko", "aland"]
     .map((slug) => catalogDestinations.find((item) => item.slug === slug))
     .filter(Boolean)
     .slice(0, 5) as typeof destinations;
