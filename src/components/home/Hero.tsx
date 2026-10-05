@@ -147,11 +147,11 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % slides.length);
+      setActive((current) => (current + 1) % activeSlides.length);
     }, activeSlides[active]?.durationMs || 3000);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [active, activeSlides.length, activeSlides[active]?.durationMs]);
 
   const slide = activeSlides[active];
   const text = cmsSlides.length
@@ -176,7 +176,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     <section className="relative overflow-hidden bg-white text-white">
       {(cmsSlides.length ? activeSlides : slides).map((item, index) => (
         <div
-          key={item.key}
+          key={"id" in item ? item.id : item.key}
           className={`absolute inset-0 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`}
           aria-hidden={index !== active}
         >
