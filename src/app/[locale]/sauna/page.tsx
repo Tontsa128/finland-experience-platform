@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Droplets, Flame, HeartPulse, Leaf, Moon, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Flame, HeartPulse, Leaf, Moon, ShieldCheck } from "lucide-react";
 import { photoLibrary } from "@/lib/photo-library";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import type { Locale } from "@/types";
@@ -293,16 +293,24 @@ export default function SaunaPage({ params }: { params: { locale: string } }) {
 
       <section className="bg-brand-50 py-14 sm:py-20">
         <div className="container-narrow grid gap-6 lg:grid-cols-[1.1fr_.9fr]">
-          <article className="rounded-[2rem] bg-white p-8 shadow-soft sm:p-10">
-            <div className="flex items-center gap-3">
-              <Leaf className="h-7 w-7 text-brand-700" />
-              <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{x.heritage}</p>
+          <article className="group relative min-h-[300px] overflow-hidden rounded-[2rem] shadow-card">
+            <Image src={photoLibrary.saunaCottage} alt={x.heritage} fill sizes="(max-width:1024px) 100vw, 55vw" className="object-cover transition duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-950/95 via-brand-950/55 to-brand-950/10" />
+            <div className="relative z-10 flex h-full min-h-[300px] flex-col justify-end p-8 text-white sm:p-10">
+              <div className="flex items-center gap-3">
+                <Leaf className="h-7 w-7 text-gold-300" />
+                <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-200">{x.heritage}</p>
+              </div>
+              <p className="mt-5 max-w-2xl font-display text-2xl font-semibold leading-snug sm:text-3xl">{x.heritageText}</p>
             </div>
-            <p className="mt-5 font-display text-2xl font-semibold leading-snug sm:text-3xl">{x.heritageText}</p>
           </article>
-          <article className="rounded-[2rem] bg-brand-950 p-8 text-white shadow-card sm:p-10">
-            <Flame className="h-7 w-7 text-gold-300" />
-            <p className="mt-5 text-lg leading-8 text-white/80">{x.löylyText}</p>
+          <article className="group relative min-h-[300px] overflow-hidden rounded-[2rem] shadow-card">
+            <Image src={photoLibrary.saunaBucketVasta} alt={x.löylyTitle} fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover transition duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/15" />
+            <div className="relative z-10 flex h-full min-h-[300px] flex-col justify-end p-8 text-white sm:p-10">
+              <Flame className="h-7 w-7 text-gold-300" />
+              <p className="mt-5 text-lg leading-8 text-white/90 sm:text-xl">{x.löylyText}</p>
+            </div>
           </article>
         </div>
       </section>
@@ -329,13 +337,26 @@ export default function SaunaPage({ params }: { params: { locale: string } }) {
             <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">{x.ritualTitle}</h2>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-5">
-            {x.ritual.map(([number, title, text]) => (
-              <article key={number} className="rounded-3xl border border-brand-100 bg-white p-6 shadow-soft">
-                <div className="text-4xl font-display font-bold text-brand-200">{number}</div>
-                <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
-              </article>
-            ))}
+            {x.ritual.map(([number, title, text], index) => {
+              const ritualImages = [
+                photoLibrary.saunaTraditionalSmoke,
+                photoLibrary.saunaBucketVasta,
+                photoLibrary.saunaVasta,
+                photoLibrary.saunaCottage,
+                photoLibrary.saunaWhisking,
+              ];
+              return (
+                <article key={number} className="group relative min-h-[280px] overflow-hidden rounded-3xl shadow-soft">
+                  <Image src={ritualImages[index]} alt={title} fill sizes="(max-width:768px) 100vw, 20vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/10" />
+                  <div className="relative z-10 flex min-h-[280px] flex-col justify-end p-6 text-white">
+                    <div className="text-4xl font-display font-bold text-white/45">{number}</div>
+                    <h3 className="mt-4 font-display text-xl font-bold">{title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-white/80">{text}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -348,21 +369,37 @@ export default function SaunaPage({ params }: { params: { locale: string } }) {
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {x.wellness.map(([Icon, title, text]) => (
-            <article key={title} className="rounded-[2rem] bg-brand-50 p-7">
-              <Icon className="h-8 w-8 text-brand-700" />
-              <h3 className="mt-5 font-display text-2xl font-bold">{title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-700">{text}</p>
-            </article>
-          ))}
+          {x.wellness.map(([Icon, title, text], index) => {
+            const wellnessImages = [
+              photoLibrary.saunaCottage,
+              photoLibrary.saunaWhisking,
+              photoLibrary.saunaBoat,
+              photoLibrary.herrankukkaroSauna,
+            ];
+            return (
+              <article key={title} className="group relative min-h-[330px] overflow-hidden rounded-[2rem] shadow-soft">
+                <Image src={wellnessImages[index]} alt={title} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-950/95 via-brand-950/60 to-brand-950/15" />
+                <div className="relative z-10 flex min-h-[330px] flex-col justify-end p-7 text-white">
+                  <Icon className="h-8 w-8 text-gold-300" />
+                  <h3 className="mt-5 font-display text-2xl font-bold">{title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-white/80">{text}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
-        <article className="mt-6 rounded-[2rem] border border-slate-200 bg-white p-7 shadow-soft sm:p-9">
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{x.researchTitle}</p>
-          <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-700">{x.researchText}</p>
-          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3 text-sm font-bold text-brand-800">
+        <article className="relative mt-6 overflow-hidden rounded-[2rem] shadow-soft">
+          <Image src={photoLibrary.sauna} alt={x.researchTitle} fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-brand-950/90" />
+          <div className="relative z-10 p-7 text-white sm:p-9">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{x.researchTitle}</p>
+          <p className="mt-4 max-w-4xl text-lg leading-8 text-white/85">{x.researchText}</p>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3 text-sm font-bold text-gold-200">
             <a href={sources.research} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">{x.sourceResearch}<ArrowUpRight className="h-4 w-4" /></a>
             <a href={sources.research2025} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">{x.sourceResearch2025}<ArrowUpRight className="h-4 w-4" /></a>
+          </div>
           </div>
         </article>
       </section>
@@ -372,12 +409,24 @@ export default function SaunaPage({ params }: { params: { locale: string } }) {
           <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{x.traditionsTitle}</p>
           <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">{x.traditionsTitle}</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {x.traditions.map(([title, text]) => (
-              <article key={title} className="rounded-[2rem] border border-white/10 bg-white/5 p-7">
-                <h3 className="font-display text-2xl font-bold">{title}</h3>
-                <p className="mt-3 leading-7 text-white/75">{text}</p>
-              </article>
-            ))}
+            {x.traditions.map(([title, text], index) => {
+              const traditionImages = [
+                photoLibrary.saunaCottage,
+                photoLibrary.saunaTraditionalSmoke,
+                photoLibrary.saunaRajaportti,
+                photoLibrary.sauna,
+              ];
+              return (
+                <article key={title} className="group relative min-h-[280px] overflow-hidden rounded-[2rem] border border-white/10 shadow-card">
+                  <Image src={traditionImages[index]} alt={title} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/15" />
+                  <div className="relative z-10 flex min-h-[280px] flex-col justify-end p-7 text-white">
+                    <h3 className="font-display text-2xl font-bold">{title}</h3>
+                    <p className="mt-3 leading-7 text-white/80">{text}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
