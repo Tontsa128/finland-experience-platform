@@ -133,26 +133,33 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
+  const cmsSlides = (settings?.homepageSlides || []).filter((item) => item.enabled !== false && item.imageUrl);
+  const activeSlides = cmsSlides.length ? cmsSlides : slides.map((item, index) => ({
+    ...item,
+    id: item.key,
+    imageUrl: item.image,
+    sortOrder: index,
+    durationMs: 3000,
+    enabled: true,
+    copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] },
+  }));
   const [active, setActive] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % slides.length);
-    }, 3000);
+    }, activeSlides[active]?.durationMs || 3000);
 
     return () => window.clearInterval(timer);
   }, []);
 
-  const slide = slides[active];
-  const text = active === 0
-    ? {
-        eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow,
-        title: settings?.heroTitle?.[locale] || copy[locale].summer.title,
-        text: settings?.heroDescription?.[locale] || copy[locale].summer.text,
-        cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta,
-      }
-    : copy[locale][slide.key];
-  const isCmsHero = active === 0 && Boolean(settings?.heroImageUrl);
+  const slide = activeSlides[active];
+  const text = cmsSlides.length
+    ? slide.copy[locale]
+    : active === 0
+      ? { eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow, title: settings?.heroTitle?.[locale] || copy[locale].summer.title, text: settings?.heroDescription?.[locale] || copy[locale].summer.text, cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta }
+      : copy[locale][slide.key];
+  const isCmsHero = !cmsSlides.length && active === 0 && Boolean(settings?.heroImageUrl);
   const toLocalizedHref = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value;
     const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, "");
@@ -167,19 +174,19 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
   return (
     <section className="relative overflow-hidden bg-white text-white">
-      {slides.map((item, index) => (
+      {(cmsSlides.length ? activeSlides : slides).map((item, index) => (
         <div
           key={item.key}
           className={`absolute inset-0 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`}
           aria-hidden={index !== active}
         >
           <Image
-            src={index === 0 && settings?.heroImageUrl ? settings.heroImageUrl : item.image}
+            src={cmsSlides.length ? activeSlides[index].imageUrl : index === 0 && settings?.heroImageUrl ? settings.heroImageUrl : item.image}
             alt=""
             fill
             priority={index === 0}
             sizes="100vw"
-            unoptimized={Boolean(index === 0 && settings?.heroImageUrl)}
+            unoptimized={Boolean(cmsSlides.length || (index === 0 && settings?.heroImageUrl))}
             className="object-cover"
           />
         </div>
@@ -236,7 +243,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               <ChevronLeft className="h-5 w-5" />
             </button>
             <div className="flex gap-1.5">
-              {slides.map((item, index) => (
+              {activeSlides.map((item, index) => (
                 <button
                   key={item.key}
                   type="button"
@@ -250,7 +257,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             <button type="button" onClick={() => setActive((current) => (current + 1) % slides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Siguiente" : locale === "fi" ? "Seuraava" : "Next"}>
               <ChevronRight className="h-5 w-5" />
             </button>
-            <span className="ml-1 hidden text-xs font-semibold text-slate-500 sm:inline">{active + 1} / {slides.length}</span>
+            <span className="ml-1 hidden text-xs font-semibold text-slate-500 sm:inline">{active + 1} / {activeSlides.length}</span>
           </div>
         </div>
       </div>
