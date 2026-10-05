@@ -17,6 +17,7 @@ const basePaths = [
   "salo",
   "turku",
   "naantali",
+  "hanko",
   "accommodations",
   "experiences",
   "rural-finland",
