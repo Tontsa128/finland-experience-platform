@@ -38,6 +38,7 @@ const nextConfig = {
       { protocol: "https", hostname: "visitsalo.fi" },
       { protocol: "https", hostname: "visitmathildedal.fi" },
       { protocol: "https", hostname: "cdn.sanity.io" },
+      { protocol: "https", hostname: "cbaul-cdnwnd.com" },
       { protocol: "https", hostname: "commons.wikimedia.org" },
       ...(supabaseHostname ? [{ protocol: "https", hostname: supabaseHostname }] : []),
     ],
