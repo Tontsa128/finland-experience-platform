@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   const locale = params.locale as Locale;
   if (!locales.includes(locale)) return {};
   const cmsDestinations = await getPublishedDestinations();
+  const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
   const source = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
-  const destination = source.find((item) => item.slug === params.slug);
+  const destination = source.find((item) => item.slug === canonicalSlug);
   if (!destination) return {};
   const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
   return buildLocalizedMetadata({
@@ -33,7 +34,8 @@ export default async function DestinationDetail({ params }: { params: { locale: 
   const locale = params.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : fallbackDestinations;
-  const d = destinations.find((x) => x.slug === params.slug);
+  const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
+  const d = destinations.find((x) => x.slug === canonicalSlug);
   if (!d) notFound();
 
   const isCoastal = ["salo-mathildedal", "naantali", "turku", "rosala", "hanko", "aland", "southeast-finland"].includes(d.slug);
