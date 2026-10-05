@@ -8,6 +8,7 @@ import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
 import { allowDemoFallback, formatPrice, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
+import ExperienceMap from "@/components/experiences/ExperienceMap";
 
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
@@ -33,6 +34,9 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
   const experience = experiences.find((item) => item.slug === params.slug);
   if (!experience) notFound();
   const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
+  const navigationUrl = experience.coordinates
+    ? `https://www.google.com/maps/dir/?api=1&destination=${experience.coordinates.lat},${experience.coordinates.lng}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(experience.address || experience.region || experience.name.fi)}`;
 
   const copy = locale === "fi"
     ? { eyebrow: "Yksi hetki, jonka muistat", dream: "Tee tästä päivästä tarina.", more: "Löydä lisää elämyksiä", info: "Elämys alkaa jo ennen kuin saavut.", text: "Suomen kesässä parhaat hetket syntyvät usein yksinkertaisista asioista: luonnosta, vedestä, saunasta, ihmisistä ja valosta.", note: "Näytämme paikallisia palveluita ja ohjaamme sinut suoraan palveluntarjoajalle. Varaus, maksu ja sopimus tehdään palveluntarjoajan kanssa.", provider: "Siirry palveluntarjoajalle", price: "Hintaesimerkki" }
@@ -74,6 +78,15 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
             <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{copy.dream}</h2>
             <p className="mt-6 text-xl leading-relaxed text-slate-600">{copy.text}</p>
             <p className="mt-6 text-lg leading-relaxed text-slate-700">{getLocalized(experience.description, locale)}</p>
+            {experience.address ? <p className="mt-6 flex items-start gap-2 text-sm font-medium text-slate-500"><span aria-hidden="true">📍</span><span>{experience.address}</span></p> : null}
+            {experience.coordinates ? (
+              <div className="mt-10">
+                <ExperienceMap items={[experience]} locale={locale} selectedSlug={experience.slug} />
+                <a href={navigationUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center justify-center rounded-full bg-brand-900 px-5 py-3 text-sm font-bold text-white hover:bg-brand-800">
+                  {locale === "fi" ? "Navigoi kohteeseen" : locale === "es" ? "Navegar hasta el lugar" : "Navigate to this place"}
+                </a>
+              </div>
+            ) : null}
           </div>
 
           <aside className="h-fit rounded-[2rem] border bg-white p-7 shadow-card lg:sticky lg:top-28">
