@@ -24,6 +24,7 @@ const basePaths = [
   "southeast-finland",
   "accommodations",
   "experiences",
+  "sauna",
   "rural-finland",
   "city-breaks",
   "coastal-finland",
