@@ -21,6 +21,7 @@ const basePaths = [
   "kimitoon",
   "aland",
   "porvoo",
+  "southeast-finland",
   "accommodations",
   "experiences",
   "rural-finland",
