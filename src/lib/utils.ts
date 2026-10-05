@@ -58,3 +58,8 @@ export function getLocaleFromPath(pathname: string): Locale {
 
 /** Demo/fallback content is opt-in and should stay disabled in production. */
 export const allowDemoFallback = process.env.NEXT_PUBLIC_ALLOW_DEMO_FALLBACK === "true";
+
+
+export function canonicalDestinationSlug(slug: string): string {
+  return slug === "mathildedal" ? "salo-mathildedal" : slug;
+}
