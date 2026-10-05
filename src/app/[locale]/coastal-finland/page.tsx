@@ -499,6 +499,7 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
               ["Hanko", "hanko", locale === "fi" ? "Rannat, avomeri, luonto, pyöräily, ruoka ja saunat." : locale === "es" ? "Playas, mar abierto, naturaleza, ciclismo, gastronomía y saunas." : "Beaches, open sea, nature, cycling, food and saunas."],
               ["Kemiönsaari & Rosala", "kimitoon", locale === "fi" ? "Viikinkikeskus, Kasnäs, Bengtskär, saaristomajoitus ja meri." : locale === "es" ? "Centro Vikingo, Kasnäs, Bengtskär, alojamiento y mar." : "Viking Centre, Kasnäs, Bengtskär, island stays and the sea."],
               ["Åland", "aland", locale === "fi" ? "Pyöräily, saaristoreitti, mökit, ruoka ja pienet saaret." : locale === "es" ? "Ciclismo, ruta del archipiélago, cabañas, gastronomía e islas." : "Cycling, archipelago trail, cottages, food and small islands."],
+              ["Porvoo", "porvoo", locale === "fi" ? "Vanha Porvoo, jokiranta, ruoka, kulttuuri ja saariston läheisyys." : locale === "es" ? "Casco antiguo, río, gastronomía, cultura y archipiélago." : "Old Town, riverside life, food, culture and the nearby archipelago."],
             ].map(([name, href, text]) => (
               <Link key={href} href={`/${locale}/${href}`} className="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-card">
                 <h3 className="font-display text-2xl font-bold text-brand-950">{name}</h3>
