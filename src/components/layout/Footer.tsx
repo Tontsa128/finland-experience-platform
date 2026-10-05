@@ -13,6 +13,7 @@ export function Footer() {
     ["destinations", "destinations"],
     ["accommodations", "accommodations"],
     ["experiences", "experiences"],
+    ["sauna", "sauna"],
     ["events", "events"],
     ["blog", "blog"],
   ] as const;
