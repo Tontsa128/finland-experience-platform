@@ -121,6 +121,7 @@ const copy = {
     loylyPanelEyebrow: "LÖYLY · SUOMI",
     loylyPanelTitle: "Löyly on tunne, jonka suomalainen oppii tuntemaan.",
     loylyPanelText: "Vesi kohtaa kuumat kivet. Ilma muuttuu kosteammaksi. Lämpö tuntuu iholla eri tavalla. Hyvä löyly on henkilökohtainen – sen ei tarvitse olla kova ollakseen hyvä.",
+    loylySteps: [["01", "Vesi"], ["02", "Kivet"], ["03", "Tunne"]] as const,
     löylyTitle: "Löyly – saunan sydän",
     löylyText: "Kun vettä heitetään kuumille kiville, syntyy löyly. Hyvä löyly ei tarkoita maksimaalista kuumuutta, vaan miellyttävää lämpöä, sopivaa kosteutta ja rauhallista rytmiä. Löyly tarkoittaa suomalaisessa saunaperinteessä myös saunan henkeä ja tunnelmaa.",
     ritualTitle: "Saunan perinteinen rytmi",
@@ -173,6 +174,7 @@ const copy = {
     loylyPanelEyebrow: "LÖYLY · FINLANDIA",
     loylyPanelTitle: "El löyly es una sensación que se aprende a reconocer.",
     loylyPanelText: "El agua encuentra las piedras calientes. El aire se vuelve más húmedo. El calor cambia sobre la piel. Un buen löyly es personal: no tiene que ser intenso para ser bueno.",
+    loylySteps: [["01", "Agua"], ["02", "Piedras"], ["03", "Sensación"]] as const,
     löylyTitle: "Löyly – el corazón de la sauna",
     löylyText: "Cuando se vierte agua sobre las piedras calientes, nace el löyly. Un buen löyly no significa el máximo calor posible, sino una combinación agradable de temperatura, humedad y calma. En Finlandia, löyly también describe el espíritu y la atmósfera de la sauna.",
     ritualTitle: "El ritmo tradicional",
@@ -225,6 +227,7 @@ const copy = {
     loylyPanelEyebrow: "LÖYLY · FINLAND",
     loylyPanelTitle: "Löyly is a feeling you learn to recognise.",
     loylyPanelText: "Water meets hot stones. The air becomes more humid. Heat changes on the skin. Good löyly is personal – it does not have to be intense to be good.",
+    loylySteps: [["01", "Water"], ["02", "Stones"], ["03", "Feel"]] as const,
     löylyTitle: "Löyly – the heart of sauna",
     löylyText: "When water is thrown onto hot stones, löyly is created. Good löyly is not about maximum heat; it is about a pleasant balance of warmth, humidity and calm. In Finland, löyly also refers to the spirit and atmosphere of the sauna.",
     ritualTitle: "The traditional rhythm",
@@ -374,7 +377,7 @@ export default function SaunaPage({ params }: { params: { locale: string } }) {
                 <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">{x.loylyPanelTitle}</h2>
                 <p className="mt-5 text-lg leading-8 text-white/80">{x.loylyPanelText}</p>
                 <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  {[["01", "Vesi"], ["02", "Kivet"], ["03", "Tunne"]].map(([n, label]) => (
+                  {x.loylySteps.map(([n, label]) => (
                     <div key={n} className="rounded-2xl border border-white/10 bg-white/5 p-4">
                       <div className="text-2xl font-display font-bold text-gold-300">{n}</div>
                       <p className="mt-2 text-sm font-semibold text-white/80">{label}</p>
