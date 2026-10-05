@@ -2,9 +2,10 @@ import { NextResponse } from "next/server";
 import { requireAdmin, type AdminRole } from "@/lib/admin-auth";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
-const ROLES: AdminRole[] = ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR"];
+const ROLES = ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "BOOKING_MANAGER", "EDITOR", "CUSTOMER"] as const;
+type ManagedRole = (typeof ROLES)[number];
 
-function isRole(value: unknown): value is AdminRole {
+function isRole(value: unknown): value is ManagedRole {
   return typeof value === "string" && ROLES.includes(value as AdminRole);
 }
 
