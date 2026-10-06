@@ -207,7 +207,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false });
 
-    if (error || !data?.length) return getSaloExperienceFallback();
+    if (error || !data?.length) return [];
     const verifiedPropertyProviders = await getVerifiedPropertyProviders();
 
     const properties = data as unknown as PropertyRow[];
@@ -350,7 +350,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
       .eq("status", "published")
       .order("created_at", { ascending: false });
 
-    if (error || !data?.length) return [];
+    if (error || !data?.length) return getSaloExperienceFallback();
     const verifiedExperienceIds = await getVerifiedExperienceIds();
     const verifiedExperienceProviders = await getVerifiedExperienceProviders();
 
