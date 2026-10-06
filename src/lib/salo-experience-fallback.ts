@@ -4,7 +4,7 @@ const img = {
   teijo: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Punassuo2.jpg",
   mathildedal: "https://upload.wikimedia.org/wikipedia/commons/0/08/Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
   archipelago: "https://cdn-datahub.visitfinland.com/images/2d04f3d0-d2bb-11ed-8ed8-859d0a6307f5.jpeg?s=1200",
-  ylöstalo: "https://www.ylostalo.fi/sites/default/files/galleriakuvat/Veneit%C3%A4.jpg",
+  ylöstalo: "https://www.ylostalo.fi/wp-content/uploads/2026/04/HeroKalastus-4-1024x768.webp",
   rental: "https://cdn.johku.com/naturaviva/largefiles/676/webp/teijo-national-park-rental-shop.webp",
   bike: "https://meriteijobikepark.com/media/alamakipyorailya_teijolla.jpg",
   action: "https://static.wixstatic.com/media/684b51_55ccf848793a4f8fa4f76feaa7f7f779~mv2.jpg",
@@ -116,7 +116,7 @@ export const saloExperienceFallback: Experience[] = [
     id:"fallback-ylostalo-fishing", slug:"ylostalo-fishing", category:"fishing", region:"Särkisalo", image:img.ylöstalo,
     name:{fi:"Ylöstalon saariston kalastus",es:"Pesca en el archipiélago de Ylöstalo",en:"Ylöstalo Archipelago Fishing"},
     description:{fi:"Saariston kalastus, veneet, mökit ja puusauna. Tarkista palvelut suoraan Ylöstalolta.",es:"Pesca en el archipiélago con barcos, cabañas y sauna de leña.",en:"Archipelago fishing with boats, cottages and a wood-heated sauna."},
-    providerName:"Ylöstalo Farm", providerUrl:"https://www.ylostalo.fi/en/vuokraveneet", sourceUrl:"https://www.ylostalo.fi/en/vuokramokit",
+    providerName:"Ylöstalo Farm", providerUrl:"https://www.ylostalo.fi/en/fishing-and-boats/", sourceUrl:"https://www.ylostalo.fi/en/fishing-and-boats/",
     address:"Norrbyntie 135, 25630 Särkisalo", coordinates:{lat:60.0780,lng:22.9600}, tags:["fishing","sea","cottage"], duration:"päivä"
   }),
   make({
