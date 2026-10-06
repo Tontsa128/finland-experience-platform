@@ -40,6 +40,7 @@ const copy = {
     eyebrow: "Salo · Mathildedal · Teijo · Särkisalo",
     title: "Löydä elämys, joka tuntuu Suomelta.",
     intro: "Metsäpolku, lämmin sauna, saariston hiljaisuus, maatilan aamu tai vauhdikas päivä pyörän päällä. FINNEXPRIENCE kokoaa paikalliset elämykset yhteen – ja ohjaa sinut suoraan paikan omaan palveluun.",
+    mapEyebrow: "KARTTA · SALON ELÄMYKSET",
     mapTitle: "Tutki elämyksiä kartalla",
     mapText: "Valitse numero kartalta tai selaa kohteita. Navigointi avautuu puhelimesi tai tietokoneesi karttapalvelussa.",
     search: "Hae paikkaa tai elämystä…",
@@ -57,6 +58,7 @@ const copy = {
     eyebrow: "Salo · Mathildedal · Teijo · Särkisalo",
     title: "Descubre una experiencia que se sienta como Finlandia.",
     intro: "Un sendero en el bosque, una sauna junto al lago, la calma del archipiélago, una granja local o un día de ciclismo. FINNEXPRIENCE reúne experiencias locales y te dirige directamente al proveedor.",
+    mapEyebrow: "MAPA · EXPERIENCIAS EN SALO",
     mapTitle: "Explora las experiencias en el mapa",
     mapText: "Selecciona un número en el mapa o explora la lista. La navegación se abre en el servicio de mapas de tu dispositivo.",
     search: "Busca un lugar o experiencia…",
@@ -74,6 +76,7 @@ const copy = {
     eyebrow: "Salo · Mathildedal · Teijo · Särkisalo",
     title: "Find an experience that feels like Finland.",
     intro: "A forest trail, a warm sauna, the quiet of the archipelago, a local farm morning or a day on a bike. FINNEXPRIENCE brings local experiences together and sends you directly to the provider.",
+    mapEyebrow: "MAP · SALO EXPERIENCES",
     mapTitle: "Explore experiences on the map",
     mapText: "Select a number on the map or browse the list. Navigation opens in your device's map service.",
     search: "Search a place or experience…",
@@ -138,24 +141,6 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
         </div>
       </section>
 
-      <section className="container-narrow py-12 sm:py-16">
-        <div className="mb-7">
-          <p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-600">{t.mapTitle}</p>
-          <h2 className="mt-2 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{t.mapTitle}</h2>
-          <p className="mt-3 max-w-3xl text-slate-600">{t.mapText}</p>
-        </div>
-        <ExperienceMap
-          items={filtered}
-          locale={locale}
-          selectedSlug={selectedSlug}
-          onSelect={(slug) => {
-            setSelectedSlug(slug);
-            window.setTimeout(() => document.getElementById(slug)?.scrollIntoView({ behavior: "smooth", block: "center" }), 50);
-          }}
-        />
-      </section>
-
-      <section id="all-experiences" className="container-narrow pb-20">
         <div className="sticky top-16 z-20 -mx-4 mb-8 border-y border-slate-200 bg-white/95 px-4 py-4 backdrop-blur sm:static sm:mx-0 sm:rounded-2xl sm:border sm:px-5">
           <div className="flex flex-col gap-3">
             <label className="relative flex-1">
@@ -200,6 +185,24 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
           </div>
         </div>
 
+      <section className="container-narrow py-12 sm:py-16">
+        <div className="mb-7">
+          <p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-600">{t.mapEyebrow}</p>
+          <h2 className="mt-2 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{t.mapTitle}</h2>
+          <p className="mt-3 max-w-3xl text-slate-600">{t.mapText}</p>
+        </div>
+        <ExperienceMap
+          items={filtered}
+          locale={locale}
+          selectedSlug={selectedSlug}
+          onSelect={(slug) => {
+            setSelectedSlug(slug);
+            window.setTimeout(() => document.getElementById(slug)?.scrollIntoView({ behavior: "smooth", block: "center" }), 50);
+          }}
+        />
+      </section>
+
+      <section id="all-experiences" className="container-narrow pb-20">
         {filtered.length ? (
           <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
             {filtered.map((item, index) => {
