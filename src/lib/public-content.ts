@@ -1,6 +1,7 @@
 import { supabaseAdmin } from "@/lib/supabase";
 import { firstValidHttpUrl, isSafeUrlOrPath } from "@/lib/utils";
 import type { Cabin, Destination, Experience, ExperienceStatus, Locale, BlogPost } from "@/types";
+import { getSaloExperienceFallback } from "@/lib/salo-experience-fallback";
 
 const locales: Locale[] = ["fi", "es", "en"];
 
@@ -206,7 +207,7 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false });
 
-    if (error || !data?.length) return [];
+    if (error || !data?.length) return getSaloExperienceFallback();
     const verifiedPropertyProviders = await getVerifiedPropertyProviders();
 
     const properties = data as unknown as PropertyRow[];
