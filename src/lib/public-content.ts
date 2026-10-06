@@ -415,7 +415,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
       } satisfies Experience;
     }).filter((experience) => experience.images.length > 0 && experience.verified === true);
   } catch {
-    return [];
+    return getSaloExperienceFallback();
   }
 }
 
