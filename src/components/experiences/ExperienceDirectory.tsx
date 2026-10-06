@@ -141,6 +141,7 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
         </div>
       </section>
 
+      <section className="container-narrow relative z-20 -mt-6">
         <div className="sticky top-16 z-20 -mx-4 mb-8 border-y border-slate-200 bg-white/95 px-4 py-4 backdrop-blur sm:static sm:mx-0 sm:rounded-2xl sm:border sm:px-5">
           <div className="flex flex-col gap-3">
             <label className="relative flex-1">
@@ -184,6 +185,7 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
             </div>
           </div>
         </div>
+      </section>
 
       <section className="container-narrow py-12 sm:py-16">
         <div className="mb-7">
