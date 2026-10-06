@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getPublishedExperiences } from "@/lib/public-content";
-import { experiences as fallbackExperiences } from "@/lib/data";
-import { allowDemoFallback } from "@/lib/utils";
 import ExperienceDirectory from "@/components/experiences/ExperienceDirectory";
+
+export const revalidate = 60;
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 export default async function ExperiencesPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
   const cmsExperiences = await getPublishedExperiences();
-  const experiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
+  const experiences = cmsExperiences;
 
   const itemListSchema = {
     "@context": "https://schema.org",
