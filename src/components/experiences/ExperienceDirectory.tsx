@@ -126,7 +126,7 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
       ].join(" ").toLocaleLowerCase();
       return matchesCategory && matchesAudience && matchesSeason && (!q || haystack.includes(q));
     });
-  }, [experiences, locale, query, category]);
+  }, [experiences, locale, query, category, audience, season]);
 
   return (
     <div className="bg-white">
