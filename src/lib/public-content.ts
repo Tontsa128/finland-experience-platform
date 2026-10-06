@@ -355,7 +355,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
     const verifiedExperienceProviders = await getVerifiedExperienceProviders();
 
     const experiences = data as unknown as ExperienceRow[];
-    return experiences.map((experience) => {
+    const published = experiences.map((experience) => {
       const translations = experience.experience_translations ?? [];
       const names = localized(translations, "title");
       const descriptions = localized(translations, "full_description");
@@ -414,6 +414,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
           : undefined,
       } satisfies Experience;
     }).filter((experience) => experience.images.length > 0 && experience.verified === true);
+    return published.length ? published : getSaloExperienceFallback();
   } catch {
     return getSaloExperienceFallback();
   }
