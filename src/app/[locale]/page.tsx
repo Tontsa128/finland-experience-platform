@@ -10,7 +10,6 @@ import TravelAdvisor from "@/components/TravelAdvisor";
 import LocalIcons from "@/components/home/LocalIcons";
 import SeasonalHighlights from "@/components/home/SeasonalHighlights";
 import { destinations, cabins, experiences } from "@/lib/data";
-import { allowDemoFallback } from "@/lib/utils";
 import {
   getHomepageSettings,
   getPublishedDestinations,
@@ -39,9 +38,11 @@ export default async function HomePage({ params }: { params: { locale: string } 
       getPublishedExperiences(),
     ]);
 
-  const catalogDestinations = cmsDestinations.length || !allowDemoFallback ? cmsDestinations : destinations;
-  const catalogCabins = cmsCabins.length || !allowDemoFallback ? cmsCabins : cabins;
-  const catalogExperiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : experiences;
+  // Public pages must remain usable even when the optional CMS catalog is empty
+  // (for example before a new Supabase migration has been applied).
+  const catalogDestinations = cmsDestinations.length ? cmsDestinations : destinations;
+  const catalogCabins = cmsCabins.length ? cmsCabins : cabins;
+  const catalogExperiences = cmsExperiences.length ? cmsExperiences : experiences;
 
   const t = await getTranslations({ locale, namespace: "sections" });
   const tc = await getTranslations({ locale, namespace: "common" });
