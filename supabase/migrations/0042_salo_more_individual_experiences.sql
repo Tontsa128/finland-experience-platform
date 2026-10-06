@@ -102,7 +102,7 @@ BEGIN
    (eid,'es','Yoga en el bosque y relajación con cuencos','Yoga y sonido junto a los lagos y bosques de pinos de Teijo.','Una sesión reparadora de yoga y relajación con cuencos sonoros en la naturaleza de Teijo.')
   ON CONFLICT(experience_id,language_code) DO UPDATE SET title=EXCLUDED.title,short_description=EXCLUDED.short_description,full_description=EXCLUDED.full_description,updated_at=now();
   mid := uuid_generate_v5(uuid_ns_url(),'finnexprience:media:forest-yoga-sound-bowls-teijo');
-  INSERT INTO public.media(id,filename,url,title,alt_text,tags) VALUES(mid,'forest-yoga-sound-bowls.jpg','https://www.luontoon.fi/_next/image?q=75&url=https%3A%2F%2Fcdn-datahub.visitfinland.com%2Fimages%2Fb565dda0-cac7-11f0-af1d-279dee19c89a.jpeg&w=3840','Forest yoga and sound bowls in Teijo','Forest yoga and singing bowl relaxation beside a lake in Teijo',ARRAY['salo','teijo','wellness'])
+  INSERT INTO public.media(id,filename,url,title,alt_text,tags) VALUES(mid,'forest-yoga-sound-bowls.jpg','https://cdn-datahub.visitfinland.com/images/b565dda0-cac7-11f0-af1d-279dee19c89a.jpeg?s=1280','Forest yoga and sound bowls in Teijo','Forest yoga and singing bowl relaxation beside a lake in Teijo',ARRAY['salo','teijo','wellness'])
   ON CONFLICT(id) DO UPDATE SET url=EXCLUDED.url,title=EXCLUDED.title,alt_text=EXCLUDED.alt_text,tags=EXCLUDED.tags;
   INSERT INTO public.experience_media(experience_id,media_id,sort_order) VALUES(eid,mid,0) ON CONFLICT DO NOTHING;
   INSERT INTO public.provider_experience_links(provider_id,experience_id) VALUES(pid,eid) ON CONFLICT DO NOTHING;
