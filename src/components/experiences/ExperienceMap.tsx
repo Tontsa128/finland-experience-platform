@@ -22,6 +22,7 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
   const instanceRef = useRef<any>(null);
   const markersRef = useRef<Map<string, any>>(new Map());
   const [ready, setReady] = useState(false);
+  const [mapError, setMapError] = useState(false);
   const leafletRef = useRef<typeof import("leaflet") | null>(null);
 
   const points = useMemo(
@@ -45,7 +46,7 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
       instanceRef.current = map;
       setReady(true);
     }
-    boot();
+    boot().catch(() => { if (!cancelled) setMapError(true); });
     return () => { cancelled = true; };
   }, []);
 
@@ -88,7 +89,16 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
 
   return (
     <div className={`relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-card ${className}`}>
-      <div ref={mapRef} className="h-[480px] w-full sm:h-[560px]" aria-label={locale === "fi" ? "Interaktiivinen kartta" : locale === "es" ? "Mapa interactivo" : "Interactive map"} />
+      {mapError ? (
+        <div className="flex h-[480px] w-full items-center justify-center p-8 text-center sm:h-[560px]">
+          <div>
+            <p className="font-semibold text-slate-800">{locale === "fi" ? "Karttaa ei voitu ladata." : locale === "es" ? "No se pudo cargar el mapa." : "The map could not be loaded."}</p>
+            <p className="mt-2 text-sm text-slate-500">{locale === "fi" ? "Kohteiden navigointi toimii edelleen kohdekorteista." : locale === "es" ? "La navegación sigue disponible desde las tarjetas." : "Navigation is still available from the experience cards."}</p>
+          </div>
+        </div>
+      ) : (
+        <div ref={mapRef} className="h-[480px] w-full sm:h-[560px]" aria-label={locale === "fi" ? "Interaktiivinen kartta" : locale === "es" ? "Mapa interactivo" : "Interactive map"} />
+      )}
       <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl bg-white/95 px-3 py-2 text-xs text-slate-600 shadow">
         {locale === "fi" ? "Kartta: OpenStreetMap" : locale === "es" ? "Mapa: OpenStreetMap" : "Map: OpenStreetMap"}
       </div>
