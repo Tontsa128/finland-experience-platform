@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
@@ -212,7 +213,13 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
       <div className="relative z-10 flex min-h-[68svh] items-end pb-10 pt-28 sm:min-h-[700px] sm:pb-16 lg:min-h-[720px] lg:pb-20">
         <div className="container-narrow w-full">
-        <div className="max-w-4xl">
+        <motion.div
+          key={String(slide.key)}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="max-w-4xl"
+        >
           <p className="mb-4 text-xs font-bold uppercase tracking-[.24em] text-gold-300">{text.eyebrow}</p>
           <h1 className="max-w-4xl font-display text-5xl font-bold leading-[.94] tracking-[-.03em] sm:text-7xl lg:text-[5.8rem]">
             {text.title}
@@ -220,8 +227,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/90 sm:text-2xl sm:leading-9">
             {text.text}
           </p>
-
-        </div>
+        </motion.div>
       </div>
       </div>
 
