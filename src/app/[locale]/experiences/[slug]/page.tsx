@@ -10,6 +10,8 @@ import { formatPrice, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import ExperienceMap from "@/components/experiences/ExperienceMap";
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
   if (!locales.includes(locale)) return {};
