@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/types";
 
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.finlandexperience.com").replace(/\/$/, "");
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.finlandexperience.fi").replace(/\/$/, "");
 
 const ogLocales: Record<Locale, string> = { fi: "fi_FI", es: "es_ES", en: "en_GB" };
 
@@ -20,6 +20,7 @@ export function buildLocalizedMetadata(input: {
 }): Metadata {
   const { locale, title, description, path = "", image, noindex = false } = input;
   const canonical = localizedUrl(locale, path);
+
   return {
     title,
     description,
@@ -41,7 +42,12 @@ export function buildLocalizedMetadata(input: {
       type: "website",
       images: image ? [{ url: image, width: 1200, height: 630, alt: title }] : undefined,
     },
-    twitter: { card: "summary_large_image", title, description, images: image ? [image] : undefined },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : undefined,
+    },
     robots: noindex ? { index: false, follow: false } : { index: true, follow: true },
   };
 }
