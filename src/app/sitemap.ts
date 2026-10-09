@@ -97,7 +97,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.6,
       }))),
 
-      ...destinations.flatMap((item) =>
+      ...destinations.filter((item) => item.slug !== "salo-mathildedal").flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/destinations/" + canonicalDestinationSlug(item.slug),
           lastModified: new Date(),
