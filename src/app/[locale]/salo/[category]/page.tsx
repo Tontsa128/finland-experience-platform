@@ -98,7 +98,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
   return (
     <main className="min-h-screen bg-white text-brand-950">
       <section className="relative isolate overflow-hidden bg-brand-950 text-white">
-        <Image src={categoryImage(category)} alt={title} fill priority sizes="100vw" unoptimized className="object-cover opacity-45" />
+        <Image src={categoryImage(category)} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill priority sizes="100vw" unoptimized className="object-cover opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/70 to-brand-950/20" />
         <div className="container-narrow relative py-20 sm:py-28">
           <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{labels.region}</p>
