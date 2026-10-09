@@ -52,7 +52,7 @@ export default async function CabinDetail({ params }: { params: Promise<{ locale
         address: { "@type": "PostalAddress", addressCountry: "FI" },
       }) }} />
       <section className="relative isolate min-h-[62vh] overflow-hidden">
-        {c.images[0] ? <Image src={c.images[0]} alt={getLocalized(c.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
+        {c.images[0] ? <Image src={c.images[0]} alt={getLocalized(c.name, locale)} fill priority sizes="100vw" className="object-cover" /> : <div className="absolute inset-0 flex items-center justify-center bg-brand-50 px-6 text-center text-brand-800"><p>{locale === "fi" ? "Kohteen oma kuva lisätään, kun käyttöoikeus on vahvistettu." : locale === "es" ? "Se añadirá una foto del alojamiento cuando se confirmen los derechos de uso." : "A property photo will be added once usage rights are confirmed."}</p></div>}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="container-narrow relative flex min-h-[62vh] items-end py-14 text-white sm:py-20">
           <div className="max-w-4xl">
