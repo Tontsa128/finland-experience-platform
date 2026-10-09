@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function SaloProviderPage({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }) {
   const { locale: raw, category, slug } = await params;
   const provider = saloProviders.find((item) => item.id === slug);
-  if (!provider || !["majoitus", "ruoka", "aktiviteetit", "elamykset", "saaristo", "oppaat"].includes(category) || (category !== "saaristo" && getProviderCategory(provider) !== category)) notFound();
+  if (!provider || !["majoitus", "ruoka", "aktiviteetit", "elamykset", "saaristo", "oppaat"].includes(category) || !providerBelongsToCategory(provider, category as Category)) notFound();
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   const t = labels[locale];
   const categoryPath = category as Category;
