@@ -155,7 +155,7 @@ export default async function RuralFinlandPage({ params }: { params: Promise<{ l
       <section className="bg-brand-950 py-16 text-white sm:py-24">
         <div className="container-narrow grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
           <div><p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{t.events}</p><h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">{t.events}</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">{t.eventsText}</p><Link href={"/" + locale + "/events"} className="btn-gold mt-7 inline-flex">{t.ctaEvents} <ArrowUpRight className="h-4 w-4" /></Link></div>
-          <Image src={photoLibrary.mathildedalChristmas} alt="" width={1200} height={800} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
+          <Image src={photoLibrary.mathildedalVillage} alt={locale === "fi" ? "Mathildedalin ruukkikylä Salon seudulla" : locale === "es" ? "Pueblo histórico de Mathildedal en la región de Salo" : "Mathildedal ironworks village in the Salo region"} width={1200} height={800} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
         </div>
       </section>
 
