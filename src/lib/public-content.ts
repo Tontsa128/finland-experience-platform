@@ -532,9 +532,22 @@ export async function getPublishedNavigation(locale: Locale, location = "header"
       .order("sort_order");
     if (error) return [];
     const rows = (data || []) as unknown as NavigationRow[];
-    return rows.map((item) => ({
-      id: item.id, locale: item.locale as Locale, label: item.label, href: item.href, sortOrder: item.sort_order,
-    }));
+    let items = rows
+      .filter((item) => !(location === "header" && /mathildedal/i.test(item.label) && /((?:^|\/)mathildedal(?:\/|$)|destinations\/salo-mathildedal)/i.test(item.href)))
+      .map((item) => ({
+        id: item.id,
+        locale: item.locale as Locale,
+        label: (item.id === "salo" || /(?:^|\/)salo(?:\/|$)/i.test(item.href)) && /mathildedal/i.test(item.label) ? "Salo" : item.label,
+        href: item.href,
+        sortOrder: item.sort_order,
+      }));
+
+    if (location === "header" && !items.some((item) => item.id === "salo" || /(?:^|\/)salo(?:\/|$)/i.test(item.href))) {
+      const labels: Record<Locale, string> = { fi: "Salo", es: "Salo", en: "Salo" };
+      items = [...items, { id: "salo", locale, label: labels[locale], href: "/salo", sortOrder: 2 }];
+      items.sort((a, b) => a.sortOrder - b.sortOrder);
+    }
+    return items;
   } catch { return []; }
 }
 

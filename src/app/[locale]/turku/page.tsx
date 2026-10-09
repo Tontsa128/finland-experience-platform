@@ -99,14 +99,14 @@ const providers = [
   { name: { fi: "Honkapirtti", es: "Honkapirtti", en: "Honkapirtti" }, text: { fi: "Perinteinen hirsikahvila Ruissalon luonnossa.", es: "Cafetería tradicional de troncos en la naturaleza de Ruissalo.", en: "A traditional log café in the nature of Ruissalo." }, url: "https://www.honkapirtti.fi/english/" },
 ];
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const c = contentByLocale[locale] || contentByLocale.en;
   return buildLocalizedMetadata({ locale, title: c.title, description: c.description, path: "turku", image: photoLibrary.turkuAura });
 }
 
-export default function TurkuPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function TurkuPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const c = contentByLocale[locale] || contentByLocale.en;
 
   const cards = [

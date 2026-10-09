@@ -6,15 +6,16 @@ import { ArrowRight, ArrowUpRight, BedDouble, MapPin, Sparkles, Users } from "lu
 import { getPublishedProperties } from "@/lib/public-content";
 import { cabins as fallbackCabins, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
-import { allowDemoFallback, formatPrice, locales } from "@/lib/utils";
+import { formatPrice, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   const cmsCabins = await getPublishedProperties();
-  const source = cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
-  const cabin = source.find((item) => item.slug === params.slug);
+  const source = cmsCabins.length ? cmsCabins : fallbackCabins;
+  const cabin = source.find((item) => item.slug === slug);
   if (!cabin) return {};
   return buildLocalizedMetadata({
     locale,
@@ -25,11 +26,12 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   });
 }
 
-export default async function CabinDetail({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
+export default async function CabinDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   const cmsCabins = await getPublishedProperties();
-  const cabins = cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
-  const c = cabins.find((x) => x.slug === params.slug);
+  const cabins = cmsCabins.length ? cmsCabins : fallbackCabins;
+  const c = cabins.find((x) => x.slug === slug);
   if (!c) notFound();
 
   const copy = locale === "fi"
@@ -50,7 +52,7 @@ export default async function CabinDetail({ params }: { params: { locale: string
         address: { "@type": "PostalAddress", addressCountry: "FI" },
       }) }} />
       <section className="relative isolate min-h-[62vh] overflow-hidden">
-        {c.images[0] ? <Image src={c.images[0]} alt={getLocalized(c.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
+        {c.images[0] ? <Image src={c.images[0]} alt={getLocalized(c.name, locale)} fill priority sizes="100vw" className="object-cover" /> : <div className="absolute inset-0 flex items-center justify-center bg-brand-50 px-6 text-center text-brand-800"><p>{locale === "fi" ? "Kohteen oma kuva lisätään, kun käyttöoikeus on vahvistettu." : locale === "es" ? "Se añadirá una foto del alojamiento cuando se confirmen los derechos de uso." : "A property photo will be added once usage rights are confirmed."}</p></div>}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="container-narrow relative flex min-h-[62vh] items-end py-14 text-white sm:py-20">
           <div className="max-w-4xl">
@@ -90,8 +92,8 @@ export default async function CabinDetail({ params }: { params: { locale: string
           <aside className="h-fit rounded-[2rem] border bg-white p-7 shadow-card lg:sticky lg:top-28">
             <Sparkles className="h-7 w-7 text-amber-500" />
             <p className="mt-5 text-sm text-slate-500">{locale === "fi" ? "Hintaesimerkki" : locale === "es" ? "Precio orientativo" : "Indicative price"}</p>
-            <div className="mt-1 text-3xl font-bold text-brand-950">{c.pricePerNight > 0 ? formatPrice(c.pricePerNight, locale) : "—"}</div>
-            <p className="text-sm text-slate-500">{c.priceNote?.[locale] || (locale === "fi" ? "Tarkista ajantasainen hinta palveluntarjoajalta." : locale === "es" ? "Consulta el precio actual con el proveedor." : "Check the current price with the provider.")}</p>
+            <div className="mt-1 text-3xl font-bold text-brand-950">{c.verified && c.pricePerNight > 0 ? formatPrice(c.pricePerNight, locale) : (locale === "fi" ? "Tarkista palveluntarjoajalta" : locale === "es" ? "Consultar al proveedor" : "Check with provider")}</div>
+            <p className="text-sm text-slate-500">{c.verified && c.priceNote?.[locale] ? c.priceNote[locale] : (locale === "fi" ? "Ajantasainen hinta ja saatavuus tarkistetaan suoraan palveluntarjoajalta." : locale === "es" ? "Confirma el precio y la disponibilidad actuales directamente con el proveedor." : "Confirm current price and availability directly with the provider.")}</p>
             <div className="mt-6 rounded-2xl bg-brand-50 p-4 text-sm leading-relaxed text-brand-900">{copy.note}</div>
             {c.bookingUrl ? <a href={c.bookingUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{copy.provider}<ArrowUpRight className="h-4 w-4" /></a> : <p className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-center text-xs text-amber-800">{locale === "fi" ? "Vuokraajan linkki lisätään tähän kohteeseen." : locale === "es" ? "El enlace del proveedor se añadirá aquí." : "The provider link will be added here."}</p>}
             

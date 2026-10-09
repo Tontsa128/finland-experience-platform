@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "npm run test:i18n && node --import tsx --test --test-reporter=spec src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts",
+    "test": "npm run test:i18n && node --import tsx --test --test-reporter=spec src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts src/__tests__/lib/seo.test.ts",
     "test:watch": "node --import tsx --test --watch src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset",
@@ -39,7 +39,7 @@
     "postcss": "^8.4.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.35",
+    "eslint-config-next": "15.5.27",
     "tsx": "^4.4.0",
     "supabase": "^1.120.0",
     "@types/leaflet": "^1.9.20"

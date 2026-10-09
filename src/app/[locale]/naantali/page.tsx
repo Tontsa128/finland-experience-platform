@@ -90,14 +90,14 @@ const providers = [
   { name: { fi: "Röölänranta", es: "Röölänranta", en: "Röölänranta" }, text: { fi: "Saaristokylän ravintola- ja vierasvenesatamamiljöö Rymättylän suunnalla.", es: "Restaurante y ambiente portuario de un pueblo del archipiélago.", en: "Village restaurant and harbour atmosphere in the archipelago." }, url: "https://ravintolaroola.fi/" },
 ];
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const t = c[locale] || c.en;
   return buildLocalizedMetadata({ locale, title: t.title, description: t.description, path: "naantali", image: photoLibrary.naantaliOldTown });
 }
 
-export default function NaantaliPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function NaantaliPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const t = c[locale] || c.en;
   const cards = [
     { icon: Camera, title: t.oldTown, text: t.oldTownText },

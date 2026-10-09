@@ -3,12 +3,13 @@ import { supabaseAdmin } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(_req: NextRequest, { params }: { params: { slug: string } }) {
+export async function GET(_req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   try {
+    const { slug } = await params;
     const { data, error } = await supabaseAdmin
       .from('destinations')
       .select('id, slug, region, hero_image_url, status, publish_at, destination_translations(language_code, name, short_description, full_description, highlights, travel_information), experiences(id, slug, status, experience_translations(language_code, title, short_description))')
-      .in('slug', params.slug === 'mathildedal' ? ['mathildedal', 'salo-mathildedal'] : [params.slug])
+      .in('slug', slug === 'mathildedal' ? ['mathildedal', 'salo-mathildedal'] : [slug])
       .eq('status', 'published')
       .is('deleted_at', null)
       .or(`publish_at.is.null,publish_at.lte.${new Date().toISOString()}`)

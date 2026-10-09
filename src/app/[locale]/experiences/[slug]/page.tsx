@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { getLocalized } from "@/lib/data";
+import { getLocalized, experiences as fallbackExperiences } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
 import { formatPrice, locales } from "@/lib/utils";
@@ -12,12 +12,13 @@ import ExperienceMap from "@/components/experiences/ExperienceMap";
 
 export const revalidate = 60;
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   const cmsExperiences = await getPublishedExperiences();
-  const source = cmsExperiences;
-  const experience = source.find((item) => item.slug === params.slug);
+  const source = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
+  const experience = source.find((item) => item.slug === slug);
   if (!experience) return {};
   return buildLocalizedMetadata({
     locale,
@@ -28,12 +29,13 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   });
 }
 
-export default async function ExperienceDetail({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
+export default async function ExperienceDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) notFound();
   const cmsExperiences = await getPublishedExperiences();
-  const experiences = cmsExperiences;
-  const experience = experiences.find((item) => item.slug === params.slug);
+  const experiences = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
+  const experience = experiences.find((item) => item.slug === slug);
   if (!experience) notFound();
   const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
   const navigationUrl = experience.coordinates
@@ -95,7 +97,7 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
             <Sparkles className="h-7 w-7 text-amber-500" />
             <p className="mt-5 text-sm text-slate-500">{copy.price}</p>
             <div className="mt-1 text-3xl font-bold text-brand-950">
-              {experience.price > 0 ? formatPrice(experience.price, locale) : "—"}
+              {experience.verified && experience.price > 0 ? formatPrice(experience.price, locale) : (locale === "fi" ? "Tarkista palveluntarjoajalta" : locale === "es" ? "Consultar al proveedor" : "Check with provider")}
             </div>
             <p className="mt-1 text-sm text-slate-500">
               {locale === "fi" ? "Tarkista ajantasainen hinta palveluntarjoajalta."

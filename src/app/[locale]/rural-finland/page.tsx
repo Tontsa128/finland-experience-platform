@@ -5,8 +5,8 @@ import { photoLibrary } from "@/lib/photo-library";
 import { localizedUrl } from "@/lib/seo";
 import type { Locale } from "@/types";
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const copy = locale === "es"
     ? {
         title: "Turismo rural y cabañas en Finlandia | Finland Experience",
@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default function RuralFinlandPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function RuralFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const isEs = locale === "es";
   const isEn = locale === "en";
 
@@ -79,10 +79,10 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
   };
 
   const providers = [
-    { name: "Herrankukkaro", place: "Rymättylä · Naantali", image: photoLibrary.herrankukkaroSauna, href: "https://www.herrankukkaro.fi/", text: isEs ? "Sauna de humo, alojamiento y mar." : isEn ? "Smoke sauna, accommodation and sea." : "Savusauna, majoitus ja meri." },
-    { name: "Storfinnhova Gård", place: "Kemiönsaari", image: photoLibrary.storfinnhova, href: "https://www.storfinnhova.com/", text: isEs ? "Sauna subterránea de granito y glamping." : isEn ? "Underground granite smoke sauna and glamping." : "Maanalainen graniittisavusauna ja glamping." },
-    { name: "Björkholm", place: "Parainen", image: photoLibrary.bjorkholm, href: "https://bjorkholm.johku.com/", text: isEs ? "Cabañas con sauna, barcos y kayak." : isEn ? "Sauna cottages, boats and kayaking." : "Saunamökit, veneet ja melonta." },
-    { name: "Natura Viva", place: "Teijo · Mathildedal", image: photoLibrary.naturaVivaTeijo, href: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", text: isEs ? "Kayak, canoa, SUP y bicicleta." : isEn ? "Kayak, canoe, SUP and cycling." : "Kajakki, kanootti, SUP ja pyöräily." },
+    { name: "Herrankukkaro", place: "Rymättylä · Naantali", image: photoLibrary.naantaliHarbour, href: "https://www.herrankukkaro.fi/", text: isEs ? "Sauna de humo, alojamiento y mar." : isEn ? "Smoke sauna, accommodation and sea." : "Savusauna, majoitus ja meri." },
+    { name: "Storfinnhova Gård", place: "Kemiönsaari", image: photoLibrary.turkuArchipelago, href: "https://www.storfinnhova.com/", text: isEs ? "Sauna subterránea de granito y glamping." : isEn ? "Underground granite smoke sauna and glamping." : "Maanalainen graniittisavusauna ja glamping." },
+    { name: "Björkholm", place: "Parainen", image: photoLibrary.turkuArchipelagoHouse, href: "https://bjorkholm.johku.com/", text: isEs ? "Cabañas con sauna, barcos y kayak." : isEn ? "Sauna cottages, boats and kayaking." : "Saunamökit, veneet ja melonta." },
+    { name: "Natura Viva", place: "Teijo · Mathildedal", image: photoLibrary.teijoNationalPark, href: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", text: isEs ? "Kayak, canoa, SUP y bicicleta." : isEn ? "Kayak, canoe, SUP and cycling." : "Kajakki, kanootti, SUP ja pyöräily." },
     { name: "TuuSeikkailee", place: "Oripää · Auranmaa", href: "https://tuuseikkailee.fi/", text: isEs ? "Fatbike eléctrico, canoas y aventuras en la naturaleza de Oripää." : isEn ? "E-fatbikes, canoes and outdoor adventures around Oripää." : "Sähköfatbiket, kanootit ja luontoelämykset Oripään maisemissa." },
   ];
 
@@ -148,14 +148,14 @@ export default function RuralFinlandPage({ params }: { params: { locale: string 
         <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{isEs ? "Proveedores locales" : isEn ? "Local providers" : "Paikalliset palveluntarjoajat"}</p>
         <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{isEs ? "De la inspiración al proveedor local" : isEn ? "From inspiration to the local provider" : "Inspiraatiosta suoraan palveluntarjoajalle"}</h2>
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-          {providers.map((provider) => <article key={provider.name} className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-soft">{provider.image ? <div className="relative aspect-[4/3]"><Image src={provider.image} alt={provider.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" /></div> : <div className="flex aspect-[4/3] items-center justify-center bg-brand-950 p-6 text-center text-white"><Compass className="h-10 w-10 text-gold-300" /></div>}<div className="p-5"><p className="text-[10px] font-bold uppercase tracking-[.16em] text-terracotta">{provider.place}</p><h3 className="mt-2 font-display text-xl font-bold text-brand-950">{provider.name}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{provider.text}</p><a href={provider.href} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{isEs ? "Ir al proveedor" : isEn ? "Visit provider" : "Siirry palveluntarjoajalle"} <ArrowUpRight className="h-4 w-4" /></a></div></article>)}
+          {providers.map((provider) => <article key={provider.name} className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-soft">{provider.image ? <div className="relative aspect-[4/3]"><Image src={provider.image} alt={provider.place} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" /></div> : <div className="flex aspect-[4/3] items-center justify-center bg-brand-950 p-6 text-center text-white"><Compass className="h-10 w-10 text-gold-300" /></div>}<div className="p-5"><p className="text-[10px] font-bold uppercase tracking-[.16em] text-terracotta">{provider.place}</p><h3 className="mt-2 font-display text-xl font-bold text-brand-950">{provider.name}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{provider.text}</p><p className="mt-2 text-[11px] text-slate-400">{isEs ? "Imagen regional, no necesariamente del establecimiento." : isEn ? "Regional context image, not necessarily of the property." : "Aluekuva, ei välttämättä kuva itse kohteesta."}</p><a href={provider.href} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{isEs ? "Ir al proveedor" : isEn ? "Visit provider" : "Siirry palveluntarjoajalle"} <ArrowUpRight className="h-4 w-4" /></a></div></article>)}
         </div>
       </section>
 
       <section className="bg-brand-950 py-16 text-white sm:py-24">
         <div className="container-narrow grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
           <div><p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{t.events}</p><h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">{t.events}</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">{t.eventsText}</p><Link href={"/" + locale + "/events"} className="btn-gold mt-7 inline-flex">{t.ctaEvents} <ArrowUpRight className="h-4 w-4" /></Link></div>
-          <Image src={photoLibrary.mathildedalChristmas} alt="" width={1200} height={800} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
+          <Image src={photoLibrary.mathildedalVillage} alt={locale === "fi" ? "Mathildedalin ruukkikylä Salon seudulla" : locale === "es" ? "Pueblo histórico de Mathildedal en la región de Salo" : "Mathildedal ironworks village in the Salo region"} width={1200} height={800} className="aspect-[4/3] w-full rounded-[2rem] object-cover" />
         </div>
       </section>
 

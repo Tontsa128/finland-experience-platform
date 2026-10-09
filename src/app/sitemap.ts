@@ -8,6 +8,7 @@ import {
   getPublishedBlogPosts,
 } from "@/lib/public-content";
 import { supabaseAdmin } from "@/lib/supabase";
+import { saloProviders } from "@/lib/salo";
 
 export const revalidate = 3600;
 
@@ -15,6 +16,25 @@ const basePaths = [
   "",
   "destinations",
   "salo",
+  "salo/majoitus",
+  "salo/ruoka",
+  "salo/aktiviteetit",
+  "salo/elamykset",
+  "salo/saaristo",
+  "salo/oppaat",
+  "salo/kylat",
+  "mathildedal",
+  "mathildedal/majoitus",
+  "mathildedal/ruoka",
+  "mathildedal/aktiviteetit",
+  "mathildedal/elamykset",
+  "places/teijo",
+  "places/teijo-kirjakkala",
+  "places/sarkisalo",
+  "places/pernio",
+  "places/halikko-wiurila",
+  "places/jarvi-salo",
+  "places/salo-center",
   "turku",
   "naantali",
   "hanko",
@@ -61,8 +81,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .eq("noindex", false),
     ]);
 
+    const archipelagoProviderIds = new Set(["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "sarkisalo-fishing", "chill-out-fishing", "villa-meri-sarkisalo"]);
+    const providerCategory = (provider: (typeof saloProviders)[number]) => archipelagoProviderIds.has(provider.id)
+      ? "saaristo"
+      : provider.category === "stay" ? "majoitus"
+      : provider.category === "food" ? "ruoka"
+      : provider.category === "nature" ? "aktiviteetit"
+      : provider.category === "experience" ? "elamykset"
+      : "oppaat";
+
     const dynamicEntries: MetadataRoute.Sitemap = [
-      ...destinations.flatMap((item) =>
+      ...saloProviders.flatMap((provider) => locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/salo/" + providerCategory(provider) + "/" + provider.id,
+        lastModified: new Date(),
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+      }))),
+
+      ...destinations.filter((item) => item.slug !== "salo-mathildedal" && item.slug !== "rosala").flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/destinations/" + canonicalDestinationSlug(item.slug),
           lastModified: new Date(),

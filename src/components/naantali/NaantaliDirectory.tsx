@@ -1,12 +1,13 @@
 import Image from "next/image";
-import { ArrowUpRight, ExternalLink, Tag } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { photoLibrary } from "@/lib/photo-library";
 import type { Locale } from "@/types";
 import { naantaliProviders } from "@/lib/naantali";
 
 const labels = {
-  fi: { tourism: "Matkailuinfo", sight: "Nähtävyys", stay: "Majoitus", experience: "Elämys", nature: "Saaristo & luonto", food: "Ruoka", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas" },
-  es: { tourism: "Turismo", sight: "Lugar de interés", stay: "Alojamiento", experience: "Experiencia", nature: "Archipiélago y naturaleza", food: "Gastronomía", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial" },
-  en: { tourism: "Tourism", sight: "Sight", stay: "Accommodation", experience: "Experience", nature: "Archipelago & nature", food: "Food", price: "Price", visit: "Visit provider", guide: "Open official guide" },
+  fi: { tourism: "Matkailuinfo", sight: "Nähtävyys", stay: "Majoitus", experience: "Elämys", nature: "Saaristo & luonto", food: "Ruoka", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas" },
+  es: { tourism: "Turismo", sight: "Lugar de interés", stay: "Alojamiento", experience: "Experiencia", nature: "Archipiélago y naturaleza", food: "Gastronomía", visit: "Ir al proveedor", guide: "Abrir guía oficial" },
+  en: { tourism: "Tourism", sight: "Sight", stay: "Accommodation", experience: "Experience", nature: "Archipelago & nature", food: "Food", visit: "Visit provider", guide: "Open official guide" },
 } as const;
 
 export function NaantaliDirectory({ locale }: { locale: Locale }) {
@@ -26,20 +27,15 @@ export function NaantaliDirectory({ locale }: { locale: Locale }) {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {naantaliProviders.map((provider) => (
             <article key={provider.id} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
-              {provider.image ? (
-                <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                  <Image src={provider.image} alt={provider.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                </div>
-              ) : (
-                <div className="flex aspect-[16/10] items-center justify-center bg-brand-950 p-8 text-center text-white"><ExternalLink className="h-9 w-9 text-gold-300" /></div>
-              )}
+              <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
+                <Image src={provider.category === "food" ? photoLibrary.naantaliHarbour : photoLibrary.naantaliOldTown} alt={locale === "fi" ? "Naantalin aluekuva" : locale === "es" ? "Imagen de contexto de Naantali" : "Regional context image from Naantali"} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+              </div>
               <div className="p-6">
                 <div className="text-xs font-bold uppercase tracking-[.16em] text-brand-600">{l[provider.category]}</div>
                 <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
                 <p className="mt-3 leading-7 text-slate-600">{provider.description[locale]}</p>
-                {provider.price ? <div className="mt-4 flex gap-2 rounded-2xl bg-brand-50 p-3 text-sm text-brand-900"><Tag className="mt-0.5 h-4 w-4 shrink-0" /><span><strong>{l.price}:</strong> {provider.price}</span></div> : null}
                 <a href={provider.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{provider.url.includes("visitnaantali.com") ? l.guide : l.visit}<ArrowUpRight className="h-4 w-4" /></a>
-                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">Kuva: {provider.imageCredit}</p> : null}
+                <p className="mt-4 text-[11px] text-slate-400">{locale === "fi" ? "Aluekuva, ei välttämättä kuva palveluntarjoajan kohteesta." : locale === "es" ? "Imagen regional, no necesariamente del establecimiento." : "Regional context image, not necessarily a photo of the provider’s property."}</p>
               </div>
             </article>
           ))}

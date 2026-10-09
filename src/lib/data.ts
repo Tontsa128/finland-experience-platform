@@ -13,7 +13,7 @@ export const destinations: Destination[] = [
   {
     id: "salo",
     slug: "salo-mathildedal",
-    name: { fi: "Salo & Mathildedal", es: "Salo y Mathildedal", en: "Salo & Mathildedal" },
+    name: { fi: "Salo", es: "Salo", en: "Salo" },
     description: {
       fi: "Etelä-Suomen hidasta kesää parhaimmillaan: historiallinen Mathildedalin ruukkikylä, Teijon kansallispuisto, meri, metsäpolut, saunat ja pienet paikalliset palvelut. Täällä ei tarvitse suorittaa lomaa.",
       es: "Un verano tranquilo en el suroeste de Finlandia: Mathildedal, un antiguo pueblo siderúrgico junto al mar, el Parque Nacional de Teijo, saunas, bosques y pequeños negocios locales. Ideal para quedarse una o dos semanas.",
@@ -26,9 +26,9 @@ export const destinations: Destination[] = [
     },
     region: "Southwest Finland",
     images: [summerMathildedal, mathildedalHouse],
-    priceFrom: 149,
+    priceFrom: 0,
     featured: true,
-    coordinates: { lat: 60.166, lng: 22.954 },
+    coordinates: { lat: 60.390, lng: 23.130 },
     tags: ["mathildedal", "teijo", "summer", "sauna", "slow-travel"],
     accommodationIds: ["c1", "c2", "c3", "c4", "c5", "c6"],
     activities: ["Teijo National Park hiking", "kayaking & SUP on Lake Matildanjärvi", "cycling & mountain biking", "summer theatre", "local cafés, brewery & boutiques", "smoke sauna and lake swimming"]
@@ -94,7 +94,7 @@ export const destinations: Destination[] = [
       en: "Beaches, sea and western-coast summer"
     },
     region: "Western Finland",
-    images: [photoLibrary.hankoAerial, photoLibrary.hanko],
+    images: [photoLibrary.hankoAerial],
     priceFrom: 120,
     featured: false,
     coordinates: { lat: 59.823, lng: 22.969 },
@@ -117,7 +117,7 @@ export const destinations: Destination[] = [
       en: "Viking history, archipelago and local island life on Kemiönsaari"
     },
     region: "Kemiönsaari · Southwest Finland",
-    images: [photoLibrary.rosalaVikingCentre, photoLibrary.rosalaVikingHall],
+    images: [],
     priceFrom: 0,
     featured: false,
     tags: ["rosala", "viking", "archipelago", "history", "kemionsaari"],
@@ -196,18 +196,18 @@ export const cabins: Cabin[] = [
   {
     id: "c1", slug: "matilda-villas", name: { fi: "Matilda Villas", es: "Matilda Villas", en: "Matilda Villas" },
     description: {
-      fi: "18 laadukasta huvilaa Mathildedalin merellisessä ruukkikylässä. Villa Taimi alkaa 190 €/yö ja Villa Kukka on suurempi vaihtoehto. Oma sauna, takka, keittiö, terassi ja yksityinen ranta-alue.",
-      es: "18 villas junto al mar en Mathildedal. Villa Taimi desde 190 € por noche; las villas ofrecen sauna privada, chimenea, cocina y acceso a la playa.",
-      en: "18 quality villas by the sea in Mathildedal. Villa Taimi from €190/night, with private sauna, fireplace, kitchen, terrace and beach access."
+      fi: "18 laadukasta huvilaa Mathildedalin merellisessä ruukkikylässä. Oma sauna, takka, keittiö, terassi ja yksityinen ranta-alue.",
+      es: "18 villas junto al mar en Mathildedal, con sauna privada, chimenea, cocina, terraza y acceso a la playa.",
+      en: "18 quality villas by the sea in Mathildedal, with private sauna, fireplace, kitchen, terrace and beach access."
     },
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
     pricePerNight: 190,
-    images: [summerMathildedal, "https://cdn-datahub.visitfinland.com/images/f9ad30d0-0a6f-11f0-88da-256e05b1f1a0.jpeg?s=1600"],
+    images: [summerMathildedal],
     features: ["private sauna", "fireplace", "kitchen", "terrace", "beach", "bicycles"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.166, lng: 22.954 }, type: "villa",
     bookingUrl: "https://www.matildavillas.fi/en", provider: "Matilda Villas",
-    priceNote: { fi: "Hinta alkaen 190 €/yö, tarkista ajantasainen hinta ja saatavuus palveluntarjoajalta.", es: "Desde 190 €/noche; confirma el precio y la disponibilidad con el proveedor.", en: "From €190/night; confirm current price and availability with the provider." }
+    priceNote: { fi: "Tarkista ajantasainen hinta ja saatavuus suoraan palveluntarjoajalta.", es: "Confirma el precio y la disponibilidad actuales directamente con el proveedor.", en: "Confirm current price and availability directly with the provider." }
   },
   {
     id: "c2", slug: "matri-house", name: { fi: "Matri House", es: "Matri House", en: "Matri House" },
@@ -223,14 +223,14 @@ export const cabins: Cabin[] = [
     features: ["historic house", "breakfast", "garden", "design", "village centre"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.956 }, type: "hotel",
     bookingUrl: "https://matrihouse.fi/", provider: "Matri House",
-    priceNote: { fi: "Visit Finland ilmoittaa hinnan alkaen 180 €; ajantasainen huonehinta tarkistetaan palveluntarjoajalta.", es: "Visit Finland indica desde 180 €; confirma la tarifa actual con el proveedor.", en: "Visit Finland lists rates from €180; confirm the current room rate with the provider." }
+    priceNote: { fi: "Tarkista ajantasainen hinta ja saatavuus suoraan palveluntarjoajalta.", es: "Confirma el precio y la disponibilidad actuales directamente con el proveedor.", en: "Confirm current price and availability directly with the provider." }
   },
   {
     id: "c3", slug: "mathildan-marina", name: { fi: "Mathildan Marina", es: "Mathildan Marina", en: "Mathildan Marina" },
     description: {
-      fi: "Pieni kuuden huoneen satamahotelli aivan meren äärellä. Vuoden 2026 hinnasto alkaa 149 €/vrk yhdelle ja 179 €/vrk kahdelle alakerran huoneessa; aamupala sisältyy.",
-      es: "Pequeño hotel portuario de seis habitaciones junto al mar. Las tarifas 2026 empiezan en 149 € para una persona y 179 € para dos; desayuno incluido.",
-      en: "A six-room harbour hotel by the sea. The 2026 rates start at €149 for one guest and €179 for two in the ground-floor rooms; breakfast included."
+      fi: "Pieni kuuden huoneen satamahotelli aivan meren äärellä. Aamupala ja sataman palvelut kuuluvat kohteen tarjontaan; huonekohtaiset tiedot tarkistetaan palveluntarjoajalta.",
+      es: "Pequeño hotel portuario de seis habitaciones junto al mar. Consulta con el proveedor los detalles actuales de las habitaciones y el desayuno.",
+      en: "A six-room harbour hotel by the sea. Check current room details and breakfast arrangements directly with the provider."
     },
     location: "Mathildedal harbour",
     region: "Southwest Finland",
@@ -239,7 +239,7 @@ export const cabins: Cabin[] = [
     features: ["harbour", "breakfast", "sea view", "restaurant", "wifi"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.960 }, type: "hotel",
     bookingUrl: "https://mathildanmarina.fi/majoitus/", provider: "Mathildan Marina",
-    priceNote: { fi: "Mathildan Marinan vuoden 2026 hinnasto: 2 hh alkaen 179 €/vrk. Hinnat sisältävät aamupalan.", es: "Tarifas 2026: habitación doble desde 179 €/noche, desayuno incluido.", en: "2026 rates: double room from €179/night, breakfast included." }
+    priceNote: { fi: "Tarkista ajantasainen huonehinta ja saatavuus suoraan palveluntarjoajalta.", es: "Confirma la tarifa y la disponibilidad actuales directamente con el proveedor.", en: "Confirm current room rates and availability directly with the provider." }
   },
   {
     id: "c4", slug: "matildanjärvi-cabins", name: { fi: "Matildanjärven mökit", es: "Cabañas de Matildanjärvi", en: "Matildanjärvi Cabins" },
@@ -254,7 +254,7 @@ export const cabins: Cabin[] = [
     images: [finnishSummerLake, summerMathildedal],
     features: ["national park", "lake", "sauna", "hiking", "fishing"],
     maxGuests: 4, bedrooms: 2, coordinates: { lat: 60.190, lng: 23.020 }, type: "cabin",
-    bookingUrl: "https://www.visitfinland.com/en/product/6d0c1b5e-9f34-4a50-8d4f-0c2c0e4f6a8b/rental-cabins-at-lake-matildanjarvi/", provider: "Natura Viva / Matildanjärvi cabins",
+    bookingUrl: "https://naturaviva.fi/fi_FI/tutustu-palveluihin/aktiviteetit/saunat/matildanjarven-kampat", provider: "Natura Viva / Matildanjärvi cabins",
     priceNote: { fi: "Ajantasainen hinta tarkistetaan varauspalvelusta.", es: "Consulta el precio actual en el sistema de reservas.", en: "Check the current rate in the booking system." }
   },
   {
@@ -267,7 +267,7 @@ export const cabins: Cabin[] = [
     location: "Särkisalo, Salo",
     region: "Southwest Finland",
     pricePerNight: 0,
-    images: [finnishCottage, archipelagoRoad],
+    images: [finnishCottage],
     features: ["sea", "private sauna", "pier", "rowing boat", "privacy"],
     maxGuests: 10, bedrooms: 4, coordinates: { lat: 60.080, lng: 22.950 }, type: "villa",
     bookingUrl: "https://www.ylostalo.fi/en/vuokramokit", provider: "Ylöstalo Farm",
@@ -276,82 +276,34 @@ export const cabins: Cabin[] = [
   {
     id: "c6", slug: "storfinnhova-glamping", name: { fi: "Storfinnhova glamping", es: "Glamping Storfinnhova", en: "Storfinnhova Glamping" },
     description: {
-      fi: "Metsäkylän puumajat ja glamping-teltat tarjoavat luonnon keskellä nukkumista hieman tavallista mukavammin. Yöpymiset alkavat 70 €/hlö ja villojen viikkohinta 675 €.",
-      es: "Cabañas en los árboles y tiendas glamping en medio del bosque. Las estancias empiezan desde 70 € por persona.",
-      en: "Tree houses and glamping tents in the forest. Overnight stays start from €70 per person; villas from €675 per week."
+      fi: "Metsäkylän puumajat ja glamping-teltat tarjoavat luonnon keskellä nukkumista hieman tavallista mukavammin. Tarkista ajantasaiset hinnat ja saatavuus suoraan majoittajalta.",
+      es: "Cabañas en los árboles y tiendas glamping en medio del bosque. Consulta los precios y la disponibilidad actuales con el proveedor.",
+      en: "Tree houses and glamping tents in the forest. Check current rates and availability directly with the provider."
     },
     location: "Kimitoön, near Salo region",
     region: "Southwest Finland",
     pricePerNight: 70,
-    images: [photoLibrary.sarkisalo, photoLibrary.teijoNationalPark],
+    images: [],
     features: ["glamping", "forest", "smoke sauna", "villas", "slow travel"],
     maxGuests: 6, bedrooms: 1, coordinates: { lat: 60.160, lng: 22.740 }, type: "glamping",
     bookingUrl: "https://www.storfinnhova.com/majoitus/", provider: "Storfinnhova Gård",
-    priceNote: { fi: "Yöpymiset alkaen 70 €/hlö; villojen viikkohinta alkaen 675 €. Tarkista kesäpäivien saatavuus.", es: "Desde 70 €/persona; villas desde 675 €/semana. Confirma disponibilidad.", en: "From €70/person; villas from €675/week. Check summer availability." }
+    priceNote: { fi: "Tarkista ajantasainen hinta ja saatavuus suoraan palveluntarjoajalta.", es: "Confirma el precio y la disponibilidad actuales directamente con el proveedor.", en: "Confirm current price and availability directly with the provider." }
   },
   {
     id: "c7", slug: "naantali-camping", name: { fi: "Naantali Camping – mökit ja teltat", es: "Naantali Camping – cabañas y tiendas", en: "Naantali Camping – Cabins & Tents" },
     description: {
-      fi: "Meren äärellä aivan Naantalin keskustan tuntumassa. Vuoden 2026 hinnastossa mökkejä alkaen 69 €/yö ja hyvin varusteltu kuuden hengen lomamökki 189 €/yö. Myös telttapaikkoja.",
-      es: "Camping junto al mar cerca del centro de Naantali. En 2026 hay cabañas desde 69 € y una cabaña de seis personas por 189 € por noche.",
-      en: "Seaside camping close to Naantali centre. In 2026, cottages start at €69/night and a six-person holiday cottage is €189/night; tent pitches are also available."
+      fi: "Meren äärellä aivan Naantalin keskustan tuntumassa. Tarjolla on mökkimajoitusta ja telttapaikkoja; tarkista ajantasainen tarjonta suoraan leirintäalueelta.",
+      es: "Camping junto al mar cerca del centro de Naantali, con cabañas y parcelas para tiendas. Confirma la oferta actual directamente con el camping.",
+      en: "Seaside camping close to Naantali centre, with cottages and tent pitches. Confirm the current offering directly with the campsite."
     },
     location: "Naantali",
     region: "Southwest Finland",
     pricePerNight: 69,
-    images: [naantaliSummer, finnishCottage],
+    images: [naantaliSummer],
     features: ["sea", "cabin", "tent", "sauna", "beach"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.462, lng: 22.015 }, type: "cabin",
     bookingUrl: "https://naantalicamping.bookingonline.fi/stable/index.jsp?kieli=UKN", provider: "Naantali Camping",
-    priceNote: { fi: "Vuoden 2026 hinnasto: leirintämökki 2 hlö alkaen 69 €/yö, lomamökki 6 hlö 189 €/yö.", es: "Tarifas 2026: cabaña de camping para 2 desde 69 €/noche; cabaña de vacaciones para 6, 189 €.", en: "2026 rates: camping cottage for 2 from €69/night; holiday cottage for 6, €189." }
-  },
-  {
-    id: "c8", slug: "taattisten-tila", name: { fi: "Taattisten tila – saaristomökit", es: "Taattisten tila – cabañas", en: "Taattisten Farm – Cottages" },
-    description: {
-      fi: "Naantalin saaristometsässä sijaitsevat Lempimökki ja Lampimökki tarjoavat puusaunan, takan ja rauhallisen pihan. Lempimökki 120 €/yö kahdelle ja Lampimökki 150 €/yö neljälle.",
-      es: "Cabañas tranquilas en el bosque del archipiélago de Naantali. Sauna de leña, chimenea y privacidad; desde 120 € por noche.",
-      en: "Peaceful archipelago-forest cottages near Naantali with wood-fired sauna and fireplace. From €120/night for two."
-    },
-    location: "Naantali archipelago",
-    region: "Southwest Finland",
-    pricePerNight: 120,
-    images: [photoLibrary.sarkisalo, photoLibrary.turkuArchipelago],
-    features: ["wood sauna", "fireplace", "forest", "quiet", "breakfast optional"],
-    maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.450, lng: 21.900 }, type: "cabin",
-    bookingUrl: "https://www.taattistentila.fi/lomamkit", provider: "Taattisten tila",
-    priceNote: { fi: "Lempimökki 120 €/yö/2 hlö ja Lampimökki 150 €/yö/4 hlö, ilman aamiaista ja liinavaatteita.", es: "Lempimökki 120 €/noche/2 personas y Lampimökki 150 €/noche/4 personas.", en: "Lempimökki €120/night/2 guests and Lampimökki €150/night/4 guests." }
-  },
-  {
-    id: "c9", slug: "taattisten-tree-tent", name: { fi: "Taattisten puuteltta", es: "Tienda entre los árboles de Taattisten", en: "Taattisten Tree Tent" },
-    description: {
-      fi: "Todella erilainen saaristomajoitus: Spider Tent puiden oksilla noin 500 metrin päässä tilakeskuksesta. Hinta 50 €/yö yhdelle, 70 € kahdelle ja 90 € kolmelle.",
-      es: "Una estancia diferente: una tienda Spider Tent suspendida entre los árboles. Desde 50 € por noche para una persona.",
-      en: "A genuinely different stay: a Spider Tent among the trees, around 500 m from the farm centre. From €50/night for one, €70 for two and €90 for three."
-    },
-    location: "Naantali archipelago",
-    region: "Southwest Finland",
-    pricePerNight: 50,
-    images: [photoLibrary.sarkisalo, photoLibrary.teijoNationalPark],
-    features: ["tree tent", "nature", "campfire hut", "quiet", "eco"],
-    maxGuests: 3, bedrooms: 1, coordinates: { lat: 60.450, lng: 21.900 }, type: "glamping",
-    bookingUrl: "https://www.taattistentila.fi/puuteltta", provider: "Taattisten tila",
-    priceNote: { fi: "50 €/yö 1 hlö, 70 €/yö 2 hlö, 90 €/yö 3 hlö.", es: "50 €/noche para 1, 70 € para 2 y 90 € para 3 personas.", en: "€50/night for 1, €70 for 2 and €90 for 3 guests." }
-  },
-  {
-    id: "c10", slug: "aland-seaside-cottage", name: { fi: "Ahvenanmaan merimökki", es: "Cabaña junto al mar en Åland", en: "Åland Seaside Cottage" },
-    description: {
-      fi: "Ahvenanmaan mökkivalikoimasta löytyy merenrantaa, omaa rauhaa, saunoja, soutuveneitä ja pieniä saaristokyliä. Valikoimme sivulle erityisesti 1–2 viikon kesälomaan sopivia kohteita.",
-      es: "En Åland encontrarás cabañas junto al mar, saunas, botes de remos y pequeñas aldeas. Seleccionamos opciones especialmente adecuadas para estancias de una o dos semanas.",
-      en: "Åland offers seaside cottages, saunas, rowing boats and tiny island villages. We highlight options that suit one- or two-week summer stays."
-    },
-    location: "Åland archipelago",
-    region: "Åland",
-    pricePerNight: 180,
-    images: [alandSea, finnishCottage],
-    features: ["sea view", "sauna", "boat", "privacy", "cycling"],
-    maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.180, lng: 19.900 }, type: "villa",
-    bookingUrl: "https://visitaland.com/en/accommodation/cottage/", provider: "Visit Åland accommodation network",
-    priceNote: { fi: "Hintaesimerkki – tarkista kohdekohtainen kesähinta ja saatavuus Visit Ålandin varauspalvelusta.", es: "Precio orientativo; confirma la tarifa de verano y disponibilidad en Visit Åland.", en: "Indicative rate; check the property-specific summer price and availability with Visit Åland." }
+    priceNote: { fi: "Tarkista ajantasainen hinta ja saatavuus suoraan leirintäalueelta.", es: "Confirma el precio y la disponibilidad actuales directamente con el camping.", en: "Confirm current rates and availability directly with the campsite." }
   },
   {
     id: "c11", slug: "havsvidden", name: { fi: "Havsvidden – Ahvenanmaan kallioranta", es: "Havsvidden – costa rocosa de Åland", en: "Havsvidden – Åland Sea Cliffs" },
@@ -363,60 +315,12 @@ export const cabins: Cabin[] = [
     location: "Geta, Åland",
     region: "Åland",
     pricePerNight: 200,
-    images: [alandSea, photoLibrary.aland],
+    images: [],
     features: ["sea cliffs", "sauna", "restaurant", "pool", "nature"],
     maxGuests: 4, bedrooms: 2, coordinates: { lat: 60.380, lng: 19.820 }, type: "villa",
     bookingUrl: "https://www.havsvidden.com/en", provider: "Havsvidden Resort",
     priceNote: { fi: "Hinta vaihtelee huonetyypin ja ajankohdan mukaan. Tarkista suoraan palveluntarjoajalta.", es: "La tarifa depende del alojamiento y las fechas. Confirma con el proveedor.", en: "Rates vary by accommodation and dates. Confirm directly with the provider." }
   },
-  {
-    id: "c12", slug: "snacko-canvas-hotel", name: { fi: "Snäckö Canvas Hotel", es: "Snäckö Canvas Hotel", en: "Snäckö Canvas Hotel" },
-    description: {
-      fi: "Telttasviitti saariston keskellä: tavallista telttailua mukavampi tapa nukkua luonnon äärellä. Sopii pariskunnalle, joka haluaa merimaiseman ja rauhan.",
-      es: "Suites de lona en el archipiélago: una forma cómoda de dormir cerca de la naturaleza, ideal para parejas.",
-      en: "Canvas tent suites in the archipelago: a comfortable way to sleep close to nature, especially for couples."
-    },
-    location: "Åland archipelago",
-    region: "Åland",
-    pricePerNight: 180,
-    images: [finnishSummerLake, alandSea],
-    features: ["canvas suite", "sea", "nature", "glamping", "quiet"],
-    maxGuests: 2, bedrooms: 1, coordinates: { lat: 60.250, lng: 20.050 }, type: "glamping",
-    bookingUrl: "https://visitaland.com/en/accommodation/cottage/", provider: "Visit Åland accommodation network",
-    priceNote: { fi: "Tarkista ajantasainen kesähinta ja saatavuus palveluntarjoajalta.", es: "Confirma el precio de verano y la disponibilidad con el proveedor.", en: "Check current summer pricing and availability with the provider." }
-  },
-  {
-    id: "c13", slug: "hanko-villa", name: { fi: "Hanko – merellinen huvila", es: "Villa junto al mar en Hanko", en: "Hanko Seaside Villa" },
-    description: {
-      fi: "Läntisen rannikon rauhallinen huvila-tyyppinen majoitus. Hanko sopii pitkään kesälomaan, jossa päivät kuluvat rannalla, pyörän selässä ja sataman ympäristössä.",
-      es: "Alojamiento tipo villa en la costa oeste, ideal para unas vacaciones largas entre playas, ciclismo y vida portuaria.",
-      en: "Villa-style coastal accommodation for a longer summer stay between beaches, cycling and harbour life."
-    },
-    location: "Hanko",
-    region: "Western Finland",
-    pricePerNight: 120,
-    images: [photoLibrary.hankoAerial, photoLibrary.hanko],
-    features: ["beach", "cycling", "sea", "terrace", "summer"],
-    maxGuests: 6, bedrooms: 3, coordinates: { lat: 59.823, lng: 22.969 }, type: "villa",
-    bookingUrl: "https://visithanko.fi/", provider: "Visit Hanko accommodation network",
-    priceNote: { fi: "Esimerkkihinta. Ajantasainen hinta ja saatavuus tarkistetaan palveluntarjoajalta.", es: "Precio orientativo. Confirma precio y disponibilidad con el proveedor.", en: "Indicative price. Confirm current pricing and availability with the provider." }
-  },
-  {
-    id: "c14", slug: "southeast-cottage", name: { fi: "Kaakkois-Suomen rantamökki", es: "Cabaña junto al agua en el sureste", en: "Southeast Finland Lakeside Cottage" },
-    description: {
-      fi: "Rauhallinen järven tai merenrantamökki Kaakkois-Suomen kohteissa. Painotus on saunassa, vedessä, luonnossa ja omassa rauhassa – ei kiireisessä nähtävyyslistassa.",
-      es: "Cabaña tranquila junto al lago o al mar en el sureste de Finlandia, centrada en sauna, agua, naturaleza y privacidad.",
-      en: "A quiet lakeside or seaside cottage in Southeast Finland, focused on sauna, water, nature and privacy."
-    },
-    location: "Kotka–Hamina–Loviisa area",
-    region: "Southeast Finland",
-    pricePerNight: 100,
-    images: [photoLibrary.teijoNationalPark, photoLibrary.turkuArchipelago],
-    features: ["sauna", "lake/sea", "privacy", "nature", "long stay"],
-    maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.470, lng: 26.950 }, type: "cabin",
-    bookingUrl: "https://www.visitkotka.fi/", provider: "Regional accommodation providers",
-    priceNote: { fi: "Esimerkkihinta. Kohdekohtainen kesähinta tarkistetaan palveluntarjoajalta.", es: "Precio orientativo; confirma la tarifa de verano con el proveedor.", en: "Indicative rate; confirm the property-specific summer price with the provider." }
-  }
 ];
 
 export const experiences: Experience[] = [

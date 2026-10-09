@@ -4,10 +4,10 @@ import Link from "next/link";
 import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { saloEvents } from "@/lib/salo";
-import { naantaliEvents } from "@/lib/naantali";
+import { photoLibrary } from "@/lib/photo-library";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 
-const heroImage = "https://cdn-datahub.visitfinland.com/images/2c7e7830-f614-11f0-ad78-29bd5b45e175.jpeg?s=1800";
+const heroImage = photoLibrary.turkuArchipelago;
 
 function formatDate(value: string, locale: Locale) {
   return new Intl.DateTimeFormat(locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-GB", {
@@ -17,8 +17,9 @@ function formatDate(value: string, locale: Locale) {
   }).format(new Date(value + "T12:00:00"));
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const copy = locale === "fi"
     ? { title: "Tapahtumat Varsinais-Suomessa | Finland Experience", description: "Salon, Mathildedalin, Teijon ja Naantalin tapahtumia sekä linkit järjestäjien ajantasaisiin kalentereihin." }
     : locale === "es"
@@ -27,11 +28,12 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "events", image: heroImage });
 }
 
-export default async function EventsPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function EventsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const today = new Date().toISOString().slice(0, 10);
-  const events = [...saloEvents, ...naantaliEvents]
-    .filter((event) => (event.end || event.start) >= today)
+  const verifiedEventIds = new Set(["pumpkin", "visit-valo", "ghost-museum", "ghost-museum-november", "mathildedal-christmas-1", "mathildedal-christmas-2"]);
+  const events = saloEvents
+    .filter((event) => verifiedEventIds.has(event.id) && (event.end || event.start) >= today)
     .sort((a, b) => a.start.localeCompare(b.start));
 
   const eventSchema = events.slice(0, 40).map((event) => ({
@@ -61,6 +63,7 @@ export default async function EventsPage({ params }: { params: { locale: string 
         verifyTitle: "Tarkista ajantasainen kalenteri ennen matkaa",
         verifyText: "Finland Experience Platform toimii inspiraatio- ja löytöpalveluna. Tapahtuman järjestäjä vastaa tapahtumasta, lipuista, varauksista ja maksuista.",
         verifyCta: "Tutustu Naantalin kohteisiin",
+        noEvents: "Yksittäisiä tapahtumia ei julkaista ennen kuin päivämäärä ja järjestäjän tapahtumasivu on vahvistettu.",
       }
     : locale === "es"
       ? {
@@ -79,6 +82,7 @@ export default async function EventsPage({ params }: { params: { locale: string 
           verifyTitle: "Comprueba el calendario actualizado antes de viajar",
           verifyText: "Finland Experience Platform es un servicio de inspiración y descubrimiento. El organizador responde de eventos, entradas, reservas y pagos.",
           verifyCta: "Descubre Naantali",
+          noEvents: "No publicamos eventos individuales hasta confirmar la fecha y la página oficial del organizador.",
         }
       : {
           eyebrow: "Salo · Mathildedal · Teijo · Naantali",
@@ -96,13 +100,14 @@ export default async function EventsPage({ params }: { params: { locale: string 
           verifyTitle: "Check the current calendar before travelling",
           verifyText: "Finland Experience Platform is an inspiration and discovery service. Organizers are responsible for events, tickets, reservations and payments.",
           verifyCta: "Explore Naantali",
+          noEvents: "Individual events are not published until the date and the organiser’s specific event page are verified.",
         };
 
   return (
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": eventSchema }) }} />
       <section className="relative min-h-[56vh] overflow-hidden bg-brand-950 text-white">
-        <Image src={heroImage} alt={copy.title} fill priority sizes="100vw" className="object-cover opacity-65" />
+        <Image src={heroImage} alt={locale === "fi" ? "Turun saariston maisema Varsinais-Suomessa" : locale === "es" ? "Paisaje del archipiélago de Turku en Finlandia suroccidental" : "Turku Archipelago landscape in Southwest Finland"} fill priority sizes="100vw" className="object-cover opacity-65" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/45 to-brand-950/10" />
         <div className="container-narrow relative flex min-h-[56vh] items-end py-16 sm:py-24">
           <div className="max-w-4xl">
@@ -119,13 +124,13 @@ export default async function EventsPage({ params }: { params: { locale: string 
       <section className="container-narrow py-14 sm:py-20">
         <div className="mb-10 flex items-end justify-between gap-5">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">2026</p>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{locale === "fi" ? "Järjestäjien omat kalenterit" : locale === "es" ? "Calendarios oficiales" : "Official calendars"}</p>
             <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{copy.month}</h2>
           </div>
           <CalendarDays className="hidden h-8 w-8 text-gold-500 sm:block" />
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-          {events.map((event) => (
+          {events.length ? events.map((event) => (
             <article key={event.id} className="rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
               <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
                 <span>{formatDate(event.start, locale)}</span>
@@ -136,7 +141,7 @@ export default async function EventsPage({ params }: { params: { locale: string 
               <p className="mt-4 leading-7 text-slate-600">{event.description[locale] || event.description.en || event.description.fi}</p>
               <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
             </article>
-          ))}
+          )) : <p className="rounded-2xl border border-dashed border-slate-300 p-6 text-sm leading-7 text-slate-600 md:col-span-2">{copy.noEvents}</p>}
         </div>
       </section>
 

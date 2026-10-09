@@ -1,5 +1,5 @@
 import { permanentRedirect } from "next/navigation";
 
-export default function LegacyDestinationDetailPage({ params }: { params: { slug: string } }) {
-  permanentRedirect(`/fi/destinations/${encodeURIComponent(params.slug)}`);
+export default async function LegacyDestinationDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  permanentRedirect(`/fi/destinations/${encodeURIComponent((await params).slug)}`);
 }

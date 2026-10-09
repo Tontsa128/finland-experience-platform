@@ -35,7 +35,7 @@ const providerImages = {
   brewery: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kyl%C3%A4panimo-laatikko-web.jpg",
 };
 
-export const saloProviders: SaloProvider[] = [
+const allSaloProviders: SaloProvider[] = [
   {
     id: "visit-salo",
     category: "tourism",
@@ -67,7 +67,7 @@ export const saloProviders: SaloProvider[] = [
       es: "Hotel boutique de 13 habitaciones en el histórico pueblo siderúrgico junto al Parque Nacional de Teijo.",
       en: "A 13-room boutique hotel in the historic ironworks village beside Teijo National Park.",
     },
-    url: "https://www.mathildedal.fi",
+    url: "https://mathildedal.fi/",
     image: providerImages.hotel,
     imageCredit: "Visit Salo / Visit Finland DataHub",
   },
@@ -80,8 +80,8 @@ export const saloProviders: SaloProvider[] = [
       es: "Hotel junto al puerto, restaurante, saunas, puerto de invitados y área para autocaravanas.",
       en: "Harbour hotel with restaurant, sauna area, guest marina and motorhome parking.",
     },
-    url: "https://www.mathildanmarina.fi",
-    price: "2026: alkaen 149 €/vrk",
+    url: "https://mathildanmarina.fi/",
+    price: "Tarkista ajantasainen hinta palveluntarjoajalta",
     image: providerImages.marina,
     imageCredit: "Visit Salo / Visit Finland DataHub",
   },
@@ -94,7 +94,7 @@ export const saloProviders: SaloProvider[] = [
       es: "18 villas junto al mar, playa privada y actividades compartidas.",
       en: "18 seaside villas with a private beach and shared activities.",
     },
-    url: "https://www.matildavillas.fi",
+    url: "https://matildavillas.fi/",
     image: providerImages.villas,
     imageCredit: "Visit Salo / Visit Finland DataHub",
   },
@@ -112,17 +112,6 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
-    id: "majoitus-mathildedal",
-    category: "stay",
-    name: "Majoitus Mathildedal",
-    description: {
-      fi: "Mökki Mathildedalin kylässä. Ajantasainen hinta ja saatavuus pyydetään suoraan majoittajalta.",
-      es: "Casa de vacaciones en Mathildedal. Consulta directamente al anfitrión el precio y la disponibilidad actuales.",
-      en: "Holiday cottage in Mathildedal. Ask the provider directly for the current price and availability.",
-    },
-    url: "https://www.majoitusmathildedal.com",
-  },
-  {
     id: "teijo-action-park",
     category: "experience",
     name: "Teijo Ski & Action Park",
@@ -131,8 +120,8 @@ export const saloProviders: SaloProvider[] = [
       es: "Actividades de acción, ciclismo, golf y esquí durante la temporada de nieve.",
       en: "Action activities, cycling, golf and skiing during the snow season in Teijo.",
     },
-    url: "https://www.meriteijo.fi",
-    price: "Rinneautoilu: 2 kierrosta 16 €, 4 kierrosta 26 €, 5 kierrosta 32 €/hlö",
+    url: "https://www.meriteijo.fi/actionpark",
+    price: "Tarkista ajantasainen hinta palveluntarjoajalta",
     image: providerImages.actionPark,
     imageCredit: "Visit Salo",
   },
@@ -574,6 +563,17 @@ export const saloProviders: SaloProvider[] = [
 
 ];
 
+
+const unverifiedEventProviderIds = new Set([
+  "improv-30-9", "autumn-market", "visit-valo", "ghost-museum", "ghost-museum-november",
+  "ghost-trail", "kekri", "pumpkin", "father-day-marina", "mathildedal-christmas-1",
+  "mathildedal-christmas-2", "teijo-christmas", "wiurila-christmas", "rikalanmaki-christmas",
+  "mathildedal-reflection", "new-year", "marina-new-year",
+]);
+
+// Event entries stay in the event dataset and are not published as evergreen provider listings.
+export const saloProviders: SaloProvider[] = allSaloProviders.filter((provider) => !unverifiedEventProviderIds.has(provider.id));
+
 export const saloEvents: SaloEvent[] = [
   {
     id: "improv-30-9",
@@ -607,11 +607,11 @@ export const saloEvents: SaloEvent[] = [
     start: "2026-10-03",
     end: "2027-01-03",
     title: { fi: "Visit valo – valotaiteen näyttely", es: "Visit valo – exposición de arte de la luz", en: "Visit valo – light art exhibition" },
-    location: "Salon taidemuseo Veturitalli",
+    location: "Salon taidemuseo Veturitalli, Salo",
     description: {
-      fi: "Valotaiteen näyttely 3.10.2026–3.1.2027. Pääsymaksu 10 € / 7 €, Museokortti käy.",
-      es: "Exposición de arte de la luz del 3.10.2026 al 3.1.2027. Entrada 10 € / 7 €.",
-      en: "Light art exhibition from 3 Oct 2026 to 3 Jan 2027. Admission €10 / €7; Museum Card accepted.",
+      fi: "Valotaiteen näyttely 3.10.2026–3.1.2027. Tarkista pääsymaksut ja aukioloajat museon viralliselta sivulta.",
+      es: "Exposición de arte de la luz del 3.10.2026 al 3.1.2027. Consulta entradas y horarios en la web oficial del museo.",
+      en: "Light art exhibition from 3 Oct 2026 to 3 Jan 2027. Check admission and opening hours on the museum's official page.",
     },
     url: "https://tapahtumat.salo.fi/salon-taidemuseo-veturitalli-visit-valo/",
     category: "culture",
@@ -627,7 +627,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Museo de fantasmas de otoño. Comprueba los horarios del organizador antes de viajar.",
       en: "A seasonal ghost museum. Check the organizer's opening hours before travelling.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/2026/09/21/kummitusmuseot-valtaavat-mathildedalin-tervetuloa-kummituskylaan/",
     category: "autumn",
   },
   {
@@ -641,7 +641,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Segundo fin de semana del Museo de fantasmas en Mathildedal. Comprueba los horarios actuales con el organizador.",
       en: "The second autumn weekend of the Ghost Museum at Mathildedal ironworks. Check current opening hours with the organizer.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/2026/09/21/kummitusmuseot-valtaavat-mathildedalin-tervetuloa-kummituskylaan/",
     category: "autumn",
   },
   {
@@ -674,15 +674,16 @@ export const saloEvents: SaloEvent[] = [
   },
   {
     id: "pumpkin",
-    start: "2026-10-10",
-    title: { fi: "Salon suurin kurpitsa", es: "La calabaza más grande de Salo", en: "Salo's Biggest Pumpkin" },
-    location: "Salon tori",
+    start: "2026-10-09",
+    end: "2026-10-18",
+    title: { fi: "Salon Kurpitsaviikot", es: "Kurpitsaviikot – semanas de la calabaza en Salo", en: "Pumpkin Weeks in Salo" },
+    location: "Vaskiontie 50, Halikko, Salo",
     description: {
-      fi: "Salon kurpitsakuninkuuden ratkaiseva jättikurpitsakilpailu.",
-      es: "Concurso de la calabaza gigante que decide al campeón de Salo.",
-      en: "The giant-pumpkin competition deciding Salo's pumpkin champion.",
+      fi: "Kurpitsaviikot ja Kurpitsapuisto 9.–18.10.2026. Puiston osoite, aukioloajat ja kulkuyhteydet kannattaa tarkistaa viralliselta tapahtumasivulta.",
+      es: "Kurpitsaviikot y el parque de calabazas del 9 al 18 de octubre de 2026. Consulta dirección, horarios y transporte en la web oficial.",
+      en: "Pumpkin Weeks and the pumpkin park run 9–18 October 2026. Check the official event page for the address, opening hours and transport.",
     },
-    url: "https://tapahtumat.salo.fi/location/salon_tori/",
+    url: "https://visitsalo.fi/kurpitsaviikot/",
     category: "autumn",
   },
   {
@@ -708,7 +709,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Ambiente navideño, artesanos, productores locales y tiendas del pueblo.",
       en: "Christmas atmosphere, local makers, producers and village shops.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://mathildedal.fi/2026/04/27/mathildedalin-joulumarkkinat-21-11-28-11-2026/",
     category: "christmas",
   },
   {

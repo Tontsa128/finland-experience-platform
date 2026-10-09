@@ -15,8 +15,8 @@ const editorialImages = [
   photoLibrary.aland,
 ];
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const copy = locale === "fi"
     ? { title: "Matkainspiraatio Suomeen | Finland Experience", description: "Matkatarinoita mökeistä, saunasta, saaristosta, luonnosta, ruoasta ja suomalaisesta elämästä." }
     : locale === "es"
@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "blog" });
 }
 
-export default async function BlogPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const cmsPosts = await getPublishedBlogPosts();
   const posts = cmsPosts.length || !allowDemoFallback ? cmsPosts : fallbackPosts;
 

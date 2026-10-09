@@ -22,11 +22,12 @@
     "plan": "Diseña tu viaje",
     "cityBreaks": "Escapadas urbanas",
     "coastalFinland": "Finlandia costera",
-        "ruralFinland": "Turismo rural",
+    "ruralFinland": "Turismo rural",
     "blog": "Blog",
     "contact": "Contacto",
     "admin": "Admin",
-    "events": "Eventos"
+    "events": "Eventos",
+    "salo": "Salo"
   },
   "hero": {
     "title": "Descubre las noches infinitas del verano finlandés",

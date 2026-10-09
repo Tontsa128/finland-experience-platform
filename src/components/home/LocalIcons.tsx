@@ -12,7 +12,7 @@ const partners = [
       es: "Sauna de humo, mar, alojamiento y sabores del archipiélago.",
       en: "Smoke sauna, seaside accommodation and archipelago food.",
     },
-    image: photoLibrary.herrankukkaroSauna,
+    image: photoLibrary.naantaliHarbour,
     href: "https://www.herrankukkaro.fi/",
     icon: Waves,
   },
@@ -25,7 +25,7 @@ const partners = [
       es: "Pueblo del bosque, sauna de humo de granito, casas en los árboles y glamping.",
       en: "Forest village, underground granite smoke sauna, tree cabins and glamping.",
     },
-    image: photoLibrary.storfinnhova,
+    image: photoLibrary.turkuArchipelago,
     href: "https://www.storfinnhova.com/",
     icon: Trees,
   },
@@ -38,7 +38,7 @@ const partners = [
       es: "Cabañas con sauna, barcos, kayak, pesca y vida de isla.",
       en: "Sauna cottages, boats, kayaking, fishing and island life.",
     },
-    image: photoLibrary.bjorkholm,
+    image: photoLibrary.turkuArchipelagoHouse,
     href: "https://bjorkholm.johku.com/",
     icon: Sailboat,
   },
@@ -51,7 +51,7 @@ const partners = [
       es: "Kayaks, canoas, SUP, barcas de remos y fatbikes en Teijo.",
       en: "Kayaks, canoes, SUP boards, rowboats and fatbikes in Teijo National Park.",
     },
-    image: photoLibrary.naturaVivaTeijo,
+    image: photoLibrary.teijoNationalPark,
     href: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop",
     icon: Compass,
   },
@@ -95,7 +95,7 @@ export default function LocalIcons({ locale }: { locale: "fi" | "es" | "en" }) {
               <article key={partner.key} className="group overflow-hidden rounded-[1.6rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
                 <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
                   {partner.image ? (
-                    <Image src={partner.image} alt={partner.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                    <Image src={partner.image} alt={partner.place} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw" className="object-cover transition duration-700 group-hover:scale-105" />
                   ) : (
                     <div className="flex h-full items-center justify-center bg-brand-950 text-white"><Icon className="h-10 w-10 text-gold-300" /></div>
                   )}
@@ -104,7 +104,7 @@ export default function LocalIcons({ locale }: { locale: "fi" | "es" | "en" }) {
                 <div className="p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[.16em] text-terracotta">{partner.place}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{partner.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{partner.description[locale]}</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{partner.description[locale]}</p><p className="mt-2 text-[11px] text-slate-400">{locale === "fi" ? "Aluekuva, ei kuva palveluntarjoajan omasta kohteesta." : locale === "es" ? "Imagen de contexto regional, no del establecimiento." : "Regional context image, not a photo of the provider’s property."}</p>
                   <a href={partner.href} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
                     {cta} <ArrowUpRight className="h-4 w-4" />
                   </a>

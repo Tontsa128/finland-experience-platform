@@ -26,8 +26,8 @@ import {
 
 const fallbackSummerImage = photoLibrary.turkuArchipelago;
 
-export default async function HomePage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   const [homepage, cmsDestinations, cmsCabins, cmsExperiences] =
@@ -101,7 +101,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {[
               [Building2, "featureStays", `/${locale}/accommodations`],
-              [Sparkles, "featureSauna", `/${locale}/experiences`],
+              [Sparkles, "featureSauna", `/${locale}/sauna`],
               [Waves, "featureFood", `/${locale}/experiences`],
               [TreePine, "featureNature", `/${locale}/destinations`],
               [Waves, "featureArchipelago", `/${locale}/destinations`],
@@ -138,12 +138,12 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {coastalHighlights.map((destination) => (
               <Link
                 key={destination.id}
-                href={`/${locale}/coastal-finland#${destination.slug === "salo-mathildedal" ? "mathildedal" : destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
+                href={`/${locale}/${destination.slug === "salo-mathildedal" ? "salo" : destination.slug}`}
                 className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
               >
                 <Image
-                  src={destination.images?.[0] || fallbackSummerImage}
-                  alt={destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                  src={destination.slug === "salo-mathildedal" ? photoLibrary.mathildedalHarbour : destination.images?.[0] || fallbackSummerImage}
+                  alt={destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Salon seutu" : locale === "es" ? "Región de Salo" : "Salo region") : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
@@ -152,7 +152,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold">
-                    {destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                    {destination.slug === "salo-mathildedal"
+                      ? "Salo"
+                      : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   </h3>
                   <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
                     {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
@@ -173,7 +175,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               ["archipelago", Waves, `/${locale}/destinations`],
-              ["sauna", Sparkles, `/${locale}/experiences`],
+              ["sauna", Sparkles, `/${locale}/sauna`],
               ["nature", TreePine, `/${locale}/destinations`],
               ["food", Building2, `/${locale}/experiences`],
             ].map(([key, Icon, href]) => { const I = Icon as typeof Sparkles; return <Link key={key as string} href={href as string} className="group rounded-[1.75rem] bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-card"><I className="h-7 w-7 text-brand-700" /><h3 className="mt-7 font-display text-2xl font-bold text-brand-950">{sh(key as string)}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{sh(`${key}Desc` as string)}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{tc("learnMore")} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span></Link>; })}

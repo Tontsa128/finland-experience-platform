@@ -25,7 +25,7 @@ finland-experience-platform/
 
 ## Teknologiat
 
-- Next.js 14 ja React 18
+- Next.js 15.5.27 ja React 18
 - TypeScript
 - Tailwind CSS
 - next-intl (suomi, espanja ja englanti)
