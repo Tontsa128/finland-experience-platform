@@ -13,7 +13,7 @@ export const destinations: Destination[] = [
   {
     id: "salo",
     slug: "salo-mathildedal",
-    name: { fi: "Salo & Mathildedal", es: "Salo y Mathildedal", en: "Salo & Mathildedal" },
+    name: { fi: "Salo", es: "Salo", en: "Salo" },
     description: {
       fi: "Etelä-Suomen hidasta kesää parhaimmillaan: historiallinen Mathildedalin ruukkikylä, Teijon kansallispuisto, meri, metsäpolut, saunat ja pienet paikalliset palvelut. Täällä ei tarvitse suorittaa lomaa.",
       es: "Un verano tranquilo en el suroeste de Finlandia: Mathildedal, un antiguo pueblo siderúrgico junto al mar, el Parque Nacional de Teijo, saunas, bosques y pequeños negocios locales. Ideal para quedarse una o dos semanas.",
@@ -26,9 +26,9 @@ export const destinations: Destination[] = [
     },
     region: "Southwest Finland",
     images: [summerMathildedal, mathildedalHouse],
-    priceFrom: 149,
+    priceFrom: 0,
     featured: true,
-    coordinates: { lat: 60.166, lng: 22.954 },
+    coordinates: { lat: 60.390, lng: 23.130 },
     tags: ["mathildedal", "teijo", "summer", "sauna", "slow-travel"],
     accommodationIds: ["c1", "c2", "c3", "c4", "c5", "c6"],
     activities: ["Teijo National Park hiking", "kayaking & SUP on Lake Matildanjärvi", "cycling & mountain biking", "summer theatre", "local cafés, brewery & boutiques", "smoke sauna and lake swimming"]
