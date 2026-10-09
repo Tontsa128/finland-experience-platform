@@ -292,8 +292,8 @@ const sectionLabels = {
   en: { stay: "Stay", food: "Food & cafés", do: "Things to do", nature: "Nature & sea", sauna: "Sauna", providers: "Selected direct links" },
 } as const;
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const c = locale === "fi"
     ? { title: "Rannikon Suomi | Mathildedal, Naantali, Turku, Hanko & Åland", description: "Ammattimainen opas Suomen rannikon viiteen kiinnostavaan lähtöpisteeseen: Mathildedal, Naantali, Turku, Hanko ja Ahvenanmaa." }
     : locale === "es"
@@ -302,8 +302,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: c.title, description: c.description, path: "coastal-finland" });
 }
 
-export default function CoastalFinlandPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function CoastalFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const isFi = locale === "fi";
   const copy = locale === "fi"
     ? { eyebrow: "HIDDEN COASTAL FINLAND", title: "Viisi rannikon paikkaa, joista on helppo aloittaa", intro: "Mathildedalin ruukkikylä, Naantalin saaristo, Turku, Hanko ja Ahvenanmaa näyttävät Suomen rannikon eri puolet. Täällä reitti ei ole paketti – sinä päätät, missä viivyt.", note: "Löydä ensin paikka. Tarkista sitten ajantasaiset palvelut ja jatka suoraan palveluntarjoajalle.", nearby: "Myös tämä kuuluu samaan merelliseen kokonaisuuteen", nearbyText: "Särkisalo täydentää Salon rannikkokokonaisuutta: mökkejä, satamia, ravintoloita, melontaa, kalastusta, rantoja ja paikallista saaristoelämää." }
