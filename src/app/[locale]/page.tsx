@@ -138,7 +138,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {coastalHighlights.map((destination) => (
               <Link
                 key={destination.id}
-                href={`/${locale}/coastal-finland#${destination.slug === "salo-mathildedal" ? "mathildedal" : destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
+                href={`/${locale}/${destination.slug === "salo-mathildedal" ? "salo" : destination.slug}`}
                 className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
               >
                 <Image
@@ -152,7 +152,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold">
-                    {destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                    {destination.slug === "salo-mathildedal"
+                      ? "Salo"
+                      : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   </h3>
                   <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
                     {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
