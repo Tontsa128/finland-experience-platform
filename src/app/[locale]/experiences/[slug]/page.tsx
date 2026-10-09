@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { getLocalized } from "@/lib/data";
+import { getLocalized, experiences as fallbackExperiences } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
 import { formatPrice, locales } from "@/lib/utils";
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   const cmsExperiences = await getPublishedExperiences();
-  const source = cmsExperiences;
+  const source = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
   const experience = source.find((item) => item.slug === slug);
   if (!experience) return {};
   return buildLocalizedMetadata({
@@ -34,7 +34,7 @@ export default async function ExperienceDetail({ params }: { params: Promise<{ l
   const locale = localeParam as Locale;
   if (!locales.includes(locale)) notFound();
   const cmsExperiences = await getPublishedExperiences();
-  const experiences = cmsExperiences;
+  const experiences = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
   const experience = experiences.find((item) => item.slug === slug);
   if (!experience) notFound();
   const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
@@ -97,7 +97,7 @@ export default async function ExperienceDetail({ params }: { params: Promise<{ l
             <Sparkles className="h-7 w-7 text-amber-500" />
             <p className="mt-5 text-sm text-slate-500">{copy.price}</p>
             <div className="mt-1 text-3xl font-bold text-brand-950">
-              {experience.price > 0 ? formatPrice(experience.price, locale) : "—"}
+              {experience.verified && experience.price > 0 ? formatPrice(experience.price, locale) : (locale === "fi" ? "Tarkista palveluntarjoajalta" : locale === "es" ? "Consultar al proveedor" : "Check with provider")}
             </div>
             <p className="mt-1 text-sm text-slate-500">
               {locale === "fi" ? "Tarkista ajantasainen hinta palveluntarjoajalta."
