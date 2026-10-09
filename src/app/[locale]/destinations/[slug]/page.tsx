@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   if (slug === "salo-mathildedal") return buildLocalizedMetadata({ locale, title: "Salon seudun matkailu", description: "Salo, Mathildedal, Teijo, Särkisalo and the rural villages of Southwest Finland.", path: "salo" });
+  if (slug === "rosala") return buildLocalizedMetadata({ locale, title: "Kemiönsaari ja Rosala", description: "Tutustu Kemiönsaaren saaristoon ja Rosalaan. Tarkista ajantasaiset tiedot paikallisilta palveluntarjoajilta.", path: "kimitoon" });
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
   const source = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
@@ -36,6 +37,7 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
   const locale = localeParam as Locale;
   if (slug === "salo-mathildedal") redirect(`/${locale}/salo`);
   if (slug === "mathildedal") redirect(`/${locale}/mathildedal`);
+  if (slug === "rosala") redirect(`/${locale}/kimitoon`);
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
