@@ -9,7 +9,6 @@ import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
@@ -161,7 +160,6 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} /> : null}
       {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
 
 
