@@ -222,7 +222,7 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
                     <p className="mt-3 line-clamp-4 text-sm leading-6 text-slate-600">{text(item.description, locale)}</p>
                     {item.address ? <p className="mt-4 flex gap-2 text-xs font-medium text-slate-500"><MapPin className="mt-0.5 h-4 w-4 shrink-0" />{item.address}</p> : null}
                     <div className="mt-5 flex flex-wrap gap-2">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800"><Sparkles className="h-3.5 w-3.5" />{t.checked}</span>
+                      {item.verified ? <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800"><Sparkles className="h-3.5 w-3.5" />{t.checked}</span> : null}
                       {(item.audienceTags || []).slice(0,3).map(tag => audienceLabels[tag]?.[locale] ? <span key={tag} className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700">{audienceLabels[tag][locale]}</span> : null)}
                       {(item.seasonTags || []).slice(0,2).map(tag => seasonLabels[tag]?.[locale] ? <span key={tag} className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700">{seasonLabels[tag][locale]}</span> : null)}
                     </div>
