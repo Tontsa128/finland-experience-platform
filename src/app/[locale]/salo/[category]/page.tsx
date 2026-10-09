@@ -108,7 +108,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
             {providers.map((provider) => (
               <Link key={provider.id} href={`/${locale}/salo/${category}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
                 <div className="relative aspect-[16/10] bg-brand-100">
-                  {provider.image ? <Image src={provider.image} alt={provider.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" unoptimized className="object-cover transition duration-700 group-hover:scale-105" /> : <Image src={category === "saaristo" ? photoLibrary.sarkisalo : category === "aktiviteetit" ? photoLibrary.teijoNationalPark : photoLibrary.mathildedalHarbour} alt={provider.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />}
+                  {provider.image ? <Image src={provider.image} alt={provider.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" unoptimized className="object-cover transition duration-700 group-hover:scale-105" /> : <Image src={category === "saaristo" ? photoLibrary.sarkisalo : category === "aktiviteetit" ? photoLibrary.teijoNationalPark : photoLibrary.mathildedalHarbour} alt={provider.name} fill sizes="(max-width: 768px) 100vw, 33vw" unoptimized className="object-cover" />}
                 </div>
                 <div className="p-6">
                   <h2 className="font-display text-2xl font-bold">{provider.name}</h2>
