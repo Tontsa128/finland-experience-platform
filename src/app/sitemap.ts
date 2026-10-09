@@ -15,6 +15,7 @@ const basePaths = [
   "",
   "destinations",
   "salo",
+  "mathildedal",
   "turku",
   "naantali",
   "hanko",
