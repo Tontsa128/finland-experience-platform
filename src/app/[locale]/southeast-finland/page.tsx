@@ -77,7 +77,7 @@ const copy = {
   food: string; nature: string; culture: string; coast: string; next: string; places: PlaceCard[];
 }>;
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const locale = (await params).locale as Locale;
   const c = copy[locale] ?? copy.en;
   return buildLocalizedMetadata({
