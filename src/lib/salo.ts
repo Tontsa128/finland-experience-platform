@@ -81,7 +81,7 @@ const allSaloProviders: SaloProvider[] = [
       en: "Harbour hotel with restaurant, sauna area, guest marina and motorhome parking.",
     },
     url: "https://mathildanmarina.fi/",
-    price: "2026: alkaen 149 €/vrk",
+    price: "Tarkista ajantasainen hinta palveluntarjoajalta",
     image: providerImages.marina,
     imageCredit: "Visit Salo / Visit Finland DataHub",
   },
