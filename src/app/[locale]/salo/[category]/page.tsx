@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   const category = rawCategory as Category;
   const [title, description] = copy[locale].categories[category];
-  return buildLocalizedMetadata({ locale, title, description, path: "salo/" + category, image: photoLibrary.mathildedalHarbour });
+  return buildLocalizedMetadata({ locale, title, description, path: "salo/" + category, image: categoryImage(category) });
 }
 
 export default async function SaloCategoryPage({ params }: { params: Promise<{ locale: string; category: string }> }) {
