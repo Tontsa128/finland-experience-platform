@@ -254,7 +254,7 @@ export const cabins: Cabin[] = [
     images: [finnishSummerLake, summerMathildedal],
     features: ["national park", "lake", "sauna", "hiking", "fishing"],
     maxGuests: 4, bedrooms: 2, coordinates: { lat: 60.190, lng: 23.020 }, type: "cabin",
-    bookingUrl: "https://naturaviva.fi/fi_FI/majoituskohteet-etela-suomessa/matildanjarven-kampat", provider: "Natura Viva / Matildanjärvi cabins",
+    bookingUrl: "https://naturaviva.fi/fi_FI/tutustu-palveluihin/aktiviteetit/saunat/matildanjarven-kampat", provider: "Natura Viva / Matildanjärvi cabins",
     priceNote: { fi: "Ajantasainen hinta tarkistetaan varauspalvelusta.", es: "Consulta el precio actual en el sistema de reservas.", en: "Check the current rate in the booking system." }
   },
   {
