@@ -8,11 +8,12 @@ import type { Locale } from "@/types";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({params}:{params: Promise<{ locale: string; slug: string }>}):Promise<Metadata>{
- const locale = (await params).locale as Locale;
+ const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
  if (!locales.includes(locale)) return {};
- const {data}=await supabaseAdmin.from("site_pages").select("title,seo_title,seo_description,canonical_url,noindex").eq("locale",locale).eq("slug",(await params).slug).eq("published",true).maybeSingle();
+ const {data}=await supabaseAdmin.from("site_pages").select("title,seo_title,seo_description,canonical_url,noindex").eq("locale",locale).eq("slug",slug).eq("published",true).maybeSingle();
  if(!data)return {};
- const canonical = data.canonical_url || localizedUrl(locale, "pages/" + (await params).slug);
+ const canonical = data.canonical_url || localizedUrl(locale, "pages/" + slug);
  return {
    title:data.seo_title||data.title,
    description:data.seo_description||undefined,
@@ -23,7 +24,7 @@ export async function generateMetadata({params}:{params: Promise<{ locale: strin
 
 export default async function CustomPage({params}:{params: Promise<{ locale: string; slug: string }>}){
  if(!["fi","es","en"].includes((await params).locale))notFound();
- const {data,error}=await supabaseAdmin.from("site_pages").select("title,content,blocks,canonical_url").eq("locale",(await params).locale).eq("slug",(await params).slug).eq("published",true).maybeSingle();
+ const {data,error}=await supabaseAdmin.from("site_pages").select("title,content,blocks,canonical_url").eq("locale",(await params).locale).eq("slug",slug).eq("published",true).maybeSingle();
  if(error||!data)notFound();
  const blocks=Array.isArray(data.blocks)?data.blocks.filter((b:any)=>b?.visible!==false):[];
 const locale=(await params).locale as "fi"|"en"|"es";
