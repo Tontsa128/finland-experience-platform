@@ -39,7 +39,7 @@ const slides = [
     image: photoLibrary.hankoAerial,
     credit: "Kallerna / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Hanko_aerial_1.jpg",
-    href: "/destinations/hanko",
+    href: "/hanko",
     external: false,
   },
   {
@@ -47,7 +47,7 @@ const slides = [
     image: photoLibrary.naantaliHarbour,
     credit: "Pöllö / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg",
-    href: "/destinations/naantali",
+    href: "/naantali",
     external: false,
   },
   {
@@ -55,7 +55,7 @@ const slides = [
     image: photoLibrary.mathildedalVillage,
     credit: "Kotivalo / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
-    href: "/destinations/salo-mathildedal",
+    href: "/mathildedal",
     external: false,
   },
   {
@@ -63,7 +63,7 @@ const slides = [
     image: photoLibrary.aland,
     credit: "Håkan Skogsjö / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg",
-    href: "/destinations/aland",
+    href: "/aland",
     external: false,
   },
   {
@@ -71,7 +71,7 @@ const slides = [
     image: photoLibrary.porvoo,
     credit: "Teemu Eskola / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg",
-    href: "/destinations/porvoo",
+    href: "/porvoo",
     external: false,
   },
   {
