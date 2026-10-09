@@ -17,9 +17,9 @@ async function getPost(slug: string) {
   return null;
 }
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
-  const post = await getPost(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
+  const post = await getPost((await params).slug);
   if (!post) return {};
   return {
     title: getLocalized(post.title, locale),
@@ -35,9 +35,9 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   };
 }
 
-export default async function BlogDetailPage({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
-  const post = await getPost(params.slug);
+export default async function BlogDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const locale = (await params).locale as Locale;
+  const post = await getPost((await params).slug);
   if (!post) notFound();
 
   const title = getLocalized(post.title, locale);
