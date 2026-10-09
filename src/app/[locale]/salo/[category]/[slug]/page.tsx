@@ -28,13 +28,21 @@ function providerBelongsToCategory(provider: SaloProvider, category: Category) {
   const primary = getProviderCategory(provider);
   return primary === category || (category === "aktiviteetit" && provider.category === "experience");
 }
+function regionalImage(category: Category) {
+  if (category === "majoitus") return photoLibrary.mathildedalVillage;
+  if (category === "ruoka") return photoLibrary.mathildedalHarbour;
+  if (category === "aktiviteetit") return photoLibrary.teijoNationalPark;
+  if (category === "saaristo") return photoLibrary.sarkisalo;
+  if (category === "oppaat") return photoLibrary.saloVeturitalli;
+  return photoLibrary.teijoNationalPark;
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }): Promise<Metadata> {
   const { locale: raw, category, slug } = await params;
   const provider = saloProviders.find((item) => item.id === slug);
   if (!provider || !["majoitus", "ruoka", "aktiviteetit", "elamykset", "saaristo", "oppaat"].includes(category) || !providerBelongsToCategory(provider, category as Category)) notFound();
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
-  return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: provider.image || photoLibrary.mathildedalHarbour });
+  return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: regionalImage(category as Category) });
 }
 
 export default async function SaloProviderPage({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }) {
@@ -44,11 +52,11 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   const t = labels[locale];
   const categoryPath = category as Category;
-  const image = provider.image || (categoryPath === "saaristo" ? photoLibrary.sarkisalo : categoryPath === "aktiviteetit" ? photoLibrary.teijoNationalPark : photoLibrary.mathildedalHarbour);
+  const image = regionalImage(categoryPath);
   return (
     <main className="min-h-screen bg-white text-brand-950">
       <section className="relative isolate min-h-[55svh] overflow-hidden bg-brand-950 text-white">
-        <Image src={image} alt={provider.name} fill priority sizes="100vw" unoptimized className="object-cover opacity-50" />
+        <Image src={image} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill priority sizes="100vw" unoptimized className="object-cover opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/60 to-brand-950/10" />
         <div className="container-narrow relative flex min-h-[55svh] items-end py-14 sm:py-20">
           <div className="max-w-4xl">
