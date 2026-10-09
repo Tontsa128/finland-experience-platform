@@ -90,12 +90,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       : "oppaat";
 
     const dynamicEntries: MetadataRoute.Sitemap = [
-      ...saloProviders.map((provider) => ({
-        url: siteUrl + "/fi/salo/" + providerCategory(provider) + "/" + provider.id,
+      ...saloProviders.flatMap((provider) => locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/salo/" + providerCategory(provider) + "/" + provider.id,
         lastModified: new Date(),
         changeFrequency: "weekly" as const,
         priority: 0.6,
-      })),
+      }))),
 
       ...destinations.flatMap((item) =>
         locales.map((locale) => ({
