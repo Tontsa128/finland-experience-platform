@@ -46,10 +46,10 @@ const copy = {
 } as const;
 
 const sections = [
-  { key: "stay", icon: BedDouble, image: photoLibrary.mathildedalVillage, url: "https://visitsalo.fi/majoitus/" },
-  { key: "activities", icon: Compass, image: photoLibrary.teijoNationalPark, url: "https://visitsalo.fi/aktiviteetit-ja-elamykset/" },
-  { key: "food", icon: Coffee, image: photoLibrary.mathildedalHarbour, url: "https://www.visitmathildedal.fi/fi" },
-  { key: "experiences", icon: Flame, image: photoLibrary.sauna, url: "https://www.visitmathildedal.fi/fi" },
+  { key: "stay", icon: BedDouble, image: photoLibrary.mathildedalVillage },
+  { key: "activities", icon: Compass, image: photoLibrary.teijoNationalPark },
+  { key: "food", icon: Coffee, image: photoLibrary.mathildedalHarbour },
+  { key: "experiences", icon: Flame, image: photoLibrary.sauna },
 ] as const;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -79,7 +79,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
 
       <section className="container-narrow py-14 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-2">
-          {sections.map(({ key, icon: Icon, image, url }) => (
+          {sections.map(({ key, icon: Icon, image }) => (
             <article key={key} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
               <div className="relative aspect-[16/9]">
                 <Image src={image} alt={c[key]} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
@@ -88,7 +88,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
                 <Icon className="h-7 w-7 text-brand-700" />
                 <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">{c[key]}</h2>
                 <p className="mt-3 leading-7 text-slate-600">{c[({stay:"stayText",activities:"activitiesText",food:"foodText",experiences:"experiencesText"} as const)[key]]}</p>
-                <a href={url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{key === "stay" ? c.stay : key === "activities" ? c.activities : key === "food" ? c.food : c.experiences}<ArrowUpRight className="h-4 w-4" /></a>
+                <Link href={`/${locale}/mathildedal/${({ stay: "majoitus", activities: "aktiviteetit", food: "ruoka", experiences: "elamykset" } as const)[key]}`} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{key === "stay" ? c.stay : key === "activities" ? c.activities : key === "food" ? c.food : c.experiences}<ArrowRight className="h-4 w-4" /></Link>
               </div>
             </article>
           ))}
