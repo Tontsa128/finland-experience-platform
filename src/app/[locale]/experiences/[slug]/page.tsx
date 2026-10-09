@@ -13,11 +13,12 @@ import ExperienceMap from "@/components/experiences/ExperienceMap";
 export const revalidate = 60;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
-  const locale = (await params).locale as Locale;
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   const cmsExperiences = await getPublishedExperiences();
   const source = cmsExperiences;
-  const experience = source.find((item) => item.slug === (await params).slug);
+  const experience = source.find((item) => item.slug === slug);
   if (!experience) return {};
   return buildLocalizedMetadata({
     locale,
@@ -29,11 +30,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function ExperienceDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const locale = (await params).locale as Locale;
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) notFound();
   const cmsExperiences = await getPublishedExperiences();
   const experiences = cmsExperiences;
-  const experience = experiences.find((item) => item.slug === (await params).slug);
+  const experience = experiences.find((item) => item.slug === slug);
   if (!experience) notFound();
   const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
   const navigationUrl = experience.coordinates
