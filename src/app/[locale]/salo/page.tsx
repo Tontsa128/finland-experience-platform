@@ -28,7 +28,7 @@ const copy = {
     routesText: "Saloa voi rakentaa päiväretkestä usean yön lomaan. Valmiita reittien ideoita ovat rannikkoreitti, kulttuurireitti, ruukkikylien pyöräilyreitti, lähiruokakierros, melottava saaristokierros ja Salo–Lehmijärvi–Teijo-retkeilyreitti.",
     providers: "Salon paikalliset palveluntarjoajat",
     providersText: "Alta löydät majoituksia, elämyksiä, ruokapaikkoja ja luontokohteita. Lopullinen varaus ja sopimus tehdään aina suoraan palveluntarjoajan kanssa.",
-    browse: "Avaa Salo-kohteet",
+    browse: "Tutustu Salon seudun paikkoihin",
     coastal: "Rannikon Suomi",
     coastalText: "Salo toimii myös porttina rannikon viiteen pääkohteeseen.",
   },
@@ -51,7 +51,7 @@ const copy = {
     routesText: "Puedes convertir Salo en una excursión de un día o en unas vacaciones de varios días. Hay rutas de costa, cultura, pueblos siderúrgicos en bicicleta, gastronomía local, kayak por el archipiélago y senderismo hacia Teijo.",
     providers: "Proveedores locales de Salo",
     providersText: "Aquí encontrarás alojamiento, experiencias, gastronomía y naturaleza. Las reservas y los contratos se realizan siempre directamente con cada proveedor.",
-    browse: "Explorar Salo",
+    browse: "Explorar los lugares de Salo",
     coastal: "Finlandia costera",
     coastalText: "Salo también es una puerta de entrada a los cinco destinos costeros principales.",
   },
@@ -74,7 +74,7 @@ const copy = {
     routesText: "Salo works as a day trip or a multi-night stay. Ideas include the Coastal Route, Cultural Route, cycling between ironworks villages, a local-food tour, an archipelago kayaking tour and the hiking route towards Teijo.",
     providers: "Local providers in Salo",
     providersText: "Find accommodation, experiences, food and nature services below. Final bookings and contracts are always handled directly with the provider.",
-    browse: "Explore Salo",
+    browse: "Explore places around Salo",
     coastal: "Coastal Finland",
     coastalText: "Salo is also a gateway to the five main coastal destinations.",
   },
@@ -107,13 +107,13 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
           <h1 className="mt-5 max-w-5xl font-display text-5xl font-bold leading-[.95] sm:text-7xl lg:text-8xl">{c.title}</h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-white/80 sm:text-2xl sm:leading-9">{c.intro}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href={`/${locale}/destinations/salo-mathildedal`} className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">{c.browse}<ArrowRight className="h-4 w-4" /></Link>
+            <Link href="#salo-places" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">{c.browse}<ArrowRight className="h-4 w-4" /></Link>
             <Link href={`/${locale}/coastal-finland#sarkisalo`} className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-black/20 px-6 py-3.5 text-sm font-bold text-white">{c.coastal}<ArrowRight className="h-4 w-4" /></Link>
           </div>
         </div>
       </section>
 
-      <section className="bg-brand-50 py-14 sm:py-20">
+      <section id="salo-places" className="bg-brand-50 py-14 sm:py-20">
         <div className="container-narrow">
           <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Tutustu Salon seutuun" : locale === "es" ? "Explora la región de Salo" : "Explore the Salo region"}</p>
           <h2 className="mt-3 max-w-4xl font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Yksi alue, monta erilaista paikkaa" : locale === "es" ? "Una región, muchos lugares diferentes" : "One region, many different places"}</h2>
