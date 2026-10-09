@@ -79,7 +79,7 @@ const slides = [
     image: photoLibrary.hankoRegattaBeach,
     credit: "W.carter / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
-    href: "/destinations/hanko",
+    href: "/hanko",
     external: false,
   },
   {
