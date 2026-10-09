@@ -64,14 +64,14 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
         </div>
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {destinations.length ? destinations.map((destination, index) => (
-            <Link key={destination.id} href={`/${locale}/destinations/${canonicalDestinationSlug(destination.slug)}`} className={`group overflow-hidden rounded-[2rem] bg-brand-50 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-card ${index === 0 ? "lg:col-span-2" : ""}`}>
+            <Link key={destination.id} href={`/${locale}/${destination.slug === "salo-mathildedal" ? "salo" : destination.slug === "naantali" || destination.slug === "turku" || destination.slug === "hanko" || destination.slug === "aland" || destination.slug === "porvoo" ? destination.slug : destination.slug === "rosala" ? "kimitoon" : destination.slug === "southeast-finland" ? "southeast-finland" : "destinations/" + canonicalDestinationSlug(destination.slug)}`} className={`group overflow-hidden rounded-[2rem] bg-brand-50 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-card ${index === 0 ? "lg:col-span-2" : ""}`}>
               <div className={`relative overflow-hidden ${index === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
-                {destination.images[0] ? <Image src={destination.images[0]} alt={getLocalized(destination.name, locale)} fill sizes={index===0 ? "(max-width:1024px) 100vw, 66vw" : "(max-width:1024px) 50vw, 33vw"} className="object-cover transition duration-700 group-hover:scale-105"/> : <div className="flex h-full items-center justify-center">{destination.region}</div>}
+                {destination.images[0] ? <Image src={destination.images[0]} alt={destination.slug === "salo-mathildedal" ? "Salo" : getLocalized(destination.name, locale)} fill sizes={index===0 ? "(max-width:1024px) 100vw, 66vw" : "(max-width:1024px) 50vw, 33vw"} className="object-cover transition duration-700 group-hover:scale-105"/> : <div className="flex h-full items-center justify-center">{destination.region}</div>}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/10 to-transparent"/>
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 text-white">
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.16em] text-white/70"><MapPin className="h-3.5 w-3.5"/>{destination.region}</div>
                   <h2 className="mt-2 font-display text-3xl font-bold">{getLocalized(destination.name, locale)}</h2>
-                  <p className="mt-2 max-w-2xl text-sm leading-6 text-white/75">{getLocalized(destination.shortDescription, locale)}</p>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-white/75">{destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Mathildedal, Teijo, Särkisalo, Perniö ja Salon keskusta." : locale === "es" ? "Mathildedal, Teijo, Särkisalo, Perniö y el centro de Salo." : "Mathildedal, Teijo, Särkisalo, Perniö and central Salo.") : getLocalized(destination.shortDescription, locale)}</p>
                   <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-gold-300">{copy.explore}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1"/></span>
                 </div>
               </div>
