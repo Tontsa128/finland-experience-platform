@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { photoLibrary } from "@/lib/photo-library";
 import type { Locale } from "@/types";
 import { naantaliProviders } from "@/lib/naantali";
