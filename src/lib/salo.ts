@@ -35,7 +35,7 @@ const providerImages = {
   brewery: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kyl%C3%A4panimo-laatikko-web.jpg",
 };
 
-export const saloProviders: SaloProvider[] = [
+const allSaloProviders: SaloProvider[] = [
   {
     id: "visit-salo",
     category: "tourism",
@@ -573,6 +573,17 @@ export const saloProviders: SaloProvider[] = [
   },
 
 ];
+
+
+const unverifiedEventProviderIds = new Set([
+  "improv-30-9", "autumn-market", "visit-valo", "ghost-museum", "ghost-museum-november",
+  "ghost-trail", "kekri", "pumpkin", "father-day-marina", "mathildedal-christmas-1",
+  "mathildedal-christmas-2", "teijo-christmas", "wiurila-christmas", "rikalanmaki-christmas",
+  "mathildedal-reflection", "new-year", "marina-new-year",
+]);
+
+// Event entries stay in the event dataset and are not published as evergreen provider listings.
+export const saloProviders: SaloProvider[] = allSaloProviders.filter((provider) => !unverifiedEventProviderIds.has(provider.id));
 
 export const saloEvents: SaloEvent[] = [
   {
