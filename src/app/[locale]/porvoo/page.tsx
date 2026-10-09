@@ -77,14 +77,14 @@ const sections = {
   ],
 } satisfies Record<Locale, Array<[string, string, string]>>;
 
-export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Metadata {
+  const locale = (await params).locale as Locale;
   const c = copy[locale] ?? copy.en;
   return buildLocalizedMetadata({ locale, title: c.title + " | Finland Experience", description: c.intro, path: "porvoo" });
 }
 
-export default function PorvooPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function PorvooPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const c = copy[locale] ?? copy.en;
   const cards = sections[locale] ?? sections.en;
 
