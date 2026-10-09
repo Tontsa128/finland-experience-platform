@@ -59,6 +59,14 @@ const copy = {
 type Category = keyof typeof copy.fi.categories;
 const validCategories = Object.keys(copy.fi.categories) as Category[];
 const archipelagoIds = new Set(["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "sarkisalo-fishing", "chill-out-fishing", "villa-meri-sarkisalo"]);
+function categoryImage(category: Category) {
+  if (category === "majoitus") return photoLibrary.mathildedalVillage;
+  if (category === "ruoka") return photoLibrary.mathildedalHarbour;
+  if (category === "aktiviteetit") return photoLibrary.teijoNationalPark;
+  if (category === "saaristo") return photoLibrary.sarkisalo;
+  if (category === "oppaat") return photoLibrary.saloVeturitalli;
+  return photoLibrary.teijoNationalPark;
+}
 
 function getCategoryItems(category: Category): SaloProvider[] {
   if (category === "majoitus") return saloProviders.filter((item) => item.category === "stay");
@@ -90,7 +98,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
   return (
     <main className="min-h-screen bg-white text-brand-950">
       <section className="relative isolate overflow-hidden bg-brand-950 text-white">
-        <Image src={category === "majoitus" ? photoLibrary.mathildedalVillage : category === "ruoka" ? photoLibrary.mathildedalHarbour : category === "aktiviteetit" ? photoLibrary.teijoNationalPark : category === "saaristo" ? photoLibrary.sarkisalo : photoLibrary.naturaVivaTeijo} alt={title} fill priority sizes="100vw" unoptimized className="object-cover opacity-45" />
+        <Image src={categoryImage(category)} alt={title} fill priority sizes="100vw" unoptimized className="object-cover opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/70 to-brand-950/20" />
         <div className="container-narrow relative py-20 sm:py-28">
           <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{labels.region}</p>
@@ -113,7 +121,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
                 <div className="p-6">
                   <h2 className="font-display text-2xl font-bold">{provider.name}</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{provider.description[locale]}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{labels.provider}<MapPin className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{labels.provider}<MapPin className="h-4 w-4 transition group-hover:translate-x-1" /></span><p className="mt-3 text-[11px] text-slate-400">{locale === "fi" ? "Aluekuva – ei välttämättä kuva kyseisestä yrityksestä." : locale === "es" ? "Imagen de la región; no necesariamente del establecimiento." : "Regional image; not necessarily a photo of this business."}</p>
                 </div>
               </Link>
             ))}
