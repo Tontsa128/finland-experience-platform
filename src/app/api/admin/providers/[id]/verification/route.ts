@@ -8,21 +8,21 @@ const allowedRoles = ["SUPER_ADMIN","ADMIN","CONTENT_MANAGER"] as const;
 
 export const dynamic = "force-dynamic";
 
-export async function GET(_req: Request, { params }: { params: { id: string } }) {
+export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!allowedRoles.includes(admin.profile.role as typeof allowedRoles[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  const { id } = params;
+  const { id } = await params;
   const { data, error } = await supabaseAdmin.from("provider_verification_checks").select("*").eq("provider_id", id).maybeSingle();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ verification: data || Object.fromEntries(fields.map((field) => [field, false])) });
 }
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!allowedRoles.includes(admin.profile.role as typeof allowedRoles[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  const { id } = params;
+  const { id } = await params;
   const body = await req.json().catch(() => ({}));
   const existing = await supabaseAdmin.from("provider_verification_checks").select("*").eq("provider_id", id).maybeSingle();
   if (existing.error) return NextResponse.json({ error: existing.error.message }, { status: 500 });
