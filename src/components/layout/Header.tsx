@@ -21,7 +21,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   const [open, setOpen] = useState(false);
 
   const fallbackItems = [
-    ["home", ""], ["destinations", "destinations"], ["accommodations", "accommodations"],
+    ["home", ""], ["destinations", "destinations"], ["salo", "salo"], ["accommodations", "accommodations"],
     ["experiences", "experiences"], ["sauna", "sauna"], ["events", "events"], ["coastalFinland", "coastal-finland"], ["cityBreaks", "city-breaks"], ["ruralFinland", "rural-finland"], ["blog", "blog"], ["contact", "contact"],
   ] as const;
 
