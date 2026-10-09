@@ -201,7 +201,7 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
 
       <section className="container-narrow py-16 sm:py-24">
         <div className="grid gap-6 md:grid-cols-2">
-          {featured.map((d) => <Link key={d.slug} href={`/${locale}/destinations/${d.slug}`} className="group rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft"><h2 className="font-display text-2xl font-bold text-brand-950">{d.name[locale]}</h2><p className="mt-3 leading-7 text-slate-600">{d.shortDescription[locale]}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa kohde" : locale === "es" ? "Abrir destino" : "Open destination"}<ArrowRight className="h-4 w-4" /></span></Link>)}
+          {featured.map((d) => <Link key={d.slug} href={d.slug === "salo-mathildedal" ? `/${locale}/mathildedal` : d.slug === "rosala" ? `/${locale}/kimitoon` : `/${locale}/destinations/${d.slug}`} className="group rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft"><h2 className="font-display text-2xl font-bold text-brand-950">{d.slug === "salo-mathildedal" ? "Mathildedal" : d.slug === "rosala" ? (locale === "fi" ? "Kemiönsaari & Rosala" : locale === "es" ? "Kemiönsaari y Rosala" : "Kemiönsaari & Rosala") : d.name[locale]}</h2><p className="mt-3 leading-7 text-slate-600">{d.shortDescription[locale]}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa kohde" : locale === "es" ? "Abrir destino" : "Open destination"}<ArrowRight className="h-4 w-4" /></span></Link>)}
         </div>
       </section>
 
