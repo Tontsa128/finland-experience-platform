@@ -8,6 +8,7 @@ import {
   getPublishedBlogPosts,
 } from "@/lib/public-content";
 import { supabaseAdmin } from "@/lib/supabase";
+import { saloProviders } from "@/lib/salo";
 
 export const revalidate = 3600;
 
@@ -15,6 +16,12 @@ const basePaths = [
   "",
   "destinations",
   "salo",
+  "salo/majoitus",
+  "salo/ruoka",
+  "salo/aktiviteetit",
+  "salo/elamykset",
+  "salo/saaristo",
+  "salo/oppaat",
   "mathildedal",
   "mathildedal/majoitus",
   "mathildedal/ruoka",
@@ -73,7 +80,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .eq("noindex", false),
     ]);
 
+    const archipelagoProviderIds = new Set(["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "sarkisalo-fishing", "chill-out-fishing", "villa-meri-sarkisalo"]);
+    const providerCategory = (provider: (typeof saloProviders)[number]) => archipelagoProviderIds.has(provider.id)
+      ? "saaristo"
+      : provider.category === "stay" ? "majoitus"
+      : provider.category === "food" ? "ruoka"
+      : provider.category === "nature" ? "aktiviteetit"
+      : provider.category === "experience" ? "elamykset"
+      : "oppaat";
+
     const dynamicEntries: MetadataRoute.Sitemap = [
+      ...saloProviders.map((provider) => ({
+        url: siteUrl + "/fi/salo/" + providerCategory(provider) + "/" + provider.id,
+        lastModified: new Date(),
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+      })),
+
       ...destinations.flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/destinations/" + canonicalDestinationSlug(item.slug),
