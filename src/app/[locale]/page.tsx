@@ -101,7 +101,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {[
               [Building2, "featureStays", `/${locale}/accommodations`],
-              [Sparkles, "featureSauna", `/${locale}/experiences`],
+              [Sparkles, "featureSauna", `/${locale}/sauna`],
               [Waves, "featureFood", `/${locale}/experiences`],
               [TreePine, "featureNature", `/${locale}/destinations`],
               [Waves, "featureArchipelago", `/${locale}/destinations`],
@@ -173,7 +173,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               ["archipelago", Waves, `/${locale}/destinations`],
-              ["sauna", Sparkles, `/${locale}/experiences`],
+              ["sauna", Sparkles, `/${locale}/sauna`],
               ["nature", TreePine, `/${locale}/destinations`],
               ["food", Building2, `/${locale}/experiences`],
             ].map(([key, Icon, href]) => { const I = Icon as typeof Sparkles; return <Link key={key as string} href={href as string} className="group rounded-[1.75rem] bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-card"><I className="h-7 w-7 text-brand-700" /><h3 className="mt-7 font-display text-2xl font-bold text-brand-950">{sh(key as string)}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{sh(`${key}Desc` as string)}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{tc("learnMore")} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span></Link>; })}
