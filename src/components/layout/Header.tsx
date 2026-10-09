@@ -103,7 +103,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
       </div>
 
       {open && (
-        <nav className="border-t border-slate-100 bg-white px-4 py-3 shadow-lg lg:hidden">
+        <nav id="mobile-primary-navigation" aria-label={locale === "fi" ? "Päänavigaatio" : locale === "es" ? "Navegación principal" : "Primary navigation"} className="max-h-[calc(100svh-4.5rem)] overflow-y-auto overscroll-contain border-t border-slate-100 bg-white px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-lg lg:hidden">
           <div className="container-narrow space-y-1">
             <Link href={`/${locale}/account/login`} onClick={() => setOpen(false)} className="block rounded-xl bg-brand-50 px-3 py-3 text-base font-semibold text-brand-900">
               {ui.account} / {ui.login}
