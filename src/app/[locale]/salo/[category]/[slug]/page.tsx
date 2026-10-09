@@ -24,11 +24,15 @@ const categoryTitle: Record<Locale, Record<Category, string>> = {
 function getProviderCategory(provider: SaloProvider): Category {
   return provider.id === "saaristomokit-sarkisalo" || provider.id === "forby-marina" || provider.id === "cafe-vinssi" || provider.id === "saaristoravintola-nixor" || provider.id === "sarkisalo-fishing" || provider.id === "chill-out-fishing" || provider.id === "villa-meri-sarkisalo" ? "saaristo" : categoryByType[provider.category];
 }
+function providerBelongsToCategory(provider: SaloProvider, category: Category) {
+  const primary = getProviderCategory(provider);
+  return primary === category || (category === "aktiviteetit" && provider.category === "experience");
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }): Promise<Metadata> {
   const { locale: raw, category, slug } = await params;
   const provider = saloProviders.find((item) => item.id === slug);
-  if (!provider || !["majoitus", "ruoka", "aktiviteetit", "elamykset", "saaristo", "oppaat"].includes(category) || (category !== "saaristo" && getProviderCategory(provider) !== category)) notFound();
+  if (!provider || !["majoitus", "ruoka", "aktiviteetit", "elamykset", "saaristo", "oppaat"].includes(category) || !providerBelongsToCategory(provider, category as Category)) notFound();
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: provider.image || photoLibrary.mathildedalHarbour });
 }
