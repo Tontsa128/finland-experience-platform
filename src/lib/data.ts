@@ -117,7 +117,7 @@ export const destinations: Destination[] = [
       en: "Viking history, archipelago and local island life on Kemiönsaari"
     },
     region: "Kemiönsaari · Southwest Finland",
-    images: [photoLibrary.rosalaVikingCentre, photoLibrary.rosalaVikingHall],
+    images: [],
     priceFrom: 0,
     featured: false,
     tags: ["rosala", "viking", "archipelago", "history", "kemionsaari"],
