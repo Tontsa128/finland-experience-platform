@@ -6,6 +6,7 @@ import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import SaloRegionMap from "@/components/salo/SaloRegionMap";
 
 const copy = {
   fi: {
@@ -134,6 +135,15 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="salo-map-title" className="bg-white py-14 sm:py-20">
+        <div className="container-narrow">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Sijainnit ja alueet" : locale === "es" ? "Ubicación y zonas" : "Locations and areas"}</p>
+          <h2 id="salo-map-title" className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Salon seutu kartalla" : locale === "es" ? "La región de Salo en el mapa" : "The Salo region on the map"}</h2>
+          <p className="mt-4 mb-8 max-w-3xl text-lg leading-8 text-slate-600">{locale === "fi" ? "Tutustu Salon keskustan reittien lähtöpisteeseen, Mathildedalin ruukkikylään, Teijon luontokeskukseen ja Särkisalon saaristoon. Merkit näyttävät alueen maamerkkejä – eivät palveluntarjoajien tarkkoja osoitteita." : locale === "es" ? "Explora el punto de salida de rutas en Salo, el pueblo histórico de Mathildedal, el centro de naturaleza de Teijo y el archipiélago de Särkisalo. Los marcadores muestran puntos de referencia regionales, no las direcciones exactas de los proveedores." : "Explore a trail start in Salo, Mathildedal ironworks village, Teijo Nature Centre and the Särkisalo archipelago. Pins show regional landmarks, not exact provider addresses."}</p>
+          <SaloRegionMap locale={locale} />
         </div>
       </section>
 
