@@ -56,8 +56,7 @@ function escapeHtml(value: string) {
 
 export default function SaloRegionMap({ locale }: { locale: Locale }) {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const instanceRef = useRef<any>(null);
-  const leafletRef = useRef<typeof import("leaflet") | null>(null);
+  const instanceRef = useRef<import("leaflet").Map | null>(null);
   const [mapError, setMapError] = useState(false);
 
   useEffect(() => {
@@ -66,7 +65,6 @@ export default function SaloRegionMap({ locale }: { locale: Locale }) {
       if (!mapRef.current || instanceRef.current) return;
       const L = await import("leaflet");
       if (cancelled || !mapRef.current) return;
-      leafletRef.current = L;
       const map = L.map(mapRef.current, { scrollWheelZoom: false, zoomControl: true });
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
