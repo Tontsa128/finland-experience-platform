@@ -107,7 +107,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": eventSchema }) }} />
       <section className="relative min-h-[56vh] overflow-hidden bg-brand-950 text-white">
-        <Image src={heroImage} alt={copy.title} fill priority sizes="100vw" className="object-cover opacity-65" />
+        <Image src={heroImage} alt={locale === "fi" ? "Turun saariston maisema Varsinais-Suomessa" : locale === "es" ? "Paisaje del archipiélago de Turku en Finlandia suroccidental" : "Turku Archipelago landscape in Southwest Finland"} fill priority sizes="100vw" className="object-cover opacity-65" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/45 to-brand-950/10" />
         <div className="container-narrow relative flex min-h-[56vh] items-end py-16 sm:py-24">
           <div className="max-w-4xl">
