@@ -6,8 +6,8 @@ import ExperienceDirectory from "@/components/experiences/ExperienceDirectory";
 
 export const revalidate = 60;
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const copy = locale === "fi"
     ? { title: "Elämykset Salossa | Mathildedal, Teijo & Särkisalo", description: "Löydä Salon alueen luonto-, sauna-, saaristo-, maatila-, ruoka-, kulttuuri- ja aktiivielämykset kartalta." }
     : locale === "es"
@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "experiences" });
 }
 
-export default async function ExperiencesPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function ExperiencesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const cmsExperiences = await getPublishedExperiences();
   const experiences = cmsExperiences;
 
