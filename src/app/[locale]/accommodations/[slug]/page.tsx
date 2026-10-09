@@ -9,12 +9,13 @@ import type { Locale } from "@/types";
 import { allowDemoFallback, formatPrice, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   const cmsCabins = await getPublishedProperties();
   const source = cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
-  const cabin = source.find((item) => item.slug === params.slug);
+  const cabin = source.find((item) => item.slug === slug);
   if (!cabin) return {};
   return buildLocalizedMetadata({
     locale,
@@ -25,11 +26,12 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   });
 }
 
-export default async function CabinDetail({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
+export default async function CabinDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   const cmsCabins = await getPublishedProperties();
   const cabins = cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
-  const c = cabins.find((x) => x.slug === params.slug);
+  const c = cabins.find((x) => x.slug === slug);
   if (!c) notFound();
 
   const copy = locale === "fi"
