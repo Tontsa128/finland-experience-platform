@@ -31,7 +31,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
     itemListElement: destinations.map((destination, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: getLocalized(destination.name, locale),
+      name: destination.slug === "salo-mathildedal" ? "Salo" : getLocalized(destination.name, locale),
       url: "/" + locale + "/destinations/" + canonicalDestinationSlug(destination.slug),
     })),
   };
@@ -70,7 +70,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/10 to-transparent"/>
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 text-white">
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.16em] text-white/70"><MapPin className="h-3.5 w-3.5"/>{destination.region}</div>
-                  <h2 className="mt-2 font-display text-3xl font-bold">{getLocalized(destination.name, locale)}</h2>
+                  <h2 className="mt-2 font-display text-3xl font-bold">{destination.slug === "salo-mathildedal" ? "Salo" : getLocalized(destination.name, locale)}</h2>
                   <p className="mt-2 max-w-2xl text-sm leading-6 text-white/75">{destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Mathildedal, Teijo, Särkisalo, Perniö ja Salon keskusta." : locale === "es" ? "Mathildedal, Teijo, Särkisalo, Perniö y el centro de Salo." : "Mathildedal, Teijo, Särkisalo, Perniö and central Salo.") : getLocalized(destination.shortDescription, locale)}</p>
                   <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-gold-300">{copy.explore}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1"/></span>
                 </div>
