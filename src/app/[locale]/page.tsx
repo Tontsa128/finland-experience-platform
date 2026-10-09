@@ -143,7 +143,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               >
                 <Image
                   src={destination.images?.[0] || fallbackSummerImage}
-                  alt={destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                  alt={destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Salon seutu" : locale === "es" ? "Región de Salo" : "Salo region") : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
