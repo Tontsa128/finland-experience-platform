@@ -86,14 +86,14 @@ const routeIdeas = [
   { icon: Mountain, title: { fi: "Salo–Lehmijärvi–Teijo", es: "Salo–Lehmijärvi–Teijo", en: "Salo–Lehmijärvi–Teijo" }, text: { fi: "Retkeilyreitti keskustasta kansallispuiston maisemiin.", es: "Ruta de senderismo desde el centro hacia el parque nacional.", en: "A hiking route from the centre towards the national park." }, url: "https://visitsalo.fi/teijon-kansallispuisto/" },
 ];
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const c = copy[locale] || copy.en;
   return buildLocalizedMetadata({ locale, title: c.title, description: c.desc, path: "salo", image: photoLibrary.saloVeturitalli });
 }
 
-export default function SaloPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function SaloPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const c = copy[locale] || copy.en;
   const featured = fallbackDestinations.filter((d) => ["salo-mathildedal", "rosala"].includes(d.slug));
 
