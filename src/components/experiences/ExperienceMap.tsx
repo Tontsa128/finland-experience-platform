@@ -17,6 +17,10 @@ function label(item: MapItem, locale: Props["locale"]) {
   return item.name?.[locale] || item.name?.fi || item.slug;
 }
 
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"\']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"' : "&quot;", "\'": "&#39;" }[character] || character));
+}
+
 export default function ExperienceMap({ items, locale, selectedSlug, onSelect, className = "" }: Props) {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const instanceRef = useRef<any>(null);
@@ -67,11 +71,15 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
         iconAnchor: [selected ? 19 : 15, selected ? 19 : 15],
       });
       const directions = `https://www.google.com/maps/dir/?api=1&destination=${item.coordinates!.lat},${item.coordinates!.lng}`;
+      const detailUrl = `/${locale}/experiences/${encodeURIComponent(item.slug)}`;
+      const safeLabel = escapeHtml(label(item, locale));
+      const safeDetailUrl = escapeHtml(detailUrl);
       const navigateLabel = locale === "fi" ? "Navigoi tähän" : locale === "es" ? "Navegar aquí" : "Navigate here";
+      const detailLabel = locale === "fi" ? "Avaa kohteen sivu" : locale === "es" ? "Ver detalles del lugar" : "Open place details";
       const marker = L.marker([item.coordinates!.lat, item.coordinates!.lng], { icon })
         .addTo(map)
         .bindTooltip(label(item, locale), { direction: "top", offset: [0, -12] })
-        .bindPopup(`<strong>${label(item, locale)}</strong><br/><a href="${directions}" target="_blank" rel="noopener noreferrer">${navigateLabel} ↗</a>`);
+        .bindPopup(`<strong>${safeLabel}</strong><br/><a href="${safeDetailUrl}">${detailLabel} →</a><br/><a href="${directions}" target="_blank" rel="noopener noreferrer">${navigateLabel} ↗</a>`);
       marker.on("click", () => onSelect?.(item.slug));
       markersRef.current.set(item.slug, marker);
     });
