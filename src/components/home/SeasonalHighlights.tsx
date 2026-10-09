@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ArrowUpRight, CalendarDays } from "lucide-react";
-import { photoLibrary } from "@/lib/photo-library";
 
 const items = [
   {
