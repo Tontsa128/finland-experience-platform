@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
-  if (slug === "salo-mathildedal") return buildLocalizedMetadata({ locale, title: "Salon seudun matkailu", description: "Salo, Mathildedal, Teijo, Särkisalo and the rural villages of Southwest Finland.", path: "salo" });
-  if (slug === "rosala") return buildLocalizedMetadata({ locale, title: "Kemiönsaari ja Rosala", description: "Tutustu Kemiönsaaren saaristoon ja Rosalaan. Tarkista ajantasaiset tiedot paikallisilta palveluntarjoajilta.", path: "kimitoon" });
+  if (slug === "salo-mathildedal") return buildLocalizedMetadata({ locale, title: locale === "fi" ? "Salon seudun matkailu" : locale === "es" ? "Turismo en la región de Salo" : "Travel in the Salo region", description: locale === "fi" ? "Tutustu Salon keskustaan, Mathildedaliin, Teijoon ja Särkisalon saaristoon." : locale === "es" ? "Descubre el centro de Salo, Mathildedal, Teijo y el archipiélago de Särkisalo." : "Explore Salo town, Mathildedal, Teijo and the Särkisalo archipelago.", path: "salo" });
+  if (slug === "rosala") return buildLocalizedMetadata({ locale, title: locale === "fi" ? "Kemiönsaari ja Rosala" : locale === "es" ? "Kemiönsaari y Rosala" : "Kemiönsaari and Rosala", description: locale === "fi" ? "Tutustu Kemiönsaaren saaristoon ja Rosalaan. Tarkista ajantasaiset tiedot paikallisilta palveluntarjoajilta." : locale === "es" ? "Descubre el archipiélago de Kemiönsaari y Rosala. Confirma los datos actuales con los proveedores locales." : "Explore the Kemiönsaari archipelago and Rosala. Confirm current details directly with local providers.", path: "kimitoon" });
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
   const source = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
