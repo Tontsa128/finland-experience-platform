@@ -279,8 +279,9 @@ function localeOf(value: string): Locale {
   return value === "fi" || value === "es" || value === "en" ? value : "en";
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const locale = localeOf(params.locale);
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params;
+  const locale = localeOf(localeParam);
   const x = copy[locale];
   return buildLocalizedMetadata({
     locale,
@@ -291,8 +292,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   });
 }
 
-export default function SaunaPage({ params }: { params: { locale: string } }) {
-  const locale = localeOf(params.locale);
+export default async function SaunaPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params;
+  const locale = localeOf(localeParam);
   const x = copy[locale];
 
   return (
