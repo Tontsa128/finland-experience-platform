@@ -22,11 +22,12 @@
     "plan": "Suunnittele matkasi",
     "cityBreaks": "Kaupunkilomat",
     "coastalFinland": "Rannikon Suomi",
-        "ruralFinland": "Maaseutu & saaristo",
+    "ruralFinland": "Maaseutu & saaristo",
     "blog": "Blogi",
     "contact": "Yhteystiedot",
     "admin": "Hallinta",
-    "events": "Tapahtumat"
+    "events": "Tapahtumat",
+    "salo": "Salo"
   },
   "hero": {
     "title": "Löydä Suomen loputtomat kesäyöt",
