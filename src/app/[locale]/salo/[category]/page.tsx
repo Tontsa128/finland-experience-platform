@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowLeft, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
@@ -84,7 +84,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   const category = rawCategory as Category;
   const labels = copy[locale];
-  const [title, subtitle, intro] = labels.categories[category];
+  const [title, , intro] = labels.categories[category];
   const providers = getCategoryItems(category);
 
   return (
