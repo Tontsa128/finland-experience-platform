@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Building2, Camera, Compass, Flame, Map, Mountain, Waves } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Building2, CalendarDays, Camera, Compass, Flame, Map, Mountain, Waves } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
