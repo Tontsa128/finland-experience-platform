@@ -23,11 +23,13 @@ export async function generateMetadata({params}:{params: Promise<{ locale: strin
 }
 
 export default async function CustomPage({params}:{params: Promise<{ locale: string; slug: string }>}){
- if(!["fi","es","en"].includes((await params).locale))notFound();
- const {data,error}=await supabaseAdmin.from("site_pages").select("title,content,blocks,canonical_url").eq("locale",(await params).locale).eq("slug",slug).eq("published",true).maybeSingle();
+ const { locale: localeParam, slug } = await params;
+ const locale = localeParam as "fi"|"en"|"es";
+ if(!["fi","es","en"].includes(locale))notFound();
+ const {data,error}=await supabaseAdmin.from("site_pages").select("title,content,blocks,canonical_url").eq("locale",locale).eq("slug",slug).eq("published",true).maybeSingle();
  if(error||!data)notFound();
  const blocks=Array.isArray(data.blocks)?data.blocks.filter((b:any)=>b?.visible!==false):[];
-const locale=(await params).locale as "fi"|"en"|"es";
+
 const copy=(b:any)=>b?.content?.[locale]||b?.content?.fi||{};
 return <main className="min-h-[70vh] bg-white">
 <article>
