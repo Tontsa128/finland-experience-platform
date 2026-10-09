@@ -10,7 +10,7 @@ import { destinations as fallbackDestinations } from "@/lib/data";
 
 const copy = {
   fi: {
-    title: "Salo – meri, metsä, ruukkikylät ja paikallinen elämä",
+    title: "Salon seudun matkailu",
     desc: "Salo-opas: Mathildedal, Teijo, Särkisalo, Perniö, Wiurila, keskusta, kulttuuri, reitit, majoitus, ruoka ja elämykset.",
     eyebrow: "SALON SEUTU · LOUNAIS-SUOMI",
     intro: "Salo on poikkeuksellisen laaja matkailualue: samaan kokonaisuuteen kuuluvat kaupunkikeskus, historialliset kylät, Teijon kansallispuisto, Mathildedal, merellinen Särkisalo ja Perniön maaseutumaisemat.",
@@ -33,7 +33,7 @@ const copy = {
     coastalText: "Salo toimii myös porttina rannikon viiteen pääkohteeseen.",
   },
   es: {
-    title: "Salo – mar, bosques, pueblos históricos y vida local",
+    title: "Turismo en la región de Salo",
     desc: "Guía de Salo: Mathildedal, Teijo, Särkisalo, Perniö, Wiurila, centro, cultura, rutas, alojamiento, gastronomía y experiencias.",
     eyebrow: "REGIÓN DE SALO · SUROESTE DE FINLANDIA",
     intro: "Salo reúne una sorprendente variedad de paisajes y estilos de viaje: centro urbano, pueblos históricos, Parque Nacional de Teijo, Mathildedal, Särkisalo y el campo de Perniö.",
@@ -56,7 +56,7 @@ const copy = {
     coastalText: "Salo también es una puerta de entrada a los cinco destinos costeros principales.",
   },
   en: {
-    title: "Salo – sea, forests, ironworks villages and local life",
+    title: "Explore the Salo region",
     desc: "Salo guide: Mathildedal, Teijo, Särkisalo, Perniö, Wiurila, the town centre, culture, routes, stays, food and experiences.",
     eyebrow: "SALO REGION · SOUTHWEST FINLAND",
     intro: "Salo brings together an unusually broad range of landscapes and travel styles: a lively town centre, historic villages, Teijo National Park, Mathildedal, maritime Särkisalo and the countryside of Perniö.",
@@ -89,7 +89,7 @@ const routeIdeas = [
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const locale = (await params).locale as Locale;
   const c = copy[locale] || copy.en;
-  return buildLocalizedMetadata({ locale, title: c.title, description: c.desc, path: "salo", image: photoLibrary.saloVeturitalli });
+  return buildLocalizedMetadata({ locale, title: c.title, description: c.desc, path: "salo", image: photoLibrary.mathildedalHarbour });
 }
 
 export default async function SaloPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -100,7 +100,7 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
   return (
     <main className="bg-white">
       <section className="relative overflow-hidden bg-brand-950 text-white">
-        <Image src={photoLibrary.saloVeturitalli} alt={locale === "fi" ? "Salon taidemuseo Veturitalli" : locale === "es" ? "Museo de Arte Veturitalli de Salo" : "Salo Art Museum Veturitalli"} fill priority sizes="100vw" className="object-cover opacity-45" />
+        <Image src={photoLibrary.mathildedalHarbour} alt={locale === "fi" ? "Mathildedalin satama Salon seudulla" : locale === "es" ? "Puerto de Mathildedal en la región de Salo" : "Mathildedal harbour in the Salo region"} fill priority sizes="100vw" className="object-cover opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/65 to-brand-950/15" />
         <div className="container-narrow relative py-24 sm:py-32">
           <p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{c.eyebrow}</p>
