@@ -113,6 +113,35 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      <section className="bg-brand-50 py-14 sm:py-20">
+        <div className="container-narrow">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Tutustu Salon seutuun" : locale === "es" ? "Explora la región de Salo" : "Explore the Salo region"}</p>
+          <h2 className="mt-3 max-w-4xl font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Yksi alue, monta erilaista paikkaa" : locale === "es" ? "Una región, muchos lugares diferentes" : "One region, many different places"}</h2>
+          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{locale === "fi" ? "Aloita Salon alueoppaasta ja valitse sen jälkeen oma kylä, saaristo tai nähtävyys. Jokainen linkki vie kyseistä paikkaa käsittelevälle sivulle tai sen viralliseen matkailuoppaaseen." : locale === "es" ? "Empieza con la guía regional de Salo y después elige un pueblo, una zona costera o un lugar de interés. Cada enlace conduce a una guía específica o a la web turística oficial del lugar." : "Start with the Salo regional guide, then choose a village, coastal area or attraction. Each link leads to a dedicated guide or the place's official tourism website."}</p>
+          <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { name: "Mathildedal", place: "Mathildedal · ruukkikylä", image: photoLibrary.mathildedalHarbour, text: locale === "fi" ? "Ruukkikylä, majoitus, kahvilat, ravintolat, meri ja paikalliset elämykset." : locale === "es" ? "Pueblo histórico, alojamiento, cafés, restaurantes, mar y experiencias locales." : "Historic village, accommodation, cafés, restaurants, sea and local experiences.", href: `/${locale}/mathildedal`, internal: true },
+              { name: "Teijo & kansallispuisto", place: "Teijo · luonto", image: photoLibrary.teijoNationalPark, text: locale === "fi" ? "Retkeilyreitit, järvet, metsät, melonta ja luontokeskuksen palvelut." : locale === "es" ? "Senderos, lagos, bosques, kayak y servicios del centro de naturaleza." : "Trails, lakes, forests, kayaking and nature-centre services.", href: "https://visitsalo.fi/teijon-kansallispuisto/", internal: false },
+              { name: "Särkisalo & meri", place: "Särkisalo · saaristo", image: photoLibrary.sarkisalo, text: locale === "fi" ? "Merenrantamökit, satamat, kalastus, veneily ja saariston rauha." : locale === "es" ? "Cabañas junto al mar, puertos, pesca, navegación y tranquilidad insular." : "Seaside cottages, harbours, fishing, boating and island calm.", href: "https://visitsalo.fi/sarkisalo-ja-meri/", internal: false },
+              { name: "Perniö", place: "Perniö · maaseutu", image: photoLibrary.finnishCountryside, text: locale === "fi" ? "Maaseutumaisemat, historia, lähiruoka ja pienet paikalliset yritykset." : locale === "es" ? "Paisajes rurales, historia, productos locales y pequeños negocios." : "Rural landscapes, history, local food and small businesses.", href: "https://visitsalo.fi/", internal: false },
+              { name: "Halikko & Wiurila", place: "Halikko · kartanot ja kulttuuri", image: photoLibrary.wiurila, text: locale === "fi" ? "Wiurilan kartano, näyttelyt, kulttuurihistoria, ruoka ja elämykset." : locale === "es" ? "La mansión Wiurila, exposiciones, patrimonio, gastronomía y experiencias." : "Wiurila Manor, exhibitions, heritage, food and experiences.", href: "https://visitsalo.fi/halikko/", internal: false },
+              { name: "Kemiönsaari & Rosala", place: "Lähialue · saaristo", image: photoLibrary.rosalaVikingCentre, text: locale === "fi" ? "Rosalan Viikinkikeskus, Kasnäs, Bengtskär ja saaristomajoitus." : locale === "es" ? "Centro Vikingo de Rosala, Kasnäs, Bengtskär y alojamiento insular." : "Rosala Viking Centre, Kasnäs, Bengtskär and island stays.", href: `/${locale}/kimitoon`, internal: true },
+            ].map((place) => (
+              <article key={place.name} className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft">
+                <div className="relative aspect-[16/9]">
+                  <Image src={place.image} alt={place.name} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-5 text-white"><p className="text-xs font-bold uppercase tracking-[.15em] text-white/75">{place.place}</p><h3 className="mt-1 font-display text-2xl font-bold">{place.name}</h3></div>
+                </div>
+                <div className="p-5"><p className="text-sm leading-6 text-slate-600">{place.text}</p>
+                  {place.internal ? <Link href={place.href} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa kohdeopas" : locale === "es" ? "Abrir guía" : "Open destination guide"}<ArrowRight className="h-4 w-4" /></Link> : <a href={place.href} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa VisitSalo-opas" : locale === "es" ? "Abrir guía VisitSalo" : "Open VisitSalo guide"}<ArrowUpRight className="h-4 w-4" /></a>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="container-narrow py-14 sm:py-20">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {[
