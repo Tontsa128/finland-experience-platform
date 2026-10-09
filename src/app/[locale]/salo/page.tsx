@@ -6,6 +6,7 @@ import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import { saloProviders } from "@/lib/salo";
 import { destinations as fallbackDestinations } from "@/lib/data";
 
 const copy = {
@@ -109,6 +110,32 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="#salo-places" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">{c.browse}<ArrowRight className="h-4 w-4" /></Link>
             <Link href={`/${locale}/coastal-finland#sarkisalo`} className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-black/20 px-6 py-3.5 text-sm font-bold text-white">{c.coastal}<ArrowRight className="h-4 w-4" /></Link>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="salo-categories-title" className="bg-white py-14 sm:py-20">
+        <div className="container-narrow">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Suunnittele oma vierailusi" : locale === "es" ? "Diseña tu visita" : "Plan your visit"}</p>
+          <h2 id="salo-categories-title" className="mt-3 max-w-4xl font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Tutustu Salon seutuun omalla tavallasi" : locale === "es" ? "Descubre la región de Salo a tu manera" : "Explore the Salo region your way"}</h2>
+          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{locale === "fi" ? "Aloita Salon kaupungista ja jatka majoituksiin, ruokapaikkoihin, aktiviteetteihin ja saariston kohteisiin. Kohdekorteista pääset ensin oman aiheen oppaaseen ja sieltä yksittäisten palveluntarjoajien tietoihin." : locale === "es" ? "Empieza por la ciudad de Salo y continúa hacia alojamientos, restaurantes, actividades y lugares del archipiélago. Cada tarjeta abre una guía temática con enlaces a proveedores individuales." : "Start with the town of Salo, then explore accommodation, food, activities and archipelago services. Each card opens its own topic guide with links to individual providers."}</p>
+          <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { slug: "salo", title: { fi: "Salo – kaupunkiin tutustuminen", es: "Salo – descubre la ciudad", en: "Salo – explore the town" }, text: { fi: "Tori, kaupunkikulttuuri, museot ja paikalliset palvelut.", es: "Mercado, cultura urbana, museos y servicios locales.", en: "Market square, town culture, museums and local services." }, image: photoLibrary.saloVeturitalli, alt: { fi: "Veturitalli Salossa", es: "Veturitalli en Salo", en: "Veturitalli in Salo" }, href: `/${locale}/places/salo-center` },
+              { slug: "majoitus", title: { fi: "Majoitus", es: "Alojamiento", en: "Accommodation" }, text: { fi: "Hotellit, mökit, huvilat ja maaseutumajoitus.", es: "Hoteles, cabañas, villas y alojamientos rurales.", en: "Hotels, cottages, villas and rural stays." }, image: saloProviders.find((p) => p.id === "hotel-mathildedal")?.image || photoLibrary.mathildedalVillage, alt: { fi: "Majoitus Salon seudulla", es: "Alojamiento en la región de Salo", en: "Accommodation in the Salo region" }, href: `/${locale}/salo/majoitus` },
+              { slug: "ruoka", title: { fi: "Ruoka ja ravintolat", es: "Gastronomía y restaurantes", en: "Food and restaurants" }, text: { fi: "Ravintolat, kahvilat ja paikalliset maut.", es: "Restaurantes, cafés y sabores locales.", en: "Restaurants, cafés and local flavours." }, image: saloProviders.find((p) => p.id === "cafe-vinssi")?.image || photoLibrary.mathildedalHarbour, alt: { fi: "Paikallinen ruokapaikka Salon seudulla", es: "Gastronomía local en la región de Salo", en: "Local food in the Salo region" }, href: `/${locale}/salo/ruoka` },
+              { slug: "aktiviteetit", title: { fi: "Aktiviteetit", es: "Actividades", en: "Activities" }, text: { fi: "Luonto, retket, ulkoilu ja veneily.", es: "Naturaleza, excursiones, aire libre y navegación.", en: "Nature, excursions, outdoor activities and boating." }, image: photoLibrary.teijoNationalPark, alt: { fi: "Teijon kansallispuiston luontoa", es: "Naturaleza del Parque Nacional de Teijo", en: "Nature in Teijo National Park" }, href: `/${locale}/salo/aktiviteetit` },
+              { slug: "elamykset", title: { fi: "Tekemistä ja elämyksiä", es: "Qué hacer y experiencias", en: "Things to do and experiences" }, text: { fi: "Opastukset, kulttuuri ja paikalliset kokemukset.", es: "Visitas guiadas, cultura y experiencias locales.", en: "Guided tours, culture and local experiences." }, image: saloProviders.find((p) => p.id === "teijo-action-park")?.image || photoLibrary.naturaVivaTeijo, alt: { fi: "Aktiviteetteja Teijon alueella", es: "Actividades en la zona de Teijo", en: "Activities in the Teijo area" }, href: `/${locale}/salo/elamykset` },
+              { slug: "saaristo", title: { fi: "Saaristo ja merenranta", es: "Archipiélago y costa", en: "Archipelago and coast" }, text: { fi: "Särkisalo, satamat ja meren äärellä toimivat palvelut.", es: "Särkisalo, puertos y servicios junto al mar.", en: "Särkisalo, harbours and services by the sea." }, image: photoLibrary.sarkisalo, alt: { fi: "Särkisalon saaristomaisema", es: "Paisaje del archipiélago de Särkisalo", en: "Särkisalo archipelago landscape" }, href: `/${locale}/salo/saaristo` },
+            ].map((item) => (
+              <Link key={item.slug} href={item.href} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2">
+                <div className="relative aspect-[16/9] overflow-hidden bg-brand-100">
+                  <Image src={item.image} alt={item.alt[locale]} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" unoptimized className="object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 to-transparent" />
+                </div>
+                <div className="p-6"><h3 className="font-display text-2xl font-bold text-brand-950">{item.title[locale]}</h3><p className="mt-3 text-sm leading-7 text-slate-600">{item.text[locale]}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Tutustu kategoriaan" : locale === "es" ? "Explorar categoría" : "Explore category"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span></div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
