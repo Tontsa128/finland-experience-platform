@@ -5,8 +5,8 @@ import { photoLibrary } from "@/lib/photo-library";
 import { localizedUrl } from "@/lib/seo";
 import type { Locale } from "@/types";
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const copy = locale === "es"
     ? {
         title: "Turismo rural y cabañas en Finlandia | Finland Experience",
@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default function RuralFinlandPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function RuralFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const isEs = locale === "es";
   const isEn = locale === "en";
 
