@@ -77,7 +77,7 @@ const sections = {
   ],
 } satisfies Record<Locale, Array<[string, string, string]>>;
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const locale = (await params).locale as Locale;
   const c = copy[locale] ?? copy.en;
   return buildLocalizedMetadata({ locale, title: c.title + " | Finland Experience", description: c.intro, path: "porvoo" });
