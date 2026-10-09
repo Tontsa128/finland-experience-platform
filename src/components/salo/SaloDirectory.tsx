@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, Coffee, ExternalLink } from "lucide-react";
 import type { Locale } from "@/types";
 import { photoLibrary } from "@/lib/photo-library";
 import { saloProviders, type SaloProvider } from "@/lib/salo";
@@ -47,7 +47,7 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
           {providers.map((provider) => (
             <Link key={provider.id} href={`/${locale}/salo/${categorySlug(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2">
               <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                <Image src={fallbackImage(provider)} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                {provider.category === "food" ? <div className="absolute inset-0 flex flex-col items-center justify-center bg-brand-50 px-6 text-center text-brand-700"><Coffee className="h-8 w-8" /><p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Ruokakuva lisätään käyttöoikeuden vahvistamisen jälkeen" : locale === "es" ? "La foto gastronómica se añadirá cuando se confirmen los derechos de uso" : "A food photo will be added once usage rights are confirmed"}</p></div> : <Image src={fallbackImage(provider)} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />}
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-brand-600"><ExternalLink className="h-3.5 w-3.5" />{l[provider.category]}</div>
