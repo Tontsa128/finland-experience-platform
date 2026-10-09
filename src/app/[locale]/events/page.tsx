@@ -3,11 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
-import type { SaloEvent } from "@/lib/salo";
+import { saloEvents } from "@/lib/salo";
 import { photoLibrary } from "@/lib/photo-library";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 
 const heroImage = photoLibrary.turkuArchipelago;
+
+function formatDate(value: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(value + "T12:00:00"));
+}
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -22,8 +30,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function EventsPage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = (await params).locale as Locale;
-  // Do not publish individual event cards until the event date and organizer page are verified.
-  const events: SaloEvent[] = [];
+  const today = new Date().toISOString().slice(0, 10);
+  const verifiedEventIds = new Set(["pumpkin", "visit-valo", "ghost-museum", "ghost-museum-november", "mathildedal-christmas-1", "mathildedal-christmas-2"]);
+  const events = saloEvents
+    .filter((event) => verifiedEventIds.has(event.id) && (event.end || event.start) >= today)
+    .sort((a, b) => a.start.localeCompare(b.start));
 
   const eventSchema = events.slice(0, 40).map((event) => ({
     "@type": "Event",
