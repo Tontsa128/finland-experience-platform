@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
+  if (slug === "salo-mathildedal") return buildLocalizedMetadata({ locale, title: "Salon seudun matkailu", description: "Salo, Mathildedal, Teijo, Särkisalo and the rural villages of Southwest Finland.", path: "salo" });
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
   const source = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
@@ -33,6 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function DestinationDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
+  if (slug === "salo-mathildedal") redirect(`/${locale}/salo`);
+  if (slug === "mathildedal") redirect(`/${locale}/mathildedal`);
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
