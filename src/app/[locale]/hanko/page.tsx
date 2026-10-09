@@ -95,14 +95,14 @@ const providers = [
   { category: { fi: "Meri & retket", es: "Mar y excursiones", en: "Sea & excursions" }, name: "Sailing trips in Hanko", text: { fi: "Purjehdus on yksi Hangon luontevimmista tavoista kokea avoin meri, rannikko ja saariston pienet saaret.", es: "La navegación es una de las mejores formas de descubrir el mar abierto, la costa y las pequeñas islas de Hanko.", en: "Sailing is one of the most natural ways to experience Hanko's open sea, coast and small islands." }, url: "https://silversand.fi/" },
 ] as const;
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const x = t[locale] || t.en;
   return buildLocalizedMetadata({ locale, title: x.title, description: x.description, path: "hanko", image: photoLibrary.hanko });
 }
 
-export default function HankoPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function HankoPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const x = t[locale] || t.en;
   return (
     <main className="bg-white">
