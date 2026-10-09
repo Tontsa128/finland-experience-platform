@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale } from "next-intl";
+import { MapPin } from "lucide-react";
 import type { Cabin, Locale } from "@/types";
 
 import { formatPrice } from "@/lib/utils";
@@ -11,8 +12,8 @@ export function CabinCard({ cabin, index = 0 }: { cabin: Cabin; index?: number }
   const price = cabin.verified && cabin.pricePerNight > 0 ? formatPrice(cabin.pricePerNight, locale as Locale) + " / " + (locale === "fi" ? "yö" : locale === "es" ? "noche" : "night") : (locale === "fi" ? "Tarkista hinta" : locale === "es" ? "Consultar precio" : "Check price");
   return (
     <Link href={"/" + locale + "/accommodations/" + cabin.slug} className="group relative block overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image src={cabin.images[0]} alt={cabin.name[locale as keyof typeof cabin.name]} fill priority={index < 2} sizes="(max-width:768px) 100vw,33vw" className="object-cover transition duration-700 ease-out group-hover:scale-110" />
+      <div className="relative aspect-[16/10] overflow-hidden bg-brand-50">
+        {cabin.images[0] ? <Image src={cabin.images[0]} alt={cabin.name[locale as keyof typeof cabin.name]} fill priority={index < 2} sizes="(max-width:768px) 100vw,33vw" className="object-cover transition duration-700 ease-out group-hover:scale-110" /> : <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-brand-700"><MapPin className="h-8 w-8" /><p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Kohdekuva lisätään käyttöoikeuden vahvistamisen jälkeen" : locale === "es" ? "La imagen se añadirá cuando se confirmen los derechos de uso" : "A property photo will be added once usage rights are confirmed"}</p></div>}
       </div>
       <div className="p-5">
         <div className="text-xs uppercase tracking-wider text-brand-600 mb-1">{cabin.location}</div>
