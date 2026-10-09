@@ -37,6 +37,27 @@ function regionalImage(category: Category) {
   return photoLibrary.teijoNationalPark;
 }
 
+const verifiedAreaByProvider: Record<string, Record<Locale, string>> = {
+  "visit-salo": { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+  "visit-mathildedal": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
+  "hotel-mathildedal": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
+  "mathildan-marina": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
+  "matilda-villas": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
+  "matri-house": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
+  "majoitus-mathildedal": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
+  "mathildedal-brewery": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
+  "teijo-action-park": { fi: "Teijo, Salo", es: "Teijo, Salo", en: "Teijo, Salo" },
+  "teijo-national-park": { fi: "Teijon kansallispuisto, Salo", es: "Parque Nacional de Teijo, Salo", en: "Teijo National Park, Salo" },
+  "matildanjarven-kampat": { fi: "Matildanjärvi, Teijo, Salo", es: "Matildanjärvi, Teijo, Salo", en: "Matildanjärvi, Teijo, Salo" },
+  "meri-teijo-golf": { fi: "Teijo, Salo", es: "Teijo, Salo", en: "Teijo, Salo" },
+  "saaristomokit-sarkisalo": { fi: "Särkisalo, Salo", es: "Särkisalo, Salo", en: "Särkisalo, Salo" },
+  "forby-marina": { fi: "Förby, Särkisalo, Salo", es: "Förby, Särkisalo, Salo", en: "Förby, Särkisalo, Salo" },
+  "cafe-vinssi": { fi: "Förby Marina, Särkisalo, Salo", es: "Förby Marina, Särkisalo, Salo", en: "Förby Marina, Särkisalo, Salo" },
+  "saaristoravintola-nixor": { fi: "Niksaaren alue, Särkisalo, Salo", es: "Zona de Niksari, Särkisalo, Salo", en: "Niksari area, Särkisalo, Salo" },
+  "salon-oppaat": { fi: "Salo", es: "Salo", en: "Salo" },
+  "vuohensaari-camping": { fi: "Vuohensaari, Salo", es: "Vuohensaari, Salo", en: "Vuohensaari, Salo" }
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }): Promise<Metadata> {
   const { locale: raw, category, slug } = await params;
   const provider = saloProviders.find((item) => item.id === slug);
@@ -53,6 +74,8 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
   const t = labels[locale];
   const categoryPath = category as Category;
   const image = regionalImage(categoryPath);
+  const verifiedArea = verifiedAreaByProvider[provider.id]?.[locale];
+  const mapSearchUrl = verifiedArea ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(provider.name + ", " + verifiedArea) : null;
   return (
     <main className="min-h-screen bg-white text-brand-950">
       <section className="relative isolate min-h-[55svh] overflow-hidden bg-brand-950 text-white">
@@ -69,7 +92,7 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
       <section className="container-narrow grid gap-8 py-12 sm:py-16 lg:grid-cols-[1fr_.7fr]">
         <div>
           <h2 className="font-display text-2xl font-bold">{t.location}</h2>
-          <p className="mt-3 leading-7 text-slate-600">{t.locationUnknown}</p>
+          <p className="mt-3 leading-7 text-slate-600">{verifiedArea || t.locationUnknown}</p>{mapSearchUrl ? <a href={mapSearchUrl} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Etsi kartalta" : locale === "es" ? "Buscar en el mapa" : "Find on map"}<ArrowUpRight className="h-4 w-4" /></a> : null}
           <p className="mt-8 rounded-2xl bg-brand-50 p-5 text-sm leading-7 text-slate-700">{t.priceNote}</p>
           <p className="mt-5 text-sm leading-7 text-slate-600">{t.direct}</p>
         </div>
