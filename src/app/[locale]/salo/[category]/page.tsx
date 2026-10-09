@@ -21,7 +21,8 @@ const copy = {
       aktiviteetit: ["Aktiviteetit Salon seudulla", "Luonto, ulkoilu, veneily ja retket", "Löydä tekemistä Teijon luonnosta Särkisalon saaristoon."],
       elamykset: ["Tekemistä ja elämyksiä Salossa", "Kulttuuri, opastukset ja paikalliset kokemukset", "Tutustu paikallisiin elämyksiin ja tarkista sisältö sekä saatavuus järjestäjältä."],
       saaristo: ["Saaristo ja merenranta", "Särkisalo, satamat ja saariston palvelut", "Tutustu Salon eteläiseen saaristoon ja meren äärellä toimiviin palveluihin."],
-      oppaat: ["Matkailuoppaat ja paikallistieto", "Alueen viralliset matkailuoppaat", "Avaa paikalliset oppaat ja tarkista kohteiden ajantasaiset tiedot niiden omilta sivuilta."]
+      oppaat: ["Matkailuoppaat ja paikallistieto", "Alueen viralliset matkailuoppaat", "Avaa paikalliset oppaat ja tarkista kohteiden ajantasaiset tiedot niiden omilta sivuilta."],
+      kylat: ["Kylät ja maaseutu Salossa", "Perniö, Halikko, Teijo, Mathildedal ja Särkisalo", "Tutustu Salon seudun kyliin ja maaseutualueisiin. Tarkat osoitteet ja palvelut löytyvät kunkin paikan omalta sivulta."]
     }
   },
   es: {
@@ -36,7 +37,8 @@ const copy = {
       aktiviteetit: ["Actividades en la región de Salo", "Naturaleza, aire libre, navegación y excursiones", "Encuentra actividades desde los bosques de Teijo hasta el archipiélago de Särkisalo."],
       elamykset: ["Experiencias en Salo", "Cultura, visitas guiadas y experiencias locales", "Descubre experiencias locales y consulta contenido y disponibilidad con el organizador."],
       saaristo: ["Archipiélago y costa", "Särkisalo, puertos y servicios marítimos", "Explora el archipiélago meridional de Salo y sus servicios junto al mar."],
-      oppaat: ["Guías turísticas e información local", "Guías oficiales de la región", "Consulta las guías locales y verifica los datos actuales en sus sitios oficiales."]
+      oppaat: ["Guías turísticas e información local", "Guías oficiales de la región", "Consulta las guías locales y verifica los datos actuales en sus sitios oficiales."],
+      kylat: ["Pueblos y campo de Salo", "Perniö, Halikko, Teijo, Mathildedal y Särkisalo", "Descubre pueblos y zonas rurales de la región de Salo. Consulta cada página para conocer la ubicación y los servicios."]
     }
   },
   en: {
@@ -51,7 +53,8 @@ const copy = {
       aktiviteetit: ["Activities in the Salo region", "Nature, outdoors, boating and excursions", "Find things to do from Teijo's forests to the Särkisalo archipelago."],
       elamykset: ["Things to do and experiences in Salo", "Culture, guided tours and local experiences", "Explore local experiences and confirm details and availability with the organiser."],
       saaristo: ["Archipelago and coast", "Särkisalo, harbours and maritime services", "Explore the southern Salo archipelago and services by the sea."],
-      oppaat: ["Tourism guides and local information", "Official regional tourism guides", "Browse local guides and verify current details on their official websites."]
+      oppaat: ["Tourism guides and local information", "Official regional tourism guides", "Browse local guides and verify current details on their official websites."],
+      kylat: ["Villages and countryside in Salo", "Perniö, Halikko, Teijo, Mathildedal and Särkisalo", "Explore the villages and rural areas of the Salo region. Each place page provides its own location and local information."]
     }
   }
 } as const;
@@ -65,6 +68,7 @@ function categoryImage(category: Category) {
   if (category === "aktiviteetit") return photoLibrary.teijoNationalPark;
   if (category === "saaristo") return photoLibrary.sarkisalo;
   if (category === "oppaat") return photoLibrary.saloVeturitalli;
+  if (category === "kylat") return photoLibrary.mathildedalVillage;
   return photoLibrary.teijoNationalPark;
 }
 
@@ -83,6 +87,7 @@ function getCategoryItems(category: Category): SaloProvider[] {
   if (category === "aktiviteetit") return saloProviders.filter((item) => item.category === "nature" || item.category === "experience");
   if (category === "elamykset") return saloProviders.filter((item) => item.category === "experience");
   if (category === "saaristo") return saloProviders.filter((item) => archipelagoIds.has(item.id));
+  if (category === "kylat") return [];
   return saloProviders.filter((item) => item.category === "tourism");
 }
 
@@ -103,6 +108,14 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
   const labels = copy[locale];
   const [title, , intro] = labels.categories[category];
   const providers = getCategoryItems(category);
+  const localities = [
+    { id: "mathildedal", title: "Mathildedal", text: { fi: "Historiallinen ruukkikylä meren äärellä.", es: "Pueblo histórico de ferrería junto al mar.", en: "Historic ironworks village by the sea." }, image: photoLibrary.mathildedalHarbour, href: `/${locale}/mathildedal` },
+    { id: "teijo", title: "Teijo", text: { fi: "Kansallispuisto, järvimaisemat ja ulkoilureitit.", es: "Parque nacional, lagos y rutas al aire libre.", en: "National park, lakes and outdoor trails." }, image: photoLibrary.teijoNationalPark, href: `/${locale}/places/teijo` },
+    { id: "sarkisalo", title: "Särkisalo", text: { fi: "Saaristokylä, satamat ja merenrantamaisemat.", es: "Pueblo del archipiélago, puertos y costa.", en: "Archipelago village, harbours and coastal scenery." }, image: photoLibrary.sarkisalo, href: `/${locale}/places/sarkisalo` },
+    { id: "pernio", title: "Perniö", text: { fi: "Maaseudun historiaa ja paikallisia kyliä.", es: "Historia rural y pueblos locales.", en: "Rural history and local villages." }, image: null, href: `/${locale}/places/pernio` },
+    { id: "halikko-wiurila", title: "Halikko ja Wiurila", text: { fi: "Kartanoalue, kulttuuriperintö ja lähialueen nähtävyydet.", es: "Zona señorial, patrimonio y lugares de interés.", en: "Manor area, heritage and nearby sights." }, image: null, href: `/${locale}/places/halikko-wiurila` },
+    { id: "jarvi-salo", title: "Järvi-Salo", text: { fi: "Järvimaisemia ja rauhallisia luontokohteita.", es: "Paisajes lacustres y lugares tranquilos en la naturaleza.", en: "Lake scenery and quiet nature spots." }, image: null, href: `/${locale}/places/jarvi-salo` },
+  ];
 
   return (
     <main className="min-h-screen bg-white text-brand-950">
@@ -120,7 +133,18 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
           <p className="max-w-2xl text-sm leading-6 text-slate-600">{labels.direct}</p>
           <Link href={`/${locale}/salo`} className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand-800"><ArrowLeft className="h-4 w-4" />{labels.back}</Link>
         </div>
-        {providers.length ? (
+        {category === "kylat" ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {localities.map((place) => (
+              <Link key={place.id} href={place.href} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
+                <div className="relative aspect-[16/10] overflow-hidden bg-brand-50">
+                  {place.image ? <Image src={place.image} alt={place.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" unoptimized className="object-cover transition duration-700 group-hover:scale-105" /> : <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-brand-700"><MapPin className="h-8 w-8" /><p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Paikallinen kuva lisätään vahvistuksen jälkeen" : locale === "es" ? "Se añadirá una imagen local tras verificarla" : "A local image will be added after verification"}</p></div>}
+                </div>
+                <div className="p-6"><h2 className="font-display text-2xl font-bold">{place.title}</h2><p className="mt-3 text-sm leading-7 text-slate-600">{place.text[locale]}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{labels.provider}<MapPin className="h-4 w-4" /></span></div>
+              </Link>
+            ))}
+          </div>
+        ) : providers.length ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {providers.map((provider) => (
               <Link key={provider.id} href={`/${locale}/salo/${providerDetailCategory(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
