@@ -207,7 +207,7 @@ export const cabins: Cabin[] = [
     features: ["private sauna", "fireplace", "kitchen", "terrace", "beach", "bicycles"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.166, lng: 22.954 }, type: "villa",
     bookingUrl: "https://www.matildavillas.fi/en", provider: "Matilda Villas",
-    priceNote: { fi: "Hinta alkaen 190 €/yö, tarkista ajantasainen hinta ja saatavuus palveluntarjoajalta.", es: "Desde 190 €/noche; confirma el precio y la disponibilidad con el proveedor.", en: "From €190/night; confirm current price and availability with the provider." }
+    priceNote: { fi: "Tarkista ajantasainen hinta ja saatavuus suoraan palveluntarjoajalta.", es: "Confirma el precio y la disponibilidad actuales directamente con el proveedor.", en: "Confirm current price and availability directly with the provider." }
   },
   {
     id: "c2", slug: "matri-house", name: { fi: "Matri House", es: "Matri House", en: "Matri House" },
@@ -223,7 +223,7 @@ export const cabins: Cabin[] = [
     features: ["historic house", "breakfast", "garden", "design", "village centre"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.956 }, type: "hotel",
     bookingUrl: "https://matrihouse.fi/", provider: "Matri House",
-    priceNote: { fi: "Visit Finland ilmoittaa hinnan alkaen 180 €; ajantasainen huonehinta tarkistetaan palveluntarjoajalta.", es: "Visit Finland indica desde 180 €; confirma la tarifa actual con el proveedor.", en: "Visit Finland lists rates from €180; confirm the current room rate with the provider." }
+    priceNote: { fi: "Tarkista ajantasainen hinta ja saatavuus suoraan palveluntarjoajalta.", es: "Confirma el precio y la disponibilidad actuales directamente con el proveedor.", en: "Confirm current price and availability directly with the provider." }
   },
   {
     id: "c3", slug: "mathildan-marina", name: { fi: "Mathildan Marina", es: "Mathildan Marina", en: "Mathildan Marina" },
@@ -239,7 +239,7 @@ export const cabins: Cabin[] = [
     features: ["harbour", "breakfast", "sea view", "restaurant", "wifi"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.960 }, type: "hotel",
     bookingUrl: "https://mathildanmarina.fi/majoitus/", provider: "Mathildan Marina",
-    priceNote: { fi: "Mathildan Marinan vuoden 2026 hinnasto: 2 hh alkaen 179 €/vrk. Hinnat sisältävät aamupalan.", es: "Tarifas 2026: habitación doble desde 179 €/noche, desayuno incluido.", en: "2026 rates: double room from €179/night, breakfast included." }
+    priceNote: { fi: "Tarkista ajantasainen huonehinta ja saatavuus suoraan palveluntarjoajalta.", es: "Confirma la tarifa y la disponibilidad actuales directamente con el proveedor.", en: "Confirm current room rates and availability directly with the provider." }
   },
   {
     id: "c4", slug: "matildanjärvi-cabins", name: { fi: "Matildanjärven mökit", es: "Cabañas de Matildanjärvi", en: "Matildanjärvi Cabins" },
@@ -287,7 +287,7 @@ export const cabins: Cabin[] = [
     features: ["glamping", "forest", "smoke sauna", "villas", "slow travel"],
     maxGuests: 6, bedrooms: 1, coordinates: { lat: 60.160, lng: 22.740 }, type: "glamping",
     bookingUrl: "https://www.storfinnhova.com/majoitus/", provider: "Storfinnhova Gård",
-    priceNote: { fi: "Yöpymiset alkaen 70 €/hlö; villojen viikkohinta alkaen 675 €. Tarkista kesäpäivien saatavuus.", es: "Desde 70 €/persona; villas desde 675 €/semana. Confirma disponibilidad.", en: "From €70/person; villas from €675/week. Check summer availability." }
+    priceNote: { fi: "Tarkista ajantasainen hinta ja saatavuus suoraan palveluntarjoajalta.", es: "Confirma el precio y la disponibilidad actuales directamente con el proveedor.", en: "Confirm current price and availability directly with the provider." }
   },
   {
     id: "c7", slug: "naantali-camping", name: { fi: "Naantali Camping – mökit ja teltat", es: "Naantali Camping – cabañas y tiendas", en: "Naantali Camping – Cabins & Tents" },
@@ -303,7 +303,7 @@ export const cabins: Cabin[] = [
     features: ["sea", "cabin", "tent", "sauna", "beach"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.462, lng: 22.015 }, type: "cabin",
     bookingUrl: "https://naantalicamping.bookingonline.fi/stable/index.jsp?kieli=UKN", provider: "Naantali Camping",
-    priceNote: { fi: "Vuoden 2026 hinnasto: leirintämökki 2 hlö alkaen 69 €/yö, lomamökki 6 hlö 189 €/yö.", es: "Tarifas 2026: cabaña de camping para 2 desde 69 €/noche; cabaña de vacaciones para 6, 189 €.", en: "2026 rates: camping cottage for 2 from €69/night; holiday cottage for 6, €189." }
+    priceNote: { fi: "Tarkista ajantasainen hinta ja saatavuus suoraan leirintäalueelta.", es: "Confirma el precio y la disponibilidad actuales directamente con el camping.", en: "Confirm current rates and availability directly with the campsite." }
   },
   {
     id: "c11", slug: "havsvidden", name: { fi: "Havsvidden – Ahvenanmaan kallioranta", es: "Havsvidden – costa rocosa de Åland", en: "Havsvidden – Åland Sea Cliffs" },
