@@ -6,7 +6,7 @@ const items = [
   {
     date: "9.–18.10.2026",
     key: "pumpkin",
-    image: photoLibrary.pumpkinWeeks,
+    image: null,
     href: "https://visitsalo.fi/kurpitsaviikot/",
     title: {
       fi: "Kurpitsaviikot Salossa",
@@ -22,7 +22,7 @@ const items = [
   {
     date: "9.–25.10. & 31.10.–1.11.2026",
     key: "ghost",
-    image: photoLibrary.mathildedalVillage,
+    image: null,
     href: "https://mathildedal.fi/en/2026/09/21/ghosts-take-over-mathildedal-welcome-to-ghost-village/",
     title: {
       fi: "Kummitusmuseo Mathildedalissa",
@@ -38,7 +38,7 @@ const items = [
   {
     date: "21. & 28.11.2026",
     key: "christmas",
-    image: photoLibrary.mathildedalChristmas,
+    image: null,
     href: "https://mathildedal.fi/2026/04/27/mathildedalin-joulumarkkinat-21-11-28-11-2026/",
     title: {
       fi: "Mathildedalin joulumarkkinat",
@@ -75,8 +75,8 @@ export default function SeasonalHighlights({ locale }: { locale: "fi" | "es" | "
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {items.map((item) => (
             <article key={item.key} className="overflow-hidden rounded-[1.6rem] border border-slate-200 bg-slate-50 shadow-soft">
-              <div className="relative aspect-[16/10]">
-                <Image src={item.image} alt={item.title[locale]} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+              <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-brand-50">
+                {item.image ? <Image src={item.image} alt={item.title[locale]} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" /> : <div className="flex max-w-xs flex-col items-center px-6 text-center text-brand-700"><CalendarDays className="h-8 w-8" /><p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Tapahtumakuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "La imagen del evento se añadirá cuando se confirmen los derechos de uso" : "An event photo will be added once usage rights are confirmed"}</p></div>}
                 <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/55 px-3 py-1.5 text-[11px] font-bold text-white backdrop-blur-sm"><CalendarDays className="h-3.5 w-3.5" />{item.date}</div>
               </div>
               <div className="p-6">
