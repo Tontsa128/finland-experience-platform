@@ -32,7 +32,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
       "@type": "ListItem",
       position: index + 1,
       name: destination.slug === "salo-mathildedal" ? "Salo" : getLocalized(destination.name, locale),
-      url: destination.slug === "salo-mathildedal" ? "/" + locale + "/salo" : "/" + locale + "/destinations/" + canonicalDestinationSlug(destination.slug),
+      url: destination.slug === "salo-mathildedal" ? "/" + locale + "/salo" : destination.slug === "rosala" ? "/" + locale + "/kimitoon" : "/" + locale + "/destinations/" + canonicalDestinationSlug(destination.slug),
     })),
   };
 
