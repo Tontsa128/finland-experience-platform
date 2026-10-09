@@ -196,9 +196,9 @@ export const cabins: Cabin[] = [
   {
     id: "c1", slug: "matilda-villas", name: { fi: "Matilda Villas", es: "Matilda Villas", en: "Matilda Villas" },
     description: {
-      fi: "18 laadukasta huvilaa Mathildedalin merellisessä ruukkikylässä. Villa Taimi alkaa 190 €/yö ja Villa Kukka on suurempi vaihtoehto. Oma sauna, takka, keittiö, terassi ja yksityinen ranta-alue.",
-      es: "18 villas junto al mar en Mathildedal. Villa Taimi desde 190 € por noche; las villas ofrecen sauna privada, chimenea, cocina y acceso a la playa.",
-      en: "18 quality villas by the sea in Mathildedal. Villa Taimi from €190/night, with private sauna, fireplace, kitchen, terrace and beach access."
+      fi: "18 laadukasta huvilaa Mathildedalin merellisessä ruukkikylässä. Oma sauna, takka, keittiö, terassi ja yksityinen ranta-alue.",
+      es: "18 villas junto al mar en Mathildedal, con sauna privada, chimenea, cocina, terraza y acceso a la playa.",
+      en: "18 quality villas by the sea in Mathildedal, with private sauna, fireplace, kitchen, terrace and beach access."
     },
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
@@ -228,9 +228,9 @@ export const cabins: Cabin[] = [
   {
     id: "c3", slug: "mathildan-marina", name: { fi: "Mathildan Marina", es: "Mathildan Marina", en: "Mathildan Marina" },
     description: {
-      fi: "Pieni kuuden huoneen satamahotelli aivan meren äärellä. Vuoden 2026 hinnasto alkaa 149 €/vrk yhdelle ja 179 €/vrk kahdelle alakerran huoneessa; aamupala sisältyy.",
-      es: "Pequeño hotel portuario de seis habitaciones junto al mar. Las tarifas 2026 empiezan en 149 € para una persona y 179 € para dos; desayuno incluido.",
-      en: "A six-room harbour hotel by the sea. The 2026 rates start at €149 for one guest and €179 for two in the ground-floor rooms; breakfast included."
+      fi: "Pieni kuuden huoneen satamahotelli aivan meren äärellä. Aamupala ja sataman palvelut kuuluvat kohteen tarjontaan; huonekohtaiset tiedot tarkistetaan palveluntarjoajalta.",
+      es: "Pequeño hotel portuario de seis habitaciones junto al mar. Consulta con el proveedor los detalles actuales de las habitaciones y el desayuno.",
+      en: "A six-room harbour hotel by the sea. Check current room details and breakfast arrangements directly with the provider."
     },
     location: "Mathildedal harbour",
     region: "Southwest Finland",
@@ -276,9 +276,9 @@ export const cabins: Cabin[] = [
   {
     id: "c6", slug: "storfinnhova-glamping", name: { fi: "Storfinnhova glamping", es: "Glamping Storfinnhova", en: "Storfinnhova Glamping" },
     description: {
-      fi: "Metsäkylän puumajat ja glamping-teltat tarjoavat luonnon keskellä nukkumista hieman tavallista mukavammin. Yöpymiset alkavat 70 €/hlö ja villojen viikkohinta 675 €.",
-      es: "Cabañas en los árboles y tiendas glamping en medio del bosque. Las estancias empiezan desde 70 € por persona.",
-      en: "Tree houses and glamping tents in the forest. Overnight stays start from €70 per person; villas from €675 per week."
+      fi: "Metsäkylän puumajat ja glamping-teltat tarjoavat luonnon keskellä nukkumista hieman tavallista mukavammin. Tarkista ajantasaiset hinnat ja saatavuus suoraan majoittajalta.",
+      es: "Cabañas en los árboles y tiendas glamping en medio del bosque. Consulta los precios y la disponibilidad actuales con el proveedor.",
+      en: "Tree houses and glamping tents in the forest. Check current rates and availability directly with the provider."
     },
     location: "Kimitoön, near Salo region",
     region: "Southwest Finland",
@@ -292,9 +292,9 @@ export const cabins: Cabin[] = [
   {
     id: "c7", slug: "naantali-camping", name: { fi: "Naantali Camping – mökit ja teltat", es: "Naantali Camping – cabañas y tiendas", en: "Naantali Camping – Cabins & Tents" },
     description: {
-      fi: "Meren äärellä aivan Naantalin keskustan tuntumassa. Vuoden 2026 hinnastossa mökkejä alkaen 69 €/yö ja hyvin varusteltu kuuden hengen lomamökki 189 €/yö. Myös telttapaikkoja.",
-      es: "Camping junto al mar cerca del centro de Naantali. En 2026 hay cabañas desde 69 € y una cabaña de seis personas por 189 € por noche.",
-      en: "Seaside camping close to Naantali centre. In 2026, cottages start at €69/night and a six-person holiday cottage is €189/night; tent pitches are also available."
+      fi: "Meren äärellä aivan Naantalin keskustan tuntumassa. Tarjolla on mökkimajoitusta ja telttapaikkoja; tarkista ajantasainen tarjonta suoraan leirintäalueelta.",
+      es: "Camping junto al mar cerca del centro de Naantali, con cabañas y parcelas para tiendas. Confirma la oferta actual directamente con el camping.",
+      en: "Seaside camping close to Naantali centre, with cottages and tent pitches. Confirm the current offering directly with the campsite."
     },
     location: "Naantali",
     region: "Southwest Finland",
@@ -304,38 +304,6 @@ export const cabins: Cabin[] = [
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.462, lng: 22.015 }, type: "cabin",
     bookingUrl: "https://naantalicamping.bookingonline.fi/stable/index.jsp?kieli=UKN", provider: "Naantali Camping",
     priceNote: { fi: "Vuoden 2026 hinnasto: leirintämökki 2 hlö alkaen 69 €/yö, lomamökki 6 hlö 189 €/yö.", es: "Tarifas 2026: cabaña de camping para 2 desde 69 €/noche; cabaña de vacaciones para 6, 189 €.", en: "2026 rates: camping cottage for 2 from €69/night; holiday cottage for 6, €189." }
-  },
-  {
-    id: "c8", slug: "taattisten-tila", name: { fi: "Taattisten tila – saaristomökit", es: "Taattisten tila – cabañas", en: "Taattisten Farm – Cottages" },
-    description: {
-      fi: "Naantalin saaristometsässä sijaitsevat Lempimökki ja Lampimökki tarjoavat puusaunan, takan ja rauhallisen pihan. Lempimökki 120 €/yö kahdelle ja Lampimökki 150 €/yö neljälle.",
-      es: "Cabañas tranquilas en el bosque del archipiélago de Naantali. Sauna de leña, chimenea y privacidad; desde 120 € por noche.",
-      en: "Peaceful archipelago-forest cottages near Naantali with wood-fired sauna and fireplace. From €120/night for two."
-    },
-    location: "Naantali archipelago",
-    region: "Southwest Finland",
-    pricePerNight: 120,
-    images: [],
-    features: ["wood sauna", "fireplace", "forest", "quiet", "breakfast optional"],
-    maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.450, lng: 21.900 }, type: "cabin",
-    bookingUrl: "https://www.taattistentila.fi/lomamkit", provider: "Taattisten tila",
-    priceNote: { fi: "Lempimökki 120 €/yö/2 hlö ja Lampimökki 150 €/yö/4 hlö, ilman aamiaista ja liinavaatteita.", es: "Lempimökki 120 €/noche/2 personas y Lampimökki 150 €/noche/4 personas.", en: "Lempimökki €120/night/2 guests and Lampimökki €150/night/4 guests." }
-  },
-  {
-    id: "c9", slug: "taattisten-tree-tent", name: { fi: "Taattisten puuteltta", es: "Tienda entre los árboles de Taattisten", en: "Taattisten Tree Tent" },
-    description: {
-      fi: "Todella erilainen saaristomajoitus: Spider Tent puiden oksilla noin 500 metrin päässä tilakeskuksesta. Hinta 50 €/yö yhdelle, 70 € kahdelle ja 90 € kolmelle.",
-      es: "Una estancia diferente: una tienda Spider Tent suspendida entre los árboles. Desde 50 € por noche para una persona.",
-      en: "A genuinely different stay: a Spider Tent among the trees, around 500 m from the farm centre. From €50/night for one, €70 for two and €90 for three."
-    },
-    location: "Naantali archipelago",
-    region: "Southwest Finland",
-    pricePerNight: 50,
-    images: [],
-    features: ["tree tent", "nature", "campfire hut", "quiet", "eco"],
-    maxGuests: 3, bedrooms: 1, coordinates: { lat: 60.450, lng: 21.900 }, type: "glamping",
-    bookingUrl: "https://www.taattistentila.fi/puuteltta", provider: "Taattisten tila",
-    priceNote: { fi: "50 €/yö 1 hlö, 70 €/yö 2 hlö, 90 €/yö 3 hlö.", es: "50 €/noche para 1, 70 € para 2 y 90 € para 3 personas.", en: "€50/night for 1, €70 for 2 and €90 for 3 guests." }
   },
   {
     id: "c11", slug: "havsvidden", name: { fi: "Havsvidden – Ahvenanmaan kallioranta", es: "Havsvidden – costa rocosa de Åland", en: "Havsvidden – Åland Sea Cliffs" },
