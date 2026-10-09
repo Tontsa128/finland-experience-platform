@@ -47,14 +47,14 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
           {providers.map((provider) => (
             <Link key={provider.id} href={`/${locale}/salo/${categorySlug(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2">
               <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                <Image src={provider.image || fallbackImage(provider)} alt={provider.name} fill unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                <Image src={fallbackImage(provider)} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-brand-600"><ExternalLink className="h-3.5 w-3.5" />{l[provider.category]}</div>
                 <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
                 <p className="mt-3 leading-7 text-slate-600">{provider.description[locale]}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{l.visit}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
-                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">Kuva: {provider.imageCredit}</p> : null}
+                <p className="mt-4 text-[11px] text-slate-400">{locale === "fi" ? "Aluekuva – ei välttämättä kuva kyseisestä yrityksestä." : locale === "es" ? "Imagen de la región; no necesariamente del establecimiento." : "Regional image; not necessarily a photo of this business."}</p>
               </div>
             </Link>
           ))}
