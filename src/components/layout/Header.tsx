@@ -83,7 +83,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
             <UserRound className="h-5 w-5" />
           </Link>
 
-          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open}>
+          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open} aria-controls="mobile-primary-navigation">
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
