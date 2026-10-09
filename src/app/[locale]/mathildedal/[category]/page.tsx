@@ -37,6 +37,7 @@ const stays: Item[] = [
   { name: "Matilda Villas", description: { fi: "Ympärivuotisia hyvin varusteltuja mökkejä, oma sauna ja terassi.", es: "Cabañas equipadas para todo el año, con sauna privada y terraza.", en: "Well-equipped year-round cottages with private sauna and terrace." }, url: "https://matildavillas.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/Matilda%20Villas_10%20kopio.jpg?itok=fPv5YeEK", address: "Karvarinkulma, Mathildedal" },
   { name: "Matri House", description: { fi: "Yksilöllinen boutique-majoitus kylän sydämessä, puutarha ja yhteiset tilat.", es: "Alojamiento boutique en el centro del pueblo, con jardín y espacios comunes.", en: "Individual boutique rooms in the village centre, with a garden and shared spaces." }, url: "https://matrihouse.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/matrihouse_mathildedal_web.jpg?itok=hgOKNF9U", address: "Matildan Puistotie 6, Mathildedal" },
   { name: "Meri-Ruukin lomakylä", description: { fi: "Loma-asuntoja, rantasauna, laituri ja grillialue lähellä kansallispuistoa.", es: "Apartamentos vacacionales, sauna junto al mar, muelle y zona de barbacoa.", en: "Holiday apartments, seaside sauna, pier and barbecue area near the national park." }, url: "https://meri-ruukki.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/oleskelutila.jpg?itok=hIXkNyVI", address: "Kiikunmäentie 28, Mathildedal" },
+  { name: "Majoitus Mathildedal", description: { fi: "Erillinen vuokramökki Mathildedalissa; tarkista varustelu, vapaat päivät ja ehdot majoittajan sivulta.", es: "Casa de alquiler en Mathildedal; consulta equipamiento, fechas disponibles y condiciones en la web del anfitrión.", en: "A privately rented holiday cottage in Mathildedal; check facilities, availability and terms on the host website." }, url: "https://www.majoitusmathildedal.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/oleskelutila.jpg?itok=hIXkNyVI", address: "Mathildedal" },
   { name: "Natura Viva – Teijo", description: { fi: "Luontomajoitusta ja retkeilyyn sopivia yöpymisvaihtoehtoja Teijon alueella.", es: "Alojamiento en la naturaleza y opciones para senderistas en la zona de Teijo.", en: "Nature stays and accommodation options for hikers around Teijo." }, url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, address: "Matildajärventie 84, Mathildedal" },
 ];
 
@@ -93,7 +94,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
   return (
     <main className="bg-white text-brand-950">
       <section className="relative isolate min-h-[48svh] overflow-hidden bg-brand-950 text-white">
-        <Image src={hero} alt={c.title} fill priority sizes="100vw" className="object-cover" />
+        <Image src={hero} alt={c.title} fill priority unoptimized sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
         <div className="container-narrow relative z-10 flex min-h-[48svh] items-end py-12 sm:py-16">
           <div className="max-w-4xl">
@@ -111,7 +112,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <article key={item.name} className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-soft">
-              <div className="relative aspect-[16/10] bg-brand-50"><Image src={item.image} alt={item.name} fill sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw" className="object-cover" /></div>
+              <div className="relative aspect-[16/10] bg-brand-50"><Image src={item.image} alt={item.name} fill unoptimized sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw" className="object-cover" /></div>
               <div className="p-5 sm:p-6">
                 <h3 className="font-display text-xl font-bold">{item.name}</h3>
                 <p className="mt-3 min-h-[5rem] text-sm leading-6 text-slate-600">{item.description[locale]}</p>
