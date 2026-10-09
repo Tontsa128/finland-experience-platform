@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, BedDouble, Coffee, Compass, Flame, MapPin } from "lucide-react";
@@ -86,10 +87,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
   const locale = (["fi", "es", "en"].includes(rawLocale) ? rawLocale : "en") as Locale;
   const c = copy[locale][category];
   const items = data[category];
-  if (!c || !items) {
-    const { notFound } = await import("next/navigation");
-    notFound();
-  }
+  if (!c || !items) notFound();
   const Icon = icons[category as keyof typeof icons];
   const hero = category === "majoitus" ? photoLibrary.mathildedalVillage : category === "ruoka" ? photoLibrary.mathildedalHarbour : category === "aktiviteetit" ? photoLibrary.teijoNationalPark : photoLibrary.sauna;
   return (
