@@ -28,7 +28,7 @@ function fallbackImage(provider: SaloProvider) {
   if (provider.category === "stay") return photoLibrary.mathildedalVillage;
   if (provider.category === "food") return photoLibrary.mathildedalHarbour;
   if (provider.category === "nature") return photoLibrary.teijoNationalPark;
-  if (provider.category === "experience") return photoLibrary.naturaVivaTeijo;
+  if (provider.category === "experience") return photoLibrary.teijoNationalPark;
   return photoLibrary.saloVeturitalli;
 }
 
