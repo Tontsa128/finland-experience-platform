@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, MapPin } from "lucide-react";
+import { ArrowLeft, Coffee, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
@@ -62,9 +62,9 @@ const copy = {
 type Category = keyof typeof copy.fi.categories;
 const validCategories = Object.keys(copy.fi.categories) as Category[];
 const archipelagoIds = new Set(["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "sarkisalo-fishing", "chill-out-fishing", "villa-meri-sarkisalo"]);
-function categoryImage(category: Category) {
+function categoryImage(category: Category): string | null {
   if (category === "majoitus") return photoLibrary.mathildedalVillage;
-  if (category === "ruoka") return photoLibrary.mathildedalHarbour;
+  if (category === "ruoka") return null;
   if (category === "aktiviteetit") return photoLibrary.teijoNationalPark;
   if (category === "saaristo") return photoLibrary.sarkisalo;
   if (category === "oppaat") return photoLibrary.saloVeturitalli;
@@ -97,7 +97,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   const category = rawCategory as Category;
   const [title, description] = copy[locale].categories[category];
-  return buildLocalizedMetadata({ locale, title, description, path: "salo/" + category, image: categoryImage(category) });
+  return buildLocalizedMetadata({ locale, title, description, path: "salo/" + category, image: categoryImage(category) || undefined });
 }
 
 export default async function SaloCategoryPage({ params }: { params: Promise<{ locale: string; category: string }> }) {
@@ -120,7 +120,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
   return (
     <main className="min-h-screen bg-white text-brand-950">
       <section className="relative isolate overflow-hidden bg-brand-950 text-white">
-        <Image src={categoryImage(category)} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill priority sizes="100vw" unoptimized className="object-cover opacity-45" />
+        {categoryImage(category) ? <Image src={categoryImage(category)!} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill priority sizes="100vw" unoptimized className="object-cover opacity-45" /> : <div className="absolute inset-0 flex flex-col items-center justify-center bg-brand-800 text-center text-white"><Coffee className="h-10 w-10 text-gold-300" /><p className="mt-3 text-sm font-semibold">{locale === "fi" ? "Ruokakuva lisätään käyttöoikeuden vahvistamisen jälkeen" : locale === "es" ? "La foto gastronómica se añadirá cuando se confirmen los derechos de uso" : "A food photo will be added once usage rights are confirmed"}</p></div>}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/70 to-brand-950/20" />
         <div className="container-narrow relative py-20 sm:py-28">
           <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{labels.region}</p>
@@ -149,7 +149,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
             {providers.map((provider) => (
               <Link key={provider.id} href={`/${locale}/salo/${providerDetailCategory(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
                 <div className="relative aspect-[16/10] bg-brand-100">
-                  <Image src={categoryImage(category)} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" unoptimized className="object-cover transition duration-700 group-hover:scale-105" />
+                  {categoryImage(category) ? <Image src={categoryImage(category)!} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" unoptimized className="object-cover transition duration-700 group-hover:scale-105" /> : <div className="absolute inset-0 flex flex-col items-center justify-center bg-brand-50 px-6 text-center text-brand-700"><Coffee className="h-8 w-8" /><p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Ruokakuva lisätään käyttöoikeuden vahvistamisen jälkeen" : locale === "es" ? "La foto gastronómica se añadirá cuando se confirmen los derechos de uso" : "A food photo will be added once usage rights are confirmed"}</p></div>}
                 </div>
                 <div className="p-6">
                   <h2 className="font-display text-2xl font-bold">{provider.name}</h2>
