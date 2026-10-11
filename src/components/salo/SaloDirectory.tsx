@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Coffee, ExternalLink } from "lucide-react";
+import { ArrowRight, Coffee, ExternalLink, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { photoLibrary } from "@/lib/photo-library";
-import { saloProviders, type SaloProvider } from "@/lib/salo";
+import { getSaloProviderDetailCategory, saloProviders, type SaloProvider } from "@/lib/salo";
 
 const labels = {
   fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Ruoka ja paikalliset maut", visit: "Avaa kohteen tiedot", heading: "Löydä paikalliset palvelut", intro: "Tutustu kohteeseen ja siirry sen omalle sivulle. Varaus, maksu ja sopimus tehdään aina suoraan palveluntarjoajan kanssa." },
@@ -11,25 +11,34 @@ const labels = {
   en: { tourism: "Tourism information", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Food and local flavours", visit: "View place details", heading: "Discover local services", intro: "Explore each place on its own page. Bookings, payments and contracts are handled directly by each provider." },
 } as const;
 
-const categoryForProvider: Record<SaloProvider["category"], string> = {
-  tourism: "oppaat",
-  stay: "majoitus",
-  experience: "elamykset",
-  nature: "aktiviteetit",
-  food: "ruoka",
-};
-const archipelagoIds = new Set(["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "sarkisalo-fishing", "chill-out-fishing", "villa-meri-sarkisalo"]);
-
-function categorySlug(provider: SaloProvider) {
-  return archipelagoIds.has(provider.id) ? "saaristo" : categoryForProvider[provider.category];
+function fallbackImage(provider: SaloProvider): string | null {
+  switch (provider.areaId) {
+    case "salo-center":
+    case "salo-region":
+      return photoLibrary.saloVeturitalli;
+    case "mathildedal":
+      return photoLibrary.mathildedalVillage;
+    case "teijo":
+      return photoLibrary.teijoNationalPark;
+    case "sarkisalo":
+      return photoLibrary.sarkisalo;
+    default:
+      // Avoid showing a photo from a different locality as if it represented this place.
+      return null;
+  }
 }
 
-function fallbackImage(provider: SaloProvider) {
-  if (provider.category === "stay") return photoLibrary.mathildedalVillage;
-  if (provider.category === "food") return photoLibrary.mathildedalHarbour;
-  if (provider.category === "nature") return photoLibrary.teijoNationalPark;
-  if (provider.category === "experience") return photoLibrary.teijoNationalPark;
-  return photoLibrary.saloVeturitalli;
+function fallbackImageAlt(provider: SaloProvider, locale: Locale) {
+  if (provider.areaId === "mathildedal") {
+    return locale === "fi" ? "Mathildedalin historiallinen ruukkikylä, aluekuva" : locale === "es" ? "Pueblo histórico de Mathildedal, imagen de contexto" : "Historic Mathildedal ironworks village, regional context image";
+  }
+  if (provider.areaId === "teijo") {
+    return locale === "fi" ? "Teijon kansallispuiston luontoa, aluekuva" : locale === "es" ? "Naturaleza del Parque Nacional de Teijo, imagen de contexto" : "Nature in Teijo National Park, regional context image";
+  }
+  if (provider.areaId === "sarkisalo") {
+    return locale === "fi" ? "Särkisalon saaristomaisema, aluekuva" : locale === "es" ? "Paisaje del archipiélago de Särkisalo, imagen de contexto" : "Särkisalo archipelago landscape, regional context image";
+  }
+  return locale === "fi" ? "Veturitalli Salossa, aluekuva" : locale === "es" ? "Veturitalli en Salo, imagen de contexto" : "Veturitalli in Salo, regional context image";
 }
 
 export function SaloDirectory({ locale, category }: { locale: Locale; category?: SaloProvider["category"] }) {
@@ -45,9 +54,21 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {providers.map((provider) => (
-            <Link key={provider.id} href={`/${locale}/salo/${categorySlug(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2">
+            <Link key={provider.id} href={`/${locale}/salo/${getSaloProviderDetailCategory(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2">
               <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                {provider.category === "food" ? <div className="absolute inset-0 flex flex-col items-center justify-center bg-brand-50 px-6 text-center text-brand-700"><Coffee className="h-8 w-8" /><p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Ruokakuva lisätään käyttöoikeuden vahvistamisen jälkeen" : locale === "es" ? "La foto gastronómica se añadirá cuando se confirmen los derechos de uso" : "A food photo will be added once usage rights are confirmed"}</p></div> : <Image src={fallbackImage(provider)} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />}
+                {provider.category === "food" ? (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-brand-50 px-6 text-center text-brand-700">
+                    <Coffee className="h-8 w-8" />
+                    <p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Ruokakuva lisätään käyttöoikeuden vahvistamisen jälkeen" : locale === "es" ? "La foto gastronómica se añadirá cuando se confirmen los derechos de uso" : "A food photo will be added once usage rights are confirmed"}</p>
+                  </div>
+                ) : fallbackImage(provider) ? (
+                  <Image src={fallbackImage(provider)!} alt={fallbackImageAlt(provider, locale)} fill unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-50 via-white to-brand-100 px-6 text-center text-brand-700">
+                    <MapPin className="h-8 w-8" />
+                    <p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Aluekuva lisätään, kun kohteeseen sopiva kuva ja käyttöoikeus on vahvistettu" : locale === "es" ? "La imagen local se añadirá cuando se confirme que corresponde al lugar y que se puede utilizar" : "A local image will be added once its relevance to the place and usage rights are confirmed"}</p>
+                  </div>
+                )}
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-brand-600"><ExternalLink className="h-3.5 w-3.5" />{l[provider.category]}</div>
