@@ -6,7 +6,7 @@ import { ArrowLeft, Coffee, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { saloProviders, type SaloProvider } from "@/lib/salo";
+import { getSaloProviderDetailCategory, saloProviders } from "@/lib/salo";
 
 const copy = {
   fi: {
@@ -72,21 +72,12 @@ function categoryImage(category: Category): string | null {
   return photoLibrary.teijoNationalPark;
 }
 
-function providerDetailCategory(provider: SaloProvider) {
-  if (archipelagoIds.has(provider.id)) return "saaristo";
-  if (provider.category === "stay") return "majoitus";
-  if (provider.category === "food") return "ruoka";
-  if (provider.category === "nature") return "aktiviteetit";
-  if (provider.category === "experience") return "elamykset";
-  return "oppaat";
-}
-
 function getCategoryItems(category: Category): SaloProvider[] {
   if (category === "majoitus") return saloProviders.filter((item) => item.category === "stay");
   if (category === "ruoka") return saloProviders.filter((item) => item.category === "food");
   if (category === "aktiviteetit") return saloProviders.filter((item) => item.category === "nature" || item.category === "experience");
   if (category === "elamykset") return saloProviders.filter((item) => item.category === "experience");
-  if (category === "saaristo") return saloProviders.filter((item) => archipelagoIds.has(item.id));
+  if (category === "saaristo") return saloProviders.filter((item) => item.areaId === "sarkisalo");
   if (category === "kylat") return [];
   return saloProviders.filter((item) => item.category === "tourism");
 }
@@ -147,7 +138,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
         ) : providers.length ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {providers.map((provider) => (
-              <Link key={provider.id} href={`/${locale}/salo/${providerDetailCategory(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
+              <Link key={provider.id} href={`/${locale}/salo/${getSaloProviderDetailCategory(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
                 <div className="relative aspect-[16/10] bg-brand-100">
                   {categoryImage(category) ? <Image src={categoryImage(category)!} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" unoptimized className="object-cover transition duration-700 group-hover:scale-105" /> : <div className="absolute inset-0 flex flex-col items-center justify-center bg-brand-50 px-6 text-center text-brand-700"><Coffee className="h-8 w-8" /><p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Ruokakuva lisätään käyttöoikeuden vahvistamisen jälkeen" : locale === "es" ? "La foto gastronómica se añadirá cuando se confirmen los derechos de uso" : "A food photo will be added once usage rights are confirmed"}</p></div>}
                 </div>
