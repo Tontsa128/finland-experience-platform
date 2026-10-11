@@ -9,6 +9,7 @@ import {
 } from "@/lib/public-content";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getSaloProviderDetailCategory, saloProviders } from "@/lib/salo";
+import { mathildedalData, slugifyMathildedal } from "@/lib/mathildedal";
 
 export const revalidate = 3600;
 
@@ -82,6 +83,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ]);
 
     const dynamicEntries: MetadataRoute.Sitemap = [
+      ...Object.entries(mathildedalData).flatMap(([category, items]) =>
+        items.flatMap((item) => locales.map((locale) => ({
+          url: siteUrl + "/" + locale + "/mathildedal/" + category + "/" + slugifyMathildedal(item.name),
+          lastModified: new Date(),
+          changeFrequency: "weekly" as const,
+          priority: 0.6,
+        }))),
+      ),
+
       ...saloProviders.flatMap((provider) => locales.map((locale) => ({
         url: siteUrl + "/" + locale + "/salo/" + getSaloProviderDetailCategory(provider) + "/" + provider.id,
         lastModified: new Date(),
