@@ -30,7 +30,7 @@ const copy: Record<Locale, Record<string, Copy>> = {
   },
 };
 
-const data = mathildedalData;
+const data: Record<string, (typeof mathildedalData)["majoitus"]> = mathildedalData;
 const icons = { majoitus: BedDouble, ruoka: Coffee, aktiviteetit: Compass, elamykset: Flame };
 const sectionLabels: Record<Locale, Record<string, string>> = {
   fi: { majoitus: "Majoitus", ruoka: "Ruoka ja juoma", aktiviteetit: "Aktiviteetit", elamykset: "Elämykset" },
