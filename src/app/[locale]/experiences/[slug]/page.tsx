@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { getLocalized, experiences as fallbackExperiences } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: getLocalized(experience.name, locale),
     description: getLocalized(experience.description, locale),
     path: "experiences/" + experience.slug,
-    image: experience.images[0],
+    image: experience.images?.[0] || undefined,
   });
 }
 
@@ -59,7 +59,16 @@ export default async function ExperienceDetail({ params }: { params: Promise<{ l
         url: siteUrl + "/" + locale + "/experiences/" + experience.slug,
       }) }} />
       <section className="relative isolate min-h-[64vh] overflow-hidden">
-        {experience.images[0] ? <Image src={experience.images[0]} alt={getLocalized(experience.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
+        {experience.images?.[0] ? (
+          <Image src={experience.images[0]} alt={getLocalized(experience.name, locale)} fill priority sizes="100vw" className="object-cover" />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-800 via-brand-950 to-brand-950 px-6 text-center">
+            <MapPin className="h-12 w-12 text-gold-300" />
+            <p className="mt-4 max-w-md text-sm font-semibold text-white/85">
+              {locale === "fi" ? "Kohteen oma kuva lisätään, kun sijainti ja kuvan käyttöoikeus on vahvistettu." : locale === "es" ? "Se añadirá una foto local cuando se verifiquen la ubicación y los derechos de uso." : "A local image will be added once the location and image rights are confirmed."}
+            </p>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
         <div className="container-narrow relative flex min-h-[64vh] items-end py-14 text-white sm:py-20">
           <div className="max-w-4xl">
