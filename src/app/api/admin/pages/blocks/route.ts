@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
-import { isSafeUrlOrPath } from "@/lib/utils";
 import { sanitizeImageUrl } from "@/lib/media-safety";
 
 export const dynamic = "force-dynamic";
