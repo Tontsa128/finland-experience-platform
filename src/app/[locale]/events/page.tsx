@@ -30,7 +30,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function EventsPage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = (await params).locale as Locale;
-  const today = new Date().toISOString().slice(0, 10);
+  const todayParts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Helsinki",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const today = `${todayParts.find((part) => part.type === "year")?.value}-${todayParts.find((part) => part.type === "month")?.value}-${todayParts.find((part) => part.type === "day")?.value}`;
   const verifiedEventIds = new Set(["pumpkin", "visit-valo", "ghost-museum", "ghost-museum-november", "mathildedal-christmas-1", "mathildedal-christmas-2"]);
   const events = saloEvents
     .filter((event) => verifiedEventIds.has(event.id) && (event.end || event.start) >= today)
