@@ -51,17 +51,6 @@ const gallery = [
     source: "https://commons.wikimedia.org/wiki/File:L%C3%B6yly_Sauna,_Helsinki_(2022).jpg",
   },
   {
-    image: photoLibrary.saunaBoat,
-    title: { fi: "Saunalautta", es: "Sauna flotante", en: "Floating sauna" },
-    text: {
-      fi: "Sauna ja vesi kohtaavat saunalautassa – suomalainen yhdistelmä parhaimmillaan.",
-      es: "La sauna y el agua se unen en una sauna flotante.",
-      en: "Sauna and water meet in a floating sauna.",
-    },
-    credit: "Santeri Viinamäki",
-    source: "https://commons.wikimedia.org/wiki/File:Sauna_boat_20180802.jpg",
-  },
-  {
     image: photoLibrary.saunaBucketVasta,
     title: { fi: "Kiulu, kauha ja vihta", es: "Cubo, cucharón y vihta", en: "Bucket, ladle & vihta" },
     text: {
@@ -93,17 +82,6 @@ const gallery = [
     },
     credit: "Visa580",
     source: "https://commons.wikimedia.org/wiki/File:Rajaportti_sauna1.jpg",
-  },
-  {
-    image: photoLibrary.herrankukkaroSauna,
-    title: { fi: "Sauna saaristossa", es: "Sauna en el archipiélago", en: "Sauna in the archipelago" },
-    text: {
-      fi: "Herrankukkaron saaristoympäristössä sauna, meri ja paikallinen tunnelma kohtaavat.",
-      es: "En Herrankukkaro, sauna, mar y archipiélago forman una experiencia.",
-      en: "At Herrankukkaro, sauna, sea and archipelago become one experience.",
-    },
-    credit: "Herrankukkaro",
-    source: "https://www.herrankukkaro.fi/kokous/saunat-ja-kylvyt",
   },
 ];
 
@@ -203,7 +181,7 @@ const copy = {
       ["Sauna-spa", "Los spas añaden piscinas, tratamientos y restaurantes, manteniendo la sauna en el centro."],
     ],
     galleryTitle: "Finlandia en imágenes",
-    galleryIntro: "Saunas de humo, cabañas, saunas urbanas, saunas flotantes y vihta. Siempre que es posible usamos imágenes con licencia abierta o imágenes de socios con su fuente indicada.",
+    galleryIntro: "Saunas de humo, cabañas, saunas urbanas y vihta. Usamos imágenes con licencia abierta y omitimos fotos de socios hasta confirmar los derechos de reutilización.",
     ctaTitle: "Encuentra un lugar donde la sauna forme parte del viaje.",
     ctaText: "Descubre cabañas, alojamientos, archipiélago y experiencias. Las reservas y pagos se realizan siempre directamente con el proveedor.",
     cta: "Encontrar alojamiento con sauna",
@@ -436,11 +414,11 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
               photoLibrary.saunaCottage,
               photoLibrary.saunaWhisking,
               photoLibrary.saunaBoat,
-              photoLibrary.herrankukkaroSauna,
+              photoLibrary.teijoNationalPark,
             ];
             return (
               <article key={title} className="group relative min-h-[330px] overflow-hidden rounded-[2rem] shadow-soft">
-                <Image src={wellnessImages[index]} alt={title} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                <Image src={wellnessImages[index]} alt="" fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover transition duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-950/95 via-brand-950/60 to-brand-950/15" />
                 <div className="relative z-10 flex min-h-[330px] flex-col justify-end p-7 text-white">
                   <Icon className="h-8 w-8 text-gold-300" />
@@ -537,7 +515,7 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
             </div>
             <div className="overflow-hidden rounded-[2rem] bg-brand-950 shadow-card">
               <div className="relative aspect-[4/3]">
-                <Image src={photoLibrary.herrankukkaroSauna} alt={x.ctaTitle} fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" />
+                <Image src={photoLibrary.saunaBoat} alt={locale === "fi" ? "Saunalautta suomalaisessa saaristossa" : locale === "es" ? "Sauna flotante en el archipiélago finlandés" : "Floating sauna in the Finnish archipelago"} fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" />
               </div>
             </div>
           </div>
