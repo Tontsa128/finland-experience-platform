@@ -61,7 +61,6 @@ const copy = {
 
 type Category = keyof typeof copy.fi.categories;
 const validCategories = Object.keys(copy.fi.categories) as Category[];
-const archipelagoIds = new Set(["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "sarkisalo-fishing", "chill-out-fishing", "villa-meri-sarkisalo"]);
 function categoryImage(category: Category): string | null {
   if (category === "majoitus") return photoLibrary.mathildedalVillage;
   if (category === "ruoka") return null;
