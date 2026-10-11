@@ -151,7 +151,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
             <p className="text-xs font-bold uppercase tracking-[.18em] text-terracotta">Mathildedal</p>
             <h2 className="mt-3 font-display text-3xl font-bold text-brand-950">{copy.mathildedalTitle}</h2>
             <p className="mt-4 leading-7 text-slate-600">{copy.mathildedalText}</p>
-            <a href="https://visitmathildedal.fi/fi/tapahtumat" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.mathildedalCta}<ArrowRight className="h-4 w-4" /></a>
+            <a href="https://mathildedal.fi/tapahtumat/" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.mathildedalCta}<ArrowRight className="h-4 w-4" /></a>
           </div>
           <div className="rounded-[2rem] bg-white p-8 shadow-soft">
             <p className="text-xs font-bold uppercase tracking-[.18em] text-terracotta">Naantali</p>
