@@ -30,7 +30,7 @@ export const destinations: Destination[] = [
     featured: true,
     coordinates: { lat: 60.390, lng: 23.130 },
     tags: ["mathildedal", "teijo", "summer", "sauna", "slow-travel"],
-    accommodationIds: ["c1", "c2", "c3", "c4", "c5", "c6"],
+    accommodationIds: ["c1", "c2", "c3", "c4", "c5"],
     activities: ["Teijo National Park hiking", "kayaking & SUP on Lake Matildanjärvi", "cycling & mountain biking", "summer theatre", "local cafés, brewery & boutiques", "smoke sauna and lake swimming"]
   },
   {
@@ -48,12 +48,12 @@ export const destinations: Destination[] = [
       en: "Old town, archipelago, Moominworld and long summer evenings"
     },
     region: "Southwest Finland",
-    images: [naantaliSummer, naantaliSummer],
-    priceFrom: 69,
+    images: [naantaliSummer],
+    priceFrom: 0,
     featured: true,
     coordinates: { lat: 60.467, lng: 22.025 },
     tags: ["naantali", "archipelago", "midsummer", "family"],
-    accommodationIds: ["c7", "c8", "c9"],
+    accommodationIds: ["c7"],
     activities: ["Moominworld", "Viking Island day trip", "kayaking & boating", "old town walks", "cycling", "beach and harbour evenings"]
   },
   {
@@ -71,12 +71,12 @@ export const destinations: Destination[] = [
       en: "Sea, red granite, cycling and island calm"
     },
     region: "Åland",
-    images: [alandSea, alandSea],
-    priceFrom: 180,
+    images: [alandSea],
+    priceFrom: 0,
     featured: true,
     coordinates: { lat: 60.178, lng: 19.915 },
     tags: ["aland", "islands", "cycling", "sea", "summer"],
-    accommodationIds: ["c10", "c11", "c12"],
+    accommodationIds: ["c11"],
     activities: ["island cycling", "kayaking", "sea swimming", "Kastelholm & Bomarsund", "local food", "sunset by the harbour"]
   },
   {
@@ -93,13 +93,12 @@ export const destinations: Destination[] = [
       es: "Playas, mar y verano en la costa oeste",
       en: "Beaches, sea and western-coast summer"
     },
-    region: "Western Finland",
+    region: "Uusimaa · Southern Finland",
     images: [photoLibrary.hankoAerial],
-    priceFrom: 120,
+    priceFrom: 0,
     featured: false,
     coordinates: { lat: 59.823, lng: 22.969 },
     tags: ["hanko", "beach", "cycling", "sea"],
-    accommodationIds: ["c13"],
     activities: ["beaches", "cycling", "sailing", "nature trails", "harbour cafés", "day trips along the coast"]
   },
   {
@@ -160,12 +159,11 @@ export const destinations: Destination[] = [
       en: "Archipelago, history and quiet nature"
     },
     region: "Southeast Finland",
-    images: [photoLibrary.hamina, photoLibrary.porvoo],
-    priceFrom: 100,
+    images: [photoLibrary.hamina],
+    priceFrom: 0,
     featured: false,
     coordinates: { lat: 60.466, lng: 26.945 },
     tags: ["southeast", "coast", "nature", "history"],
-    accommodationIds: ["c14"],
     activities: ["Kotka seaside parks", "Hamina old town", "Loviisa day trip", "kayaking", "cycling", "local markets and cafés"]
   },
   {
@@ -183,8 +181,8 @@ export const destinations: Destination[] = [
       en: "Aura River, history and gateway to the islands"
     },
     region: "Southwest Finland",
-    images: [archipelagoRoad, archipelagoRoad],
-    priceFrom: 110,
+    images: [archipelagoRoad],
+    priceFrom: 0,
     featured: false,
     coordinates: { lat: 60.452, lng: 22.267 },
     tags: ["turku", "culture", "archipelago", "summer"],
@@ -202,7 +200,7 @@ export const cabins: Cabin[] = [
     },
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
-    pricePerNight: 190,
+    pricePerNight: 0,
     images: [summerMathildedal],
     features: ["private sauna", "fireplace", "kitchen", "terrace", "beach", "bicycles"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.166, lng: 22.954 }, type: "villa",
@@ -218,7 +216,7 @@ export const cabins: Cabin[] = [
     },
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
-    pricePerNight: 180,
+    pricePerNight: 0,
     images: [mathildedalHouse, photoLibrary.mathildedalHarbour],
     features: ["historic house", "breakfast", "garden", "design", "village centre"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.956 }, type: "hotel",
@@ -234,7 +232,7 @@ export const cabins: Cabin[] = [
     },
     location: "Mathildedal harbour",
     region: "Southwest Finland",
-    pricePerNight: 179,
+    pricePerNight: 0,
     images: [photoLibrary.mathildedalHarbour, photoLibrary.mathildedalVillage],
     features: ["harbour", "breakfast", "sea view", "restaurant", "wifi"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.960 }, type: "hotel",
@@ -250,11 +248,11 @@ export const cabins: Cabin[] = [
     },
     location: "Teijo National Park, Salo",
     region: "Southwest Finland",
-    pricePerNight: 100,
+    pricePerNight: 0,
     images: [finnishSummerLake, summerMathildedal],
     features: ["national park", "lake", "sauna", "hiking", "fishing"],
     maxGuests: 4, bedrooms: 2, coordinates: { lat: 60.190, lng: 23.020 }, type: "cabin",
-    bookingUrl: "https://naturaviva.fi/fi_FI/tutustu-palveluihin/aktiviteetit/saunat/matildanjarven-kampat", provider: "Natura Viva / Matildanjärvi cabins",
+    bookingUrl: "https://naturaviva.fi/fi_FI/matildanjarven-kampat", provider: "Natura Viva / Matildanjärvi cabins",
     priceNote: { fi: "Ajantasainen hinta tarkistetaan varauspalvelusta.", es: "Consulta el precio actual en el sistema de reservas.", en: "Check the current rate in the booking system." }
   },
   {
@@ -280,9 +278,9 @@ export const cabins: Cabin[] = [
       es: "Cabañas en los árboles y tiendas glamping en medio del bosque. Consulta los precios y la disponibilidad actuales con el proveedor.",
       en: "Tree houses and glamping tents in the forest. Check current rates and availability directly with the provider."
     },
-    location: "Kimitoön, near Salo region",
+    location: "Kemiönsaari, Southwest Finland",
     region: "Southwest Finland",
-    pricePerNight: 70,
+    pricePerNight: 0,
     images: [],
     features: ["glamping", "forest", "smoke sauna", "villas", "slow travel"],
     maxGuests: 6, bedrooms: 1, coordinates: { lat: 60.160, lng: 22.740 }, type: "glamping",
@@ -298,7 +296,7 @@ export const cabins: Cabin[] = [
     },
     location: "Naantali",
     region: "Southwest Finland",
-    pricePerNight: 69,
+    pricePerNight: 0,
     images: [naantaliSummer],
     features: ["sea", "cabin", "tent", "sauna", "beach"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.462, lng: 22.015 }, type: "cabin",
@@ -314,7 +312,7 @@ export const cabins: Cabin[] = [
     },
     location: "Geta, Åland",
     region: "Åland",
-    pricePerNight: 200,
+    pricePerNight: 0,
     images: [],
     features: ["sea cliffs", "sauna", "restaurant", "pool", "nature"],
     maxGuests: 4, bedrooms: 2, coordinates: { lat: 60.380, lng: 19.820 }, type: "villa",
