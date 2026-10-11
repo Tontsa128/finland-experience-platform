@@ -22,6 +22,7 @@ import {
   Sparkles,
   Waves,
   TreePine,
+  MapPin,
 } from "lucide-react";
 
 const fallbackSummerImage = photoLibrary.turkuArchipelago;
@@ -141,14 +142,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 href={`/${locale}/${destination.slug === "salo-mathildedal" ? "salo" : destination.slug}`}
                 className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
               >
-                <Image
-                  src={destination.slug === "salo-mathildedal" ? photoLibrary.mathildedalHarbour : destination.images?.[0] || fallbackSummerImage}
-                  alt={destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Salon seutu" : locale === "es" ? "Región de Salo" : "Salo region") : destination.name[locale as keyof typeof destination.name] || destination.name.en}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                {destination.slug === "salo-mathildedal" || destination.images?.[0] ? (
+                  <>
+                    <Image
+                      src={destination.slug === "salo-mathildedal" ? photoLibrary.mathildedalHarbour : destination.images[0]}
+                      alt={destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Mathildedalin satama Salon seudulla" : locale === "es" ? "Puerto de Mathildedal en la región de Salo" : "Mathildedal harbour in the Salo region") : destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                  </>
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-700 via-brand-900 to-brand-950 p-6 text-center">
+                    <MapPin className="h-9 w-9 text-gold-300" />
+                    <p className="mt-3 max-w-[14rem] text-xs font-semibold leading-5 text-white/85">
+                      {locale === "fi" ? "Kohdekuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "La imagen del destino se añadirá cuando se confirmen los derechos de uso" : "A destination image will be added once usage rights are confirmed"}
+                    </p>
+                  </div>
+                )}
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold">
