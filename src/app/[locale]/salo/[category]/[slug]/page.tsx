@@ -14,6 +14,22 @@ const labels = {
   en: { region: "Salo region · Southwest Finland", back: "Back to category", provider: "Provider website", direct: "Bookings, payments and contracts are handled directly by the provider.", location: "Location", locationUnknown: "A precise street address and coordinates have not been verified for this guide.", price: "Price", priceNote: "Prices and availability are not shown without current verification." }
 } as const;
 type Category = "majoitus" | "ruoka" | "aktiviteetit" | "elamykset" | "saaristo" | "oppaat";
+function providerAreaLabel(areaId: (typeof saloProviders)[number]["areaId"], locale: Locale) {
+  if (!areaId) return locale === "fi" ? "Aluekuva" : locale === "es" ? "Imagen regional" : "Regional context image";
+  const areaNames = {
+    "salo-region": { fi: "Salon seudun aluekuva", es: "Imagen de la región de Salo", en: "Salo region context image" },
+    "salo-center": { fi: "Salon keskustan aluekuva", es: "Imagen del centro de Salo", en: "Salo town centre context image" },
+    mathildedal: { fi: "Mathildedalin satama Salon seudulla", es: "Puerto de Mathildedal en la región de Salo", en: "Mathildedal harbour in the Salo region" },
+    teijo: { fi: "Teijon kansallispuiston maisema", es: "Paisaje del Parque Nacional de Teijo", en: "Teijo National Park landscape" },
+    sarkisalo: { fi: "Särkisalon saaristomaisema", es: "Paisaje del archipiélago de Särkisalo", en: "Särkisalo archipelago landscape" },
+    pernio: { fi: "Perniön aluekuva", es: "Imagen de la zona de Perniö", en: "Perniö area context image" },
+    "halikko-wiurila": { fi: "Halikko-Wiurilan aluekuva", es: "Imagen de la zona de Halikko y Wiurila", en: "Halikko and Wiurila area context image" },
+    "jarvi-salo": { fi: "Järvi-Salon aluekuva", es: "Imagen de la zona de Järvi-Salo", en: "Järvi-Salo area context image" },
+    kemionsaari: { fi: "Kemiönsaaren aluekuva", es: "Imagen de la zona de Kemiönsaari", en: "Kemiönsaari area context image" },
+  } as const;
+  return areaNames[areaId][locale];
+}
+
 const categoryTitle: Record<Locale, Record<Category, string>> = {
   fi: { majoitus: "Majoitus", ruoka: "Ruoka ja ravintolat", aktiviteetit: "Aktiviteetit", elamykset: "Tekemistä ja elämyksiä", saaristo: "Saaristo ja merenranta", oppaat: "Matkailuoppaat" },
   es: { majoitus: "Alojamiento", ruoka: "Gastronomía y restaurantes", aktiviteetit: "Actividades", elamykset: "Experiencias", saaristo: "Archipiélago y costa", oppaat: "Guías turísticas" },
@@ -24,13 +40,13 @@ function providerBelongsToCategory(provider: (typeof saloProviders)[number], cat
   const primary = getSaloProviderDetailCategory(provider);
   return primary === category || (category === "aktiviteetit" && provider.category === "experience");
 }
-function regionalImage(category: Category) {
-  if (category === "majoitus") return photoLibrary.mathildedalVillage;
-  if (category === "ruoka") return photoLibrary.mathildedalHarbour;
-  if (category === "aktiviteetit") return photoLibrary.teijoNationalPark;
-  if (category === "saaristo") return photoLibrary.sarkisalo;
-  if (category === "oppaat") return photoLibrary.saloVeturitalli;
-  return photoLibrary.teijoNationalPark;
+function regionalImage(provider: (typeof saloProviders)[number]): string | null {
+  if (provider.areaId === "mathildedal") return photoLibrary.mathildedalHarbour;
+  if (provider.areaId === "teijo") return photoLibrary.teijoNationalPark;
+  if (provider.areaId === "sarkisalo") return photoLibrary.sarkisalo;
+  if (provider.areaId === "salo-center" || provider.areaId === "salo-region") return photoLibrary.saloVeturitalli;
+  // Do not reuse a photo from another Salo locality when no suitable licensed image is known.
+  return null;
 }
 
 
@@ -40,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const provider = saloProviders.find((item) => item.id === slug);
   if (!provider || !["majoitus", "ruoka", "aktiviteetit", "elamykset", "saaristo", "oppaat"].includes(category) || !providerBelongsToCategory(provider, category as Category)) notFound();
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
-  return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: regionalImage(category as Category) });
+  return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: regionalImage(provider) || undefined });
 }
 
 export default async function SaloProviderPage({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }) {
@@ -50,14 +66,14 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   const t = labels[locale];
   const categoryPath = category as Category;
-  const image = regionalImage(categoryPath);
+  const image = regionalImage(provider);
   const providerArea = getSaloProviderArea(provider);
   const verifiedArea = providerArea ? providerArea.name[locale] + " · " + providerArea.municipality[locale] : null;
   const mapSearchUrl = providerArea ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(provider.name + ", " + providerArea.mapQuery) : null;
   return (
     <main className="min-h-screen bg-white text-brand-950">
       <section className="relative isolate min-h-[55svh] overflow-hidden bg-brand-950 text-white">
-        <Image src={image} alt={locale === "fi" ? "Aluekuva Salon seudulta" : locale === "es" ? "Imagen de contexto de la región de Salo" : "Regional context image from Salo"} fill priority sizes="100vw" unoptimized className="object-cover opacity-50" />
+        {image ? <Image src={image} alt={providerAreaLabel(provider.areaId, locale)} fill priority sizes="100vw" unoptimized className="object-cover opacity-50" /> : <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-800 via-brand-950 to-brand-950 px-6 text-center"><MapPin className="h-12 w-12 text-gold-300" /><p className="mt-4 max-w-sm text-sm font-semibold text-white/85">{locale === "fi" ? "Paikallinen kohdekuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una imagen local cuando se confirmen los derechos de uso" : "A local destination image will be added once usage rights are confirmed"}</p></div>}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/60 to-brand-950/10" />
         <div className="container-narrow relative flex min-h-[55svh] items-end py-14 sm:py-20">
           <div className="max-w-4xl">
