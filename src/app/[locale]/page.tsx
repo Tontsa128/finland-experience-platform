@@ -82,12 +82,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         .slice(0, 3) as typeof experiences
     : catalogExperiences.slice(0, 3);
 
-  const summerImages = [
-    featuredDestinations[1]?.images?.[0] || fallbackSummerImage,
-    featuredDestinations[0]?.images?.[1] || fallbackSummerImage,
-    featuredDestinations[2]?.images?.[0] || fallbackSummerImage,
-    featuredCabins[0]?.images?.[0] || fallbackSummerImage,
-  ];
+
 
   const coastalHighlights = ["salo-mathildedal", "naantali", "turku", "hanko", "aland"]
     .map((slug) => catalogDestinations.find((item) => item.slug === slug))
@@ -195,12 +190,38 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
       <section className="relative overflow-hidden bg-brand-950 py-20 text-white sm:py-28">
-        <div className="container-narrow grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{sh("whyEyebrow")}</p><h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-6xl">{sh("whyTitle")}</h2><p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">{sh("whyText")}</p></div><div className="overflow-hidden rounded-[2rem] shadow-2xl"><Image src={summerImages[2]} alt={sh("whyTitle")} width={1200} height={900} className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105" /></div></div>
+        <div className="container-narrow grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{sh("whyEyebrow")}</p><h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-6xl">{sh("whyTitle")}</h2><p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">{sh("whyText")}</p></div><div className="overflow-hidden rounded-[2rem] shadow-2xl"><Image src={photoLibrary.teijoNationalPark} alt={locale === "fi" ? "Teijon kansallispuiston suomaisema" : locale === "es" ? "Paisaje del Parque Nacional de Teijo" : "Wetland landscape in Teijo National Park"} width={1200} height={900} className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105" /></div></div>
       </section>
-      <section className="bg-white py-20 sm:py-28"><div className="container-narrow"><div className="grid gap-6 lg:grid-cols-3">
-        {[["smoke","sauna",`/${locale}/experiences`],["stay","stays",`/${locale}/accommodations`],["taste","food",`/${locale}/experiences`]].map(([key],index)=>{const images=[summerImages[1],summerImages[3],summerImages[0]];return <Link key={key} href={key==="smoke"?`/${locale}/experiences`:key==="stay"?`/${locale}/accommodations`:`/${locale}/experiences`} className="group relative min-h-[470px] overflow-hidden rounded-[2rem] bg-brand-950 text-white"><Image src={images[index]} alt={sh(key)} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-7"><p className="text-xs font-bold uppercase tracking-[.18em] text-gold-300">{sh("experienceEyebrow")}</p><h3 className="mt-3 font-display text-3xl font-bold">{sh(key)}</h3><p className="mt-3 text-sm leading-6 text-white/80">{sh(`${key}Desc`)}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-gold-300">{tc("learnMore")} <ArrowRight className="h-4 w-4" /></span></div></Link>})}
-      </div></div></section>
-      <section className="bg-brand-50 py-20 sm:py-28"><div className="container-narrow grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr]"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("summerEyebrow")}</p><h2 className="mt-4 section-title">{sh("summerTitle")}</h2><p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">{sh("summerText")}</p><Link href={`/${locale}/experiences`} className="btn-primary mt-7">{sh("summerCta")} <ArrowRight className="h-4 w-4"/></Link></div><div className="grid grid-cols-2 gap-3"><Image src={summerImages[0]} alt={sh("summerTitle")} width={900} height={1100} className="aspect-[3/4] rounded-[1.75rem] object-cover"/><Image src={summerImages[1]} alt={sh("summerTitle")} width={900} height={1100} className="mt-10 aspect-[3/4] rounded-[1.75rem] object-cover"/></div></div></section>
+      <section className="bg-white py-20 sm:py-28">
+        <div className="container-narrow">
+          <div className="grid gap-6 lg:grid-cols-3">
+            {[
+              { key: "smoke", path: `/${locale}/sauna`, image: photoLibrary.saunaTraditionalSmoke, alt: { fi: "Perinteinen suomalainen savusauna", es: "Sauna de humo tradicional finlandesa", en: "Traditional Finnish smoke sauna" } },
+              { key: "stay", path: `/${locale}/accommodations`, image: photoLibrary.saunaCottage, alt: { fi: "Suomalainen kesämökki järven rannalla", es: "Cabaña finlandesa junto al lago", en: "Finnish summer cottage by a lake" } },
+              { key: "taste", path: `/${locale}/experiences`, image: null, alt: { fi: "Ruokakuva lisätään, kun käyttöoikeus vahvistetaan", es: "La imagen gastronómica se añadirá tras confirmar los derechos", en: "A food image will be added after image rights are confirmed" } },
+            ].map((item) => (
+              <Link key={item.key} href={item.path} className="group relative min-h-[470px] overflow-hidden rounded-[2rem] bg-brand-950 text-white">
+                {item.image ? (
+                  <Image src={item.image} alt={item.alt[locale as "fi" | "es" | "en"]} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-800 via-brand-950 to-brand-950 px-6 text-center">
+                    <MapPin className="h-10 w-10 text-gold-300" />
+                    <p className="mt-4 max-w-xs text-sm font-semibold text-white/85">{item.alt[locale as "fi" | "es" | "en"]}</p>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-7">
+                  <p className="text-xs font-bold uppercase tracking-[.18em] text-gold-300">{sh("experienceEyebrow")}</p>
+                  <h3 className="mt-3 font-display text-3xl font-bold">{sh(item.key)}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/80">{sh(`${item.key}Desc`)}</p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-gold-300">{tc("learnMore")} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="bg-brand-50 py-20 sm:py-28"><div className="container-narrow grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr]"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("summerEyebrow")}</p><h2 className="mt-4 section-title">{sh("summerTitle")}</h2><p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">{sh("summerText")}</p><Link href={`/${locale}/experiences`} className="btn-primary mt-7">{sh("summerCta")} <ArrowRight className="h-4 w-4"/></Link></div><div className="grid grid-cols-2 gap-3"><Image src={photoLibrary.mathildedalHarbour} alt={locale === "fi" ? "Mathildedalin satama Salon seudulla" : locale === "es" ? "Puerto de Mathildedal en la región de Salo" : "Mathildedal harbour in the Salo region"} width={900} height={1100} className="aspect-[3/4] rounded-[1.75rem] object-cover"/><Image src={photoLibrary.saunaCottage} alt={locale === "fi" ? "Suomalainen kesämökki järven rannalla" : locale === "es" ? "Cabaña finlandesa junto al lago" : "Finnish summer cottage by a lake"} width={900} height={1100} className="mt-10 aspect-[3/4] rounded-[1.75rem] object-cover"/></div></div></section>
       <section className="bg-white py-20 sm:py-28"><div className="container-narrow"><div className="mb-10 flex items-end justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("destinationsEyebrow")}</p><h2 className="mt-3 section-title">{t("featuredDestinations")}</h2></div><Link href={`/${locale}/destinations`} className="btn-secondary hidden sm:inline-flex">{tc("viewAll")}</Link></div><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{featuredDestinations.map((d,i)=><DestinationCard key={d.id} destination={d} index={i}/>)}</div></div></section>
       <section className="bg-slate-50 py-20 sm:py-28"><div className="container-narrow"><div className="mb-10 flex items-end justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("staysEyebrow")}</p><h2 className="mt-3 section-title">{t("uniqueStays")}</h2></div><Link href={`/${locale}/accommodations`} className="btn-secondary hidden sm:inline-flex">{tc("viewAll")}</Link></div><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{featuredCabins.map((c,i)=><CabinCard key={c.id} cabin={c} index={i}/>)}</div></div></section>
       <section className="bg-white py-20 sm:py-28"><div className="container-narrow"><div className="mb-10"><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("experiencesEyebrow")}</p><h2 className="mt-3 section-title">{t("popularExperiences")}</h2></div><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{featuredExperiences.map((e,i)=><ExperienceCard key={e.id} experience={e} index={i}/>)}</div></div></section>
@@ -219,7 +240,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     })),
   }}
 /></div></div></div></section>
-      <section className="relative isolate overflow-hidden bg-brand-950 py-24 text-center text-white sm:py-32"><Image src={summerImages[0]} alt="" fill sizes="100vw" className="absolute inset-0 -z-20 object-cover opacity-35" /><div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-950/75 via-brand-950/80 to-brand-950" /><div className="container-narrow"><p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{sh("finalEyebrow")}</p><h2 className="mx-auto mt-4 max-w-4xl font-display text-5xl font-bold leading-[.98] tracking-[-.03em] sm:text-7xl">{sh("finalTitle")}</h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/75">{sh("finalText")}</p><Link href={`/${locale}/destinations`} className="btn-gold mt-8 px-8 py-4 shadow-2xl">{sh("finalCta")} <ArrowRight className="h-4 w-4"/></Link></div></section>
+      <section className="relative isolate overflow-hidden bg-brand-950 py-24 text-center text-white sm:py-32"><Image src={photoLibrary.mathildedalHarbour} alt="" fill sizes="100vw" className="absolute inset-0 -z-20 object-cover opacity-35" /><div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-950/75 via-brand-950/80 to-brand-950" /><div className="container-narrow"><p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{sh("finalEyebrow")}</p><h2 className="mx-auto mt-4 max-w-4xl font-display text-5xl font-bold leading-[.98] tracking-[-.03em] sm:text-7xl">{sh("finalTitle")}</h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/75">{sh("finalText")}</p><Link href={`/${locale}/destinations`} className="btn-gold mt-8 px-8 py-4 shadow-2xl">{sh("finalCta")} <ArrowRight className="h-4 w-4"/></Link></div></section>
     </>
   );
 }
