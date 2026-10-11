@@ -26,6 +26,9 @@ function providerAreaLabel(areaId: (typeof saloProviders)[number]["areaId"], loc
     "halikko-wiurila": { fi: "Halikko-Wiurilan aluekuva", es: "Imagen de la zona de Halikko y Wiurila", en: "Halikko and Wiurila area context image" },
     "jarvi-salo": { fi: "Järvi-Salon aluekuva", es: "Imagen de la zona de Järvi-Salo", en: "Järvi-Salo area context image" },
     kemionsaari: { fi: "Kemiönsaaren aluekuva", es: "Imagen de la zona de Kemiönsaari", en: "Kemiönsaari area context image" },
+    halikko: { fi: "Halikon aluekuva", es: "Imagen de la zona de Halikko", en: "Halikko area context image" },
+    vaskio: { fi: "Vaskion aluekuva", es: "Imagen de la zona de Vaskio", en: "Vaskio area context image" },
+    suomusjarvi: { fi: "Suomusjärven aluekuva", es: "Imagen de la zona de Suomusjärvi", en: "Suomusjärvi area context image" },
   } as const;
   return areaNames[areaId][locale];
 }
