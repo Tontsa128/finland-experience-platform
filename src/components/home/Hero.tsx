@@ -8,6 +8,7 @@ import { useLocale } from "next-intl";
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
 import { photoLibrary } from "@/lib/photo-library";
+import { isSafeUrlOrPath } from "@/lib/utils";
 
 const slides = [
   {
@@ -128,7 +129,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
-  const cmsSlides = (settings?.homepageSlides || []).filter((item) => item.enabled !== false && item.imageUrl);
+  const cmsSlides = (settings?.homepageSlides || []).filter((item) => item.enabled !== false && item.rightsConfirmed === true && item.imageUrl && isSafeUrlOrPath(item.imageUrl) && (item.imageUrl.startsWith("/") && !item.imageUrl.startsWith("//") || /^https:\/\//i.test(item.imageUrl)));
   const activeSlides = cmsSlides.length
     ? cmsSlides.map((item) => ({ ...item, key: item.id, image: item.imageUrl }))
     : slides.map((item, index) => ({
@@ -155,21 +156,18 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const slide = activeSlides[active];
   const text = cmsSlides.length
     ? slide.copy[locale]
-    : active === 0
-      ? { eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow, title: settings?.heroTitle?.[locale] || copy[locale].summer.title, text: settings?.heroDescription?.[locale] || copy[locale].summer.text, cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta }
-      : copy[locale][slide.key as keyof typeof copy[typeof locale]];
-  const isCmsHero = !cmsSlides.length && active === 0 && Boolean(settings?.heroImageUrl);
+    : copy[locale][slide.key as keyof typeof copy[typeof locale]];
   const toLocalizedHref = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value;
     const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, "");
     return `/${locale}${normalized ? `/${normalized}` : ""}`;
   };
-  const hrefValueResolved = isCmsHero ? settings?.heroCtaUrl || "/destinations" : slide.href;
+  const hrefValueResolved = slide.href;
   const href = toLocalizedHref(hrefValueResolved);
   const isExternal = /^https?:\/\//i.test(href);
-  const secondaryHrefValue = isCmsHero ? settings?.heroSecondaryUrl || "/destinations" : "/destinations";
+  const secondaryHrefValue = "/destinations";
   const secondaryHref = toLocalizedHref(secondaryHrefValue);
-  const credit = isCmsHero ? "" : slide.credit;
+  const credit = slide.credit;
 
   return (
     <section className="relative overflow-hidden bg-white text-white">
@@ -180,12 +178,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           aria-hidden={index !== active}
         >
           <Image
-            src={cmsSlides.length ? activeSlides[index].imageUrl : index === 0 && settings?.heroImageUrl ? settings.heroImageUrl : item.image}
+            src={cmsSlides.length ? activeSlides[index].imageUrl : item.image}
             alt=""
             fill
             priority={index === 0}
             sizes="100vw"
-            unoptimized={Boolean(cmsSlides.length || (index === 0 && settings?.heroImageUrl))}
+            unoptimized={Boolean(cmsSlides.length)}
             className="object-cover"
           />
         </div>
@@ -238,7 +236,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               </Link>
             )}
             <Link href={secondaryHref} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-7 py-4 text-sm font-bold text-brand-950 hover:bg-brand-100 sm:w-auto">
-              {settings?.heroSecondaryLabel?.[locale] || (locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas")} <ArrowRight className="h-4 w-4" />
+              {locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas"} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
