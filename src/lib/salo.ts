@@ -714,7 +714,8 @@ export function getSaloProviderArea(provider: SaloProvider): SaloArea | null {
 export type SaloDetailCategory = "majoitus" | "ruoka" | "aktiviteetit" | "elamykset" | "saaristo" | "oppaat";
 
 export function getSaloProviderDetailCategory(provider: SaloProvider): SaloDetailCategory {
-  if (provider.areaId === "sarkisalo") return "saaristo";
+  // A provider has one canonical detail URL based on its primary service type.
+  // Area pages (such as Särkisalo) may link to it without duplicating detail routes.
   if (provider.category === "stay") return "majoitus";
   if (provider.category === "food") return "ruoka";
   if (provider.category === "nature") return "aktiviteetit";
