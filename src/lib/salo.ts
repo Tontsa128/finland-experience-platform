@@ -700,12 +700,7 @@ const saloProviderAreaIds: Partial<Record<string, SaloAreaId>> = {
   "meri-veikko": "sarkisalo",
 };
 
-const unverifiedEventProviderIds = new Set([
-  "improv-30-9", "autumn-market", "visit-valo", "ghost-museum", "ghost-museum-november",
-  "ghost-trail", "kekri", "pumpkin", "father-day-marina", "mathildedal-christmas-1",
-  "mathildedal-christmas-2", "teijo-christmas", "wiurila-christmas", "rikalanmaki-christmas",
-  "mathildedal-reflection", "new-year", "marina-new-year",
-]);
+
 
 // Each provider keeps an explicit parent area; the geographic hierarchy is shared by all category routes.
 export const saloProviders: SaloProvider[] = allSaloProviders
