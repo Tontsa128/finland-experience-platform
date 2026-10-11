@@ -1,7 +1,37 @@
 import type { Locale } from "@/types";
 
+export type SaloAreaId =
+  | "salo-region"
+  | "salo-center"
+  | "mathildedal"
+  | "teijo"
+  | "sarkisalo"
+  | "pernio"
+  | "halikko-wiurila"
+  | "jarvi-salo"
+  | "kemionsaari";
+
+export type SaloAreaType =
+  | "region"
+  | "city-area"
+  | "historic-village"
+  | "national-park"
+  | "archipelago"
+  | "rural-area"
+  | "nearby-region";
+
+export type SaloArea = {
+  id: SaloAreaId;
+  type: SaloAreaType;
+  parentId?: SaloAreaId;
+  name: Record<Locale, string>;
+  municipality: Record<Locale, string>;
+  mapQuery: string;
+};
+
 export type SaloProvider = {
   id: string;
+  areaId?: SaloAreaId;
   category: "tourism" | "stay" | "experience" | "nature" | "food";
   name: string;
   description: Record<Locale, string>;
@@ -571,8 +601,135 @@ const unverifiedEventProviderIds = new Set([
   "mathildedal-reflection", "new-year", "marina-new-year",
 ]);
 
-// Event entries stay in the event dataset and are not published as evergreen provider listings.
-export const saloProviders: SaloProvider[] = allSaloProviders.filter((provider) => !unverifiedEventProviderIds.has(provider.id));
+export const saloAreas: Record<SaloAreaId, SaloArea> = {
+  "salo-region": {
+    id: "salo-region", type: "region",
+    name: { fi: "Salon seutu", es: "Región de Salo", en: "Salo region" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Salo, Southwest Finland, Finland",
+  },
+  "salo-center": {
+    id: "salo-center", type: "city-area", parentId: "salo-region",
+    name: { fi: "Salon keskusta", es: "Centro de Salo", en: "Salo town centre" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Salo Market Square, Salo, Finland",
+  },
+  mathildedal: {
+    id: "mathildedal", type: "historic-village", parentId: "salo-region",
+    name: { fi: "Mathildedal", es: "Mathildedal", en: "Mathildedal" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Mathildedal, Salo, Finland",
+  },
+  teijo: {
+    id: "teijo", type: "national-park", parentId: "salo-region",
+    name: { fi: "Teijo ja Teijon kansallispuisto", es: "Teijo y Parque Nacional de Teijo", en: "Teijo and Teijo National Park" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Teijo National Park, Salo, Finland",
+  },
+  sarkisalo: {
+    id: "sarkisalo", type: "archipelago", parentId: "salo-region",
+    name: { fi: "Särkisalo ja Förby", es: "Särkisalo y Förby", en: "Särkisalo and Förby" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Särkisalo, Salo, Finland",
+  },
+  pernio: {
+    id: "pernio", type: "rural-area", parentId: "salo-region",
+    name: { fi: "Perniö", es: "Perniö", en: "Perniö" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Perniö, Salo, Finland",
+  },
+  "halikko-wiurila": {
+    id: "halikko-wiurila", type: "city-area", parentId: "salo-region",
+    name: { fi: "Halikko ja Wiurila", es: "Halikko y Wiurila", en: "Halikko and Wiurila" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Halikko and Wiurila Manor, Salo, Finland",
+  },
+  "jarvi-salo": {
+    id: "jarvi-salo", type: "rural-area", parentId: "salo-region",
+    name: { fi: "Järvi-Salo", es: "Järvi-Salo", en: "Järvi-Salo" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Järvi-Salo, Salo, Finland",
+  },
+  kemionsaari: {
+    id: "kemionsaari", type: "nearby-region",
+    name: { fi: "Kemiönsaari ja Rosala", es: "Kemiönsaari y Rosala", en: "Kemiönsaari and Rosala" },
+    municipality: { fi: "Kemiönsaari, Varsinais-Suomi", es: "Kemiönsaari, Finlandia suroccidental", en: "Kemiönsaari, Southwest Finland" },
+    mapQuery: "Rosala, Kemiönsaari, Finland",
+  },
+};
+
+const saloProviderAreaIds: Partial<Record<string, SaloAreaId>> = {
+  "visit-salo": "salo-region",
+  "visit-mathildedal": "mathildedal",
+  "hotel-mathildedal": "mathildedal",
+  "mathildan-marina": "mathildedal",
+  "matilda-villas": "mathildedal",
+  "matri-house": "mathildedal",
+  "teijo-action-park": "teijo",
+  "chill-out-fishing": "sarkisalo",
+  "salon-oppaat": "salo-region",
+  "teijo-national-park": "teijo",
+  "meri-teijo-golf": "teijo",
+  "mathildedal-brewery": "mathildedal",
+  "saaristomokit-sarkisalo": "sarkisalo",
+  "matildanjarven-kampat": "teijo",
+  "forby-marina": "sarkisalo",
+  "cafe-vinssi": "sarkisalo",
+  "saaristoravintola-nixor": "sarkisalo",
+  "villa-meri-sarkisalo": "sarkisalo",
+  "krailan-sabrina": "sarkisalo",
+  "tiiranta": "sarkisalo",
+  "vuorovetten-jaatelo": "sarkisalo",
+  "niksaaren-sauna": "sarkisalo",
+  "sarkisalo-fishing": "sarkisalo",
+  "forby-rantajooga": "sarkisalo",
+  "vuohensaari-camping": "salo-center",
+  "teijo-tentsile": "teijo",
+  "kattohuone-mathildedal": "mathildedal",
+  "villa-signell": "sarkisalo",
+  "finnholm-strandbo": "sarkisalo",
+  "aava-adventures": "sarkisalo",
+  "katiskanmaeki": "sarkisalo",
+  "lonnviken": "sarkisalo",
+  "meri-ruukin-lomakyla": "mathildedal",
+  "leipyolin-tila": "pernio",
+  "villa-nennebo": "sarkisalo",
+  "alaspaan-maatila": "pernio",
+  "teijon-kammari": "teijo",
+  "kruuvan-mokit": "sarkisalo",
+  "meri-veikko": "sarkisalo",
+};
+
+const unverifiedEventProviderIds = new Set([
+  "improv-30-9", "autumn-market", "visit-valo", "ghost-museum", "ghost-museum-november",
+  "ghost-trail", "kekri", "pumpkin", "father-day-marina", "mathildedal-christmas-1",
+  "mathildedal-christmas-2", "teijo-christmas", "wiurila-christmas", "rikalanmaki-christmas",
+  "mathildedal-reflection", "new-year", "marina-new-year",
+]);
+
+// Each provider keeps an explicit parent area; the geographic hierarchy is shared by all category routes.
+export const saloProviders: SaloProvider[] = allSaloProviders
+  .filter((provider) => !unverifiedEventProviderIds.has(provider.id))
+  .map((provider) => ({ ...provider, areaId: saloProviderAreaIds[provider.id] }));
+
+export function getSaloProviderArea(provider: SaloProvider): SaloArea | null {
+  return provider.areaId ? saloAreas[provider.areaId] : null;
+}
+
+export type SaloDetailCategory = "majoitus" | "ruoka" | "aktiviteetit" | "elamykset" | "saaristo" | "oppaat";
+
+export function getSaloProviderDetailCategory(provider: SaloProvider): SaloDetailCategory {
+  if (provider.areaId === "sarkisalo") return "saaristo";
+  if (provider.category === "stay") return "majoitus";
+  if (provider.category === "food") return "ruoka";
+  if (provider.category === "nature") return "aktiviteetit";
+  if (provider.category === "experience") return "elamykset";
+  return "oppaat";
+}
+
+export const saloArchipelagoProviderIds = new Set(
+  saloProviders.filter((provider) => provider.areaId === "sarkisalo").map((provider) => provider.id),
+);
 
 export const saloEvents: SaloEvent[] = [
   {
