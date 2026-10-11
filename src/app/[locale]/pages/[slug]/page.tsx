@@ -69,6 +69,7 @@ export default async function CustomPage({ params }: { params: Promise<{ locale:
     .maybeSingle();
   if (error || !data) notFound();
   const blocks = Array.isArray(data.blocks) ? data.blocks.filter((block: any) => block?.visible !== false) : [];
+  const hasHero = blocks.some((block: any) => block.type === "hero");
   const copy = (block: any): LocalizedCopy => block?.content?.[locale] || block?.content?.fi || {};
 
   return (
@@ -79,7 +80,7 @@ export default async function CustomPage({ params }: { params: Promise<{ locale:
             <h1 className="font-display text-4xl font-bold text-brand-900 sm:text-6xl">{data.title}</h1>
             <div className="mt-8 whitespace-pre-wrap text-base leading-8 text-slate-700 sm:text-lg">{data.content || ""}</div>
           </div>
-        ) : blocks.map((block: any) => {
+        ) : <>{!hasHero ? <div className="mx-auto max-w-4xl px-4 pt-10 sm:px-8 sm:pt-16"><h1 className="font-display text-4xl font-bold text-brand-950 sm:text-6xl">{data.title}</h1></div> : null}{blocks.map((block: any) => {
           const blockCopy = copy(block);
           const blockImage = getPublishableImageUrl(block.imageUrl, block.rightsConfirmed);
           const blockAlt = String(block.imageAlt || blockCopy.title || data.title || "").trim();
@@ -172,7 +173,7 @@ export default async function CustomPage({ params }: { params: Promise<{ locale:
               ) : null}
             </section>
           );
-        })}
+        })}</>}
       </article>
     </main>
   );
