@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Coffee, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CalendarDays, Coffee, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
@@ -22,7 +22,8 @@ const copy = {
       elamykset: ["Tekemistä ja elämyksiä Salossa", "Kulttuuri, opastukset ja paikalliset kokemukset", "Tutustu paikallisiin elämyksiin ja tarkista sisältö sekä saatavuus järjestäjältä."],
       saaristo: ["Saaristo ja merenranta", "Särkisalo, satamat ja saariston palvelut", "Tutustu Salon eteläiseen saaristoon ja meren äärellä toimiviin palveluihin."],
       oppaat: ["Matkailuoppaat ja paikallistieto", "Alueen viralliset matkailuoppaat", "Avaa paikalliset oppaat ja tarkista kohteiden ajantasaiset tiedot niiden omilta sivuilta."],
-      kylat: ["Kylät ja maaseutu Salossa", "Perniö, Halikko, Teijo, Mathildedal ja Särkisalo", "Tutustu Salon seudun kyliin ja maaseutualueisiin. Tarkat osoitteet ja palvelut löytyvät kunkin paikan omalta sivulta."]
+      kylat: ["Kylät ja maaseutu Salossa", "Perniö, Halikko, Teijo, Mathildedal ja Särkisalo", "Tutustu Salon seudun kyliin ja maaseutualueisiin. Tarkat osoitteet ja palvelut löytyvät kunkin paikan omalta sivulta."],
+      tapahtumat: ["Tapahtumat ja sesongit Salossa", "Ajankohtaiset tapahtumat virallisista kalentereista", "Tutustu Salon kaupungin, Mathildedalin ja paikallisten järjestäjien tapahtumakalentereihin. Vahvista päivämäärä ja tapahtuman tiedot aina järjestäjältä."]
     }
   },
   es: {
@@ -38,7 +39,8 @@ const copy = {
       elamykset: ["Experiencias en Salo", "Cultura, visitas guiadas y experiencias locales", "Descubre experiencias locales y consulta contenido y disponibilidad con el organizador."],
       saaristo: ["Archipiélago y costa", "Särkisalo, puertos y servicios marítimos", "Explora el archipiélago meridional de Salo y sus servicios junto al mar."],
       oppaat: ["Guías turísticas e información local", "Guías oficiales de la región", "Consulta las guías locales y verifica los datos actuales en sus sitios oficiales."],
-      kylat: ["Pueblos y campo de Salo", "Perniö, Halikko, Teijo, Mathildedal y Särkisalo", "Descubre pueblos y zonas rurales de la región de Salo. Consulta cada página para conocer la ubicación y los servicios."]
+      kylat: ["Pueblos y campo de Salo", "Perniö, Halikko, Teijo, Mathildedal y Särkisalo", "Descubre pueblos y zonas rurales de la región de Salo. Consulta cada página para conocer la ubicación y los servicios."],
+      tapahtumat: ["Eventos y temporadas en Salo", "Calendarios oficiales de eventos", "Consulta los calendarios de la ciudad de Salo, Mathildedal y los organizadores locales. Confirma siempre las fechas y los detalles con el organizador."]
     }
   },
   en: {
@@ -54,7 +56,8 @@ const copy = {
       elamykset: ["Things to do and experiences in Salo", "Culture, guided tours and local experiences", "Explore local experiences and confirm details and availability with the organiser."],
       saaristo: ["Archipelago and coast", "Särkisalo, harbours and maritime services", "Explore the southern Salo archipelago and services by the sea."],
       oppaat: ["Tourism guides and local information", "Official regional tourism guides", "Browse local guides and verify current details on their official websites."],
-      kylat: ["Villages and countryside in Salo", "Perniö, Halikko, Teijo, Mathildedal and Särkisalo", "Explore the villages and rural areas of the Salo region. Each place page provides its own location and local information."]
+      kylat: ["Villages and countryside in Salo", "Perniö, Halikko, Teijo, Mathildedal and Särkisalo", "Explore the villages and rural areas of the Salo region. Each place page provides its own location and local information."],
+      tapahtumat: ["Events and seasons in Salo", "Current events from official calendars", "Explore the official event calendars for Salo, Mathildedal and local organisers. Always confirm dates and details with the organiser."]
     }
   }
 } as const;
@@ -68,6 +71,7 @@ function categoryImage(category: Category): string | null {
   if (category === "saaristo") return photoLibrary.sarkisalo;
   if (category === "oppaat") return photoLibrary.saloVeturitalli;
   if (category === "kylat") return photoLibrary.mathildedalVillage;
+  if (category === "tapahtumat") return photoLibrary.saloVeturitalli;
   return photoLibrary.teijoNationalPark;
 }
 
@@ -77,7 +81,7 @@ function getCategoryItems(category: Category): SaloProvider[] {
   if (category === "aktiviteetit") return saloProviders.filter((item) => item.category === "nature" || item.category === "experience");
   if (category === "elamykset") return saloProviders.filter((item) => item.category === "experience");
   if (category === "saaristo") return saloProviders.filter((item) => item.areaId === "sarkisalo");
-  if (category === "kylat") return [];
+  if (category === "kylat" || category === "tapahtumat") return [];
   return saloProviders.filter((item) => item.category === "tourism");
 }
 
@@ -123,7 +127,23 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
           <p className="max-w-2xl text-sm leading-6 text-slate-600">{labels.direct}</p>
           <Link href={`/${locale}/salo`} className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand-800"><ArrowLeft className="h-4 w-4" />{labels.back}</Link>
         </div>
-        {category === "kylat" ? (
+        {category === "tapahtumat" ? (
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { id: "salo", title: { fi: "Salon virallinen tapahtumakalenteri", es: "Calendario oficial de eventos de Salo", en: "Official Salo events calendar" }, text: { fi: "Kaupungin tapahtumat, kulttuuri, konsertit ja paikalliset menot.", es: "Eventos municipales, cultura, conciertos y actividades locales.", en: "City events, culture, concerts and local happenings." }, url: "https://tapahtumat.salo.fi" },
+              { id: "visit-salo", title: { fi: "Visit Salon tapahtumat", es: "Eventos de Visit Salo", en: "Visit Salo events" }, text: { fi: "Matkailijan tapahtumapoiminnat ja alueen sesonkivinkit.", es: "Selección de eventos para visitantes y propuestas de temporada.", en: "Visitor-focused events and seasonal ideas for the region." }, url: "https://visitsalo.fi/tapahtumat/" },
+              { id: "mathildedal", title: { fi: "Mathildedalin tapahtumat", es: "Eventos de Mathildedal", en: "Mathildedal events" }, text: { fi: "Ruukkikylän omat tapahtumat ja paikalliset sesongit.", es: "Eventos del pueblo histórico y actividades de temporada.", en: "Events and seasonal activities in the historic ironworks village." }, url: "https://mathildedal.fi/tapahtumat/" },
+              { id: "marina", title: { fi: "Mathildan Marinan tapahtumat", es: "Eventos de Mathildan Marina", en: "Mathildan Marina events" }, text: { fi: "Sataman tapahtumat ja ohjelma palveluntarjoajan omalla sivulla.", es: "Programa del puerto publicado por el propio proveedor.", en: "Harbour events and programme published by the provider." }, url: "https://mathildanmarina.fi/tulevat-tapahtumat/" },
+            ].map((item) => (
+              <a key={item.id} href={item.url} target="_blank" rel="noopener noreferrer" className="group rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
+                <CalendarDays className="h-8 w-8 text-brand-700" />
+                <h2 className="mt-5 font-display text-2xl font-bold">{item.title[locale]}</h2>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{item.text[locale]}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa järjestäjän sivu" : locale === "es" ? "Abrir web del organizador" : "Open organiser website"}<ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+              </a>
+            ))}
+          </div>
+        ) : category === "kylat" ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {localities.map((place) => (
               <Link key={place.id} href={place.href} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
