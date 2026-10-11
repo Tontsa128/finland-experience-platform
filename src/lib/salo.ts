@@ -9,7 +9,10 @@ export type SaloAreaId =
   | "pernio"
   | "halikko-wiurila"
   | "jarvi-salo"
-  | "kemionsaari";
+  | "kemionsaari"
+  | "halikko"
+  | "vaskio"
+  | "suomusjarvi";
 
 export type SaloAreaType =
   | "region"
@@ -643,6 +646,24 @@ export const saloAreas: Record<SaloAreaId, SaloArea> = {
     municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
     mapQuery: "Järvi-Salo, Salo, Finland",
   },
+  halikko: {
+    id: "halikko", type: "city-area", parentId: "salo-region",
+    name: { fi: "Halikko", es: "Halikko", en: "Halikko" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Halikko, Salo, Finland",
+  },
+  vaskio: {
+    id: "vaskio", type: "rural-area", parentId: "salo-region",
+    name: { fi: "Vaskio", es: "Vaskio", en: "Vaskio" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Vaskio, Salo, Finland",
+  },
+  suomusjarvi: {
+    id: "suomusjarvi", type: "rural-area", parentId: "salo-region",
+    name: { fi: "Suomusjärvi", es: "Suomusjärvi", en: "Suomusjärvi" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Suomusjärvi, Salo, Finland",
+  },
   kemionsaari: {
     id: "kemionsaari", type: "nearby-region",
     name: { fi: "Kemiönsaari ja Rosala", es: "Kemiönsaari y Rosala", en: "Kemiönsaari and Rosala" },
@@ -686,6 +707,11 @@ const saloProviderAreaIds: Partial<Record<string, SaloAreaId>> = {
   "lonnviken": "sarkisalo",
   "meri-ruukin-lomakyla": "mathildedal",
   "leipyolin-tila": "pernio",
+  "topilan-tupa": "halikko",
+  "onnenperan-mokki": "vaskio",
+  "villa-viola": "suomusjarvi",
+  "villa-laperla": "suomusjarvi",
+  "villa-viktoria": "suomusjarvi",
   "villa-nennebo": "sarkisalo",
   "alaspaan-maatila": "pernio",
   "teijon-kammari": "teijo",
