@@ -207,7 +207,7 @@ const allSaloProviders: SaloProvider[] = [
       es: "Dos alojamientos de alquiler cerca del centro de visitantes del Parque Nacional de Teijo, con capacidad para seis personas cada uno y sauna incluida.",
       en: "Two rental cabins near the Teijo National Park visitor centre, each sleeping up to six, with a sauna session included.",
     },
-    url: "https://naturaviva.fi/fi_FI/majoituskohteet-etela-suomessa/matildanjarven-kampat",
+    url: "https://naturaviva.fi/fi_FI/matildanjarven-kampat",
     image: "https://cdn-datahub.visitfinland.com/images/40f256f0-6b21-11ed-8b5d-750472ef9a58.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
   },
@@ -655,7 +655,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Calabazas, fantasmas y ambiente de vacaciones de otoño en Mathildedal.",
       en: "Pumpkins, ghosts and autumn-holiday atmosphere in Mathildedal.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/tapahtumat/",
     category: "autumn",
   },
   {
@@ -777,7 +777,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Un momento de calma antes de Navidad en Mathildedal.",
       en: "A quiet moment before Christmas in Mathildedal.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/tapahtumat/",
     category: "christmas",
   },
   {
@@ -790,7 +790,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Celebración de Año Nuevo en el pueblo de Mathildedal.",
       en: "New Year's celebration in Mathildedal village.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/tapahtumat/",
     category: "new-year",
   },
   {
