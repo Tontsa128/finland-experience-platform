@@ -38,7 +38,7 @@ const categoryTitle: Record<Locale, Record<Category, string>> = {
 
 function providerBelongsToCategory(provider: (typeof saloProviders)[number], category: Category) {
   const primary = getSaloProviderDetailCategory(provider);
-  return primary === category || (category === "aktiviteetit" && provider.category === "experience");
+  return primary === category;
 }
 function regionalImage(provider: (typeof saloProviders)[number]): string | null {
   if (provider.areaId === "mathildedal") return photoLibrary.mathildedalHarbour;
