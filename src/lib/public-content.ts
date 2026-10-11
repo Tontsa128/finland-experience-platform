@@ -489,7 +489,7 @@ export type HomepageSettings = {
   homepageSlides: HomepageSlide[];
 };
 
-export type HomepageSlide = { id:string; imageUrl:string; credit?:string; creditUrl?:string; href:string; external?:boolean; sortOrder:number; durationMs?:number; enabled?:boolean; copy: Record<Locale,{eyebrow:string;title:string;text:string;cta:string}> };
+export type HomepageSlide = { id:string; imageUrl:string; credit?:string; creditUrl?:string; rightsConfirmed?:boolean; href:string; external?:boolean; sortOrder:number; durationMs?:number; enabled?:boolean; copy: Record<Locale,{eyebrow:string;title:string;text:string;cta:string}> };
 
 export async function getHomepageSettings(): Promise<HomepageSettings | null> {
   try {
