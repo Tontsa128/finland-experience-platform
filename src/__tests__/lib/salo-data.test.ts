@@ -57,8 +57,8 @@ test("provider detail category is consistent with the shared area taxonomy", () 
   };
 
   assert.equal(getSaloProviderDetailCategory(provider("hotel-mathildedal")), "majoitus");
-  assert.equal(getSaloProviderDetailCategory(provider("cafe-vinssi")), "saaristo");
-  assert.equal(getSaloProviderDetailCategory(provider("forby-rantajooga")), "saaristo");
+  assert.equal(getSaloProviderDetailCategory(provider("cafe-vinssi")), "ruoka");
+  assert.equal(getSaloProviderDetailCategory(provider("forby-rantajooga")), "elamykset");
   assert.equal(getSaloProviderDetailCategory(provider("teijo-national-park")), "aktiviteetit");
   assert.equal(getSaloProviderDetailCategory(provider("mathildedal-brewery")), "ruoka");
 });
