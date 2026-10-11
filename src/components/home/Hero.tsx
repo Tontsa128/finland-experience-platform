@@ -8,7 +8,7 @@ import { useLocale } from "next-intl";
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
 import { photoLibrary } from "@/lib/photo-library";
-import { isSafeUrlOrPath } from "@/lib/utils";
+import { getPublishableImageUrl } from "@/lib/media-safety";
 
 const slides = [
   {
@@ -129,7 +129,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
-  const cmsSlides = (settings?.homepageSlides || []).filter((item) => item.enabled !== false && item.rightsConfirmed === true && item.imageUrl && isSafeUrlOrPath(item.imageUrl) && (item.imageUrl.startsWith("/") && !item.imageUrl.startsWith("//") || /^https:\/\//i.test(item.imageUrl)));
+  const cmsSlides = (settings?.homepageSlides || []).flatMap((item) => { const imageUrl = getPublishableImageUrl(item.imageUrl, item.rightsConfirmed); return item.enabled !== false && imageUrl ? [{ ...item, imageUrl }] : []; });
   const activeSlides = cmsSlides.length
     ? cmsSlides.map((item) => ({ ...item, key: item.id, image: item.imageUrl }))
     : slides.map((item, index) => ({
