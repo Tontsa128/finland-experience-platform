@@ -77,7 +77,7 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/60 to-brand-950/10" />
         <div className="container-narrow relative flex min-h-[55svh] items-end py-14 sm:py-20">
           <div className="max-w-4xl">
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{t.region} · {categoryTitle[locale][categoryPath]}</p>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{providerArea ? providerArea.name[locale] : t.region} · {categoryTitle[locale][categoryPath]}</p>
             <h1 className="mt-4 font-display text-4xl font-bold sm:text-6xl">{provider.name}</h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-white/90 sm:text-xl">{provider.description[locale]}</p>
           </div>
