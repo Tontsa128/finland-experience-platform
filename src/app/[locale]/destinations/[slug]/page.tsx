@@ -133,7 +133,16 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
       <section className="relative isolate min-h-[68vh] overflow-hidden">
-        {d.images[0] ? <Image src={d.images[0]} alt={getLocalized(d.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
+        {d.images?.[0] ? (
+          <Image src={d.images[0]} alt={getLocalized(d.name, locale)} fill priority sizes="100vw" className="object-cover" />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-800 via-brand-950 to-brand-950 px-6 text-center">
+            <MapPin className="h-12 w-12 text-gold-300" />
+            <p className="mt-4 max-w-md text-sm font-semibold text-white/85">
+              {locale === "fi" ? "Kohteen oma kuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una imagen del destino cuando se confirmen los derechos de uso" : "A destination image will be added once usage rights are confirmed"}
+            </p>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
         <div className="container-narrow relative flex min-h-[68vh] items-end py-14 text-white sm:py-20">
           <div className="max-w-4xl">
