@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { saloProviders, type SaloProvider } from "@/lib/salo";
+import { getSaloProviderArea, getSaloProviderDetailCategory, saloProviders } from "@/lib/salo";
 
 const labels = {
   fi: { region: "Salon seutu · Varsinais-Suomi", back: "Takaisin kategoriaan", provider: "Palveluntarjoajan verkkosivusto", direct: "Varaus, maksu ja sopimus tehdään suoraan palveluntarjoajan kanssa.", location: "Sijainti", locationUnknown: "Tarkka katuosoite ja koordinaatit eivät ole tässä oppaassa vahvistettuja.", price: "Hinta", priceNote: "Hintoja tai saatavuutta ei näytetä ilman ajantasaista vahvistusta." },
@@ -14,18 +14,14 @@ const labels = {
   en: { region: "Salo region · Southwest Finland", back: "Back to category", provider: "Provider website", direct: "Bookings, payments and contracts are handled directly by the provider.", location: "Location", locationUnknown: "A precise street address and coordinates have not been verified for this guide.", price: "Price", priceNote: "Prices and availability are not shown without current verification." }
 } as const;
 type Category = "majoitus" | "ruoka" | "aktiviteetit" | "elamykset" | "saaristo" | "oppaat";
-const categoryByType: Record<SaloProvider["category"], Category> = { stay: "majoitus", food: "ruoka", nature: "aktiviteetit", experience: "elamykset", tourism: "oppaat" };
 const categoryTitle: Record<Locale, Record<Category, string>> = {
   fi: { majoitus: "Majoitus", ruoka: "Ruoka ja ravintolat", aktiviteetit: "Aktiviteetit", elamykset: "Tekemistä ja elämyksiä", saaristo: "Saaristo ja merenranta", oppaat: "Matkailuoppaat" },
   es: { majoitus: "Alojamiento", ruoka: "Gastronomía y restaurantes", aktiviteetit: "Actividades", elamykset: "Experiencias", saaristo: "Archipiélago y costa", oppaat: "Guías turísticas" },
   en: { majoitus: "Accommodation", ruoka: "Food and restaurants", aktiviteetit: "Activities", elamykset: "Things to do and experiences", saaristo: "Archipelago and coast", oppaat: "Tourism guides" }
 };
 
-function getProviderCategory(provider: SaloProvider): Category {
-  return provider.id === "saaristomokit-sarkisalo" || provider.id === "forby-marina" || provider.id === "cafe-vinssi" || provider.id === "saaristoravintola-nixor" || provider.id === "sarkisalo-fishing" || provider.id === "chill-out-fishing" || provider.id === "villa-meri-sarkisalo" ? "saaristo" : categoryByType[provider.category];
-}
-function providerBelongsToCategory(provider: SaloProvider, category: Category) {
-  const primary = getProviderCategory(provider);
+function providerBelongsToCategory(provider: (typeof saloProviders)[number], category: Category) {
+  const primary = getSaloProviderDetailCategory(provider);
   return primary === category || (category === "aktiviteetit" && provider.category === "experience");
 }
 function regionalImage(category: Category) {
@@ -37,26 +33,7 @@ function regionalImage(category: Category) {
   return photoLibrary.teijoNationalPark;
 }
 
-const verifiedAreaByProvider: Record<string, Record<Locale, string>> = {
-  "visit-salo": { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
-  "visit-mathildedal": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
-  "hotel-mathildedal": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
-  "mathildan-marina": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
-  "matilda-villas": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
-  "matri-house": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
-  "majoitus-mathildedal": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
-  "mathildedal-brewery": { fi: "Mathildedal, Salo", es: "Mathildedal, Salo", en: "Mathildedal, Salo" },
-  "teijo-action-park": { fi: "Teijo, Salo", es: "Teijo, Salo", en: "Teijo, Salo" },
-  "teijo-national-park": { fi: "Teijon kansallispuisto, Salo", es: "Parque Nacional de Teijo, Salo", en: "Teijo National Park, Salo" },
-  "matildanjarven-kampat": { fi: "Matildanjärvi, Teijo, Salo", es: "Matildanjärvi, Teijo, Salo", en: "Matildanjärvi, Teijo, Salo" },
-  "meri-teijo-golf": { fi: "Teijo, Salo", es: "Teijo, Salo", en: "Teijo, Salo" },
-  "saaristomokit-sarkisalo": { fi: "Särkisalo, Salo", es: "Särkisalo, Salo", en: "Särkisalo, Salo" },
-  "forby-marina": { fi: "Förby, Särkisalo, Salo", es: "Förby, Särkisalo, Salo", en: "Förby, Särkisalo, Salo" },
-  "cafe-vinssi": { fi: "Förby Marina, Särkisalo, Salo", es: "Förby Marina, Särkisalo, Salo", en: "Förby Marina, Särkisalo, Salo" },
-  "saaristoravintola-nixor": { fi: "Niksaaren alue, Särkisalo, Salo", es: "Zona de Niksari, Särkisalo, Salo", en: "Niksari area, Särkisalo, Salo" },
-  "salon-oppaat": { fi: "Salo", es: "Salo", en: "Salo" },
-  "vuohensaari-camping": { fi: "Vuohensaari, Salo", es: "Vuohensaari, Salo", en: "Vuohensaari, Salo" }
-};
+
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }): Promise<Metadata> {
   const { locale: raw, category, slug } = await params;
@@ -74,8 +51,9 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
   const t = labels[locale];
   const categoryPath = category as Category;
   const image = regionalImage(categoryPath);
-  const verifiedArea = verifiedAreaByProvider[provider.id]?.[locale];
-  const mapSearchUrl = verifiedArea ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(provider.name + ", " + verifiedArea) : null;
+  const providerArea = getSaloProviderArea(provider);
+  const verifiedArea = providerArea ? providerArea.name[locale] + " · " + providerArea.municipality[locale] : null;
+  const mapSearchUrl = providerArea ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(provider.name + ", " + providerArea.mapQuery) : null;
   return (
     <main className="min-h-screen bg-white text-brand-950">
       <section className="relative isolate min-h-[55svh] overflow-hidden bg-brand-950 text-white">
