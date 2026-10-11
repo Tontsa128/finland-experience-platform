@@ -1,7 +1,88 @@
-import { NextRequest,NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabase"; import { getAdminContext } from "@/lib/admin-auth";
-export const dynamic="force-dynamic";
-const allowed=new Set(["hero","text","image","image_text","gallery","cta","cards","spacer"]);
-async function guard(){const a=await getAdminContext();return a&&["SUPER_ADMIN","ADMIN","CONTENT_MANAGER","EDITOR"].includes(a.profile.role)?a:null}
-function clean(v:any){if(!Array.isArray(v))return[];return v.slice(0,80).map((r:any,i:number)=>({id:String(r?.id||crypto.randomUUID()),type:allowed.has(r?.type)?r.type:"text",sortOrder:i,imageUrl:String(r?.imageUrl||"").slice(0,1000),imageAlt:String(r?.imageAlt||"").slice(0,500),layout:String(r?.layout||"wide").slice(0,30),visible:r?.visible!==false,content:Object.fromEntries(["fi","en","es"].map(l=>[l,{eyebrow:String(r?.content?.[l]?.eyebrow||"").slice(0,300),title:String(r?.content?.[l]?.title||"").slice(0,300),text:String(r?.content?.[l]?.text||"").slice(0,5000),buttonLabel:String(r?.content?.[l]?.buttonLabel||"").slice(0,200),buttonUrl:String(r?.content?.[l]?.buttonUrl||"").slice(0,500)}])),items:Array.isArray(r?.items)?r.items.slice(0,12):[]}))}
-export async function PUT(req:NextRequest){const a=await guard();if(!a)return NextResponse.json({error:"Forbidden"},{status:403});try{const b=await req.json(),slug=String(b.slug||"").trim(),locale=String(b.locale||"fi"),blocks=clean(b.blocks);if(!slug||!["fi","en","es"].includes(locale))return NextResponse.json({error:"Virheellinen sivu."},{status:400});const {data,error}=await supabaseAdmin.from("site_pages").update({blocks,updated_at:new Date().toISOString()}).eq("slug",slug).eq("locale",locale).select("id,slug,locale,blocks").maybeSingle();if(error)return NextResponse.json({error:error.message},{status:400});if(!data)return NextResponse.json({error:"Sivua ei löytynyt."},{status:404});await supabaseAdmin.from("cms_revisions").insert({entity_type:"site_page_blocks",entity_id:String(data.id),locale,payload:{blocks},created_by:a.user.id});return NextResponse.json({page:data})}catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Virhe"},{status:400})}}
+import { NextRequest, NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabase";
+import { getAdminContext } from "@/lib/admin-auth";
+import { isSafeUrlOrPath } from "@/lib/utils";
+
+export const dynamic = "force-dynamic";
+const allowed = new Set(["hero", "text", "image", "image_text", "gallery", "cta", "spacer"]);
+
+function safeImageUrl(value: unknown) {
+  const url = typeof value === "string" ? value.trim() : "";
+  if (!url) return "";
+  const safePath = url.startsWith("/") && !url.startsWith("//");
+  const safeHttpsUrl = /^https:\/\//i.test(url);
+  return (safePath || safeHttpsUrl) && isSafeUrlOrPath(url) ? url.slice(0, 1000) : "";
+}
+
+function clean(value: unknown) {
+  if (!Array.isArray(value)) return [];
+  return value.slice(0, 80).map((row: any, index: number) => ({
+    id: String(row?.id || crypto.randomUUID()),
+    type: allowed.has(row?.type) ? row.type : "text",
+    sortOrder: index,
+    imageUrl: safeImageUrl(row?.imageUrl),
+    imageAlt: String(row?.imageAlt || "").trim().slice(0, 500),
+    rightsConfirmed: row?.rightsConfirmed === true,
+    layout: String(row?.layout || "wide").slice(0, 30),
+    visible: row?.visible !== false,
+    content: Object.fromEntries(["fi", "en", "es"].map((locale) => [locale, {
+      eyebrow: String(row?.content?.[locale]?.eyebrow || "").slice(0, 300),
+      title: String(row?.content?.[locale]?.title || "").slice(0, 300),
+      text: String(row?.content?.[locale]?.text || "").slice(0, 5000),
+      buttonLabel: String(row?.content?.[locale]?.buttonLabel || "").slice(0, 200),
+      buttonUrl: String(row?.content?.[locale]?.buttonUrl || "").slice(0, 500),
+    }])),
+    items: Array.isArray(row?.items) ? row.items.slice(0, 12).map((item: any) => ({
+      id: String(item?.id || crypto.randomUUID()),
+      url: safeImageUrl(item?.url),
+      alt: String(item?.alt || "").trim().slice(0, 500),
+      rightsConfirmed: item?.rightsConfirmed === true,
+    })).filter((item: any) => item.url) : [],
+  }));
+}
+
+async function guard() {
+  const admin = await getAdminContext();
+  return admin && ["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"].includes(admin.profile.role)
+    ? admin
+    : null;
+}
+
+export async function PUT(request: NextRequest) {
+  const admin = await guard();
+  if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  try {
+    const body = await request.json();
+    const blocks = clean(body?.blocks);
+    const slug = String(body?.slug || "").trim().slice(0, 150);
+    const locale = ["fi", "en", "es"].includes(body?.locale) ? body.locale : null;
+    if (!slug || !locale) return NextResponse.json({ error: "Virheellinen sivutunniste tai kieli." }, { status: 400 });
+
+    const { data: page, error: pageError } = await supabaseAdmin
+      .from("site_pages")
+      .select("id,slug,locale,blocks")
+      .eq("slug", slug)
+      .eq("locale", locale)
+      .maybeSingle();
+    if (pageError) return NextResponse.json({ error: pageError.message }, { status: 400 });
+    if (!page) return NextResponse.json({ error: "Sivua ei löytynyt." }, { status: 404 });
+
+    const { data, error } = await supabaseAdmin
+      .from("site_pages")
+      .update({ blocks, updated_at: new Date().toISOString() })
+      .eq("id", page.id)
+      .select("id,slug,locale,blocks")
+      .single();
+    if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+
+    await supabaseAdmin.from("cms_revisions").insert({
+      entity_type: "site_page_blocks",
+      entity_id: String(page.id),
+      payload: { blocks },
+      created_by: admin.user.id,
+    });
+    return NextResponse.json({ page: data });
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : "Virhe" }, { status: 400 });
+  }
+}
