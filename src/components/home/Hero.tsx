@@ -51,7 +51,7 @@ const slides = [
     external: false,
   },
   {
-    key: "mathildedal",
+    key: "salo",
     image: photoLibrary.mathildedalVillage,
     credit: "Kotivalo / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
@@ -82,13 +82,7 @@ const slides = [
     href: "/hanko",
     external: false,
   },
-  {
-    key: "herrankukkaro",
-    image: photoLibrary.herrankukkaroSauna,
-    credit: "Herrankukkaro",
-    href: "https://www.herrankukkaro.fi/",
-    external: true,
-  },
+
 ] as const;
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
@@ -99,36 +93,36 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     archipelago: { eyebrow: "Turun saaristo", title: "Sininen meri, sileät kalliot", text: "Saariston kesä näyttää parhaat puolensa kirkkaassa päivänvalossa.", cta: "Tutustu saaristoon" },
     hanko: { eyebrow: "Hanko · Suomen eteläkärki", title: "Meri, hiekka ja pitkä kesäpäivä", text: "Hanko yhdistää rannat, puutalot ja saariston raikkaan merituulen.", cta: "Tutustu Hankoon" },
     naantali: { eyebrow: "Naantali", title: "Kesä alkaa vanhasta satamasta", text: "Värikkäät puutalot, meri ja saariston portti tekevät Naantalista täydellisen kesäpäivän.", cta: "Tutustu Naantaliin" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Pieni ruukkikylä, suuri tunnelma", text: "Käsityöläisiä, kahviloita, merta ja metsäpolkuja yhden rauhallisen kylän ympärillä.", cta: "Tutustu Mathildedaliin" },
+    salo: { eyebrow: "Salo · Varsinais-Suomi", title: "Tutustu Salon seutuun", text: "Kaupunkikulttuuria, historiallisia kyliä, kansallispuisto ja saariston rannat saman alueen sisällä.", cta: "Tutustu Saloon" },
     aland: { eyebrow: "Ahvenanmaa", title: "Saariston valo jatkuu horisonttiin", text: "Meri, kalliosaaret ja kesän kirkas pohjoismainen valo.", cta: "Tutustu Ahvenanmaahan" },
     porvoo: { eyebrow: "Porvoo", title: "Vanhan kaupungin kesäpäivä", text: "Punaiset ranta-aitat, jokimaisema ja historiallinen keskusta kutsuvat hidastamaan.", cta: "Tutustu Porvooseen" },
     hankoBeach: { eyebrow: "Hanko · rannikko", title: "Paljain jaloin kesään", text: "Aurinkoinen hiekkaranta ja meri – Suomen etelärannikon kesä parhaimmillaan.", cta: "Tutustu Hankoon" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Suomen kesä alkaa rannikon pienistä paikoista", text: "Pitkiä iltoja, saaristoa, ruukkikyliä ja rauhallisia mökkipäiviä.", cta: "Tutustu kohteisiin" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Savusauna meren äärellä", text: "Herrankukkaro yhdistää saariston, savusaunan, majoituksen ja paikalliset maut.", cta: "Siirry palveluntarjoajalle" },
+    
   },
   es: {
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Un día de verano junto al lago, con sauna privada, embarcadero y naturaleza alrededor.", cta: "Ver alojamientos" },
     archipelago: { eyebrow: "Archipiélago de Turku", title: "Mar azul y rocas lisas", text: "El verano del archipiélago en su versión más luminosa y auténtica.", cta: "Explorar el archipiélago" },
     hanko: { eyebrow: "Hanko · extremo sur de Finlandia", title: "Mar, arena y un largo día de verano", text: "Playas, casas de madera y el aire fresco del Báltico.", cta: "Explorar Hanko" },
     naantali: { eyebrow: "Naantali", title: "El verano comienza en el puerto antiguo", text: "Casas de madera, mar y la puerta de entrada al archipiélago.", cta: "Explorar Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Un pequeño pueblo con mucho carácter", text: "Artesanía, cafés, mar y senderos junto a un histórico pueblo industrial.", cta: "Explorar Mathildedal" },
+    salo: { eyebrow: "Salo · Finlandia suroccidental", title: "Descubre la región de Salo", text: "Cultura urbana, pueblos históricos, parque nacional y costa del archipiélago en una sola región.", cta: "Explorar Salo" },
     aland: { eyebrow: "Åland", title: "La luz del archipiélago llega hasta el horizonte", text: "Mar, islas rocosas y la luz nórdica del verano.", cta: "Explorar Åland" },
     porvoo: { eyebrow: "Porvoo", title: "Un día de verano en el casco antiguo", text: "Casas rojas junto al río, historia y cafés para disfrutar sin prisa.", cta: "Explorar Porvoo" },
     hankoBeach: { eyebrow: "Hanko · costa", title: "Camina descalzo hacia el verano", text: "Playa soleada y mar abierto en la costa sur de Finlandia.", cta: "Explorar Hanko" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "El verano finlandés empieza en la costa", text: "Largas tardes, archipiélago, pueblos históricos y cabañas tranquilas junto al agua.", cta: "Explorar destinos" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Sauna de humo junto al mar", text: "Herrankukkaro combina archipiélago, sauna de humo, alojamiento y gastronomía local.", cta: "Ir al proveedor" },
+    
   },
   en: {
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A bright summer day by the lake, with a private sauna, jetty and nature at your doorstep.", cta: "See stays" },
     archipelago: { eyebrow: "Turku Archipelago", title: "Blue water, sun-warmed rocks", text: "The Finnish archipelago at its brightest – open water, pine trees and summer light.", cta: "Explore the archipelago" },
     hanko: { eyebrow: "Hanko · Finland's southern coast", title: "Sea, sand and a long summer day", text: "Beaches, wooden houses and the fresh breeze of the Baltic Sea.", cta: "Explore Hanko" },
     naantali: { eyebrow: "Naantali", title: "Summer begins at the old harbour", text: "Colourful wooden houses, the sea and the gateway to the archipelago.", cta: "Explore Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "A small village with a big atmosphere", text: "Crafts, cafés, sea and forest trails around a historic ironworks village.", cta: "Explore Mathildedal" },
+    salo: { eyebrow: "Salo · Southwest Finland", title: "Explore the Salo region", text: "Town culture, historic villages, a national park and archipelago coastline in one region.", cta: "Explore Salo" },
     aland: { eyebrow: "Åland", title: "Archipelago light all the way to the horizon", text: "Sea, rocky islands and bright Nordic summer light.", cta: "Explore Åland" },
     porvoo: { eyebrow: "Porvoo", title: "A summer day in the old town", text: "Red riverside warehouses, historic streets and cafés made for slowing down.", cta: "Explore Porvoo" },
     hankoBeach: { eyebrow: "Hanko · coast", title: "Walk barefoot into summer", text: "A sunlit sandy beach and open sea on Finland's southern coast.", cta: "Explore Hanko" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Finnish summer begins in the small places on the coast", text: "Long evenings, archipelago islands, ironworks villages and quiet cottage days by the water.", cta: "Explore destinations" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Smoke sauna by the sea", text: "Herrankukkaro brings together archipelago nature, smoke sauna, accommodation and local food.", cta: "Visit provider" },
+    
   },
 };
 
