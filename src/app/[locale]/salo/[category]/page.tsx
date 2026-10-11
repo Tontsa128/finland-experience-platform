@@ -6,7 +6,7 @@ import { ArrowLeft, Coffee, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { getSaloProviderDetailCategory, saloProviders } from "@/lib/salo";
+import { getSaloProviderDetailCategory, saloProviders, type SaloProvider } from "@/lib/salo";
 
 const copy = {
   fi: {
