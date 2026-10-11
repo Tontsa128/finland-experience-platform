@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
 import { isSafeUrlOrPath } from "@/lib/utils";
+import { sanitizeImageUrl } from "@/lib/media-safety";
 
 export const dynamic = "force-dynamic";
 
@@ -15,14 +16,6 @@ function guard() {
   );
 }
 
-function safeImageUrl(value: unknown) {
-  const imageUrl = typeof value === "string" ? value.trim() : "";
-  if (!imageUrl) return "";
-  const safePath = imageUrl.startsWith("/") && !imageUrl.startsWith("//");
-  const safeHttpsUrl = /^https:\/\//i.test(imageUrl);
-  return (safePath || safeHttpsUrl) && isSafeUrlOrPath(imageUrl) ? imageUrl : "";
-}
-
 function clean(value: unknown) {
   if (!Array.isArray(value)) return [];
 
@@ -30,7 +23,7 @@ function clean(value: unknown) {
     .slice(0, 30)
     .map((row: any, index: number) => ({
       id: String(row?.id || crypto.randomUUID()),
-      imageUrl: safeImageUrl(row?.imageUrl),
+      imageUrl: sanitizeImageUrl(row?.imageUrl),
       credit: String(row?.credit || "").trim().slice(0, 300),
       creditUrl: safeHttpsUrlOrEmpty(row?.creditUrl).slice(0, 500),
       rightsConfirmed: row?.rightsConfirmed === true,
