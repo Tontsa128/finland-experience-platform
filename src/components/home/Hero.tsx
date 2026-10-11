@@ -55,7 +55,7 @@ const slides = [
     image: photoLibrary.mathildedalVillage,
     credit: "Kotivalo / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
-    href: "/mathildedal",
+    href: "/salo",
     external: false,
   },
   {
