@@ -16,11 +16,11 @@ type RegionPoint = {
 
 const points: RegionPoint[] = [
   {
-    id: "salo-sports-park",
-    lat: 60.38035,
-    lng: 23.136833,
-    label: { fi: "Salo – urheilupuiston reitin lähtöpiste", es: "Salo – inicio de ruta en el parque deportivo", en: "Salo – Sports Park trail start" },
-    note: { fi: "Salon kaupungin keskustan alue ja ulkoilureittien lähtöpiste.", es: "Zona urbana de Salo y punto de salida de rutas al aire libre.", en: "Salo town area and a starting point for outdoor routes." },
+    id: "salo-market-square",
+    lat: 60.38495,
+    lng: 23.1287,
+    label: { fi: "Salon tori", es: "Plaza del mercado de Salo", en: "Salo Market Square" },
+    note: { fi: "Salon keskustan torialue; kaupungin virallisen kartta- ja matkailuinfon lähtöpiste.", es: "Plaza del mercado en el centro de Salo y punto de partida para explorar la ciudad.", en: "The market square in central Salo and a useful starting point for exploring the town." },
     href: "/places/salo-center",
   },
   {
