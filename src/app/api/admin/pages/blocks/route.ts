@@ -2,17 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
 import { isSafeUrlOrPath } from "@/lib/utils";
+import { sanitizeImageUrl } from "@/lib/media-safety";
 
 export const dynamic = "force-dynamic";
 const allowed = new Set(["hero", "text", "image", "image_text", "gallery", "cta", "spacer"]);
-
-function safeImageUrl(value: unknown) {
-  const url = typeof value === "string" ? value.trim() : "";
-  if (!url) return "";
-  const safePath = url.startsWith("/") && !url.startsWith("//");
-  const safeHttpsUrl = /^https:\/\//i.test(url);
-  return (safePath || safeHttpsUrl) && isSafeUrlOrPath(url) ? url.slice(0, 1000) : "";
-}
 
 function clean(value: unknown) {
   if (!Array.isArray(value)) return [];
@@ -20,7 +13,7 @@ function clean(value: unknown) {
     id: String(row?.id || crypto.randomUUID()),
     type: allowed.has(row?.type) ? row.type : "text",
     sortOrder: index,
-    imageUrl: safeImageUrl(row?.imageUrl),
+    imageUrl: sanitizeImageUrl(row?.imageUrl),
     imageAlt: String(row?.imageAlt || "").trim().slice(0, 500),
     rightsConfirmed: row?.rightsConfirmed === true,
     layout: String(row?.layout || "wide").slice(0, 30),
@@ -34,7 +27,7 @@ function clean(value: unknown) {
     }])),
     items: Array.isArray(row?.items) ? row.items.slice(0, 12).map((item: any) => ({
       id: String(item?.id || crypto.randomUUID()),
-      url: safeImageUrl(item?.url),
+      url: sanitizeImageUrl(item?.url),
       alt: String(item?.alt || "").trim().slice(0, 500),
       rightsConfirmed: item?.rightsConfirmed === true,
     })).filter((item: any) => item.url) : [],
