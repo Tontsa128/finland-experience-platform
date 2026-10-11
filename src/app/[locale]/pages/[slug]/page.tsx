@@ -5,6 +5,7 @@ import { MapPin } from "lucide-react";
 import { supabaseAdmin } from "@/lib/supabase";
 import { localizedUrl } from "@/lib/seo";
 import { isSafeUrlOrPath, locales } from "@/lib/utils";
+import { getPublishableImageUrl } from "@/lib/media-safety";
 import type { Locale } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -16,14 +17,6 @@ type LocalizedCopy = {
   buttonLabel?: string;
   buttonUrl?: string;
 };
-
-function publicImageUrl(value: unknown, rightsConfirmed: unknown): string | null {
-  if (rightsConfirmed !== true || typeof value !== "string") return null;
-  const url = value.trim();
-  const internalPath = url.startsWith("/") && !url.startsWith("//");
-  const secureExternal = /^https:\/\//i.test(url);
-  return (internalPath || secureExternal) && isSafeUrlOrPath(url) ? url : null;
-}
 
 function imageRightsText(locale: Locale) {
   return locale === "fi"
@@ -88,10 +81,10 @@ export default async function CustomPage({ params }: { params: Promise<{ locale:
           </div>
         ) : blocks.map((block: any) => {
           const blockCopy = copy(block);
-          const blockImage = publicImageUrl(block.imageUrl, block.rightsConfirmed);
+          const blockImage = getPublishableImageUrl(block.imageUrl, block.rightsConfirmed);
           const blockAlt = String(block.imageAlt || blockCopy.title || data.title || "").trim();
           const galleryItems = Array.isArray(block.items)
-            ? block.items.map((item: any) => ({ ...item, safeUrl: publicImageUrl(item?.url, item?.rightsConfirmed) })).filter((item: any) => item.safeUrl)
+            ? block.items.map((item: any) => ({ ...item, safeUrl: getPublishableImageUrl(item?.url, item?.rightsConfirmed) })).filter((item: any) => item.safeUrl)
             : [];
 
           return (
