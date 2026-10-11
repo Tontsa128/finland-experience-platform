@@ -594,13 +594,6 @@ const allSaloProviders: SaloProvider[] = [
 ];
 
 
-const unverifiedEventProviderIds = new Set([
-  "improv-30-9", "autumn-market", "visit-valo", "ghost-museum", "ghost-museum-november",
-  "ghost-trail", "kekri", "pumpkin", "father-day-marina", "mathildedal-christmas-1",
-  "mathildedal-christmas-2", "teijo-christmas", "wiurila-christmas", "rikalanmaki-christmas",
-  "mathildedal-reflection", "new-year", "marina-new-year",
-]);
-
 export const saloAreas: Record<SaloAreaId, SaloArea> = {
   "salo-region": {
     id: "salo-region", type: "region",
@@ -703,9 +696,10 @@ const saloProviderAreaIds: Partial<Record<string, SaloAreaId>> = {
 
 
 // Each provider keeps an explicit parent area; the geographic hierarchy is shared by all category routes.
-export const saloProviders: SaloProvider[] = allSaloProviders
-  .filter((provider) => !unverifiedEventProviderIds.has(provider.id))
-  .map((provider) => ({ ...provider, areaId: saloProviderAreaIds[provider.id] }));
+export const saloProviders: SaloProvider[] = allSaloProviders.map((provider) => ({
+  ...provider,
+  areaId: saloProviderAreaIds[provider.id],
+}));
 
 export function getSaloProviderArea(provider: SaloProvider): SaloArea | null {
   return provider.areaId ? saloAreas[provider.areaId] : null;
