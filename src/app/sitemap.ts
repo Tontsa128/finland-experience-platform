@@ -24,6 +24,7 @@ const basePaths = [
   "salo/saaristo",
   "salo/oppaat",
   "salo/kylat",
+  "salo/tapahtumat",
   "mathildedal",
   "mathildedal/majoitus",
   "mathildedal/ruoka",
