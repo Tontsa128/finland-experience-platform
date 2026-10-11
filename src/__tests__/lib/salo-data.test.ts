@@ -46,7 +46,23 @@ test("important local providers are assigned to the correct geographic parent", 
   assert.equal(areaOf("forby-marina"), "sarkisalo");
   assert.equal(areaOf("aava-adventures"), "sarkisalo");
   assert.equal(areaOf("leipyolin-tila"), "pernio");
+  assert.equal(areaOf("topilan-tupa"), "halikko");
+  assert.equal(areaOf("onnenperan-mokki"), "vaskio");
+  assert.equal(areaOf("villa-viola"), "suomusjarvi");
+  assert.equal(areaOf("villa-laperla"), "suomusjarvi");
+  assert.equal(areaOf("villa-viktoria"), "suomusjarvi");
   assert.equal(areaOf("visit-salo"), "salo-region");
+});
+
+test("every listed provider has a verified locality in the shared Salo area hierarchy", () => {
+  for (const provider of saloProviders) {
+    assert.ok(provider.areaId, `Missing locality assignment for ${provider.id}`);
+    assert.ok(saloAreas[provider.areaId], `Unknown locality assignment for ${provider.id}`);
+  }
+
+  assert.equal(saloAreas.halikko.parentId, "salo-region");
+  assert.equal(saloAreas.vaskio.parentId, "salo-region");
+  assert.equal(saloAreas.suomusjarvi.parentId, "salo-region");
 });
 
 test("provider detail category is consistent with the shared area taxonomy", () => {
