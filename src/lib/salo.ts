@@ -726,6 +726,8 @@ const saloProviderAreaIds: Partial<Record<string, SaloAreaId>> = {
   "teijo-national-park": "teijo",
   "meri-teijo-golf": "teijo",
   "mathildedal-brewery": "mathildedal",
+  "bistro-bruket": "mathildedal",
+  "ravintola-terho": "mathildedal",
   "saaristomokit-sarkisalo": "sarkisalo",
   "matildanjarven-kampat": "teijo",
   "forby-marina": "sarkisalo",
