@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { photoLibrary } from "@/lib/photo-library";
-import { getSaloProviderDetailCategory, saloProviders, type SaloProvider } from "@/lib/salo";
+import { getSaloProviderDetailCategory, getSaloProviderImage, saloProviders, type SaloProvider } from "@/lib/salo";
 
 const labels = {
   fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Ruoka ja paikalliset maut", visit: "Avaa kohteen tiedot", heading: "Löydä paikalliset palvelut", intro: "Tutustu kohteeseen ja siirry sen omalle sivulle. Varaus, maksu ja sopimus tehdään aina suoraan palveluntarjoajan kanssa." },
@@ -23,12 +23,14 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
           <p className="mt-4 text-lg leading-8 text-slate-600">{l.intro}</p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {providers.map((provider) => (
+          {providers.map((provider) => {
+            const image = getSaloProviderImage(provider);
+            return (
             <Link key={provider.id} href={`/${locale}/salo/${getSaloProviderDetailCategory(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2">
               <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                {provider.image ? (
+                {image ? (
                   <Image
-                    src={provider.image}
+                    src={image}
                     alt={locale === "fi" ? provider.name + " – kohdekuva" : locale === "es" ? provider.name + " – imagen del establecimiento" : provider.name + " – venue photo"}
                     fill
                     unoptimized
@@ -49,10 +51,11 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
                 <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
                 <p className="mt-3 leading-7 text-slate-600">{provider.description[locale]}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{l.visit}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
-                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{locale === "fi" ? "Kuvan lähde: " : locale === "es" ? "Fuente de la imagen: " : "Image source: "}{provider.imageCredit}</p> : null}
+                {image && provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{locale === "fi" ? "Kuvan lähde: " : locale === "es" ? "Fuente de la imagen: " : "Image source: "}{provider.imageCredit}</p> : null}
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
