@@ -19,7 +19,7 @@ function guard() {
 function clean(value: unknown) {
   if (!Array.isArray(value)) return [];
 
-  return value
+  const rows = value
     .slice(0, 30)
     .map((row: any, index: number) => ({
       id: String(row?.id || crypto.randomUUID()),
@@ -47,8 +47,19 @@ function clean(value: unknown) {
       ),
     }))
     .filter((row) => row.imageUrl);
-}
 
+  const seenImages = new Set<string>();
+  for (const row of rows) {
+    if (!row.enabled || !row.imageUrl) continue;
+    const imageKey = row.imageUrl.split(/[?#]/, 1)[0].replace(/\\/+$/, "").toLowerCase();
+    if (seenImages.has(imageKey)) {
+      throw new Error("Samaa kuvaa ei voi käyttää useassa aktiivisessa karusellidiassa. Valitse jokaiselle dialle oma kuva.");
+    }
+    seenImages.add(imageKey);
+  }
+
+  return rows;
+}
 function safeHttpsUrlOrEmpty(value: unknown) {
   const url = typeof value === "string" ? value.trim() : "";
   return /^https:\/\//i.test(url) && isSafeUrlOrPath(url) ? url : "";
