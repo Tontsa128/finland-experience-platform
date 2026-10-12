@@ -109,6 +109,30 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
           noEvents: "Individual events are not published until the date and the organiser’s specific event page are verified.",
         };
 
+  const midsummerCopy = locale === "fi"
+    ? {
+        eyebrow: "Suomalainen keskikesä",
+        title: "Juhannus Suomessa – kesäyö ja juhannuskokko",
+        text: "Juhannukseen kuuluvat valoisa kesäyö, järvi- ja merimaisemat sekä paikalliset juhannuskokot. Kuva on esimerkkikuva Imatralta, ei tieto Salossa järjestettävästä tapahtumasta. Tarkista juhannusjuhlat, kokkojen ajankohdat ja mahdolliset tulentekorajoitukset aina paikalliselta järjestäjältä ennen matkaa.",
+        link: "Tarkista Salon tapahtumat",
+        photoLabel: "Kuvan lähde: MKFI / Wikimedia Commons · Public domain",
+      }
+    : locale === "es"
+      ? {
+          eyebrow: "El verano en Finlandia",
+          title: "San Juan en Finlandia: noche de verano y hoguera",
+          text: "La celebración del solsticio de verano se asocia con noches luminosas, lagos, costa y hogueras locales. La foto es ilustrativa y procede de Imatra; no confirma un evento en Salo. Consulta al organizador local las celebraciones, los horarios de las hogueras y las posibles restricciones de fuego antes de viajar.",
+          link: "Consultar eventos de Salo",
+          photoLabel: "Fuente de la imagen: MKFI / Wikimedia Commons · Dominio público",
+        }
+      : {
+          eyebrow: "Finnish midsummer",
+          title: "Midsummer in Finland: summer night and bonfire",
+          text: "Midsummer brings bright summer nights, lakes and coastline, and local bonfire traditions. This is an illustrative bonfire photograph from Imatra, not confirmation of a Salo event. Check local organizers for current celebrations, bonfire times and any fire restrictions before travelling.",
+          link: "Check Salo events",
+          photoLabel: "Image source: MKFI / Wikimedia Commons · Public domain",
+        };
+
   return (
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": eventSchema }) }} />
@@ -148,6 +172,36 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
               <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
             </article>
           )) : <p className="rounded-2xl border border-dashed border-slate-300 p-6 text-sm leading-7 text-slate-600 md:col-span-2">{copy.noEvents}</p>}
+        </div>
+      </section>
+
+      <section className="bg-white py-14 sm:py-20">
+        <div className="container-narrow">
+          <div className="grid overflow-hidden rounded-[2rem] bg-brand-950 text-white shadow-card lg:grid-cols-[1.05fr_.95fr]">
+            <div className="relative min-h-[320px] bg-brand-900 sm:min-h-[430px]">
+              <Image
+                src={photoLibrary.juhannuskokko}
+                alt={locale === "fi" ? "Juhannuskokko Imatralla kesäiltana" : locale === "es" ? "Hoguera de San Juan en Imatra durante una tarde de verano" : "Midsummer bonfire in Imatra on a summer evening"}
+                fill
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 52vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-5">
+                <a href="https://commons.wikimedia.org/wiki/File:Juhannuskokko_Imatra_2025_2.JPG" target="_blank" rel="noreferrer" className="text-xs font-medium text-white underline decoration-white/60 underline-offset-4">
+                  {midsummerCopy.photoLabel}
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+              <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{midsummerCopy.eyebrow}</p>
+              <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl">{midsummerCopy.title}</h2>
+              <p className="mt-5 leading-7 text-white/80">{midsummerCopy.text}</p>
+              <a href="https://visitsalo.fi/tapahtumat/" target="_blank" rel="noreferrer" className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-brand-950">
+                {midsummerCopy.link}<ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
