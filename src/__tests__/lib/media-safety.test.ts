@@ -11,6 +11,11 @@ test("photo-library assets are unique and have complete attribution metadata", (
     owners.set(url, key);
   }
 
+  const creditedUrls = new Set(photoCredits.map((photo) => photo.url));
+  for (const [key, url] of Object.entries(photoLibrary)) {
+    assert.ok(creditedUrls.has(url), `Missing photo credit entry for asset ${key}`);
+  }
+
   for (const photo of photoCredits) {
     assert.ok(photo.url.startsWith("https://"), "Photo URL must use HTTPS");
     assert.ok(photo.sourcePage.startsWith("https://"), `Missing HTTPS source page for ${photo.credit}`);
