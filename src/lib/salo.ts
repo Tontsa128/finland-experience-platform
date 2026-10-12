@@ -1,4 +1,5 @@
 import type { Locale } from "@/types";
+import { photoLibrary } from "@/lib/photo-library";
 
 export type SaloAreaId =
   | "salo-region"
@@ -42,6 +43,8 @@ export type SaloProvider = {
   price?: string;
   image?: string;
   imageCredit?: string;
+  imageSourcePage?: string;
+  imageLicense?: string;
   officialGuide?: boolean;
 };
 
@@ -191,8 +194,10 @@ const allSaloProviders: SaloProvider[] = [
       en: "Lakes, forests, rocks and trails year-round. Basic access to the national park is free; rental services are charged separately.",
     },
     url: "https://www.luontoon.fi/teijo",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: photoLibrary.teijoNationalPark,
+    imageCredit: "Vnnen / Wikimedia Commons",
+    imageSourcePage: "https://commons.wikimedia.org/wiki/File:Punassuo2.jpg",
+    imageLicense: "CC BY-SA 4.0",
   },
   {
     id: "meri-teijo-golf",
@@ -217,6 +222,38 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://kylapanimo.fi",
     image: providerImages.brewery,
     imageCredit: "Visit Salo",
+  },
+  {
+    id: "bistro-bruket",
+    areaId: "mathildedal",
+    category: "food",
+    name: "Bistro Bruket",
+    description: {
+      fi: "Ravintola Mathildedalin ruukkikylässä. Listalla on muun muassa hiilellä ja tulella valmistettuja makuja sekä sesongin annoksia.",
+      es: "Bistró en el histórico pueblo industrial de Mathildedal, con cocina al carbón y platos de temporada.",
+      en: "A bistro in Mathildedal's historic ironworks village, serving charcoal- and fire-cooked dishes and seasonal food.",
+    },
+    url: "https://www.bistrobruket.fi/",
+    image: photoLibrary.bistroBruket,
+    imageCredit: "Bistro Bruket (official website)",
+    imageSourcePage: "https://www.bistrobruket.fi/",
+    imageLicense: "Provider website image; reuse terms require confirmation",
+  },
+  {
+    id: "ravintola-terho",
+    areaId: "mathildedal",
+    category: "food",
+    name: "Kyläravintola Terho",
+    description: {
+      fi: "Mathildedalin kyläravintola tunnetaan kiviarinauunissa paistetuista pizzoista, omasta kahvipaahtimosta ja kesäisestä takapihan terassistaan.",
+      es: "Restaurante de pueblo en Mathildedal, conocido por sus pizzas al horno de piedra, su propio tostador de café y su terraza de verano.",
+      en: "A village restaurant in Mathildedal known for stone-deck oven pizzas, its own coffee roastery and a summer terrace.",
+    },
+    url: "https://www.ravintolaterho.fi/",
+    image: photoLibrary.ravintolaTerho,
+    imageCredit: "Kyläravintola Terho (official website; photographer credits on source site)",
+    imageSourcePage: "https://www.ravintolaterho.fi/",
+    imageLicense: "Provider website image; reuse terms require confirmation",
   },
   {
     id: "saaristomokit-sarkisalo",
@@ -267,8 +304,10 @@ const allSaloProviders: SaloProvider[] = [
       en: "A seaside summer café at Förby Marina with homemade sweet and savoury treats, salads and speciality coffee.",
     },
     url: "https://www.cafevinssi.fi/",
-    image: "https://cdn-datahub.visitfinland.com/images/2ed8ed20-f83c-11f0-ad78-29bd5b45e175.jpeg?s=1280",
-    imageCredit: "Visit Finland DataHub",
+    image: photoLibrary.cafeVinssi,
+    imageCredit: "Café Vinssi (official website)",
+    imageSourcePage: "https://www.cafevinssi.fi/",
+    imageLicense: "Provider website image; reuse terms require confirmation",
   },
   {
     id: "saaristoravintola-nixor",
@@ -280,8 +319,10 @@ const allSaloProviders: SaloProvider[] = [
       en: "A relaxed terrace restaurant in Niksari, Särkisalo, with summer food, archipelago views and live music.",
     },
     url: "https://www.ylostalo.fi/nixor",
-    image: "https://cdn-datahub.visitfinland.com/images/4c038a70-b547-11ee-895e-65eccdb2f013.jpeg?s=1280",
-    imageCredit: "Visit Finland DataHub",
+    image: photoLibrary.nixorMidsummer,
+    imageCredit: "Ylöstalon matkailutila / Ravintola Nixor (official website)",
+    imageSourcePage: "https://www.ylostalo.fi/nixor",
+    imageLicense: "Provider website image; reuse terms require confirmation",
   },
   {
     id: "villa-meri-sarkisalo",
