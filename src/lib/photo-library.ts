@@ -41,6 +41,11 @@ export const photoLibrary = {
   mathildedalChristmas: "https://visitmathildedal.fi/sites/default/files/galleriakuvat/2026/valimo.jpg",
   rosalaVikingCentre: "https://cdn.johku.com/rosala/largefiles/577.jpg",
   rosalaVikingHall: "https://cdn.johku.com/rosala/largefiles/44-RVC%20hallen%20forneldar%202017.jpg",
+  bistroBruket: "https://irp.cdn-website.com/5c4c461d/dms3rep/multi/opt/bistro_tuli-624w.jpg",
+  ravintolaTerho: "https://static.wixstatic.com/media/5e5929_9e5a4f06a1794080a2b8d42c24e055d2~mv2.jpg/v1/crop/x_0%2Cy_461%2Cw_1365%2Ch_948/fill/w_829%2Ch_542%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/terho-web-85.jpg",
+  cafeVinssi: "https://www.cafevinssi.fi/wp-content/uploads/2018/06/IMG_9760s.jpg",
+  nixorMidsummer: "https://ylostalo.fi/wp-content/uploads/2025/10/Nixor26-1024x768.webp",
+  juhannuskokko: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Juhannuskokko_Imatra_2025_2.JPG",
 } as const;
 
 export const photoCredits: PhotoCredit[] = [
@@ -91,4 +96,9 @@ export const photoCredits: PhotoCredit[] = [
   { url: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal / Meri-Teijo Golf listing", license: "Provider directory image; reuse terms to be confirmed", sourcePage: "https://visitmathildedal.fi/fi/ravintolatjakahvilat" },
   { url: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/metsaravintola.jpg?itok=C0O4bfsi", credit: "Visit Mathildedal / Metsäravintola listing", license: "Provider directory image; reuse terms to be confirmed", sourcePage: "https://visitmathildedal.fi/fi/ravintolatjakahvilat" },
   { url: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/terhohills.jpeg?itok=2zEVsfuL", credit: "Visit Mathildedal / Terho Hills listing", license: "Provider directory image; reuse terms to be confirmed", sourcePage: "https://visitmathildedal.fi/fi/ravintolatjakahvilat" },
+  { url: photoLibrary.bistroBruket, credit: "Bistro Bruket", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.bistrobruket.fi/" },
+  { url: photoLibrary.ravintolaTerho, credit: "Kyläravintola Terho / Riikka Lilja Photography and site credits", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.ravintolaterho.fi/" },
+  { url: photoLibrary.cafeVinssi, credit: "Café Vinssi", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.cafevinssi.fi/" },
+  { url: photoLibrary.nixorMidsummer, credit: "Ylöstalon matkailutila / Ravintola Nixor", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.ylostalo.fi/nixor" },
+  { url: photoLibrary.juhannuskokko, credit: "MKFI", license: "Public domain", sourcePage: "https://commons.wikimedia.org/wiki/File:Juhannuskokko_Imatra_2025_2.JPG" },
 ];
