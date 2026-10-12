@@ -98,7 +98,7 @@ const providers = [
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const locale = (await params).locale as Locale;
   const x = t[locale] || t.en;
-  return buildLocalizedMetadata({ locale, title: x.title, description: x.description, path: "hanko", image: photoLibrary.hanko });
+  return buildLocalizedMetadata({ locale, title: x.title, description: x.description, path: "hanko", image: photoLibrary.hankoRegattaBeach });
 }
 
 export default async function HankoPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -107,7 +107,7 @@ export default async function HankoPage({ params }: { params: Promise<{ locale: 
   return (
     <main className="bg-white">
       <section className="relative overflow-hidden bg-brand-950 text-white">
-        <Image src={photoLibrary.hanko} alt={locale === "fi" ? "Hanko ilmasta" : locale === "es" ? "Hanko desde el aire" : "Hanko from the air"} fill priority sizes="100vw" className="object-cover opacity-45" />
+        <Image src={photoLibrary.hankoRegattaBeach} alt={locale === "fi" ? "Hanko ja Regattanrannan uimaranta" : locale === "es" ? "Hanko y la playa de Regattanranta" : "Hanko and Regattanranta beach"} fill priority sizes="100vw" className="object-cover opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/65 to-brand-950/10" />
         <div className="container-narrow relative py-24 sm:py-32">
           <p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{x.eyebrow}</p>
