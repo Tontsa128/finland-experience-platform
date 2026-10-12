@@ -79,6 +79,20 @@ test("provider detail category is consistent with the shared area taxonomy", () 
   assert.equal(getSaloProviderDetailCategory(provider("mathildedal-brewery")), "ruoka");
 });
 
+test("provider directory does not reuse the same image for multiple businesses", () => {
+  const imageOwners = new Map<string, string>();
+  for (const provider of saloProviders) {
+    if (!provider.image) continue;
+    const previousOwner = imageOwners.get(provider.image);
+    assert.equal(
+      previousOwner,
+      undefined,
+      `Provider image reused by ${previousOwner} and ${provider.id}`,
+    );
+    imageOwners.set(provider.image, provider.id);
+  }
+});
+
 test("provider directory links use HTTPS URLs", () => {
   for (const provider of saloProviders) {
     assert.ok(
