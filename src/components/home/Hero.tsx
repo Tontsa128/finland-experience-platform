@@ -129,7 +129,15 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
-  const cmsSlides = (settings?.homepageSlides || []).flatMap((item) => { const imageUrl = getPublishableImageUrl(item.imageUrl, item.rightsConfirmed); return item.enabled !== false && imageUrl ? [{ ...item, imageUrl }] : []; });
+  const seenCmsImages = new Set<string>();
+  const cmsSlides = (settings?.homepageSlides || []).flatMap((item) => {
+    const imageUrl = getPublishableImageUrl(item.imageUrl, item.rightsConfirmed);
+    if (item.enabled === false || !imageUrl) return [];
+    const imageKey = imageUrl.split(/[?#]/, 1)[0].replace(/\/+$/, "").toLowerCase();
+    if (seenCmsImages.has(imageKey)) return [];
+    seenCmsImages.add(imageKey);
+    return [{ ...item, imageUrl }];
+  });
   const activeSlides = cmsSlides.length
     ? cmsSlides.map((item) => ({ ...item, key: item.id, image: item.imageUrl }))
     : slides.map((item, index) => ({
