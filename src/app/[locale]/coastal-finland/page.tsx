@@ -175,9 +175,9 @@ const places: Place[] = [
     slug: "hanko",
     name: { fi: "Hanko & läntinen rannikko", es: "Hanko y la costa oeste", en: "Hanko & the Western Coast" },
     region: { fi: "Hanko · Suomen eteläkärki", es: "Hanko · extremo sur de Finlandia", en: "Hanko · southernmost Finland" },
-    image: photoLibrary.hanko,
+    image: photoLibrary.hankoAerial,
     imageAlt: { fi: "Hanko ilmasta", es: "Hanko desde el aire", en: "Hanko from the air" },
-    gallery: [photoLibrary.hanko],
+    gallery: [photoLibrary.hankoRegattaBeach],
     intro: {
       fi: "Hanko on meri kolmelta suunnalta. Eteläinen sijainti, hiekkarannat, sileät kalliot, huvilat ja satamat antavat kaupungille oman kylpyläkaupunkimaisen tunnelmansa.",
       es: "Hanko está rodeado por el mar en tres lados. Su costa, playas, rocas, villas y puertos crean una identidad propia de ciudad balnearia.",
