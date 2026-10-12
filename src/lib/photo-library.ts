@@ -6,7 +6,6 @@ export type PhotoCredit = {
 };
 
 export const photoLibrary = {
-  hero: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
   helsinkiHarbour: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Helsinki_Harbour,_Satama,_Finland,_Suomi.jpg",
   tampereTammerkoski: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tammerkoski_Tampere.jpg",
   mathildedalVillage: "https://upload.wikimedia.org/wikipedia/commons/0/08/Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
@@ -65,7 +64,6 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.aland, credit: "Håkan Skogsjö", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg" },
   { url: photoLibrary.teijoNationalPark, credit: "Vnnen", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Punassuo2.jpg" },
   { url: photoLibrary.porvoo, credit: "Teemu Eskola", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg" },
-  { url: photoLibrary.hankoAerial, credit: "Kallerna", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Hanko_aerial_1.jpg" },
   { url: photoLibrary.hankoRegattaBeach, credit: "W.carter", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg" },
   { url: photoLibrary.sarkisalo, credit: "Motopark", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Ulkoluotosilta3.jpg" },
   { url: photoLibrary.turkuArchipelago, credit: "Rob Sinclair", license: "CC BY-SA 2.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg" },
