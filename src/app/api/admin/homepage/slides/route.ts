@@ -51,7 +51,7 @@ function clean(value: unknown) {
   const seenImages = new Set<string>();
   for (const row of rows) {
     if (!row.enabled || !row.imageUrl) continue;
-    const imageKey = row.imageUrl.split(/[?#]/, 1)[0].replace(/\\/+$/, "").toLowerCase();
+    const imageKey = row.imageUrl.split(/[?#]/, 1)[0].replace(/\/+$/, "").toLowerCase();
     if (seenImages.has(imageKey)) {
       throw new Error("Samaa kuvaa ei voi käyttää useassa aktiivisessa karusellidiassa. Valitse jokaiselle dialle oma kuva.");
     }
