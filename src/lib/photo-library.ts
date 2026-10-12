@@ -38,6 +38,7 @@ export const photoLibrary = {
   bjorkholm: "https://cdn.johku.com/bjorkholm/files/419/w374-h237-s/image.Svartan_Bjorkholm_johku_wallpaper.jpg",
   naturaVivaTeijo: "https://cdn.johku.com/naturaviva/largefiles/676/webp/teijo-national-park-rental-shop.webp",
   pumpkinWeeks: "https://visitsalo.fi/wp-content/uploads/sites/2/2025/08/Kurpitsapuistossa-pyoraileva-luuranko-450x253.jpg",
+  ghostsPumpkins: "https://static.wixstatic.com/media/cb0529_d7363ec96e714e5b9c6f206d30697f33~mv2.png/v1/fill/w_824%2Ch_563%2Cal_c%2Cq_90%2Cenc_auto/cb0529_d7363ec96e714e5b9c6f206d30697f33~mv2.png",
   mathildedalChristmas: "https://visitmathildedal.fi/sites/default/files/galleriakuvat/2026/valimo.jpg",
   rosalaVikingCentre: "https://cdn.johku.com/rosala/largefiles/577.jpg",
   rosalaVikingHall: "https://cdn.johku.com/rosala/largefiles/44-RVC%20hallen%20forneldar%202017.jpg",
@@ -101,4 +102,5 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.cafeVinssi, credit: "Café Vinssi", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.cafevinssi.fi/" },
   { url: photoLibrary.nixorMidsummer, credit: "Ylöstalon matkailutila / Ravintola Nixor", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.ylostalo.fi/nixor" },
   { url: photoLibrary.juhannuskokko, credit: "MKFI", license: "Public domain", sourcePage: "https://commons.wikimedia.org/wiki/File:Juhannuskokko_Imatra_2025_2.JPG" },
+  { url: photoLibrary.ghostsPumpkins, credit: "Kurpitsaviikot / event listing", license: "Event website image; reuse terms require confirmation", sourcePage: "https://www.kurpitsaviikot.fi/event-details/huokauksia-kartanon-huoneissa-opastettu-kierros-paarakennuksessa-2025-10-10-14-00" },
 ];
