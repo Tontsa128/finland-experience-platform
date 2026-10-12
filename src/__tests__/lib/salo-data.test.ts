@@ -93,6 +93,15 @@ test("provider directory does not reuse the same image for multiple businesses",
   }
 });
 
+test("provider photo source metadata is complete when provided", () => {
+  for (const provider of saloProviders) {
+    if (!provider.imageSourcePage) continue;
+    assert.ok(provider.imageSourcePage.startsWith("https://"), `Photo source must use HTTPS: ${provider.id}`);
+    assert.ok(provider.imageCredit?.trim(), `Missing photo credit for ${provider.id}`);
+    assert.ok(provider.imageLicense?.trim(), `Missing photo usage note for ${provider.id}`);
+  }
+});
+
 test("provider directory links use HTTPS URLs", () => {
   for (const provider of saloProviders) {
     assert.ok(
