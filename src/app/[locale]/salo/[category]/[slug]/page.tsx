@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { getSaloProviderArea, getSaloProviderDetailCategory, saloProviders } from "@/lib/salo";
+import { getSaloProviderArea, getSaloProviderDetailCategory, getSaloProviderImage, saloProviders } from "@/lib/salo";
 
 const labels = {
   fi: { region: "Salon seutu · Varsinais-Suomi", back: "Takaisin kategoriaan", provider: "Palveluntarjoajan verkkosivusto", direct: "Varaus, maksu ja sopimus tehdään suoraan palveluntarjoajan kanssa.", location: "Sijainti", locationUnknown: "Tarkka katuosoite ja koordinaatit eivät ole tässä oppaassa vahvistettuja.", price: "Hinta", priceNote: "Hintoja tai saatavuutta ei näytetä ilman ajantasaista vahvistusta." },
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const provider = saloProviders.find((item) => item.id === slug);
   if (!provider || !["majoitus", "ruoka", "aktiviteetit", "elamykset", "saaristo", "oppaat"].includes(category) || !providerBelongsToCategory(provider, category as Category)) notFound();
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
-  return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: provider.image || undefined });
+  return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: getSaloProviderImage(provider) || undefined });
 }
 
 export default async function SaloProviderPage({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }) {
@@ -39,7 +39,7 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   const t = labels[locale];
   const categoryPath = category as Category;
-  const image = provider.image || null;
+  const image = getSaloProviderImage(provider);
   const providerArea = getSaloProviderArea(provider);
   const verifiedArea = providerArea ? providerArea.name[locale] + " · " + providerArea.municipality[locale] : null;
   const mapSearchUrl = providerArea ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(provider.name + ", " + providerArea.mapQuery) : null;
@@ -53,7 +53,7 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
             <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{providerArea ? providerArea.name[locale] : t.region} · {categoryTitle[locale][categoryPath]}</p>
             <h1 className="mt-4 font-display text-4xl font-bold sm:text-6xl">{provider.name}</h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-white/90 sm:text-xl">{provider.description[locale]}</p>
-            {provider.image && provider.imageCredit ? <p className="mt-5 text-xs text-white/75">{locale === "fi" ? "Kuvan lähde: " : locale === "es" ? "Fuente de la imagen: " : "Image source: "}{provider.imageSourcePage ? <a href={provider.imageSourcePage} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{provider.imageCredit}</a> : provider.imageCredit}{provider.imageLicense ? " · " + provider.imageLicense : ""}</p> : null}
+            {image && provider.imageCredit ? <p className="mt-5 text-xs text-white/75">{locale === "fi" ? "Kuvan lähde: " : locale === "es" ? "Fuente de la imagen: " : "Image source: "}{provider.imageSourcePage ? <a href={provider.imageSourcePage} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{provider.imageCredit}</a> : provider.imageCredit}{provider.imageLicense ? " · " + provider.imageLicense : ""}</p> : null}
           </div>
         </div>
       </section>
