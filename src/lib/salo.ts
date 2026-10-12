@@ -45,6 +45,8 @@ export type SaloProvider = {
   imageCredit?: string;
   imageSourcePage?: string;
   imageLicense?: string;
+  /** Explicit approval to publish this photograph on Finnexprience. */
+  imageRightsConfirmed?: boolean;
   officialGuide?: boolean;
 };
 
@@ -202,6 +204,7 @@ const allSaloProviders: SaloProvider[] = [
     imageCredit: "Vnnen / Wikimedia Commons",
     imageSourcePage: "https://commons.wikimedia.org/wiki/File:Punassuo2.jpg",
     imageLicense: "CC BY-SA 4.0",
+    imageRightsConfirmed: true,
   },
   {
     id: "meri-teijo-golf",
@@ -782,6 +785,18 @@ export const saloProviders: SaloProvider[] = allSaloProviders.map((provider) => 
   ...provider,
   areaId: saloProviderAreaIds[provider.id],
 }));
+
+/**
+ * Publish a provider photo only after its usage rights and provenance are confirmed.
+ * A publicly visible image, source URL, or credit by itself is not permission to reuse it.
+ */
+export function getSaloProviderImage(provider: SaloProvider): string | null {
+  if (provider.imageRightsConfirmed !== true || !provider.image) return null;
+  if (!/^https:\/\//i.test(provider.image)) return null;
+  if (!provider.imageCredit?.trim() || !provider.imageLicense?.trim()) return null;
+  if (!provider.imageSourcePage || !/^https:\/\//i.test(provider.imageSourcePage)) return null;
+  return provider.image;
+}
 
 export function getSaloProviderArea(provider: SaloProvider): SaloArea | null {
   return provider.areaId ? saloAreas[provider.areaId] : null;
