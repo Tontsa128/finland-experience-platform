@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Coffee, ExternalLink, MapPin } from "lucide-react";
+import { ArrowRight, ExternalLink, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { photoLibrary } from "@/lib/photo-library";
 import { getSaloProviderDetailCategory, saloProviders, type SaloProvider } from "@/lib/salo";
@@ -10,36 +10,6 @@ const labels = {
   es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", visit: "Ver detalles del lugar", heading: "Descubre los servicios locales", intro: "Conoce cada lugar en su propia página. Las reservas, los pagos y los contratos se realizan directamente con cada proveedor." },
   en: { tourism: "Tourism information", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Food and local flavours", visit: "View place details", heading: "Discover local services", intro: "Explore each place on its own page. Bookings, payments and contracts are handled directly by each provider." },
 } as const;
-
-function fallbackImage(provider: SaloProvider): string | null {
-  switch (provider.areaId) {
-    case "salo-center":
-    case "salo-region":
-      return photoLibrary.saloVeturitalli;
-    case "mathildedal":
-      return photoLibrary.mathildedalVillage;
-    case "teijo":
-      return photoLibrary.teijoNationalPark;
-    case "sarkisalo":
-      return photoLibrary.sarkisalo;
-    default:
-      // Avoid showing a photo from a different locality as if it represented this place.
-      return null;
-  }
-}
-
-function fallbackImageAlt(provider: SaloProvider, locale: Locale) {
-  if (provider.areaId === "mathildedal") {
-    return locale === "fi" ? "Mathildedalin historiallinen ruukkikylä, aluekuva" : locale === "es" ? "Pueblo histórico de Mathildedal, imagen de contexto" : "Historic Mathildedal ironworks village, regional context image";
-  }
-  if (provider.areaId === "teijo") {
-    return locale === "fi" ? "Teijon kansallispuiston luontoa, aluekuva" : locale === "es" ? "Naturaleza del Parque Nacional de Teijo, imagen de contexto" : "Nature in Teijo National Park, regional context image";
-  }
-  if (provider.areaId === "sarkisalo") {
-    return locale === "fi" ? "Särkisalon saaristomaisema, aluekuva" : locale === "es" ? "Paisaje del archipiélago de Särkisalo, imagen de contexto" : "Särkisalo archipelago landscape, regional context image";
-  }
-  return locale === "fi" ? "Veturitalli Salossa, aluekuva" : locale === "es" ? "Veturitalli en Salo, imagen de contexto" : "Veturitalli in Salo, regional context image";
-}
 
 export function SaloDirectory({ locale, category }: { locale: Locale; category?: SaloProvider["category"] }) {
   const l = labels[locale];
@@ -56,17 +26,21 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
           {providers.map((provider) => (
             <Link key={provider.id} href={`/${locale}/salo/${getSaloProviderDetailCategory(provider)}/${provider.id}`} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2">
               <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                {provider.category === "food" ? (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-brand-50 px-6 text-center text-brand-700">
-                    <Coffee className="h-8 w-8" />
-                    <p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Ruokakuva lisätään käyttöoikeuden vahvistamisen jälkeen" : locale === "es" ? "La foto gastronómica se añadirá cuando se confirmen los derechos de uso" : "A food photo will be added once usage rights are confirmed"}</p>
-                  </div>
-                ) : fallbackImage(provider) ? (
-                  <Image src={fallbackImage(provider)!} alt={fallbackImageAlt(provider, locale)} fill unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                {provider.image ? (
+                  <Image
+                    src={provider.image}
+                    alt={locale === "fi" ? provider.name + " – kohdekuva" : locale === "es" ? provider.name + " – imagen del establecimiento" : provider.name + " – venue photo"}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
                 ) : (
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-50 via-white to-brand-100 px-6 text-center text-brand-700">
                     <MapPin className="h-8 w-8" />
-                    <p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Aluekuva lisätään, kun kohteeseen sopiva kuva ja käyttöoikeus on vahvistettu" : locale === "es" ? "La imagen local se añadirá cuando se confirme que corresponde al lugar y que se puede utilizar" : "A local image will be added once its relevance to the place and usage rights are confirmed"}</p>
+                    <p className="mt-3 text-xs font-semibold">
+                      {locale === "fi" ? "Tähän kohteeseen sopivaa omaa kuvaa ei ole vielä vahvistettu" : locale === "es" ? "Todavía no hay una foto propia verificada para este lugar" : "A verified, place-specific photo is not available yet"}
+                    </p>
                   </div>
                 )}
               </div>
@@ -75,7 +49,7 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
                 <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
                 <p className="mt-3 leading-7 text-slate-600">{provider.description[locale]}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{l.visit}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
-                <p className="mt-4 text-[11px] text-slate-400">{locale === "fi" ? "Aluekuva – ei välttämättä kuva kyseisestä yrityksestä." : locale === "es" ? "Imagen de la región; no necesariamente del establecimiento." : "Regional image; not necessarily a photo of this business."}</p>
+                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{locale === "fi" ? "Kuvan lähde: " : locale === "es" ? "Fuente de la imagen: " : "Image source: "}{provider.imageCredit}</p> : null}
               </div>
             </Link>
           ))}
