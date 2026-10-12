@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { photoLibrary } from "@/lib/photo-library";
 import { getSaloProviderArea, getSaloProviderDetailCategory, saloProviders } from "@/lib/salo";
 
 const labels = {
@@ -43,23 +42,13 @@ function providerBelongsToCategory(provider: (typeof saloProviders)[number], cat
   const primary = getSaloProviderDetailCategory(provider);
   return primary === category;
 }
-function regionalImage(provider: (typeof saloProviders)[number]): string | null {
-  if (provider.areaId === "mathildedal") return photoLibrary.mathildedalHarbour;
-  if (provider.areaId === "teijo") return photoLibrary.teijoNationalPark;
-  if (provider.areaId === "sarkisalo") return photoLibrary.sarkisalo;
-  if (provider.areaId === "salo-center" || provider.areaId === "salo-region") return photoLibrary.saloVeturitalli;
-  // Do not reuse a photo from another Salo locality when no suitable licensed image is known.
-  return null;
-}
-
-
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }): Promise<Metadata> {
   const { locale: raw, category, slug } = await params;
   const provider = saloProviders.find((item) => item.id === slug);
   if (!provider || !["majoitus", "ruoka", "aktiviteetit", "elamykset", "saaristo", "oppaat"].includes(category) || !providerBelongsToCategory(provider, category as Category)) notFound();
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
-  return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: regionalImage(provider) || undefined });
+  return buildLocalizedMetadata({ locale, title: provider.name + " | " + categoryTitle[locale][category as Category] + " – Salo", description: provider.description[locale], path: "salo/" + category + "/" + slug, image: provider.image || undefined });
 }
 
 export default async function SaloProviderPage({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }) {
@@ -69,20 +58,21 @@ export default async function SaloProviderPage({ params }: { params: Promise<{ l
   const locale = (["fi", "es", "en"].includes(raw) ? raw : "en") as Locale;
   const t = labels[locale];
   const categoryPath = category as Category;
-  const image = regionalImage(provider);
+  const image = provider.image || null;
   const providerArea = getSaloProviderArea(provider);
   const verifiedArea = providerArea ? providerArea.name[locale] + " · " + providerArea.municipality[locale] : null;
   const mapSearchUrl = providerArea ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(provider.name + ", " + providerArea.mapQuery) : null;
   return (
     <main className="min-h-screen bg-white text-brand-950">
       <section className="relative isolate min-h-[55svh] overflow-hidden bg-brand-950 text-white">
-        {image ? <Image src={image} alt={providerAreaLabel(provider.areaId, locale)} fill priority sizes="100vw" unoptimized className="object-cover opacity-50" /> : <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-800 via-brand-950 to-brand-950 px-6 text-center"><MapPin className="h-12 w-12 text-gold-300" /><p className="mt-4 max-w-sm text-sm font-semibold text-white/85">{locale === "fi" ? "Paikallinen kohdekuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una imagen local cuando se confirmen los derechos de uso" : "A local destination image will be added once usage rights are confirmed"}</p></div>}
+        {image ? <Image src={image} alt={locale === "fi" ? provider.name + " – palveluntarjoajan oma kohdekuva" : locale === "es" ? provider.name + " – foto del propio establecimiento" : provider.name + " – provider-specific venue photo"} fill priority sizes="100vw" unoptimized className="object-cover opacity-50" /> : <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-800 via-brand-950 to-brand-950 px-6 text-center"><MapPin className="h-12 w-12 text-gold-300" /><p className="mt-4 max-w-sm text-sm font-semibold text-white/85">{locale === "fi" ? "Tähän yritykseen sopiva kuva lisätään, kun oikea kuva ja sen käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una foto específica del establecimiento cuando se confirmen la imagen y sus derechos de uso" : "A venue-specific photo will be added once the image and its usage rights are confirmed"}</p></div>}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/60 to-brand-950/10" />
         <div className="container-narrow relative flex min-h-[55svh] items-end py-14 sm:py-20">
           <div className="max-w-4xl">
             <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{providerArea ? providerArea.name[locale] : t.region} · {categoryTitle[locale][categoryPath]}</p>
             <h1 className="mt-4 font-display text-4xl font-bold sm:text-6xl">{provider.name}</h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-white/90 sm:text-xl">{provider.description[locale]}</p>
+            {provider.image && provider.imageCredit ? <p className="mt-5 text-xs text-white/75">{locale === "fi" ? "Kuvan lähde: " : locale === "es" ? "Fuente de la imagen: " : "Image source: "}{provider.imageSourcePage ? <a href={provider.imageSourcePage} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{provider.imageCredit}</a> : provider.imageCredit}{provider.imageLicense ? " · " + provider.imageLicense : ""}</p> : null}
           </div>
         </div>
       </section>
