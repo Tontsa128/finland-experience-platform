@@ -61,7 +61,7 @@ export default async function PhotoCreditsPage({
         <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{t.intro}</p>
         <div className="mt-10 grid gap-4">
           {photoCredits.map((photo) => {
-            const licenceListed = /^(CC BY(?:-SA)? [\\d.]+|Public domain)$/.test(photo.license);
+            const licenceListed = /^(CC BY(?:-SA)? [0-9.]+|Public domain)$/.test(photo.license);
             return (
               <article key={photo.sourcePage} className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
                 <p className="font-semibold text-brand-950">{photo.credit}</p>
