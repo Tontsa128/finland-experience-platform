@@ -163,13 +163,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     </div>
                   );
                 })()}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-700 via-brand-900 to-brand-950 p-6 text-center">
-                    <MapPin className="h-9 w-9 text-gold-300" />
-                    <p className="mt-3 max-w-[14rem] text-xs font-semibold leading-5 text-white/85">
-                      {locale === "fi" ? "Kohdekuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "La imagen del destino se añadirá cuando se confirmen los derechos de uso" : "A destination image will be added once usage rights are confirmed"}
-                    </p>
-                  </div>
-                )}
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold">
