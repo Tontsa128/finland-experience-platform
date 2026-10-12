@@ -137,18 +137,32 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 href={`/${locale}/${destination.slug === "salo-mathildedal" ? "salo" : destination.slug}`}
                 className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
               >
-                {destination.slug === "salo-mathildedal" || destination.images?.[0] ? (
-                  <>
-                    <Image
-                      src={destination.slug === "salo-mathildedal" ? photoLibrary.mathildedalHarbour : destination.images[0]}
-                      alt={destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Mathildedalin satama Salon seudulla" : locale === "es" ? "Puerto de Mathildedal en la región de Salo" : "Mathildedal harbour in the Salo region") : destination.name[locale as keyof typeof destination.name] || destination.name.en}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-                      className="object-cover transition duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                  </>
-                ) : (
+                {(() => {
+                  const summerImageBySlug: Record<string, string> = {
+                    "salo-mathildedal": photoLibrary.mathildedalHarbour,
+                    naantali: photoLibrary.naantaliHarbour,
+                    turku: photoLibrary.turkuArchipelago,
+                    hanko: photoLibrary.hankoRegattaBeach,
+                    aland: photoLibrary.aland,
+                  };
+                  const image = summerImageBySlug[destination.slug];
+                  const alt = destination.slug === "salo-mathildedal"
+                    ? (locale === "fi" ? "Mathildedalin satama kesäisessä iltavalossa Salon seudulla" : locale === "es" ? "Puerto de Mathildedal con luz de verano en la región de Salo" : "Mathildedal harbour in summer light in the Salo region")
+                    : destination.name[locale as keyof typeof destination.name] || destination.name.en;
+                  return image ? (
+                    <>
+                      <Image src={image} alt={alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-700 via-brand-900 to-brand-950 p-6 text-center">
+                      <MapPin className="h-9 w-9 text-gold-300" />
+                      <p className="mt-3 max-w-[14rem] text-xs font-semibold leading-5 text-white/85">
+                        {locale === "fi" ? "Kohdekuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "La imagen del destino se añadirá cuando se confirmen los derechos de uso" : "A destination image will be added once usage rights are confirmed"}
+                      </p>
+                    </div>
+                  );
+                })()}
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-700 via-brand-900 to-brand-950 p-6 text-center">
                     <MapPin className="h-9 w-9 text-gold-300" />
                     <p className="mt-3 max-w-[14rem] text-xs font-semibold leading-5 text-white/85">
