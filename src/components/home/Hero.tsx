@@ -192,12 +192,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             priority={index === 0}
             sizes="100vw"
             unoptimized={Boolean(cmsSlides.length)}
-            className="object-cover"
+            className="object-cover brightness-110 saturate-110"
           />
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/5 to-transparent" />
 
       {credit ? (
         <div className="absolute bottom-3 right-3 z-20 rounded-full bg-black/45 px-2 py-0.5 text-[8px] leading-3 text-white/65 backdrop-blur-sm sm:bottom-4 sm:right-4 sm:px-2.5 sm:py-1 sm:text-[9px]">
