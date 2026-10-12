@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   getSaloProviderArea,
   getSaloProviderDetailCategory,
+  getSaloProviderImage,
   saloAreas,
   saloProviders,
 } from "@/lib/salo";
@@ -77,6 +78,29 @@ test("provider detail category is consistent with the shared area taxonomy", () 
   assert.equal(getSaloProviderDetailCategory(provider("forby-rantajooga")), "elamykset");
   assert.equal(getSaloProviderDetailCategory(provider("teijo-national-park")), "aktiviteetit");
   assert.equal(getSaloProviderDetailCategory(provider("mathildedal-brewery")), "ruoka");
+});
+
+test("provider photos require explicit rights confirmation and full source metadata", () => {
+  const approved = saloProviders.filter((provider) => getSaloProviderImage(provider));
+
+  for (const provider of saloProviders) {
+    const publishable = getSaloProviderImage(provider);
+    if (provider.imageRightsConfirmed === true) {
+      assert.ok(publishable, `Confirmed photo is missing required provenance: ${provider.id}`);
+    }
+    if (publishable) {
+      assert.equal(publishable, provider.image);
+      assert.equal(provider.imageRightsConfirmed, true);
+      assert.ok(provider.imageCredit?.trim(), `Missing image credit for ${provider.id}`);
+      assert.ok(provider.imageLicense?.trim(), `Missing image license for ${provider.id}`);
+      assert.ok(provider.imageSourcePage?.startsWith("https://"), `Missing image source page for ${provider.id}`);
+    }
+    if (provider.image && provider.imageRightsConfirmed !== true) {
+      assert.equal(publishable, null, `Unapproved image should not be published for ${provider.id}`);
+    }
+  }
+
+  assert.ok(approved.some((provider) => provider.id === "teijo-national-park"));
 });
 
 test("provider directory does not reuse the same image for multiple businesses", () => {
