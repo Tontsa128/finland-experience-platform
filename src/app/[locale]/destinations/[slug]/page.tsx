@@ -8,7 +8,6 @@ import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
-import { photoLibrary } from "@/lib/photo-library";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
@@ -272,13 +271,11 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
 
             <div className="mt-9 grid gap-4 md:grid-cols-2">
               {[
-                { image: photoLibrary.rosalaVikingCentre, title: locale === "fi" ? "Viikinkikylä" : locale === "es" ? "Poblado vikingo" : "Viking village", text: locale === "fi" ? "Historiallinen ympäristö, jossa voi tutustua viikinkiajan elämään ja näyttelyihin." : locale === "es" ? "Entorno histórico para conocer la vida y la cultura de la época vikinga." : "A historical setting to explore Viking-age life and exhibitions." },
-                { image: photoLibrary.rosalaVikingHall, title: locale === "fi" ? "Yöpyminen & sauna" : locale === "es" ? "Alojamiento & sauna" : "Stay & sauna", text: locale === "fi" ? "Päällikön hallin huoneet, alkovi- tai telttamajoitus sekä iltasauna ja aamiainen." : locale === "es" ? "Habitaciones, alcobas o tienda vikinga, con sauna nocturna y desayuno." : "Rooms, alcoves or a Viking tent, with evening sauna and breakfast." },
+                { title: locale === "fi" ? "Viikinkikylä" : locale === "es" ? "Poblado vikingo" : "Viking village", text: locale === "fi" ? "Historiallinen ympäristö, jossa voi tutustua viikinkiajan elämään ja näyttelyihin." : locale === "es" ? "Entorno histórico para conocer la vida y la cultura de la época vikinga." : "A historical setting to explore Viking-age life and exhibitions." },
+                { title: locale === "fi" ? "Yöpyminen & sauna" : locale === "es" ? "Alojamiento & sauna" : "Stay & sauna", text: locale === "fi" ? "Päällikön hallin huoneet, alkovi- tai telttamajoitus sekä iltasauna ja aamiainen." : locale === "es" ? "Habitaciones, alcobas o tienda vikinga, con sauna nocturna y desayuno." : "Rooms, alcoves or a Viking tent, with evening sauna and breakfast." },
               ].map((item) => (
                 <article key={item.title} className="overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
-                  <div className="relative aspect-[16/9]">
-                    <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
-                  </div>
+                  <div className="relative flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-brand-700 via-brand-900 to-brand-950 px-6 text-center"><p className="max-w-sm text-xs font-semibold leading-5 text-white/85">{locale === "fi" ? "Rosalan oma kuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una foto propia de Rosala cuando se confirmen los derechos de uso" : "A Rosala-specific photo will be added once usage rights are confirmed"}</p></div>
                   <div className="p-5"><h3 className="font-display text-2xl font-bold text-brand-950">{item.title}</h3><p className="mt-2 leading-7 text-slate-600">{item.text}</p></div>
                 </article>
               ))}
