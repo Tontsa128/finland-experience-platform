@@ -1,12 +1,11 @@
 import Image from "next/image";
 import { ArrowUpRight, CalendarDays } from "lucide-react";
-import { photoLibrary } from "@/lib/photo-library";
 
 const items = [
   {
     date: "9.–18.10.2026",
     key: "pumpkin",
-    image: photoLibrary.pumpkinWeeks,
+    image: null,
     imageAlt: {
       fi: "Kurpitsaviikkojen kurpitsapuiston halloween-koristelu Salossa",
       es: "Decoración de Halloween del parque de calabazas de Salo",
@@ -27,7 +26,7 @@ const items = [
   {
     date: "9.–25.10. & 31.10.–1.11.2026",
     key: "ghost",
-    image: photoLibrary.ghostsPumpkins,
+    image: null,
     imageAlt: {
       fi: "Mathildedalin kummitus- ja kurpitsatapahtuman kuvitus",
       es: "Ilustración del evento de fantasmas y calabazas de Mathildedal",
@@ -48,7 +47,7 @@ const items = [
   {
     date: "21. & 28.11.2026",
     key: "christmas",
-    image: photoLibrary.mathildedalChristmas,
+    image: null,
     imageAlt: {
       fi: "Mathildedalin ruukkikylän Valimo-rakennus joulumarkkinoiden tapahtumapaikkana",
       es: "Edificio Valimo en el pueblo industrial de Mathildedal, contexto del mercado navideño",
