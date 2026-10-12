@@ -47,6 +47,11 @@ export const photoLibrary = {
   cafeVinssi: "https://www.cafevinssi.fi/wp-content/uploads/2018/06/IMG_9760s.jpg",
   nixorMidsummer: "https://ylostalo.fi/wp-content/uploads/2025/10/Nixor26-1024x768.webp",
   juhannuskokko: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Juhannuskokko_Imatra_2025_2.JPG",
+  hotelMathildedal: "https://mathildedal.fi/wp-content/uploads/2026/03/Hotel-Mathildedal-Premium-1024x1024.jpg",
+  matriHouseOfficial: "https://matrihouse.fi/wp-content/uploads/2025/05/Unto_Rautio_MatriHouse_DSF7546_web-1060x707.jpg",
+  tiiranta: "https://tiiranta.fi/wp-content/uploads/2022/05/burger2-1920x400.jpg",
+  ylostaloRentalBoat: "https://www.ylostalo.fi/wp-content/uploads/2025/11/30hp-768x576.webp",
+  villaMeri: "https://www.ylostalo.fi/wp-content/uploads/2025/10/VillaMeri4-1-768x576.webp",
 } as const;
 
 export const photoCredits: PhotoCredit[] = [
@@ -103,4 +108,9 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.nixorMidsummer, credit: "Ylöstalon matkailutila / Ravintola Nixor", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.ylostalo.fi/nixor" },
   { url: photoLibrary.juhannuskokko, credit: "MKFI", license: "Public domain", sourcePage: "https://commons.wikimedia.org/wiki/File:Juhannuskokko_Imatra_2025_2.JPG" },
   { url: photoLibrary.ghostsPumpkins, credit: "Kurpitsaviikot / event listing", license: "Event website image; reuse terms require confirmation", sourcePage: "https://www.kurpitsaviikot.fi/event-details/huokauksia-kartanon-huoneissa-opastettu-kierros-paarakennuksessa-2025-10-10-14-00" },
+  { url: photoLibrary.hotelMathildedal, credit: "Hotel Mathildedal", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://mathildedal.fi/majoitus/" },
+  { url: photoLibrary.matriHouseOfficial, credit: "Matri House / photographer credit shown on provider site", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://matrihouse.fi/en/accommodation/" },
+  { url: photoLibrary.tiiranta, credit: "Tiiranta", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://tiiranta.fi/" },
+  { url: photoLibrary.ylostaloRentalBoat, credit: "Ylöstalon matkailutila", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.ylostalo.fi/fi/vuokraveneet/" },
+  { url: photoLibrary.villaMeri, credit: "Ylöstalon matkailutila", license: "Provider website image; reuse terms require confirmation", sourcePage: "https://www.ylostalo.fi/fi/villameri/" },
 ];
