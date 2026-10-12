@@ -113,24 +113,27 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
     ? {
         eyebrow: "Suomalainen keskikesä",
         title: "Juhannus Suomessa – kesäyö ja juhannuskokko",
-        text: "Juhannukseen kuuluvat valoisa kesäyö, järvi- ja merimaisemat sekä paikalliset juhannuskokot. Kuva on esimerkkikuva Imatralta, ei tieto Salossa järjestettävästä tapahtumasta. Tarkista juhannusjuhlat, kokkojen ajankohdat ja mahdolliset tulentekorajoitukset aina paikalliselta järjestäjältä ennen matkaa.",
+        text: "Juhannukseen kuuluvat valoisa kesäyö, järvi- ja merimaisemat sekä paikalliset juhannuskokot. Kokkoesimerkkikuva on Imatralta; toinen kuva esittää ravintola Nixorin terassia Särkisalossa. Kuvat eivät vahvista tietyn juhannustapahtuman järjestämistä. Tarkista kokkojen ajat ja mahdolliset tulentekorajoitukset aina paikalliselta järjestäjältä ennen matkaa.",
         link: "Tarkista Salon tapahtumat",
         photoLabel: "Kuvan lähde: MKFI / Wikimedia Commons · Public domain",
+        nixorPhotoLabel: "Kuvan lähde: Ylöstalo / Ravintola Nixor",
       }
     : locale === "es"
       ? {
           eyebrow: "El verano en Finlandia",
           title: "San Juan en Finlandia: noche de verano y hoguera",
-          text: "La celebración del solsticio de verano se asocia con noches luminosas, lagos, costa y hogueras locales. La foto es ilustrativa y procede de Imatra; no confirma un evento en Salo. Consulta al organizador local las celebraciones, los horarios de las hogueras y las posibles restricciones de fuego antes de viajar.",
+          text: "La celebración del solsticio de verano se asocia con noches luminosas, lagos, costa y hogueras locales. La primera foto es ilustrativa y procede de Imatra; la segunda muestra la terraza del restaurante Nixor en Särkisalo. Ninguna imagen confirma por sí sola un evento concreto. Consulta al organizador los horarios de las hogueras y las posibles restricciones de fuego antes de viajar.",
           link: "Consultar eventos de Salo",
           photoLabel: "Fuente de la imagen: MKFI / Wikimedia Commons · Dominio público",
+          nixorPhotoLabel: "Fuente: Ylöstalo / Restaurante Nixor",
         }
       : {
           eyebrow: "Finnish midsummer",
           title: "Midsummer in Finland: summer night and bonfire",
-          text: "Midsummer brings bright summer nights, lakes and coastline, and local bonfire traditions. This is an illustrative bonfire photograph from Imatra, not confirmation of a Salo event. Check local organizers for current celebrations, bonfire times and any fire restrictions before travelling.",
+          text: "Midsummer brings bright summer nights, lakes and coastline, and local bonfire traditions. The bonfire photo is illustrative and from Imatra; the second photo shows the terrace at Nixor restaurant in Särkisalo. Neither image confirms a specific local event. Check organizers for bonfire times and any fire restrictions before travelling.",
           link: "Check Salo events",
           photoLabel: "Image source: MKFI / Wikimedia Commons · Public domain",
+          nixorPhotoLabel: "Image source: Ylöstalo / Nixor Restaurant",
         };
 
   return (
@@ -178,19 +181,18 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
       <section className="bg-white py-14 sm:py-20">
         <div className="container-narrow">
           <div className="grid overflow-hidden rounded-[2rem] bg-brand-950 text-white shadow-card lg:grid-cols-[1.05fr_.95fr]">
-            <div className="relative min-h-[320px] bg-brand-900 sm:min-h-[430px]">
-              <Image
-                src={photoLibrary.juhannuskokko}
-                alt={locale === "fi" ? "Juhannuskokko Imatralla kesäiltana" : locale === "es" ? "Hoguera de San Juan en Imatra durante una tarde de verano" : "Midsummer bonfire in Imatra on a summer evening"}
-                fill
-                unoptimized
-                sizes="(max-width: 1024px) 100vw, 52vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-5">
-                <a href="https://commons.wikimedia.org/wiki/File:Juhannuskokko_Imatra_2025_2.JPG" target="_blank" rel="noreferrer" className="text-xs font-medium text-white underline decoration-white/60 underline-offset-4">
-                  {midsummerCopy.photoLabel}
-                </a>
+            <div className="grid min-h-[320px] grid-cols-2 bg-brand-900 sm:min-h-[430px]">
+              <div className="relative min-h-[320px] sm:min-h-[430px]">
+                <Image src={photoLibrary.juhannuskokko} alt={locale === "fi" ? "Juhannuskokko Imatralla kesäiltana" : locale === "es" ? "Hoguera de San Juan en Imatra durante una tarde de verano" : "Midsummer bonfire in Imatra on a summer evening"} fill unoptimized sizes="(max-width: 1024px) 50vw, 26vw" className="object-cover" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4">
+                  <a href="https://commons.wikimedia.org/wiki/File:Juhannuskokko_Imatra_2025_2.JPG" target="_blank" rel="noreferrer" className="text-[10px] leading-4 text-white underline decoration-white/60 underline-offset-4 sm:text-xs">{midsummerCopy.photoLabel}</a>
+                </div>
+              </div>
+              <div className="relative min-h-[320px] sm:min-h-[430px]">
+                <Image src={photoLibrary.nixorMidsummer} alt={locale === "fi" ? "Ravintola Nixorin terassi Särkisalossa juhannusyön hämärässä" : locale === "es" ? "Terraza del restaurante Nixor en Särkisalo durante la luz del solsticio de verano" : "Nixor restaurant terrace in Särkisalo during the midsummer twilight"} fill unoptimized sizes="(max-width: 1024px) 50vw, 26vw" className="object-cover" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4">
+                  <a href="https://www.ylostalo.fi/nixor" target="_blank" rel="noreferrer" className="text-[10px] leading-4 text-white underline decoration-white/60 underline-offset-4 sm:text-xs">{midsummerCopy.nixorPhotoLabel}</a>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
