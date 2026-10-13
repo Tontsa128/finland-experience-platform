@@ -41,6 +41,7 @@ const sectionLabels: Record<Locale, Record<string, string>> = {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; category: string }> }): Promise<Metadata> {
   const { locale: rawLocale, category } = await params;
   const locale = (["fi", "es", "en"].includes(rawLocale) ? rawLocale : "en") as Locale;
+  if (!Object.prototype.hasOwnProperty.call(mathildedalData, category)) return {};
   const c = copy[locale][category];
   if (!c) return {};
   return buildLocalizedMetadata({ locale, title: c.title, description: c.description, path: `mathildedal/${category}`, image: category === "ruoka" ? undefined : category === "majoitus" ? photoLibrary.mathildedalVillage : category === "aktiviteetit" ? photoLibrary.teijoNationalPark : category === "elamykset" ? photoLibrary.sauna : undefined });
@@ -49,6 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function MathildedalCategoryPage({ params }: { params: Promise<{ locale: string; category: string }> }) {
   const { locale: rawLocale, category } = await params;
   const locale = (["fi", "es", "en"].includes(rawLocale) ? rawLocale : "en") as Locale;
+  if (!Object.prototype.hasOwnProperty.call(mathildedalData, category)) notFound();
   const c = copy[locale][category];
   const items = data[category];
   if (!c || !items) notFound();
