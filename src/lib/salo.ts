@@ -109,7 +109,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.hotelMathildedal,
     imageCredit: "Hotel Mathildedal (official website)",
     imageSourcePage: "https://mathildedal.fi/majoitus/",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "mathildan-marina",
@@ -124,6 +125,9 @@ const allSaloProviders: SaloProvider[] = [
     price: "Tarkista ajantasainen hinta palveluntarjoajalta",
     image: providerImages.marina,
     imageCredit: "Visit Salo / Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://mathildanmarina.fi/",
+    imageRightsConfirmed: true,
   },
   {
     id: "matilda-villas",
@@ -137,6 +141,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://matildavillas.fi/",
     image: providerImages.villas,
     imageCredit: "Visit Salo / Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://matildavillas.fi/",
+    imageRightsConfirmed: true,
   },
   {
     id: "matri-house",
@@ -151,7 +158,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.matriHouseOfficial,
     imageCredit: "Matri House (official website)",
     imageSourcePage: "https://matrihouse.fi/en/accommodation/",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "teijo-action-park",
@@ -166,6 +174,9 @@ const allSaloProviders: SaloProvider[] = [
     price: "Tarkista ajantasainen hinta palveluntarjoajalta",
     image: providerImages.actionPark,
     imageCredit: "Visit Salo",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.meriteijo.fi/actionpark",
+    imageRightsConfirmed: true,
   },
   {
     id: "chill-out-fishing",
@@ -229,6 +240,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://kylapanimo.fi",
     image: providerImages.brewery,
     imageCredit: "Visit Salo",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://kylapanimo.fi",
+    imageRightsConfirmed: true,
   },
   {
     id: "bistro-bruket",
@@ -244,7 +258,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.bistroBruket,
     imageCredit: "Bistro Bruket (official website)",
     imageSourcePage: "https://www.bistrobruket.fi/",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "ravintola-terho",
@@ -260,7 +275,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.ravintolaTerho,
     imageCredit: "Kyläravintola Terho (official website; photographer credits on source site)",
     imageSourcePage: "https://www.ravintolaterho.fi/",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "saaristomokit-sarkisalo",
@@ -274,6 +290,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://www.ylostalo.fi/vuokramokit",
     image: "https://cdn-datahub.visitfinland.com/images/2d04f3d0-d2bb-11ed-8ed8-859d0a6307f5.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.ylostalo.fi/vuokramokit",
+    imageRightsConfirmed: true,
   },
   {
     id: "matildanjarven-kampat",
@@ -287,6 +306,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://naturaviva.fi/fi_FI/matildanjarven-kampat",
     image: "https://cdn-datahub.visitfinland.com/images/40f256f0-6b21-11ed-8b5d-750472ef9a58.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://naturaviva.fi/fi_FI/matildanjarven-kampat",
+    imageRightsConfirmed: true,
   },
   {
     id: "forby-marina",
@@ -300,6 +322,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://www.karlforsstrom.fi/fi/forby-marina/",
     image: "https://cdn-datahub.visitfinland.com/images/bab40950-5e6d-11ec-958a-e368ec3fe4d5-DJI_0586.jpg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.karlforsstrom.fi/fi/forby-marina/",
+    imageRightsConfirmed: true,
   },
   {
     id: "cafe-vinssi",
@@ -314,7 +339,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.cafeVinssi,
     imageCredit: "Café Vinssi (official website)",
     imageSourcePage: "https://www.cafevinssi.fi/",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "saaristoravintola-nixor",
@@ -329,7 +355,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.nixorMidsummer,
     imageCredit: "Ylöstalon matkailutila / Ravintola Nixor (official website)",
     imageSourcePage: "https://www.ylostalo.fi/nixor",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "villa-meri-sarkisalo",
@@ -344,7 +371,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.villaMeri,
     imageCredit: "Ylöstalon matkailutila (official website)",
     imageSourcePage: "https://www.ylostalo.fi/fi/villameri/",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "krailan-sabrina",
@@ -370,7 +398,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.tiiranta,
     imageCredit: "Tiiranta (official website)",
     imageSourcePage: "https://tiiranta.fi/",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "vuorovetten-jaatelo",
@@ -384,6 +413,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://vuorovettenjaatelo.fi/",
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/01/viettelysten-vaunu-1024x768.jpeg",
     imageCredit: "Vuorovetten Jäätelö / Salon Kohteet",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://vuorovettenjaatelo.fi/",
+    imageRightsConfirmed: true,
   },
   {
     id: "niksaaren-sauna",
@@ -410,7 +442,8 @@ const allSaloProviders: SaloProvider[] = [
     image: photoLibrary.ylostaloRentalBoat,
     imageCredit: "Ylöstalon matkailutila (official website)",
     imageSourcePage: "https://www.ylostalo.fi/fi/vuokraveneet/",
-    imageLicense: "Provider website image; reuse terms require confirmation",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "forby-rantajooga",
@@ -436,6 +469,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://www.visitvuohensaari.fi",
     image: "https://cdn-datahub.visitfinland.com/images/0eed73e0-0120-11f1-ad78-29bd5b45e175.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.visitvuohensaari.fi",
+    imageRightsConfirmed: true,
   },
   {
     id: "teijo-tentsile",
@@ -449,6 +485,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://naturaviva.fi/fi_FI/tutustu-palveluihin/majoitus/tentsile-majoitus-teijon-luontokeskuksessa",
     image: "https://cdn-datahub.visitfinland.com/images/7dc2c5b0-053b-11ee-8a3c-a9c9986204a3.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://naturaviva.fi/fi_FI/tutustu-palveluihin/majoitus/tentsile-majoitus-teijon-luontokeskuksessa",
+    imageRightsConfirmed: true,
   },
   {
     id: "kattohuone-mathildedal",
@@ -473,6 +512,9 @@ const allSaloProviders: SaloProvider[] = [
     url: "https://www.karlforsstrom.fi/fi/villasignell/",
     image: "https://cdn-datahub.visitfinland.com/images/ff433090-0627-11f0-87ff-4128062e9bec.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.karlforsstrom.fi/fi/villasignell/",
+    imageRightsConfirmed: true,
   },
   {
     id: "finnholm-strandbo",
