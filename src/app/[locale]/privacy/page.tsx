@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const safeLocale: Locale = locale === "es" ? "es" : locale === "en" ? "en" : "fi";
   return buildLocalizedMetadata({
     locale: safeLocale,
@@ -58,8 +58,8 @@ const copy = {
   },
 } as const;
 
-export default async function PrivacyPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale === "es" ? "es" : params.locale === "en" ? "en" : "fi";
+export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale === "es" ? "es" : (await params).locale === "en" ? "en" : "fi";
   const t = copy[locale];
   return (
     <main className="mx-auto max-w-3xl px-5 py-16">

@@ -1,7 +1,41 @@
 import type { Locale } from "@/types";
+import { photoLibrary } from "@/lib/photo-library";
+
+export type SaloAreaId =
+  | "salo-region"
+  | "salo-center"
+  | "mathildedal"
+  | "teijo"
+  | "sarkisalo"
+  | "pernio"
+  | "halikko-wiurila"
+  | "jarvi-salo"
+  | "kemionsaari"
+  | "halikko"
+  | "vaskio"
+  | "suomusjarvi";
+
+export type SaloAreaType =
+  | "region"
+  | "city-area"
+  | "historic-village"
+  | "national-park"
+  | "archipelago"
+  | "rural-area"
+  | "nearby-region";
+
+export type SaloArea = {
+  id: SaloAreaId;
+  type: SaloAreaType;
+  parentId?: SaloAreaId;
+  name: Record<Locale, string>;
+  municipality: Record<Locale, string>;
+  mapQuery: string;
+};
 
 export type SaloProvider = {
   id: string;
+  areaId?: SaloAreaId;
   category: "tourism" | "stay" | "experience" | "nature" | "food";
   name: string;
   description: Record<Locale, string>;
@@ -9,6 +43,10 @@ export type SaloProvider = {
   price?: string;
   image?: string;
   imageCredit?: string;
+  imageSourcePage?: string;
+  imageLicense?: string;
+  /** Explicit approval to publish this photograph on Finnexprience. */
+  imageRightsConfirmed?: boolean;
   officialGuide?: boolean;
 };
 
@@ -35,7 +73,7 @@ const providerImages = {
   brewery: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kyl%C3%A4panimo-laatikko-web.jpg",
 };
 
-export const saloProviders: SaloProvider[] = [
+const allSaloProviders: SaloProvider[] = [
   {
     id: "visit-salo",
     category: "tourism",
@@ -67,9 +105,12 @@ export const saloProviders: SaloProvider[] = [
       es: "Hotel boutique de 13 habitaciones en el histórico pueblo siderúrgico junto al Parque Nacional de Teijo.",
       en: "A 13-room boutique hotel in the historic ironworks village beside Teijo National Park.",
     },
-    url: "https://www.mathildedal.fi",
-    image: providerImages.hotel,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    url: "https://mathildedal.fi/",
+    image: photoLibrary.hotelMathildedal,
+    imageCredit: "Hotel Mathildedal (official website)",
+    imageSourcePage: "https://mathildedal.fi/majoitus/",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "mathildan-marina",
@@ -80,10 +121,13 @@ export const saloProviders: SaloProvider[] = [
       es: "Hotel junto al puerto, restaurante, saunas, puerto de invitados y área para autocaravanas.",
       en: "Harbour hotel with restaurant, sauna area, guest marina and motorhome parking.",
     },
-    url: "https://www.mathildanmarina.fi",
-    price: "2026: alkaen 149 €/vrk",
+    url: "https://mathildanmarina.fi/",
+    price: "Tarkista ajantasainen hinta palveluntarjoajalta",
     image: providerImages.marina,
     imageCredit: "Visit Salo / Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://mathildanmarina.fi/",
+    imageRightsConfirmed: true,
   },
   {
     id: "matilda-villas",
@@ -94,9 +138,12 @@ export const saloProviders: SaloProvider[] = [
       es: "18 villas junto al mar, playa privada y actividades compartidas.",
       en: "18 seaside villas with a private beach and shared activities.",
     },
-    url: "https://www.matildavillas.fi",
+    url: "https://matildavillas.fi/",
     image: providerImages.villas,
     imageCredit: "Visit Salo / Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://matildavillas.fi/",
+    imageRightsConfirmed: true,
   },
   {
     id: "matri-house",
@@ -108,19 +155,11 @@ export const saloProviders: SaloProvider[] = [
       en: "A restored 1840 boutique house with six unique rooms and a garden in the heart of Mathildedal.",
     },
     url: "https://matrihouse.fi",
-    image: providerImages.matri,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
-  },
-  {
-    id: "majoitus-mathildedal",
-    category: "stay",
-    name: "Majoitus Mathildedal",
-    description: {
-      fi: "Mökki Mathildedalin kylässä. Ajantasainen hinta ja saatavuus pyydetään suoraan majoittajalta.",
-      es: "Casa de vacaciones en Mathildedal. Consulta directamente al anfitrión el precio y la disponibilidad actuales.",
-      en: "Holiday cottage in Mathildedal. Ask the provider directly for the current price and availability.",
-    },
-    url: "https://www.majoitusmathildedal.com",
+    image: photoLibrary.matriHouseOfficial,
+    imageCredit: "Matri House (official website)",
+    imageSourcePage: "https://matrihouse.fi/en/accommodation/",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "teijo-action-park",
@@ -131,10 +170,13 @@ export const saloProviders: SaloProvider[] = [
       es: "Actividades de acción, ciclismo, golf y esquí durante la temporada de nieve.",
       en: "Action activities, cycling, golf and skiing during the snow season in Teijo.",
     },
-    url: "https://www.meriteijo.fi",
-    price: "Rinneautoilu: 2 kierrosta 16 €, 4 kierrosta 26 €, 5 kierrosta 32 €/hlö",
+    url: "https://www.meriteijo.fi/actionpark",
+    price: "Tarkista ajantasainen hinta palveluntarjoajalta",
     image: providerImages.actionPark,
     imageCredit: "Visit Salo",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.meriteijo.fi/actionpark",
+    imageRightsConfirmed: true,
   },
   {
     id: "chill-out-fishing",
@@ -169,8 +211,11 @@ export const saloProviders: SaloProvider[] = [
       en: "Lakes, forests, rocks and trails year-round. Basic access to the national park is free; rental services are charged separately.",
     },
     url: "https://www.luontoon.fi/teijo",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: photoLibrary.teijoNationalPark,
+    imageCredit: "Vnnen / Wikimedia Commons",
+    imageSourcePage: "https://commons.wikimedia.org/wiki/File:Punassuo2.jpg",
+    imageLicense: "CC BY-SA 4.0",
+    imageRightsConfirmed: true,
   },
   {
     id: "meri-teijo-golf",
@@ -195,6 +240,43 @@ export const saloProviders: SaloProvider[] = [
     url: "https://kylapanimo.fi",
     image: providerImages.brewery,
     imageCredit: "Visit Salo",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://kylapanimo.fi",
+    imageRightsConfirmed: true,
+  },
+  {
+    id: "bistro-bruket",
+    areaId: "mathildedal",
+    category: "food",
+    name: "Bistro Bruket",
+    description: {
+      fi: "Ravintola Mathildedalin ruukkikylässä. Listalla on muun muassa hiilellä ja tulella valmistettuja makuja sekä sesongin annoksia.",
+      es: "Bistró en el histórico pueblo industrial de Mathildedal, con cocina al carbón y platos de temporada.",
+      en: "A bistro in Mathildedal's historic ironworks village, serving charcoal- and fire-cooked dishes and seasonal food.",
+    },
+    url: "https://www.bistrobruket.fi/",
+    image: photoLibrary.bistroBruket,
+    imageCredit: "Bistro Bruket (official website)",
+    imageSourcePage: "https://www.bistrobruket.fi/",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+  },
+  {
+    id: "ravintola-terho",
+    areaId: "mathildedal",
+    category: "food",
+    name: "Kyläravintola Terho",
+    description: {
+      fi: "Mathildedalin kyläravintola tunnetaan kiviarinauunissa paistetuista pizzoista, omasta kahvipaahtimosta ja kesäisestä takapihan terassistaan.",
+      es: "Restaurante de pueblo en Mathildedal, conocido por sus pizzas al horno de piedra, su propio tostador de café y su terraza de verano.",
+      en: "A village restaurant in Mathildedal known for stone-deck oven pizzas, its own coffee roastery and a summer terrace.",
+    },
+    url: "https://www.ravintolaterho.fi/",
+    image: photoLibrary.ravintolaTerho,
+    imageCredit: "Kyläravintola Terho (official website; photographer credits on source site)",
+    imageSourcePage: "https://www.ravintolaterho.fi/",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "saaristomokit-sarkisalo",
@@ -208,6 +290,9 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.ylostalo.fi/vuokramokit",
     image: "https://cdn-datahub.visitfinland.com/images/2d04f3d0-d2bb-11ed-8ed8-859d0a6307f5.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.ylostalo.fi/vuokramokit",
+    imageRightsConfirmed: true,
   },
   {
     id: "matildanjarven-kampat",
@@ -218,9 +303,12 @@ export const saloProviders: SaloProvider[] = [
       es: "Dos alojamientos de alquiler cerca del centro de visitantes del Parque Nacional de Teijo, con capacidad para seis personas cada uno y sauna incluida.",
       en: "Two rental cabins near the Teijo National Park visitor centre, each sleeping up to six, with a sauna session included.",
     },
-    url: "https://naturaviva.fi/fi_FI/majoituskohteet-etela-suomessa/matildanjarven-kampat",
+    url: "https://naturaviva.fi/fi_FI/matildanjarven-kampat",
     image: "https://cdn-datahub.visitfinland.com/images/40f256f0-6b21-11ed-8b5d-750472ef9a58.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://naturaviva.fi/fi_FI/matildanjarven-kampat",
+    imageRightsConfirmed: true,
   },
   {
     id: "forby-marina",
@@ -234,6 +322,9 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.karlforsstrom.fi/fi/forby-marina/",
     image: "https://cdn-datahub.visitfinland.com/images/bab40950-5e6d-11ec-958a-e368ec3fe4d5-DJI_0586.jpg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.karlforsstrom.fi/fi/forby-marina/",
+    imageRightsConfirmed: true,
   },
   {
     id: "cafe-vinssi",
@@ -245,8 +336,11 @@ export const saloProviders: SaloProvider[] = [
       en: "A seaside summer café at Förby Marina with homemade sweet and savoury treats, salads and speciality coffee.",
     },
     url: "https://www.cafevinssi.fi/",
-    image: "https://cdn-datahub.visitfinland.com/images/2ed8ed20-f83c-11f0-ad78-29bd5b45e175.jpeg?s=1280",
-    imageCredit: "Visit Finland DataHub",
+    image: photoLibrary.cafeVinssi,
+    imageCredit: "Café Vinssi (official website)",
+    imageSourcePage: "https://www.cafevinssi.fi/",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "saaristoravintola-nixor",
@@ -258,8 +352,11 @@ export const saloProviders: SaloProvider[] = [
       en: "A relaxed terrace restaurant in Niksari, Särkisalo, with summer food, archipelago views and live music.",
     },
     url: "https://www.ylostalo.fi/nixor",
-    image: "https://cdn-datahub.visitfinland.com/images/4c038a70-b547-11ee-895e-65eccdb2f013.jpeg?s=1280",
-    imageCredit: "Visit Finland DataHub",
+    image: photoLibrary.nixorMidsummer,
+    imageCredit: "Ylöstalon matkailutila / Ravintola Nixor (official website)",
+    imageSourcePage: "https://www.ylostalo.fi/nixor",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "villa-meri-sarkisalo",
@@ -271,8 +368,11 @@ export const saloProviders: SaloProvider[] = [
       en: "A seaside event and meeting villa in Särkisalo with a sea-view sauna and two accommodation rooms.",
     },
     url: "https://www.ylostalo.fi/villameri",
-    image: "https://cdn-datahub.visitfinland.com/images/af8f7080-da9c-11ed-b082-c12bd48bf823.jpeg?s=1280",
-    imageCredit: "Visit Finland DataHub",
+    image: photoLibrary.villaMeri,
+    imageCredit: "Ylöstalon matkailutila (official website)",
+    imageSourcePage: "https://www.ylostalo.fi/fi/villameri/",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "krailan-sabrina",
@@ -295,7 +395,11 @@ export const saloProviders: SaloProvider[] = [
       en: "A year-round café, restaurant and grocery shop in central Särkisalo, with a guest pier.",
     },
     url: "https://tiiranta.fi/",
-    imageCredit: "Visit Salo / Salon Kohteet",
+    image: photoLibrary.tiiranta,
+    imageCredit: "Tiiranta (official website)",
+    imageSourcePage: "https://tiiranta.fi/",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "vuorovetten-jaatelo",
@@ -309,6 +413,9 @@ export const saloProviders: SaloProvider[] = [
     url: "https://vuorovettenjaatelo.fi/",
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/01/viettelysten-vaunu-1024x768.jpeg",
     imageCredit: "Vuorovetten Jäätelö / Salon Kohteet",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://vuorovettenjaatelo.fi/",
+    imageRightsConfirmed: true,
   },
   {
     id: "niksaaren-sauna",
@@ -332,6 +439,11 @@ export const saloProviders: SaloProvider[] = [
       en: "Archipelago fishing stays at Ylöstalo cottages in Särkisalo, with boat and guide options.",
     },
     url: "https://www.ylostalo.fi/fi/vuokraveneet",
+    image: photoLibrary.ylostaloRentalBoat,
+    imageCredit: "Ylöstalon matkailutila (official website)",
+    imageSourcePage: "https://www.ylostalo.fi/fi/vuokraveneet/",
+    imageRightsConfirmed: true,
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
   },
   {
     id: "forby-rantajooga",
@@ -357,6 +469,9 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.visitvuohensaari.fi",
     image: "https://cdn-datahub.visitfinland.com/images/0eed73e0-0120-11f1-ad78-29bd5b45e175.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.visitvuohensaari.fi",
+    imageRightsConfirmed: true,
   },
   {
     id: "teijo-tentsile",
@@ -370,6 +485,9 @@ export const saloProviders: SaloProvider[] = [
     url: "https://naturaviva.fi/fi_FI/tutustu-palveluihin/majoitus/tentsile-majoitus-teijon-luontokeskuksessa",
     image: "https://cdn-datahub.visitfinland.com/images/7dc2c5b0-053b-11ee-8a3c-a9c9986204a3.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://naturaviva.fi/fi_FI/tutustu-palveluihin/majoitus/tentsile-majoitus-teijon-luontokeskuksessa",
+    imageRightsConfirmed: true,
   },
   {
     id: "kattohuone-mathildedal",
@@ -394,6 +512,9 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.karlforsstrom.fi/fi/villasignell/",
     image: "https://cdn-datahub.visitfinland.com/images/ff433090-0627-11f0-87ff-4128062e9bec.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub",
+    imageLicense: "Provider permission confirmed by project owner (Salo project)",
+    imageSourcePage: "https://www.karlforsstrom.fi/fi/villasignell/",
+    imageRightsConfirmed: true,
   },
   {
     id: "finnholm-strandbo",
@@ -574,6 +695,171 @@ export const saloProviders: SaloProvider[] = [
 
 ];
 
+
+export const saloAreas: Record<SaloAreaId, SaloArea> = {
+  "salo-region": {
+    id: "salo-region", type: "region",
+    name: { fi: "Salon seutu", es: "Región de Salo", en: "Salo region" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Salo, Southwest Finland, Finland",
+  },
+  "salo-center": {
+    id: "salo-center", type: "city-area", parentId: "salo-region",
+    name: { fi: "Salon keskusta", es: "Centro de Salo", en: "Salo town centre" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Salo Market Square, Salo, Finland",
+  },
+  mathildedal: {
+    id: "mathildedal", type: "historic-village", parentId: "salo-region",
+    name: { fi: "Mathildedal", es: "Mathildedal", en: "Mathildedal" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Mathildedal, Salo, Finland",
+  },
+  teijo: {
+    id: "teijo", type: "national-park", parentId: "salo-region",
+    name: { fi: "Teijo ja Teijon kansallispuisto", es: "Teijo y Parque Nacional de Teijo", en: "Teijo and Teijo National Park" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Teijo National Park, Salo, Finland",
+  },
+  sarkisalo: {
+    id: "sarkisalo", type: "archipelago", parentId: "salo-region",
+    name: { fi: "Särkisalo ja Förby", es: "Särkisalo y Förby", en: "Särkisalo and Förby" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Särkisalo, Salo, Finland",
+  },
+  pernio: {
+    id: "pernio", type: "rural-area", parentId: "salo-region",
+    name: { fi: "Perniö", es: "Perniö", en: "Perniö" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Perniö, Salo, Finland",
+  },
+  "halikko-wiurila": {
+    id: "halikko-wiurila", type: "city-area", parentId: "salo-region",
+    name: { fi: "Halikko ja Wiurila", es: "Halikko y Wiurila", en: "Halikko and Wiurila" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Halikko and Wiurila Manor, Salo, Finland",
+  },
+  "jarvi-salo": {
+    id: "jarvi-salo", type: "rural-area", parentId: "salo-region",
+    name: { fi: "Järvi-Salo", es: "Järvi-Salo", en: "Järvi-Salo" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Järvi-Salo, Salo, Finland",
+  },
+  halikko: {
+    id: "halikko", type: "city-area", parentId: "salo-region",
+    name: { fi: "Halikko", es: "Halikko", en: "Halikko" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Halikko, Salo, Finland",
+  },
+  vaskio: {
+    id: "vaskio", type: "rural-area", parentId: "salo-region",
+    name: { fi: "Vaskio", es: "Vaskio", en: "Vaskio" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Vaskio, Salo, Finland",
+  },
+  suomusjarvi: {
+    id: "suomusjarvi", type: "rural-area", parentId: "salo-region",
+    name: { fi: "Suomusjärvi", es: "Suomusjärvi", en: "Suomusjärvi" },
+    municipality: { fi: "Salo, Varsinais-Suomi", es: "Salo, Finlandia suroccidental", en: "Salo, Southwest Finland" },
+    mapQuery: "Suomusjärvi, Salo, Finland",
+  },
+  kemionsaari: {
+    id: "kemionsaari", type: "nearby-region",
+    name: { fi: "Kemiönsaari ja Rosala", es: "Kemiönsaari y Rosala", en: "Kemiönsaari and Rosala" },
+    municipality: { fi: "Kemiönsaari, Varsinais-Suomi", es: "Kemiönsaari, Finlandia suroccidental", en: "Kemiönsaari, Southwest Finland" },
+    mapQuery: "Rosala, Kemiönsaari, Finland",
+  },
+};
+
+const saloProviderAreaIds: Partial<Record<string, SaloAreaId>> = {
+  "visit-salo": "salo-region",
+  "visit-mathildedal": "mathildedal",
+  "hotel-mathildedal": "mathildedal",
+  "mathildan-marina": "mathildedal",
+  "matilda-villas": "mathildedal",
+  "matri-house": "mathildedal",
+  "teijo-action-park": "teijo",
+  "chill-out-fishing": "sarkisalo",
+  "salon-oppaat": "salo-region",
+  "teijo-national-park": "teijo",
+  "meri-teijo-golf": "teijo",
+  "mathildedal-brewery": "mathildedal",
+  "bistro-bruket": "mathildedal",
+  "ravintola-terho": "mathildedal",
+  "saaristomokit-sarkisalo": "sarkisalo",
+  "matildanjarven-kampat": "teijo",
+  "forby-marina": "sarkisalo",
+  "cafe-vinssi": "sarkisalo",
+  "saaristoravintola-nixor": "sarkisalo",
+  "villa-meri-sarkisalo": "sarkisalo",
+  "krailan-sabrina": "sarkisalo",
+  "tiiranta": "sarkisalo",
+  "vuorovetten-jaatelo": "sarkisalo",
+  "niksaaren-sauna": "sarkisalo",
+  "sarkisalo-fishing": "sarkisalo",
+  "forby-rantajooga": "sarkisalo",
+  "vuohensaari-camping": "salo-center",
+  "teijo-tentsile": "teijo",
+  "kattohuone-mathildedal": "mathildedal",
+  "villa-signell": "sarkisalo",
+  "finnholm-strandbo": "sarkisalo",
+  "aava-adventures": "sarkisalo",
+  "katiskanmaeki": "sarkisalo",
+  "lonnviken": "sarkisalo",
+  "meri-ruukin-lomakyla": "mathildedal",
+  "leipyolin-tila": "pernio",
+  "topilan-tupa": "halikko",
+  "onnenperan-mokki": "vaskio",
+  "villa-viola": "suomusjarvi",
+  "villa-laperla": "suomusjarvi",
+  "villa-viktoria": "suomusjarvi",
+  "villa-nennebo": "sarkisalo",
+  "alaspaan-maatila": "pernio",
+  "teijon-kammari": "teijo",
+  "kruuvan-mokit": "sarkisalo",
+  "meri-veikko": "sarkisalo",
+};
+
+
+
+// Each provider keeps an explicit parent area; the geographic hierarchy is shared by all category routes.
+export const saloProviders: SaloProvider[] = allSaloProviders.map((provider) => ({
+  ...provider,
+  areaId: saloProviderAreaIds[provider.id],
+}));
+
+/**
+ * Publish a provider photo only after its usage rights and provenance are confirmed.
+ * A publicly visible image, source URL, or credit by itself is not permission to reuse it.
+ */
+export function getSaloProviderImage(provider: SaloProvider): string | null {
+  if (provider.imageRightsConfirmed !== true || !provider.image) return null;
+  if (!/^https:\/\//i.test(provider.image)) return null;
+  if (!provider.imageCredit?.trim() || !provider.imageLicense?.trim()) return null;
+  if (!provider.imageSourcePage || !/^https:\/\//i.test(provider.imageSourcePage)) return null;
+  return provider.image;
+}
+
+export function getSaloProviderArea(provider: SaloProvider): SaloArea | null {
+  return provider.areaId ? saloAreas[provider.areaId] : null;
+}
+
+export type SaloDetailCategory = "majoitus" | "ruoka" | "aktiviteetit" | "elamykset" | "saaristo" | "oppaat";
+
+export function getSaloProviderDetailCategory(provider: SaloProvider): SaloDetailCategory {
+  // A provider has one canonical detail URL based on its primary service type.
+  // Area pages (such as Särkisalo) may link to it without duplicating detail routes.
+  if (provider.category === "stay") return "majoitus";
+  if (provider.category === "food") return "ruoka";
+  if (provider.category === "nature") return "aktiviteetit";
+  if (provider.category === "experience") return "elamykset";
+  return "oppaat";
+}
+
+export const saloArchipelagoProviderIds = new Set(
+  saloProviders.filter((provider) => provider.areaId === "sarkisalo").map((provider) => provider.id),
+);
+
 export const saloEvents: SaloEvent[] = [
   {
     id: "improv-30-9",
@@ -607,11 +893,11 @@ export const saloEvents: SaloEvent[] = [
     start: "2026-10-03",
     end: "2027-01-03",
     title: { fi: "Visit valo – valotaiteen näyttely", es: "Visit valo – exposición de arte de la luz", en: "Visit valo – light art exhibition" },
-    location: "Salon taidemuseo Veturitalli",
+    location: "Salon taidemuseo Veturitalli, Salo",
     description: {
-      fi: "Valotaiteen näyttely 3.10.2026–3.1.2027. Pääsymaksu 10 € / 7 €, Museokortti käy.",
-      es: "Exposición de arte de la luz del 3.10.2026 al 3.1.2027. Entrada 10 € / 7 €.",
-      en: "Light art exhibition from 3 Oct 2026 to 3 Jan 2027. Admission €10 / €7; Museum Card accepted.",
+      fi: "Valotaiteen näyttely 3.10.2026–3.1.2027. Tarkista pääsymaksut ja aukioloajat museon viralliselta sivulta.",
+      es: "Exposición de arte de la luz del 3.10.2026 al 3.1.2027. Consulta entradas y horarios en la web oficial del museo.",
+      en: "Light art exhibition from 3 Oct 2026 to 3 Jan 2027. Check admission and opening hours on the museum's official page.",
     },
     url: "https://tapahtumat.salo.fi/salon-taidemuseo-veturitalli-visit-valo/",
     category: "culture",
@@ -627,7 +913,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Museo de fantasmas de otoño. Comprueba los horarios del organizador antes de viajar.",
       en: "A seasonal ghost museum. Check the organizer's opening hours before travelling.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/2026/09/21/kummitusmuseot-valtaavat-mathildedalin-tervetuloa-kummituskylaan/",
     category: "autumn",
   },
   {
@@ -641,7 +927,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Segundo fin de semana del Museo de fantasmas en Mathildedal. Comprueba los horarios actuales con el organizador.",
       en: "The second autumn weekend of the Ghost Museum at Mathildedal ironworks. Check current opening hours with the organizer.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/2026/09/21/kummitusmuseot-valtaavat-mathildedalin-tervetuloa-kummituskylaan/",
     category: "autumn",
   },
   {
@@ -655,7 +941,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Calabazas, fantasmas y ambiente de vacaciones de otoño en Mathildedal.",
       en: "Pumpkins, ghosts and autumn-holiday atmosphere in Mathildedal.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/tapahtumat/",
     category: "autumn",
   },
   {
@@ -674,15 +960,16 @@ export const saloEvents: SaloEvent[] = [
   },
   {
     id: "pumpkin",
-    start: "2026-10-10",
-    title: { fi: "Salon suurin kurpitsa", es: "La calabaza más grande de Salo", en: "Salo's Biggest Pumpkin" },
-    location: "Salon tori",
+    start: "2026-10-09",
+    end: "2026-10-18",
+    title: { fi: "Salon Kurpitsaviikot", es: "Kurpitsaviikot – semanas de la calabaza en Salo", en: "Pumpkin Weeks in Salo" },
+    location: "Vaskiontie 50, Halikko, Salo",
     description: {
-      fi: "Salon kurpitsakuninkuuden ratkaiseva jättikurpitsakilpailu.",
-      es: "Concurso de la calabaza gigante que decide al campeón de Salo.",
-      en: "The giant-pumpkin competition deciding Salo's pumpkin champion.",
+      fi: "Kurpitsaviikot ja Kurpitsapuisto 9.–18.10.2026. Puiston osoite, aukioloajat ja kulkuyhteydet kannattaa tarkistaa viralliselta tapahtumasivulta.",
+      es: "Kurpitsaviikot y el parque de calabazas del 9 al 18 de octubre de 2026. Consulta dirección, horarios y transporte en la web oficial.",
+      en: "Pumpkin Weeks and the pumpkin park run 9–18 October 2026. Check the official event page for the address, opening hours and transport.",
     },
-    url: "https://tapahtumat.salo.fi/location/salon_tori/",
+    url: "https://visitsalo.fi/kurpitsaviikot/",
     category: "autumn",
   },
   {
@@ -708,7 +995,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Ambiente navideño, artesanos, productores locales y tiendas del pueblo.",
       en: "Christmas atmosphere, local makers, producers and village shops.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://mathildedal.fi/2026/04/27/mathildedalin-joulumarkkinat-21-11-28-11-2026/",
     category: "christmas",
   },
   {
@@ -776,7 +1063,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Un momento de calma antes de Navidad en Mathildedal.",
       en: "A quiet moment before Christmas in Mathildedal.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/tapahtumat/",
     category: "christmas",
   },
   {
@@ -789,7 +1076,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Celebración de Año Nuevo en el pueblo de Mathildedal.",
       en: "New Year's celebration in Mathildedal village.",
     },
-    url: "https://visitmathildedal.fi/fi/tapahtumat",
+    url: "https://mathildedal.fi/tapahtumat/",
     category: "new-year",
   },
   {

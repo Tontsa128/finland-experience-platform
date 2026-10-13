@@ -9,8 +9,8 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { canonicalDestinationSlug } from "@/lib/utils";
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const copy = locale === "fi"
     ? { title: "Kesäkohteet Suomessa | Finland Experience", description: "Löydä saaristo, Mathildedal, Teijo, Naantali, Turku ja muut aidot suomalaiset matkakohteet." }
     : locale === "es"
@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "destinations" });
 }
 
-export default async function DestinationsPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function DestinationsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
 
@@ -31,8 +31,8 @@ export default async function DestinationsPage({ params }: { params: { locale: s
     itemListElement: destinations.map((destination, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: getLocalized(destination.name, locale),
-      url: "/" + locale + "/destinations/" + canonicalDestinationSlug(destination.slug),
+      name: destination.slug === "salo-mathildedal" ? "Salo" : getLocalized(destination.name, locale),
+      url: destination.slug === "salo-mathildedal" ? "/" + locale + "/salo" : destination.slug === "rosala" ? "/" + locale + "/kimitoon" : "/" + locale + "/destinations/" + canonicalDestinationSlug(destination.slug),
     })),
   };
 
@@ -64,14 +64,14 @@ export default async function DestinationsPage({ params }: { params: { locale: s
         </div>
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {destinations.length ? destinations.map((destination, index) => (
-            <Link key={destination.id} href={`/${locale}/destinations/${canonicalDestinationSlug(destination.slug)}`} className={`group overflow-hidden rounded-[2rem] bg-brand-50 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-card ${index === 0 ? "lg:col-span-2" : ""}`}>
+            <Link key={destination.id} href={`/${locale}/${destination.slug === "salo-mathildedal" ? "salo" : destination.slug === "naantali" || destination.slug === "turku" || destination.slug === "hanko" || destination.slug === "aland" || destination.slug === "porvoo" ? destination.slug : destination.slug === "rosala" ? "kimitoon" : destination.slug === "southeast-finland" ? "southeast-finland" : "destinations/" + canonicalDestinationSlug(destination.slug)}`} className={`group overflow-hidden rounded-[2rem] bg-brand-50 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-card ${index === 0 ? "lg:col-span-2" : ""}`}>
               <div className={`relative overflow-hidden ${index === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
-                {destination.images[0] ? <Image src={destination.images[0]} alt={getLocalized(destination.name, locale)} fill sizes={index===0 ? "(max-width:1024px) 100vw, 66vw" : "(max-width:1024px) 50vw, 33vw"} className="object-cover transition duration-700 group-hover:scale-105"/> : <div className="flex h-full items-center justify-center">{destination.region}</div>}
+                {destination.images[0] ? <Image src={destination.images[0]} alt={destination.slug === "salo-mathildedal" ? "Salo" : getLocalized(destination.name, locale)} fill sizes={index===0 ? "(max-width:1024px) 100vw, 66vw" : "(max-width:1024px) 50vw, 33vw"} className="object-cover transition duration-700 group-hover:scale-105"/> : <div className="flex h-full items-center justify-center">{destination.region}</div>}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/10 to-transparent"/>
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 text-white">
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.16em] text-white/70"><MapPin className="h-3.5 w-3.5"/>{destination.region}</div>
-                  <h2 className="mt-2 font-display text-3xl font-bold">{getLocalized(destination.name, locale)}</h2>
-                  <p className="mt-2 max-w-2xl text-sm leading-6 text-white/75">{getLocalized(destination.shortDescription, locale)}</p>
+                  <h2 className="mt-2 font-display text-3xl font-bold">{destination.slug === "salo-mathildedal" ? "Salo" : getLocalized(destination.name, locale)}</h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-white/75">{destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Mathildedal, Teijo, Särkisalo, Perniö ja Salon keskusta." : locale === "es" ? "Mathildedal, Teijo, Särkisalo, Perniö y el centro de Salo." : "Mathildedal, Teijo, Särkisalo, Perniö and central Salo.") : getLocalized(destination.shortDescription, locale)}</p>
                   <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-gold-300">{copy.explore}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1"/></span>
                 </div>
               </div>
@@ -96,15 +96,15 @@ export default async function DestinationsPage({ params }: { params: { locale: s
               ["Salo", "salo", photoLibrary.mathildedalHarbour, "Mathildedal · Salo", locale === "fi" ? "Mathildedal, Teijo, Särkisalo, Perniö ja kaupungin palvelut." : locale === "es" ? "Mathildedal, Teijo, Särkisalo, Perniö y servicios de Salo." : "Mathildedal, Teijo, Särkisalo, Perniö and Salo services."],
               ["Turku", "turku", photoLibrary.turkuAura, "Turku · Aurajoki", locale === "fi" ? "Aurajoki, Ruissalo, kulttuuri, ruoka ja Turun saaristo." : locale === "es" ? "Río Aura, Ruissalo, cultura, gastronomía y archipiélago." : "Aura River, Ruissalo, culture, food and the Turku Archipelago."],
               ["Naantali", "naantali", photoLibrary.naantaliOldTown, "Naantali · vanhakaupunki", locale === "fi" ? "Vanhakaupunki, satama, Muumimaailma ja pieni saaristoreitti." : locale === "es" ? "Casco antiguo, puerto, Moominworld y la Small Archipelago Trail." : "Old Town, harbour, Moominworld and the Small Archipelago Trail."],
-              ["Hanko", "hanko", photoLibrary.hanko, "Hanko · eteläkärki", locale === "fi" ? "Rannat, avomeri, pyöräily, saunat ja merielämykset." : locale === "es" ? "Playas, mar abierto, ciclismo, saunas y experiencias marinas." : "Beaches, open sea, cycling, saunas and sea experiences."],
-              ["Kemiönsaari & Rosala", "kimitoon", photoLibrary.rosalaVikingCentre, "Rosala · Kemiönsaari", locale === "fi" ? "Viikinkikeskus, Kasnäs, Bengtskär, mökit ja Saaristomeri." : locale === "es" ? "Centro Vikingo, Kasnäs, Bengtskär, cabañas y archipiélago." : "Viking Centre, Kasnäs, Bengtskär, cottages and the Archipelago Sea."],
+              ["Hanko", "hanko", photoLibrary.hankoAerial, "Hanko · eteläkärki", locale === "fi" ? "Rannat, avomeri, pyöräily, saunat ja merielämykset." : locale === "es" ? "Playas, mar abierto, ciclismo, saunas y experiencias marinas." : "Beaches, open sea, cycling, saunas and sea experiences."],
+              ["Kemiönsaari & Rosala", "kimitoon", "", "Rosala · Kemiönsaari", locale === "fi" ? "Viikinkikeskus, Kasnäs, Bengtskär, mökit ja Saaristomeri." : locale === "es" ? "Centro Vikingo, Kasnäs, Bengtskär, cabañas y archipiélago." : "Viking Centre, Kasnäs, Bengtskär, cottages and the Archipelago Sea."],
               ["Åland", "aland", photoLibrary.aland, "Åland · saaristo", locale === "fi" ? "Pyöräily, saaristoreitti, mökit, ruoka ja pienet saaret." : locale === "es" ? "Ciclismo, rutas, cabañas, gastronomía y pequeñas islas." : "Cycling, island routes, cottages, food and small islands."],
               ["Porvoo", "porvoo", photoLibrary.porvoo, "Porvoo · vanhakaupunki", locale === "fi" ? "Vanha Porvoo, jokiranta, ruoka, kulttuuri ja saariston läheisyys." : locale === "es" ? "Casco antiguo, río, gastronomía, cultura y archipiélago." : "Old Town, riverside life, food, culture and nearby archipelago."],
               [locale === "fi" ? "Kaakkois-Suomi" : locale === "es" ? "Sureste de Finlandia" : "Southeast Finland", "southeast-finland", photoLibrary.hamina, "Hamina · Itäinen Suomenlahti", locale === "fi" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa ja Itäisen Suomenlahden saaristo." : locale === "es" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa y el archipiélago del Golfo de Finlandia." : "Kotka, Hamina, Loviisa, Strömfors, Valkmusa and the Eastern Gulf of Finland archipelago."],
             ].map(([name, href, image, location, description]) => (
               <Link key={href} href={"/" + locale + "/" + href} className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
                 <div className="relative aspect-[4/3] overflow-hidden bg-brand-100">
-                  <Image src={image} alt={name} fill sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  {image ? <Image src={image} alt={name} fill sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw" className="object-cover transition duration-700 group-hover:scale-105" /> : <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-700 via-brand-900 to-brand-950 px-6 text-center"><p className="max-w-xs text-xs font-semibold leading-5 text-white/85">{locale === "fi" ? "Kohdekuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una foto cuando se confirmen los derechos de uso" : "A destination photo will be added once usage rights are confirmed"}</p></div>}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/5 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <p className="text-[11px] font-bold uppercase tracking-[.16em] text-white/75">{location}</p>

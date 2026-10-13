@@ -22,11 +22,12 @@
     "plan": "Plan your trip",
     "cityBreaks": "City Breaks",
     "coastalFinland": "Coastal Finland",
-        "ruralFinland": "Rural & Archipelago",
+    "ruralFinland": "Rural & Archipelago",
     "blog": "Blog",
     "contact": "Contact",
     "admin": "Admin",
-    "events": "Events"
+    "events": "Events",
+    "salo": "Salo"
   },
   "hero": {
     "title": "Discover Finland's Endless Summer Nights",

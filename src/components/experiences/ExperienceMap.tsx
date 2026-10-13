@@ -17,6 +17,11 @@ function label(item: MapItem, locale: Props["locale"]) {
   return item.name?.[locale] || item.name?.fi || item.slug;
 }
 
+function escapeHtml(value: string) {
+  const entities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+  return value.replace(/[&<>"']/g, (character) => entities[character] ?? character);
+}
+
 export default function ExperienceMap({ items, locale, selectedSlug, onSelect, className = "" }: Props) {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const instanceRef = useRef<any>(null);
@@ -67,11 +72,15 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
         iconAnchor: [selected ? 19 : 15, selected ? 19 : 15],
       });
       const directions = `https://www.google.com/maps/dir/?api=1&destination=${item.coordinates!.lat},${item.coordinates!.lng}`;
+      const detailUrl = `/${locale}/experiences/${encodeURIComponent(item.slug)}`;
+      const safeLabel = escapeHtml(label(item, locale));
+      const safeDetailUrl = escapeHtml(detailUrl);
       const navigateLabel = locale === "fi" ? "Navigoi tähän" : locale === "es" ? "Navegar aquí" : "Navigate here";
+      const detailLabel = locale === "fi" ? "Avaa kohteen sivu" : locale === "es" ? "Ver detalles del lugar" : "Open place details";
       const marker = L.marker([item.coordinates!.lat, item.coordinates!.lng], { icon })
         .addTo(map)
-        .bindTooltip(label(item, locale), { direction: "top", offset: [0, -12] })
-        .bindPopup(`<strong>${label(item, locale)}</strong><br/><a href="${directions}" target="_blank" rel="noopener noreferrer">${navigateLabel} ↗</a>`);
+        .bindTooltip(safeLabel, { direction: "top", offset: [0, -12] })
+        .bindPopup(`<strong>${safeLabel}</strong><br/><a href="${safeDetailUrl}">${detailLabel} →</a><br/><a href="${directions}" target="_blank" rel="noopener noreferrer">${navigateLabel} ↗</a>`);
       marker.on("click", () => onSelect?.(item.slug));
       markersRef.current.set(item.slug, marker);
     });
@@ -99,6 +108,13 @@ export default function ExperienceMap({ items, locale, selectedSlug, onSelect, c
       ) : (
         <div ref={mapRef} className="h-[480px] w-full sm:h-[560px]" aria-label={locale === "fi" ? "Interaktiivinen kartta" : locale === "es" ? "Mapa interactivo" : "Interactive map"} />
       )}
+      {points.length === 0 && !mapError ? (
+        <div className="pointer-events-none absolute inset-x-4 top-4 z-[500] flex justify-center">
+          <p className="max-w-xl rounded-xl bg-white/95 px-4 py-3 text-center text-sm leading-6 text-slate-700 shadow">
+            {locale === "fi" ? "Karttamerkit näytetään vasta, kun kohteelle on vahvistettu koordinaatit. Selaa kohteita alla." : locale === "es" ? "Los marcadores aparecen cuando se verifican las coordenadas del lugar. Explora los lugares en la lista." : "Map markers appear once a place has verified coordinates. Browse the places in the list below."}
+          </p>
+        </div>
+      ) : null}
       <div className="pointer-events-none absolute bottom-3 left-3 rounded-xl bg-white/95 px-3 py-2 text-xs text-slate-600 shadow">
         {locale === "fi" ? "Kartta: OpenStreetMap" : locale === "es" ? "Mapa: OpenStreetMap" : "Map: OpenStreetMap"}
       </div>

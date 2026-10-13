@@ -21,7 +21,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   const [open, setOpen] = useState(false);
 
   const fallbackItems = [
-    ["home", ""], ["destinations", "destinations"], ["accommodations", "accommodations"],
+    ["home", ""], ["destinations", "destinations"], ["salo", "salo"], ["accommodations", "accommodations"],
     ["experiences", "experiences"], ["sauna", "sauna"], ["events", "events"], ["coastalFinland", "coastal-finland"], ["cityBreaks", "city-breaks"], ["ruralFinland", "rural-finland"], ["blog", "blog"], ["contact", "contact"],
   ] as const;
 
@@ -83,7 +83,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
             <UserRound className="h-5 w-5" />
           </Link>
 
-          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open}>
+          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open} aria-controls="mobile-primary-navigation">
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
@@ -103,7 +103,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
       </div>
 
       {open && (
-        <nav className="border-t border-slate-100 bg-white px-4 py-3 shadow-lg lg:hidden">
+        <nav id="mobile-primary-navigation" aria-label={locale === "fi" ? "Päänavigaatio" : locale === "es" ? "Navegación principal" : "Primary navigation"} className="max-h-[calc(100svh-4.5rem)] overflow-y-auto overscroll-contain border-t border-slate-100 bg-white px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-lg lg:hidden">
           <div className="container-narrow space-y-1">
             <Link href={`/${locale}/account/login`} onClick={() => setOpen(false)} className="block rounded-xl bg-brand-50 px-3 py-3 text-base font-semibold text-brand-900">
               {ui.account} / {ui.login}

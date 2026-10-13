@@ -95,19 +95,19 @@ const providers = [
   { category: { fi: "Meri & retket", es: "Mar y excursiones", en: "Sea & excursions" }, name: "Sailing trips in Hanko", text: { fi: "Purjehdus on yksi Hangon luontevimmista tavoista kokea avoin meri, rannikko ja saariston pienet saaret.", es: "La navegación es una de las mejores formas de descubrir el mar abierto, la costa y las pequeñas islas de Hanko.", en: "Sailing is one of the most natural ways to experience Hanko's open sea, coast and small islands." }, url: "https://silversand.fi/" },
 ] as const;
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const x = t[locale] || t.en;
-  return buildLocalizedMetadata({ locale, title: x.title, description: x.description, path: "hanko", image: photoLibrary.hanko });
+  return buildLocalizedMetadata({ locale, title: x.title, description: x.description, path: "hanko", image: photoLibrary.hankoRegattaBeach });
 }
 
-export default function HankoPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function HankoPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const x = t[locale] || t.en;
   return (
     <main className="bg-white">
       <section className="relative overflow-hidden bg-brand-950 text-white">
-        <Image src={photoLibrary.hanko} alt={locale === "fi" ? "Hanko ilmasta" : locale === "es" ? "Hanko desde el aire" : "Hanko from the air"} fill priority sizes="100vw" className="object-cover opacity-45" />
+        <Image src={photoLibrary.hankoRegattaBeach} alt={locale === "fi" ? "Hanko ja Regattanrannan uimaranta" : locale === "es" ? "Hanko y la playa de Regattanranta" : "Hanko and Regattanranta beach"} fill priority sizes="100vw" className="object-cover opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/65 to-brand-950/10" />
         <div className="container-narrow relative py-24 sm:py-32">
           <p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{x.eyebrow}</p>
