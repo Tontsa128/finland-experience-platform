@@ -162,19 +162,30 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   }, [active, slideCount, activeSlideDuration]);
 
   const slide = activeSlides[active];
+  const isLegacyHero = !cmsSlides.length && active === 0;
   const text = cmsSlides.length
     ? slide.copy[locale]
-    : copy[locale][slide.key as keyof typeof copy[typeof locale]];
+    : isLegacyHero
+      ? {
+          eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow,
+          title: settings?.heroTitle?.[locale] || copy[locale].summer.title,
+          text: settings?.heroDescription?.[locale] || copy[locale].summer.text,
+          cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta,
+        }
+      : copy[locale][slide.key as keyof typeof copy[typeof locale]];
   const toLocalizedHref = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value;
     const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, "");
     return `/${locale}${normalized ? `/${normalized}` : ""}`;
   };
-  const hrefValueResolved = slide.href;
+  const hrefValueResolved = isLegacyHero ? settings?.heroCtaUrl || slide.href : slide.href;
   const href = toLocalizedHref(hrefValueResolved);
   const isExternal = /^https?:\/\//i.test(href);
-  const secondaryHrefValue = "/destinations";
+  const secondaryHrefValue = isLegacyHero ? settings?.heroSecondaryUrl || "/destinations" : "/destinations";
   const secondaryHref = toLocalizedHref(secondaryHrefValue);
+  const secondaryLabel = isLegacyHero
+    ? settings?.heroSecondaryLabel?.[locale] || (locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas")
+    : locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas";
   const credit = slide.credit;
 
   return (
@@ -244,7 +255,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               </Link>
             )}
             <Link href={secondaryHref} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-7 py-4 text-sm font-bold text-brand-950 hover:bg-brand-100 sm:w-auto">
-              {locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas"} <ArrowRight className="h-4 w-4" />
+              {secondaryLabel} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
