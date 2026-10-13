@@ -6,7 +6,7 @@ import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { getLocalized, experiences as fallbackExperiences } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
-import { formatPrice, locales } from "@/lib/utils";
+import { allowDemoFallback, formatPrice, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import ExperienceMap from "@/components/experiences/ExperienceMap";
 
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   const cmsExperiences = await getPublishedExperiences();
-  const source = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
+  const source = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
   const experience = source.find((item) => item.slug === slug);
   if (!experience) return {};
   return buildLocalizedMetadata({
@@ -34,7 +34,7 @@ export default async function ExperienceDetail({ params }: { params: Promise<{ l
   const locale = localeParam as Locale;
   if (!locales.includes(locale)) notFound();
   const cmsExperiences = await getPublishedExperiences();
-  const experiences = cmsExperiences.length ? cmsExperiences : fallbackExperiences;
+  const experiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
   const experience = experiences.find((item) => item.slug === slug);
   if (!experience) notFound();
   const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
