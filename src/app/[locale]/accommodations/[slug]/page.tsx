@@ -6,7 +6,7 @@ import { ArrowRight, ArrowUpRight, BedDouble, MapPin, Sparkles, Users } from "lu
 import { getPublishedProperties } from "@/lib/public-content";
 import { cabins as fallbackCabins, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
-import { formatPrice, locales } from "@/lib/utils";
+import { allowDemoFallback, formatPrice, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   const cmsCabins = await getPublishedProperties();
-  const source = cmsCabins.length ? cmsCabins : fallbackCabins;
+  const source = cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
   const cabin = source.find((item) => item.slug === slug);
   if (!cabin) return {};
   return buildLocalizedMetadata({
@@ -30,7 +30,7 @@ export default async function CabinDetail({ params }: { params: Promise<{ locale
   const { locale: localeParam, slug } = await params;
   const locale = localeParam as Locale;
   const cmsCabins = await getPublishedProperties();
-  const cabins = cmsCabins.length ? cmsCabins : fallbackCabins;
+  const cabins = cmsCabins.length || !allowDemoFallback ? cmsCabins : fallbackCabins;
   const c = cabins.find((x) => x.slug === slug);
   if (!c) notFound();
 
