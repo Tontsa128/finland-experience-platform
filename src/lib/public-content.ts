@@ -1,7 +1,6 @@
 import { supabaseAdmin } from "@/lib/supabase";
 import { firstValidHttpUrl, isSafeUrlOrPath } from "@/lib/utils";
 import type { Cabin, Destination, Experience, ExperienceStatus, Locale, BlogPost } from "@/types";
-import { getSaloExperienceFallback } from "@/lib/salo-experience-fallback";
 
 const locales: Locale[] = ["fi", "es", "en"];
 
@@ -350,7 +349,7 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
       .eq("status", "published")
       .order("created_at", { ascending: false });
 
-    if (error || !data?.length) return getSaloExperienceFallback();
+    if (error || !data?.length) return [];
     const verifiedExperienceIds = await getVerifiedExperienceIds();
     const verifiedExperienceProviders = await getVerifiedExperienceProviders();
 
@@ -414,9 +413,9 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
           : undefined,
       } satisfies Experience;
     }).filter((experience) => experience.images.length > 0 && experience.verified === true);
-    return published.length ? published : getSaloExperienceFallback();
+    return published;
   } catch {
-    return getSaloExperienceFallback();
+    return [];
   }
 }
 
