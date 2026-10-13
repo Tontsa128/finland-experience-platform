@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Hero } from "@/components/home/Hero";
 import { photoLibrary } from "@/lib/photo-library";
 import { DestinationCard } from "@/components/ui/DestinationCard";
+import { allowDemoFallback } from "@/lib/utils";
 import { CabinCard } from "@/components/ui/CabinCard";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
 import TravelAdvisor from "@/components/TravelAdvisor";
@@ -43,7 +44,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   // (for example before a new Supabase migration has been applied).
   const catalogDestinations = cmsDestinations.length ? cmsDestinations : destinations;
   const catalogCabins = cmsCabins.length ? cmsCabins : cabins;
-  const catalogExperiences = cmsExperiences.length ? cmsExperiences : experiences;
+  const catalogExperiences = allowDemoFallback && cmsExperiences.length === 0 ? experiences : cmsExperiences;
 
   const t = await getTranslations({ locale, namespace: "sections" });
   const tc = await getTranslations({ locale, namespace: "common" });
