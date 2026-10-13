@@ -69,9 +69,9 @@ const slides = [
   },
   {
     key: "porvoo",
-    image: photoLibrary.porvoo,
-    credit: "Teemu Eskola / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg",
+    image: photoLibrary.porvooRedWarehouses,
+    credit: "Jae Lo Presti / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:The_Red_Wooden_Warehouses_of_Porvoo.jpg",
     href: "/porvoo",
     external: false,
   },
