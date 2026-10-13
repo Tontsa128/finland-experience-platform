@@ -7,8 +7,8 @@ const copy = {
     eyebrow: "Kuvien lähteet ja oikeudet",
     title: "Kuvien lähdetiedot",
     intro: "Tällä sivulla näet kuvien lähteet, kuvaajat ja lisenssi- tai käyttötilannetiedot. Yrityksen tai tapahtuman sivulla näkyminen ei itsessään anna lupaa julkaista kuvaa uudelleen.",
-    open: "Lisenssitieto ilmoitettu",
-    openNote: "Käytä kuvaa vain ilmoitetun lisenssin ehtojen ja mahdollisten nimeämisvaatimusten mukaisesti.",
+    open: "Lisenssi tai julkaisulupa vahvistettu",
+    openNote: "Käytä kuvaa ilmoitetun lisenssin tai saadun julkaisuluvan ehtojen mukaisesti ja säilytä tarvittavat nimeämistiedot.",
     pending: "Käyttöoikeus vahvistamatta",
     pendingNote: "Kuvaa ei julkaista kohdesisällössä ennen kuin uudelleenkäytön lupa tai soveltuva lisenssi on vahvistettu.",
     source: "Avaa alkuperäinen lähde",
@@ -17,8 +17,8 @@ const copy = {
     eyebrow: "Fuentes y derechos de imagen",
     title: "Fuentes de las fotografías",
     intro: "Esta página recoge las fuentes, los créditos y la información disponible sobre las licencias o los permisos. Que una imagen aparezca en la web de una empresa o evento no autoriza por sí solo a reutilizarla.",
-    open: "Licencia indicada",
-    openNote: "Utiliza la imagen únicamente conforme a las condiciones de la licencia indicada y sus requisitos de atribución.",
+    open: "Licencia o permiso de publicación confirmado",
+    openNote: "Utiliza la imagen conforme a la licencia o al permiso de publicación concedido y conserva los créditos requeridos.",
     pending: "Derechos de uso sin confirmar",
     pendingNote: "La imagen no se publica en el contenido del destino hasta confirmar el permiso de reutilización o una licencia aplicable.",
     source: "Abrir la fuente original",
@@ -27,8 +27,8 @@ const copy = {
     eyebrow: "Image sources and rights",
     title: "Photo source information",
     intro: "This page records image sources, credits and available licence or permission information. An image appearing on a business or event website does not, by itself, grant permission to republish it.",
-    open: "Licence information listed",
-    openNote: "Use the image only in accordance with the stated licence terms and any attribution requirements.",
+    open: "Licence or reuse permission confirmed",
+    openNote: "Use the image within the stated licence or granted permission, retaining any required attribution.",
     pending: "Reuse permission not confirmed",
     pendingNote: "The image is withheld from destination content until reuse permission or an applicable licence has been confirmed.",
     source: "Open original source",
@@ -61,7 +61,7 @@ export default async function PhotoCreditsPage({
         <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{t.intro}</p>
         <div className="mt-10 grid gap-4">
           {photoCredits.map((photo) => {
-            const licenceListed = /^(CC BY(?:-SA)? [0-9.]+|Public domain)$/.test(photo.license);
+            const licenceListed = /^(CC BY(?:-SA)? [0-9.]+|Public domain|Provider permission confirmed by project owner \(Salo project\))$/.test(photo.license);
             return (
               <article key={photo.url} className="rounded-2xl border border-brand-100 bg-white p-6 shadow-soft">
                 <p className="font-semibold text-brand-950">{photo.credit}</p>
