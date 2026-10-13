@@ -134,6 +134,7 @@ const labels = {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale: raw, slug } = await params;
   if (!["fi", "es", "en"].includes(raw)) return {};
+  if (!Object.prototype.hasOwnProperty.call(places, slug)) return {};
   const place = places[slug];
   if (!place) return {};
   const locale = raw as Locale;
@@ -143,6 +144,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function SaloPlacePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale: raw, slug } = await params;
   if (!["fi", "es", "en"].includes(raw)) notFound();
+  if (!Object.prototype.hasOwnProperty.call(places, slug)) notFound();
   const place = places[slug];
   if (!place) notFound();
   const locale = raw as Locale;
