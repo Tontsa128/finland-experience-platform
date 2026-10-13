@@ -9,6 +9,48 @@ import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 
 const heroImage = photoLibrary.turkuArchipelago;
 
+const eventImages: Record<string, string> = {
+  pumpkin: photoLibrary.pumpkinWeeks,
+  "visit-valo": photoLibrary.saloVeturitalli,
+  "ghost-museum": photoLibrary.ghostsPumpkins,
+  "ghost-museum-november": photoLibrary.ghostsPumpkins,
+  "mathildedal-christmas-1": photoLibrary.mathildedalChristmas,
+  "mathildedal-christmas-2": photoLibrary.mathildedalChristmas,
+};
+
+const eventImageAlt: Record<string, Record<Locale, string>> = {
+  pumpkin: {
+    fi: "Salon Kurpitsaviikkojen tapahtumakuva",
+    es: "Imagen del evento Kurpitsaviikot en Salo",
+    en: "Pumpkin Weeks event image in Salo",
+  },
+  "visit-valo": {
+    fi: "Salon Veturitalli, Visit Valo -tapahtuman näyttelypaikka",
+    es: "Veturitalli en Salo, espacio de la exposición Visit Valo",
+    en: "Salo Veturitalli, the venue for the Visit Valo exhibition",
+  },
+  "ghost-museum": {
+    fi: "Mathildedalin kummitus- ja kurpitsatapahtuman kuvitus",
+    es: "Imagen del evento de fantasmas y calabazas de Mathildedal",
+    en: "Ghosts and pumpkins event image for Mathildedal",
+  },
+  "ghost-museum-november": {
+    fi: "Mathildedalin kummitusmuseon tapahtumakuva",
+    es: "Imagen del Museo de Fantasmas de Mathildedal",
+    en: "Mathildedal Ghost Museum event image",
+  },
+  "mathildedal-christmas-1": {
+    fi: "Mathildedalin Valimo joulumarkkinoiden tapahtumapaikkana",
+    es: "Valimo en Mathildedal, lugar del mercado navideño",
+    en: "Valimo in Mathildedal, venue for the Christmas market",
+  },
+  "mathildedal-christmas-2": {
+    fi: "Mathildedalin ruukkikylän joulumarkkinat",
+    es: "Mercado navideño en el pueblo industrial de Mathildedal",
+    en: "Christmas market in Mathildedal ironworks village",
+  },
+};
+
 function formatDate(value: string, locale: Locale) {
   return new Intl.DateTimeFormat(locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-GB", {
     day: "numeric",
@@ -163,8 +205,16 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
           <CalendarDays className="hidden h-8 w-8 text-gold-500 sm:block" />
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-          {events.length ? events.map((event) => (
-            <article key={event.id} className="rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
+          {events.length ? events.map((event) => {
+            const eventImage = eventImages[event.id];
+            return (
+            <article key={event.id} className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
+              {eventImage ? (
+                <div className="relative aspect-[16/7] bg-brand-50">
+                  <Image src={eventImage} alt={eventImageAlt[event.id]?.[locale] || event.title[locale] || event.title.en || event.title.fi} fill unoptimized sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                </div>
+              ) : null}
+              <div className="p-6">
               <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
                 <span>{formatDate(event.start, locale)}</span>
                 {event.end ? <><span>→</span><span>{formatDate(event.end, locale)}</span></> : null}
@@ -173,8 +223,10 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
               <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-500"><MapPin className="h-4 w-4" />{event.location}</p>
               <p className="mt-4 leading-7 text-slate-600">{event.description[locale] || event.description.en || event.description.fi}</p>
               <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
+              </div>
             </article>
-          )) : <p className="rounded-2xl border border-dashed border-slate-300 p-6 text-sm leading-7 text-slate-600 md:col-span-2">{copy.noEvents}</p>}
+          );
+          }) : <p className="rounded-2xl border border-dashed border-slate-300 p-6 text-sm leading-7 text-slate-600 md:col-span-2">{copy.noEvents}</p>}
         </div>
       </section>
 
