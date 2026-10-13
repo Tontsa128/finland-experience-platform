@@ -57,6 +57,7 @@ export const photoLibrary = {
   wiurilaManor: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/02/wiurilan-kartano-talousrakennus-ja-ruusut_web-2-1366x768.jpg",
   mathildedalSummerLife: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/terho_5.jpg?itok=87cLbLQF",
   matildanjarvenKampat: "https://cdn-datahub.visitfinland.com/images/40f256f0-6b21-11ed-8b5d-750472ef9a58.jpeg?s=1280",
+  saloMarketFood: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Salon-Torikaffessa-web-1366x768.jpg",
 } as const;
 
 export const photoCredits: PhotoCredit[] = [
@@ -123,4 +124,5 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.wiurilaManor, credit: "Visit Salo / Wiurilan kartano", license: "Provider permission confirmed by project owner (Salo project)", sourcePage: "https://kohteet.visitsalo.fi/wiurilan-kartano/" },
   { url: photoLibrary.mathildedalSummerLife, credit: "Visit Mathildedal / summer life in Mathildedal", license: "Provider permission confirmed by project owner (Salo project)", sourcePage: "https://visitmathildedal.fi/fi/ajankohtaista/29-05-2026/kesa-mathildedalissa-taynna-elamyksia" },
   { url: photoLibrary.matildanjarvenKampat, credit: "Natura Viva / Visit Finland DataHub", license: "Provider permission confirmed by project owner (Salo project)", sourcePage: "https://naturaviva.fi/fi_FI/matildanjarven-kampat" },
+  { url: photoLibrary.saloMarketFood, credit: "Visit Salo / Salon Torikaffe", license: "Provider permission confirmed by project owner (Salo project)", sourcePage: "https://kohteet.visitsalo.fi/salon-torikaffe/" },
 ];
