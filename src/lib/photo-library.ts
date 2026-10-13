@@ -38,7 +38,7 @@ export const photoLibrary = {
   bjorkholm: "https://cdn.johku.com/bjorkholm/files/419/w374-h237-s/image.Svartan_Bjorkholm_johku_wallpaper.jpg",
   naturaVivaTeijo: "https://cdn.johku.com/naturaviva/largefiles/676/webp/teijo-national-park-rental-shop.webp",
   pumpkinWeeks: "https://visitsalo.fi/wp-content/uploads/sites/2/2025/08/Kurpitsapuistossa-pyoraileva-luuranko-450x253.jpg",
-  ghostsPumpkins: "https://mathildedal.fi/wp-content/uploads/2026/09/14SV_VP26799-scaled.jpg",
+  ghostsPumpkins: "https://mathildedal.fi/wp-content/uploads/2026/09/14SV_VP26799_pieni-scaled.jpg",
   mathildedalChristmas: "https://visitmathildedal.fi/sites/default/files/galleriakuvat/2026/valimo.jpg",
   rosalaVikingCentre: "https://cdn.johku.com/rosala/largefiles/577.jpg",
   rosalaVikingHall: "https://cdn.johku.com/rosala/largefiles/44-RVC%20hallen%20forneldar%202017.jpg",
