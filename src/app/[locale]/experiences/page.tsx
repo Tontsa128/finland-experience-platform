@@ -18,7 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function ExperiencesPage({ params }: { params: Promise<{ locale: string }> }) {
-  const locale = params.locale as Locale;
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const cmsExperiences = await getPublishedExperiences();
   const experiences = cmsExperiences;
 
