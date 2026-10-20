@@ -33,6 +33,7 @@ function normalizeMetrics(row: Record<string, unknown> | undefined) {
     count: Number(row.total_visitors ?? 0),
     totalVisitors: Number(row.total_visitors ?? 0),
     totalDownloads: Number(row.total_downloads ?? 53547),
+    totalSiteVisits: Number(row.total_site_visits ?? 50000),
     monthVisitors: Number(row.month_visitors ?? 0),
     monthKey: String(row.month_key ?? ""),
     configured: true,
@@ -41,7 +42,7 @@ function normalizeMetrics(row: Record<string, unknown> | undefined) {
 
 export async function GET() {
   try {
-    const rows = await supabaseRequest("public_site_metrics?select=total_visitors,total_downloads,month_visitors,month_key&id=eq.true&limit=1") as Record<string, unknown>[] | null;
+    const rows = await supabaseRequest("public_site_metrics?select=total_visitors,total_downloads,month_visitors,month_key,total_site_visits&id=eq.true&limit=1") as Record<string, unknown>[] | null;
     if (!rows) return NextResponse.json({ count: null, configured: false }, { status: 200 });
     const metrics = normalizeMetrics(rows[0]);
     if (!metrics) return NextResponse.json({ count: null, configured: false }, { status: 503 });
