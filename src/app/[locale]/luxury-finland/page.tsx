@@ -30,8 +30,9 @@ const copy = {
   },
 } as const;
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   return buildLocalizedMetadata({
     locale,
     title: copy[locale].title,
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   });
 }
 
-export default function LuxuryFinlandPage({ params }: { params: { locale: string } }) {
+export default async function LuxuryFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = params.locale as Locale;
   const c = copy[locale];
 
