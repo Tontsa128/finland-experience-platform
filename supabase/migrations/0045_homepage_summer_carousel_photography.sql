@@ -8,7 +8,7 @@ SET
     SELECT jsonb_agg(
       CASE item->>'id'
         WHEN 'summer' THEN item || jsonb_build_object(
-          'imageUrl', 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Turun_saaristo_1.jpg/2560px-Turun_saaristo_1.jpg',
+          'imageUrl', 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Turun_saaristo_1.jpg/1280px-Turun_saaristo_1.jpg',
           'credit', 'Kallerna / Wikimedia Commons',
           'creditUrl', 'https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg',
           'durationMs', 5500,
@@ -19,7 +19,7 @@ SET
           )
         )
         WHEN 'cottage' THEN item || jsonb_build_object(
-          'imageUrl', 'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Summer_cottage%2C_Finland.jpg/2560px-Summer_cottage%2C_Finland.jpg',
+          'imageUrl', 'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Summer_cottage%2C_Finland.jpg/1280px-Summer_cottage%2C_Finland.jpg',
           'credit', 'Νικόλαος Κυριακάκης / Wikimedia Commons',
           'creditUrl', 'https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg',
           'durationMs', 5500,
@@ -30,7 +30,7 @@ SET
           )
         )
         WHEN 'hanko' THEN item || jsonb_build_object(
-          'imageUrl', 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Coast_of_Tulliniemi_in_Hanko%2C_Finland%2C_2021_July.jpg/2560px-Coast_of_Tulliniemi_in_Hanko%2C_Finland%2C_2021_July.jpg',
+          'imageUrl', 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Coast_of_Tulliniemi_in_Hanko%2C_Finland%2C_2021_July.jpg/1280px-Coast_of_Tulliniemi_in_Hanko%2C_Finland%2C_2021_July.jpg',
           'credit', 'Coen / Wikimedia Commons',
           'creditUrl', 'https://commons.wikimedia.org/wiki/File:Coast_of_Tulliniemi_in_Hanko,_Finland,_2021_July.jpg',
           'durationMs', 5500,
