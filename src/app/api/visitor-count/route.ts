@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { rateLimit, requestKey } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -52,7 +53,21 @@ export async function GET() {
   }
 }
 
-export async function POST() {
+export async function POST(request: Request) {
+  const limit = rateLimit(requestKey(request, "visitor-metrics"), 30, 60_000);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "Too many visitor-count requests." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(Math.max(1, Math.ceil((limit.resetAt - Date.now()) / 1000))),
+          "Cache-Control": "no-store, max-age=0",
+        },
+      },
+    );
+  }
+
   try {
     const result = await supabaseRequest("rpc/increment_public_site_metrics", {
       method: "POST",
