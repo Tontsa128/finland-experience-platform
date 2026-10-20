@@ -35,7 +35,7 @@ export default async function ExperienceDetail({ params }: { params: Promise<{ l
   if (!locales.includes(locale)) notFound();
   const cmsExperiences = await getPublishedExperiences();
   const experiences = cmsExperiences;
-  const experience = experiences.find((item) => item.slug === params.slug);
+  const experience = experiences.find((item) => item.slug === slug);
   if (!experience) notFound();
   const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
   const navigationUrl = experience.coordinates
