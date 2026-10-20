@@ -293,7 +293,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function SaunaPage({ params }: { params: Promise<{ locale: string }> }) {
-  const locale = localeOf(params.locale);
+  const { locale: rawLocale } = await params;
+  const locale = localeOf(rawLocale);
   const x = copy[locale];
 
   return (
