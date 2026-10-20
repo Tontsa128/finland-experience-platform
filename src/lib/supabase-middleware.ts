@@ -1,6 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { getSupabaseAnonKey, getSupabaseUrl } from "@/lib/supabase";
+import { getSupabaseAnonKey, getSupabaseUrl } from "@/lib/supabase-config";
 
 export async function updateSupabaseSession(request: NextRequest) {
   let response = NextResponse.next({ request });
