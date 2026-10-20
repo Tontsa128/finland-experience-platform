@@ -58,8 +58,9 @@ const cities: City[] = [
   },
 ];
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const copy = locale === "fi"
     ? {
         title: "Kaupunkiloma Suomessa | Helsinki, Tampere ja Turku",
@@ -78,7 +79,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "city-breaks" });
 }
 
-export default function CityBreaksPage({ params }: { params: { locale: string } }) {
+export default async function CityBreaksPage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = params.locale as Locale;
 
   const copy = locale === "fi"
