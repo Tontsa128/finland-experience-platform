@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download, Eye, Users } from "lucide-react";
+import { Eye, Users } from "lucide-react";
 
 type MetricsResponse = {
   count: number | null;
   totalVisitors?: number;
-  totalDownloads?: number;
   totalSiteVisits?: number;
   monthVisitors?: number;
   monthKey?: string;
@@ -73,20 +72,17 @@ export function VisitorCounter({ locale }: { locale: string }) {
     ? {
         month: "Kävijät tässä kuussa",
         total: "Vierailijat yhteensä",
-        downloads: "Lataukset yhteensä",
         visits: "Kokonaiskäynnit",
       }
     : locale === "es"
       ? {
           month: "Visitantes este mes",
           total: "Visitantes en total",
-          downloads: "Descargas en total",
           visits: "Visitas totales",
         }
       : {
           month: "Visitors this month",
           total: "Total visitors",
-          downloads: "Total downloads",
           visits: "Total site visits",
         };
 
@@ -94,7 +90,6 @@ export function VisitorCounter({ locale }: { locale: string }) {
   const stats: { label: string; value: number; icon: typeof Users; plus?: boolean }[] = [
     { label: copy.month, value: metrics.monthVisitors ?? 0, icon: Users },
     { label: copy.total, value: metrics.totalVisitors ?? 17558, icon: Eye },
-    { label: copy.downloads, value: metrics.totalDownloads ?? 53547, icon: Download },
     { label: copy.visits, value: metrics.totalSiteVisits ?? 50000, icon: Eye, plus: true },
   ];
 
@@ -103,7 +98,7 @@ export function VisitorCounter({ locale }: { locale: string }) {
       className="border-b border-brand-100 bg-brand-50 text-brand-950"
       aria-label={locale === "fi" ? "Sivuston kävijätilastot" : locale === "es" ? "Estadísticas del sitio" : "Website visitor statistics"}
     >
-      <div className="container-narrow grid grid-cols-2 divide-x divide-y divide-brand-100 px-2 sm:grid-cols-4 sm:divide-y-0 sm:px-4">
+      <div className="container-narrow grid grid-cols-1 divide-y divide-brand-100 px-2 sm:grid-cols-3 sm:divide-y-0 sm:divide-x sm:px-4">
         {stats.map(({ label, value, icon: Icon, plus = false }) => (
           <div key={label} className="flex min-w-0 flex-col items-center justify-center gap-1 px-1 py-2 text-center sm:flex-row sm:gap-2 sm:px-3 sm:py-3">
             <Icon className="h-4 w-4 shrink-0 text-brand-700 sm:h-5 sm:w-5" aria-hidden="true" />
