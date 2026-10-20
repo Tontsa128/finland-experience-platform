@@ -2,38 +2,40 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { getLocalized } from "@/lib/data";
+import { ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { getLocalized, experiences as fallbackExperiences } from "@/lib/data";
 import { getPublishedExperiences } from "@/lib/public-content";
 import type { Locale } from "@/types";
-import { formatPrice, locales } from "@/lib/utils";
+import { allowDemoFallback, formatPrice, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import ExperienceMap from "@/components/experiences/ExperienceMap";
 
 export const revalidate = 60;
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
   const cmsExperiences = await getPublishedExperiences();
-  const source = cmsExperiences;
-  const experience = source.find((item) => item.slug === params.slug);
+  const source = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
+  const experience = source.find((item) => item.slug === slug);
   if (!experience) return {};
   return buildLocalizedMetadata({
     locale,
     title: getLocalized(experience.name, locale),
     description: getLocalized(experience.description, locale),
     path: "experiences/" + experience.slug,
-    image: experience.images[0],
+    image: experience.images?.[0] || undefined,
   });
 }
 
-export default async function ExperienceDetail({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
+export default async function ExperienceDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) notFound();
   const cmsExperiences = await getPublishedExperiences();
-  const experiences = cmsExperiences;
-  const experience = experiences.find((item) => item.slug === params.slug);
+  const experiences = cmsExperiences.length || !allowDemoFallback ? cmsExperiences : fallbackExperiences;
+  const experience = experiences.find((item) => item.slug === slug);
   if (!experience) notFound();
   const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
   const navigationUrl = experience.coordinates
@@ -57,7 +59,16 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
         url: siteUrl + "/" + locale + "/experiences/" + experience.slug,
       }) }} />
       <section className="relative isolate min-h-[64vh] overflow-hidden">
-        {experience.images[0] ? <Image src={experience.images[0]} alt={getLocalized(experience.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
+        {experience.images?.[0] ? (
+          <Image src={experience.images[0]} alt={getLocalized(experience.name, locale)} fill priority sizes="100vw" className="object-cover" />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-800 via-brand-950 to-brand-950 px-6 text-center">
+            <MapPin className="h-12 w-12 text-gold-300" />
+            <p className="mt-4 max-w-md text-sm font-semibold text-white/85">
+              {locale === "fi" ? "Kohteen oma kuva lisätään, kun sijainti ja kuvan käyttöoikeus on vahvistettu." : locale === "es" ? "Se añadirá una foto local cuando se verifiquen la ubicación y los derechos de uso." : "A local image will be added once the location and image rights are confirmed."}
+            </p>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
         <div className="container-narrow relative flex min-h-[64vh] items-end py-14 text-white sm:py-20">
           <div className="max-w-4xl">
@@ -95,7 +106,7 @@ export default async function ExperienceDetail({ params }: { params: { locale: s
             <Sparkles className="h-7 w-7 text-amber-500" />
             <p className="mt-5 text-sm text-slate-500">{copy.price}</p>
             <div className="mt-1 text-3xl font-bold text-brand-950">
-              {experience.price > 0 ? formatPrice(experience.price, locale) : "—"}
+              {experience.verified && experience.price > 0 ? formatPrice(experience.price, locale) : (locale === "fi" ? "Tarkista palveluntarjoajalta" : locale === "es" ? "Consultar al proveedor" : "Check with provider")}
             </div>
             <p className="mt-1 text-sm text-slate-500">
               {locale === "fi" ? "Tarkista ajantasainen hinta palveluntarjoajalta."

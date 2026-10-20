@@ -8,6 +8,8 @@ import {
   getPublishedBlogPosts,
 } from "@/lib/public-content";
 import { supabaseAdmin } from "@/lib/supabase";
+import { getSaloProviderDetailCategory, saloProviders } from "@/lib/salo";
+import { mathildedalData, slugifyMathildedal } from "@/lib/mathildedal";
 
 export const revalidate = 3600;
 
@@ -15,6 +17,26 @@ const basePaths = [
   "",
   "destinations",
   "salo",
+  "salo/majoitus",
+  "salo/ruoka",
+  "salo/aktiviteetit",
+  "salo/elamykset",
+  "salo/saaristo",
+  "salo/oppaat",
+  "salo/kylat",
+  "salo/tapahtumat",
+  "mathildedal",
+  "mathildedal/majoitus",
+  "mathildedal/ruoka",
+  "mathildedal/aktiviteetit",
+  "mathildedal/elamykset",
+  "places/teijo",
+  "places/teijo-kirjakkala",
+  "places/sarkisalo",
+  "places/pernio",
+  "places/halikko-wiurila",
+  "places/jarvi-salo",
+  "places/salo-center",
   "turku",
   "naantali",
   "hanko",
@@ -62,7 +84,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ]);
 
     const dynamicEntries: MetadataRoute.Sitemap = [
-      ...destinations.flatMap((item) =>
+      ...Object.entries(mathildedalData).flatMap(([category, items]) =>
+        items.flatMap((item) => locales.map((locale) => ({
+          url: siteUrl + "/" + locale + "/mathildedal/" + category + "/" + slugifyMathildedal(item.name),
+          lastModified: new Date(),
+          changeFrequency: "weekly" as const,
+          priority: 0.6,
+        }))),
+      ),
+
+      ...saloProviders.flatMap((provider) => locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/salo/" + getSaloProviderDetailCategory(provider) + "/" + provider.id,
+        lastModified: new Date(),
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+      }))),
+
+      ...destinations.filter((item) => item.slug !== "salo-mathildedal" && item.slug !== "rosala").flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/destinations/" + canonicalDestinationSlug(item.slug),
           lastModified: new Date(),

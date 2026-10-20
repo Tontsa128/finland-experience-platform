@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,17 +8,18 @@ import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
-import { photoLibrary } from "@/lib/photo-library";
-import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
   if (!locales.includes(locale)) return {};
+  if (slug === "salo-mathildedal") return buildLocalizedMetadata({ locale, title: locale === "fi" ? "Salon seudun matkailu" : locale === "es" ? "Turismo en la región de Salo" : "Travel in the Salo region", description: locale === "fi" ? "Tutustu Salon keskustaan, Mathildedaliin, Teijoon ja Särkisalon saaristoon." : locale === "es" ? "Descubre el centro de Salo, Mathildedal, Teijo y el archipiélago de Särkisalo." : "Explore Salo town, Mathildedal, Teijo and the Särkisalo archipelago.", path: "salo" });
+  if (slug === "rosala") return buildLocalizedMetadata({ locale, title: locale === "fi" ? "Kemiönsaari ja Rosala" : locale === "es" ? "Kemiönsaari y Rosala" : "Kemiönsaari and Rosala", description: locale === "fi" ? "Tutustu Kemiönsaaren saaristoon ja Rosalaan. Tarkista ajantasaiset tiedot paikallisilta palveluntarjoajilta." : locale === "es" ? "Descubre el archipiélago de Kemiönsaari y Rosala. Confirma los datos actuales con los proveedores locales." : "Explore the Kemiönsaari archipelago and Rosala. Confirm current details directly with local providers.", path: "kimitoon" });
   const cmsDestinations = await getPublishedDestinations();
-  const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
+  const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
   const source = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
-  const destination = source.find((item) => item.slug === params.slug) ?? source.find((item) => item.slug === canonicalSlug);
+  const destination = source.find((item) => item.slug === slug) ?? source.find((item) => item.slug === canonicalSlug);
   if (!destination) return {};
   const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
   return buildLocalizedMetadata({
@@ -30,12 +31,16 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   });
 }
 
-export default async function DestinationDetail({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
+export default async function DestinationDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: localeParam, slug } = await params;
+  const locale = localeParam as Locale;
+  if (slug === "salo-mathildedal") redirect(`/${locale}/salo`);
+  if (slug === "mathildedal") redirect(`/${locale}/mathildedal`);
+  if (slug === "rosala") redirect(`/${locale}/kimitoon`);
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
-  const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
-  const d = destinations.find((x) => x.slug === params.slug) ?? destinations.find((x) => x.slug === canonicalSlug);
+  const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
+  const d = destinations.find((x) => x.slug === slug) ?? destinations.find((x) => x.slug === canonicalSlug);
   if (!d) notFound();
 
   const isCoastal = ["salo-mathildedal", "naantali", "turku", "rosala", "hanko", "aland", "southeast-finland"].includes(d.slug);
@@ -127,7 +132,16 @@ export default async function DestinationDetail({ params }: { params: { locale: 
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
       <section className="relative isolate min-h-[68vh] overflow-hidden">
-        {d.images[0] ? <Image src={d.images[0]} alt={getLocalized(d.name, locale)} fill priority sizes="100vw" className="object-cover" /> : null}
+        {d.images?.[0] ? (
+          <Image src={d.images[0]} alt={getLocalized(d.name, locale)} fill priority sizes="100vw" className="object-cover" />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-800 via-brand-950 to-brand-950 px-6 text-center">
+            <MapPin className="h-12 w-12 text-gold-300" />
+            <p className="mt-4 max-w-md text-sm font-semibold text-white/85">
+              {locale === "fi" ? "Kohteen oma kuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una imagen del destino cuando se confirmen los derechos de uso" : "A destination image will be added once usage rights are confirmed"}
+            </p>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
         <div className="container-narrow relative flex min-h-[68vh] items-end py-14 text-white sm:py-20">
           <div className="max-w-4xl">
@@ -159,7 +173,6 @@ export default async function DestinationDetail({ params }: { params: { locale: 
         </div>
       </section>
 
-      {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} /> : null}
       {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
 
 
@@ -258,13 +271,11 @@ export default async function DestinationDetail({ params }: { params: { locale: 
 
             <div className="mt-9 grid gap-4 md:grid-cols-2">
               {[
-                { image: photoLibrary.rosalaVikingCentre, title: locale === "fi" ? "Viikinkikylä" : locale === "es" ? "Poblado vikingo" : "Viking village", text: locale === "fi" ? "Historiallinen ympäristö, jossa voi tutustua viikinkiajan elämään ja näyttelyihin." : locale === "es" ? "Entorno histórico para conocer la vida y la cultura de la época vikinga." : "A historical setting to explore Viking-age life and exhibitions." },
-                { image: photoLibrary.rosalaVikingHall, title: locale === "fi" ? "Yöpyminen & sauna" : locale === "es" ? "Alojamiento & sauna" : "Stay & sauna", text: locale === "fi" ? "Päällikön hallin huoneet, alkovi- tai telttamajoitus sekä iltasauna ja aamiainen." : locale === "es" ? "Habitaciones, alcobas o tienda vikinga, con sauna nocturna y desayuno." : "Rooms, alcoves or a Viking tent, with evening sauna and breakfast." },
+                { title: locale === "fi" ? "Viikinkikylä" : locale === "es" ? "Poblado vikingo" : "Viking village", text: locale === "fi" ? "Historiallinen ympäristö, jossa voi tutustua viikinkiajan elämään ja näyttelyihin." : locale === "es" ? "Entorno histórico para conocer la vida y la cultura de la época vikinga." : "A historical setting to explore Viking-age life and exhibitions." },
+                { title: locale === "fi" ? "Yöpyminen & sauna" : locale === "es" ? "Alojamiento & sauna" : "Stay & sauna", text: locale === "fi" ? "Päällikön hallin huoneet, alkovi- tai telttamajoitus sekä iltasauna ja aamiainen." : locale === "es" ? "Habitaciones, alcobas o tienda vikinga, con sauna nocturna y desayuno." : "Rooms, alcoves or a Viking tent, with evening sauna and breakfast." },
               ].map((item) => (
                 <article key={item.title} className="overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
-                  <div className="relative aspect-[16/9]">
-                    <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
-                  </div>
+                  <div className="relative flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-brand-700 via-brand-900 to-brand-950 px-6 text-center"><p className="max-w-sm text-xs font-semibold leading-5 text-white/85">{locale === "fi" ? "Rosalan oma kuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una foto propia de Rosala cuando se confirmen los derechos de uso" : "A Rosala-specific photo will be added once usage rights are confirmed"}</p></div>
                   <div className="p-5"><h3 className="font-display text-2xl font-bold text-brand-950">{item.title}</h3><p className="mt-2 leading-7 text-slate-600">{item.text}</p></div>
                 </article>
               ))}

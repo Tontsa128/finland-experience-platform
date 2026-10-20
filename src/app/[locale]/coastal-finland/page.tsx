@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight, BedDouble, Bike, Coffee, Leaf, MapPin, Waves,
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { saloProviders } from "@/lib/salo";
+import { getSaloProviderImage, saloProviders } from "@/lib/salo";
 
 type Localized = Record<Locale, string>;
 
@@ -175,9 +175,9 @@ const places: Place[] = [
     slug: "hanko",
     name: { fi: "Hanko & läntinen rannikko", es: "Hanko y la costa oeste", en: "Hanko & the Western Coast" },
     region: { fi: "Hanko · Suomen eteläkärki", es: "Hanko · extremo sur de Finlandia", en: "Hanko · southernmost Finland" },
-    image: photoLibrary.hanko,
+    image: photoLibrary.hankoAerial,
     imageAlt: { fi: "Hanko ilmasta", es: "Hanko desde el aire", en: "Hanko from the air" },
-    gallery: [photoLibrary.hanko],
+    gallery: [photoLibrary.hankoRegattaBeach],
     intro: {
       fi: "Hanko on meri kolmelta suunnalta. Eteläinen sijainti, hiekkarannat, sileät kalliot, huvilat ja satamat antavat kaupungille oman kylpyläkaupunkimaisen tunnelmansa.",
       es: "Hanko está rodeado por el mar en tres lados. Su costa, playas, rocas, villas y puertos crean una identidad propia de ciudad balnearia.",
@@ -292,8 +292,8 @@ const sectionLabels = {
   en: { stay: "Stay", food: "Food & cafés", do: "Things to do", nature: "Nature & sea", sauna: "Sauna", providers: "Selected direct links" },
 } as const;
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
   const c = locale === "fi"
     ? { title: "Rannikon Suomi | Mathildedal, Naantali, Turku, Hanko & Åland", description: "Ammattimainen opas Suomen rannikon viiteen kiinnostavaan lähtöpisteeseen: Mathildedal, Naantali, Turku, Hanko ja Ahvenanmaa." }
     : locale === "es"
@@ -302,8 +302,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: c.title, description: c.description, path: "coastal-finland" });
 }
 
-export default function CoastalFinlandPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function CoastalFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
+  const locale = (await params).locale as Locale;
   const isFi = locale === "fi";
   const copy = locale === "fi"
     ? { eyebrow: "HIDDEN COASTAL FINLAND", title: "Viisi rannikon paikkaa, joista on helppo aloittaa", intro: "Mathildedalin ruukkikylä, Naantalin saaristo, Turku, Hanko ja Ahvenanmaa näyttävät Suomen rannikon eri puolet. Täällä reitti ei ole paketti – sinä päätät, missä viivyt.", note: "Löydä ensin paikka. Tarkista sitten ajantasaiset palvelut ja jatka suoraan palveluntarjoajalle.", nearby: "Myös tämä kuuluu samaan merelliseen kokonaisuuteen", nearbyText: "Särkisalo täydentää Salon rannikkokokonaisuutta: mökkejä, satamia, ravintoloita, melontaa, kalastusta, rantoja ja paikallista saaristoelämää." }
@@ -460,14 +460,19 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {sarkisaloProviders.slice(0, 8).map((provider) => (
               <a key={provider.id} href={provider.url} target="_blank" rel="noopener noreferrer" className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
-                {provider.image ? (
-                  <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/10] overflow-hidden rounded-t-3xl">
-                    <Image src={provider.image} alt={provider.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                  </div>
-                ) : null}
+                <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/10] overflow-hidden rounded-t-3xl bg-brand-100">
+                  {getSaloProviderImage(provider) ? (
+                    <Image src={getSaloProviderImage(provider)!} alt={locale === "fi" ? provider.name + " – palveluntarjoajan kuva" : locale === "es" ? provider.name + " – foto del proveedor" : provider.name + " – provider photo"} fill sizes="(max-width: 640px) 100vw, 50vw" unoptimized className="object-cover transition duration-700 group-hover:scale-105" />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-50 via-white to-brand-100 px-5 text-center text-brand-700">
+                      <MapPin className="h-8 w-8" />
+                      <p className="mt-3 text-xs font-semibold">{locale === "fi" ? "Kohdekohtainen kuva lisätään, kun käyttöoikeus on vahvistettu" : locale === "es" ? "Se añadirá una foto propia cuando se confirmen los derechos de uso" : "A provider-specific photo will be added once usage rights are confirmed"}</p>
+                    </div>
+                  )}
+                </div>
                 <p className="text-[10px] font-bold uppercase tracking-[.16em] text-brand-600">{provider.category}</p>
                 <h3 className="mt-2 font-display text-xl font-bold text-brand-950">{provider.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>{getSaloProviderImage(provider) && provider.imageCredit ? <p className="mt-2 text-[11px] text-slate-400">{locale === "fi" ? "Kuvan lähde: " : locale === "es" ? "Fuente de la imagen: " : "Image source: "}{provider.imageCredit}</p> : null}
                 <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{provider.officialGuide ? (locale === "fi" ? "Avaa virallinen opas" : locale === "es" ? "Abrir guía oficial" : "Open official guide") : (locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider")}<ArrowUpRight className="h-3.5 w-3.5" /></span>
               </a>
             ))}
@@ -501,7 +506,7 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
               ["Porvoo", "porvoo", locale === "fi" ? "Vanha Porvoo, jokiranta, kulttuuri, ruoka ja saariston läheisyys." : locale === "es" ? "Casco antiguo, río, cultura, gastronomía y archipiélago cercano." : "Old Town, riverside life, culture, food and nearby archipelago."],
               [locale === "fi" ? "Kaakkois-Suomi" : locale === "es" ? "Sureste de Finlandia" : "Southeast Finland", "southeast-finland", locale === "fi" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa ja Itäisen Suomenlahden saaristo." : locale === "es" ? "Kotka, Hamina, Loviisa, Strömfors, Valkmusa y el archipiélago del Golfo de Finlandia." : "Kotka, Hamina, Loviisa, Strömfors, Valkmusa and the Eastern Gulf of Finland archipelago."],
               ["Åland", "aland", locale === "fi" ? "Pyöräily, saaristoreitti, mökit, ruoka ja pienet saaret." : locale === "es" ? "Ciclismo, ruta del archipiélago, cabañas, gastronomía e islas." : "Cycling, archipelago trail, cottages, food and small islands."],
-              ["Porvoo", "porvoo", locale === "fi" ? "Vanha Porvoo, jokiranta, ruoka, kulttuuri ja saariston läheisyys." : locale === "es" ? "Casco antiguo, río, gastronomía, cultura y archipiélago." : "Old Town, riverside life, food, culture and the nearby archipelago."],
+              [locale === "fi" ? "Särkisalo ja meri" : locale === "es" ? "Särkisalo y el mar" : "Särkisalo and the sea", "salo/saaristo", locale === "fi" ? "Förby, satamat, saaristomaisemat ja paikalliset merelliset palvelut." : locale === "es" ? "Puertos, paisajes del archipiélago y servicios locales junto al mar." : "Harbours, archipelago scenery and local seaside services."],
             ].map(([name, href, text]) => (
               <Link key={href} href={`/${locale}/${href}`} className="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-card">
                 <h3 className="font-display text-2xl font-bold text-brand-950">{name}</h3>
@@ -509,6 +514,29 @@ export default function CoastalFinlandPage({ params }: { params: { locale: strin
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa opas" : locale === "es" ? "Abrir guía" : "Open guide"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+
+      <section className="bg-amber-50 py-16 sm:py-24">
+        <div className="container-narrow grid items-center gap-8 lg:grid-cols-2">
+          <div className="relative min-h-[300px] overflow-hidden rounded-[2rem] bg-brand-100 sm:min-h-[420px]">
+            <Image
+              src={photoLibrary.juhannuskokko}
+              alt={locale === "fi" ? "Juhannuskokko Imatralla 20.6.2025 – esimerkkikuva, ei Salon seudun tapahtumakuva" : locale === "es" ? "Hoguera de San Juan en Imatra, 20 de junio de 2025; imagen ilustrativa, no de un evento de Salo" : "Midsummer bonfire in Imatra on 20 June 2025 – illustrative image, not a Salo-area event photo"}
+              fill
+              unoptimized
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{locale === "fi" ? "Suomalainen keskikesä" : locale === "es" ? "El verano nórdico" : "Finnish Midsummer"}</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{locale === "fi" ? "Juhannus, meri ja iltavalon kokko" : locale === "es" ? "San Juan, el mar y la hoguera bajo la luz del norte" : "Midsummer, the sea and a bonfire in the evening light"}</h2>
+            <p className="mt-5 text-base leading-8 text-slate-700">{locale === "fi" ? "Juhannus kuuluu suomalaisen kesän perinteisiin. Salon seudun kokkojen sijainti, sytytysajat ja tapahtumaohjelma tarkistetaan aina järjestäjän ajantasaisesta tapahtumakalenterista." : locale === "es" ? "San Juan es una tradición del verano finlandés. La ubicación, hora de encendido y programación de las hogueras en Salo deben comprobarse en los calendarios oficiales de los organizadores." : "Midsummer is part of Finland’s summer traditions. Check the current organiser calendar for the location, lighting time and programme of any bonfires in the Salo area."}</p>
+            <p className="mt-4 text-xs leading-5 text-slate-500">{locale === "fi" ? "Esimerkkikuva: MKFI / Wikimedia Commons, Public domain. Kuva on otettu Imatralla, ei Salon seudulla." : locale === "es" ? "Imagen ilustrativa: MKFI / Wikimedia Commons, dominio público. La foto fue tomada en Imatra, no en la región de Salo." : "Illustrative photo: MKFI / Wikimedia Commons, public domain. The photo was taken in Imatra, not in the Salo region."} <a href="https://commons.wikimedia.org/wiki/File:Juhannuskokko_Imatra_2025_2.JPG" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la foto" : "Photo source"}</a></p>
+            <a href="https://visitsalo.fi/tapahtumat/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-800">{locale === "fi" ? "Tarkista Salon tapahtumat" : locale === "es" ? "Consultar eventos de Salo" : "Check Salo events"}<ArrowUpRight className="h-4 w-4" /></a>
           </div>
         </div>
       </section>

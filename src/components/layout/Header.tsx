@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { Globe, Menu, UserRound, X } from "lucide-react";
+import { VisitorCounter } from "@/components/layout/VisitorCounter";
 import { useState } from "react";
 
 type NavigationItem = { id: string; label: string; href: string; sortOrder: number };
@@ -21,7 +22,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   const [open, setOpen] = useState(false);
 
   const fallbackItems = [
-    ["home", ""], ["destinations", "destinations"], ["accommodations", "accommodations"],
+    ["home", ""], ["destinations", "destinations"], ["salo", "salo"], ["accommodations", "accommodations"],
     ["experiences", "experiences"], ["sauna", "sauna"], ["events", "events"], ["coastalFinland", "coastal-finland"], ["cityBreaks", "city-breaks"], ["ruralFinland", "rural-finland"], ["blog", "blog"], ["contact", "contact"],
   ] as const;
 
@@ -51,6 +52,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur">
+      <VisitorCounter locale={locale} />
       <div className="container-narrow flex min-h-16 w-full items-center gap-2 py-2 sm:min-h-18 sm:gap-4 sm:py-3">
         <Link href={href("")} className="min-w-0 flex-1 truncate font-display text-lg font-bold text-brand-900 sm:text-xl">
           Finland <span className="text-brand-500">Experience</span>
@@ -83,7 +85,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
             <UserRound className="h-5 w-5" />
           </Link>
 
-          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open}>
+          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open} aria-controls="mobile-primary-navigation">
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
@@ -103,7 +105,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
       </div>
 
       {open && (
-        <nav className="border-t border-slate-100 bg-white px-4 py-3 shadow-lg lg:hidden">
+        <nav id="mobile-primary-navigation" aria-label={locale === "fi" ? "Päänavigaatio" : locale === "es" ? "Navegación principal" : "Primary navigation"} className="max-h-[calc(100svh-4.5rem)] overflow-y-auto overscroll-contain border-t border-slate-100 bg-white px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-lg lg:hidden">
           <div className="container-narrow space-y-1">
             <Link href={`/${locale}/account/login`} onClick={() => setOpen(false)} className="block rounded-xl bg-brand-50 px-3 py-3 text-base font-semibold text-brand-900">
               {ui.account} / {ui.login}
