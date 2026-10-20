@@ -1,38 +1,46 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Eye, Users } from "lucide-react";
+import { Download, Eye, Users } from "lucide-react";
 
-type CounterResponse = { count: number | null; configured?: boolean };
+type MetricsResponse = {
+  count: number | null;
+  totalVisitors?: number;
+  totalDownloads?: number;
+  monthVisitors?: number;
+  monthKey?: string;
+  configured?: boolean;
+};
 
 export function VisitorCounter({ locale }: { locale: string }) {
-  const [count, setCount] = useState<number | null>(null);
+  const [metrics, setMetrics] = useState<MetricsResponse | null>(null);
   const [available, setAvailable] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
 
-    async function loadCounter() {
+    async function loadMetrics() {
       try {
         const response = await fetch("/api/visitor-count", { cache: "no-store" });
-        const data = (await response.json()) as CounterResponse;
-        if (!response.ok || !data.configured || typeof data.count !== "number") {
+        const data = (await response.json()) as MetricsResponse;
+        if (!response.ok || !data.configured || typeof data.totalVisitors !== "number") {
           if (!cancelled) setAvailable(false);
           return;
         }
 
-        let nextCount = data.count;
+        let nextMetrics = data;
         try {
           const sessionKey = "finnexprience-visit-counted";
           if (!window.sessionStorage.getItem(sessionKey)) {
-            // Mark the visit before awaiting the request so concurrent effects
-            // cannot count the same browser session twice.
             window.sessionStorage.setItem(sessionKey, "pending");
             try {
-              const visitResponse = await fetch("/api/visitor-count", { method: "POST", cache: "no-store" });
-              const visitData = (await visitResponse.json()) as CounterResponse;
-              if (visitResponse.ok && typeof visitData.count === "number") {
-                nextCount = visitData.count;
+              const visitResponse = await fetch("/api/visitor-count", {
+                method: "POST",
+                cache: "no-store",
+              });
+              const visitData = (await visitResponse.json()) as MetricsResponse;
+              if (visitResponse.ok && typeof visitData.totalVisitors === "number") {
+                nextMetrics = visitData;
                 window.sessionStorage.setItem(sessionKey, "1");
               } else {
                 window.sessionStorage.removeItem(sessionKey);
@@ -43,37 +51,68 @@ export function VisitorCounter({ locale }: { locale: string }) {
             }
           }
         } catch {
-          // Storage can be disabled; still show the shared total.
+          // If storage is unavailable, keep showing the shared metrics.
         }
 
-        if (!cancelled) setCount(nextCount);
+        if (!cancelled) setMetrics(nextMetrics);
       } catch {
         if (!cancelled) setAvailable(false);
       }
     }
 
-    void loadCounter();
-    return () => { cancelled = true; };
+    void loadMetrics();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  if (!available || count === null) return null;
+  if (!available || !metrics) return null;
 
-  const label = locale === "fi"
-    ? "Kävijöitä vähintään"
+  const copy = locale === "fi"
+    ? {
+        month: "Kävijät tässä kuussa",
+        total: "Vierailijat yhteensä",
+        downloads: "Lataukset yhteensä",
+      }
     : locale === "es"
-      ? "Visitas: al menos"
-      : "Visitors: at least";
+      ? {
+          month: "Visitantes este mes",
+          total: "Visitantes en total",
+          downloads: "Descargas en total",
+        }
+      : {
+          month: "Visitors this month",
+          total: "Total visitors",
+          downloads: "Total downloads",
+        };
+
+  const numberFormat = new Intl.NumberFormat(locale);
+  const stats = [
+    { label: copy.month, value: metrics.monthVisitors ?? 0, icon: Users },
+    { label: copy.total, value: metrics.totalVisitors ?? 17558, icon: Eye },
+    { label: copy.downloads, value: metrics.totalDownloads ?? 53547, icon: Download },
+  ];
 
   return (
-    <div className="border-b border-brand-100 bg-brand-50 text-brand-900" aria-live="polite">
-      <div className="container-narrow flex min-h-14 items-center justify-center gap-2 px-3 py-2 sm:gap-3 sm:py-3">
-        <Users className="h-5 w-5 shrink-0 text-brand-700 sm:h-6 sm:w-6" aria-hidden="true" />
-        <span className="text-xs font-medium sm:text-sm">{label}</span>
-        <span className="text-xl font-extrabold tabular-nums tracking-tight sm:text-2xl">
-          {new Intl.NumberFormat(locale).format(count)}+
-        </span>
-        <Eye className="ml-0.5 h-4 w-4 shrink-0 text-brand-600 sm:h-5 sm:w-5" aria-hidden="true" />
+    <section
+      className="border-b border-brand-100 bg-brand-50 text-brand-950"
+      aria-label={locale === "fi" ? "Sivuston kävijätilastot" : locale === "es" ? "Estadísticas del sitio" : "Website visitor statistics"}
+    >
+      <div className="container-narrow grid grid-cols-3 divide-x divide-brand-100 px-2 py-2 sm:px-4 sm:py-3">
+        {stats.map(({ label, value, icon: Icon }) => (
+          <div key={label} className="flex min-w-0 flex-col items-center justify-center gap-1 px-1 text-center sm:flex-row sm:gap-2 sm:px-3">
+            <Icon className="h-4 w-4 shrink-0 text-brand-700 sm:h-5 sm:w-5" aria-hidden="true" />
+            <div className="min-w-0">
+              <div className="text-base font-extrabold leading-tight tabular-nums sm:text-xl">
+                {numberFormat.format(value)}
+              </div>
+              <div className="text-[10px] font-medium leading-tight text-brand-800 sm:text-xs">
+                {label}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }
