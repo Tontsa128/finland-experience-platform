@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
-  const locale = params.locale as Locale;
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const cmsPosts = await getPublishedBlogPosts();
   const posts = cmsPosts.length || !allowDemoFallback ? cmsPosts : fallbackPosts;
 
