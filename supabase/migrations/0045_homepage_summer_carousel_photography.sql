@@ -24,9 +24,9 @@ SET
           'creditUrl', 'https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg',
           'durationMs', 5500,
           'copy', jsonb_build_object(
-            'fi', jsonb_build_object('eyebrow','Suomen mökkikesä','title','Aamukahvi veden äärellä','text','Mökki Saimaan rannalla, oma laituri ja luonnonrauha – juuri tällaisista hetkistä suomalainen kesä syntyy.','cta','Katso majoituksia'),
+            'fi', jsonb_build_object('eyebrow','Suomen mökkikesä','title','Aamukahvi veden äärellä','text','Mökki Saimaan rannalla, laituri ja luonnonrauha – suomalainen kesä parhaimmillaan.','cta','Katso majoituksia'),
             'es', jsonb_build_object('eyebrow','Verano en una cabaña finlandesa','title','Café junto al agua','text','Una cabaña a orillas del lago Saimaa, un embarcadero y la tranquilidad de la naturaleza.','cta','Ver alojamientos'),
-            'en', jsonb_build_object('eyebrow','Finnish cottage summer','title','Morning coffee by the water','text','A cottage on Lake Saimaa, a private jetty and the calm of Finnish nature.','cta','See stays')
+            'en', jsonb_build_object('eyebrow','Finnish cottage summer','title','Morning coffee by the water','text','A cottage on Lake Saimaa, a jetty and the calm of Finnish nature.','cta','See stays')
           )
         )
         WHEN 'hanko' THEN item || jsonb_build_object(
@@ -48,7 +48,7 @@ SET
             'en', jsonb_build_object('eyebrow','Mathildedal · Salo','title','A historic ironworks village to slow down in','text','Red-brick buildings and the old ironworks setting tell the story of the village''s craft heritage.','cta','Explore Mathildedal')
           )
         )
-        ELSE item || jsonb_build_object('durationMs', COALESCE(NULLIF(item->>'durationMs','')::integer,5500))
+        ELSE item || jsonb_build_object('durationMs',5500)
       END
       ORDER BY position
     )
