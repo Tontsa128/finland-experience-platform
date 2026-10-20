@@ -13,7 +13,7 @@ export async function generateMetadata({params}:{params:Promise<{locale:string;s
  if (!locales.includes(locale)) return {};
  const {data}=await supabaseAdmin.from("site_pages").select("title,seo_title,seo_description,canonical_url,noindex").eq("locale",locale).eq("slug",slug).eq("published",true).maybeSingle();
  if(!data)return {};
- const canonical = data.canonical_url || localizedUrl(locale, "pages/" + params.slug);
+ const canonical = data.canonical_url || localizedUrl(locale, "pages/" + slug);
  return {
    title:data.seo_title||data.title,
    description:data.seo_description||undefined,
