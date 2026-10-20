@@ -12,17 +12,17 @@ import { photoLibrary } from "@/lib/photo-library";
 const slides = [
   {
     key: "summer",
-    image: photoLibrary.turkuArchipelagoHouse,
-    credit: "Henri Sivonen / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_archipelago_house.jpg",
+    image: photoLibrary.turkuArchipelagoSummer,
+    credit: "Kallerna / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
     href: "/destinations",
     external: false,
   },
   {
     key: "cottage",
     image: photoLibrary.saunaCottage,
-    credit: "Kospo75 / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
+    credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
     href: "/accommodations",
     external: false,
   },
@@ -37,8 +37,8 @@ const slides = [
   {
     key: "hanko",
     image: photoLibrary.hankoAerial,
-    credit: "Kallerna / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Hanko_aerial_1.jpg",
+    credit: "Coen / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Coast_of_Tulliniemi_in_Hanko,_Finland,_2021_July.jpg",
     href: "/destinations/hanko",
     external: false,
   },
@@ -97,37 +97,37 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
   fi: {
     cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Valoisa mökkipäivä alkaa järven rannalta – oma sauna, laituri ja luonto aivan vieressä.", cta: "Katso majoituksia" },
     archipelago: { eyebrow: "Turun saaristo", title: "Sininen meri, sileät kalliot", text: "Saariston kesä näyttää parhaat puolensa kirkkaassa päivänvalossa.", cta: "Tutustu saaristoon" },
-    hanko: { eyebrow: "Hanko · Suomen eteläkärki", title: "Meri, hiekka ja pitkä kesäpäivä", text: "Hanko yhdistää rannat, puutalot ja saariston raikkaan merituulen.", cta: "Tutustu Hankoon" },
+    hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Meri, kalliot ja pitkä kesäpäivä", text: "Tulliniemen avara rantamaisema, sininen Itämeri ja kirkas kesätaivas.", cta: "Tutustu Hankoon" },
     naantali: { eyebrow: "Naantali", title: "Kesä alkaa vanhasta satamasta", text: "Värikkäät puutalot, meri ja saariston portti tekevät Naantalista täydellisen kesäpäivän.", cta: "Tutustu Naantaliin" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Pieni ruukkikylä, suuri tunnelma", text: "Käsityöläisiä, kahviloita, merta ja metsäpolkuja yhden rauhallisen kylän ympärillä.", cta: "Tutustu Mathildedaliin" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Vanha ruukkimiljöö kutsuu pysähtymään", text: "Punatiiliset ruukkirakennukset kertovat kylän pitkästä historiasta ja käsityöläisperinteestä.", cta: "Tutustu Mathildedaliin" },
     aland: { eyebrow: "Ahvenanmaa", title: "Saariston valo jatkuu horisonttiin", text: "Meri, kalliosaaret ja kesän kirkas pohjoismainen valo.", cta: "Tutustu Ahvenanmaahan" },
     porvoo: { eyebrow: "Porvoo", title: "Vanhan kaupungin kesäpäivä", text: "Punaiset ranta-aitat, jokimaisema ja historiallinen keskusta kutsuvat hidastamaan.", cta: "Tutustu Porvooseen" },
     hankoBeach: { eyebrow: "Hanko · rannikko", title: "Paljain jaloin kesään", text: "Aurinkoinen hiekkaranta ja meri – Suomen etelärannikon kesä parhaimmillaan.", cta: "Tutustu Hankoon" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Suomen kesä alkaa rannikon pienistä paikoista", text: "Pitkiä iltoja, saaristoa, ruukkikyliä ja rauhallisia mökkipäiviä.", cta: "Tutustu kohteisiin" },
+    summer: { eyebrow: "Hidden Coastal Finland", title: "Suomen kesä alkaa saariston valosta", text: "Purjeveneitä, kalliosaaria ja sinistä vettä – tervetuloa kokemaan Suomen rannikon pitkät kesäpäivät.", cta: "Tutustu kohteisiin" },
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Savusauna meren äärellä", text: "Herrankukkaro yhdistää saariston, savusaunan, majoituksen ja paikalliset maut.", cta: "Siirry palveluntarjoajalle" },
   },
   es: {
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Un día de verano junto al lago, con sauna privada, embarcadero y naturaleza alrededor.", cta: "Ver alojamientos" },
     archipelago: { eyebrow: "Archipiélago de Turku", title: "Mar azul y rocas lisas", text: "El verano del archipiélago en su versión más luminosa y auténtica.", cta: "Explorar el archipiélago" },
-    hanko: { eyebrow: "Hanko · extremo sur de Finlandia", title: "Mar, arena y un largo día de verano", text: "Playas, casas de madera y el aire fresco del Báltico.", cta: "Explorar Hanko" },
+    hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Mar, rocas y un largo día de verano", text: "La costa abierta de Tulliniemi, el azul del Báltico y la luz clara del verano.", cta: "Explorar Hanko" },
     naantali: { eyebrow: "Naantali", title: "El verano comienza en el puerto antiguo", text: "Casas de madera, mar y la puerta de entrada al archipiélago.", cta: "Explorar Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Un pequeño pueblo con mucho carácter", text: "Artesanía, cafés, mar y senderos junto a un histórico pueblo industrial.", cta: "Explorar Mathildedal" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Un antiguo pueblo industrial lleno de historia", text: "Los edificios de ladrillo y el antiguo entorno industrial cuentan la historia artesanal del pueblo.", cta: "Explorar Mathildedal" },
     aland: { eyebrow: "Åland", title: "La luz del archipiélago llega hasta el horizonte", text: "Mar, islas rocosas y la luz nórdica del verano.", cta: "Explorar Åland" },
     porvoo: { eyebrow: "Porvoo", title: "Un día de verano en el casco antiguo", text: "Casas rojas junto al río, historia y cafés para disfrutar sin prisa.", cta: "Explorar Porvoo" },
     hankoBeach: { eyebrow: "Hanko · costa", title: "Camina descalzo hacia el verano", text: "Playa soleada y mar abierto en la costa sur de Finlandia.", cta: "Explorar Hanko" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "El verano finlandés empieza en la costa", text: "Largas tardes, archipiélago, pueblos históricos y cabañas tranquilas junto al agua.", cta: "Explorar destinos" },
+    summer: { eyebrow: "Hidden Coastal Finland", title: "El verano finlandés comienza con la luz del archipiélago", text: "Veleros, islas rocosas y agua azul: descubre los largos días de verano de la costa finlandesa.", cta: "Explorar destinos" },
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Sauna de humo junto al mar", text: "Herrankukkaro combina archipiélago, sauna de humo, alojamiento y gastronomía local.", cta: "Ir al proveedor" },
   },
   en: {
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A bright summer day by the lake, with a private sauna, jetty and nature at your doorstep.", cta: "See stays" },
     archipelago: { eyebrow: "Turku Archipelago", title: "Blue water, sun-warmed rocks", text: "The Finnish archipelago at its brightest – open water, pine trees and summer light.", cta: "Explore the archipelago" },
-    hanko: { eyebrow: "Hanko · Finland's southern coast", title: "Sea, sand and a long summer day", text: "Beaches, wooden houses and the fresh breeze of the Baltic Sea.", cta: "Explore Hanko" },
+    hanko: { eyebrow: "Hanko · Finland's southern coast", title: "Sea, rocky shores and a long summer day", text: "The open coastline at Tulliniemi, blue Baltic water and bright summer skies.", cta: "Explore Hanko" },
     naantali: { eyebrow: "Naantali", title: "Summer begins at the old harbour", text: "Colourful wooden houses, the sea and the gateway to the archipelago.", cta: "Explore Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "A small village with a big atmosphere", text: "Crafts, cafés, sea and forest trails around a historic ironworks village.", cta: "Explore Mathildedal" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "A historic ironworks village to slow down in", text: "Red-brick buildings and the old ironworks setting tell the story of the village's craft heritage.", cta: "Explore Mathildedal" },
     aland: { eyebrow: "Åland", title: "Archipelago light all the way to the horizon", text: "Sea, rocky islands and bright Nordic summer light.", cta: "Explore Åland" },
     porvoo: { eyebrow: "Porvoo", title: "A summer day in the old town", text: "Red riverside warehouses, historic streets and cafés made for slowing down.", cta: "Explore Porvoo" },
     hankoBeach: { eyebrow: "Hanko · coast", title: "Walk barefoot into summer", text: "A sunlit sandy beach and open sea on Finland's southern coast.", cta: "Explore Hanko" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Finnish summer begins in the small places on the coast", text: "Long evenings, archipelago islands, ironworks villages and quiet cottage days by the water.", cta: "Explore destinations" },
+    summer: { eyebrow: "Hidden Coastal Finland", title: "Finnish summer begins in the light of the archipelago", text: "Sailing boats, rocky islands and blue water — discover the long summer days of Finland's coast.", cta: "Explore destinations" },
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Smoke sauna by the sea", text: "Herrankukkaro brings together archipelago nature, smoke sauna, accommodation and local food.", cta: "Visit provider" },
   },
 };
@@ -142,13 +142,13 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         id: item.key,
         imageUrl: item.image,
         sortOrder: index,
-        durationMs: 3000,
+        durationMs: 5500,
         enabled: true,
         copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] },
       }));
   const [active, setActive] = useState(0);
   const slideCount = activeSlides.length;
-  const activeSlideDuration = activeSlides[active]?.durationMs || 3000;
+  const activeSlideDuration = activeSlides[active]?.durationMs || 5500;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -192,7 +192,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             priority={index === 0}
             sizes="100vw"
             unoptimized={Boolean(cmsSlides.length || (index === 0 && settings?.heroImageUrl))}
-            className="object-cover"
+            className="object-cover brightness-[1.04] saturate-[1.06]"
           />
         </div>
       ))}
