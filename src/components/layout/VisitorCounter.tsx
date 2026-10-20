@@ -25,11 +25,21 @@ export function VisitorCounter({ locale }: { locale: string }) {
         try {
           const sessionKey = "finnexprience-visit-counted";
           if (!window.sessionStorage.getItem(sessionKey)) {
-            const visitResponse = await fetch("/api/visitor-count", { method: "POST", cache: "no-store" });
-            const visitData = (await visitResponse.json()) as CounterResponse;
-            if (visitResponse.ok && typeof visitData.count === "number") {
-              nextCount = visitData.count;
-              window.sessionStorage.setItem(sessionKey, "1");
+            // Mark the visit before awaiting the request so concurrent effects
+            // cannot count the same browser session twice.
+            window.sessionStorage.setItem(sessionKey, "pending");
+            try {
+              const visitResponse = await fetch("/api/visitor-count", { method: "POST", cache: "no-store" });
+              const visitData = (await visitResponse.json()) as CounterResponse;
+              if (visitResponse.ok && typeof visitData.count === "number") {
+                nextCount = visitData.count;
+                window.sessionStorage.setItem(sessionKey, "1");
+              } else {
+                window.sessionStorage.removeItem(sessionKey);
+              }
+            } catch (error) {
+              window.sessionStorage.removeItem(sessionKey);
+              throw error;
             }
           }
         } catch {
