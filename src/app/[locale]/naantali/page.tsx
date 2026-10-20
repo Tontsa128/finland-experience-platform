@@ -98,7 +98,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function NaantaliPage({ params }: { params: Promise<{ locale: string }> }) {
-  const locale = params.locale as Locale;
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const t = c[locale] || c.en;
   const cards = [
     { icon: Camera, title: t.oldTown, text: t.oldTownText },
