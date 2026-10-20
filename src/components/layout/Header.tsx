@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { Globe, Menu, UserRound, X } from "lucide-react";
+import { VisitorCounter } from "@/components/layout/VisitorCounter";
 import { useState } from "react";
 
 type NavigationItem = { id: string; label: string; href: string; sortOrder: number };
@@ -51,6 +52,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur">
+      <VisitorCounter locale={locale} />
       <div className="container-narrow flex min-h-16 w-full items-center gap-2 py-2 sm:min-h-18 sm:gap-4 sm:py-3">
         <Link href={href("")} className="min-w-0 flex-1 truncate font-display text-lg font-bold text-brand-900 sm:text-xl">
           Finland <span className="text-brand-500">Experience</span>
