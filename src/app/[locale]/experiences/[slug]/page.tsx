@@ -12,12 +12,13 @@ import ExperienceMap from "@/components/experiences/ExperienceMap";
 
 export const revalidate = 60;
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale: rawLocale, slug } = await params;
+  const locale = rawLocale as Locale;
   if (!locales.includes(locale)) return {};
   const cmsExperiences = await getPublishedExperiences();
   const source = cmsExperiences;
-  const experience = source.find((item) => item.slug === params.slug);
+  const experience = source.find((item) => item.slug === slug);
   if (!experience) return {};
   return buildLocalizedMetadata({
     locale,
@@ -28,12 +29,13 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   });
 }
 
-export default async function ExperienceDetail({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
+export default async function ExperienceDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: rawLocale, slug } = await params;
+  const locale = rawLocale as Locale;
   if (!locales.includes(locale)) notFound();
   const cmsExperiences = await getPublishedExperiences();
   const experiences = cmsExperiences;
-  const experience = experiences.find((item) => item.slug === params.slug);
+  const experience = experiences.find((item) => item.slug === slug);
   if (!experience) notFound();
   const providerUrl = experience.providerUrl && /^https?:\/\//i.test(experience.providerUrl) ? experience.providerUrl : null;
   const navigationUrl = experience.coordinates

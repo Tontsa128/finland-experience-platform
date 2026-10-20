@@ -10,6 +10,8 @@ import { Toaster } from "sonner";
 import { CookieConsent } from "@/components/legal/CookieConsent";
 import { WhatsAppButton } from "@/components/contact/WhatsAppButton";
 import { getPublishedNavigation } from "@/lib/public-content";
+import { Analytics } from "@vercel/analytics/next";
+import { VisitorCounter } from "@/components/analytics/VisitorCounter";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -49,12 +51,14 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <div className="flex min-h-screen flex-col">
+        <VisitorCounter locale={locale as "fi" | "es" | "en"} />
         <Header navigation={navigation} />
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton locale={locale} />
         <CookieConsent />
         <Toaster position="top-center" richColors />
+        <Analytics />
       </div>
     </NextIntlClientProvider>
   );
