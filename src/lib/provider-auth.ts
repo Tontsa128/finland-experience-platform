@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-import { supabaseAdmin, getSupabaseAnonKey, getSupabaseUrl } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase";
+import { getSupabaseAnonKey, getSupabaseUrl } from "@/lib/supabase-config";
 
 export async function getProviderContext() {
   const cookieStore = await cookies();
