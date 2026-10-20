@@ -304,7 +304,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function CoastalFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
-  const locale = params.locale as Locale;
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const isFi = locale === "fi";
   const copy = locale === "fi"
     ? { eyebrow: "HIDDEN COASTAL FINLAND", title: "Viisi rannikon paikkaa, joista on helppo aloittaa", intro: "Mathildedalin ruukkikylä, Naantalin saaristo, Turku, Hanko ja Ahvenanmaa näyttävät Suomen rannikon eri puolet. Täällä reitti ei ole paketti – sinä päätät, missä viivyt.", note: "Löydä ensin paikka. Tarkista sitten ajantasaiset palvelut ja jatka suoraan palveluntarjoajalle.", nearby: "Myös tämä kuuluu samaan merelliseen kokonaisuuteen", nearbyText: "Särkisalo täydentää Salon rannikkokokonaisuutta: mökkejä, satamia, ravintoloita, melontaa, kalastusta, rantoja ja paikallista saaristoelämää." }
