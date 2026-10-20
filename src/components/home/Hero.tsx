@@ -20,7 +20,7 @@ const slides = [
   },
   {
     key: "cottage",
-    image: photoLibrary.saunaCottage,
+    image: photoLibrary.cottageBySaimaa,
     credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
     href: "/accommodations",
@@ -36,7 +36,7 @@ const slides = [
   },
   {
     key: "hanko",
-    image: photoLibrary.hankoAerial,
+    image: photoLibrary.hankoSummerCoast,
     credit: "Coen / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Coast_of_Tulliniemi_in_Hanko,_Finland,_2021_July.jpg",
     href: "/destinations/hanko",
@@ -95,7 +95,7 @@ type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
 
 const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], SlideCopy>> = {
   fi: {
-    cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Valoisa mökkipäivä alkaa järven rannalta – oma sauna, laituri ja luonto aivan vieressä.", cta: "Katso majoituksia" },
+    cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Mökki Saimaan rannalla, laituri ja luonnonrauha – suomalainen kesä parhaimmillaan.", cta: "Katso majoituksia" },
     archipelago: { eyebrow: "Turun saaristo", title: "Sininen meri, sileät kalliot", text: "Saariston kesä näyttää parhaat puolensa kirkkaassa päivänvalossa.", cta: "Tutustu saaristoon" },
     hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Meri, kalliot ja pitkä kesäpäivä", text: "Tulliniemen avara rantamaisema, sininen Itämeri ja kirkas kesätaivas.", cta: "Tutustu Hankoon" },
     naantali: { eyebrow: "Naantali", title: "Kesä alkaa vanhasta satamasta", text: "Värikkäät puutalot, meri ja saariston portti tekevät Naantalista täydellisen kesäpäivän.", cta: "Tutustu Naantaliin" },
@@ -107,7 +107,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Savusauna meren äärellä", text: "Herrankukkaro yhdistää saariston, savusaunan, majoituksen ja paikalliset maut.", cta: "Siirry palveluntarjoajalle" },
   },
   es: {
-    cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Un día de verano junto al lago, con sauna privada, embarcadero y naturaleza alrededor.", cta: "Ver alojamientos" },
+    cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Una cabaña a orillas del lago Saimaa, un embarcadero y la tranquilidad de la naturaleza.", cta: "Ver alojamientos" },
     archipelago: { eyebrow: "Archipiélago de Turku", title: "Mar azul y rocas lisas", text: "El verano del archipiélago en su versión más luminosa y auténtica.", cta: "Explorar el archipiélago" },
     hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Mar, rocas y un largo día de verano", text: "La costa abierta de Tulliniemi, el azul del Báltico y la luz clara del verano.", cta: "Explorar Hanko" },
     naantali: { eyebrow: "Naantali", title: "El verano comienza en el puerto antiguo", text: "Casas de madera, mar y la puerta de entrada al archipiélago.", cta: "Explorar Naantali" },
@@ -119,7 +119,7 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
     herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Sauna de humo junto al mar", text: "Herrankukkaro combina archipiélago, sauna de humo, alojamiento y gastronomía local.", cta: "Ir al proveedor" },
   },
   en: {
-    cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A bright summer day by the lake, with a private sauna, jetty and nature at your doorstep.", cta: "See stays" },
+    cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A cottage on Lake Saimaa, a jetty and the calm of Finnish nature.", cta: "See stays" },
     archipelago: { eyebrow: "Turku Archipelago", title: "Blue water, sun-warmed rocks", text: "The Finnish archipelago at its brightest – open water, pine trees and summer light.", cta: "Explore the archipelago" },
     hanko: { eyebrow: "Hanko · Finland's southern coast", title: "Sea, rocky shores and a long summer day", text: "The open coastline at Tulliniemi, blue Baltic water and bright summer skies.", cta: "Explore Hanko" },
     naantali: { eyebrow: "Naantali", title: "Summer begins at the old harbour", text: "Colourful wooden houses, the sea and the gateway to the archipelago.", cta: "Explore Naantali" },
