@@ -17,8 +17,9 @@ function formatDate(value: string, locale: Locale) {
   }).format(new Date(value + "T12:00:00"));
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const copy = locale === "fi"
     ? { title: "Tapahtumat Varsinais-Suomessa | Finland Experience", description: "Salon, Mathildedalin, Teijon ja Naantalin tapahtumia sekä linkit järjestäjien ajantasaisiin kalentereihin." }
     : locale === "es"
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "events", image: heroImage });
 }
 
-export default async function EventsPage({ params }: { params: { locale: string } }) {
+export default async function EventsPage({ params }: { params: Promise<{ locale: string }> }) {
   const locale = params.locale as Locale;
   const today = new Date().toISOString().slice(0, 10);
   const events = [...saloEvents, ...naantaliEvents]
