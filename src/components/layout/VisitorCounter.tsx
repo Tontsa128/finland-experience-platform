@@ -66,31 +66,30 @@ export function VisitorCounter({ locale }: { locale: string }) {
     };
   }, []);
 
-  if (!available || !metrics) return null;
-
+  const isLive = available && metrics?.configured === true && typeof metrics.totalVisitors === "number";
   const copy = locale === "fi"
     ? {
-        month: "Kävijät tässä kuussa",
+        month: isLive ? "Kävijät tässä kuussa" : "Kuukausiseuranta ei vielä käytössä",
         total: "Vierailijat yhteensä",
         visits: "Kokonaiskäynnit",
       }
     : locale === "es"
       ? {
-          month: "Visitantes este mes",
+          month: isLive ? "Visitantes este mes" : "Seguimiento mensual aún no activo",
           total: "Visitantes en total",
           visits: "Visitas totales",
         }
       : {
-          month: "Visitors this month",
+          month: isLive ? "Visitors this month" : "Monthly tracking not active yet",
           total: "Total visitors",
           visits: "Total site visits",
         };
 
   const numberFormat = new Intl.NumberFormat(locale);
-  const stats: { label: string; value: number; icon: typeof Users; plus?: boolean }[] = [
-    { label: copy.month, value: metrics.monthVisitors ?? 0, icon: Users },
-    { label: copy.total, value: metrics.totalVisitors ?? 17558, icon: Eye },
-    { label: copy.visits, value: metrics.totalSiteVisits ?? 50000, icon: Eye, plus: true },
+  const stats: { label: string; value: number | string; icon: typeof Users; plus?: boolean }[] = [
+    { label: copy.month, value: isLive ? (metrics.monthVisitors ?? 0) : "—", icon: Users },
+    { label: copy.total, value: isLive ? (metrics.totalVisitors ?? 17558) : 17558, icon: Eye },
+    { label: copy.visits, value: isLive ? (metrics.totalSiteVisits ?? 50000) : 50000, icon: Eye, plus: true },
   ];
 
   return (
@@ -104,7 +103,7 @@ export function VisitorCounter({ locale }: { locale: string }) {
             <Icon className="h-4 w-4 shrink-0 text-brand-700 sm:h-5 sm:w-5" aria-hidden="true" />
             <div className="min-w-0">
               <div className="text-base font-extrabold leading-tight tabular-nums sm:text-xl">
-                {numberFormat.format(value)}{plus ? "+" : ""}
+                {typeof value === "number" ? numberFormat.format(value) : value}{plus ? "+" : ""}
               </div>
               <div className="text-[10px] font-medium leading-tight text-brand-800 sm:text-xs">
                 {label}
