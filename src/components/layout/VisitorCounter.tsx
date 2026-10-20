@@ -59,18 +59,20 @@ export function VisitorCounter({ locale }: { locale: string }) {
   if (!available || count === null) return null;
 
   const label = locale === "fi"
-    ? "Kävijöitä"
+    ? "Kävijöitä vähintään"
     : locale === "es"
-      ? "Visitas"
-      : "Visits";
+      ? "Visitas: al menos"
+      : "Visitors: at least";
 
   return (
     <div className="border-b border-brand-100 bg-brand-50 text-brand-900" aria-live="polite">
-      <div className="container-narrow flex min-h-9 items-center justify-center gap-2 px-3 py-1.5 text-xs font-medium sm:text-sm">
-        <Users className="h-4 w-4 shrink-0" aria-hidden="true" />
-        <span>{label}:</span>
-        <span className="tabular-nums font-bold">{new Intl.NumberFormat(locale).format(count)}</span>
-        <Eye className="ml-1 h-3.5 w-3.5 shrink-0 text-brand-600" aria-hidden="true" />
+      <div className="container-narrow flex min-h-14 items-center justify-center gap-2 px-3 py-2 sm:gap-3 sm:py-3">
+        <Users className="h-5 w-5 shrink-0 text-brand-700 sm:h-6 sm:w-6" aria-hidden="true" />
+        <span className="text-xs font-medium sm:text-sm">{label}</span>
+        <span className="text-xl font-extrabold tabular-nums tracking-tight sm:text-2xl">
+          {new Intl.NumberFormat(locale).format(count)}+
+        </span>
+        <Eye className="ml-0.5 h-4 w-4 shrink-0 text-brand-600 sm:h-5 sm:w-5" aria-hidden="true" />
       </div>
     </div>
   );
