@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-import { getSupabaseAdmin, getSupabaseAnonKey, getSupabaseUrl } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase";
+import { getSupabaseAnonKey, getSupabaseUrl } from "@/lib/supabase-config";
 
 export type AdminRole = "SUPER_ADMIN" | "ADMIN" | "CONTENT_MANAGER" | "BOOKING_MANAGER" | "EDITOR";
 
