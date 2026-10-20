@@ -7,6 +7,7 @@ type MetricsResponse = {
   count: number | null;
   totalVisitors?: number;
   totalDownloads?: number;
+  totalSiteVisits?: number;
   monthVisitors?: number;
   monthKey?: string;
   configured?: boolean;
@@ -73,17 +74,20 @@ export function VisitorCounter({ locale }: { locale: string }) {
         month: "Kävijät tässä kuussa",
         total: "Vierailijat yhteensä",
         downloads: "Lataukset yhteensä",
+        visits: "Kokonaiskäynnit",
       }
     : locale === "es"
       ? {
           month: "Visitantes este mes",
           total: "Visitantes en total",
           downloads: "Descargas en total",
+          visits: "Visitas totales",
         }
       : {
           month: "Visitors this month",
           total: "Total visitors",
           downloads: "Total downloads",
+          visits: "Total site visits",
         };
 
   const numberFormat = new Intl.NumberFormat(locale);
@@ -91,6 +95,7 @@ export function VisitorCounter({ locale }: { locale: string }) {
     { label: copy.month, value: metrics.monthVisitors ?? 0, icon: Users },
     { label: copy.total, value: metrics.totalVisitors ?? 17558, icon: Eye },
     { label: copy.downloads, value: metrics.totalDownloads ?? 53547, icon: Download },
+    { label: copy.visits, value: metrics.totalSiteVisits ?? 50000, icon: Eye, plus: true },
   ];
 
   return (
@@ -98,13 +103,13 @@ export function VisitorCounter({ locale }: { locale: string }) {
       className="border-b border-brand-100 bg-brand-50 text-brand-950"
       aria-label={locale === "fi" ? "Sivuston kävijätilastot" : locale === "es" ? "Estadísticas del sitio" : "Website visitor statistics"}
     >
-      <div className="container-narrow grid grid-cols-3 divide-x divide-brand-100 px-2 py-2 sm:px-4 sm:py-3">
+      <div className="container-narrow grid grid-cols-2 divide-x divide-y divide-brand-100 px-2 sm:grid-cols-4 sm:divide-y-0 sm:px-4">
         {stats.map(({ label, value, icon: Icon }) => (
-          <div key={label} className="flex min-w-0 flex-col items-center justify-center gap-1 px-1 text-center sm:flex-row sm:gap-2 sm:px-3">
+          <div key={label} className="flex min-w-0 flex-col items-center justify-center gap-1 px-1 py-2 text-center sm:flex-row sm:gap-2 sm:px-3 sm:py-3">
             <Icon className="h-4 w-4 shrink-0 text-brand-700 sm:h-5 sm:w-5" aria-hidden="true" />
             <div className="min-w-0">
               <div className="text-base font-extrabold leading-tight tabular-nums sm:text-xl">
-                {numberFormat.format(value)}
+                {numberFormat.format(value)}{"plus" in stats.find((item) => item.label === label)! && stats.find((item) => item.label === label)?.plus ? "+" : ""}
               </div>
               <div className="text-[10px] font-medium leading-tight text-brand-800 sm:text-xs">
                 {label}
