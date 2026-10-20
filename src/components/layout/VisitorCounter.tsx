@@ -91,7 +91,7 @@ export function VisitorCounter({ locale }: { locale: string }) {
         };
 
   const numberFormat = new Intl.NumberFormat(locale);
-  const stats = [
+  const stats: { label: string; value: number; icon: typeof Users; plus?: boolean }[] = [
     { label: copy.month, value: metrics.monthVisitors ?? 0, icon: Users },
     { label: copy.total, value: metrics.totalVisitors ?? 17558, icon: Eye },
     { label: copy.downloads, value: metrics.totalDownloads ?? 53547, icon: Download },
@@ -104,12 +104,12 @@ export function VisitorCounter({ locale }: { locale: string }) {
       aria-label={locale === "fi" ? "Sivuston kävijätilastot" : locale === "es" ? "Estadísticas del sitio" : "Website visitor statistics"}
     >
       <div className="container-narrow grid grid-cols-2 divide-x divide-y divide-brand-100 px-2 sm:grid-cols-4 sm:divide-y-0 sm:px-4">
-        {stats.map(({ label, value, icon: Icon }) => (
+        {stats.map(({ label, value, icon: Icon, plus = false }) => (
           <div key={label} className="flex min-w-0 flex-col items-center justify-center gap-1 px-1 py-2 text-center sm:flex-row sm:gap-2 sm:px-3 sm:py-3">
             <Icon className="h-4 w-4 shrink-0 text-brand-700 sm:h-5 sm:w-5" aria-hidden="true" />
             <div className="min-w-0">
               <div className="text-base font-extrabold leading-tight tabular-nums sm:text-xl">
-                {numberFormat.format(value)}{"plus" in stats.find((item) => item.label === label)! && stats.find((item) => item.label === label)?.plus ? "+" : ""}
+                {numberFormat.format(value)}{plus ? "+" : ""}
               </div>
               <div className="text-[10px] font-medium leading-tight text-brand-800 sm:text-xs">
                 {label}
