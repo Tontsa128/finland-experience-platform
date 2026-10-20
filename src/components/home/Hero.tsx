@@ -192,7 +192,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             priority={index === 0}
             sizes="100vw"
             unoptimized={Boolean(cmsSlides.length || (index === 0 && settings?.heroImageUrl))}
-            className="object-cover brightness-[1.04] saturate-[1.06]"
+            className="object-cover"
           />
         </div>
       ))}
