@@ -17,7 +17,10 @@ SET total_site_visits = GREATEST(
 updated_at = now()
 WHERE metrics.id = true;
 
-CREATE OR REPLACE FUNCTION public.increment_public_site_metrics()
+-- PostgreSQL cannot change a function's OUT/RETURNS TABLE shape with CREATE OR REPLACE.
+DROP FUNCTION IF EXISTS public.increment_public_site_metrics();
+
+CREATE FUNCTION public.increment_public_site_metrics()
 RETURNS TABLE(
   total_visitors bigint,
   total_downloads bigint,
