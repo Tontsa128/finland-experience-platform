@@ -8,7 +8,9 @@ const allowedRoles = ["SUPER_ADMIN","ADMIN","CONTENT_MANAGER"] as const;
 
 export const dynamic = "force-dynamic";
 
-export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+type VerificationRouteContext = { params: Promise<{ id: string }> };
+
+export async function GET(_req: Request, { params }: VerificationRouteContext) {
   const admin = await getAdminContext();
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!allowedRoles.includes(admin.profile.role as typeof allowedRoles[number])) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
