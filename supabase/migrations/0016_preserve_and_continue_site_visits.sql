@@ -1,5 +1,5 @@
--- Keep the legacy 50,000+ site-visit baseline distinct from the owner-provided
--- visitor and download statistics. Continue increasing it as new browser sessions are counted.
+-- Keep the legacy 50,000+ site-visit baseline distinct from the visitor count.
+-- Continue increasing it as new browser sessions are counted.
 ALTER TABLE public.public_site_metrics
   ADD COLUMN IF NOT EXISTS total_site_visits bigint NOT NULL DEFAULT 50000
   CHECK (total_site_visits >= 0);
@@ -23,7 +23,6 @@ DROP FUNCTION IF EXISTS public.increment_public_site_metrics();
 CREATE FUNCTION public.increment_public_site_metrics()
 RETURNS TABLE(
   total_visitors bigint,
-  total_downloads bigint,
   month_visitors bigint,
   month_key text,
   total_site_visits bigint
@@ -48,7 +47,7 @@ BEGIN
   WHERE metrics.id = true;
 
   RETURN QUERY
-  SELECT metrics.total_visitors, metrics.total_downloads, metrics.month_visitors,
+  SELECT metrics.total_visitors, metrics.month_visitors,
          metrics.month_key, metrics.total_site_visits
   FROM public.public_site_metrics AS metrics
   WHERE metrics.id = true;
