@@ -52,13 +52,15 @@ const copy = {
   },
 } as const;
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
   const locale = resolvedParams.locale as Locale;
   const c = copy[locale] || copy.en;
   return buildLocalizedMetadata({ locale, title: c.title, description: c.description, path: "accommodations" });
 }
 
-export default async function AccommodationsPage({ params }: { params: { locale: string } }) {
+export default async function AccommodationsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams.locale as Locale;
   const c = copy[locale] || copy.en;
   const cmsCabins = await getPublishedProperties();
