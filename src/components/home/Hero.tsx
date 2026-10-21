@@ -10,85 +10,16 @@ import type { HomepageSettings } from "@/lib/public-content";
 import { photoLibrary } from "@/lib/photo-library";
 
 const slides = [
-  {
-    key: "summer",
-    image: photoLibrary.turkuArchipelagoSummer,
-    credit: "Kallerna / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
-    href: "/destinations",
-    external: false,
-  },
-  {
-    key: "cottage",
-    image: photoLibrary.cottageBySaimaa,
-    credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
-    href: "/accommodations",
-    external: false,
-  },
-  {
-    key: "archipelago",
-    image: photoLibrary.turkuArchipelago,
-    credit: "Rob Sinclair / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
-    href: "/destinations",
-    external: false,
-  },
-  {
-    key: "hanko",
-    image: photoLibrary.hankoSummerCoast,
-    credit: "Coen / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Coast_of_Tulliniemi_in_Hanko,_Finland,_2021_July.jpg",
-    href: "/destinations/hanko",
-    external: false,
-  },
-  {
-    key: "naantali",
-    image: photoLibrary.naantaliHarbour,
-    credit: "Pöllö / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg",
-    href: "/destinations/naantali",
-    external: false,
-  },
-  {
-    key: "mathildedal",
-    image: photoLibrary.mathildedalVillage,
-    credit: "Kotivalo / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
-    href: "/destinations/salo-mathildedal",
-    external: false,
-  },
-  {
-    key: "aland",
-    image: photoLibrary.aland,
-    credit: "Håkan Skogsjö / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg",
-    href: "/destinations/aland",
-    external: false,
-  },
-  {
-    key: "porvoo",
-    image: photoLibrary.porvoo,
-    credit: "Teemu Eskola / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg",
-    href: "/destinations/porvoo",
-    external: false,
-  },
-  {
-    key: "hankoBeach",
-    image: photoLibrary.hankoRegattaBeach,
-    credit: "W.carter / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
-    href: "/destinations/hanko",
-    external: false,
-  },
-  {
-    key: "herrankukkaro",
-    image: photoLibrary.herrankukkaroSauna,
-    credit: "Herrankukkaro",
-    href: "https://www.herrankukkaro.fi/",
-    external: true,
-  },
+  { key: "summer", image: photoLibrary.turkuArchipelagoSummer, credit: "Elämysmatkat", creditUrl: "https://elamysmatkat.com/aktiviteetti/kahden-tunnin-purjehdus-soling-class-purjeveneella/", href: "/destinations", external: false },
+  { key: "cottage", image: photoLibrary.cottageBySaimaa, credit: "Lomarengas / provider image", creditUrl: "https://www.lomarengas.fi/mokit/kouvola-selanpaa-villa-saunaniemi-ii-14600", href: "/accommodations", external: false },
+  { key: "archipelago", image: photoLibrary.turkuArchipelago, credit: "YACHT / travel photography", creditUrl: "https://www.yacht.de/en/worldwide/finland-island-hopping-in-the-archipelago-off-turku/", href: "/destinations", external: false },
+  { key: "hanko", image: photoLibrary.hankoRegattaBeach, credit: "W.carter / Wikimedia Commons", creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg", href: "/destinations/hanko", external: false },
+  { key: "naantali", image: photoLibrary.naantaliHarbour, credit: "Hertz Finland", creditUrl: "https://www.hertz.fi/p/hertzin-matkassa/turun-saariston-rengastie-autoillen", href: "/destinations/naantali", external: false },
+  { key: "mathildedal", image: photoLibrary.mathildedalHarbour, credit: "Visit Finland / Mathildan Marina", creditUrl: "https://www.visitfinland.com/en/product/d6c1e8db-d15c-4fab-a175-5fa26b212c56/mathildan-marina-guest-harbour/", href: "/destinations/salo-mathildedal", external: false },
+  { key: "aland", image: photoLibrary.aland, credit: "Partner image — use subject to existing permission", creditUrl: "https://www.esquire.de/life/reisen/7-geheimtipps-sommer-urlaub", href: "/destinations/aland", external: false },
+  { key: "porvoo", image: photoLibrary.porvoo, credit: "Partner image — use subject to existing permission", creditUrl: "https://katjaroue.kuvat.fi/kuvat/Porvoo/", href: "/destinations/porvoo", external: false },
+  { key: "hankoBeach", image: photoLibrary.hankoRegattaBeach, credit: "W.carter / Wikimedia Commons", creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg", href: "/destinations/hanko", external: false },
+  { key: "herrankukkaro", image: photoLibrary.herrankukkaroSauna, credit: "Herrankukkaro", href: "https://www.herrankukkaro.fi/", external: true },
 ] as const;
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
@@ -97,9 +28,9 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
   fi: {
     cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Mökki Saimaan rannalla, laituri ja luonnonrauha – suomalainen kesä parhaimmillaan.", cta: "Katso majoituksia" },
     archipelago: { eyebrow: "Turun saaristo", title: "Sininen meri, sileät kalliot", text: "Saariston kesä näyttää parhaat puolensa kirkkaassa päivänvalossa.", cta: "Tutustu saaristoon" },
-    hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Meri, kalliot ja pitkä kesäpäivä", text: "Tulliniemen avara rantamaisema, sininen Itämeri ja kirkas kesätaivas.", cta: "Tutustu Hankoon" },
+    hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Aurinkoinen päivä meren äärellä", text: "Hiekkaranta, sininen Itämeri ja Hangon avara kesätunnelma.", cta: "Tutustu Hankoon" },
     naantali: { eyebrow: "Naantali", title: "Kesä alkaa vanhasta satamasta", text: "Värikkäät puutalot, meri ja saariston portti tekevät Naantalista täydellisen kesäpäivän.", cta: "Tutustu Naantaliin" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Vanha ruukkimiljöö kutsuu pysähtymään", text: "Punatiiliset ruukkirakennukset kertovat kylän pitkästä historiasta ja käsityöläisperinteestä.", cta: "Tutustu Mathildedaliin" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Kesäpäivä ruukkikylässä", text: "Vanha ruukkimiljöö, satama ja meren läheisyys tekevät Mathildedalista ainutlaatuisen pysähdyksen.", cta: "Tutustu Mathildedaliin" },
     aland: { eyebrow: "Ahvenanmaa", title: "Saariston valo jatkuu horisonttiin", text: "Meri, kalliosaaret ja kesän kirkas pohjoismainen valo.", cta: "Tutustu Ahvenanmaahan" },
     porvoo: { eyebrow: "Porvoo", title: "Vanhan kaupungin kesäpäivä", text: "Punaiset ranta-aitat, jokimaisema ja historiallinen keskusta kutsuvat hidastamaan.", cta: "Tutustu Porvooseen" },
     hankoBeach: { eyebrow: "Hanko · rannikko", title: "Paljain jaloin kesään", text: "Aurinkoinen hiekkaranta ja meri – Suomen etelärannikon kesä parhaimmillaan.", cta: "Tutustu Hankoon" },
@@ -109,9 +40,9 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
   es: {
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Una cabaña a orillas del lago Saimaa, un embarcadero y la tranquilidad de la naturaleza.", cta: "Ver alojamientos" },
     archipelago: { eyebrow: "Archipiélago de Turku", title: "Mar azul y rocas lisas", text: "El verano del archipiélago en su versión más luminosa y auténtica.", cta: "Explorar el archipiélago" },
-    hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Mar, rocas y un largo día de verano", text: "La costa abierta de Tulliniemi, el azul del Báltico y la luz clara del verano.", cta: "Explorar Hanko" },
+    hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Un día soleado junto al mar", text: "Playa de arena, Báltico azul y el ambiente veraniego abierto de Hanko.", cta: "Explorar Hanko" },
     naantali: { eyebrow: "Naantali", title: "El verano comienza en el puerto antiguo", text: "Casas de madera, mar y la puerta de entrada al archipiélago.", cta: "Explorar Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Un antiguo pueblo industrial lleno de historia", text: "Los edificios de ladrillo y el antiguo entorno industrial cuentan la historia artesanal del pueblo.", cta: "Explorar Mathildedal" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Un día de verano en el pueblo industrial", text: "Un antiguo entorno industrial junto al puerto y al mar convierte Mathildedal en una parada especial.", cta: "Explorar Mathildedal" },
     aland: { eyebrow: "Åland", title: "La luz del archipiélago llega hasta el horizonte", text: "Mar, islas rocosas y la luz nórdica del verano.", cta: "Explorar Åland" },
     porvoo: { eyebrow: "Porvoo", title: "Un día de verano en el casco antiguo", text: "Casas rojas junto al río, historia y cafés para disfrutar sin prisa.", cta: "Explorar Porvoo" },
     hankoBeach: { eyebrow: "Hanko · costa", title: "Camina descalzo hacia el verano", text: "Playa soleada y mar abierto en la costa sur de Finlandia.", cta: "Explorar Hanko" },
@@ -121,9 +52,9 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
   en: {
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A cottage on Lake Saimaa, a jetty and the calm of Finnish nature.", cta: "See stays" },
     archipelago: { eyebrow: "Turku Archipelago", title: "Blue water, sun-warmed rocks", text: "The Finnish archipelago at its brightest – open water, pine trees and summer light.", cta: "Explore the archipelago" },
-    hanko: { eyebrow: "Hanko · Finland's southern coast", title: "Sea, rocky shores and a long summer day", text: "The open coastline at Tulliniemi, blue Baltic water and bright summer skies.", cta: "Explore Hanko" },
+    hanko: { eyebrow: "Hanko · Finland's southern coast", title: "A sunny day by the sea", text: "A sandy beach, blue Baltic water and the open summer atmosphere of Hanko.", cta: "Explore Hanko" },
     naantali: { eyebrow: "Naantali", title: "Summer begins at the old harbour", text: "Colourful wooden houses, the sea and the gateway to the archipelago.", cta: "Explore Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "A historic ironworks village to slow down in", text: "Red-brick buildings and the old ironworks setting tell the story of the village's craft heritage.", cta: "Explore Mathildedal" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "A summer day in the ironworks village", text: "A historic village setting beside the harbour and sea makes Mathildedal a memorable stop.", cta: "Explore Mathildedal" },
     aland: { eyebrow: "Åland", title: "Archipelago light all the way to the horizon", text: "Sea, rocky islands and bright Nordic summer light.", cta: "Explore Åland" },
     porvoo: { eyebrow: "Porvoo", title: "A summer day in the old town", text: "Red riverside warehouses, historic streets and cafés made for slowing down.", cta: "Explore Porvoo" },
     hankoBeach: { eyebrow: "Hanko · coast", title: "Walk barefoot into summer", text: "A sunlit sandy beach and open sea on Finland's southern coast.", cta: "Explore Hanko" },
@@ -135,41 +66,20 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
   const cmsSlides = (settings?.homepageSlides || []).filter((item) => item.enabled !== false && item.imageUrl);
-  const activeSlides = cmsSlides.length
-    ? cmsSlides.map((item) => ({ ...item, key: item.id, image: item.imageUrl }))
-    : slides.map((item, index) => ({
-        ...item,
-        id: item.key,
-        imageUrl: item.image,
-        sortOrder: index,
-        durationMs: 5500,
-        enabled: true,
-        copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] },
-      }));
+  const activeSlides = cmsSlides.length ? cmsSlides.map((item) => ({ ...item, key: item.id, image: item.imageUrl })) : slides.map((item, index) => ({ ...item, id: item.key, imageUrl: item.image, sortOrder: index, durationMs: 5500, enabled: true, copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] } }));
   const [active, setActive] = useState(0);
   const slideCount = activeSlides.length;
   const activeSlideDuration = activeSlides[active]?.durationMs || 5500;
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % slideCount);
-    }, activeSlideDuration);
-
+    const timer = window.setInterval(() => setActive((current) => (current + 1) % slideCount), activeSlideDuration);
     return () => window.clearInterval(timer);
   }, [active, slideCount, activeSlideDuration]);
 
   const slide = activeSlides[active];
-  const text = cmsSlides.length
-    ? slide.copy[locale]
-    : active === 0
-      ? { eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow, title: settings?.heroTitle?.[locale] || copy[locale].summer.title, text: settings?.heroDescription?.[locale] || copy[locale].summer.text, cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta }
-      : copy[locale][slide.key as keyof typeof copy[typeof locale]];
+  const text = cmsSlides.length ? slide.copy[locale] : active === 0 ? { eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow, title: settings?.heroTitle?.[locale] || copy[locale].summer.title, text: settings?.heroDescription?.[locale] || copy[locale].summer.text, cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta } : copy[locale][slide.key as keyof typeof copy[typeof locale]];
   const isCmsHero = !cmsSlides.length && active === 0 && Boolean(settings?.heroImageUrl);
-  const toLocalizedHref = (value: string) => {
-    if (/^https?:\/\//i.test(value)) return value;
-    const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, "");
-    return `/${locale}${normalized ? `/${normalized}` : ""}`;
-  };
+  const toLocalizedHref = (value: string) => { if (/^https?:\/\//i.test(value)) return value; const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, ""); return `/${locale}${normalized ? `/${normalized}` : ""}`; };
   const hrefValueResolved = isCmsHero ? settings?.heroCtaUrl || "/destinations" : slide.href;
   const href = toLocalizedHref(hrefValueResolved);
   const isExternal = /^https?:\/\//i.test(href);
@@ -180,93 +90,30 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   return (
     <section className="relative overflow-hidden bg-white text-white">
       {(cmsSlides.length ? activeSlides : slides).map((item, index) => (
-        <div
-          key={item.key}
-          className={`absolute inset-0 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`}
-          aria-hidden={index !== active}
-        >
-          <Image
-            src={cmsSlides.length ? activeSlides[index].imageUrl : index === 0 && settings?.heroImageUrl ? settings.heroImageUrl : item.image}
-            alt=""
-            fill
-            priority={index === 0}
-            sizes="100vw"
-            unoptimized={Boolean(cmsSlides.length || (index === 0 && settings?.heroImageUrl))}
-            className="object-cover"
-          />
+        <div key={item.key} className={`absolute inset-0 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={index !== active}>
+          <Image src={cmsSlides.length ? activeSlides[index].imageUrl : index === 0 && settings?.heroImageUrl ? settings.heroImageUrl : item.image} alt="" fill priority={index === 0} sizes="100vw" unoptimized={Boolean(cmsSlides.length || (index === 0 && settings?.heroImageUrl))} className="object-cover" />
         </div>
       ))}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent" />
-
-      {credit ? (
-        <div className="absolute bottom-3 right-3 z-20 rounded-full bg-black/45 px-2 py-0.5 text-[8px] leading-3 text-white/65 backdrop-blur-sm sm:bottom-4 sm:right-4 sm:px-2.5 sm:py-1 sm:text-[9px]">
-          {"creditUrl" in slide && slide.creditUrl ? (
-            <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:text-white">
-              {credit}
-            </a>
-          ) : (
-            credit
-          )}
-        </div>
-      ) : null}
-
-      <div className="relative z-10 flex min-h-[68svh] items-end pb-10 pt-28 sm:min-h-[700px] sm:pb-16 lg:min-h-[720px] lg:pb-20">
-        <div className="container-narrow w-full">
-        <motion.div
-          key={String(slide.key)}
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="max-w-4xl"
-        >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[.24em] text-gold-300">{text.eyebrow}</p>
-          <h1 className="max-w-4xl font-display text-5xl font-bold leading-[.94] tracking-[-.03em] sm:text-7xl lg:text-[5.8rem]">
-            {text.title}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/90 sm:text-2xl sm:leading-9">
-            {text.text}
-          </p>
-        </motion.div>
+      {credit ? <div className="absolute bottom-3 right-3 z-20 rounded-full bg-black/45 px-2 py-0.5 text-[8px] leading-3 text-white/65 backdrop-blur-sm sm:bottom-4 sm:right-4 sm:px-2.5 sm:py-1 sm:text-[9px]">{"creditUrl" in slide && slide.creditUrl ? <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:text-white">{credit}</a> : credit}</div> : null}
+      <div className="relative z-10 flex min-h-[58svh] items-end pb-8 pt-24 sm:min-h-[600px] sm:pb-14 lg:min-h-[680px] lg:pb-18">
+        <div className="container-narrow w-full"><motion.div key={String(slide.key)} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: "easeOut" }} className="max-w-4xl">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[.24em] text-gold-300 sm:mb-4">{text.eyebrow}</p>
+          <h1 className="max-w-4xl font-display text-4xl font-bold leading-[.96] tracking-[-.03em] sm:text-6xl lg:text-[5.2rem]">{text.title}</h1>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:mt-6 sm:text-xl sm:leading-8">{text.text}</p>
+        </motion.div></div>
       </div>
-      </div>
-
       <div className="relative z-20 border-t border-slate-200 bg-white text-brand-950 shadow-[0_-10px_30px_rgba(15,23,42,0.08)]">
-        <div className="container-narrow flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:py-6">
+        <div className="container-narrow flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:py-6">
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
-            {isExternal ? (
-              <a href={href} target="_blank" rel="noreferrer" className="btn-gold w-full justify-center px-7 py-4 sm:w-auto">
-                {text.cta} <ExternalLink className="h-4 w-4" />
-              </a>
-            ) : (
-              <Link href={href} className="btn-gold w-full justify-center px-7 py-4 sm:w-auto">
-                {text.cta} <ArrowRight className="h-4 w-4" />
-              </Link>
-            )}
-            <Link href={secondaryHref} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-7 py-4 text-sm font-bold text-brand-950 hover:bg-brand-100 sm:w-auto">
-              {settings?.heroSecondaryLabel?.[locale] || (locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas")} <ArrowRight className="h-4 w-4" />
-            </Link>
+            {isExternal ? <a href={href} target="_blank" rel="noreferrer" className="btn-gold w-full justify-center px-7 py-4 sm:w-auto">{text.cta} <ExternalLink className="h-4 w-4" /></a> : <Link href={href} className="btn-gold w-full justify-center px-7 py-4 sm:w-auto">{text.cta} <ArrowRight className="h-4 w-4" /></Link>}
+            <Link href={secondaryHref} className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-7 py-4 text-sm font-bold text-brand-950 hover:bg-brand-100 sm:w-auto">{settings?.heroSecondaryLabel?.[locale] || (locale === "es" ? "Ver ideas" : locale === "fi" ? "Katso ideat" : "See ideas")} <ArrowRight className="h-4 w-4" /></Link>
           </div>
-
           <div className="flex items-center justify-center gap-3" aria-label={locale === "es" ? "Carrusel de imágenes" : locale === "fi" ? "Kuvakaruselli" : "Image carousel"}>
-            <button type="button" onClick={() => setActive((current) => (current - 1 + activeSlides.length) % activeSlides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Anterior" : locale === "fi" ? "Edellinen" : "Previous"}>
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <div className="flex gap-1.5">
-              {activeSlides.map((item, index) => (
-                <button
-                  key={item.key}
-                  type="button"
-                  onClick={() => setActive(index)}
-                  className={`h-1.5 rounded-full transition-all ${index === active ? "w-10 bg-white" : "w-4 bg-white/40"}`}
-                  aria-label={locale === "es" ? `Diapositiva ${index + 1}` : locale === "fi" ? `Dia ${index + 1}` : `Slide ${index + 1}`}
-                  aria-current={index === active}
-                />
-              ))}
-            </div>
-            <button type="button" onClick={() => setActive((current) => (current + 1) % activeSlides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Siguiente" : locale === "fi" ? "Seuraava" : "Next"}>
-              <ChevronRight className="h-5 w-5" />
-            </button>
+            <button type="button" onClick={() => setActive((current) => (current - 1 + activeSlides.length) % activeSlides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Anterior" : locale === "fi" ? "Edellinen" : "Previous"}><ChevronLeft className="h-5 w-5" /></button>
+            <div className="flex gap-1.5">{activeSlides.map((item, index) => <button key={item.key} type="button" onClick={() => setActive(index)} className={`h-1.5 rounded-full transition-all ${index === active ? "w-10 bg-white" : "w-4 bg-white/40"}`} aria-label={locale === "es" ? `Diapositiva ${index + 1}` : locale === "fi" ? `Dia ${index + 1}` : `Slide ${index + 1}`} aria-current={index === active} />)}</div>
+            <button type="button" onClick={() => setActive((current) => (current + 1) % activeSlides.length)} className="grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-black/20 backdrop-blur-sm hover:bg-white hover:text-brand-950" aria-label={locale === "es" ? "Siguiente" : locale === "fi" ? "Seuraava" : "Next"}><ChevronRight className="h-5 w-5" /></button>
             <span className="ml-1 hidden text-xs font-semibold text-slate-500 sm:inline">{active + 1} / {activeSlides.length}</span>
           </div>
         </div>
