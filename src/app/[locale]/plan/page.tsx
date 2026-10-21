@@ -25,7 +25,7 @@ export default async function PlanPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
   const lang = (locale === "es" || locale === "en" ? locale : "fi") as
     | "fi"
     | "es"
