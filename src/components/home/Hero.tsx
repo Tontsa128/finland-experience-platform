@@ -65,7 +65,9 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
-  const cmsSlides = (settings?.homepageSlides || []).filter((item) => item.enabled !== false && item.imageUrl);
+  // Use the reviewed, curated carousel assets in code until the Supabase CMS slide set is verified and updated.
+  // This prevents stale homepage_slides and hero_image_url values from overriding the approved images.
+  const cmsSlides: HomepageSettings["homepageSlides"] = [];
   const activeSlides = cmsSlides.length ? cmsSlides.map((item) => ({ ...item, key: item.id, image: item.imageUrl })) : slides.map((item, index) => ({ ...item, id: item.key, imageUrl: item.image, sortOrder: index, durationMs: 5500, enabled: true, copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] } }));
   const [active, setActive] = useState(0);
   const slideCount = activeSlides.length;
@@ -78,7 +80,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
   const slide = activeSlides[active];
   const text = cmsSlides.length ? slide.copy[locale] : active === 0 ? { eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow, title: settings?.heroTitle?.[locale] || copy[locale].summer.title, text: settings?.heroDescription?.[locale] || copy[locale].summer.text, cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta } : copy[locale][slide.key as keyof typeof copy[typeof locale]];
-  const isCmsHero = !cmsSlides.length && active === 0 && Boolean(settings?.heroImageUrl);
+  const isCmsHero = false;
   const toLocalizedHref = (value: string) => { if (/^https?:\/\//i.test(value)) return value; const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, ""); return `/${locale}${normalized ? `/${normalized}` : ""}`; };
   const hrefValueResolved = isCmsHero ? settings?.heroCtaUrl || "/destinations" : slide.href;
   const href = toLocalizedHref(hrefValueResolved);
@@ -91,7 +93,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     <section className="relative overflow-hidden bg-white text-white">
       {(cmsSlides.length ? activeSlides : slides).map((item, index) => (
         <div key={item.key} className={`absolute inset-0 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={index !== active}>
-          <Image src={cmsSlides.length ? activeSlides[index].imageUrl : index === 0 && settings?.heroImageUrl ? settings.heroImageUrl : item.image} alt="" fill priority={index === 0} sizes="100vw" unoptimized={Boolean(cmsSlides.length || (index === 0 && settings?.heroImageUrl))} className="object-cover" />
+          <Image src={item.image} alt="" fill priority={index === 0} sizes="(max-width: 640px) 100vw, 100vw" className="object-cover" />
         </div>
       ))}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
