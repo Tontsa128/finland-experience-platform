@@ -27,20 +27,33 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Apply Next.js async request codemod
+      - name: Apply Next.js codemod
         run: npx @next/codemod@latest next-async-request-api . --force
 
-      - name: Build
+      - name: Apply deterministic async params repair
+        run: node scripts/repair-next15-async-params.mjs
+
+      - name: Check for remaining synchronous route params
+        run: |
+          if grep -RIn --include='*.tsx' --include='*.ts' -E 'params\s*:\s*\{[^}]*\}' src/app; then
+            echo "Remaining synchronous params found."
+            exit 1
+          fi
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Production build
         run: npm run build
 
-      - name: Commit repaired files
+      - name: Commit repaired source
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet; then
-            echo "No changes from codemod."
+            echo "No source changes required."
             exit 0
           fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src
-          git commit -m "fix: migrate all Next.js async request APIs"
+          git commit -m "fix: complete Next.js 15 async request migration"
           git push origin main
