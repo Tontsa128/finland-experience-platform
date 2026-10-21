@@ -10,7 +10,8 @@ import { photoLibrary } from "@/lib/photo-library";
 import { canonicalDestinationSlug } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const copy = locale === "fi"
     ? { title: "Kesäkohteet Suomessa | Finland Experience", description: "Löydä saaristo, Mathildedal, Teijo, Naantali, Turku ja muut aidot suomalaiset matkakohteet." }
     : locale === "es"
