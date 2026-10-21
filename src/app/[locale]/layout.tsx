@@ -15,8 +15,9 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as (typeof locales)[number];
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as (typeof locales)[number];
   if (!locales.includes(locale)) return {};
   const copy = {
     fi: {
@@ -40,9 +41,9 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
   if (!locales.includes(locale as (typeof locales)[number])) notFound();
   setRequestLocale(locale);
   const [messages, navigation] = await Promise.all([getMessages(), getPublishedNavigation(locale as "fi" | "es" | "en")]);
