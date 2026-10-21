@@ -7,7 +7,8 @@ import type { Locale } from "@/types";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({params}:{params:{locale:string;slug:string}}):Promise<Metadata>{
+export async function generateMetadata({params}:{params: Promise<{ locale: string; slug: string }>}):Promise<Metadata>{
+  const resolvedParams = await params;
  const locale = resolvedParams.locale as Locale;
  if (!locales.includes(locale)) return {};
  const {data}=await supabaseAdmin.from("site_pages").select("title,seo_title,seo_description,canonical_url,noindex").eq("locale",locale).eq("slug",resolvedParams.slug).eq("published",true).maybeSingle();
@@ -21,7 +22,8 @@ export async function generateMetadata({params}:{params:{locale:string;slug:stri
  };
 }
 
-export default async function CustomPage({params}:{params:{locale:string;slug:string}}){
+export default async function CustomPage({params}:{params: Promise<{ locale: string; slug: string }>}){
+  const resolvedParams = await params;
  if(!["fi","es","en"].includes(resolvedParams.locale))notFound();
  const {data,error}=await supabaseAdmin.from("site_pages").select("title,content,blocks,canonical_url").eq("locale",resolvedParams.locale).eq("slug",resolvedParams.slug).eq("published",true).maybeSingle();
  if(error||!data)notFound();
