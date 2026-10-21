@@ -12,7 +12,8 @@ import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
   const locale = resolvedParams.locale as Locale;
   if (!locales.includes(locale)) return {};
   const cmsDestinations = await getPublishedDestinations();
@@ -30,7 +31,8 @@ export async function generateMetadata({ params }: { params: { locale: string; s
   });
 }
 
-export default async function DestinationDetail({ params }: { params: { locale: string; slug: string } }) {
+export default async function DestinationDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
