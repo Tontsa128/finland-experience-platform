@@ -3,8 +3,6 @@ name: Repair Next.js 15 async request APIs
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/repair-next15-params.yml'
   workflow_dispatch:
 
 permissions:
