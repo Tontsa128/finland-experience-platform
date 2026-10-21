@@ -56,9 +56,9 @@ const slides: Slide[] = [
   },
   {
     key: "mathildedal",
-    image: photoLibrary.mathildedalChristmas,
-    credit: "Visit Mathildedal",
-    creditUrl: "https://visitmathildedal.fi/fi/valimo",
+    image: photoLibrary.mathildedalVillage,
+    credit: "Kotivalo / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
     href: "/destinations/salo-mathildedal",
   },
   {
