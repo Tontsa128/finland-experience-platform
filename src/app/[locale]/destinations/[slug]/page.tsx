@@ -30,8 +30,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   });
 }
 
-export default async function DestinationDetail({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
+export default async function DestinationDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: rawLocale, slug } = await params;
+  const locale = rawLocale as Locale;
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
