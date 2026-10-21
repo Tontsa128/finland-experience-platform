@@ -47,7 +47,16 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
     return `/${targetLocale}${withoutLocale || ""}`;
   };
 
-  const labelFor = (key: string) => labels.get(key) || t(key);
+  const labelFor = (key: string) => {
+    // Prefer locale JSON for known navigation keys so stale CMS labels cannot
+    // leak Finnish text into English or Spanish navigation.
+    const translatedKeys = new Set([
+      "home", "destinations", "accommodations", "experiences", "sauna", "plan",
+      "cityBreaks", "coastalFinland", "ruralFinland", "blog", "contact", "admin", "events",
+    ]);
+    if (translatedKeys.has(key)) return t(key);
+    return labels.get(key) || key;
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur">
