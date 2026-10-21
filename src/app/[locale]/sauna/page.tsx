@@ -280,7 +280,7 @@ function localeOf(value: string): Locale {
 }
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const locale = localeOf(params.locale);
+  const locale = localeOf(resolvedParams.locale);
   const x = copy[locale];
   return buildLocalizedMetadata({
     locale,
@@ -292,7 +292,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 export default function SaunaPage({ params }: { params: { locale: string } }) {
-  const locale = localeOf(params.locale);
+  const locale = localeOf(resolvedParams.locale);
   const x = copy[locale];
 
   return (
