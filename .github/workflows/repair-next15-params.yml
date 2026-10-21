@@ -1,0 +1,48 @@
+name: Repair Next.js 15 async request APIs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/repair-next15-params.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Apply Next.js async request codemod
+        run: npx @next/codemod@latest next-async-request-api . --force
+
+      - name: Build
+        run: npm run build
+
+      - name: Commit repaired files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes from codemod."
+            exit 0
+          fi
+          git add src
+          git commit -m "fix: migrate all Next.js async request APIs"
+          git push origin main
