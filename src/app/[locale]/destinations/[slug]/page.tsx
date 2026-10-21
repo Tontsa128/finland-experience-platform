@@ -13,7 +13,8 @@ import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { locale: rawLocale, slug } = await params;
+  const locale = rawLocale as Locale;
   if (!locales.includes(locale)) return {};
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
