@@ -52,8 +52,8 @@ const copy = {
   },
 } as const;
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const c = copy[locale] || copy.en;
   return buildLocalizedMetadata({ locale, title: c.title, description: c.description, path: "accommodations" });
 }
