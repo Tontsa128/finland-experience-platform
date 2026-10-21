@@ -13,12 +13,12 @@ import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
 
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+  const locale = resolvedParams.locale as Locale;
   if (!locales.includes(locale)) return {};
   const cmsDestinations = await getPublishedDestinations();
-  const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
+  const canonicalSlug = resolvedParams.slug === "mathildedal" ? "salo-mathildedal" : resolvedParams.slug;
   const source = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
-  const destination = source.find((item) => item.slug === params.slug) ?? source.find((item) => item.slug === canonicalSlug);
+  const destination = source.find((item) => item.slug === resolvedParams.slug) ?? source.find((item) => item.slug === canonicalSlug);
   if (!destination) return {};
   const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
   return buildLocalizedMetadata({
@@ -31,11 +31,11 @@ export async function generateMetadata({ params }: { params: { locale: string; s
 }
 
 export default async function DestinationDetail({ params }: { params: { locale: string; slug: string } }) {
-  const locale = params.locale as Locale;
+  const locale = resolvedParams.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
-  const canonicalSlug = params.slug === "mathildedal" ? "salo-mathildedal" : params.slug;
-  const d = destinations.find((x) => x.slug === params.slug) ?? destinations.find((x) => x.slug === canonicalSlug);
+  const canonicalSlug = resolvedParams.slug === "mathildedal" ? "salo-mathildedal" : resolvedParams.slug;
+  const d = destinations.find((x) => x.slug === resolvedParams.slug) ?? destinations.find((x) => x.slug === canonicalSlug);
   if (!d) notFound();
 
   const isCoastal = ["salo-mathildedal", "naantali", "turku", "rosala", "hanko", "aland", "southeast-finland"].includes(d.slug);
