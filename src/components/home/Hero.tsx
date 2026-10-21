@@ -15,11 +15,11 @@ const slides = [
   { key: "archipelago", image: photoLibrary.turkuArchipelago, credit: "YACHT / travel photography", creditUrl: "https://www.yacht.de/en/worldwide/finland-island-hopping-in-the-archipelago-off-turku/", href: "/destinations", external: false },
   { key: "hanko", image: photoLibrary.hankoRegattaBeach, credit: "W.carter / Wikimedia Commons", creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg", href: "/destinations/hanko", external: false },
   { key: "naantali", image: photoLibrary.naantaliHarbour, credit: "Hertz Finland", creditUrl: "https://www.hertz.fi/p/hertzin-matkassa/turun-saariston-rengastie-autoillen", href: "/destinations/naantali", external: false },
-  { key: "mathildedal", image: photoLibrary.mathildedalHarbour, credit: "Visit Finland / Mathildan Marina", creditUrl: "https://www.visitfinland.com/en/product/d6c1e8db-d15c-4fab-a175-5fa26b212c56/mathildan-marina-guest-harbour/", href: "/destinations/salo-mathildedal", external: false },
+  { key: "mathildedal", image: photoLibrary.mathildedalHarbour, credit: "Visit Mathildedal", creditUrl: "https://visitmathildedal.fi/", href: "/destinations/salo-mathildedal", external: false },
   { key: "aland", image: photoLibrary.aland, credit: "Partner image — use subject to existing permission", creditUrl: "https://www.esquire.de/life/reisen/7-geheimtipps-sommer-urlaub", href: "/destinations/aland", external: false },
   { key: "porvoo", image: photoLibrary.porvoo, credit: "Partner image — use subject to existing permission", creditUrl: "https://katjaroue.kuvat.fi/kuvat/Porvoo/", href: "/destinations/porvoo", external: false },
   { key: "hankoBeach", image: photoLibrary.hankoRegattaBeach, credit: "W.carter / Wikimedia Commons", creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg", href: "/destinations/hanko", external: false },
-  { key: "herrankukkaro", image: photoLibrary.herrankukkaroSauna, credit: "Herrankukkaro", href: "https://www.herrankukkaro.fi/", external: true },
+  { key: "herrankukkaro", image: photoLibrary.herrankukkaroSauna, credit: "Herrankukkaro · kuvapankki", creditUrl: "https://www.herrankukkaro.fi/kuvat", href: "https://www.herrankukkaro.fi/", external: true },
 ] as const;
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
