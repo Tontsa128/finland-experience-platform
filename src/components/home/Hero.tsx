@@ -21,23 +21,23 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "summer",
-    image: photoLibrary.turkuArchipelagoHouse,
-    credit: "Henri Sivonen / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_archipelago_house.jpg",
+    image: "https://images.pexels.com/photos/29451764/pexels-photo-29451764.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    credit: "Raul Ling / Pexels",
+    creditUrl: "https://www.pexels.com/photo/scenic-finnish-archipelago-landscape-with-sailboats-29451764/",
     href: "/destinations",
   },
   {
     key: "cottage",
-    image: photoLibrary.saunaCottage,
-    credit: "Kospo75 / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
+    image: "https://www.uwasa.fi/sites/default/files/2022-06/m%C3%B6kkimaisema-j%C3%A4rvell%C3%A4-2_0.jpg",
+    credit: "Vaasan yliopisto",
+    creditUrl: "https://www.uwasa.fi/fi/uutishuone/uutiset/loylyn-henkea-etsimassa-mita-olisi-kesa-ilman-saunaa",
     href: "/accommodations",
   },
   {
     key: "archipelago",
-    image: photoLibrary.turkuArchipelago,
-    credit: "Rob Sinclair / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
+    image: "https://images.pexels.com/photos/31305875/pexels-photo-31305875.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    credit: "Raul Ling / Pexels",
+    creditUrl: "https://www.pexels.com/photo/idyllic-sailing-boat-on-finnish-archipelago-waters-31305875/",
     href: "/destinations/turku",
   },
   {
@@ -49,9 +49,9 @@ const slides: Slide[] = [
   },
   {
     key: "naantali",
-    image: photoLibrary.naantaliHarbour,
-    credit: "Pöllö / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg",
+    image: "https://www.rantapallo.fi/wp-content/uploads/2020/05/suomi-naantali-vanhakaupunki-satama-ss-900x590.jpg",
+    credit: "Rantapallo",
+    creditUrl: "https://www.rantapallo.fi/suomen-matkailu/suomen-ihanat-kesakohteet-kotimaan-salatut-helmet/",
     href: "/destinations/naantali",
   },
   {
@@ -63,9 +63,9 @@ const slides: Slide[] = [
   },
   {
     key: "aland",
-    image: photoLibrary.aland,
-    credit: "Håkan Skogsjö / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg",
+    image: "https://visitaland.wntr.io/uploads/2022/03/20210713-125108.png",
+    credit: "Visit Åland",
+    creditUrl: "https://visitaland.com/de/segelen-und-leben-an-board/",
     href: "/destinations/aland",
   },
   {
