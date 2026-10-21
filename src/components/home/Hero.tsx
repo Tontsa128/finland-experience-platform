@@ -141,7 +141,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     <section className="relative overflow-hidden bg-brand-950 text-white">
       <div className="absolute inset-0">
         {slides.map((item, index) => (
-          <div key={item.key} className={`absolute inset-0 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={index !== active}>
+          <div key={item.key} className={`absolute inset-x-0 top-0 h-[34svh] bg-brand-950 transition-opacity duration-700 sm:inset-0 sm:h-auto ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={index !== active}>
             <Image
               src={item.image}
               alt=""
@@ -149,20 +149,20 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               priority={index === 0}
               sizes="100vw"
               quality={78}
-              className="object-cover"
+              className="object-contain sm:object-cover"
             />
           </div>
         ))}
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 sm:bg-gradient-to-t" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/20 to-transparent" />
 
-      <div className="relative z-10 flex min-h-[54svh] items-end pb-8 pt-24 sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
+      <div className="relative z-10 flex min-h-[76svh] items-end pb-7 pt-[36svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
         <div className="container-narrow w-full">
           <div key={slide.key} className="max-w-4xl">
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[.22em] text-gold-300 sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
-            <h1 className="max-w-4xl font-display text-4xl font-bold leading-[.96] tracking-[-.03em] sm:text-6xl lg:text-[5.4rem]">{text.title}</h1>
-            <p className="mt-4 max-w-2xl text-base leading-6 text-white/90 sm:mt-6 sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
+            <h1 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-[-.03em] sm:text-6xl sm:leading-[.96] lg:text-[5.4rem]">{text.title}</h1>
+            <p className="mt-3 max-w-2xl text-sm leading-5 text-white/90 sm:mt-6 sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
           </div>
         </div>
       </div>
