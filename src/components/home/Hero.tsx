@@ -21,9 +21,9 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "summer",
-    image: photoLibrary.turkuArchipelago,
-    credit: "Rob Sinclair / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
+    image: photoLibrary.turkuArchipelagoHouse,
+    credit: "Henri Sivonen / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_archipelago_house.jpg",
     href: "/destinations",
   },
   {
