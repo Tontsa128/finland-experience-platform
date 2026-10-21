@@ -26,8 +26,8 @@ import {
 
 const fallbackSummerImage = photoLibrary.turkuArchipelago;
 
-export default async function HomePage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   const [homepage, cmsDestinations, cmsCabins, cmsExperiences] =
