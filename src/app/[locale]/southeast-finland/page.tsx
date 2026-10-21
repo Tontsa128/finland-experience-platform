@@ -78,7 +78,7 @@ const copy = {
 }>;
 
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
-  const locale = params.locale as Locale;
+  const locale = resolvedParams.locale as Locale;
   const c = copy[locale] ?? copy.en;
   return buildLocalizedMetadata({
     locale,
@@ -90,7 +90,7 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
 }
 
 export default function SoutheastFinlandPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+  const locale = resolvedParams.locale as Locale;
   const c = copy[locale] ?? copy.en;
   const featureCards = [
     { title: locale === "fi" ? "Ruoka & kahvilat" : locale === "es" ? "Gastronomía y cafés" : "Food & cafés", icon: Utensils, text: c.food },
