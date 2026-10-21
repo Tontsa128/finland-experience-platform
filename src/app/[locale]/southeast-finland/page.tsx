@@ -77,7 +77,8 @@ const copy = {
   food: string; nature: string; culture: string; coast: string; next: string; places: PlaceCard[];
 }>;
 
-export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
   const locale = resolvedParams.locale as Locale;
   const c = copy[locale] ?? copy.en;
   return buildLocalizedMetadata({
@@ -89,7 +90,8 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
   });
 }
 
-export default function SoutheastFinlandPage({ params }: { params: { locale: string } }) {
+export default async function SoutheastFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams.locale as Locale;
   const c = copy[locale] ?? copy.en;
   const featureCards = [
