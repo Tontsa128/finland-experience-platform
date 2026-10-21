@@ -1,8 +1,6 @@
 name: Repair Next.js 15 async request APIs
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
