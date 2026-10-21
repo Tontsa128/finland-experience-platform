@@ -9,8 +9,9 @@ import {
   getPublishedExperiences,
 } from "@/lib/public-content";
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const copy = locale === "fi"
     ? { title: "Suunnittele matkasi Suomeen | Finland Experience", description: "Luo inspiraatiopohjainen matkasuunnitelma tarkistetusta mökki-, elämyksiä ja kohteita sisältävästä katalogista." }
     : locale === "es"
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 export default async function PlanPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = params;
   const lang = (locale === "es" || locale === "en" ? locale : "fi") as
