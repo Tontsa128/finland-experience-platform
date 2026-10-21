@@ -9,8 +9,9 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { canonicalDestinationSlug } from "@/lib/utils";
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale as Locale;
   const copy = locale === "fi"
     ? { title: "Kesäkohteet Suomessa | Finland Experience", description: "Löydä saaristo, Mathildedal, Teijo, Naantali, Turku ja muut aidot suomalaiset matkakohteet." }
     : locale === "es"
@@ -19,8 +20,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "destinations" });
 }
 
-export default async function DestinationsPage({ params }: { params: { locale: string } }) {
-  const locale = params.locale as Locale;
+export default async function DestinationsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale as Locale;
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
 
