@@ -36,7 +36,7 @@ export const photoLibrary = {
   saunaRajaportti: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rajaportti_sauna1.jpg",
   saunaCottage: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
   cottageBySaimaa: "https://lmrprodstorageaccount.blob.core.windows.net/assets/serviceimages/14600/14600_63.jpg",
-  herrankukkaroSauna: "https://le-de.cdn-website.com/437c2bac51dd486c80c3e153a9033393/dms3rep/multi/opt/Herrankukkaro-kuvapankki-84-1920w.jpg",
+  herrankukkaroSauna: "https://le-de.cdn-website.com/437c2bac51dd486c80c3e153a9033393/dms3rep/multi/opt/savusaunajooga-1920w.jpg",
   storfinnhova: "https://www.storfinnhova.com/wp-content/uploads/2025/10/080925-Kemio-tilakuvat-web-117_cropped.jpg",
   bjorkholm: "https://cdn.johku.com/bjorkholm/files/419/w374-h237-s/image.Svartan_Bjorkholm_johku_wallpaper.jpg",
   naturaVivaTeijo: "https://cdn.johku.com/naturaviva/largefiles/676/webp/teijo-national-park-rental-shop.webp",
