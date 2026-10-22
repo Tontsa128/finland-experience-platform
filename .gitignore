@@ -141,3 +141,10 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Cloudflare Workers / OpenNext generated output
+.open-next/
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+cloudflare-env.d.ts
