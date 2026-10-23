@@ -93,11 +93,11 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     <section className="relative overflow-hidden bg-white text-white">
       {(cmsSlides.length ? activeSlides : slides).map((item, index) => (
         <div key={item.key} className={`absolute inset-0 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={index !== active}>
-          <Image src={item.image} alt="" fill priority={index === 0} sizes="(max-width: 640px) 100vw, 100vw" className="object-cover" />
+          <Image src={item.image} alt="" fill priority={index === 0} sizes="(max-width: 640px) 100vw, 100vw" quality={90} className="object-cover brightness-110 contrast-105" />
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/5 to-transparent" />
       {credit ? <div className="absolute bottom-3 right-3 z-20 rounded-full bg-black/45 px-2 py-0.5 text-[8px] leading-3 text-white/65 backdrop-blur-sm sm:bottom-4 sm:right-4 sm:px-2.5 sm:py-1 sm:text-[9px]">{"creditUrl" in slide && slide.creditUrl ? <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:text-white">{credit}</a> : credit}</div> : null}
       <div className="relative z-10 flex min-h-[58svh] items-end pb-8 pt-24 sm:min-h-[600px] sm:pb-14 lg:min-h-[680px] lg:pb-18">
         <div className="container-narrow w-full"><motion.div key={String(slide.key)} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: "easeOut" }} className="max-w-4xl">
