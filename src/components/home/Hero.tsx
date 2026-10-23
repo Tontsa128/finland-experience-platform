@@ -65,10 +65,18 @@ const copy: Record<"fi" | "es" | "en", Record<(typeof slides)[number]["key"], Sl
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
-  // Use the reviewed, curated carousel assets in code until the Supabase CMS slide set is verified and updated.
-  // This prevents stale homepage_slides and hero_image_url values from overriding the approved images.
-  const cmsSlides: HomepageSettings["homepageSlides"] = [];
-  const activeSlides = cmsSlides.length ? cmsSlides.map((item) => ({ ...item, key: item.id, image: item.imageUrl })) : slides.map((item, index) => ({ ...item, id: item.key, imageUrl: item.image, sortOrder: index, durationMs: 4000, enabled: true, copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] } }));
+  // Prefer enabled CMS slides, keeping curated code slides as a safe fallback.
+  // Older saved rows may use ctaUrl while the TypeScript model calls this field href.
+  const cmsSlides = (settings?.homepageSlides ?? [])
+    .filter((item) => item.enabled !== false && typeof item.imageUrl === "string" && item.imageUrl.trim().length > 0)
+    .sort((a, b) => a.sortOrder - b.sortOrder);
+  const activeSlides = cmsSlides.length
+    ? cmsSlides.map((item) => {
+        const legacy = item as typeof item & { ctaUrl?: string };
+        const rawHref = legacy.href || legacy.ctaUrl || "/destinations";
+        return { ...item, key: item.id, image: item.imageUrl, href: rawHref, external: rawHref.startsWith("http://") || rawHref.startsWith("https://") };
+      })
+    : slides.map((item, index) => ({ ...item, id: item.key, imageUrl: item.image, sortOrder: index, durationMs: 4000, enabled: true, copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] } }));
   const [active, setActive] = useState(0);
   const slideCount = activeSlides.length;
   const activeSlideDuration = activeSlides[active]?.durationMs || 4000;
@@ -79,7 +87,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   }, [active, slideCount, activeSlideDuration]);
 
   const slide = activeSlides[active];
-  const text = cmsSlides.length ? slide.copy[locale] : active === 0 ? { eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow, title: settings?.heroTitle?.[locale] || copy[locale].summer.title, text: settings?.heroDescription?.[locale] || copy[locale].summer.text, cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta } : copy[locale][slide.key as keyof typeof copy[typeof locale]];
+  const text = cmsSlides.length ? (slide.copy?.[locale] || copy[locale].summer) : active === 0 ? { eyebrow: settings?.heroEyebrow?.[locale] || copy[locale].summer.eyebrow, title: settings?.heroTitle?.[locale] || copy[locale].summer.title, text: settings?.heroDescription?.[locale] || copy[locale].summer.text, cta: settings?.heroCtaLabel?.[locale] || copy[locale].summer.cta } : copy[locale][slide.key as keyof typeof copy[typeof locale]];
   const isCmsHero = false;
   const toLocalizedHref = (value: string) => { if (/^https?:\/\//i.test(value)) return value; const normalized = value.trim().replace(/^\/+/, "").replace(/^(fi|es|en)(?=\/|$)/, ""); return `/${locale}${normalized ? `/${normalized}` : ""}`; };
   const hrefValueResolved = isCmsHero ? settings?.heroCtaUrl || "/destinations" : slide.href;
