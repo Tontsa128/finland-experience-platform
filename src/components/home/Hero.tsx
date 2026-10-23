@@ -36,8 +36,8 @@ const slides: Slide[] = [
   {
     key: "archipelago",
     image: photoLibrary.turkuArchipelago,
-    credit: "Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
+    credit: "Elämysmatkat",
+    creditUrl: "https://elamysmatkat.com/aktiviteetti/kahden-tunnin-purjehdus-soling-class-purjeveneella/",
     href: "/destinations/turku",
   },
   {
