@@ -79,7 +79,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     : slides.map((item, index) => ({ ...item, id: item.key, imageUrl: item.image, sortOrder: index, durationMs: 4000, enabled: true, copy: { fi: copy.fi[item.key], es: copy.es[item.key], en: copy.en[item.key] } }));
   const [active, setActive] = useState(0);
   const slideCount = activeSlides.length;
-  const activeSlideDuration = activeSlides[active]?.durationMs || 4000;
+  const activeSlideDuration = 4000;
 
   useEffect(() => {
     const timer = window.setInterval(() => setActive((current) => (current + 1) % slideCount), activeSlideDuration);
