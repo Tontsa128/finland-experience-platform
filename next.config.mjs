@@ -40,6 +40,7 @@ const nextConfig = {
       { protocol: "https", hostname: "visitnaantali.com" },
       { protocol: "https", hostname: "static.wixstatic.com" },
       { protocol: "https", hostname: "upload.wikimedia.org" },
+      { protocol: "https", hostname: "thumb.wikimedia.org" },
       { protocol: "https", hostname: "commons.wikimedia.org" },
       { protocol: "https", hostname: "le-de.cdn-website.com" },
       { protocol: "https", hostname: "www.storfinnhova.com" },
