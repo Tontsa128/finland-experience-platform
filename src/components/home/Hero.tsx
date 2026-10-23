@@ -21,23 +21,23 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "summer",
-    image: "https://images.pexels.com/photos/29451764/pexels-photo-29451764.jpeg?auto=compress&cs=tinysrgb&w=2400",
-    credit: "Raul Ling / Pexels",
-    creditUrl: "https://www.pexels.com/photo/scenic-finnish-archipelago-landscape-with-sailboats-29451764/",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Turun_saaristo_1.jpg/1600px-Turun_saaristo_1.jpg",
+    credit: "Kallerna / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
     href: "/destinations",
   },
   {
     key: "cottage",
-    image: "https://www.uwasa.fi/sites/default/files/2022-06/m%C3%B6kkimaisema-j%C3%A4rvell%C3%A4-2_0.jpg",
-    credit: "Vaasan yliopisto",
-    creditUrl: "https://www.uwasa.fi/fi/uutishuone/uutiset/loylyn-henkea-etsimassa-mita-olisi-kesa-ilman-saunaa",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Summer_cottage%2C_Finland.jpg/1600px-Summer_cottage%2C_Finland.jpg",
+    credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
     href: "/accommodations",
   },
   {
     key: "archipelago",
-    image: "https://images.pexels.com/photos/31305875/pexels-photo-31305875.jpeg?auto=compress&cs=tinysrgb&w=2400",
-    credit: "Raul Ling / Pexels",
-    creditUrl: "https://www.pexels.com/photo/idyllic-sailing-boat-on-finnish-archipelago-waters-31305875/",
+    image: photoLibrary.turkuArchipelago,
+    credit: "Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
     href: "/destinations/turku",
   },
   {
