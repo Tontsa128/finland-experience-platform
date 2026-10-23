@@ -21,23 +21,23 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "summer",
-    image: "https://images.pexels.com/photos/29451764/pexels-photo-29451764.jpeg?auto=compress&cs=tinysrgb&w=2400",
-    credit: "Raul Ling / Pexels",
-    creditUrl: "https://www.pexels.com/photo/scenic-finnish-archipelago-landscape-with-sailboats-29451764/",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Turun_saaristo_1.jpg/1600px-Turun_saaristo_1.jpg",
+    credit: "Kallerna / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
     href: "/destinations",
   },
   {
     key: "cottage",
-    image: "https://www.uwasa.fi/sites/default/files/2022-06/m%C3%B6kkimaisema-j%C3%A4rvell%C3%A4-2_0.jpg",
-    credit: "Vaasan yliopisto",
-    creditUrl: "https://www.uwasa.fi/fi/uutishuone/uutiset/loylyn-henkea-etsimassa-mita-olisi-kesa-ilman-saunaa",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Summer_cottage%2C_Finland.jpg/1600px-Summer_cottage%2C_Finland.jpg",
+    credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
     href: "/accommodations",
   },
   {
     key: "archipelago",
-    image: "https://images.pexels.com/photos/31305875/pexels-photo-31305875.jpeg?auto=compress&cs=tinysrgb&w=2400",
-    credit: "Raul Ling / Pexels",
-    creditUrl: "https://www.pexels.com/photo/idyllic-sailing-boat-on-finnish-archipelago-waters-31305875/",
+    image: photoLibrary.turkuArchipelago,
+    credit: "Elämysmatkat",
+    creditUrl: "https://elamysmatkat.com/aktiviteetti/kahden-tunnin-purjehdus-soling-class-purjeveneella/",
     href: "/destinations/turku",
   },
   {
@@ -122,25 +122,39 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
 };
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
-  void settings;
   const locale = useLocale() as "fi" | "es" | "en";
+  const cmsSlides = (settings?.homepageSlides ?? [])
+    .filter((item) => item.enabled !== false && typeof item.imageUrl === "string" && item.imageUrl.trim().length > 0)
+    .sort((a, b) => a.sortOrder - b.sortOrder);
+  const activeSlides: Array<Slide & { copy?: SlideCopy }> = cmsSlides.length
+    ? cmsSlides.map((item) => ({
+        key: item.id,
+        image: item.imageUrl,
+        credit: item.credit || "",
+        creditUrl: item.creditUrl,
+        href: item.href || "/destinations",
+        external: item.external ?? /^https?:\/\//i.test(item.href || ""),
+        copy: item.copy?.[locale],
+      }))
+    : slides.map((item) => ({ ...item, copy: copy[locale][item.key] }));
   const [active, setActive] = useState(0);
-  const slide = slides[active];
-  const text = copy[locale][slide.key];
+  const slideCount = activeSlides.length;
+  const slide = activeSlides[active % slideCount] ?? activeSlides[0];
+  const text = slide.copy || copy[locale][slide.key] || copy[locale].summer;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setActive((current) => (current + 1) % slides.length);
-    }, 5000);
+      setActive((current) => (current + 1) % slideCount);
+    }, 4000);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [slideCount]);
 
   const href = slide.external ? slide.href : `/${locale}${slide.href}`;
 
   return (
     <section className="relative overflow-hidden bg-brand-950 text-white">
       <div className="absolute inset-0">
-        {slides.map((item, index) => (
+        {activeSlides.map((item, index) => (
           <div key={item.key} className={`absolute inset-x-0 top-0 h-[34svh] bg-brand-950 transition-opacity duration-700 sm:inset-0 sm:h-auto ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={index !== active}>
             <Image
               src={item.image}
@@ -148,8 +162,8 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               fill
               priority={index === 0}
               sizes="100vw"
-              quality={78}
-              className="object-contain sm:object-cover"
+              quality={90}
+              className="object-cover brightness-110 contrast-105"
             />
           </div>
         ))}
@@ -180,18 +194,18 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           )}
 
           <div className="flex items-center justify-center gap-2.5" aria-label={locale === "es" ? "Carrusel de imágenes" : locale === "fi" ? "Kuvakaruselli" : "Image carousel"}>
-            <button type="button" onClick={() => setActive((current) => (current - 1 + slides.length) % slides.length)} className="grid h-9 w-9 place-items-center rounded-full border border-brand-200 bg-white hover:bg-brand-50" aria-label={locale === "fi" ? "Edellinen" : locale === "es" ? "Anterior" : "Previous"}>
+            <button type="button" onClick={() => setActive((current) => (current - 1 + activeSlides.length) % activeSlides.length)} className="grid h-9 w-9 place-items-center rounded-full border border-brand-200 bg-white hover:bg-brand-50" aria-label={locale === "fi" ? "Edellinen" : locale === "es" ? "Anterior" : "Previous"}>
               <ChevronLeft className="h-4 w-4" />
             </button>
             <div className="flex max-w-[42vw] gap-1 overflow-hidden">
-              {slides.map((item, index) => (
+              {activeSlides.map((item, index) => (
                 <button key={item.key} type="button" onClick={() => setActive(index)} className={`h-1.5 rounded-full transition-all ${index === active ? "w-7 bg-brand-900" : "w-3 bg-brand-200"}`} aria-label={locale === "fi" ? `Dia ${index + 1}` : locale === "es" ? `Diapositiva ${index + 1}` : `Slide ${index + 1}`} aria-current={index === active} />
               ))}
             </div>
-            <button type="button" onClick={() => setActive((current) => (current + 1) % slides.length)} className="grid h-9 w-9 place-items-center rounded-full border border-brand-200 bg-white hover:bg-brand-50" aria-label={locale === "fi" ? "Seuraava" : locale === "es" ? "Siguiente" : "Next"}>
+            <button type="button" onClick={() => setActive((current) => (current + 1) % activeSlides.length)} className="grid h-9 w-9 place-items-center rounded-full border border-brand-200 bg-white hover:bg-brand-50" aria-label={locale === "fi" ? "Seuraava" : locale === "es" ? "Siguiente" : "Next"}>
               <ChevronRight className="h-4 w-4" />
             </button>
-            <span className="hidden text-xs font-semibold text-slate-500 sm:inline">{active + 1} / {slides.length}</span>
+            <span className="hidden text-xs font-semibold text-slate-500 sm:inline">{active + 1} / {activeSlides.length}</span>
           </div>
 
           <div className="hidden text-right text-[9px] text-slate-500 sm:block sm:max-w-[180px]">
