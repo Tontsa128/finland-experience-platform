@@ -23,22 +23,22 @@ const slides: Slide[] = [
   {
     key: "spring",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
-    credit: "Sanzzu / Wikimedia Commons (CC BY)",
+    credit: "Sanzzu / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
     href: "/destinations",
   },
   {
     key: "autumn",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
-    credit: "Wikimedia Commons",
+    credit: "Fred Sundén / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
     href: "/destinations",
   },
   {
     key: "summer",
-    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
-    credit: "Kotivalo / Wikimedia Commons (CC BY-SA 4.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg",
+    image: photoLibrary.sarkisalo,
+    credit: "Motopark / Wikimedia Commons (CC BY-SA 3.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Ulkoluotosilta3.jpg",
     href: "/destinations",
   },
   {
@@ -51,50 +51,50 @@ const slides: Slide[] = [
   {
     key: "archipelago",
     image: photoLibrary.turkuArchipelago,
-    credit: "Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
+    credit: "Rob Sinclair / Wikimedia Commons (CC BY-SA 2.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
     href: "/destinations/turku",
   },
   {
     key: "hanko",
     image: photoLibrary.hankoRegattaBeach,
-    credit: "W.carter / Wikimedia Commons",
+    credit: "W.carter / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
     href: "/destinations/hanko",
   },
   {
     key: "naantali",
     image: photoLibrary.naantaliOldTown,
-    credit: "Tatu Kosonen / Wikimedia Commons",
+    credit: "Tatu Kosonen / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg",
     href: "/destinations/naantali",
   },
   {
     key: "mathildedal",
     image: photoLibrary.mathildedalVillage,
-    credit: "Kotivalo / Wikimedia Commons",
+    credit: "Kotivalo / Wikimedia Commons (CC BY-SA 3.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
     href: "/destinations/salo-mathildedal",
   },
   {
     key: "aland",
-    image: photoLibrary.aland,
-    credit: "Håkan Skogsjö / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholms-slott-1.jpg",
+    credit: "Helgi Þorsteinsson / norden.org (CC BY 2.5)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholms-slott-1.jpg",
     href: "/destinations/aland",
   },
   {
     key: "porvoo",
     image: photoLibrary.porvoo,
-    credit: "Teemu Eskola / Wikimedia Commons",
+    credit: "Teemu Eskola / Wikimedia Commons (CC BY-SA 3.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg",
     href: "/destinations/porvoo",
   },
   {
     key: "herrankukkaro",
-    image: photoLibrary.saunaTraditionalSmoke,
-    credit: "Kaisu Mokkila / Wikimedia Commons (CC BY-SA 4.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_sauna_healing.jpg",
+    image: photoLibrary.saunaWhisking,
+    credit: "Ville Kurki / Wikimedia Commons (CC BY-SA 4.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_sauna_whisking_and_l%C3%B6yly.jpg",
     href: "https://www.herrankukkaro.fi/",
     external: true,
   },
@@ -103,56 +103,56 @@ const slides: Slide[] = [
 const fallbackImages: Record<string, string> = {
   spring: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
   autumn: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
-  summer: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
+  summer: photoLibrary.sarkisalo,
   cottage: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
-  archipelago: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Turun_saaristo_1.jpg",
+  archipelago: photoLibrary.turkuArchipelago,
   hanko: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
   naantali: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Old_Town_of_Naantali,_Finland.jpg",
-  mathildedal: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
-  aland: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholm_2026-08-09_image12.jpg",
+  mathildedal: photoLibrary.mathildedalVillage,
+  aland: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholms-slott-1.jpg",
   porvoo: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Porvoo_old_town.jpg",
-  herrankukkaro: photoLibrary.saunaTraditionalSmoke,
+  herrankukkaro: photoLibrary.saunaWhisking,
 };
 
 const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   fi: {
-    spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kevään ensimmäiset kukat ja raikas saaristo kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
-    autumn: { eyebrow: "Syksy saaristossa", title: "Kultainen ruska ja saaristokylien rauha", text: "Värikkäät puut, punaiset rantamakasiinit ja tyyni meri tekevät syysretkestä unohtumattoman.", cta: "Tutustu saaristoon" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Suomen kesä alkaa rannikon pienistä paikoista", text: "Saaristoa, kalliosaaria ja avointa merta – suomalainen kesä parhaimmillaan.", cta: "Tutustu kohteisiin" },
+    spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kukkivat valkovuokot ja raikas kevätilma kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
+    autumn: { eyebrow: "Syksy Nauvon saaristossa", title: "Nauvon kirkonkylä syksyn väreissä", text: "Ilmakuva näyttää Kyrkbackenin kylän syksyisenä kokonaisuutena, kun puiden ruska värittää saaristomaisemaa.", cta: "Tutustu saaristoon" },
+    summer: { eyebrow: "Hidden Coastal Finland", title: "Löydä rannikon rauhalliset reitit ja merimaisemat", text: "Pienet sillat, rantakalliot ja saaristotiet johdattavat pois kiireestä Suomen rannikon maisemiin.", cta: "Tutustu kohteisiin" },
     cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Kesämökki, järvi, laituri ja sauna tekevät kiireettömästä päivästä osan Suomen matkaa.", cta: "Katso majoituksia" },
-    archipelago: { eyebrow: "Turun saaristo", title: "Sininen meri, sileät kalliot", text: "Kirkas kesäpäivä saaristossa: saaria, mäntyjä ja avointa vettä ilman kiirettä.", cta: "Tutustu saaristoon" },
+    archipelago: { eyebrow: "Turun saaristo", title: "Pieni puutalo saariston keskellä", text: "Saaristomaisemaan asettuva puutalo kertoo elävästä saaristosta ja sen rauhallisesta arjesta.", cta: "Tutustu saaristoon" },
     hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Aurinkoinen ranta ja avoin meri", text: "Hanko on kesää varten: hiekkaranta, Itämeri ja pitkä päivä etelärannikolla.", cta: "Tutustu Hankoon" },
-    naantali: { eyebrow: "Naantali", title: "Kesä alkaa vanhasta satamasta", text: "Värikkäät puutalot, satama ja meri johdattavat suoraan saariston tunnelmaan.", cta: "Tutustu Naantaliin" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Historiallinen ruukkikylä meren lähellä", text: "Vanha ruukkimiljöö, käsityöläiset ja kylän kesäinen tunnelma tekevät Mathildedalista omanlaisensa.", cta: "Tutustu Mathildedaliin" },
-    aland: { eyebrow: "Ahvenanmaa", title: "Saariston valo jatkuu horisonttiin", text: "Meri, kalliosaaret ja kirkas pohjoismainen kesävalo kutsuvat hidastamaan.", cta: "Tutustu Ahvenanmaahan" },
-    porvoo: { eyebrow: "Porvoo", title: "Vanhan kaupungin kesäpäivä", text: "Punaiset ranta-aitat, jokimaisema ja historiallinen keskusta kutsuvat kävelemään hitaasti.", cta: "Tutustu Porvooseen" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Savusauna meren äärellä", text: "Aito savusaunan sisätila, puulauteet ja kivikiuas johdattavat suomalaisen saunan tunnelmaan.", cta: "Siirry palveluntarjoajalle" },
+    naantali: { eyebrow: "Naantali", title: "Kävele Naantalin vanhan kaupungin puutalokaduilla", text: "Historialliset puutalot ja kapeat kadut kutsuvat rauhalliselle kävelylle meren läheiseen vanhaan kaupunkiin.", cta: "Tutustu Naantaliin" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Tutustu Mathildedalin historialliseen ruukkimiljööseen", text: "Vuodelta 1852 peräisin oleva Anttipoffin rakennus kertoo kylän ruukkihistoriasta ja vanhoista työväenasunnoista.", cta: "Tutustu Mathildedaliin" },
+    aland: { eyebrow: "Ahvenanmaa", title: "Tutustu Ahvenanmaan historialliseen Kastelholman linnaan", text: "Kastelholman linna kertoo Ahvenanmaan historiasta ja tarjoaa konkreettisen pysähdyspaikan saaristomatkalle.", cta: "Tutustu Ahvenanmaahan" },
+    porvoo: { eyebrow: "Porvoo", title: "Näe Porvoon vanha kaupunki yläilmoista", text: "Ilmasta avautuva näkymä näyttää historiallisen kaupungin kokonaisuutena ja kutsuu tutustumaan sen kaduille.", cta: "Tutustu Porvooseen" },
+    herrankukkaro: { eyebrow: "Suomalainen saunaperinne", title: "Koe suomalainen saunominen ja vihtominen", text: "Perinteinen vihta, löyly ja rauhallinen saunahetki kuuluvat suomalaiseen saunaperinteeseen.", cta: "Siirry palveluntarjoajalle" },
   },
   es: {
-    spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, primeras flores y aire fresco invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
-    autumn: { eyebrow: "Otoño en el archipiélago", title: "Colores dorados y pueblos costeros con encanto", text: "Árboles de colores, casas rojas junto al agua y un mar tranquilo crean una escapada inolvidable.", cta: "Explorar el archipiélago" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "El verano finlandés empieza en la costa", text: "Archipiélago, islas rocosas y mar abierto: el verano finlandés en su mejor versión.", cta: "Explorar destinos" },
+    spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, anémonas de bosque en flor y aire fresco de primavera invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
+    autumn: { eyebrow: "Otoño en el archipiélago de Nagu", title: "El pueblo de Nagu bajo los colores del otoño", text: "La vista aérea muestra Kyrkbacken en otoño, con los colores de los árboles transformando el paisaje del archipiélago.", cta: "Explorar el archipiélago" },
+    summer: { eyebrow: "Hidden Coastal Finland", title: "Descubre rutas tranquilas y paisajes costeros", text: "Pequeños puentes, rocas junto al mar y carreteras entre islas te alejan de las prisas y te acercan a la costa finlandesa.", cta: "Explorar destinos" },
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Cabaña de verano, lago, embarcadero y sauna para disfrutar Finlandia sin prisas.", cta: "Ver alojamientos" },
-    archipelago: { eyebrow: "Archipiélago de Turku", title: "Mar azul y rocas lisas", text: "Un día de verano luminoso entre islas, pinos y agua abierta.", cta: "Explorar el archipiélago" },
+    archipelago: { eyebrow: "Archipiélago de Turku", title: "Una pequeña casa de madera entre las islas", text: "Una casa de madera en el archipiélago muestra el carácter habitado y tranquilo de las islas finlandesas.", cta: "Explorar el archipiélago" },
     hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Playa soleada y mar abierto", text: "Arena, Báltico y un largo día de verano en el extremo sur de Finlandia.", cta: "Explorar Hanko" },
-    naantali: { eyebrow: "Naantali", title: "El verano comienza en el puerto antiguo", text: "Casas de madera, puerto y mar abren la puerta al ambiente del archipiélago.", cta: "Explorar Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Un histórico pueblo siderúrgico junto al mar", text: "Patrimonio industrial, artesanía y ambiente de verano en un pequeño pueblo con carácter.", cta: "Explorar Mathildedal" },
-    aland: { eyebrow: "Åland", title: "La luz del archipiélago llega hasta el horizonte", text: "Mar, islas rocosas y luz nórdica para viajar despacio.", cta: "Explorar Åland" },
-    porvoo: { eyebrow: "Porvoo", title: "Un día de verano en el casco antiguo", text: "Almacenes rojos junto al río, calles históricas y cafés para disfrutar sin prisa.", cta: "Explorar Porvoo" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Sauna de humo junto al mar", text: "Interior auténtico de una sauna de humo, bancos de madera y una gran estufa de piedras.", cta: "Ir al proveedor" },
+    naantali: { eyebrow: "Naantali", title: "Pasea por las calles de madera del casco antiguo", text: "Las casas históricas de madera y las calles estrechas invitan a pasear sin prisa por esta localidad junto al mar.", cta: "Explorar Naantali" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Descubre el histórico pueblo siderúrgico de Mathildedal", text: "El edificio Anttipoffi, de 1852, cuenta la historia industrial del pueblo y de las antiguas viviendas de sus trabajadores.", cta: "Explorar Mathildedal" },
+    aland: { eyebrow: "Åland", title: "Descubre el histórico castillo de Kastelholm", text: "El castillo de Kastelholm cuenta parte de la historia de Åland y ofrece una visita concreta durante tu viaje por las islas.", cta: "Explorar Åland" },
+    porvoo: { eyebrow: "Porvoo", title: "Contempla el casco antiguo de Porvoo desde el aire", text: "La vista aérea muestra el conjunto histórico de la ciudad e invita a descubrir sus calles a pie.", cta: "Explorar Porvoo" },
+    herrankukkaro: { eyebrow: "Tradición finlandesa", title: "Descubre la sauna finlandesa y el uso de la vihta", text: "La vihta, el vapor y un momento tranquilo en la sauna forman parte de la tradición finlandesa.", cta: "Ir al proveedor" },
   },
   en: {
-    spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, the first wildflowers and the fresh coastal air invite you outdoors.", cta: "Explore spring destinations" },
-    autumn: { eyebrow: "Autumn in the archipelago", title: "Golden foliage and charming coastal villages", text: "Colourful trees, red waterfront houses and calm sea make an autumn escape unforgettable.", cta: "Explore the archipelago" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Finnish summer begins on the small places of the coast", text: "Archipelago islands, rocky shores and open sea – Finland at its brightest.", cta: "Explore destinations" },
+    spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, blooming wood anemones and crisp spring air invite you outdoors.", cta: "Explore spring destinations" },
+    autumn: { eyebrow: "Autumn in the Nagu archipelago", title: "Nagu village in its autumn colours", text: "The aerial view shows Kyrkbacken in autumn, with colourful foliage transforming the archipelago landscape.", cta: "Explore the archipelago" },
+    summer: { eyebrow: "Hidden Coastal Finland", title: "Find quiet coastal routes and sea views", text: "Small bridges, rocky shores and island roads lead away from the rush and into Finland’s coastal landscapes.", cta: "Explore destinations" },
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A summer cottage, lake, jetty and sauna turn a quiet day into part of the journey.", cta: "See stays" },
-    archipelago: { eyebrow: "Turku Archipelago", title: "Blue water, sun-warmed rocks", text: "A bright summer day among islands, pine trees and open water.", cta: "Explore the archipelago" },
+    archipelago: { eyebrow: "Turku Archipelago", title: "A small wooden house among the islands", text: "A wooden house in the archipelago captures the lived-in, peaceful character of Finland’s island communities.", cta: "Explore the archipelago" },
     hanko: { eyebrow: "Hanko · Finland's southern coast", title: "A sunlit beach and open sea", text: "Sand, Baltic Sea and a long summer day at Finland's southern tip.", cta: "Explore Hanko" },
-    naantali: { eyebrow: "Naantali", title: "Summer begins at the old harbour", text: "Colourful wooden houses, the harbour and the sea open the way to the archipelago.", cta: "Explore Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "A historic ironworks village by the sea", text: "Industrial heritage, local crafts and a relaxed summer atmosphere in a village with character.", cta: "Explore Mathildedal" },
-    aland: { eyebrow: "Åland", title: "Archipelago light all the way to the horizon", text: "Sea, rocky islands and bright Nordic summer light invite you to slow down.", cta: "Explore Åland" },
-    porvoo: { eyebrow: "Porvoo", title: "A summer day in the old town", text: "Red riverside warehouses, historic streets and cafés made for slowing down.", cta: "Explore Porvoo" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Smoke sauna by the sea", text: "An authentic smoke-sauna interior, wooden benches and a large stone stove reveal the Finnish sauna tradition.", cta: "Visit provider" },
+    naantali: { eyebrow: "Naantali", title: "Walk the wooden streets of Naantali’s old town", text: "Historic wooden houses and narrow streets invite you to slow down in this old town by the sea.", cta: "Explore Naantali" },
+    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Discover Mathildedal’s historic ironworks village", text: "The Anttipoffi building, dating from 1852, tells the story of the village’s ironworks and its former workers’ housing.", cta: "Explore Mathildedal" },
+    aland: { eyebrow: "Åland", title: "Discover historic Kastelholm Castle", text: "Kastelholm Castle tells part of Åland’s history and makes a tangible stop on an island journey.", cta: "Explore Åland" },
+    porvoo: { eyebrow: "Porvoo", title: "See Porvoo’s old town from above", text: "The aerial view reveals the historic town as a whole and invites you to explore its streets on foot.", cta: "Explore Porvoo" },
+    herrankukkaro: { eyebrow: "Finnish sauna tradition", title: "Experience Finnish sauna and birch whisking", text: "A birch whisk, rising steam and a quiet sauna moment are part of Finland’s bathing tradition.", cta: "Visit provider" },
   },
 };
 
@@ -162,43 +162,41 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const cmsSlides = (settings?.homepageSlides ?? [])
-    .filter((item) => item.enabled !== false && typeof item.imageUrl === "string" && item.imageUrl.trim().length > 0)
+    .filter((item) => {
+      const localized = item.copy?.[locale];
+      return (
+        item.enabled !== false &&
+        typeof item.imageUrl === "string" &&
+        item.imageUrl.trim().length > 0 &&
+        typeof localized?.title === "string" &&
+        localized.title.trim().length > 0 &&
+        typeof localized?.text === "string" &&
+        localized.text.trim().length > 0
+      );
+    })
     .sort((a, b) => a.sortOrder - b.sortOrder);
 
   const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(
     () => {
-      const editorialPhoto = (item: Slide & { copy?: SlideCopy }): Partial<Slide> => {
-        const text = `${item.copy?.eyebrow ?? ""} ${item.copy?.title ?? ""} ${item.copy?.text ?? ""}`.toLocaleLowerCase();
-        // Return image and its own attribution together: never show a credit for a different photo.
-        if (/savusauna|smoke sauna|sauna de humo|löyly|sauna/.test(text)) return { image: photoLibrary.saunaTraditionalSmoke, credit: "JP Korpi-Vartiainen / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_smoke_sauna.jpg" };
-        if (/mathildedal|ruukkikylä|ironworks village|ruukki/.test(text)) return { image: photoLibrary.mathildedalVillage, credit: "Kotivalo / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" };
-        if (/porvoo|punaiset ranta-aitat|red riverside warehouses/.test(text)) return { image: photoLibrary.porvoo, credit: "Teemu Eskola / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg" };
-        if (/naantali|vanhasta satamasta|old harbour|puutalot, satama/.test(text)) return { image: photoLibrary.naantaliHarbour, credit: "Pöllö / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg" };
-        if (/hanko|beach|ranta|playa/.test(text)) return { image: photoLibrary.hankoRegattaBeach, credit: "W.carter / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg" };
-        if (/ahvenanmaa|åland|kastelholm/.test(text)) return { image: photoLibrary.aland, credit: "Håkan Skogsjö / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg" };
-        if (/turun saaristo|turku archipelago/.test(text)) return { image: photoLibrary.turkuArchipelago, credit: "Rob Sinclair / Wikimedia Commons (CC BY-SA 2.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg" };
-        if (/mökk|cottage|lake|järv|cabaña|alojamiento|aamukahvi veden äärellä/.test(text)) return { image: photoLibrary.saunaCottage, credit: "Kospo75 / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg" };
-        if (/syksy|syksyinen|autumn|fall foliage|otoño|otoñal|ruska/.test(text)) return { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg", credit: "Wikimedia Commons", creditUrl: "https://commons.wikimedia.org/wiki/File:Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg" };
-        if (/kevät|spring|primavera/.test(text)) return { image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg", credit: "Sanzzu / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg" };
-        if (/summer|kesä|verano|meri|coast|costa|saaristo|archipelago/.test(text)) return { image: photoLibrary.mathildedalHarbour, credit: "Kotivalo / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg" };
-        return { image: item.image };
-      };
-      const items: Array<Slide & { copy?: SlideCopy }> = cmsSlides.length
-        ? cmsSlides.map((item) => ({
-            key: item.id,
-            image: item.imageUrl,
-            durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
-            credit: item.credit || "",
-            creditUrl: item.creditUrl,
-            href: item.href || "/destinations",
-            external: item.external ?? /^https?:\/\//i.test(item.href || ""),
-            copy: item.copy?.[locale] || copy[locale].summer,
-          }))
-        : slides.map((item) => ({ ...item, copy: copy[locale][item.key] }));
-      // CMS editors explicitly choose an image and its attribution. Do not silently replace
-      // either with keyword-based guesses; that can make the displayed credit refer to a
-      // different image. Keep editorial matching only for the built-in fallback slides.
-      return cmsSlides.length ? items : items.map((item) => ({ ...item, ...editorialPhoto(item) }));
+      // The built-in slides use explicit image/copy pairs. Never guess an image from keywords:
+      // keyword matching previously caused a valid caption to be paired with an unrelated photo.
+      if (cmsSlides.length) {
+        return cmsSlides.map((item) => ({
+          key: item.id,
+          image: item.imageUrl,
+          durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
+          credit: item.credit || "",
+          creditUrl: item.creditUrl,
+          href: item.href || "/destinations",
+          external: item.external ?? (String(item.href || "").startsWith("https://") || String(item.href || "").startsWith("http://")),
+          copy: item.copy[locale],
+        }));
+      }
+
+      return slides.map((item) => ({
+        ...item,
+        copy: copy[locale][item.key],
+      }));
     },
     [cmsSlides, locale],
   );
@@ -227,15 +225,9 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const getImage = (item: Slide & { copy?: SlideCopy }) => {
     if (!failedImages[item.key]) return item.image;
 
-    // CMS slide IDs are database-generated and do not match the built-in slide keys.
-    // Choose a fallback from the slide's actual content before using a generic coastal image.
-    const searchableCopy = `${item.copy?.eyebrow ?? ""} ${item.copy?.title ?? ""} ${item.copy?.text ?? ""}`.toLocaleLowerCase();
-    if (/sauna|savusauna|smoke sauna|löyly/.test(searchableCopy)) return photoLibrary.saunaTraditionalSmoke;
-    if (/mökk|cottage|lake|järv|cabaña|alojamiento/.test(searchableCopy)) return photoLibrary.saunaCottage;
-    if (/saarist|archipelago|island|isla|saar/.test(searchableCopy)) return photoLibrary.turkuArchipelago;
-    if (/hanko|beach|ranta|playa/.test(searchableCopy)) return photoLibrary.hankoRegattaBeach;
-    if (/mathildedal|ruukk|ironworks/.test(searchableCopy)) return photoLibrary.mathildedalVillage;
-    return fallbackImages[item.key] || photoLibrary.hero;
+    // Only use a fallback explicitly assigned to this built-in slide key.
+    // Never infer replacement imagery from copy keywords: that can show the wrong place.
+    return fallbackImages[item.key] || item.image;
   };
 
   const markImageFailed = (key: string) => {
