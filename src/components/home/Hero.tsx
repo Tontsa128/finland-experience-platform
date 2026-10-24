@@ -91,7 +91,7 @@ const slides: Slide[] = [
   },
   {
     key: "herrankukkaro",
-    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Traditional_Finnish_sauna_healing.jpg",
+    image: photoLibrary.saunaTraditionalSmoke,
     credit: "Kaisu Mokkila / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_sauna_healing.jpg",
     href: "https://www.herrankukkaro.fi/",
