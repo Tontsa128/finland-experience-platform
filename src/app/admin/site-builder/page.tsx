@@ -28,7 +28,33 @@ export default function SiteBuilder(){
  function addBlock(type:string){setBlocks(b=>[...b,emptyBlock(type)]);}
  function selectImage(url:string,index:number){patchBlock(index,{imageUrl:url});}
  async function saveBlocks(){if(!page)return;setBusy(true);setError("");setNotice("");try{const r=await fetch("/api/admin/pages/blocks",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({slug:page.slug,locale:page.locale,blocks})});const b=await r.json();if(!r.ok)throw new Error(b.error||"Tallennus epäonnistui.");setPage({...page,blocks:b.page.blocks});setPages(ps=>ps.map(p=>p.id===page.id?{...p,blocks:b.page.blocks}:p));setNotice("Sivu tallennettu.");}catch(e){setError(e instanceof Error?e.message:"Tallennus epäonnistui.");}finally{setBusy(false);}}
- async function saveSlides(){setBusy(true);setError("");setNotice("");try{const r=await fetch("/api/admin/homepage/slides",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({slides})});const b=await r.json();if(!r.ok)throw new Error(b.error||"Karusellin tallennus epäonnistui.");setSlides(b.slides||slides);setNotice("Karuselli tallennettu.");}catch(e){setError(e instanceof Error?e.message:"Tallennus epäonnistui.");}finally{setBusy(false);}}
+ async function saveSlides(){
+  setError("");setNotice("");
+  const incompleteIndex=slides.findIndex(slide=>slide.enabled!==false&&(
+   !slide.imageUrl.trim()||
+   locales.some(([language])=>{
+    const copy=slide.copy?.[language];
+    return !copy?.title?.trim()||!copy?.text?.trim()||!copy?.cta?.trim();
+   })
+  ));
+  if(incompleteIndex>=0){
+   const slide=slides[incompleteIndex];
+   const missing=locales.filter(([language])=>{
+    const copy=slide.copy?.[language];
+    return !copy?.title?.trim()||!copy?.text?.trim()||!copy?.cta?.trim();
+   }).map(([,name])=>name);
+   setError(`Karusellin dia ${incompleteIndex+1}: tarkista kuva sekä otsikko, kuvaus ja painiketeksti kaikilla kielillä. Puutteelliset kielet: ${missing.join(", ")}.`);
+   return;
+  }
+  setBusy(true);
+  try{
+   const r=await fetch("/api/admin/homepage/slides",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({slides})});
+   const b=await r.json();
+   if(!r.ok)throw new Error(b.error||"Karusellin tallennus epäonnistui.");
+   setSlides(b.slides||slides);setNotice("Karuselli tallennettu.");
+  }catch(e){setError(e instanceof Error?e.message:"Karusellin tallennus epäonnistui.");}
+  finally{setBusy(false);}
+ }
  const mediaButtons=(onPick:(url:string)=>void)=><div className="mt-3 grid max-h-48 grid-cols-4 gap-2 overflow-auto">{media.map(m=><button type="button" key={m.id} onClick={()=>onPick(m.url)} className="relative aspect-[4/3] overflow-hidden rounded-lg border border-slate-200 hover:border-emerald-500"><img src={m.url} alt="" className="h-full w-full object-cover"/></button>)}</div>;
  return <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-8"><div className="mx-auto max-w-7xl">
   <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-700">FINNEXPRIENCE STUDIO</p><h1 className="mt-2 text-3xl font-bold text-slate-950 sm:text-4xl">Sivuston visuaalinen editori</h1><p className="mt-2 max-w-3xl text-slate-500">Muokkaa sivujen osioita, kuvia, tekstejä, CTA-painikkeita ja etusivun karusellia ilman koodia.</p></div><Link href="/admin/cms" className="font-semibold text-emerald-700">← CMS</Link></header>
