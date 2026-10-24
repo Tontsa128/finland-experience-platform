@@ -155,6 +155,31 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   },
 };
 
+function editorialImageForCopy(copyValue: SlideCopy | undefined, originalImage: string, usedImages: Set<string>) {
+  const text = `${copyValue?.eyebrow ?? ""} ${copyValue?.title ?? ""} ${copyValue?.text ?? ""}`.toLocaleLowerCase();
+  const candidates: Array<[RegExp, string[]]> = [
+    [/sauna|savusauna|smoke sauna|sauna de humo|löyly/, [photoLibrary.herrankukkaroSauna, photoLibrary.saunaTraditionalSmoke, photoLibrary.saunaWhisking]],
+    [/mökk|cottage|lake|järv|cabaña|alojamiento|aamukahvi|morning coffee/, [photoLibrary.saunaCottage, photoLibrary.turkuArchipelagoHouse, photoLibrary.bjorkholm]],
+    [/kevät|spring|primavera|forest|metsä|bosque/, ["https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg", photoLibrary.teijoNationalPark]],
+    [/syksy|autumn|otoño|ruska|foliage|otoñal/, ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg", photoLibrary.turkuArchipelago]],
+    [/mathildedal|ruukk|ironworks|käsityöl|crafts/, [photoLibrary.mathildedalVillage, photoLibrary.mathildedalHarbour]],
+    [/hanko|beach|ranta|playa|hiekkaranta/, [photoLibrary.hankoRegattaBeach, photoLibrary.hankoAerial]],
+    [/naantali|old harbour|vanha satama|puutalo|wooden houses|puerto antiguo|casas de madera/, [photoLibrary.naantaliOldTown, photoLibrary.naantaliHarbour]],
+    [/porvoo|riverside warehouses|ranta-aitat|almacenes rojos/, [photoLibrary.porvoo, photoLibrary.turkuAura]],
+    [/ahvenanmaa|åland|aland|kastelholm/, [photoLibrary.aland, photoLibrary.sarkisalo]],
+    [/turun saaristo|turku archipelago|saaristo|archipelago|island|isla|coast|costa|rannikko|kesä|summer|verano|meri|sea|mar abierto/, [photoLibrary.turkuArchipelago, photoLibrary.sarkisalo, photoLibrary.hankoAerial]],
+  ];
+  const matched = candidates.find(([pattern]) => pattern.test(text))?.[1] ?? [];
+  const options = [...matched, originalImage, photoLibrary.turkuArchipelago, photoLibrary.hankoRegattaBeach, photoLibrary.naantaliOldTown, photoLibrary.mathildedalVillage, photoLibrary.aland, photoLibrary.porvoo, photoLibrary.saunaCottage];
+  const selected = options.find((url) => Boolean(url) && !usedImages.has(url));
+  if (selected) {
+    usedImages.add(selected);
+    return selected;
+  }
+  if (originalImage) return originalImage;
+  return photoLibrary.turkuArchipelago;
+}
+
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
   const [active, setActive] = useState(0);
@@ -164,23 +189,23 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     .filter((item) => item.enabled !== false && typeof item.imageUrl === "string" && item.imageUrl.trim().length > 0)
     .sort((a, b) => a.sortOrder - b.sortOrder);
 
-  const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(
-    () =>
-      cmsSlides.length
-        ? cmsSlides.map((item) => ({
-            key: item.id,
-            // Respect the image selected by the CMS. Editorial fallback images are
-            // used only after this URL fails, inside getImage().
-            image: item.imageUrl,
-            credit: item.credit || "",
-            creditUrl: item.creditUrl,
-            href: item.href || "",
-            external: item.external ?? /^https?:\/\//i.test(item.href || ""),
-            copy: item.copy?.[locale] || copy[locale].summer,
-          }))
-        : slides.map((item) => ({ ...item, copy: copy[locale][item.key] })),
-    [cmsSlides, locale],
-  );
+  const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(() => {
+    if (!cmsSlides.length) return slides.map((item) => ({ ...item, copy: copy[locale][item.key] }));
+    const usedImages = new Set<string>();
+    return cmsSlides.map((item) => {
+      const slideCopy = item.copy?.[locale] || copy[locale].summer;
+      const image = editorialImageForCopy(slideCopy, item.imageUrl, usedImages);
+      return {
+        key: item.id,
+        image,
+        credit: item.credit || "",
+        creditUrl: item.creditUrl,
+        href: item.href || "",
+        external: item.external ?? /^https?:\/\//i.test(item.href || ""),
+        copy: slideCopy,
+      };
+    });
+  }, [cmsSlides, locale]);
 
   const slideCount = activeSlides.length;
 
