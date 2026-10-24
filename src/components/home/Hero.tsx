@@ -152,7 +152,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             creditUrl: item.creditUrl,
             href: item.href || "/destinations",
             external: item.external ?? /^https?:\/\//i.test(item.href || ""),
-            copy: item.copy?.[locale],
+            copy: item.copy?.[locale] || copy[locale].summer,
           }))
         : slides.map((item) => ({ ...item, copy: copy[locale][item.key] })),
     [cmsSlides, locale],
@@ -202,7 +202,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               fill
               priority={index === 0}
               sizes="100vw"
-              quality={90}
+              quality={100}
               unoptimized
               onError={() => markImageFailed(item.key)}
               className="object-cover brightness-110 contrast-105"
@@ -210,8 +210,8 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           </div>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 sm:bg-gradient-to-t" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/25 via-black/5 to-transparent" />
 
       <div className="relative z-10 flex min-h-[76svh] items-end pb-7 pt-[36svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
         <div className="container-narrow w-full">
