@@ -39,7 +39,7 @@ export default function SiteBuilder(){
   ));
   if(incompleteIndex>=0){
    const missing=locales.filter(([language])=>{
-    const copy=slide.copy?.[language];
+    const copy=slides[incompleteIndex]?.copy?.[language];
     return !copy?.title?.trim()||!copy?.text?.trim()||!copy?.cta?.trim();
    }).map(([,name])=>name);
    setError(`Karusellin dia ${incompleteIndex+1}: tarkista kuva sekä otsikko, kuvaus ja painiketeksti kaikilla kielillä. Puutteelliset kielet: ${missing.join(", ")}.`);
