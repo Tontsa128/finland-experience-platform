@@ -162,7 +162,18 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const cmsSlides = (settings?.homepageSlides ?? [])
-    .filter((item) => item.enabled !== false && typeof item.imageUrl === "string" && item.imageUrl.trim().length > 0)
+    .filter((item) => {
+      const localized = item.copy?.[locale];
+      return (
+        item.enabled !== false &&
+        typeof item.imageUrl === "string" &&
+        item.imageUrl.trim().length > 0 &&
+        typeof localized?.title === "string" &&
+        localized.title.trim().length > 0 &&
+        typeof localized?.text === "string" &&
+        localized.text.trim().length > 0
+      );
+    })
     .sort((a, b) => a.sortOrder - b.sortOrder);
 
   const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(
@@ -178,7 +189,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           creditUrl: item.creditUrl,
           href: item.href || "/destinations",
           external: item.external ?? (String(item.href || "").startsWith("https://") || String(item.href || "").startsWith("http://")),
-          copy: item.copy?.[locale] || copy[locale].summer,
+          copy: item.copy[locale],
         }));
       }
 
@@ -214,15 +225,9 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const getImage = (item: Slide & { copy?: SlideCopy }) => {
     if (!failedImages[item.key]) return item.image;
 
-    // CMS slide IDs are database-generated and do not match the built-in slide keys.
-    // Choose a fallback from the slide's actual content before using a generic coastal image.
-    const searchableCopy = `${item.copy?.eyebrow ?? ""} ${item.copy?.title ?? ""} ${item.copy?.text ?? ""}`.toLocaleLowerCase();
-    if (/sauna|savusauna|smoke sauna|löyly/.test(searchableCopy)) return photoLibrary.saunaTraditionalSmoke;
-    if (/mökk|cottage|lake|järv|cabaña|alojamiento/.test(searchableCopy)) return photoLibrary.saunaCottage;
-    if (/saarist|archipelago|island|isla|saar/.test(searchableCopy)) return photoLibrary.turkuArchipelago;
-    if (/hanko|beach|ranta|playa/.test(searchableCopy)) return photoLibrary.hankoRegattaBeach;
-    if (/mathildedal|ruukk|ironworks/.test(searchableCopy)) return photoLibrary.mathildedalVillage;
-    return fallbackImages[item.key] || photoLibrary.hero;
+    // Only use a fallback explicitly assigned to this built-in slide key.
+    // Never infer replacement imagery from copy keywords: that can show the wrong place.
+    return fallbackImages[item.key] || item.image;
   };
 
   const markImageFailed = (key: string) => {
