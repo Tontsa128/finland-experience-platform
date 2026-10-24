@@ -177,7 +177,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           credit: item.credit || "",
           creditUrl: item.creditUrl,
           href: item.href || "/destinations",
-          external: item.external ?? /^https?:\\/\\//i.test(item.href || ""),
+          external: item.external ?? (String(item.href || "").startsWith("https://") || String(item.href || "").startsWith("http://")),
           copy: item.copy?.[locale] || copy[locale].summer,
         }));
       }
