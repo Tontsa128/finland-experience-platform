@@ -102,14 +102,14 @@ const slides: Slide[] = [
 const fallbackImages: Record<string, string> = {
   spring: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
   autumn: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
-  summer: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
+  summer: photoLibrary.hankoRegattaBeach,
   cottage: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
-  archipelago: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Turun_saaristo_1.jpg",
-  hanko: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
-  naantali: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Old_Town_of_Naantali,_Finland.jpg",
-  mathildedal: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
-  aland: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholm_2026-08-09_image12.jpg",
-  porvoo: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Porvoo_old_town.jpg",
+  archipelago: photoLibrary.turkuArchipelago,
+  hanko: photoLibrary.hankoRegattaBeach,
+  naantali: photoLibrary.naantaliOldTown,
+  mathildedal: photoLibrary.mathildedalVillage,
+  aland: photoLibrary.aland,
+  porvoo: photoLibrary.porvoo,
   herrankukkaro: photoLibrary.saunaTraditionalSmoke,
 };
 
@@ -239,7 +239,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     if (/saarist|archipelago|island|isla|saar|coast|costa|rannikko/.test(searchableCopy)) {
       return photoLibrary.turkuArchipelago;
     }
-    return fallbackImages[item.key] || photoLibrary.hero;
+    return fallbackImages[item.key] || photoLibrary.turkuArchipelago;
   };
 
   const markImageFailed = (key: string) => {
@@ -264,13 +264,13 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               quality={100}
               unoptimized
               onError={() => markImageFailed(item.key)}
-              className="object-cover brightness-110 contrast-105"
+              className="object-cover brightness-[1.15] contrast-105"
             />
           </div>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/25 via-black/5 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/15 via-black/5 to-transparent" />
 
       <div className="relative z-10 flex min-h-[76svh] items-end pb-7 pt-[36svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
         <div className="container-narrow w-full">
