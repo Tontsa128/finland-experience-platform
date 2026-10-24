@@ -21,23 +21,23 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "summer",
-    image: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Turun_saaristo_1.jpg",
-    credit: "Kallerna / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
+    credit: "Kotivalo / Wikimedia Commons (CC BY-SA 4.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg",
     href: "/destinations",
   },
   {
     key: "cottage",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Summer_cottage%2C_Finland.jpg",
-    credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
+    credit: "Kospo75 / Wikimedia Commons (CC BY-SA 3.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
     href: "/accommodations",
   },
   {
     key: "archipelago",
     image: photoLibrary.turkuArchipelago,
-    credit: "Elämysmatkat",
-    creditUrl: "https://elamysmatkat.com/aktiviteetti/kahden-tunnin-purjehdus-soling-class-purjeveneella/",
+    credit: "Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
     href: "/destinations/turku",
   },
   {
@@ -77,23 +77,23 @@ const slides: Slide[] = [
   },
   {
     key: "herrankukkaro",
-    image: photoLibrary.herrankukkaroSauna,
-    credit: "Herrankukkaro",
-    creditUrl: "https://www.herrankukkaro.fi/kuvat",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Traditional_Finnish_sauna_healing.jpg",
+    credit: "Kaisu Mokkila / Wikimedia Commons (CC BY-SA 4.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_sauna_healing.jpg",
     href: "https://www.herrankukkaro.fi/",
     external: true,
   },
 ];
 
 const fallbackImages: Record<string, string> = {
-  summer: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
-  cottage: photoLibrary.saunaCottage,
-  archipelago: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Aura_river_in_Turku.jpg",
-  hanko: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
-  naantali: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg",
-  mathildedal: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
-  aland: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
-  porvoo: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg",
+  summer: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
+  cottage: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
+  archipelago: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Turun_saaristo_1.jpg",
+  hanko: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
+  naantali: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Old_Town_of_Naantali,_Finland.jpg",
+  mathildedal: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
+  aland: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholm_2026-08-09_image12.jpg",
+  porvoo: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Porvoo_old_town.jpg",
   herrankukkaro: photoLibrary.saunaTraditionalSmoke,
 };
 
@@ -168,7 +168,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     if (slideCount < 2) return;
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % slideCount);
-    }, 4000);
+    }, 3000);
     return () => window.clearInterval(timer);
   }, [slideCount]);
 
