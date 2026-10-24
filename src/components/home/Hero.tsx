@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
@@ -21,14 +21,14 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "summer",
-    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Turun_saaristo_1.jpg/1600px-Turun_saaristo_1.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Turun_saaristo_1.jpg",
     credit: "Kallerna / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
     href: "/destinations",
   },
   {
     key: "cottage",
-    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Summer_cottage%2C_Finland.jpg/1600px-Summer_cottage%2C_Finland.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Summer_cottage%2C_Finland.jpg",
     credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
     href: "/accommodations",
@@ -49,9 +49,9 @@ const slides: Slide[] = [
   },
   {
     key: "naantali",
-    image: "https://www.rantapallo.fi/wp-content/uploads/2020/05/suomi-naantali-vanhakaupunki-satama-ss-900x590.jpg",
-    credit: "Rantapallo",
-    creditUrl: "https://www.rantapallo.fi/suomen-matkailu/suomen-ihanat-kesakohteet-kotimaan-salatut-helmet/",
+    image: photoLibrary.naantaliOldTown,
+    credit: "Tatu Kosonen / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg",
     href: "/destinations/naantali",
   },
   {
@@ -63,9 +63,9 @@ const slides: Slide[] = [
   },
   {
     key: "aland",
-    image: "https://visitaland.wntr.io/uploads/2022/03/20210713-125108.png",
-    credit: "Visit Åland",
-    creditUrl: "https://visitaland.com/de/segelen-und-leben-an-board/",
+    image: photoLibrary.aland,
+    credit: "Håkan Skogsjö / Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg",
     href: "/destinations/aland",
   },
   {
@@ -84,6 +84,18 @@ const slides: Slide[] = [
     external: true,
   },
 ];
+
+const fallbackImages: Record<string, string> = {
+  summer: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
+  cottage: photoLibrary.saunaCottage,
+  archipelago: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Aura_river_in_Turku.jpg",
+  hanko: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
+  naantali: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg",
+  mathildedal: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
+  aland: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
+  porvoo: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg",
+  herrankukkaro: photoLibrary.saunaTraditionalSmoke,
+};
 
 const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   fi: {
@@ -123,46 +135,76 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const locale = useLocale() as "fi" | "es" | "en";
+  const [active, setActive] = useState(0);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
   const cmsSlides = (settings?.homepageSlides ?? [])
     .filter((item) => item.enabled !== false && typeof item.imageUrl === "string" && item.imageUrl.trim().length > 0)
     .sort((a, b) => a.sortOrder - b.sortOrder);
-  const activeSlides: Array<Slide & { copy?: SlideCopy }> = cmsSlides.length
-    ? cmsSlides.map((item) => ({
-        key: item.id,
-        image: item.imageUrl,
-        credit: item.credit || "",
-        creditUrl: item.creditUrl,
-        href: item.href || "/destinations",
-        external: item.external ?? /^https?:\/\//i.test(item.href || ""),
-        copy: item.copy?.[locale],
-      }))
-    : slides.map((item) => ({ ...item, copy: copy[locale][item.key] }));
-  const [active, setActive] = useState(0);
+
+  const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(
+    () =>
+      cmsSlides.length
+        ? cmsSlides.map((item) => ({
+            key: item.id,
+            image: item.imageUrl,
+            credit: item.credit || "",
+            creditUrl: item.creditUrl,
+            href: item.href || "/destinations",
+            external: item.external ?? /^https?:\/\//i.test(item.href || ""),
+            copy: item.copy?.[locale],
+          }))
+        : slides.map((item) => ({ ...item, copy: copy[locale][item.key] })),
+    [cmsSlides, locale],
+  );
+
   const slideCount = activeSlides.length;
-  const slide = activeSlides[active % slideCount] ?? activeSlides[0];
-  const text = slide.copy || copy[locale][slide.key] || copy[locale].summer;
 
   useEffect(() => {
+    setActive((current) => (slideCount ? current % slideCount : 0));
+  }, [slideCount]);
+
+  useEffect(() => {
+    if (slideCount < 2) return;
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % slideCount);
     }, 4000);
     return () => window.clearInterval(timer);
   }, [slideCount]);
 
+  if (!slideCount) return null;
+
+  const slide = activeSlides[active] ?? activeSlides[0];
+  const text = slide.copy || copy[locale][slide.key] || copy[locale].summer;
   const href = slide.external ? slide.href : `/${locale}${slide.href}`;
+
+  const getImage = (item: Slide) => {
+    if (!failedImages[item.key]) return item.image;
+    return fallbackImages[item.key] || photoLibrary.hero;
+  };
+
+  const markImageFailed = (key: string) => {
+    setFailedImages((current) => (current[key] ? current : { ...current, [key]: true }));
+  };
 
   return (
     <section className="relative overflow-hidden bg-brand-950 text-white">
       <div className="absolute inset-0">
         {activeSlides.map((item, index) => (
-          <div key={item.key} className={`absolute inset-x-0 top-0 h-[34svh] bg-brand-950 transition-opacity duration-700 sm:inset-0 sm:h-auto ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={index !== active}>
+          <div
+            key={item.key}
+            className={`absolute inset-x-0 top-0 h-[34svh] bg-brand-950 transition-opacity duration-700 sm:inset-0 sm:h-auto ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`}
+            aria-hidden={index !== active}
+          >
             <Image
-              src={item.image}
+              src={getImage(item)}
               alt=""
               fill
               priority={index === 0}
               sizes="100vw"
               quality={90}
+              unoptimized
+              onError={() => markImageFailed(item.key)}
               className="object-cover brightness-110 contrast-105"
             />
           </div>
@@ -182,37 +224,53 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       </div>
 
       <div className="relative z-20 border-t border-white/15 bg-white text-brand-950 shadow-[0_-10px_30px_rgba(15,23,42,0.12)]">
-        <div className="container-narrow flex flex-col gap-3 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:py-5">
-          {slide.external ? (
-            <a href={href} target="_blank" rel="noreferrer" className="btn-gold w-full justify-center px-6 py-3 sm:w-auto sm:px-7 sm:py-4">
-              {text.cta} <ExternalLink className="h-4 w-4" />
-            </a>
-          ) : (
-            <Link href={href} className="btn-gold w-full justify-center px-6 py-3 sm:w-auto sm:px-7 sm:py-4">
-              {text.cta} <ArrowRight className="h-4 w-4" />
-            </Link>
-          )}
+        <div className="container-narrow flex min-h-[88px] items-center justify-between gap-4 py-4 sm:min-h-[104px] sm:py-5">
+          {href ? (
+            slide.external ? (
+              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gold-300 px-6 py-3 text-sm font-bold transition hover:bg-gold-200 sm:px-7 sm:text-base">
+                {text.cta}
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ) : (
+              <Link href={href} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gold-300 px-6 py-3 text-sm font-bold transition hover:bg-gold-200 sm:px-7 sm:text-base">
+                {text.cta}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            )
+          ) : null}
 
-          <div className="flex items-center justify-center gap-2.5" aria-label={locale === "es" ? "Carrusel de imágenes" : locale === "fi" ? "Kuvakaruselli" : "Image carousel"}>
-            <button type="button" onClick={() => setActive((current) => (current - 1 + activeSlides.length) % activeSlides.length)} className="grid h-9 w-9 place-items-center rounded-full border border-brand-200 bg-white hover:bg-brand-50" aria-label={locale === "fi" ? "Edellinen" : locale === "es" ? "Anterior" : "Previous"}>
-              <ChevronLeft className="h-4 w-4" />
+          <div className="ml-auto flex items-center gap-2 sm:gap-3">
+            <button type="button" aria-label="Edellinen dia" onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50">
+              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
-            <div className="flex max-w-[42vw] gap-1 overflow-hidden">
+            <div className="flex max-w-[120px] items-center justify-center gap-1.5 overflow-hidden sm:max-w-none">
               {activeSlides.map((item, index) => (
-                <button key={item.key} type="button" onClick={() => setActive(index)} className={`h-1.5 rounded-full transition-all ${index === active ? "w-7 bg-brand-900" : "w-3 bg-brand-200"}`} aria-label={locale === "fi" ? `Dia ${index + 1}` : locale === "es" ? `Diapositiva ${index + 1}` : `Slide ${index + 1}`} aria-current={index === active} />
+                <button
+                  key={item.key}
+                  type="button"
+                  aria-label={`Siirry diaan ${index + 1}`}
+                  aria-current={index === active ? "true" : undefined}
+                  onClick={() => setActive(index)}
+                  className={`h-2.5 min-w-2.5 rounded-full transition-all ${index === active ? "w-8 bg-brand-800" : "w-2.5 bg-brand-200 hover:bg-brand-300"}`}
+                />
               ))}
             </div>
-            <button type="button" onClick={() => setActive((current) => (current + 1) % activeSlides.length)} className="grid h-9 w-9 place-items-center rounded-full border border-brand-200 bg-white hover:bg-brand-50" aria-label={locale === "fi" ? "Seuraava" : locale === "es" ? "Siguiente" : "Next"}>
-              <ChevronRight className="h-4 w-4" />
+            <button type="button" aria-label="Seuraava dia" onClick={() => setActive((current) => (current + 1) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50">
+              <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
-            <span className="hidden text-xs font-semibold text-slate-500 sm:inline">{active + 1} / {activeSlides.length}</span>
-          </div>
-
-          <div className="hidden text-right text-[9px] text-slate-500 sm:block sm:max-w-[180px]">
-            {slide.creditUrl ? <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-slate-300 underline-offset-2">{slide.credit}</a> : slide.credit}
           </div>
         </div>
       </div>
+
+      {slide.credit ? (
+        <div className="absolute bottom-[104px] right-3 z-20 max-w-[75%] rounded-full bg-black/45 px-3 py-1.5 text-[10px] text-white/85 backdrop-blur-sm sm:bottom-[120px] sm:right-6">
+          {slide.creditUrl ? (
+            <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">Kuva: {slide.credit}</a>
+          ) : (
+            <>Kuva: {slide.credit}</>
+          )}
+        </div>
+      ) : null}
     </section>
   );
 }
