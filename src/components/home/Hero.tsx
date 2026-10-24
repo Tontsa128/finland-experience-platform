@@ -155,6 +155,33 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   },
 };
 
+function editorialImageAttribution(image: string, originalImage: string, originalCredit: string, originalCreditUrl?: string) {
+  if (image === originalImage) return { credit: originalCredit, creditUrl: originalCreditUrl };
+  const credits: Record<string, { credit: string; creditUrl: string }> = {
+    [photoLibrary.herrankukkaroSauna]: { credit: "Herrankukkaro", creditUrl: "https://www.herrankukkaro.fi/kokous/saunat-ja-kylvyt" },
+    [photoLibrary.saunaTraditionalSmoke]: { credit: "JP Korpi-Vartiainen / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_smoke_sauna.jpg" },
+    [photoLibrary.saunaWhisking]: { credit: "Ville Kurki / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_sauna_whisking_and_l%C3%B6yly.jpg" },
+    [photoLibrary.saunaCottage]: { credit: "Kospo75 / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg" },
+    [photoLibrary.turkuArchipelagoHouse]: { credit: "Henri Sivonen / Wikimedia Commons (CC BY 2.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_archipelago_house.jpg" },
+    [photoLibrary.bjorkholm]: { credit: "Björkholm mökit Oy", creditUrl: "https://bjorkholm.johku.com/en_US/cottages/svartan-mokki" },
+    [photoLibrary.teijoNationalPark]: { credit: "Vnnen / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Punassuo2.jpg" },
+    ["https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg"]: { credit: "Sanzzu / Wikimedia Commons", creditUrl: "https://commons.wikimedia.org/wiki/File:Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg" },
+    ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg"]: { credit: "Wikimedia Commons", creditUrl: "https://commons.wikimedia.org/wiki/File:Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg" },
+    [photoLibrary.mathildedalVillage]: { credit: "Kotivalo / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
+    [photoLibrary.mathildedalHarbour]: { credit: "Kotivalo / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg" },
+    [photoLibrary.hankoRegattaBeach]: { credit: "W.carter / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg" },
+    [photoLibrary.hankoAerial]: { credit: "Kallerna / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Hanko_aerial_1.jpg" },
+    [photoLibrary.naantaliOldTown]: { credit: "Tatu Kosonen / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg" },
+    [photoLibrary.naantaliHarbour]: { credit: "Pöllö / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg" },
+    [photoLibrary.porvoo]: { credit: "Teemu Eskola / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg" },
+    [photoLibrary.turkuAura]: { credit: "Anssi Koskinen / Wikimedia Commons (CC BY 2.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Aura_river_in_Turku.jpg" },
+    [photoLibrary.aland]: { credit: "Håkan Skogsjö / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg" },
+    [photoLibrary.sarkisalo]: { credit: "Motopark / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Ulkoluotosilta3.jpg" },
+    [photoLibrary.turkuArchipelago]: { credit: "Rob Sinclair / Wikimedia Commons (CC BY-SA 2.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg" },
+  };
+  return credits[image] ?? { credit: "", creditUrl: undefined };
+}
+
 function editorialImageForCopy(copyValue: SlideCopy | undefined, originalImage: string, usedImages: Set<string>) {
   const text = `${copyValue?.eyebrow ?? ""} ${copyValue?.title ?? ""} ${copyValue?.text ?? ""}`.toLocaleLowerCase();
   const candidates: Array<[RegExp, string[]]> = [
@@ -195,11 +222,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     return cmsSlides.map((item) => {
       const slideCopy = item.copy?.[locale] || copy[locale].summer;
       const image = editorialImageForCopy(slideCopy, item.imageUrl, usedImages);
+      const attribution = editorialImageAttribution(image, item.imageUrl, item.credit || "", item.creditUrl);
       return {
         key: item.id,
         image,
-        credit: item.credit || "",
-        creditUrl: item.creditUrl,
+        credit: attribution.credit,
+        creditUrl: attribution.creditUrl,
         href: item.href || "",
         external: item.external ?? /^https?:\/\//i.test(item.href || ""),
         copy: slideCopy,
