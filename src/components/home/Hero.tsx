@@ -192,7 +192,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     if (slideCount < 2) return;
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % slideCount);
-    }, 5500);
+    }, 4000);
     return () => window.clearInterval(timer);
   }, [slideCount]);
 
@@ -206,13 +206,39 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     if (!failedImages[item.key]) return item.image;
 
     // CMS slide IDs are database-generated and do not match the built-in slide keys.
-    // Choose a fallback from the slide's actual content before using a generic coastal image.
+    // Pick a topic-matched fallback only if the selected CMS image fails to load.
     const searchableCopy = `${item.copy?.eyebrow ?? ""} ${item.copy?.title ?? ""} ${item.copy?.text ?? ""}`.toLocaleLowerCase();
-    if (/sauna|savusauna|smoke sauna|löyly/.test(searchableCopy)) return photoLibrary.saunaTraditionalSmoke;
-    if (/mökk|cottage|lake|järv|cabaña|alojamiento/.test(searchableCopy)) return photoLibrary.saunaCottage;
-    if (/saarist|archipelago|island|isla|saar/.test(searchableCopy)) return photoLibrary.turkuArchipelago;
-    if (/hanko|beach|ranta|playa/.test(searchableCopy)) return photoLibrary.hankoRegattaBeach;
-    if (/mathildedal|ruukk|ironworks/.test(searchableCopy)) return photoLibrary.mathildedalVillage;
+
+    if (/kevät|spring|primavera/.test(searchableCopy)) {
+      return "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg";
+    }
+    if (/syksy|autumn|fall foliage|otoño|otoñal/.test(searchableCopy)) {
+      return "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg";
+    }
+    if (/sauna|savusauna|smoke sauna|sauna de humo|löyly/.test(searchableCopy)) {
+      return photoLibrary.saunaTraditionalSmoke;
+    }
+    if (/mökk|cottage|lake|järv|cabaña|alojamiento/.test(searchableCopy)) {
+      return photoLibrary.saunaCottage;
+    }
+    if (/mathildedal|ruukk|ironworks/.test(searchableCopy)) {
+      return photoLibrary.mathildedalVillage;
+    }
+    if (/hanko|beach|ranta|playa/.test(searchableCopy)) {
+      return photoLibrary.hankoRegattaBeach;
+    }
+    if (/naantali|old harbour|puus?talo|puutalot|puerto antiguo|casas de madera/.test(searchableCopy)) {
+      return photoLibrary.naantaliOldTown;
+    }
+    if (/porvoo|riverside warehouses|ranta-aitat|almacenes rojos/.test(searchableCopy)) {
+      return photoLibrary.porvoo;
+    }
+    if (/ahvenanmaa|åland|aland/.test(searchableCopy)) {
+      return photoLibrary.aland;
+    }
+    if (/saarist|archipelago|island|isla|saar|coast|costa|rannikko/.test(searchableCopy)) {
+      return photoLibrary.turkuArchipelago;
+    }
     return fallbackImages[item.key] || photoLibrary.hero;
   };
 
