@@ -175,7 +175,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             credit: item.credit || "",
             creditUrl: item.creditUrl,
             href: item.href || "",
-            external: item.external ?? /^https?:\\/\\//i.test(item.href || ""),
+            external: item.external ?? /^https?:\/\//i.test(item.href || ""),
             copy: item.copy?.[locale] || copy[locale].summer,
           }))
         : slides.map((item) => ({ ...item, copy: copy[locale][item.key] })),
