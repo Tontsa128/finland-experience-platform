@@ -165,35 +165,20 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     .sort((a, b) => a.sortOrder - b.sortOrder);
 
   const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(
-    () => {
-      const editorialImage = (item: Slide & { copy?: SlideCopy }) => {
-        const text = `${item.copy?.eyebrow ?? ""} ${item.copy?.title ?? ""} ${item.copy?.text ?? ""}`.toLocaleLowerCase();
-        // Keep photos aligned with the actual editorial message, including CMS-managed slides.
-        if (/kevät|spring|primavera/.test(text)) return "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg";
-        if (/syksy|syksyinen|autumn|fall foliage|otoño|otoñal/.test(text)) return "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg";
-        if (/mathildedal|ruukkikylä|ironworks village/.test(text)) return photoLibrary.mathildedalVillage;
-        if (/hanko|beach|ranta|playa/.test(text)) return photoLibrary.hankoRegattaBeach;
-        if (/naantali/.test(text)) return photoLibrary.naantaliOldTown;
-        if (/porvoo/.test(text)) return photoLibrary.porvoo;
-        if (/ahvenanmaa|åland/.test(text)) return photoLibrary.aland;
-        if (/savusauna|smoke sauna|sauna de humo/.test(text)) return photoLibrary.saunaTraditionalSmoke;
-        if (/mökk|cottage|cabaña|alojamiento/.test(text)) return photoLibrary.saunaCottage;
-        if (/turun saaristo|turku archipelago/.test(text)) return photoLibrary.turkuArchipelago;
-        return item.image;
-      };
-      const items: Array<Slide & { copy?: SlideCopy }> = cmsSlides.length
+    () =>
+      cmsSlides.length
         ? cmsSlides.map((item) => ({
             key: item.id,
+            // Respect the image selected by the CMS. Editorial fallback images are
+            // used only after this URL fails, inside getImage().
             image: item.imageUrl,
             credit: item.credit || "",
             creditUrl: item.creditUrl,
-            href: item.href || "/destinations",
-            external: item.external ?? /^https?:\/\//i.test(item.href || ""),
+            href: item.href || "",
+            external: item.external ?? /^https?:\\/\\//i.test(item.href || ""),
             copy: item.copy?.[locale] || copy[locale].summer,
           }))
-        : slides.map((item) => ({ ...item, copy: copy[locale][item.key] }));
-      return items.map((item) => ({ ...item, image: editorialImage(item) }));
-    },
+        : slides.map((item) => ({ ...item, copy: copy[locale][item.key] })),
     [cmsSlides, locale],
   );
 
