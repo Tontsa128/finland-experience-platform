@@ -21,21 +21,21 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "summer",
-    image: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Turun_saaristo_1.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
     credit: "Kallerna / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
     href: "/destinations",
   },
   {
     key: "cottage",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Summer_cottage%2C_Finland.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
     credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
     href: "/accommodations",
   },
   {
     key: "archipelago",
-    image: photoLibrary.turkuArchipelago,
+    image: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Attu-silta_Parainen_archipelago.jpg",
     credit: "Elämysmatkat",
     creditUrl: "https://elamysmatkat.com/aktiviteetti/kahden-tunnin-purjehdus-soling-class-purjeveneella/",
     href: "/destinations/turku",
@@ -77,9 +77,9 @@ const slides: Slide[] = [
   },
   {
     key: "herrankukkaro",
-    image: photoLibrary.herrankukkaroSauna,
-    credit: "Herrankukkaro",
-    creditUrl: "https://www.herrankukkaro.fi/kuvat",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Traditional_Finnish_sauna_healing.jpg",
+    credit: "Kaisu Mokkila / Wikimedia Commons (CC BY-SA 4.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_sauna_healing.jpg",
     href: "https://www.herrankukkaro.fi/",
     external: true,
   },
@@ -168,7 +168,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     if (slideCount < 2) return;
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % slideCount);
-    }, 4000);
+    }, 3000);
     return () => window.clearInterval(timer);
   }, [slideCount]);
 
