@@ -13,7 +13,8 @@
     "test:watch": "node --import tsx --test --watch src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset",
-    "test:i18n": "node scripts/check-i18n.mjs"
+    "test:i18n": "node scripts/check-i18n.mjs",
+    "build:cloudflare": "opennextjs-cloudflare build"
   },
   "dependencies": {
     "next": "16.4.2",
