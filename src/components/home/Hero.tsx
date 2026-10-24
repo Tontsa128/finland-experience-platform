@@ -178,8 +178,17 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const text = slide.copy || copy[locale][slide.key] || copy[locale].summer;
   const href = slide.external ? slide.href : `/${locale}${slide.href}`;
 
-  const getImage = (item: Slide) => {
+  const getImage = (item: Slide & { copy?: SlideCopy }) => {
     if (!failedImages[item.key]) return item.image;
+
+    // CMS slide IDs are database-generated and do not match the built-in slide keys.
+    // Choose a fallback from the slide's actual content before using a generic coastal image.
+    const searchableCopy = `${item.copy?.eyebrow ?? ""} ${item.copy?.title ?? ""} ${item.copy?.text ?? ""}`.toLocaleLowerCase();
+    if (/sauna|savusauna|smoke sauna|löyly/.test(searchableCopy)) return photoLibrary.saunaTraditionalSmoke;
+    if (/mökk|cottage|lake|järv|cabaña|alojamiento/.test(searchableCopy)) return photoLibrary.saunaCottage;
+    if (/saarist|archipelago|island|isla|saar/.test(searchableCopy)) return photoLibrary.turkuArchipelago;
+    if (/hanko|beach|ranta|playa/.test(searchableCopy)) return photoLibrary.hankoRegattaBeach;
+    if (/mathildedal|ruukk|ironworks/.test(searchableCopy)) return photoLibrary.mathildedalVillage;
     return fallbackImages[item.key] || photoLibrary.hero;
   };
 
