@@ -180,8 +180,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     () => {
       // The built-in slides use explicit image/copy pairs. Never guess an image from keywords:
       // keyword matching previously caused a valid caption to be paired with an unrelated photo.
-      if (cmsSlides.length) {
-        return cmsSlides.map((item) => ({
+      // A CMS slide takes precedence only while its image has loaded successfully.
+      // Broken CMS image URLs are skipped; if all CMS images fail, use the verified
+      // built-in image/copy pairs instead of leaving the hero stuck on a broken image.
+      const usableCmsSlides = cmsSlides.filter((item) => !failedImages[item.id]);
+      if (usableCmsSlides.length) {
+        return usableCmsSlides.map((item) => ({
           key: item.id,
           image: item.imageUrl,
           durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
@@ -198,7 +202,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         copy: copy[locale][item.key],
       }));
     },
-    [cmsSlides, locale],
+    [cmsSlides, locale, failedImages],
   );
 
   const slideCount = activeSlides.length;
