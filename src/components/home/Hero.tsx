@@ -21,23 +21,23 @@ type Slide = {
 const slides: Slide[] = [
   {
     key: "summer",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/91/Mathildedal_harbour_sunset.jpg",
-    credit: "Kallerna / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mathildedal_harbour_sunset.jpg",
+    credit: "Kotivalo / Wikimedia Commons (CC BY-SA 4.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg",
     href: "/destinations",
   },
   {
     key: "cottage",
-    image: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
-    credit: "Νικόλαος Κυριακάκης / Wikimedia Commons",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Summer_cottage,_Finland.jpg",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
+    credit: "Kospo75 / Wikimedia Commons (CC BY-SA 3.0)",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
     href: "/accommodations",
   },
   {
     key: "archipelago",
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Attu-silta_Parainen_archipelago.jpg",
-    credit: "Elämysmatkat",
-    creditUrl: "https://elamysmatkat.com/aktiviteetti/kahden-tunnin-purjehdus-soling-class-purjeveneella/",
+    image: photoLibrary.turkuArchipelago,
+    credit: "Wikimedia Commons",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Turun_saaristo_1.jpg",
     href: "/destinations/turku",
   },
   {
@@ -77,7 +77,7 @@ const slides: Slide[] = [
   },
   {
     key: "herrankukkaro",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Traditional_Finnish_sauna_healing.jpg",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Traditional_Finnish_sauna_healing.jpg",
     credit: "Kaisu Mokkila / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_sauna_healing.jpg",
     href: "https://www.herrankukkaro.fi/",
