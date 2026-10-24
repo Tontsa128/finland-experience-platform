@@ -116,7 +116,7 @@ const fallbackImages: Record<string, string> = {
 
 const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   fi: {
-    spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kevään ensimmäiset lehdet ja raikas kevätilma kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
+    spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kukkivat valkovuokot ja raikas kevätilma kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
     autumn: { eyebrow: "Syksy Nauvon saaristossa", title: "Nauvon kirkonkylä syksyn väreissä", text: "Ilmakuva näyttää Kyrkbackenin kylän syksyisenä kokonaisuutena, kun puiden ruska värittää saaristomaisemaa.", cta: "Tutustu saaristoon" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Löydä rannikon rauhalliset reitit ja merimaisemat", text: "Pienet sillat, rantakalliot ja saaristotiet johdattavat pois kiireestä Suomen rannikon maisemiin.", cta: "Tutustu kohteisiin" },
     cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Kesämökki, järvi, laituri ja sauna tekevät kiireettömästä päivästä osan Suomen matkaa.", cta: "Katso majoituksia" },
@@ -129,7 +129,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     herrankukkaro: { eyebrow: "Suomalainen saunaperinne", title: "Koe suomalainen saunominen ja vihtominen", text: "Perinteinen vihta, löyly ja rauhallinen saunahetki kuuluvat suomalaiseen saunaperinteeseen.", cta: "Siirry palveluntarjoajalle" },
   },
   es: {
-    spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, hojas nuevas y aire fresco de primavera invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
+    spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, anémonas de bosque en flor y aire fresco de primavera invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
     autumn: { eyebrow: "Otoño en el archipiélago de Nagu", title: "El pueblo de Nagu bajo los colores del otoño", text: "La vista aérea muestra Kyrkbacken en otoño, con los colores de los árboles transformando el paisaje del archipiélago.", cta: "Explorar el archipiélago" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Descubre rutas tranquilas y paisajes costeros", text: "Pequeños puentes, rocas junto al mar y carreteras entre islas te alejan de las prisas y te acercan a la costa finlandesa.", cta: "Explorar destinos" },
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Cabaña de verano, lago, embarcadero y sauna para disfrutar Finlandia sin prisas.", cta: "Ver alojamientos" },
@@ -142,7 +142,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     herrankukkaro: { eyebrow: "Tradición finlandesa", title: "Descubre la sauna finlandesa y el uso de la vihta", text: "La vihta, el vapor y un momento tranquilo en la sauna forman parte de la tradición finlandesa.", cta: "Ir al proveedor" },
   },
   en: {
-    spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, fresh leaves and crisp spring air invite you outdoors.", cta: "Explore spring destinations" },
+    spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, blooming wood anemones and crisp spring air invite you outdoors.", cta: "Explore spring destinations" },
     autumn: { eyebrow: "Autumn in the Nagu archipelago", title: "Nagu village in its autumn colours", text: "The aerial view shows Kyrkbacken in autumn, with colourful foliage transforming the archipelago landscape.", cta: "Explore the archipelago" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Find quiet coastal routes and sea views", text: "Small bridges, rocky shores and island roads lead away from the rush and into Finland’s coastal landscapes.", cta: "Explore destinations" },
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A summer cottage, lake, jetty and sauna turn a quiet day into part of the journey.", cta: "See stays" },
