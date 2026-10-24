@@ -116,7 +116,7 @@ const fallbackImages: Record<string, string> = {
 
 const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   fi: {
-    spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kevään ensimmäiset kukat ja raikas saaristo kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
+    spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kevään ensimmäiset lehdet ja raikas kevätilma kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
     autumn: { eyebrow: "Syksy saaristossa", title: "Kultainen ruska ja saaristokylien rauha", text: "Värikkäät puut, punaiset rantamakasiinit ja tyyni meri tekevät syysretkestä unohtumattoman.", cta: "Tutustu saaristoon" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Löydä rannikon rauhalliset reitit ja merimaisemat", text: "Pienet sillat, rantakalliot ja saaristotiet johdattavat pois kiireestä Suomen rannikon maisemiin.", cta: "Tutustu kohteisiin" },
     cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Kesämökki, järvi, laituri ja sauna tekevät kiireettömästä päivästä osan Suomen matkaa.", cta: "Katso majoituksia" },
@@ -126,10 +126,10 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     mathildedal: { eyebrow: "Mathildedal · Salo", title: "Historiallinen ruukkikylä meren lähellä", text: "Vanha ruukkimiljöö, käsityöläiset ja kylän kesäinen tunnelma tekevät Mathildedalista omanlaisensa.", cta: "Tutustu Mathildedaliin" },
     aland: { eyebrow: "Ahvenanmaa", title: "Tutustu Ahvenanmaan historialliseen Kastelholman linnaan", text: "Kastelholman linna kertoo Ahvenanmaan historiasta ja tarjoaa konkreettisen pysähdyspaikan saaristomatkalle.", cta: "Tutustu Ahvenanmaahan" },
     porvoo: { eyebrow: "Porvoo", title: "Vanhan kaupungin kesäpäivä", text: "Punaiset ranta-aitat, jokimaisema ja historiallinen keskusta kutsuvat kävelemään hitaasti.", cta: "Tutustu Porvooseen" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Savusauna meren äärellä", text: "Aito savusaunan sisätila, puulauteet ja kivikiuas johdattavat suomalaisen saunan tunnelmaan.", cta: "Siirry palveluntarjoajalle" },
+    herrankukkaro: { eyebrow: "Suomalaisen savusaunan perinne", title: "Astu savusaunan lämpöön", text: "Hämärä sisätila, puiset lauteet ja kivikiuas kertovat suomalaisen savusaunan rauhallisesta perinteestä.", cta: "Siirry palveluntarjoajalle" },
   },
   es: {
-    spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, primeras flores y aire fresco invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
+    spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, hojas nuevas y aire fresco de primavera invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
     autumn: { eyebrow: "Otoño en el archipiélago", title: "Colores dorados y pueblos costeros con encanto", text: "Árboles de colores, casas rojas junto al agua y un mar tranquilo crean una escapada inolvidable.", cta: "Explorar el archipiélago" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Descubre rutas tranquilas y paisajes costeros", text: "Pequeños puentes, rocas junto al mar y carreteras entre islas te alejan de las prisas y te acercan a la costa finlandesa.", cta: "Explorar destinos" },
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Cabaña de verano, lago, embarcadero y sauna para disfrutar Finlandia sin prisas.", cta: "Ver alojamientos" },
@@ -139,10 +139,10 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     mathildedal: { eyebrow: "Mathildedal · Salo", title: "Un histórico pueblo siderúrgico junto al mar", text: "Patrimonio industrial, artesanía y ambiente de verano en un pequeño pueblo con carácter.", cta: "Explorar Mathildedal" },
     aland: { eyebrow: "Åland", title: "Descubre el histórico castillo de Kastelholm", text: "El castillo de Kastelholm cuenta parte de la historia de Åland y ofrece una visita concreta durante tu viaje por las islas.", cta: "Explorar Åland" },
     porvoo: { eyebrow: "Porvoo", title: "Un día de verano en el casco antiguo", text: "Almacenes rojos junto al río, calles históricas y cafés para disfrutar sin prisa.", cta: "Explorar Porvoo" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Sauna de humo junto al mar", text: "Interior auténtico de una sauna de humo, bancos de madera y una gran estufa de piedras.", cta: "Ir al proveedor" },
+    herrankukkaro: { eyebrow: "Tradición finlandesa", title: "Descubre la sauna de humo finlandesa", text: "Un interior tenue, bancos de madera y una estufa de piedras muestran la tradición tranquila de la sauna de humo.", cta: "Ir al proveedor" },
   },
   en: {
-    spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, the first wildflowers and the fresh coastal air invite you outdoors.", cta: "Explore spring destinations" },
+    spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, fresh leaves and crisp spring air invite you outdoors.", cta: "Explore spring destinations" },
     autumn: { eyebrow: "Autumn in the archipelago", title: "Golden foliage and charming coastal villages", text: "Colourful trees, red waterfront houses and calm sea make an autumn escape unforgettable.", cta: "Explore the archipelago" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Find quiet coastal routes and sea views", text: "Small bridges, rocky shores and island roads lead away from the rush and into Finland’s coastal landscapes.", cta: "Explore destinations" },
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A summer cottage, lake, jetty and sauna turn a quiet day into part of the journey.", cta: "See stays" },
@@ -152,7 +152,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     mathildedal: { eyebrow: "Mathildedal · Salo", title: "A historic ironworks village by the sea", text: "Industrial heritage, local crafts and a relaxed summer atmosphere in a village with character.", cta: "Explore Mathildedal" },
     aland: { eyebrow: "Åland", title: "Discover historic Kastelholm Castle", text: "Kastelholm Castle tells part of Åland’s history and makes a tangible stop on an island journey.", cta: "Explore Åland" },
     porvoo: { eyebrow: "Porvoo", title: "A summer day in the old town", text: "Red riverside warehouses, historic streets and cafés made for slowing down.", cta: "Explore Porvoo" },
-    herrankukkaro: { eyebrow: "Rymättylä · Naantali", title: "Smoke sauna by the sea", text: "An authentic smoke-sauna interior, wooden benches and a large stone stove reveal the Finnish sauna tradition.", cta: "Visit provider" },
+    herrankukkaro: { eyebrow: "Finnish sauna tradition", title: "Experience Finland’s traditional smoke sauna", text: "A softly lit interior, wooden benches and a stone stove reveal the calm tradition of the Finnish smoke sauna.", cta: "Visit provider" },
   },
 };
 
