@@ -30,7 +30,7 @@ const slides: Slide[] = [
   {
     key: "autumn",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
-    credit: "Wikimedia Commons",
+    credit: "Fred Sundén / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
     href: "/destinations",
   },
@@ -117,7 +117,7 @@ const fallbackImages: Record<string, string> = {
 const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   fi: {
     spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kevään ensimmäiset lehdet ja raikas kevätilma kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
-    autumn: { eyebrow: "Syksy saaristossa", title: "Kultainen ruska ja saaristokylien rauha", text: "Värikkäät puut, punaiset rantamakasiinit ja tyyni meri tekevät syysretkestä unohtumattoman.", cta: "Tutustu saaristoon" },
+    autumn: { eyebrow: "Syksy Nauvon saaristossa", title: "Nauvon kirkonkylä syksyn väreissä", text: "Ilmakuva näyttää Kyrkbackenin kylän syksyisenä kokonaisuutena, kun puiden ruska värittää saaristomaisemaa.", cta: "Tutustu saaristoon" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Löydä rannikon rauhalliset reitit ja merimaisemat", text: "Pienet sillat, rantakalliot ja saaristotiet johdattavat pois kiireestä Suomen rannikon maisemiin.", cta: "Tutustu kohteisiin" },
     cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Kesämökki, järvi, laituri ja sauna tekevät kiireettömästä päivästä osan Suomen matkaa.", cta: "Katso majoituksia" },
     archipelago: { eyebrow: "Turun saaristo", title: "Pieni puutalo saariston keskellä", text: "Saaristomaisemaan asettuva puutalo kertoo elävästä saaristosta ja sen rauhallisesta arjesta.", cta: "Tutustu saaristoon" },
@@ -130,7 +130,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   },
   es: {
     spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, hojas nuevas y aire fresco de primavera invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
-    autumn: { eyebrow: "Otoño en el archipiélago", title: "Colores dorados y pueblos costeros con encanto", text: "Árboles de colores, casas rojas junto al agua y un mar tranquilo crean una escapada inolvidable.", cta: "Explorar el archipiélago" },
+    autumn: { eyebrow: "Otoño en el archipiélago de Nagu", title: "El pueblo de Nagu bajo los colores del otoño", text: "La vista aérea muestra Kyrkbacken en otoño, con los colores de los árboles transformando el paisaje del archipiélago.", cta: "Explorar el archipiélago" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Descubre rutas tranquilas y paisajes costeros", text: "Pequeños puentes, rocas junto al mar y carreteras entre islas te alejan de las prisas y te acercan a la costa finlandesa.", cta: "Explorar destinos" },
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Cabaña de verano, lago, embarcadero y sauna para disfrutar Finlandia sin prisas.", cta: "Ver alojamientos" },
     archipelago: { eyebrow: "Archipiélago de Turku", title: "Una pequeña casa de madera entre las islas", text: "Una casa de madera en el archipiélago muestra el carácter habitado y tranquilo de las islas finlandesas.", cta: "Explorar el archipiélago" },
@@ -143,7 +143,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   },
   en: {
     spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, fresh leaves and crisp spring air invite you outdoors.", cta: "Explore spring destinations" },
-    autumn: { eyebrow: "Autumn in the archipelago", title: "Golden foliage and charming coastal villages", text: "Colourful trees, red waterfront houses and calm sea make an autumn escape unforgettable.", cta: "Explore the archipelago" },
+    autumn: { eyebrow: "Autumn in the Nagu archipelago", title: "Nagu village in its autumn colours", text: "The aerial view shows Kyrkbacken in autumn, with colourful foliage transforming the archipelago landscape.", cta: "Explore the archipelago" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Find quiet coastal routes and sea views", text: "Small bridges, rocky shores and island roads lead away from the rush and into Finland’s coastal landscapes.", cta: "Explore destinations" },
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A summer cottage, lake, jetty and sauna turn a quiet day into part of the journey.", cta: "See stays" },
     archipelago: { eyebrow: "Turku Archipelago", title: "A small wooden house among the islands", text: "A wooden house in the archipelago captures the lived-in, peaceful character of Finland’s island communities.", cta: "Explore the archipelago" },
