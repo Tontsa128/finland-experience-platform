@@ -12,6 +12,7 @@ type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
 type Slide = {
   key: string;
   image: string;
+  durationMs?: number;
   credit: string;
   creditUrl?: string;
   href: string;
@@ -186,6 +187,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         ? cmsSlides.map((item) => ({
             key: item.id,
             image: item.imageUrl,
+            durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
             credit: item.credit || "",
             creditUrl: item.creditUrl,
             href: item.href || "/destinations",
@@ -193,7 +195,10 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             copy: item.copy?.[locale] || copy[locale].summer,
           }))
         : slides.map((item) => ({ ...item, copy: copy[locale][item.key] }));
-      return items.map((item) => ({ ...item, ...editorialPhoto(item) }));
+      // CMS editors explicitly choose an image and its attribution. Do not silently replace
+      // either with keyword-based guesses; that can make the displayed credit refer to a
+      // different image. Keep editorial matching only for the built-in fallback slides.
+      return cmsSlides.length ? items : items.map((item) => ({ ...item, ...editorialPhoto(item) }));
     },
     [cmsSlides, locale],
   );
@@ -206,11 +211,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
   useEffect(() => {
     if (slideCount < 2) return;
-    const timer = window.setInterval(() => {
+    const duration = activeSlides[active]?.durationMs ?? 5500;
+    const timer = window.setTimeout(() => {
       setActive((current) => (current + 1) % slideCount);
-    }, 5500);
-    return () => window.clearInterval(timer);
-  }, [slideCount]);
+    }, duration);
+    return () => window.clearTimeout(timer);
+  }, [active, activeSlides, slideCount]);
 
   if (!slideCount) return null;
 
