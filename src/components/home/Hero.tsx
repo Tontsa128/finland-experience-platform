@@ -187,7 +187,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         ? cmsSlides.map((item) => ({
             key: item.id,
             image: item.imageUrl,
-            durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 2000 ? item.durationMs : 5500,
+            durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
             credit: item.credit || "",
             creditUrl: item.creditUrl,
             href: item.href || "/destinations",
