@@ -38,7 +38,6 @@ export default function SiteBuilder(){
    })
   ));
   if(incompleteIndex>=0){
-   const slide=slides[incompleteIndex];
    const missing=locales.filter(([language])=>{
     const copy=slide.copy?.[language];
     return !copy?.title?.trim()||!copy?.text?.trim()||!copy?.cta?.trim();
