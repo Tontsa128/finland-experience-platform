@@ -23,7 +23,7 @@ const slides: Slide[] = [
   {
     key: "spring",
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
-    credit: "Sanzzu / Wikimedia Commons (CC BY)",
+    credit: "Sanzzu / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
     href: "/destinations",
   },
@@ -58,21 +58,21 @@ const slides: Slide[] = [
   {
     key: "hanko",
     image: photoLibrary.hankoRegattaBeach,
-    credit: "W.carter / Wikimedia Commons",
+    credit: "W.carter / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
     href: "/destinations/hanko",
   },
   {
     key: "naantali",
     image: photoLibrary.naantaliOldTown,
-    credit: "Tatu Kosonen / Wikimedia Commons",
+    credit: "Tatu Kosonen / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg",
     href: "/destinations/naantali",
   },
   {
     key: "mathildedal",
     image: photoLibrary.mathildedalVillage,
-    credit: "Kotivalo / Wikimedia Commons",
+    credit: "Kotivalo / Wikimedia Commons (CC BY-SA 3.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
     href: "/destinations/salo-mathildedal",
   },
@@ -86,7 +86,7 @@ const slides: Slide[] = [
   {
     key: "porvoo",
     image: photoLibrary.porvoo,
-    credit: "Teemu Eskola / Wikimedia Commons",
+    credit: "Teemu Eskola / Wikimedia Commons (CC BY-SA 3.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg",
     href: "/destinations/porvoo",
   },
