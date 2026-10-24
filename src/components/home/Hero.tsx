@@ -166,22 +166,21 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
   const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(
     () => {
-      const editorialImage = (item: Slide & { copy?: SlideCopy }) => {
+      const editorialPhoto = (item: Slide & { copy?: SlideCopy }): Partial<Slide> => {
         const text = `${item.copy?.eyebrow ?? ""} ${item.copy?.title ?? ""} ${item.copy?.text ?? ""}`.toLocaleLowerCase();
-        // Match the concrete experience/destination first. Seasonal words in supporting copy
-        // must never replace a destination photo with a generic landscape.
-        if (/savusauna|smoke sauna|sauna de humo|löyly|sauna/.test(text)) return photoLibrary.saunaTraditionalSmoke;
-        if (/mathildedal|ruukkikylä|ironworks village|ruukki/.test(text)) return photoLibrary.mathildedalVillage;
-        if (/porvoo|punaiset ranta-aitat|red riverside warehouses/.test(text)) return photoLibrary.porvoo;
-        if (/naantali|vanhasta satamasta|old harbour|puutalot, satama/.test(text)) return photoLibrary.naantaliHarbour;
-        if (/hanko|beach|ranta|playa/.test(text)) return photoLibrary.hankoRegattaBeach;
-        if (/ahvenanmaa|åland|kastelholm/.test(text)) return photoLibrary.aland;
-        if (/turun saaristo|turku archipelago/.test(text)) return photoLibrary.turkuArchipelago;
-        if (/mökk|cottage|lake|järv|cabaña|alojamiento|aamukahvi veden äärellä/.test(text)) return photoLibrary.saunaCottage;
-        if (/syksy|syksyinen|autumn|fall foliage|otoño|otoñal|ruska/.test(text)) return "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg";
-        if (/kevät|spring|primavera/.test(text)) return "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg";
-        if (/summer|kesä|verano|meri|coast|costa|saaristo|archipelago/.test(text)) return photoLibrary.mathildedalHarbour;
-        return item.image;
+        // Return image and its own attribution together: never show a credit for a different photo.
+        if (/savusauna|smoke sauna|sauna de humo|löyly|sauna/.test(text)) return { image: photoLibrary.saunaTraditionalSmoke, credit: "JP Korpi-Vartiainen / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_smoke_sauna.jpg" };
+        if (/mathildedal|ruukkikylä|ironworks village|ruukki/.test(text)) return { image: photoLibrary.mathildedalVillage, credit: "Kotivalo / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" };
+        if (/porvoo|punaiset ranta-aitat|red riverside warehouses/.test(text)) return { image: photoLibrary.porvoo, credit: "Teemu Eskola / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg" };
+        if (/naantali|vanhasta satamasta|old harbour|puutalot, satama/.test(text)) return { image: photoLibrary.naantaliHarbour, credit: "Pöllö / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg" };
+        if (/hanko|beach|ranta|playa/.test(text)) return { image: photoLibrary.hankoRegattaBeach, credit: "W.carter / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg" };
+        if (/ahvenanmaa|åland|kastelholm/.test(text)) return { image: photoLibrary.aland, credit: "Håkan Skogsjö / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg" };
+        if (/turun saaristo|turku archipelago/.test(text)) return { image: photoLibrary.turkuArchipelago, credit: "Rob Sinclair / Wikimedia Commons (CC BY-SA 2.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg" };
+        if (/mökk|cottage|lake|järv|cabaña|alojamiento|aamukahvi veden äärellä/.test(text)) return { image: photoLibrary.saunaCottage, credit: "Kospo75 / Wikimedia Commons (CC BY-SA 3.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg" };
+        if (/syksy|syksyinen|autumn|fall foliage|otoño|otoñal|ruska/.test(text)) return { image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg", credit: "Wikimedia Commons", creditUrl: "https://commons.wikimedia.org/wiki/File:Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg" };
+        if (/kevät|spring|primavera/.test(text)) return { image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg", credit: "Sanzzu / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg" };
+        if (/summer|kesä|verano|meri|coast|costa|saaristo|archipelago/.test(text)) return { image: photoLibrary.mathildedalHarbour, credit: "Kotivalo / Wikimedia Commons (CC BY-SA 4.0)", creditUrl: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg" };
+        return { image: item.image };
       };
       const items: Array<Slide & { copy?: SlideCopy }> = cmsSlides.length
         ? cmsSlides.map((item) => ({
@@ -194,7 +193,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             copy: item.copy?.[locale] || copy[locale].summer,
           }))
         : slides.map((item) => ({ ...item, copy: copy[locale][item.key] }));
-      return items.map((item) => ({ ...item, image: editorialImage(item) }));
+      return items.map((item) => ({ ...item, ...editorialPhoto(item) }));
     },
     [cmsSlides, locale],
   );
