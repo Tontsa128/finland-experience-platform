@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 
@@ -20,9 +21,12 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieLocale = (await cookies()).get("NEXT_LOCALE")?.value;
+  const htmlLocale = cookieLocale === "fi" || cookieLocale === "es" || cookieLocale === "en" ? cookieLocale : "en";
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={htmlLocale} suppressHydrationWarning>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>{children}</body>
     </html>
   );
