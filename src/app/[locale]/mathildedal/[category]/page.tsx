@@ -77,7 +77,7 @@ const categories = {
       { name: "Vinttipuoti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/psx_20221106_095253_2.jpg?itok=Yc7PqUf-", credit: "Visit Mathildedal — official Vinttipuoti interior photo" },
       { name: "Lähiruoka Puhti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/puhti-sisakuva.jpg?itok=pR18qWud", credit: "Visit Mathildedal — official local food shop photo" },
       { name: "Matildan kesäkauppa", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/kesakauppa.png?itok=5_Dxm8dm", credit: "Visit Mathildedal — official summer shop product collage" },
-      { name: "Dock Helsinki / Piironki", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/kesakauppa.png?itok=5_Dxm8dm", credit: "Visit Mathildedal — official summer shop product collage" },
+      { name: "Dock Helsinki / Piironki", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "", credit: "No verified image available — image intentionally omitted" },
     ],
   },
   tapahtumat: {
@@ -85,7 +85,7 @@ const categories = {
     en: { title: "Events in Mathildedal", description: "Find event listings, concerts, performances and seasonal programmes in Mathildedal from official organisers.", intro: "Mathildedal hosts a changing programme throughout the year. Confirm dates, tickets and any changes on the organiser's own website." },
     es: { title: "Eventos en Mathildedal", description: "Consulta conciertos, espectáculos y actividades de temporada en Mathildedal a través de los organizadores oficiales.", intro: "Mathildedal ofrece actividades durante todo el año. Confirma las fechas, entradas y posibles cambios en la web del organizador." },
     providers: [
-      { name: "Visit Mathildedal event calendar", url: "https://visitmathildedal.fi/fi/tapahtumat", image: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal" },
+      { name: "Visit Mathildedal event calendar", url: "https://visitmathildedal.fi/fi/tapahtumat", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
       { name: "Mathildedal Ironworks events", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
     ],
   },
