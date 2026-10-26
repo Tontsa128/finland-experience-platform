@@ -208,6 +208,18 @@ const providerDescriptions: Record<string, Record<Locale, string>> = {
     en: "A local clothing boutique. Browse the current collection on the business's own website.",
     es: "Una boutique de ropa local. Descubre la colección actual en la web de la tienda.",
   },
+  "Viettelysten Vaunu": { fi: "Jäätelö- ja herkkuhetki Mathildedalin vierailun lomaan. Tarkista kauden aukiolo virallisesta matkailuoppaasta.", en: "An ice-cream and treat stop during a Mathildedal visit. Check seasonal opening information in the official guide.", es: "Una parada para tomar helado y algo dulce durante la visita. Consulta el horario de temporada en la guía oficial." },
+  "Meri-Teijo Golf café and pizzeria": { fi: "Golfkeskuksen kahvila ja kausittainen pizzeriatarjonta. Tarkista palvelut ja aukiolo golfkeskukselta.", en: "A golf-club café and seasonal pizzeria. Confirm current services and opening hours with the club.", es: "Cafetería del club de golf y pizzería de temporada. Confirma los servicios y horarios con el club." },
+  "Terho Hills": { fi: "Teijo Ski & Action Parkin yhteydessä mainittu ruokailukohde; varmista kausipalvelut suoraan toimijalta.", en: "A dining option listed with Teijo Ski & Action Park; confirm seasonal services directly with the operator.", es: "Un lugar para comer asociado a Teijo Ski & Action Park; confirma los servicios de temporada con el operador." },
+  "Chill Out Fishing": { fi: "Opastettuja kalastus- ja meriretkiä Mathildedalin ympäristössä. Luvat, kausi ja saatavuus tarkistetaan oppaalta.", en: "Guided fishing and sea trips around Mathildedal. Confirm permits, season and availability with the guide.", es: "Excursiones guiadas de pesca y mar en los alrededores de Mathildedal. Confirma permisos, temporada y disponibilidad." },
+  "Teijo Ski & Action Park": { fi: "Teijon alueen ulkoaktiviteettikeskus, jonka tarjonta vaihtelee vuodenajan mukaan.", en: "An outdoor activity centre in Teijo with activities that vary by season.", es: "Un centro de actividades al aire libre en Teijo con una oferta que cambia según la temporada." },
+  "Hoitola Kukkuvilla": { fi: "Hyvinvointi- ja rentoutumispalveluja. Tarkista ajankohtaiset tunnit ja varaukset suoraan toimijalta.", en: "Wellbeing and relaxation experiences. Check current sessions and bookings directly with the provider.", es: "Experiencias de bienestar y relajación. Consulta las sesiones y reservas actuales con el proveedor." },
+  "Kaarnalaiva": { fi: "Mathildedalin ostosoppaassa esitelty paikallinen puoti. Tarkista valikoima ja aukiolo virallisesta oppaasta.", en: "A local shop featured in Mathildedal's shopping guide. Check its selection and opening details in the official guide.", es: "Una tienda local incluida en la guía de compras de Mathildedal. Consulta la oferta y el horario en la guía oficial." },
+  "Kyläpanimo Beer Shop": { fi: "Paikallisen kyläpanimon puoti, jonka valikoima vaihtelee sesongin mukaan.", en: "The local village brewery's shop, with a selection that varies by season.", es: "La tienda de la cervecería local, con una selección que cambia según la temporada." },
+  "Vinttipuoti": { fi: "Paikallinen puoti Mathildedalin ostosoppaassa. Tarkista ajantasainen aukiolo ennen vierailua.", en: "A local shop listed in Mathildedal's shopping guide. Check current opening details before visiting.", es: "Una tienda local incluida en la guía de compras de Mathildedal. Comprueba el horario antes de ir." },
+  "Lähiruoka Puhti": { fi: "Lähiruokaan keskittyvä ostospaikka, jonka tarjonta ja aukiolo voivat vaihdella sesongin mukaan.", en: "A local-food shop whose selection and opening hours may vary by season.", es: "Una tienda de productos locales cuya oferta y horario pueden variar según la temporada." },
+  "Matildan kesäkauppa": { fi: "Kesäkauden ostospaikka. Varmista, onko kauppa avoinna vierailusi ajankohtana.", en: "A seasonal summer shop. Check whether it is open during your visit.", es: "Una tienda de temporada de verano. Comprueba si estará abierta durante tu visita." },
+  "Dock Helsinki / Piironki": { fi: "Visit Mathildedalin ostosoppaassa mainittu ostoskohde; tarkista ajantasaiset tiedot virallisesta oppaasta.", en: "A shopping listing in Visit Mathildedal's guide; check current details in the official guide.", es: "Un comercio incluido en la guía de Visit Mathildedal; consulta los datos actuales en la guía oficial." },
   "Visit Mathildedal shopping guide": {
     fi: "Virallinen ostosopas auttaa löytämään lisää putiikkeja ja paikallisia tuotteita Mathildedalissa.",
     en: "The official shopping guide helps visitors discover more shops and local products in Mathildedal.",
@@ -267,7 +279,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
           {category.providers.map((provider) => (
             <article key={provider.name} className="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm">
               <div className="relative h-56 bg-brand-100">
-                <Image src={provider.image} alt={provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                <Image src={provider.image} alt={provider.credit.includes("context image") ? "Mathildedalin kylämiljöö" : provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
               </div>
               <div className="p-5">
                 <h2 className="text-xl font-bold">{provider.name}</h2>
