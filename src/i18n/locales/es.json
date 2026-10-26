@@ -1,9 +1,9 @@
 {
   "common": {
     "siteName": "Finland Experience",
-    "tagline": "Verano finlandés, slow travel y alojamientos locales",
+    "tagline": "Verano finlandés, viajes sin prisas y alojamientos locales",
     "bookNow": "Ir al proveedor",
-    "learnMore": "Saber más",
+    "learnMore": "Más información",
     "viewAll": "Ver todo",
     "from": "Desde",
     "perNight": "/noche",
@@ -22,7 +22,7 @@
     "plan": "Diseña tu viaje",
     "cityBreaks": "Escapadas urbanas",
     "coastalFinland": "Finlandia costera",
-        "ruralFinland": "Turismo rural",
+    "ruralFinland": "Campo y archipiélago",
     "blog": "Blog",
     "contact": "Contacto",
     "admin": "Admin",
@@ -42,19 +42,19 @@
     "featuredDestinations": "Destinos de verano",
     "featuredDestinationsDesc": "Lugares tranquilos del sur, oeste, sureste de Finlandia y Åland",
     "popularExperiences": "Qué hacer y ver",
-    "popularExperiencesDesc": "Actividades locales reales: kayak, ciclismo, sauna y días de isla",
+    "popularExperiencesDesc": "Experiencias locales auténticas: kayak, ciclismo, sauna y excursiones a las islas.",
     "uniqueStays": "Alojamientos con carácter",
-    "uniqueStaysDesc": "Cabañas, casas boutique, villas junto al mar y glamping",
+    "uniqueStaysDesc": "Cabañas, alojamientos boutique, villas junto al mar y glamping",
     "whyFinland": "¿Por qué Finlandia?",
     "whyFinlandDesc": "Razones para enamorarte del estilo de vida nórdico",
     "testimonials": "Lo que dicen nuestros huéspedes",
     "blog": "Inspiración de viaje",
     "newsletter": "Recibe inspiración de viaje",
-    "newsletterDesc": "Consejos, ofertas especiales y alertas de auroras directamente en tu bandeja de entrada."
+    "newsletterDesc": "Consejos de viaje, ofertas especiales e inspiración para descubrir nuevos destinos directamente en tu correo."
   },
   "why": {
     "nature": {
-      "title": "Naturaleza tranquila",
+      "title": "Naturaleza sin prisas",
       "desc": "Bosques, mar, lagos y senderos para disfrutar sin prisas."
     },
     "lights": {
@@ -63,7 +63,7 @@
     },
     "sauna": {
       "title": "Sauna junto al agua",
-      "desc": "Sauna tradicional, baño y el ritmo sencillo del verano finlandés."
+      "desc": "Una sauna tradicional, un baño refrescante y el ritmo sencillo del verano finlandés."
     },
     "design": {
       "title": "Carácter local",
@@ -81,7 +81,7 @@
   },
   "accommodations": {
     "title": "Alojamientos",
-    "subtitle": "Cabañas, iglús de cristal, hoteles de diseño y más",
+    "subtitle": "Cabañas, iglús de cristal, hoteles de diseño y mucho más",
     "cabin": "Cabaña",
     "igloo": "Iglú de cristal",
     "hotel": "Hotel",
@@ -104,7 +104,7 @@
     }
   },
   "booking": {
-    "title": "Reserva tu experiencia",
+    "title": "Continúa en la web del proveedor",
     "selectDates": "Selecciona fechas",
     "guests": "Huéspedes",
     "total": "Total",
@@ -113,14 +113,14 @@
     "successDesc": "La reserva y el pago se realizan directamente con el proveedor."
   },
   "contact": {
-    "title": "Contáctanos",
-    "subtitle": "Estamos aquí para ayudarte a planificar la aventura finlandesa perfecta",
+    "title": "Contacta con nosotros",
+    "subtitle": "Te ayudamos a encontrar la mejor forma de descubrir Finlandia a tu manera.",
     "name": "Nombre",
     "email": "Email",
     "message": "Mensaje",
-    "send": "Enviar Mensaje",
+    "send": "Enviar mensaje",
     "success": "¡Mensaje enviado! Te responderemos pronto.",
-    "error": "No se pudo enviar el mensaje. Prueba el enlace de correo o inténtalo de nuevo.",
+    "error": "No se ha podido enviar el mensaje. Prueba el enlace para escribirnos por correo electrónico o inténtalo de nuevo dentro de unos minutos.",
     "providerNote": "Mostramos alojamientos y actividades de proveedores locales. La reserva y el contrato se realizan directamente con el proveedor."
   },
   "footer": {
@@ -128,9 +128,9 @@
     "aboutText": "Nos especializamos en experiencias finlandesas auténticas para viajeros de España y de todo el mundo.",
     "quickLinks": "Enlaces rápidos",
     "destinations": "Destinos",
-    "legal": "Legal",
+    "legal": "Información legal",
     "privacy": "Política de privacidad",
-    "terms": "Términos del servicio",
+    "terms": "Condiciones de uso",
     "rights": "Todos los derechos reservados."
   },
   "ai": {
@@ -163,7 +163,7 @@
     "midnight": "Noches infinitas",
     "midnightDesc": "Música, festivales, baile y el sol de medianoche.",
     "sauna": "Sauna tradicional",
-    "saunaDesc": "Vapor, agua fría y auténtica cultura de sauna finlandesa.",
+    "saunaDesc": "Calor de la sauna, un baño refrescante y tradición finlandesa.",
     "cities": "Escapada urbana",
     "citiesDesc": "Helsinki, Turku y Tampere combinan cultura, gastronomía y tardes largas.",
     "cabins": "Vacaciones en cabaña",
@@ -202,8 +202,8 @@
     "staysEyebrow": "Duerme en un lugar especial",
     "experiencesEyebrow": "Crea un recuerdo",
     "directEyebrow": "Reserva directamente",
-    "directTitle": "Tú descubres. Los proveedores locales te reciben.",
-    "directText": "No vendemos paquetes turísticos. Descubre el lugar, visita la web del proveedor y reserva directamente con él.",
+    "directTitle": "Descubre Finlandia. Los anfitriones locales te dan la bienvenida.",
+    "directText": "No vendemos paquetes turísticos. Descubre el destino, visita la web del proveedor y gestiona la reserva directamente con él.",
     "directStep1": "Encuentra tu experiencia",
     "directStep2": "Reserva directamente con el proveedor",
     "finalEyebrow": "Find Your Finland",
