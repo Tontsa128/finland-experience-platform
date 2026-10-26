@@ -266,6 +266,12 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
   const back = locale === "fi" ? "Takaisin Mathildedalin oppaaseen" : locale === "es" ? "Volver a la guía de Mathildedal" : "Back to the Mathildedal guide";
   const visit = locale === "fi" ? "Palveluntarjoajan sivuille" : locale === "es" ? "Visitar la web del proveedor" : "Visit provider website";
   const providerUrl = (name: string, fallbackUrl: string) => {
+    const officialListings: Record<string, string> = {
+      "Kyläravintola Terho": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/kylaravintola-terho",
+      "Bistro Bruket": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/bistro-bruket",
+      "Café Mathildedal": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/cafe-mathildedal",
+    };
+    if (officialListings[name]) return officialListings[name];
     if (name === "Visit Mathildedal event calendar" || name === "Visit Mathildedal events") {
       return locale === "fi"
         ? "https://visitmathildedal.fi/fi/tapahtumat"
