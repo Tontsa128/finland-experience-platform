@@ -78,6 +78,140 @@ const categories = {
   },
 } as const;
 
+
+const providerDescriptions: Record<string, Record<Locale, string>> = {
+  "Hotel Mathildedal": {
+    fi: "Persoonallinen hotelli historiallisessa ruukkimiljöössä, hyvä tukikohta kylään tutustumiseen.",
+    en: "A characterful hotel in the historic ironworks setting and a welcoming base for exploring the village.",
+    es: "Un hotel con personalidad en el entorno histórico de la ferrería, ideal para descubrir el pueblo.",
+  },
+  "Matri House": {
+    fi: "Majoitusvaihtoehto Mathildedalissa rauhallista ja omannäköistä vierailua etsivälle.",
+    en: "A local accommodation option for travellers looking for a relaxed, individual stay.",
+    es: "Una opción de alojamiento local para quienes buscan una estancia tranquila y personal.",
+  },
+  "Mathildan Marina": {
+    fi: "Sataman äärellä sijaitseva majoitus- ja vierailukohde meren tunnelmasta nauttivalle.",
+    en: "A harbour-side place to stay and visit, with the atmosphere of the Finnish coast.",
+    es: "Un alojamiento y punto de visita junto al puerto, con ambiente de costa finlandesa.",
+  },
+  "Matilda Villas": {
+    fi: "Villas-majoitusta, joka sopii omaa tilaa ja itsenäistä lomailua arvostavalle.",
+    en: "Villa accommodation for visitors who value privacy and an independent holiday.",
+    es: "Villas para quienes valoran la privacidad y unas vacaciones independientes.",
+  },
+  "Meri-Ruukki Holiday Village": {
+    fi: "Loma-asumista Mathildedalin alueella, josta voi tutustua kylään ja lähiluontoon.",
+    en: "Holiday accommodation in the Mathildedal area, close to village life and nature.",
+    es: "Alojamiento vacacional en la zona de Mathildedal, cerca del pueblo y la naturaleza.",
+  },
+  "Teijo Nature Centre cabins and camping": {
+    fi: "Luontoon suuntautuvalle matkailijalle mökki- ja retkeilypalveluja Teijon alueella.",
+    en: "Cabin and outdoor-stay options in the Teijo area for nature-focused travellers.",
+    es: "Cabañas y opciones de estancia al aire libre en la zona de Teijo para amantes de la naturaleza.",
+  },
+  "Kyläravintola Terho": {
+    fi: "Kyläravintola paikalliseen ruokailuhetkeen; tarkista ruokalista ja aukiolo suoraan ravintolasta.",
+    en: "A village restaurant for a local dining stop; check the current menu and opening hours directly.",
+    es: "Un restaurante de pueblo para disfrutar de la gastronomía local; consulta el menú y el horario directamente.",
+  },
+  "Mathildan Marina Restaurant": {
+    fi: "Satamaravintola, jossa vierailuun yhdistyy Mathildedalin merellinen ympäristö.",
+    en: "A harbour restaurant where dining comes with Mathildedal's maritime surroundings.",
+    es: "Un restaurante junto al puerto, rodeado del ambiente marítimo de Mathildedal.",
+  },
+  "Bistro Bruket": {
+    fi: "Bistro-vaihtoehto ruukkikylässä. Tarkista ajankohtainen ruokalista ja palvelut ravintolan omista kanavista.",
+    en: "A bistro option in the ironworks village. Check the current menu and services with the restaurant.",
+    es: "Una opción de bistró en el pueblo histórico. Consulta el menú y los servicios actuales con el restaurante.",
+  },
+  "Café Mathildedal": {
+    fi: "Kahvilapysähdys kyläkierroksen lomaan; tarkista aukiolo ja tarjonta ennen saapumista.",
+    en: "A café stop during a village visit; check opening hours and the current selection before arriving.",
+    es: "Una parada para tomar café durante la visita; comprueba el horario y la oferta antes de ir.",
+  },
+  "Metsäravintola": {
+    fi: "Luonnonläheinen ruokailukohde Teijon alueella; varmista aukiolo ja kausipalvelut etukäteen.",
+    en: "A nature-oriented dining stop in the Teijo area; confirm opening and seasonal service details first.",
+    es: "Un lugar para comer en un entorno natural en la zona de Teijo; confirma el horario y los servicios de temporada.",
+  },
+  "Teijo Nature Centre / Natura Viva": {
+    fi: "Tutustu Teijon ulkoilumahdollisuuksiin ja tarkista vuokrattavat välineet sekä palvelut järjestäjältä.",
+    en: "Explore outdoor options in Teijo and check equipment rentals and services with the operator.",
+    es: "Descubre las actividades al aire libre en Teijo y consulta los alquileres y servicios con el operador.",
+  },
+  "Mathildedalin Keskuspuisto": {
+    fi: "Kylän vapaa-ajan alue, jonka aktiviteetit ja aukiolo kannattaa tarkistaa omalta sivustolta.",
+    en: "A village leisure area; check the current activities and opening details on its own website.",
+    es: "Una zona de ocio del pueblo; consulta las actividades y los horarios actuales en su web.",
+  },
+  "Meri-Teijo Bike Park": {
+    fi: "Maastopyöräilyn kohde Teijon alueella; tarkista reitit, kausi ja palvelut ennen lähtöä.",
+    en: "A mountain-biking destination in the Teijo area; check trails, season and services before setting off.",
+    es: "Un destino de ciclismo de montaña en Teijo; consulta los recorridos, la temporada y los servicios antes de ir.",
+  },
+  "Meri-Teijo Golf": {
+    fi: "Golfkohde Teijon alueella. Varmista kentän tilanne, varaukset ja palvelut suoraan golfkeskuksesta.",
+    en: "A golf destination in the Teijo area. Confirm course conditions, bookings and services directly.",
+    es: "Un destino de golf en la zona de Teijo. Confirma directamente el estado del campo, las reservas y los servicios.",
+  },
+  "Yoga in Mathildedal": {
+    fi: "Visit Mathildedalin aktiviteettitiedot auttavat selvittämään joogan ajankohtaisen tarjonnan.",
+    en: "Use Visit Mathildedal's activity information to check current yoga options and arrangements.",
+    es: "Consulta la información de actividades de Visit Mathildedal para conocer las opciones actuales de yoga.",
+  },
+  "Teijo National Park": {
+    fi: "Metsämaisemia, järviä ja merellistä luontoa retkeilyyn. Tarkista reitit ja ajankohtaiset ohjeet viralliselta sivulta.",
+    en: "Forest scenery, lakes and coastal nature for hiking. Check trails and current guidance on the official site.",
+    es: "Bosques, lagos y naturaleza costera para caminar. Consulta los senderos y las indicaciones oficiales actualizadas.",
+  },
+  "Mathildedal Ironworks": {
+    fi: "Historiallinen ruukkimiljöö ja kylän teollinen perintö ovat keskeinen osa Mathildedalin vierailua.",
+    en: "The historic ironworks setting and industrial heritage are central to a visit to Mathildedal.",
+    es: "La antigua ferrería y su patrimonio industrial son una parte esencial de la visita a Mathildedal.",
+  },
+  "Mathildedal Summer Theatre / Teatteri ProVinssi": {
+    fi: "Tarkista teatterin omilta sivuilta tulevat esitykset, liput ja mahdollinen kesäohjelma.",
+    en: "Check the theatre's own website for upcoming performances, tickets and seasonal programming.",
+    es: "Consulta la web del teatro para conocer las próximas funciones, entradas y programación de temporada.",
+  },
+  "Visit Mathildedal events": {
+    fi: "Virallinen tapahtumakalenteri kokoaa paikallisia tapahtumatietoja; tarkista päivämäärät järjestäjältä.",
+    en: "The official event calendar lists local happenings; confirm dates with the event organiser.",
+    es: "El calendario oficial reúne eventos locales; confirma las fechas con el organizador.",
+  },
+  "Ruukki Creative": {
+    fi: "Tutustu luovien tekijöiden tarjontaan ja tarkista toimijat sekä aukiolo suoraan palvelun sivulta.",
+    en: "Explore creative local offerings and check participating makers and opening details on the official site.",
+    es: "Descubre propuestas creativas locales y consulta los participantes y horarios en la web oficial.",
+  },
+  "Ruukin Kehräämö": {
+    fi: "Paikallinen ostoskohde käsityö- ja designlöytöjä etsivälle; tarkista valikoima ja aukiolo etukäteen.",
+    en: "A local shopping stop for craft and design finds; check the selection and opening hours first.",
+    es: "Una tienda local para encontrar artesanía y diseño; consulta la selección y el horario antes de ir.",
+  },
+  "Aate Clothing": {
+    fi: "Vaatteisiin keskittyvä paikallinen putiikki. Tutustu ajankohtaiseen valikoimaan yrityksen omilla sivuilla.",
+    en: "A local clothing boutique. Browse the current collection on the business's own website.",
+    es: "Una boutique de ropa local. Descubre la colección actual en la web de la tienda.",
+  },
+  "Visit Mathildedal shopping guide": {
+    fi: "Virallinen ostosopas auttaa löytämään lisää putiikkeja ja paikallisia tuotteita Mathildedalissa.",
+    en: "The official shopping guide helps visitors discover more shops and local products in Mathildedal.",
+    es: "La guía oficial de compras ayuda a descubrir más tiendas y productos locales en Mathildedal.",
+  },
+  "Visit Mathildedal event calendar": {
+    fi: "Tarkista tapahtumakalenterista ajankohtaiset päivät ja siirry järjestäjän tietoihin.",
+    en: "Check the event calendar for current dates and follow through to organiser information.",
+    es: "Consulta el calendario para ver las fechas actuales y acceder a la información del organizador.",
+  },
+  "Mathildedal Ironworks events": {
+    fi: "Ruukin tapahtuma- ja vierailutiedot kannattaa tarkistaa kohteen omalta sivulta.",
+    en: "Check the ironworks' own website for current visitor information and events.",
+    es: "Consulta la web de la ferrería para obtener información actualizada sobre visitas y eventos.",
+  },
+};
+
 type CategorySlug = keyof typeof categories;
 
 export function generateStaticParams() {
@@ -124,7 +258,8 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
               </div>
               <div className="p-5">
                 <h2 className="text-xl font-bold">{provider.name}</h2>
-                <p className="mt-2 text-xs text-slate-500">{locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la imagen" : "Image source"}: {provider.credit}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{providerDescriptions[provider.name]?.[locale] ?? c.description}</p>
+                <p className="mt-3 text-xs text-slate-500">{locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la imagen" : "Image source"}: {provider.credit}</p>
                 <a href={provider.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:underline">{visit}<ArrowUpRight className="h-4 w-4" /></a>
               </div>
             </article>
