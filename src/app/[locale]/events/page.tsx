@@ -5,7 +5,8 @@ import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { saloEvents } from "@/lib/salo";
 import { naantaliEvents } from "@/lib/naantali";
-import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
+import { EventImage } from "@/components/events/EventImage";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
 const heroImage = "https://cdn-datahub.visitfinland.com/images/2c7e7830-f614-11f0-ad78-29bd5b45e175.jpeg?s=1800";
 
@@ -44,6 +45,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
     eventStatus: "https://schema.org/EventScheduled",
     location: { "@type": "Place", name: event.location, address: { "@type": "PostalAddress", addressCountry: "FI" } },
     url: event.url,
+    ...(event.image ? { image: event.image } : {}),
   }));
 
   const copy = locale === "fi"
@@ -128,15 +130,20 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
         </div>
         <div className="grid gap-5 md:grid-cols-2">
           {events.map((event) => (
-            <article key={event.id} className="rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
-              <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
-                <span>{formatDate(event.start, locale)}</span>
-                {event.end ? <><span>→</span><span>{formatDate(event.end, locale)}</span></> : null}
+            <article key={event.id} className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
+              <div className="p-6 pb-0">
+                <EventImage sourceUrl={event.url} imageUrl={event.image} alt={event.title[locale] || event.title.en || event.title.fi} locale={locale} />
               </div>
-              <h2 className="mt-3 font-display text-2xl font-bold text-brand-950">{event.title[locale] || event.title.en || event.title.fi}</h2>
-              <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-500"><MapPin className="h-4 w-4" />{event.location}</p>
-              <p className="mt-4 leading-7 text-slate-600">{event.description[locale] || event.description.en || event.description.fi}</p>
-              <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
+              <div className="p-6 pt-4">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
+                  <span>{formatDate(event.start, locale)}</span>
+                  {event.end ? <><span>→</span><span>{formatDate(event.end, locale)}</span></> : null}
+                </div>
+                <h2 className="mt-3 font-display text-2xl font-bold text-brand-950">{event.title[locale] || event.title.en || event.title.fi}</h2>
+                <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-500"><MapPin className="h-4 w-4" />{event.location}</p>
+                <p className="mt-4 leading-7 text-slate-600">{event.description[locale] || event.description.en || event.description.fi}</p>
+                <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
+              </div>
             </article>
           ))}
         </div>

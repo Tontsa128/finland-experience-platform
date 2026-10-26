@@ -20,6 +20,7 @@ export type SaloEvent = {
   location: string;
   description: Record<Locale, string>;
   url: string;
+  image?: string;
   category: "autumn" | "christmas" | "new-year" | "culture";
 };
 
@@ -708,7 +709,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Ambiente navideño, artesanos, productores locales y tiendas del pueblo.",
       en: "Christmas atmosphere, local makers, producers and village shops.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://tapahtumat.salo.fi/mathildedalin-joulumarkkinat-5/",
     category: "christmas",
   },
   {
@@ -721,7 +722,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Segunda jornada del mercado navideño en Mathildedal.",
       en: "Second Christmas Market day in Mathildedal.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://tapahtumat.salo.fi/mathildedalin-joulumarkkinat-5/",
     category: "christmas",
   },
   {
@@ -735,7 +736,8 @@ export const saloEvents: SaloEvent[] = [
       es: "Mercado navideño de fin de semana en Teijon Masuuni.",
       en: "A weekend Christmas market at Teijon Masuuni.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://tapahtumat.salo.fi/teijon-masuunin-joulumarkkinat-5/",
+    image: "https://tapahtumat.salo.fi/wp-content/uploads/sites/3/2026/01/617106165_1307670904738166_4463659607939618869_n-2-1170x768.jpg",
     category: "christmas",
   },
   {
@@ -763,7 +765,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Mercado navideño con ambiente tradicional en Rikalanmäki.",
       en: "A cosy traditional Christmas market at Rikalanmäki.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://tapahtumat.salo.fi/rikalanmaen-joulumyyjaiset-2026/",
     category: "christmas",
   },
   {
@@ -804,5 +806,70 @@ export const saloEvents: SaloEvent[] = [
     },
     url: "https://mathildanmarina.fi/tulevat-tapahtumat/",
     category: "new-year",
+  },
+  {
+    id: "salon-joulukulkue",
+    start: "2026-11-29",
+    title: { fi: "Salon joulukulkue ja Hyvänmielentori", es: "Desfile navideño y mercado solidario de Salo", en: "Salo Christmas Parade & Goodwill Market" },
+    location: "Salon tori",
+    description: {
+      fi: "Salon joulukauden avaus torilla. Maksuton ja esteetön Hyvänmielentori on avoinna klo 12–16; järjestäjän ohjelma täydentyy lähempänä tapahtumaa.",
+      es: "Apertura de la temporada navideña en la plaza de Salo. El mercado solidario es gratuito y accesible, de 12:00 a 16:00; el programa se actualizará.",
+      en: "Salo's Christmas season opening in the market square. The free, accessible Goodwill Market runs 12:00–16:00; the organizer will update the programme."
+    },
+    url: "https://tapahtumat.salo.fi/salon-joulukulkue-ja-hyvanmielentori/",
+    category: "christmas"
+  },
+  {
+    id: "wiurila-avoimet-pikkujoulut",
+    start: "2026-12-04",
+    title: { fi: "Avoimet pikkujoulut Wiurilassa", es: "Fiesta navideña en Wiurila", en: "Christmas Party at Wiurila" },
+    location: "Wiurilan kartano, Salo",
+    description: {
+      fi: "Wiurilan avoin pikkujoulu-ilta sisältää kolmen ruokalajin illallisen, ohjelmaa ja livemusiikkia. Tarkista varaus- ja hintatiedot järjestäjältä.",
+      es: "Velada navideña abierta en Wiurila con cena de tres platos, programa y música en directo. Consulta las reservas y el precio con el organizador.",
+      en: "An open Christmas party at Wiurila with a three-course dinner, entertainment and live music. Check booking and pricing details with the organizer."
+    },
+    url: "https://tapahtumat.salo.fi/avoimet-pikkujoulut-wiurilassa/",
+    category: "christmas"
+  },
+  {
+    id: "nauru-pidentaa-iltaa",
+    start: "2026-11-28",
+    title: { fi: "Nauru pidentää iltaa -revyy", es: "Revista cómica Nauru pidentää iltaa", en: "Nauru pidentää iltaa revue" },
+    location: "Astrum Areena, Salo",
+    description: {
+      fi: "Teatteri PROVinssin revyy yhdistää huumoria, arkisia ilmiöitä ja tarttuvaa musiikkia. Esitys on K-16.",
+      es: "Revista de Teatteri PROVinssi que combina humor, situaciones cotidianas y música. Edad mínima 16 años.",
+      en: "A Teatteri PROvinssi revue combining humour, everyday situations and lively music. Age restriction 16+."
+    },
+    url: "https://tapahtumat.salo.fi/nauru-pidentaa-iltaa-revyy-10/",
+    category: "culture"
+  },
+  {
+    id: "tanssitaiteen-talvinaytos",
+    start: "2026-11-28",
+    title: { fi: "Tanssitaiteen talvinäytös", es: "Espectáculo de danza de invierno", en: "Winter Dance Showcase" },
+    location: "Kulttuuritila Näkkäri, Salo",
+    description: {
+      fi: "Salon kansalaisopiston tanssikurssien opiskelijat esiintyvät klo 13 ja 15. Tarkista lippujen saatavuus järjestäjältä.",
+      es: "Alumnos de los cursos de danza de la escuela cívica de Salo actúan a las 13:00 y 15:00. Consulta las entradas con el organizador.",
+      en: "Students from Salo Adult Education Centre dance courses perform at 13:00 and 15:00. Check ticket availability with the organizer."
+    },
+    url: "https://tapahtumat.salo.fi/tanssitaiteen-talvinaytos-3/",
+    category: "culture"
+  },
+  {
+    id: "kolme-yota-jouluun",
+    start: "2026-12-20",
+    title: { fi: "Kolme yötä jouluun", es: "Tres noches para Navidad", en: "Three Nights to Christmas" },
+    location: "Kulttuuritila Näkkäri, Salo",
+    description: {
+      fi: "Piazza Brass -puhallinorkesterin joulukonsertti. Liput ostetaan järjestäjän ilmoittamalla tavalla.",
+      es: "Concierto navideño de la banda de metales Piazza Brass. Consulta con el organizador cómo adquirir entradas.",
+      en: "Christmas concert by the Piazza Brass wind orchestra. Check the organizer's page for ticket details."
+    },
+    url: "https://tapahtumat.salo.fi/kolme-yota-jouluun/",
+    category: "christmas"
   },
 ];
