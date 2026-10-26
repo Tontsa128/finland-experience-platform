@@ -114,11 +114,11 @@ const providers = [
   { name: "Teijo Nature Centre / Natura Viva", category: "activity", url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, credit: "Natura Viva" },
   { name: "Mathildedalin Keskuspuisto", category: "activity", url: "https://mathildedalinkeskuspuisto.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal" },
   { name: "Meri-Teijo Bike Park", category: "activity", url: "https://www.meriteijobikepark.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — destination context image" },
-  { name: "Meri-Teijo Golf", category: "activity", url: "https://meriteijogolf.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — Teijo nature context image" },
+  { name: "Meri-Teijo Golf", category: "activity", url: "https://meriteijogolf.com/", image: "", credit: "No approved golf-course photo yet" },
   { name: "Mathildedal Ironworks", category: "culture", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
   { name: "Mathildedal Summer Theatre / Teatteri ProVinssi", category: "culture", url: "https://www.teatteriprovinssi.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
   { name: "Ruukki Creative", category: "shop", url: "https://ruukkicreative.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
-  { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ", credit: "Visit Mathildedal — Ruukin Kehräämö product image" },
+  { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: "https://ruukinkehraamo.fi/cdn/shop/files/luonnonkosmetiikkalahjaideaalpakasta_a686a81b-bb43-4429-9ea0-983537de33e4.jpg?v=1752140817&width=2048", credit: "Ruukin Kehräämö — official natural cosmetics product image" },
   { name: "Aate Clothing", category: "shop", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
 ] as const;
 
@@ -214,7 +214,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
                   {items.map((provider) => (
                     <article key={provider.name} className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-brand-100">
                       <div className="relative h-52 bg-brand-100">
-                        <Image src={provider.image} alt={provider.credit.includes("context image") ? "Mathildedalin kylämiljöö" : provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                        {provider.image ? <Image src={provider.image} alt={provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-emerald-50 to-stone-100 p-6 text-center"><div><p className="font-semibold text-brand-900">{locale === "fi" ? "Golfkentän kuva tarkistetaan" : locale === "es" ? "Foto del campo de golf pendiente de verificar" : "Golf course photo pending verification"}</p><p className="mt-2 text-sm text-slate-600">{locale === "fi" ? "Emme näytä väärää kuvaa." : locale === "es" ? "No mostramos una imagen incorrecta." : "We will not show a mismatched photo."}</p></div></div>}
                       </div>
                       <div className="p-5">
                         <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">{categoryLabel(provider.category)}</p>
