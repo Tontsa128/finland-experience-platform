@@ -272,6 +272,8 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
       "Café Mathildedal": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/cafe-mathildedal",
       "Mathildedalin Keskuspuisto": "https://visitmathildedal.fi/fi/aktiviteetit/mathildedalin-keskuspuisto",
       "Ruukin Kehräämö": "https://visitmathildedal.fi/fi/ostokset/ruukin-kehraamo",
+      "Metsäravintola": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/metsaravintola",
+      "Matildan kesäkauppa": "https://visitmathildedal.fi/fi/ostokset/matildan-kesakauppa",
     };
     if (officialListings[name]) return officialListings[name];
     if (name === "Visit Mathildedal event calendar" || name === "Visit Mathildedal events") {
