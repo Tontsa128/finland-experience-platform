@@ -12,6 +12,7 @@ const copy = {
     eyebrow: "ETELÄINEN SAARISTOSUOMI · SALO",
     intro: "Vanhan ruukkikylän punamultaiset rakennukset, meren läheisyys, metsäreitit ja pienet paikalliset yritykset kutsuvat viipymään. Kokoa oma matkasi majoituksesta, hyvästä ruoasta, luonnosta ja kylän kulttuurista.",
     plan: "Tutustu palveluihin",
+    planner: "Suunnittele vierailusi",
     stays: "Majoitu Mathildedalissa",
     staysText: "Valitse boutique-hotelli, persoonallinen majatalo tai oma mökki. Kun yövyt kylässä, ehdit nauttia myös rauhallisesta aamusta, lähiluonnosta ja illallisesta ilman kiirettä.",
     food: "Paikalliset maut",
@@ -43,6 +44,7 @@ const copy = {
     eyebrow: "SOUTHERN ARCHIPELAGO FINLAND · SALO",
     intro: "Red-painted historic buildings, the nearby sea, forest trails and independent local businesses make Mathildedal a place to slow down and stay a little longer. Build your trip around a welcoming place to stay, local food, nature and village culture.",
     plan: "Explore local services",
+    planner: "Plan your visit",
     stays: "Stay in Mathildedal",
     staysText: "Choose a boutique hotel, a characterful guesthouse or a private cottage. Staying overnight gives you time for a quiet morning, nearby nature and an unhurried dinner.",
     food: "Local food and cafés",
@@ -74,6 +76,7 @@ const copy = {
     eyebrow: "ARCHIPIÉLAGO DEL SUR · SALO",
     intro: "Casas históricas de color rojo, el mar cercano, senderos forestales y pequeños negocios locales invitan a bajar el ritmo y quedarse un poco más. Diseña tu viaje combinando alojamiento, gastronomía, naturaleza y cultura del pueblo.",
     plan: "Descubrir servicios",
+    planner: "Planifica tu visita",
     stays: "Alojamiento en Mathildedal",
     staysText: "Elige un hotel boutique, una casa de huéspedes con carácter o una cabaña privada. Pasar la noche permite disfrutar de una mañana tranquila, la naturaleza cercana y una cena sin prisas.",
     food: "Sabores locales",
@@ -169,6 +172,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#palvelut" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">{c.plan}<ArrowDown className="h-4 w-4" /></a>
             <a href="https://visitmathildedal.fi/fi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3.5 text-sm font-bold text-white">{c.official}<ArrowUpRight className="h-4 w-4" /></a>
+            <a href={`/${locale}/mathildedal/suunnittele`} className="inline-flex items-center gap-2 rounded-full border border-gold-300/70 bg-gold-300/10 px-6 py-3.5 text-sm font-bold text-white hover:bg-gold-300/20">{c.planner}<ArrowRight className="h-4 w-4" /></a>
           </div>
         </div>
       </section>
