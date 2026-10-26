@@ -31,7 +31,7 @@ const categories = {
       { name: "Bistro Bruket", url: "https://mathildedal.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/bruket_tila.jpg?itok=yL7mEIcZ", credit: "Visit Mathildedal" },
       { name: "Café Mathildedal", url: "https://mathildedal.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/123sv_vp23710.jpg?itok=urTug-um", credit: "Visit Mathildedal" },
       { name: "Metsäravintola", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/metsaravintola.jpg?itok=C0O4bfsi", credit: "Visit Mathildedal" },
-      { name: "Viettelysten Vaunu", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "", credit: "Photo pending verification" },
+      { name: "Viettelysten Vaunu", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/viettelysten-vaunu-ulkokuva1.jpg?itok=6Nlo_ujs", credit: "Visit Mathildedal — official ice cream kiosk photo" },
       { name: "Meri-Teijo Golf café and pizzeria", url: "https://meriteijogolf.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
       { name: "Terho Hills", url: "https://www.ravintolaterho.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/terhohills.jpeg?itok=2zEVsfuL", credit: "Visit Mathildedal — Terho Hills interior" },
     ],
@@ -60,7 +60,7 @@ const categories = {
     providers: [
       { name: "Mathildedal Ironworks", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
       { name: "Mathildedal Summer Theatre / Teatteri ProVinssi", url: "https://www.teatteriprovinssi.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/mathildedal-katsomo.jpg?itok=IDFAL0tW", credit: "Visit Mathildedal — official theatre photo" },
-      { name: "Visit Mathildedal events", url: "https://visitmathildedal.fi/fi/tapahtumat", image: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal" },
+      { name: "Visit Mathildedal events", url: "https://visitmathildedal.fi/fi/tapahtumat", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
     ],
   },
   ostokset: {
@@ -77,7 +77,7 @@ const categories = {
       { name: "Vinttipuoti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/psx_20221106_095253_2.jpg?itok=Yc7PqUf-", credit: "Visit Mathildedal — official Vinttipuoti interior photo" },
       { name: "Lähiruoka Puhti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://mail.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/puhti-sisakuva.jpg?itok=pR18qWud", credit: "Visit Mathildedal — official local food shop photo" },
       { name: "Matildan kesäkauppa", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/kesakauppa.png?itok=5_Dxm8dm", credit: "Visit Mathildedal — official summer shop product collage" },
-      { name: "Dock Helsinki / Piironki", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://mail.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/Vierasvenelaituri%20ilta%20juhannus%204317%202.jpg?itok=GeAKZHqp", credit: "Visit Mathildedal — marina context image" },
+      { name: "Dock Helsinki / Piironki", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/kesakauppa.png?itok=5_Dxm8dm", credit: "Visit Mathildedal — official summer shop product collage" },
     ],
   },
   tapahtumat: {
@@ -86,7 +86,7 @@ const categories = {
     es: { title: "Eventos en Mathildedal", description: "Consulta conciertos, espectáculos y actividades de temporada en Mathildedal a través de los organizadores oficiales.", intro: "Mathildedal ofrece actividades durante todo el año. Confirma las fechas, entradas y posibles cambios en la web del organizador." },
     providers: [
       { name: "Visit Mathildedal event calendar", url: "https://visitmathildedal.fi/fi/tapahtumat", image: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal" },
-      { name: "Mathildedal Ironworks events", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Hotel Mathildedal" },
+      { name: "Mathildedal Ironworks events", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
     ],
   },
 } as const;
