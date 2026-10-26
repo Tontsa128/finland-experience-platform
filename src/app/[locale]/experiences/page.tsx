@@ -12,8 +12,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const copy = locale === "fi"
     ? { title: "Elämykset Salossa | Mathildedal, Teijo & Särkisalo", description: "Löydä Salon alueen luonto-, sauna-, saaristo-, maatila-, ruoka-, kulttuuri- ja aktiivielämykset kartalta." }
     : locale === "es"
-      ? { title: "Experiencias en Salo | Mathildedal, Teijo y Särkisalo", description: "Descubre naturaleza, sauna, archipiélago, granjas, gastronomía, cultura y actividades en el sur de Salo." }
-      : { title: "Experiences in Salo | Mathildedal, Teijo & Särkisalo", description: "Discover nature, sauna, archipelago, farm, food, culture and active experiences around Salo." };
+      ? { title: "Experiencias en Salo | Mathildedal, Teijo y Särkisalo", description: "Descubre la naturaleza, las saunas, el archipiélago, las granjas, la gastronomía, la cultura y las actividades de la región de Salo." }
+      : { title: "Experiences in Salo | Mathildedal, Teijo & Särkisalo", description: "Discover nature, sauna, archipelago, farm visits, local food, culture and outdoor activities around Salo." };
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "experiences" });
 }
 
