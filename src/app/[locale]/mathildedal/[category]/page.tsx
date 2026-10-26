@@ -44,7 +44,7 @@ const categories = {
       { name: "Teijo Nature Centre / Natura Viva", url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, credit: "Natura Viva" },
       { name: "Mathildedalin Keskuspuisto", url: "https://mathildedalinkeskuspuisto.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal — directory image" },
       { name: "Meri-Teijo Bike Park", url: "https://www.meriteijobikepark.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — destination context image" },
-      { name: "Meri-Teijo Golf", url: "https://meriteijogolf.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — Teijo nature context image" },
+      { name: "Meri-Teijo Golf", url: "https://meriteijogolf.com/", image: "", credit: "No approved golf-course photo yet" },
       { name: "All Soul Mind – You Choose", url: "https://visitmathildedal.fi/fi/aktiviteetit", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
       { name: "Teijo National Park", url: "https://www.luontoon.fi/fi/kohteet/teijon-kansallispuisto", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library" },
       { name: "Chill Out Fishing", url: "https://chilloutfishing.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
@@ -69,7 +69,7 @@ const categories = {
     es: { title: "Tiendas, artesanía y diseño en Mathildedal", description: "Descubre pequeñas tiendas, artesanía local, ropa, diseño y regalos en Mathildedal.", intro: "Reserva tiempo para visitar las tiendas y descubrir productos de creadores locales. Los horarios pueden variar según la temporada y los eventos." },
     providers: [
       { name: "Ruukki Creative", url: "https://ruukkicreative.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
-      { name: "Ruukin Kehräämö", url: "https://ruukinkehraamo.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ", credit: "Visit Mathildedal — Ruukin Kehräämö product image" },
+      { name: "Ruukin Kehräämö", url: "https://ruukinkehraamo.fi/", image: "https://ruukinkehraamo.fi/cdn/shop/files/luonnonkosmetiikkalahjaideaalpakasta_a686a81b-bb43-4429-9ea0-983537de33e4.jpg?v=1752140817&width=2048", credit: "Ruukin Kehräämö — official natural cosmetics product image" },
       { name: "Aate Clothing", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
       { name: "Visit Mathildedal shopping guide", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal" },
       { name: "Kaarnalaiva", url: "https://kaarnalaiva.net/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
@@ -284,7 +284,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
           {category.providers.map((provider) => (
             <article key={provider.name} className="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm">
               <div className="relative h-56 bg-brand-100">
-                <Image src={provider.image} alt={provider.credit.includes("context image") ? "Mathildedalin kylämiljöö" : provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                {provider.image ? <Image src={provider.image} alt={provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-emerald-50 to-stone-100 p-6 text-center"><div><p className="font-semibold text-brand-900">{locale === "fi" ? "Golfkentän kuva tarkistetaan" : locale === "es" ? "Foto del campo de golf pendiente de verificar" : "Golf course photo pending verification"}</p><p className="mt-2 text-sm text-slate-600">{locale === "fi" ? "Emme näytä väärää kuvaa." : locale === "es" ? "No mostramos una imagen incorrecta." : "We will not show a mismatched photo."}</p></div></div>}
               </div>
               <div className="p-5">
                 <h2 className="text-xl font-bold">{provider.name}</h2>
