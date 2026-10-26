@@ -208,6 +208,11 @@ const providerDescriptions: Record<string, Record<Locale, string>> = {
     en: "A local clothing boutique. Browse the current collection on the business's own website.",
     es: "Una boutique de ropa local. Descubre la colección actual en la web de la tienda.",
   },
+  "Hyvinvoinnin kotistudio": {
+    fi: "Äänimaljarentoutusta ja yksilöllisiä hyvinvointihoitoja. Tarkista palvelut ja varausmahdollisuudet suoraan järjestäjältä.",
+    en: "Sound-bowl relaxation and individual wellbeing sessions. Check services and booking options directly with the provider.",
+    es: "Relajación con cuencos sonoros y sesiones individuales de bienestar. Consulta los servicios y las reservas directamente con el proveedor.",
+  },
   "Viettelysten Vaunu": { fi: "Jäätelö- ja herkkuhetki Mathildedalin vierailun lomaan. Tarkista kauden aukiolo virallisesta matkailuoppaasta.", en: "An ice-cream and treat stop during a Mathildedal visit. Check seasonal opening information in the official guide.", es: "Una parada para tomar helado y algo dulce durante la visita. Consulta el horario de temporada en la guía oficial." },
   "Meri-Teijo Golf café and pizzeria": { fi: "Golfkeskuksen kahvila ja kausittainen pizzeriatarjonta. Tarkista palvelut ja aukiolo golfkeskukselta.", en: "A golf-club café and seasonal pizzeria. Confirm current services and opening hours with the club.", es: "Cafetería del club de golf y pizzería de temporada. Confirma los servicios y horarios con el club." },
   "Terho Hills": { fi: "Teijo Ski & Action Parkin yhteydessä mainittu ruokailukohde; varmista kausipalvelut suoraan toimijalta.", en: "A dining option listed with Teijo Ski & Action Park; confirm seasonal services directly with the operator.", es: "Un lugar para comer asociado a Teijo Ski & Action Park; confirma los servicios de temporada con el operador." },
