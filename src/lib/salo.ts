@@ -20,6 +20,7 @@ export type SaloEvent = {
   location: string;
   description: Record<Locale, string>;
   url: string;
+  image?: string;
   category: "autumn" | "christmas" | "new-year" | "culture";
 };
 
@@ -708,7 +709,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Ambiente navideño, artesanos, productores locales y tiendas del pueblo.",
       en: "Christmas atmosphere, local makers, producers and village shops.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://tapahtumat.salo.fi/mathildedalin-joulumarkkinat-5/",
     category: "christmas",
   },
   {
@@ -721,7 +722,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Segunda jornada del mercado navideño en Mathildedal.",
       en: "Second Christmas Market day in Mathildedal.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://tapahtumat.salo.fi/mathildedalin-joulumarkkinat-5/",
     category: "christmas",
   },
   {
@@ -735,7 +736,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Mercado navideño de fin de semana en Teijon Masuuni.",
       en: "A weekend Christmas market at Teijon Masuuni.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://tapahtumat.salo.fi/teijon-masuunin-joulumarkkinat-5/",
     category: "christmas",
   },
   {
@@ -763,7 +764,7 @@ export const saloEvents: SaloEvent[] = [
       es: "Mercado navideño con ambiente tradicional en Rikalanmäki.",
       en: "A cosy traditional Christmas market at Rikalanmäki.",
     },
-    url: "https://visitsalo.fi/joulusalo/",
+    url: "https://tapahtumat.salo.fi/rikalanmaen-joulumyyjaiset-2026/",
     category: "christmas",
   },
   {
@@ -804,5 +805,32 @@ export const saloEvents: SaloEvent[] = [
     },
     url: "https://mathildanmarina.fi/tulevat-tapahtumat/",
     category: "new-year",
+  },,
+
+  {
+    id: "salon-joulukulkue",
+    start: "2026-11-29",
+    title: { fi: "Salon joulukulkue ja Hyvänmielentori", es: "Desfile navideño y mercado solidario de Salo", en: "Salo Christmas Parade & Goodwill Market" },
+    location: "Salon tori",
+    description: {
+      fi: "Salon joulukauden avaus torilla. Maksuton ja esteetön Hyvänmielentori on avoinna klo 12–16; järjestäjän ohjelma täydentyy lähempänä tapahtumaa.",
+      es: "Apertura de la temporada navideña en la plaza de Salo. El mercado solidario es gratuito y accesible, de 12:00 a 16:00; el programa se actualizará.",
+      en: "Salo's Christmas season opening in the market square. The free, accessible Goodwill Market runs 12:00–16:00; the organizer will update the programme."
+    },
+    url: "https://tapahtumat.salo.fi/salon-joulukulkue-ja-hyvanmielentori/",
+    category: "christmas"
+  },
+  {
+    id: "wiurila-avoimet-pikkujoulut",
+    start: "2026-12-04",
+    title: { fi: "Avoimet pikkujoulut Wiurilassa", es: "Fiesta navideña en Wiurila", en: "Christmas Party at Wiurila" },
+    location: "Wiurilan kartano, Salo",
+    description: {
+      fi: "Wiurilan avoin pikkujoulu-ilta sisältää kolmen ruokalajin illallisen, ohjelmaa ja livemusiikkia. Tarkista varaus- ja hintatiedot järjestäjältä.",
+      es: "Velada navideña abierta en Wiurila con cena de tres platos, programa y música en directo. Consulta las reservas y el precio con el organizador.",
+      en: "An open Christmas party at Wiurila with a three-course dinner, entertainment and live music. Check booking and pricing details with the organizer."
+    },
+    url: "https://tapahtumat.salo.fi/avoimet-pikkujoulut-wiurilassa/",
+    category: "christmas"
   },
 ];
