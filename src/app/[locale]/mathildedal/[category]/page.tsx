@@ -70,7 +70,7 @@ const categories = {
     providers: [
       { name: "Ruukki Creative", url: "https://ruukkicreative.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/tyohuone.jpg?itok=shPoTuHn", credit: "Visit Mathildedal — official creative studio photo" },
       { name: "Ruukin Kehräämö", url: "https://ruukinkehraamo.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ", credit: "Visit Mathildedal — official alpaca knitwear photo" },
-      { name: "Aate Clothing", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
+      { name: "Aate Clothing", url: "https://aateclothing.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/myymalavaaka.jpg?itok=U0j0U7-1", credit: "Visit Mathildedal — official clothing shop photo" },
       { name: "Visit Mathildedal shopping guide", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal" },
       { name: "Kaarnalaiva", url: "https://kaarnalaiva.net/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/kaarnalaivanettisivuille-1-uai-1032x688.jpg?itok=KAsstQNx", credit: "Visit Mathildedal — official artisan workshop photo" },
       { name: "Kyläpanimo Beer Shop", url: "https://www.kylapanimo.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/panimo-pienpanimo-mathildedalin-kylapanimo-logo-visitmathildedal.jpg?itok=j2o_nrRG", credit: "Visit Mathildedal — official brewery logo" },
