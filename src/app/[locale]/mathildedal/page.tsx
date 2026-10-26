@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, BedDouble, CalendarDays, Coffee, Compass, Palette, ShoppingBag, Waves, Wind } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, BedDouble, CalendarDays, Coffee, Compass, Palette, ShoppingBag } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
@@ -103,20 +102,20 @@ const copy = {
 } as const;
 
 const providers = [
-  { name: "Hotel Mathildedal", category: "stay", url: "https://mathildedal.fi/", image: "https://cdn-datahub.visitfinland.com/images/67490c50-bc54-11ef-9fcc-d37cec752366.jpeg?s=1280", credit: "Visit Salo / Visit Finland DataHub" },
-  { name: "Matri House", category: "stay", url: "https://matrihouse.fi/", image: "https://cdn-datahub.visitfinland.com/images/532d5770-1b9a-11f1-b3a4-6d11235fc921.jpeg?s=1280", credit: "Visit Salo / Visit Finland DataHub" },
-  { name: "Mathildan Marina", category: "stay", url: "https://mathildanmarina.fi/", image: "https://cdn-datahub.visitfinland.com/images/e6b2c520-c1cf-11ed-8fb6-cd05a147400e.jpeg?s=1280", credit: "Visit Salo / Visit Finland DataHub" },
-  { name: "Matilda Villas", category: "stay", url: "https://matildavillas.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library" },
-  { name: "Meri-Ruukki Holiday Village", category: "stay", url: "https://meri-ruukki.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
-  { name: "Kyläravintola Terho", category: "food", url: "https://www.ravintolaterho.fi/", image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kyl%C3%A4panimo-laatikko-web.jpg", credit: "Visit Salo" },
-  { name: "Mathildan Marina Restaurant", category: "food", url: "https://mathildanmarina.fi/ravintola/", image: "https://cdn-datahub.visitfinland.com/images/e6b2c520-c1cf-11ed-8fb6-cd05a147400e.jpeg?s=1280", credit: "Mathildan Marina / Visit Salo DataHub" },
-  { name: "Bistro Bruket", category: "food", url: "https://mathildedal.fi/", image: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal" },
-  { name: "Café Mathildedal", category: "food", url: "https://mathildedal.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
+  { name: "Hotel Mathildedal", category: "stay", url: "https://mathildedal.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/mathildedal_131-copylowres.jpg?itok=blmtNtmc", credit: "Visit Mathildedal" },
+  { name: "Matri House", category: "stay", url: "https://matrihouse.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/matrihouse_mathildedal_web.jpg?itok=hgOKNF9U", credit: "Visit Mathildedal" },
+  { name: "Mathildan Marina", category: "stay", url: "https://mathildanmarina.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/terassi%20tyt%C3%B6t%20ruoka%206329.jpg?itok=KjXz8Y_x", credit: "Visit Mathildedal" },
+  { name: "Matilda Villas", category: "stay", url: "https://matildavillas.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/MatildaVillas120.jpg?itok=-2qQvnhX", credit: "Visit Mathildedal" },
+  { name: "Meri-Ruukki Holiday Village", category: "stay", url: "https://meri-ruukki.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/oleskelutila.jpg?itok=hIXkNyVI", credit: "Visit Mathildedal" },
+  { name: "Kyläravintola Terho", category: "food", url: "https://www.ravintolaterho.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/visit-matilda_9-uai-1032x688.jpg?itok=fNisvaPC", credit: "Visit Mathildedal" },
+  { name: "Mathildan Marina Restaurant", category: "food", url: "https://mathildanmarina.fi/ravintola/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/terassi%20tyt%C3%B6t%20ruoka%206329.jpg?itok=KjXz8Y_x", credit: "Visit Mathildedal" },
+  { name: "Bistro Bruket", category: "food", url: "https://www.bistrobruket.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/bruket_tila.jpg?itok=yL7mEIcZ", credit: "Visit Mathildedal" },
+  { name: "Café Mathildedal", category: "food", url: "https://mathildedal.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/123sv_vp23710.jpg?itok=urTug-um", credit: "Visit Mathildedal" },
   { name: "Teijo Nature Centre / Natura Viva", category: "activity", url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, credit: "Natura Viva" },
-  { name: "Mathildedalin Keskuspuisto", category: "activity", url: "https://mathildedalinkeskuspuisto.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
+  { name: "Mathildedalin Keskuspuisto", category: "activity", url: "https://mathildedalinkeskuspuisto.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal" },
   { name: "Meri-Teijo Bike Park", category: "activity", url: "https://www.meriteijobikepark.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library" },
-  { name: "Meri-Teijo Golf", category: "activity", url: "https://meriteijogolf.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library" },
-  { name: "Mathildedal Ironworks", category: "culture", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
+  { name: "Meri-Teijo Golf", category: "activity", url: "https://meriteijogolf.com/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
+  { name: "Mathildedal Ironworks", category: "culture", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Photo: Finland Experience photo library" },
   { name: "Mathildedal Summer Theatre / Teatteri ProVinssi", category: "culture", url: "https://www.teatteriprovinssi.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library" },
   { name: "Ruukki Creative", category: "shop", url: "https://ruukkicreative.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
   { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
