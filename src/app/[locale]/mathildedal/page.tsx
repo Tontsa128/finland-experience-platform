@@ -113,13 +113,13 @@ const providers = [
   { name: "Café Mathildedal", category: "food", url: "https://mathildedal.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/123sv_vp23710.jpg?itok=urTug-um", credit: "Visit Mathildedal" },
   { name: "Teijo Nature Centre / Natura Viva", category: "activity", url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, credit: "Natura Viva" },
   { name: "Mathildedalin Keskuspuisto", category: "activity", url: "https://mathildedalinkeskuspuisto.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal" },
-  { name: "Meri-Teijo Bike Park", category: "activity", url: "https://www.meriteijobikepark.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library" },
+  { name: "Meri-Teijo Bike Park", category: "activity", url: "https://www.meriteijobikepark.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — destination context image" },
   { name: "Meri-Teijo Golf", category: "activity", url: "https://meriteijogolf.com/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
-  { name: "Mathildedal Ironworks", category: "culture", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Photo: Finland Experience photo library" },
-  { name: "Mathildedal Summer Theatre / Teatteri ProVinssi", category: "culture", url: "https://www.teatteriprovinssi.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library" },
-  { name: "Ruukki Creative", category: "shop", url: "https://ruukkicreative.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
-  { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
-  { name: "Aate Clothing", category: "shop", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
+  { name: "Mathildedal Ironworks", category: "culture", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
+  { name: "Mathildedal Summer Theatre / Teatteri ProVinssi", category: "culture", url: "https://www.teatteriprovinssi.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
+  { name: "Ruukki Creative", category: "shop", url: "https://ruukkicreative.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
+  { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
+  { name: "Aate Clothing", category: "shop", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
 ] as const;
 
 
@@ -214,7 +214,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
                   {items.map((provider) => (
                     <article key={provider.name} className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-brand-100">
                       <div className="relative h-52 bg-brand-100">
-                        <Image src={provider.image} alt={provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                        <Image src={provider.image} alt={provider.credit.includes("context image") ? "Mathildedalin kylämiljöö" : provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                       </div>
                       <div className="p-5">
                         <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">{categoryLabel(provider.category)}</p>
