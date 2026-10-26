@@ -161,6 +161,27 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const [active, setActive] = useState(0);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
+  const controls = {
+    fi: {
+      previous: "Edellinen dia",
+      next: "Seuraava dia",
+      goToSlide: (index: number) => `Siirry diaan ${index + 1}`,
+      imageCredit: "Kuva",
+    },
+    es: {
+      previous: "Diapositiva anterior",
+      next: "Diapositiva siguiente",
+      goToSlide: (index: number) => `Ir a la diapositiva ${index + 1}`,
+      imageCredit: "Foto",
+    },
+    en: {
+      previous: "Previous slide",
+      next: "Next slide",
+      goToSlide: (index: number) => `Go to slide ${index + 1}`,
+      imageCredit: "Photo",
+    },
+  }[locale];
+
   const cmsSlides = (settings?.homepageSlides ?? [])
     .filter((item) => {
       const localized = item.copy?.[locale];
@@ -291,7 +312,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           ) : null}
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
-            <button type="button" aria-label="Edellinen dia" onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50">
+            <button type="button" aria-label={controls.previous} onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50">
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
             <div className="flex max-w-[120px] items-center justify-center gap-1.5 overflow-hidden sm:max-w-none">
@@ -299,14 +320,14 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
                 <button
                   key={item.key}
                   type="button"
-                  aria-label={`Siirry diaan ${index + 1}`}
+                  aria-label={controls.goToSlide(index)}
                   aria-current={index === active ? "true" : undefined}
                   onClick={() => setActive(index)}
                   className={`h-2.5 min-w-2.5 rounded-full transition-all ${index === active ? "w-8 bg-brand-800" : "w-2.5 bg-brand-200 hover:bg-brand-300"}`}
                 />
               ))}
             </div>
-            <button type="button" aria-label="Seuraava dia" onClick={() => setActive((current) => (current + 1) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50">
+            <button type="button" aria-label={controls.next} onClick={() => setActive((current) => (current + 1) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50">
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
@@ -316,9 +337,9 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       {slide.credit ? (
         <div className="absolute bottom-[104px] right-3 z-20 max-w-[75%] rounded-full bg-black/45 px-3 py-1.5 text-[10px] text-white/85 backdrop-blur-sm sm:bottom-[120px] sm:right-6">
           {slide.creditUrl ? (
-            <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">Kuva: {slide.credit}</a>
+            <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">{controls.imageCredit}: {slide.credit}</a>
           ) : (
-            <>Kuva: {slide.credit}</>
+            <>{controls.imageCredit}: {slide.credit}</>
           )}
         </div>
       ) : null}
