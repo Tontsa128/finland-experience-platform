@@ -14,10 +14,10 @@ const copy = {
     direct: "Tutustu palveluntarjoajiin",
     note: "Finland Experience ohjaa sinut suoraan palveluntarjoajan sivulle. Tarkista hinnat, aukioloajat ja saatavuus aina toimijalta.",
     plans: [
-      ["Rauhallinen viikonloppu", "Majoitu kylässä, nauti aamukahvi, kävele ruukkimiljöössä ja päätä päivä illalliseen.", "Majoitus + ruoka + kulttuuri", "/fi/mathildedal/majoitus", "Majoitus", BedDouble],
-      ["Luonto ja meri", "Aloita metsästä, jatka järvelle tai merelle ja päätä päivä saunaan.", "Luonto + tekeminen + sauna", "/fi/mathildedal/tekemista", "Tekemistä", Compass],
-      ["Ruoka ja kyläpäivä", "Kahvi ja leivonnainen, putiikit, paikalliset maut ja illalla kylän tunnelmaa.", "Ruoka + ostokset + kulttuuri", "/fi/mathildedal/ruoka", "Ruoka", Coffee],
-      ["Kulttuuria ja designia", "Tutustu historialliseen ruukkikylään, paikallisiin tekijöihin ja putiikkeihin.", "Kulttuuri + ostokset", "/fi/mathildedal/ostokset", "Ostokset", ShoppingBag],
+      ["Rauhallinen viikonloppu", "Majoitu kylässä, nauti aamukahvi, kävele ruukkimiljöössä ja päätä päivä illalliseen.", "Majoitus + ruoka + kulttuuri", "/mathildedal/majoitus", "Majoitus", BedDouble],
+      ["Luonto ja meri", "Aloita metsästä, jatka järvelle tai merelle ja päätä päivä saunaan.", "Luonto + tekeminen + sauna", "/mathildedal/tekemista", "Tekemistä", Compass],
+      ["Ruoka ja kyläpäivä", "Kahvi ja leivonnainen, putiikit, paikalliset maut ja illalla kylän tunnelmaa.", "Ruoka + ostokset + kulttuuri", "/mathildedal/ruoka", "Ruoka", Coffee],
+      ["Kulttuuria ja designia", "Tutustu historialliseen ruukkikylään, paikallisiin tekijöihin ja putiikkeihin.", "Kulttuuri + ostokset", "/mathildedal/ostokset", "Ostokset", ShoppingBag],
     ],
   },
   en: {
@@ -29,10 +29,10 @@ const copy = {
     direct: "Explore local providers",
     note: "Finland Experience sends you directly to the provider. Always confirm prices, opening hours and availability with the operator.",
     plans: [
-      ["A slow weekend", "Stay in the village, enjoy coffee, wander the ironworks setting and finish the day with dinner.", "Stay + food + culture", "/en/mathildedal/majoitus", "Accommodation", BedDouble],
-      ["Nature and the sea", "Start in the forest, continue to the lake or coast and finish with a sauna.", "Nature + activities + sauna", "/en/mathildedal/tekemista", "Activities", Compass],
-      ["Food and village life", "Coffee and pastries, independent shops, local flavours and an evening in the village.", "Food + shopping + culture", "/en/mathildedal/ruoka", "Food", Coffee],
-      ["Culture and design", "Explore the historic ironworks village, local makers and independent shops.", "Culture + shopping", "/en/mathildedal/ostokset", "Shopping", ShoppingBag],
+      ["A slow weekend", "Stay in the village, enjoy coffee, wander the ironworks setting and finish the day with dinner.", "Stay + food + culture", "/mathildedal/majoitus", "Accommodation", BedDouble],
+      ["Nature and the sea", "Start in the forest, continue to the lake or coast and finish with a sauna.", "Nature + activities + sauna", "/mathildedal/tekemista", "Activities", Compass],
+      ["Food and village life", "Coffee and pastries, independent shops, local flavours and an evening in the village.", "Food + shopping + culture", "/mathildedal/ruoka", "Food", Coffee],
+      ["Culture and design", "Explore the historic ironworks village, local makers and independent shops.", "Culture + shopping", "/mathildedal/ostokset", "Shopping", ShoppingBag],
     ],
   },
   es: {
@@ -44,10 +44,10 @@ const copy = {
     direct: "Descubrir proveedores locales",
     note: "Finland Experience te dirige directamente al proveedor. Confirma siempre precios, horarios y disponibilidad con el establecimiento.",
     plans: [
-      ["Un fin de semana tranquilo", "Alójate en el pueblo, disfruta de un café, pasea por la antigua ferrería y termina con una cena.", "Alojamiento + gastronomía + cultura", "/es/mathildedal/majoitus", "Alojamiento", BedDouble],
-      ["Naturaleza y mar", "Empieza en el bosque, continúa junto al lago o la costa y termina con una sauna.", "Naturaleza + actividades + sauna", "/es/mathildedal/tekemista", "Actividades", Compass],
-      ["Gastronomía y vida local", "Café y repostería, tiendas independientes, sabores locales y ambiente de pueblo.", "Gastronomía + compras + cultura", "/es/mathildedal/ruoka", "Gastronomía", Coffee],
-      ["Cultura y diseño", "Descubre la antigua ferrería, los creadores locales y las pequeñas tiendas.", "Cultura + compras", "/es/mathildedal/ostokset", "Compras", ShoppingBag],
+      ["Un fin de semana tranquilo", "Alójate en el pueblo, disfruta de un café, pasea por la antigua ferrería y termina con una cena.", "Alojamiento + gastronomía + cultura", "/mathildedal/majoitus", "Alojamiento", BedDouble],
+      ["Naturaleza y mar", "Empieza en el bosque, continúa junto al lago o la costa y termina con una sauna.", "Naturaleza + actividades + sauna", "/mathildedal/tekemista", "Actividades", Compass],
+      ["Gastronomía y vida local", "Café y repostería, tiendas independientes, sabores locales y ambiente de pueblo.", "Gastronomía + compras + cultura", "/mathildedal/ruoka", "Gastronomía", Coffee],
+      ["Cultura y diseño", "Descubre la antigua ferrería, los creadores locales y las pequeñas tiendas.", "Cultura + compras", "/mathildedal/ostokset", "Compras", ShoppingBag],
     ],
   },
 } as const;
@@ -83,7 +83,7 @@ export default async function MathildedalPlanner({ params }: { params: Promise<{
               <h2 className="mt-7 font-display text-2xl font-bold text-brand-950">{title}</h2>
               <p className="mt-3 leading-7 text-slate-600">{text}</p>
               <p className="mt-5 text-sm font-semibold text-brand-600">{tags}</p>
-              <Link href={href} className="mt-7 inline-flex items-center gap-2 font-bold text-brand-800 group-hover:gap-3">
+              <Link href={`/${locale}${href}`} className="mt-7 inline-flex items-center gap-2 font-bold text-brand-800 group-hover:gap-3">
                 {c.direct} <ArrowRight size={18} aria-hidden="true" />
               </Link>
             </article>
