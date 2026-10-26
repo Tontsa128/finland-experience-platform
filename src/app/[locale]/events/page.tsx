@@ -63,7 +63,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
         naantaliText: "Naantalin tapahtumat päivittyvät Visit Naantalin kalenteriin. Tarkista aina järjestäjän oma sivu ennen matkaa.",
         naantaliCta: "Visit Naantalin tapahtumat",
         verifyTitle: "Tarkista ajantasainen kalenteri ennen matkaa",
-        verifyText: "Finland Experience Platform toimii inspiraatio- ja löytöpalveluna. Tapahtuman järjestäjä vastaa tapahtumasta, lipuista, varauksista ja maksuista.",
+        verifyText: "Finland Experience Platform on inspiraatio- ja löytöpalvelu. Järjestäjät vastaavat tapahtumista, lipuista, varauksista ja maksuista.",
         verifyCta: "Tutustu Naantalin kohteisiin",
       }
     : locale === "es"
