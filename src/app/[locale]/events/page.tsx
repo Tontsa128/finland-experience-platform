@@ -5,7 +5,8 @@ import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { saloEvents } from "@/lib/salo";
 import { naantaliEvents } from "@/lib/naantali";
-import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
+import { getEventImage } from "@/lib/event-images";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
 const heroImage = "https://cdn-datahub.visitfinland.com/images/2c7e7830-f614-11f0-ad78-29bd5b45e175.jpeg?s=1800";
 
@@ -36,7 +37,14 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
     .filter((event) => (event.end || event.start) >= today)
     .sort((a, b) => a.start.localeCompare(b.start));
 
-  const eventSchema = events.slice(0, 40).map((event) => ({
+  const eventsWithImages = await Promise.all(
+    events.map(async (event) => ({
+      event,
+      image: await getEventImage(event.url),
+    }))
+  );
+
+  const eventSchema = eventsWithImages.slice(0, 40).map(({ event, image }) => ({
     "@type": "Event",
     name: event.title[locale] || event.title.en || event.title.fi,
     startDate: event.start,
@@ -44,6 +52,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
     eventStatus: "https://schema.org/EventScheduled",
     location: { "@type": "Place", name: event.location, address: { "@type": "PostalAddress", addressCountry: "FI" } },
     url: event.url,
+    ...(image ? { image } : {}),
   }));
 
   const copy = locale === "fi"
@@ -54,6 +63,8 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
         all: "Katso ajantasaiset tapahtumat",
         month: "Tapahtumat",
         provider: "Siirry järjestäjän sivulle",
+        imageAlt: "Tapahtuman kuva",
+        noImage: "Järjestäjän sivulla ei ole saatavilla tapahtumakuvaa",
         mathildedalTitle: "Syksy, joulu ja uusi vuosi",
         mathildedalText: "Mathildedalin oma tapahtumasivu päivittyy jatkuvasti. Sieltä löydät kylän pienempiä jooga-, sauna-, ravintola- ja kulttuuritapahtumia.",
         mathildedalCta: "Visit Mathildedalin tapahtumat",
@@ -72,6 +83,8 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
           all: "Ver eventos actualizados",
           month: "Eventos",
           provider: "Ir a la página del organizador",
+          imageAlt: "Imagen del evento",
+          noImage: "El organizador no ofrece una imagen del evento",
           mathildedalTitle: "Otoño, Navidad y Año Nuevo",
           mathildedalText: "La página de eventos de Mathildedal se actualiza con actividades de yoga, sauna, restaurantes y vida local.",
           mathildedalCta: "Eventos de Visit Mathildedal",
@@ -89,6 +102,8 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
           all: "See current events",
           month: "Events",
           provider: "Visit organizer",
+          imageAlt: "Event image",
+          noImage: "No event image is available from the organizer",
           mathildedalTitle: "Autumn, Christmas & New Year",
           mathildedalText: "Mathildedal's own event page is updated with smaller yoga, sauna, restaurant and village events.",
           mathildedalCta: "Visit Mathildedal events",
@@ -127,16 +142,26 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
           <CalendarDays className="hidden h-8 w-8 text-gold-500 sm:block" />
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-          {events.map((event) => (
-            <article key={event.id} className="rounded-[1.75rem] border border-slate-100 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
-              <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
-                <span>{formatDate(event.start, locale)}</span>
-                {event.end ? <><span>→</span><span>{formatDate(event.end, locale)}</span></> : null}
+          {eventsWithImages.map(({ event, image }) => (
+            <article key={event.id} className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
+              {image ? (
+                <div className="relative aspect-[16/9] w-full bg-slate-100">
+                  <Image src={image} alt={event.title[locale] || event.title.en || event.title.fi} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" unoptimized />
+                  <div className="absolute bottom-3 left-3 rounded-full bg-black/55 px-3 py-1 text-[10px] font-bold uppercase tracking-[.12em] text-white backdrop-blur-sm">{locale === "fi" ? "Järjestäjän kuva" : locale === "es" ? "Imagen del organizador" : "Organizer image"}</div>
+                </div>
+              ) : (
+                <div className="flex aspect-[16/9] items-center justify-center bg-slate-100 px-6 text-center text-sm text-slate-500">{copy.noImage}</div>
+              )}
+              <div className="p-6">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
+                  <span>{formatDate(event.start, locale)}</span>
+                  {event.end ? <><span>→</span><span>{formatDate(event.end, locale)}</span></> : null}
+                </div>
+                <h2 className="mt-3 font-display text-2xl font-bold text-brand-950">{event.title[locale] || event.title.en || event.title.fi}</h2>
+                <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-500"><MapPin className="h-4 w-4" />{event.location}</p>
+                <p className="mt-4 leading-7 text-slate-600">{event.description[locale] || event.description.en || event.description.fi}</p>
+                <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
               </div>
-              <h2 className="mt-3 font-display text-2xl font-bold text-brand-950">{event.title[locale] || event.title.en || event.title.fi}</h2>
-              <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-500"><MapPin className="h-4 w-4" />{event.location}</p>
-              <p className="mt-4 leading-7 text-slate-600">{event.description[locale] || event.description.en || event.description.fi}</p>
-              <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
             </article>
           ))}
         </div>
