@@ -19,6 +19,7 @@ export type NaantaliEvent = {
   location: string;
   description: Record<Locale, string>;
   url: string;
+  image?: string;
   category: "autumn" | "christmas" | "culture";
 };
 
@@ -509,5 +510,20 @@ export const naantaliEvents: NaantaliEvent[] = [
     },
     url: "https://visitnaantali.com/tapahtumakalenteri/",
     category: "christmas"
-  }
+  },
+
+  {
+    id: "naantali-spa-christmas-market",
+    start: "2026-11-28",
+    end: "2026-11-29",
+    title: { fi: "Naantalin Kylpylän joulumarkkinat", es: "Mercado navideño de Naantali Spa", en: "Naantali Spa Christmas Market" },
+    location: "Naantalin Kylpylän edusta",
+    description: {
+      fi: "Joulumarkkinat Naantalin Kylpylän edustalla lauantaina klo 11–17 ja sunnuntaina klo 11–15. Tapahtuma kuuluu Naantalin Jouluun; tarkista järjestäjän sivulta mahdolliset muutokset.",
+      es: "Mercado navideño frente a Naantali Spa: sábado de 11:00 a 17:00 y domingo de 11:00 a 15:00. Forma parte de la Navidad de Naantali; comprueba posibles cambios con el organizador.",
+      en: "Christmas market outside Naantali Spa, Saturday 11:00–17:00 and Sunday 11:00–15:00. Part of Naantali Christmas; check the organizer's page for updates."
+    },
+    url: "https://www.naantalispa.fi/muut/joulumarkkinat-myyjahaku/",
+    category: "christmas"
+  },
 ];
