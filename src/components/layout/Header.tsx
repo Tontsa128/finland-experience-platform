@@ -31,10 +31,10 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   const items = withSauna.some(([key]) => key === "ruralFinland") ? withSauna : [...withSauna, ["ruralFinland", "rural-finland"] as const];
   const labels = new Map(navigation.map((item) => [item.id, item.label]));
   const ui = locale === "fi"
-    ? { account: "Asiakastili", login: "Kirjaudu", close: "Sulje valikko", open: "Avaa valikko" }
+    ? { account: "Asiakastili", login: "Kirjaudu", close: "Sulje valikko", open: "Avaa valikko", language: "Kielen valinta" }
     : locale === "es"
-      ? { account: "Cuenta", login: "Iniciar sesión", close: "Cerrar menú", open: "Abrir menú" }
-      : { account: "Account", login: "Log in", close: "Close menu", open: "Open menu" };
+      ? { account: "Cuenta", login: "Iniciar sesión", close: "Cerrar menú", open: "Abrir menú", language: "Selector de idioma" }
+      : { account: "Account", login: "Log in", close: "Close menu", open: "Open menu", language: "Language selector" };
 
   const href = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value;
@@ -66,7 +66,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
         </Link>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-          <div className="flex shrink-0 items-center gap-0.5 rounded-full border border-slate-200 bg-slate-50 p-1 sm:gap-1" aria-label="Language selector">
+          <div className="flex shrink-0 items-center gap-0.5 rounded-full border border-slate-200 bg-slate-50 p-1 sm:gap-1" aria-label={ui.language}>
             <Globe className="mx-1 hidden h-4 w-4 text-slate-500 sm:block" aria-hidden="true" />
             {languageOptions.map(({ locale: targetLocale, label, flag }) => (
               <Link
