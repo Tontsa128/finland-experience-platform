@@ -122,6 +122,28 @@ const providers = [
   { name: "Aate Clothing", category: "shop", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library" },
 ] as const;
 
+
+const providerSummaries: Record<string, Record<Locale, string>> = {
+  "Hotel Mathildedal": { fi: "Persoonallinen majoitus historiallisessa ruukkimiljöössä.", en: "Characterful accommodation in the historic ironworks setting.", es: "Alojamiento con personalidad en el entorno histórico de la ferrería." },
+  "Matri House": { fi: "Paikallinen majoitusvaihtoehto rauhalliseen vierailuun.", en: "A local accommodation option for a relaxed visit.", es: "Una opción de alojamiento local para una visita tranquila." },
+  "Mathildan Marina": { fi: "Sataman äärellä sijaitseva majoitus- ja vierailukohde.", en: "A harbour-side place to stay and visit.", es: "Un lugar para alojarse y visitar junto al puerto." },
+  "Matilda Villas": { fi: "Omaa tilaa ja itsenäistä lomailua arvostavalle.", en: "Villa accommodation for an independent holiday.", es: "Villas para unas vacaciones independientes." },
+  "Meri-Ruukki Holiday Village": { fi: "Loma-asumista kylän ja lähiluonnon tuntumassa.", en: "Holiday accommodation near the village and nature.", es: "Alojamiento vacacional cerca del pueblo y la naturaleza." },
+  "Kyläravintola Terho": { fi: "Kyläravintola paikalliseen ruokailuhetkeen.", en: "A village restaurant for a local dining stop.", es: "Un restaurante de pueblo para disfrutar de la gastronomía local." },
+  "Mathildan Marina Restaurant": { fi: "Ruokailua Mathildedalin merellisessä satamaympäristössä.", en: "Dining in Mathildedal's maritime harbour setting.", es: "Comida en el entorno marítimo del puerto de Mathildedal." },
+  "Bistro Bruket": { fi: "Bistro-vaihtoehto historiallisessa ruukkikylässä.", en: "A bistro option in the historic ironworks village.", es: "Una opción de bistró en el pueblo histórico." },
+  "Café Mathildedal": { fi: "Kahvilapysähdys kyläkierroksen lomaan.", en: "A café stop during a village visit.", es: "Una parada para tomar café durante la visita al pueblo." },
+  "Teijo Nature Centre / Natura Viva": { fi: "Ulkoiluun ja luontoretkiin liittyviä palveluja Teijon alueella.", en: "Outdoor and nature-experience services in the Teijo area.", es: "Servicios para actividades al aire libre en la zona de Teijo." },
+  "Mathildedalin Keskuspuisto": { fi: "Kylän vapaa-ajan alue; tarkista aktiviteetit ja aukiolo omalta sivulta.", en: "A village leisure area; check activities and opening details on its own site.", es: "Una zona de ocio; consulta las actividades y horarios en su web." },
+  "Meri-Teijo Bike Park": { fi: "Maastopyöräilyä Teijon alueella; tarkista kausi ja reitit etukäteen.", en: "Mountain biking in the Teijo area; check season and trails in advance.", es: "Ciclismo de montaña en Teijo; consulta la temporada y los recorridos." },
+  "Meri-Teijo Golf": { fi: "Golfkohde Teijon alueella; varmista kentän tiedot suoraan toimijalta.", en: "A golf destination in Teijo; confirm course details with the operator.", es: "Un destino de golf en Teijo; confirma los detalles con el operador." },
+  "Mathildedal Ironworks": { fi: "Historiallinen ruukkimiljöö ja kylän teollinen perintö.", en: "Historic ironworks surroundings and the village's industrial heritage.", es: "La antigua ferrería y el patrimonio industrial del pueblo." },
+  "Mathildedal Summer Theatre / Teatteri ProVinssi": { fi: "Tarkista esitykset ja liput teatterin omilta sivuilta.", en: "Check performances and tickets on the theatre's own website.", es: "Consulta las funciones y entradas en la web del teatro." },
+  "Ruukki Creative": { fi: "Luovia paikallisia toimijoita ja tuotteita.", en: "Creative local makers and products.", es: "Creadores y productos creativos locales." },
+  "Ruukin Kehräämö": { fi: "Paikallinen ostoskohde käsitöille ja designlöydöille.", en: "A local shopping stop for crafts and design finds.", es: "Una tienda local para encontrar artesanía y diseño." },
+  "Aate Clothing": { fi: "Paikallinen vaateputiikki ja sen ajankohtainen valikoima.", en: "A local clothing boutique and its current collection.", es: "Una boutique de ropa local con su colección actual." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale = (rawLocale in copy ? rawLocale : "en") as Locale;
@@ -197,6 +219,8 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
                       <div className="p-5">
                         <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">{categoryLabel(provider.category)}</p>
                         <h4 className="mt-2 text-xl font-bold">{provider.name}</h4>
+                        <p className="mt-2 text-sm leading-6 text-slate-600">{providerSummaries[provider.name]?.[locale] ?? c.directoryText}</p>
+                        <p className="mt-3 text-xs text-slate-500">{locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la imagen" : "Image source"}: {provider.credit}</p>
                         <a href={provider.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:underline">{c.provider}<ArrowUpRight className="h-4 w-4" /></a>
                       </div>
                     </article>
