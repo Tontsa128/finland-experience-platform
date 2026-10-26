@@ -155,12 +155,12 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
       <section id="palvelut" className="container-narrow py-14 sm:py-20">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { icon: BedDouble, title: c.stays, text: c.staysText, href: "#majoitus", image: "https://cdn-datahub.visitfinland.com/images/67490c50-bc54-11ef-9fcc-d37cec752366.jpeg?s=1280" },
-            { icon: Coffee, title: c.food, text: c.foodText, href: "#ruoka", image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kyl%C3%A4panimo-laatikko-web.jpg" },
-            { icon: Compass, title: c.nature, text: c.natureText, href: "#tekemista", image: photoLibrary.naturaVivaTeijo },
-            { icon: Palette, title: c.culture, text: c.cultureText, href: "#kulttuuri", image: photoLibrary.mathildedalVillage },
-            { icon: ShoppingBag, title: c.shopping, text: c.shoppingText, href: "#ostokset", image: photoLibrary.mathildedalVillage },
-            { icon: CalendarDays, title: c.events, text: c.eventsText, href: "https://visitmathildedal.fi/fi/tapahtumat", image: photoLibrary.mathildedalChristmas },
+            { icon: BedDouble, title: c.stays, text: c.staysText, href: `/${locale}/mathildedal/majoitus`, image: "https://cdn-datahub.visitfinland.com/images/67490c50-bc54-11ef-9fcc-d37cec752366.jpeg?s=1280" },
+            { icon: Coffee, title: c.food, text: c.foodText, href: `/${locale}/mathildedal/ruoka`, image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kyl%C3%A4panimo-laatikko-web.jpg" },
+            { icon: Compass, title: c.nature, text: c.natureText, href: `/${locale}/mathildedal/tekemista`, image: photoLibrary.naturaVivaTeijo },
+            { icon: Palette, title: c.culture, text: c.cultureText, href: `/${locale}/mathildedal/kulttuuri`, image: photoLibrary.mathildedalVillage },
+            { icon: ShoppingBag, title: c.shopping, text: c.shoppingText, href: `/${locale}/mathildedal/ostokset`, image: photoLibrary.mathildedalVillage },
+            { icon: CalendarDays, title: c.events, text: c.eventsText, href: `/${locale}/mathildedal/tapahtumat`, image: photoLibrary.mathildedalChristmas },
           ].map(({ icon: Icon, title, text, href, image }) => (
             <a key={title} href={href} className="group overflow-hidden rounded-3xl border border-brand-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
               <div className="relative h-48 overflow-hidden bg-brand-50">
