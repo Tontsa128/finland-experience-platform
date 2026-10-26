@@ -15,7 +15,7 @@ export function NaantaliDirectory({ locale }: { locale: Locale }) {
     <section className="bg-brand-50 py-16 sm:py-24">
       <div className="container-narrow">
         <div className="mb-10 max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">Naantali · saaristo</p>
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{locale === "fi" ? "Naantali · saaristo" : locale === "es" ? "Naantali · archipiélago" : "Naantali · archipelago"}</p>
           <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">
             {locale === "fi" ? "Löydä Naantalin paikat ja palvelut" : locale === "es" ? "Descubre Naantali y sus proveedores" : "Discover Naantali and its providers"}
           </h2>
@@ -39,7 +39,7 @@ export function NaantaliDirectory({ locale }: { locale: Locale }) {
                 <p className="mt-3 leading-7 text-slate-600">{provider.description[locale]}</p>
                 {provider.price ? <div className="mt-4 flex gap-2 rounded-2xl bg-brand-50 p-3 text-sm text-brand-900"><Tag className="mt-0.5 h-4 w-4 shrink-0" /><span><strong>{l.price}:</strong> {provider.price}</span></div> : null}
                 <a href={provider.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{provider.url.includes("visitnaantali.com") ? l.guide : l.visit}<ArrowUpRight className="h-4 w-4" /></a>
-                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">Kuva: {provider.imageCredit}</p> : null}
+                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{locale === "fi" ? "Kuva" : locale === "es" ? "Foto" : "Photo"}: {provider.imageCredit}</p> : null}
               </div>
             </article>
           ))}
