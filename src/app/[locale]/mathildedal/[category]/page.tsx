@@ -270,6 +270,8 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
       "Kyläravintola Terho": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/kylaravintola-terho",
       "Bistro Bruket": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/bistro-bruket",
       "Café Mathildedal": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/cafe-mathildedal",
+      "Mathildedalin Keskuspuisto": "https://visitmathildedal.fi/fi/aktiviteetit/mathildedalin-keskuspuisto",
+      "Ruukin Kehräämö": "https://visitmathildedal.fi/fi/ostokset/ruukin-kehraamo",
     };
     if (officialListings[name]) return officialListings[name];
     if (name === "Visit Mathildedal event calendar" || name === "Visit Mathildedal events") {
