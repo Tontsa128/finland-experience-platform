@@ -265,12 +265,19 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
   const c = category[locale];
   const back = locale === "fi" ? "Takaisin Mathildedalin oppaaseen" : locale === "es" ? "Volver a la guía de Mathildedal" : "Back to the Mathildedal guide";
   const visit = locale === "fi" ? "Palveluntarjoajan sivuille" : locale === "es" ? "Visitar la web del proveedor" : "Visit provider website";
-  const providerUrl = (name: string, fallbackUrl: string) =>
-    name === "Visit Mathildedal event calendar" || name === "Visit Mathildedal events"
-      ? locale === "fi"
+  const providerUrl = (name: string, fallbackUrl: string) => {
+    if (name === "Visit Mathildedal event calendar" || name === "Visit Mathildedal events") {
+      return locale === "fi"
         ? "https://visitmathildedal.fi/fi/tapahtumat"
-        : "https://visitmathildedal.fi/en/events"
-      : fallbackUrl;
+        : "https://visitmathildedal.fi/en/events";
+    }
+    if (name === "Mathildedal Ironworks events") {
+      return locale === "fi"
+        ? "https://mathildedal.fi/tapahtumat/"
+        : "https://mathildedal.fi/en/events/";
+    }
+    return fallbackUrl;
+  };
 
   return (
     <main className="min-h-screen bg-white text-brand-950">
