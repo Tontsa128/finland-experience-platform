@@ -806,8 +806,7 @@ export const saloEvents: SaloEvent[] = [
     },
     url: "https://mathildanmarina.fi/tulevat-tapahtumat/",
     category: "new-year",
-  },,
-
+  },
   {
     id: "salon-joulukulkue",
     start: "2026-11-29",
@@ -833,8 +832,7 @@ export const saloEvents: SaloEvent[] = [
     },
     url: "https://tapahtumat.salo.fi/avoimet-pikkujoulut-wiurilassa/",
     category: "christmas"
-  },,
-
+  },
   {
     id: "nauru-pidentaa-iltaa",
     start: "2026-11-28",
