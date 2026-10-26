@@ -1,9 +1,10 @@
-import Image from "next/image";
+import { EventImageDisplay } from "@/components/events/EventImageDisplay";
 
 type Props = {
   sourceUrl: string;
   imageUrl?: string;
   alt: string;
+  locale: "fi" | "es" | "en";
 };
 
 function metaContent(html: string, key: string) {
@@ -67,29 +68,7 @@ async function getOrganizerImage(sourceUrl: string) {
   }
 }
 
-export async function EventImage({ sourceUrl, imageUrl: suppliedImageUrl, alt }: Props) {
+export async function EventImage({ sourceUrl, imageUrl: suppliedImageUrl, alt, locale }: Props) {
   const imageUrl = suppliedImageUrl || await getOrganizerImage(sourceUrl);
-  if (!imageUrl) {
-    return (
-      <div className="mb-5 flex aspect-[16/9] items-center justify-center rounded-[1.25rem] bg-brand-50 px-6 text-center text-sm text-brand-700">
-        Tapahtuman kuva tarkistetaan järjestäjältä
-      </div>
-    );
-  }
-
-  return (
-    <div className="relative mb-5 aspect-[16/9] overflow-hidden rounded-[1.25rem] bg-slate-100">
-      <Image
-        src={imageUrl}
-        alt={alt}
-        fill
-        sizes="(max-width: 768px) 100vw, 50vw"
-        className="object-cover"
-        unoptimized
-      />
-      <div className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-[.12em] text-white backdrop-blur-sm">
-        Järjestäjän kuva
-      </div>
-    </div>
-  );
+  return <EventImageDisplay imageUrl={imageUrl} alt={alt} locale={locale} />;
 }
