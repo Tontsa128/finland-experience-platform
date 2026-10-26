@@ -1,7 +1,7 @@
 {
   "common": {
     "siteName": "Finland Experience",
-    "tagline": "Suomen kesä, slow travel ja paikalliset majoitukset",
+    "tagline": "Suomen kesä, kiireetön matkailu ja paikalliset majoitukset",
     "bookNow": "Siirry palveluntarjoajalle",
     "learnMore": "Lue lisää",
     "viewAll": "Näytä kaikki",
@@ -22,7 +22,7 @@
     "plan": "Suunnittele matkasi",
     "cityBreaks": "Kaupunkilomat",
     "coastalFinland": "Rannikon Suomi",
-        "ruralFinland": "Maaseutu & saaristo",
+    "ruralFinland": "Maaseutu & saaristo",
     "blog": "Blogi",
     "contact": "Yhteystiedot",
     "admin": "Hallinta",
@@ -44,17 +44,17 @@
     "popularExperiences": "Tekemistä ja näkemistä",
     "popularExperiencesDesc": "Oikeita paikallisia elämyksiä: melontaa, pyöräilyä, saunaa ja saaristopäiviä",
     "uniqueStays": "Majoituksia persoonalla",
-    "uniqueStaysDesc": "Mökkejä, boutique-taloja, merenrantahuviloita ja glampingia",
+    "uniqueStaysDesc": "Mökkejä, boutique-majoituksia, merenrantahuviloita ja glamping-kohteita",
     "whyFinland": "Miksi Suomi?",
     "whyFinlandDesc": "Syitä rakastua pohjoismaiseen elämäntapaan",
     "testimonials": "Mitä vieraamme sanovat",
     "blog": "Matkainspiraatiota",
     "newsletter": "Saa matkainspiraatiota",
-    "newsletterDesc": "Vinkkejä, erikoistarjouksia ja revontulihälytyksiä suoraan sähköpostiisi."
+    "newsletterDesc": "Matkavinkkejä, erikoistarjouksia ja ajankohtaisia kohde-ehdotuksia suoraan sähköpostiisi."
   },
   "why": {
     "nature": {
-      "title": "Luonto ilman kiirettä",
+      "title": "Luontoa ilman kiirettä",
       "desc": "Metsää, merta, järviä ja polkuja, joihin tekee mieli jäädä pidemmäksi aikaa."
     },
     "lights": {
@@ -95,7 +95,7 @@
     "duration": "Kesto",
     "category": {
       "northern-lights": "Revontulet",
-      "husky": "Husky",
+      "husky": "Husky-ajelu",
       "sauna": "Sauna",
       "cruise": "Risteily",
       "hiking": "Vaellus",
@@ -104,7 +104,7 @@
     }
   },
   "booking": {
-    "title": "Palveluntarjoajan kautta",
+    "title": "Jatka palveluntarjoajan sivulle",
     "selectDates": "Valitse päivämäärät",
     "guests": "Henkilöt",
     "total": "Hinta",
@@ -114,7 +114,7 @@
   },
   "contact": {
     "title": "Ota yhteyttä",
-    "subtitle": "Autamme sinua suunnittelemaan täydellisen suomalaisen seikkailun",
+    "subtitle": "Autamme sinua löytämään juuri sinulle sopivan tavan kokea Suomi.",
     "name": "Nimi",
     "email": "Sähköposti",
     "message": "Viesti",
@@ -128,7 +128,7 @@
     "aboutText": "Erikoistumme aitoihin suomalaisiin elämyksiin espanjalaisille ja kansainvälisille matkailijoille.",
     "quickLinks": "Pikalinkit",
     "destinations": "Kohteet",
-    "legal": "Oikeudelliset",
+    "legal": "Tietosuoja ja ehdot",
     "privacy": "Tietosuojaseloste",
     "terms": "Käyttöehdot",
     "rights": "Kaikki oikeudet pidätetään."
