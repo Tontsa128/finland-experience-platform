@@ -10,7 +10,7 @@ const gallery = [
     image: photoLibrary.saunaWhisking,
     title: { fi: "Vihta ja löyly", es: "Vihta y löyly", en: "Whisking & löyly" },
     text: {
-      fi: "Perinteinen vihtominen kuuluu elävään saunakulttuuriin.",
+      fi: "Vihtominen on elävä osa suomalaista saunakulttuuria.",
       es: "La vihta forma parte de la cultura viva de la sauna finlandesa.",
       en: "Traditional whisking is part of Finland's living sauna culture.",
     },
@@ -32,7 +32,7 @@ const gallery = [
     image: photoLibrary.saunaCottage,
     title: { fi: "Mökki ja järvi", es: "Cabaña junto al lago", en: "Cottage by the lake" },
     text: {
-      fi: "Sauna ja mökki kuuluvat suomalaisessa kesässä usein samaan maisemaan.",
+      fi: "Suomalaisessa kesämaisemassa sauna ja mökki kuuluvat usein yhteen.",
       es: "En verano, la sauna y la cabaña suelen formar parte del mismo paisaje.",
       en: "In Finnish summer, sauna and cottage often belong to the same landscape.",
     },
@@ -54,7 +54,7 @@ const gallery = [
     image: photoLibrary.saunaBoat,
     title: { fi: "Saunalautta", es: "Sauna flotante", en: "Floating sauna" },
     text: {
-      fi: "Sauna ja vesi kohtaavat saunalautassa – suomalainen yhdistelmä parhaimmillaan.",
+      fi: "Saunalautassa yhdistyvät sauna ja vesi – suomalainen kesäkokemus parhaimmillaan.",
       es: "La sauna y el agua se unen en una sauna flotante.",
       en: "Sauna and water meet in a floating sauna.",
     },
@@ -65,7 +65,7 @@ const gallery = [
     image: photoLibrary.saunaBucketVasta,
     title: { fi: "Kiulu, kauha ja vihta", es: "Cubo, cucharón y vihta", en: "Bucket, ladle & vihta" },
     text: {
-      fi: "Vesi, kivet, löylykauha ja vihta ovat saunan pieniä mutta tärkeitä symboleja.",
+      fi: "Vesi, kiukaan kivet, löylykauha ja vihta ovat saunan pieniä mutta tärkeitä symboleja.",
       es: "Agua, piedras, cucharón y vihta son pequeños pero importantes símbolos de la sauna.",
       en: "Water, stones, ladle and vihta are small but important sauna symbols.",
     },
@@ -76,7 +76,7 @@ const gallery = [
     image: photoLibrary.saunaVasta,
     title: { fi: "Koivuvihta", es: "Vihta de abedul", en: "Birch vihta" },
     text: {
-      fi: "Koivuvihdalla ihoa voidaan kevyesti vastoa ja tuoda saunaan metsän tuoksua.",
+      fi: "Koivuvihtaa käytetään ihon kevyeen vastomiseen, ja se tuo saunaan metsän tuoksua.",
       es: "La vihta de abedul se usa suavemente para estimular la piel y aportar aroma.",
       en: "A birch vihta can be used gently to stimulate the skin and bring a forest scent.",
     },
@@ -115,11 +115,11 @@ const copy = {
     heritage: "Elävä kulttuuriperintö",
     heritageText: "Saunakulttuuri Suomessa on merkitty UNESCO:n aineettoman kulttuuriperinnön edustavaan luetteloon. Perinne elää kodeissa, mökeillä, yleisissä saunoissa ja uusissa kaupunkisaunoissa.",
     rootsTitle: "Saunan juuret",
-    rootsText: "Suomalainen sauna on osa arkista kulttuuria paljon vanhempaa kuin nykyiset sähkökiukaat. Savusauna on yksi perinteen vanhoista muodoista: puut lämmittävät kiukaan kivet, savu tuulettuu ennen kylpemistä ja lämpö jää pitkäksi aikaa tilaan. Sauna on ollut myös puhtauden, levon, yhteisöllisyyden ja tärkeiden elämänvaiheiden paikka.",
+    rootsText: "Suomalainen saunakulttuuri on paljon nykyisiä sähkökiukaita vanhempaa. Savusauna on yksi perinteen vanhoista muodoista: puut lämmittävät kiukaan kivet, savu päästetään ulos ennen saunomista ja lämpö säilyy tilassa pitkään. Sauna on ollut myös puhtauden, levon, yhteisöllisyyden ja tärkeiden elämänvaiheiden paikka.",
     cinematicTitle: "Hengitä sisään. Jätä kiire ulos.",
     cinematicText: "Sauna ei tarvitse aikataulua. Ota pyyhe, käy lauteille, kuuntele kiuasta ja anna järven, meren tai metsän olla hetken koko maailma.",
     loylyPanelEyebrow: "LÖYLY · SUOMI",
-    loylyPanelTitle: "Löyly on tunne, jonka suomalainen oppii tuntemaan.",
+    loylyPanelTitle: "Löyly on kokemus, jonka suomalainen tunnistaa.",
     loylyPanelText: "Vesi kohtaa kuumat kivet. Ilma muuttuu kosteammaksi. Lämpö tuntuu iholla eri tavalla. Hyvä löyly on henkilökohtainen – sen ei tarvitse olla kova ollakseen hyvä.",
     loylySteps: [["01", "Vesi"], ["02", "Kivet"], ["03", "Tunne"]] as const,
     löylyTitle: "Löyly – saunan sydän",
@@ -127,7 +127,7 @@ const copy = {
     ritualTitle: "Saunan perinteinen rytmi",
     ritual: [
       ["1", "Lämmitä rauhassa", "Anna tilan lämmetä kunnolla ja mene saunaan ilman kiirettä."],
-      ["2", "Löyly", "Lisää vettä kiville oman maun mukaan ja kuuntele omaa oloa."],
+      ["2", "Löyly", "Lisää vettä kiville oman mieltymyksesi mukaan ja kuuntele oloasi."],
       ["3", "Vihta tai vasta", "Koivuvihdalla voidaan kevyesti vastoa ihoa ja tuoda metsän tuoksu löylyihin."],
       ["4", "Jäähdy", "Käy ulkona, suihkussa tai vedessä. Jäähdyttely on osa rytmiä, ei kilpailu."],
       ["5", "Lepää", "Anna lämmön laskeutua ja palaa löylyihin vain silloin, kun se tuntuu hyvältä."],
