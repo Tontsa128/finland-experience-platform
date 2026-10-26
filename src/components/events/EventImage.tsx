@@ -10,7 +10,7 @@ function metaContent(html: string, key: string) {
   const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
   for (const tag of tags) {
     const attrs: Record<string, string> = {};
-    for (const match of tag.matchAll(/([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)) {
+    for (const match of Array.from(tag.matchAll(/([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g))) {
       attrs[match[1].toLowerCase()] = match[2] ?? match[3] ?? match[4] ?? "";
     }
     const identity = (attrs.property ?? attrs.name ?? attrs.itemprop ?? "").toLowerCase();
@@ -20,7 +20,7 @@ function metaContent(html: string, key: string) {
 }
 
 function jsonLdImage(html: string) {
-  for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+  for (const match of Array.from(html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi))) {
     try {
       const data = JSON.parse(match[1]);
       const queue = Array.isArray(data) ? [...data] : [data];
