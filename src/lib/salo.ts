@@ -737,6 +737,7 @@ export const saloEvents: SaloEvent[] = [
       en: "A weekend Christmas market at Teijon Masuuni.",
     },
     url: "https://tapahtumat.salo.fi/teijon-masuunin-joulumarkkinat-5/",
+    image: "https://tapahtumat.salo.fi/wp-content/uploads/sites/3/2026/01/617106165_1307670904738166_4463659607939618869_n-2-1170x768.jpg",
     category: "christmas",
   },
   {
