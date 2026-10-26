@@ -42,7 +42,7 @@ const c = {
     kultarantaText: "Los jardines de Kultaranta son una de las visitas más conocidas de Naantali. Los recorridos combinan historia, vida de verano y jardines cuidadosamente diseñados.",
     moomin: "Moominworld",
     moominText: "Moominworld, en la isla de Kailo, es una de las grandes atracciones familiares de Naantali. Puedes combinarlo con el casco antiguo, la playa y el puerto.",
-    archipelago: "La Small Archipelago Trail",
+    archipelago: "La ruta corta del archipiélago",
     archipelagoText: "La ruta corta del archipiélago tiene unos 120 km; se puede recorrer en coche en 1–2 días o en bicicleta en 2–3 días, con tres cruces por agua.",
     stay: "Alojamiento",
     stayText: "Hay hoteles, spa, alojamientos en el casco antiguo, cabañas, resorts y camping. Herrankukkaro y Kultaranta Resort ofrecen dos maneras muy diferentes de vivir el archipiélago.",
@@ -183,7 +183,7 @@ export default async function NaantaliPage({ params }: { params: Promise<{ local
             <p className="mt-5 max-w-3xl text-lg leading-8 text-white/75">{t.archipelagoText}</p>
           </div>
           <a href="https://visitnaantali.com/en/see-and-experience/archipelago/the-small-archipelago-trail/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">
-            {locale === "fi" ? "Katso reitti ja yhteydet" : locale === "es" ? "Ver ruta y conexiones" : "View route & connections"}<ArrowUpRight className="h-4 w-4" />
+            {locale === "fi" ? "Katso reitti ja yhteydet" : locale === "es" ? "Ver la ruta y las conexiones" : "View route and connections"}<ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
       </section>
