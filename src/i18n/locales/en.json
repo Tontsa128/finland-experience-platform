@@ -1,10 +1,10 @@
 {
   "common": {
     "siteName": "Finland Experience",
-    "tagline": "Finnish summer, slow travel & local stays",
+    "tagline": "Finnish summer, slow travel and locally owned stays",
     "bookNow": "Visit provider",
-    "learnMore": "Learn More",
-    "viewAll": "View All",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
     "from": "From",
     "perNight": "/night",
     "perPerson": "/person",
@@ -22,7 +22,7 @@
     "plan": "Plan your trip",
     "cityBreaks": "City Breaks",
     "coastalFinland": "Coastal Finland",
-        "ruralFinland": "Rural & Archipelago",
+    "ruralFinland": "Rural & Archipelago",
     "blog": "Blog",
     "contact": "Contact",
     "admin": "Admin",
@@ -44,17 +44,17 @@
     "popularExperiences": "Things to do & see",
     "popularExperiencesDesc": "Real local activities, from kayaking and cycling to sauna and island days",
     "uniqueStays": "Stays with character",
-    "uniqueStaysDesc": "Cottages, boutique houses, seaside villas and glamping",
+    "uniqueStaysDesc": "Cottages, boutique stays, seaside villas and glamping",
     "whyFinland": "Why Finland?",
     "whyFinlandDesc": "Reasons to fall in love with the Nordic way of life",
     "testimonials": "What our guests say",
     "blog": "Travel Inspiration",
     "newsletter": "Get travel inspiration",
-    "newsletterDesc": "Tips, special offers and Northern Lights alerts straight to your inbox."
+    "newsletterDesc": "Travel tips, special offers and destination inspiration straight to your inbox."
   },
   "why": {
     "nature": {
-      "title": "Slow nature",
+      "title": "Nature at an unhurried pace",
       "desc": "Forests, sea, lakes and trails that invite you to stay longer."
     },
     "lights": {
@@ -63,7 +63,7 @@
     },
     "sauna": {
       "title": "Sauna by the water",
-      "desc": "Traditional sauna, a swim and the simple rhythm of Finnish summer."
+      "desc": "A traditional sauna, a refreshing swim and the simple rhythm of Finnish summer."
     },
     "design": {
       "title": "Local character",
@@ -76,14 +76,14 @@
     "all": "All regions",
     "north": "North",
     "south": "South",
-    "central": "Central",
+    "central": "Central Finland",
     "southwest": "Southwest"
   },
   "accommodations": {
     "title": "Accommodations",
     "subtitle": "Cabins, glass igloos, design hotels and more",
     "cabin": "Cabin",
-    "igloo": "Glass Igloo",
+    "igloo": "Glass igloo",
     "hotel": "Hotel",
     "villa": "Villa",
     "guests": "guests",
@@ -104,7 +104,7 @@
     }
   },
   "booking": {
-    "title": "Book your experience",
+    "title": "Continue to the provider",
     "selectDates": "Select dates",
     "guests": "Guests",
     "total": "Total",
@@ -113,12 +113,12 @@
     "successDesc": "Booking and payment are completed directly with the provider."
   },
   "contact": {
-    "title": "Contact Us",
-    "subtitle": "We are here to help you plan the perfect Finnish adventure",
+    "title": "Contact us",
+    "subtitle": "We’ll help you find the right way to experience Finland.",
     "name": "Name",
     "email": "Email",
     "message": "Message",
-    "send": "Send Message",
+    "send": "Send message",
     "success": "Message sent! We will reply soon.",
     "error": "The message could not be sent. Try the email link or try again shortly.",
     "providerNote": "We showcase accommodation and activities from local providers. Booking and contracts are completed directly with the provider."
@@ -128,9 +128,9 @@
     "aboutText": "We specialize in authentic Finnish experiences for travelers from Spain and around the world.",
     "quickLinks": "Quick Links",
     "destinations": "Destinations",
-    "legal": "Legal",
+    "legal": "Legal information",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
+    "terms": "Terms of use",
     "rights": "All rights reserved."
   },
   "ai": {
@@ -163,7 +163,7 @@
     "midnight": "Endless summer nights",
     "midnightDesc": "Music, festivals, dancing and the midnight sun.",
     "sauna": "Sauna & Smoke Sauna",
-    "saunaDesc": "Steam, cold water and authentic Finnish sauna culture.",
+    "saunaDesc": "Sauna heat, a refreshing swim and Finnish sauna traditions.",
     "cities": "City weekend",
     "citiesDesc": "Helsinki, Turku and Tampere blend culture, food and long Nordic evenings.",
     "cabins": "Cottage escape",
@@ -202,8 +202,8 @@
     "staysEyebrow": "Stay Somewhere Special",
     "experiencesEyebrow": "Make It a Memory",
     "directEyebrow": "Book Direct",
-    "directTitle": "You discover. Local providers host you.",
-    "directText": "We do not sell travel packages. Discover the place, visit the provider's own site and book directly with them.",
+    "directTitle": "Discover Finland. Be welcomed by local hosts.",
+    "directText": "We do not sell travel packages. Explore a destination, visit the provider’s website and arrange your booking directly with them.",
     "directStep1": "Find your experience",
     "directStep2": "Book directly with the provider",
     "finalEyebrow": "Find Your Finland",
