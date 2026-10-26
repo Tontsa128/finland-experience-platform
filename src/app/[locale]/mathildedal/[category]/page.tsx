@@ -15,8 +15,8 @@ const categories = {
     providers: [
       { name: "Hotel Mathildedal", url: "https://mathildedal.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/mathildedal_131-copylowres.jpg?itok=blmtNtmc", credit: "Visit Mathildedal" },
       { name: "Matri House", url: "https://matrihouse.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/matrihouse_mathildedal_web.jpg?itok=hgOKNF9U", credit: "Visit Mathildedal" },
-      { name: "Mathildan Marina", url: "https://mathildanmarina.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/oleskelutila.jpg?itok=hIXkNyVI", credit: "Visit Mathildedal" },
-      { name: "Matilda Villas", url: "https://matildavillas.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/MatildaVillas120.jpg?itok=-2qQvnhX", credit: "Visit Mathildedal" },
+      { name: "Mathildan Marina", url: "https://mathildanmarina.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/Huone%205%20talvi%200001.jpg?itok=6ElNUZ3H", credit: "Visit Mathildedal" },
+      { name: "Matilda Villas", url: "https://matildavillas.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/Matilda%20Villas_10%20kopio.jpg?itok=fPv5YeEK", credit: "Visit Mathildedal" },
       { name: "Meri-Ruukki Holiday Village", url: "https://meri-ruukki.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/oleskelutila.jpg?itok=hIXkNyVI", credit: "Visit Mathildedal" },
       { name: "Teijo Nature Centre cabins and camping", url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, credit: "Natura Viva" },
     ],
@@ -33,7 +33,7 @@ const categories = {
       { name: "Metsäravintola", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/metsaravintola.jpg?itok=C0O4bfsi", credit: "Visit Mathildedal" },
       { name: "Viettelysten Vaunu", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal — directory image" },
       { name: "Meri-Teijo Golf café and pizzeria", url: "https://meriteijogolf.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
-      { name: "Terho Hills", url: "https://www.ravintolaterho.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/visit-matilda_9-uai-1032x688.jpg?itok=fNisvaPC", credit: "Visit Mathildedal — directory image" },
+      { name: "Terho Hills", url: "https://www.ravintolaterho.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/terhohills.jpeg?itok=2zEVsfuL", credit: "Visit Mathildedal — Terho Hills interior" },
     ],
   },
   tekemista: {
@@ -42,15 +42,15 @@ const categories = {
     es: { title: "Qué hacer en Mathildedal", description: "Kayak, ciclismo, senderismo, golf, minigolf, yoga y experiencias al aire libre en Mathildedal y Teijo.", intro: "Combina un paseo por el pueblo con actividades al aire libre. Confirma directamente los alquileres, las visitas guiadas, los permisos y la disponibilidad." },
     providers: [
       { name: "Teijo Nature Centre / Natura Viva", url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, credit: "Natura Viva" },
-      { name: "Mathildedalin Keskuspuisto", url: "https://mathildedalinkeskuspuisto.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal — directory image" },
-      { name: "Meri-Teijo Bike Park", url: "https://www.meriteijobikepark.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — destination context image" },
-      { name: "Meri-Teijo Golf", url: "https://meriteijogolf.com/", image: "", credit: "No approved golf-course photo yet" },
+      { name: "Mathildedalin Keskuspuisto", url: "https://mathildedalinkeskuspuisto.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/adventure_koko-alue.jpeg?itok=0O7HY6ly", credit: "Visit Mathildedal — official adventure minigolf photo" },
+      { name: "Meri-Teijo Bike Park", url: "https://www.meriteijobikepark.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/MTBP2025_Background.jpg?itok=y1W2mJKP", credit: "Visit Mathildedal — official bike park photo" },
+      { name: "Meri-Teijo Golf", url: "https://meriteijogolf.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golf_aktiviteetit.jpg?itok=lpvm1Tl0", credit: "Visit Mathildedal — official golf-course photo" },
       { name: "All Soul Mind – You Choose", url: "https://visitmathildedal.fi/fi/aktiviteetit", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
       { name: "Teijo National Park", url: "https://www.luontoon.fi/fi/kohteet/teijon-kansallispuisto", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library" },
-      { name: "Chill Out Fishing", url: "https://chilloutfishing.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
+      { name: "Chill Out Fishing", url: "https://chilloutfishing.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/saariretki-veneretki-kalastusretki-saaristomeri-11-980x653.jpg?itok=YnieSLEU", credit: "Visit Mathildedal — official fishing-trip photo" },
       { name: "Teijo Ski & Action Park", url: "https://meriteijo.fi/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — destination context image" },
-      { name: "Yoga in Mathildedal", url: "https://www.aquarianyoga.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
-      { name: "Hoitola Kukkuvilla", url: "https://hoitolakukkuvilla.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
+      { name: "Yoga in Mathildedal", url: "https://www.aquarianyoga.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/joogaa-mathildedalissa-visitmathildedal-siri-ja-ari.png?itok=dMLKusbH", credit: "Visit Mathildedal — official yoga photo" },
+      { name: "Hoitola Kukkuvilla", url: "https://hoitolakukkuvilla.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/hoitola_kukkuvilla_laiturijooga_31.jpg?itok=0562YMZP", credit: "Visit Mathildedal — official wellbeing photo" },
     ],
   },
   kulttuuri: {
@@ -68,16 +68,16 @@ const categories = {
     en: { title: "Shops, crafts and design in Mathildedal", description: "Discover independent shops, local crafts, clothing, design and gifts in Mathildedal.", intro: "Make time for independent shops and products by local makers. Opening hours may vary by season and events." },
     es: { title: "Tiendas, artesanía y diseño en Mathildedal", description: "Descubre pequeñas tiendas, artesanía local, ropa, diseño y regalos en Mathildedal.", intro: "Reserva tiempo para visitar las tiendas y descubrir productos de creadores locales. Los horarios pueden variar según la temporada y los eventos." },
     providers: [
-      { name: "Ruukki Creative", url: "https://ruukkicreative.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
+      { name: "Ruukki Creative", url: "https://ruukkicreative.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/tyohuone.jpg?itok=shPoTuHn", credit: "Visit Mathildedal — official creative studio photo" },
       { name: "Ruukin Kehräämö", url: "https://ruukinkehraamo.fi/", image: "https://ruukinkehraamo.fi/cdn/shop/files/luonnonkosmetiikkalahjaideaalpakasta_a686a81b-bb43-4429-9ea0-983537de33e4.jpg?v=1752140817&width=2048", credit: "Ruukin Kehräämö — official natural cosmetics product image" },
       { name: "Aate Clothing", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
       { name: "Visit Mathildedal shopping guide", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal" },
-      { name: "Kaarnalaiva", url: "https://kaarnalaiva.net/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
-      { name: "Kyläpanimo Beer Shop", url: "https://www.kylapanimo.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
+      { name: "Kaarnalaiva", url: "https://kaarnalaiva.net/", image: "https://mail.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/kaarnalaivanettisivuille-1-uai-1032x688.jpg?itok=KAsstQNx", credit: "Visit Mathildedal — official artisan workshop photo" },
+      { name: "Kyläpanimo Beer Shop", url: "https://www.kylapanimo.fi/", image: "https://mail.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/visit-matilda_12-uai-1032x688.jpg?itok=_ccOxyhW", credit: "Visit Mathildedal — official local coffee product photo" },
       { name: "Vinttipuoti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
-      { name: "Lähiruoka Puhti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
+      { name: "Lähiruoka Puhti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://mail.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/puhti-sisakuva.jpg?itok=pR18qWud", credit: "Visit Mathildedal — official local food shop photo" },
       { name: "Matildan kesäkauppa", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
-      { name: "Dock Helsinki / Piironki", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
+      { name: "Dock Helsinki / Piironki", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://mail.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/Vierasvenelaituri%20ilta%20juhannus%204317%202.jpg?itok=GeAKZHqp", credit: "Visit Mathildedal — marina context image" },
     ],
   },
   tapahtumat: {
@@ -284,7 +284,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
           {category.providers.map((provider) => (
             <article key={provider.name} className="overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-sm">
               <div className="relative h-56 bg-brand-100">
-                {provider.image ? <Image src={provider.image} alt={provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-emerald-50 to-stone-100 p-6 text-center"><div><p className="font-semibold text-brand-900">{locale === "fi" ? "Golfkentän kuva tarkistetaan" : locale === "es" ? "Foto del campo de golf pendiente de verificar" : "Golf course photo pending verification"}</p><p className="mt-2 text-sm text-slate-600">{locale === "fi" ? "Emme näytä väärää kuvaa." : locale === "es" ? "No mostramos una imagen incorrecta." : "We will not show a mismatched photo."}</p></div></div>}
+                {provider.image ? <Image src={provider.image} alt={provider.name + " Mathildedalissa"} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-emerald-50 to-stone-100 p-6 text-center"><div><p className="font-semibold text-brand-900">{locale === "fi" ? "Kuva tarkistetaan" : locale === "es" ? "Imagen pendiente de verificar" : "Photo pending verification"}</p><p className="mt-2 text-sm text-slate-600">{locale === "fi" ? "Emme näytä väärää kuvaa." : locale === "es" ? "No mostramos una imagen incorrecta." : "We will not show a mismatched photo."}</p></div></div>}
               </div>
               <div className="p-5">
                 <h2 className="text-xl font-bold">{provider.name}</h2>
