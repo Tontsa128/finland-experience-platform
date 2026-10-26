@@ -265,6 +265,12 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
   const c = category[locale];
   const back = locale === "fi" ? "Takaisin Mathildedalin oppaaseen" : locale === "es" ? "Volver a la guía de Mathildedal" : "Back to the Mathildedal guide";
   const visit = locale === "fi" ? "Palveluntarjoajan sivuille" : locale === "es" ? "Visitar la web del proveedor" : "Visit provider website";
+  const providerUrl = (name: string, fallbackUrl: string) =>
+    name === "Visit Mathildedal event calendar" || name === "Visit Mathildedal events"
+      ? locale === "fi"
+        ? "https://visitmathildedal.fi/fi/tapahtumat"
+        : "https://visitmathildedal.fi/en/events"
+      : fallbackUrl;
 
   return (
     <main className="min-h-screen bg-white text-brand-950">
@@ -290,7 +296,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
                 <h2 className="text-xl font-bold">{provider.name}</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{providerDescriptions[provider.name]?.[locale] ?? c.description}</p>
                 <p className="mt-3 text-xs text-slate-500">{locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la imagen" : "Image source"}: {provider.credit}</p>
-                <a href={provider.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:underline">{visit}<ArrowUpRight className="h-4 w-4" /></a>
+                <a href={providerUrl(provider.name, provider.url)} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:underline">{visit}<ArrowUpRight className="h-4 w-4" /></a>
               </div>
             </article>
           ))}
