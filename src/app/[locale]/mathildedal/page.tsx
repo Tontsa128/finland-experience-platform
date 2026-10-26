@@ -118,8 +118,8 @@ const providers = [
   { name: "Mathildedal Ironworks", category: "culture", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
   { name: "Mathildedal Summer Theatre / Teatteri ProVinssi", category: "culture", url: "https://www.teatteriprovinssi.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/mathildedal-katsomo.jpg?itok=IDFAL0tW", credit: "Visit Mathildedal — official theatre photo" },
   { name: "Ruukki Creative", category: "shop", url: "https://ruukkicreative.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/tyohuone.jpg?itok=shPoTuHn", credit: "Visit Mathildedal" },
-  { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: "https://mail.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ", credit: "Visit Mathildedal — official alpaca knitwear photo" },
-  { name: "Aate Clothing", category: "shop", url: "https://aateclothing.fi/", image: "https://mail.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/myymalavaaka.jpg?itok=U0j0U7-1", credit: "Visit Mathildedal" },
+  { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ", credit: "Visit Mathildedal — official alpaca knitwear photo" },
+  { name: "Aate Clothing", category: "shop", url: "https://aateclothing.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/myymalavaaka.jpg?itok=U0j0U7-1", credit: "Visit Mathildedal" },
 ] as const;
 
 
