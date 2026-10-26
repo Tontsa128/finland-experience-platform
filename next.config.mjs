@@ -48,6 +48,7 @@ const nextConfig = {
       { protocol: "https", hostname: "visitsalo.fi" },
       { protocol: "https", hostname: "visitmathildedal.fi" },
       { protocol: "https", hostname: "www.visitmathildedal.fi" },
+      { protocol: "https", hostname: "ruukinkehraamo.fi" },
       { protocol: "https", hostname: "cdn.sanity.io" },
       { protocol: "https", hostname: "cbaul-cdnwnd.com" },
       { protocol: "https", hostname: "www.ylostalo.fi" },
