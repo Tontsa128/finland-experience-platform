@@ -124,6 +124,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
               </div>
               <div className="p-5">
                 <h2 className="text-xl font-bold">{provider.name}</h2>
+                <p className="mt-2 text-xs text-slate-500">{locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la imagen" : "Image source"}: {provider.credit}</p>
                 <a href={provider.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:underline">{visit}<ArrowUpRight className="h-4 w-4" /></a>
               </div>
             </article>
