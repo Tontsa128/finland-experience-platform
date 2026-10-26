@@ -44,7 +44,7 @@ const categories = {
       { name: "Teijo Nature Centre / Natura Viva", url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, credit: "Natura Viva" },
       { name: "Mathildedalin Keskuspuisto", url: "https://mathildedalinkeskuspuisto.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal — directory image" },
       { name: "Meri-Teijo Bike Park", url: "https://www.meriteijobikepark.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — destination context image" },
-      { name: "Meri-Teijo Golf", url: "https://meriteijogolf.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
+      { name: "Meri-Teijo Golf", url: "https://meriteijogolf.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — Teijo nature context image" },
       { name: "All Soul Mind – You Choose", url: "https://visitmathildedal.fi/fi/aktiviteetit", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
       { name: "Teijo National Park", url: "https://www.luontoon.fi/fi/kohteet/teijon-kansallispuisto", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library" },
       { name: "Chill Out Fishing", url: "https://chilloutfishing.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
@@ -69,7 +69,7 @@ const categories = {
     es: { title: "Tiendas, artesanía y diseño en Mathildedal", description: "Descubre pequeñas tiendas, artesanía local, ropa, diseño y regalos en Mathildedal.", intro: "Reserva tiempo para visitar las tiendas y descubrir productos de creadores locales. Los horarios pueden variar según la temporada y los eventos." },
     providers: [
       { name: "Ruukki Creative", url: "https://ruukkicreative.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
-      { name: "Ruukin Kehräämö", url: "https://ruukinkehraamo.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
+      { name: "Ruukin Kehräämö", url: "https://ruukinkehraamo.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ", credit: "Visit Mathildedal — Ruukin Kehräämö product image" },
       { name: "Aate Clothing", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
       { name: "Visit Mathildedal shopping guide", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal" },
       { name: "Kaarnalaiva", url: "https://kaarnalaiva.net/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
