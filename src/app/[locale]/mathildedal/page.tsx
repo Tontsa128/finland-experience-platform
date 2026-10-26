@@ -114,11 +114,11 @@ const providers = [
   { name: "Teijo Nature Centre / Natura Viva", category: "activity", url: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop", image: photoLibrary.naturaVivaTeijo, credit: "Natura Viva" },
   { name: "Mathildedalin Keskuspuisto", category: "activity", url: "https://mathildedalinkeskuspuisto.fi/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal" },
   { name: "Meri-Teijo Bike Park", category: "activity", url: "https://www.meriteijobikepark.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — destination context image" },
-  { name: "Meri-Teijo Golf", category: "activity", url: "https://meriteijogolf.com/", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
+  { name: "Meri-Teijo Golf", category: "activity", url: "https://meriteijogolf.com/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — Teijo nature context image" },
   { name: "Mathildedal Ironworks", category: "culture", url: "https://mathildedal.fi/en/things-to-do/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
   { name: "Mathildedal Summer Theatre / Teatteri ProVinssi", category: "culture", url: "https://www.teatteriprovinssi.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
   { name: "Ruukki Creative", category: "shop", url: "https://ruukkicreative.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
-  { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
+  { name: "Ruukin Kehräämö", category: "shop", url: "https://ruukinkehraamo.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ", credit: "Visit Mathildedal — Ruukin Kehräämö product image" },
   { name: "Aate Clothing", category: "shop", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
 ] as const;
 
