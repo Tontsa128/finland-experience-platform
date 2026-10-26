@@ -59,7 +59,7 @@ const c = {
     title: "Naantali – Old Town, sea and an archipelago summer",
     description: "Naantali guide: Old Town, harbour, Kultaranta, Moominworld, archipelago routes, food, accommodation and sauna.",
     eyebrow: "NAANTALI · SUNNY ARCHIPELAGO TOWN",
-    intro: "Naantali brings together historic wooden streets, a lively guest harbour, Kultaranta gardens, Moominworld and the archipelago. It works equally well for a weekend break or an island day.",
+    intro: "Naantali brings together historic wooden streets, a lively guest harbour, Kultaranta gardens, Moominworld and the archipelago. It works equally well for a weekend break or an island-hopping day trip.",
     oldTown: "Old Town & harbour",
     oldTownText: "Narrow streets, wooden houses, cafés, restaurants, museums and boutiques make the Old Town a place to linger rather than simply tick off.",
     kultaranta: "Kultaranta",
