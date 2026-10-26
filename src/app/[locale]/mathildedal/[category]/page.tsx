@@ -276,6 +276,11 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
         ? "https://mathildedal.fi/tapahtumat/"
         : "https://mathildedal.fi/en/events/";
     }
+    if (name === "Mathildedal Ironworks") {
+      return locale === "fi"
+        ? "https://mathildedal.fi/"
+        : "https://mathildedal.fi/en/things-to-do/";
+    }
     return fallbackUrl;
   };
 
