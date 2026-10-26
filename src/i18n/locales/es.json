@@ -22,7 +22,7 @@
     "plan": "Diseña tu viaje",
     "cityBreaks": "Escapadas urbanas",
     "coastalFinland": "Finlandia costera",
-        "ruralFinland": "Turismo rural",
+        "ruralFinland": "Turismo rural y archipiélago",
     "blog": "Blog",
     "contact": "Contacto",
     "admin": "Admin",
@@ -50,7 +50,7 @@
     "testimonials": "Lo que dicen nuestros huéspedes",
     "blog": "Inspiración de viaje",
     "newsletter": "Recibe inspiración de viaje",
-    "newsletterDesc": "Consejos, ofertas especiales y alertas de auroras directamente en tu bandeja de entrada."
+    "newsletterDesc": "Consejos de viaje y ofertas actuales directamente en tu bandeja de entrada."
   },
   "why": {
     "nature": {
@@ -116,9 +116,9 @@
     "title": "Contáctanos",
     "subtitle": "Estamos aquí para ayudarte a planificar la aventura finlandesa perfecta",
     "name": "Nombre",
-    "email": "Email",
+    "email": "Correo electrónico",
     "message": "Mensaje",
-    "send": "Enviar Mensaje",
+    "send": "Enviar mensaje",
     "success": "¡Mensaje enviado! Te responderemos pronto.",
     "error": "No se pudo enviar el mensaje. Prueba el enlace de correo o inténtalo de nuevo.",
     "providerNote": "Mostramos alojamientos y actividades de proveedores locales. La reserva y el contrato se realizan directamente con el proveedor."
@@ -128,7 +128,7 @@
     "aboutText": "Nos especializamos en experiencias finlandesas auténticas para viajeros de España y de todo el mundo.",
     "quickLinks": "Enlaces rápidos",
     "destinations": "Destinos",
-    "legal": "Legal",
+    "legal": "Información legal",
     "privacy": "Política de privacidad",
     "terms": "Términos del servicio",
     "rights": "Todos los derechos reservados."
