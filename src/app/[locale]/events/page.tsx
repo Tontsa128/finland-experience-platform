@@ -45,6 +45,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
     eventStatus: "https://schema.org/EventScheduled",
     location: { "@type": "Place", name: event.location, address: { "@type": "PostalAddress", addressCountry: "FI" } },
     url: event.url,
+    ...(event.image ? { image: event.image } : {}),
   }));
 
   const copy = locale === "fi"
@@ -131,7 +132,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
           {events.map((event) => (
             <article key={event.id} className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
               <div className="p-6 pb-0">
-                <EventImage sourceUrl={event.url} alt={event.title[locale] || event.title.en || event.title.fi} />
+                <EventImage sourceUrl={event.url} imageUrl={event.image} alt={event.title[locale] || event.title.en || event.title.fi} />
               </div>
               <div className="p-6 pt-4">
                 <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
