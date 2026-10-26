@@ -31,7 +31,7 @@ const categories = {
       { name: "Bistro Bruket", url: "https://mathildedal.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/bruket_tila.jpg?itok=yL7mEIcZ", credit: "Visit Mathildedal" },
       { name: "Café Mathildedal", url: "https://mathildedal.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/123sv_vp23710.jpg?itok=urTug-um", credit: "Visit Mathildedal" },
       { name: "Metsäravintola", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/metsaravintola.jpg?itok=C0O4bfsi", credit: "Visit Mathildedal" },
-      { name: "Viettelysten Vaunu", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/viettelysten-vaunu-ulkokuva1.jpg?itok=6Nlo_ujs", credit: "Visit Mathildedal — official ice cream kiosk photo" },
+      { name: "Viettelysten Vaunu", url: "https://visitmathildedal.fi/fi/ravintolat-kahvilat/viettelysten-vaunu", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/viettelysten-vaunu-ulkokuva1.jpg?itok=6Nlo_ujs", credit: "Visit Mathildedal — official ice cream kiosk photo" },
       { name: "Meri-Teijo Golf café and pizzeria", url: "https://meriteijogolf.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
       { name: "Terho Hills", url: "https://www.ravintolaterho.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/terhohills.jpeg?itok=2zEVsfuL", credit: "Visit Mathildedal — Terho Hills interior" },
     ],
@@ -74,7 +74,7 @@ const categories = {
       { name: "Visit Mathildedal shopping guide", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal" },
       { name: "Kaarnalaiva", url: "https://kaarnalaiva.net/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/kaarnalaivanettisivuille-1-uai-1032x688.jpg?itok=KAsstQNx", credit: "Visit Mathildedal — official artisan workshop photo" },
       { name: "Kyläpanimo Beer Shop", url: "https://www.kylapanimo.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/panimo-pienpanimo-mathildedalin-kylapanimo-logo-visitmathildedal.jpg?itok=j2o_nrRG", credit: "Visit Mathildedal — official brewery logo" },
-      { name: "Vinttipuoti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/psx_20221106_095253_2.jpg?itok=Yc7PqUf-", credit: "Visit Mathildedal — official Vinttipuoti interior photo" },
+      { name: "Vinttipuoti", url: "https://visitmathildedal.fi/fi/ostokset/vinttipuoti", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/psx_20221106_095253_2.jpg?itok=Yc7PqUf-", credit: "Visit Mathildedal — official Vinttipuoti interior photo" },
       { name: "Lähiruoka Puhti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/puhti-sisakuva.jpg?itok=pR18qWud", credit: "Visit Mathildedal — official local food shop photo" },
       { name: "Matildan kesäkauppa", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "https://visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/kesakauppa.png?itok=5_Dxm8dm", credit: "Visit Mathildedal — official summer shop product collage" },
       { name: "Dock Helsinki / Piironki", url: "https://www.visitmathildedal.fi/fi/ostokset", image: "", credit: "No verified image available — image intentionally omitted" },
@@ -274,6 +274,8 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
       "Ruukin Kehräämö": "https://visitmathildedal.fi/fi/ostokset/ruukin-kehraamo",
       "Metsäravintola": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/metsaravintola",
       "Matildan kesäkauppa": "https://visitmathildedal.fi/fi/ostokset/matildan-kesakauppa",
+      "Viettelysten Vaunu": "https://visitmathildedal.fi/fi/ravintolat-kahvilat/viettelysten-vaunu",
+      "Vinttipuoti": "https://visitmathildedal.fi/fi/ostokset/vinttipuoti",
     };
     if (officialListings[name]) return officialListings[name];
     if (name === "Visit Mathildedal event calendar" || name === "Visit Mathildedal events") {
