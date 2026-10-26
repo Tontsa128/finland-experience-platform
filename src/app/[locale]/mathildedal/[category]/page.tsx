@@ -31,6 +31,9 @@ const categories = {
       { name: "Bistro Bruket", url: "https://mathildedal.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/bruket_tila.jpg?itok=yL7mEIcZ", credit: "Visit Mathildedal" },
       { name: "Café Mathildedal", url: "https://mathildedal.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/123sv_vp23710.jpg?itok=urTug-um", credit: "Visit Mathildedal" },
       { name: "Metsäravintola", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/metsaravintola.jpg?itok=C0O4bfsi", credit: "Visit Mathildedal" },
+      { name: "Viettelysten Vaunu", url: "https://www.visitmathildedal.fi/fi/ravintolatjakahvilat", image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/janthai4.jpg?itok=37IiiOt1", credit: "Visit Mathildedal — directory image" },
+      { name: "Meri-Teijo Golf café and pizzeria", url: "https://meriteijogolf.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
+      { name: "Terho Hills", url: "https://www.ravintolaterho.fi/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/visit-matilda_9-uai-1032x688.jpg?itok=fNisvaPC", credit: "Visit Mathildedal — directory image" },
     ],
   },
   tekemista: {
@@ -44,6 +47,10 @@ const categories = {
       { name: "Meri-Teijo Golf", url: "https://meriteijogolf.com/", image: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golfpizzeria.jpg?itok=C5MEdxb9", credit: "Visit Mathildedal" },
       { name: "Yoga in Mathildedal", url: "https://visitmathildedal.fi/fi/aktiviteetit", image: photoLibrary.mathildedalHarbour, credit: "Visit Mathildedal" },
       { name: "Teijo National Park", url: "https://www.luontoon.fi/fi/kohteet/teijon-kansallispuisto", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library" },
+      { name: "Chill Out Fishing", url: "https://chilloutfishing.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
+      { name: "Teijo Ski & Action Park", url: "https://meriteijo.fi/", image: photoLibrary.teijoNationalPark, credit: "Finland Experience photo library — destination context image" },
+      { name: "Yoga in Mathildedal", url: "https://www.aquarianyoga.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
+      { name: "Hoitola Kukkuvilla", url: "https://hoitolakukkuvilla.fi/", image: photoLibrary.mathildedalHarbour, credit: "Finland Experience photo library — destination context image" },
     ],
   },
   kulttuuri: {
@@ -65,6 +72,12 @@ const categories = {
       { name: "Ruukin Kehräämö", url: "https://ruukinkehraamo.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
       { name: "Aate Clothing", url: "https://aateclothing.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — village context image" },
       { name: "Visit Mathildedal shopping guide", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal" },
+      { name: "Kaarnalaiva", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
+      { name: "Kyläpanimo Beer Shop", url: "https://www.kylapanimo.fi/", image: photoLibrary.mathildedalVillage, credit: "Finland Experience photo library — destination context image" },
+      { name: "Vinttipuoti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
+      { name: "Lähiruoka Puhti", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
+      { name: "Matildan kesäkauppa", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
+      { name: "Dock Helsinki / Piironki", url: "https://www.visitmathildedal.fi/fi/ostokset", image: photoLibrary.mathildedalVillage, credit: "Visit Mathildedal — destination context image" },
     ],
   },
   tapahtumat: {
