@@ -833,5 +833,45 @@ export const saloEvents: SaloEvent[] = [
     },
     url: "https://tapahtumat.salo.fi/avoimet-pikkujoulut-wiurilassa/",
     category: "christmas"
+  },,
+
+  {
+    id: "nauru-pidentaa-iltaa",
+    start: "2026-11-28",
+    title: { fi: "Nauru pidentää iltaa -revyy", es: "Revista cómica Nauru pidentää iltaa", en: "Nauru pidentää iltaa revue" },
+    location: "Astrum Areena, Salo",
+    description: {
+      fi: "Teatteri PROVinssin revyy yhdistää huumoria, arkisia ilmiöitä ja tarttuvaa musiikkia. Esitys on K-16.",
+      es: "Revista de Teatteri PROVinssi que combina humor, situaciones cotidianas y música. Edad mínima 16 años.",
+      en: "A Teatteri PROvinssi revue combining humour, everyday situations and lively music. Age restriction 16+."
+    },
+    url: "https://tapahtumat.salo.fi/nauru-pidentaa-iltaa-revyy-10/",
+    category: "culture"
+  },
+  {
+    id: "tanssitaiteen-talvinaytos",
+    start: "2026-11-28",
+    title: { fi: "Tanssitaiteen talvinäytös", es: "Espectáculo de danza de invierno", en: "Winter Dance Showcase" },
+    location: "Kulttuuritila Näkkäri, Salo",
+    description: {
+      fi: "Salon kansalaisopiston tanssikurssien opiskelijat esiintyvät klo 13 ja 15. Tarkista lippujen saatavuus järjestäjältä.",
+      es: "Alumnos de los cursos de danza de la escuela cívica de Salo actúan a las 13:00 y 15:00. Consulta las entradas con el organizador.",
+      en: "Students from Salo Adult Education Centre dance courses perform at 13:00 and 15:00. Check ticket availability with the organizer."
+    },
+    url: "https://tapahtumat.salo.fi/tanssitaiteen-talvinaytos-3/",
+    category: "culture"
+  },
+  {
+    id: "kolme-yota-jouluun",
+    start: "2026-12-20",
+    title: { fi: "Kolme yötä jouluun", es: "Tres noches para Navidad", en: "Three Nights to Christmas" },
+    location: "Kulttuuritila Näkkäri, Salo",
+    description: {
+      fi: "Piazza Brass -puhallinorkesterin joulukonsertti. Liput ostetaan järjestäjän ilmoittamalla tavalla.",
+      es: "Concierto navideño de la banda de metales Piazza Brass. Consulta con el organizador cómo adquirir entradas.",
+      en: "Christmas concert by the Piazza Brass wind orchestra. Check the organizer's page for ticket details."
+    },
+    url: "https://tapahtumat.salo.fi/kolme-yota-jouluun/",
+    category: "christmas"
   },
 ];
