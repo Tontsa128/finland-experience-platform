@@ -3,13 +3,13 @@
     "siteName": "Finland Experience",
     "tagline": "Finnish summer, slow travel & local stays",
     "bookNow": "Visit provider",
-    "learnMore": "Learn More",
-    "viewAll": "View All",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
     "from": "From",
     "perNight": "/night",
     "perPerson": "/person",
     "search": "Search",
-    "contact": "Contact Us",
+    "contact": "Contact",
     "loading": "Loading...",
     "currency": "€"
   },
@@ -50,7 +50,7 @@
     "testimonials": "What our guests say",
     "blog": "Travel Inspiration",
     "newsletter": "Get travel inspiration",
-    "newsletterDesc": "Tips, special offers and Northern Lights alerts straight to your inbox."
+    "newsletterDesc": "Travel tips and timely offers straight to your inbox."
   },
   "why": {
     "nature": {
@@ -118,7 +118,7 @@
     "name": "Name",
     "email": "Email",
     "message": "Message",
-    "send": "Send Message",
+    "send": "Send message",
     "success": "Message sent! We will reply soon.",
     "error": "The message could not be sent. Try the email link or try again shortly.",
     "providerNote": "We showcase accommodation and activities from local providers. Booking and contracts are completed directly with the provider."
@@ -162,7 +162,7 @@
     "subtitle": "Choose your rhythm: a peaceful cottage, a lively city break or the magic of the midnight sun.",
     "midnight": "Endless summer nights",
     "midnightDesc": "Music, festivals, dancing and the midnight sun.",
-    "sauna": "Sauna & Smoke Sauna",
+    "sauna": "Sauna & smoke sauna",
     "saunaDesc": "Steam, cold water and authentic Finnish sauna culture.",
     "cities": "City weekend",
     "citiesDesc": "Helsinki, Turku and Tampere blend culture, food and long Nordic evenings.",

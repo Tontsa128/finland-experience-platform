@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
   const copy = locale === "fi"
-    ? { title: "Elämykset Salossa | Mathildedal, Teijo & Särkisalo", description: "Löydä Salon alueen luonto-, sauna-, saaristo-, maatila-, ruoka-, kulttuuri- ja aktiivielämykset kartalta." }
+    ? { title: "Elämykset Salossa | Mathildedal, Teijo & Särkisalo", description: "Löydä Salon seudun luonto-, sauna-, saaristo-, maatila-, ruoka-, kulttuuri- ja liikuntaelämyksiä kartalta." }
     : locale === "es"
       ? { title: "Experiencias en Salo | Mathildedal, Teijo y Särkisalo", description: "Descubre naturaleza, sauna, archipiélago, granjas, gastronomía, cultura y actividades en el sur de Salo." }
       : { title: "Experiences in Salo | Mathildedal, Teijo & Särkisalo", description: "Discover nature, sauna, archipelago, farm, food, culture and active experiences around Salo." };

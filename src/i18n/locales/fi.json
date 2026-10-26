@@ -1,7 +1,7 @@
 {
   "common": {
     "siteName": "Finland Experience",
-    "tagline": "Suomen kesä, slow travel ja paikalliset majoitukset",
+    "tagline": "Suomen kesä, kiireetön matkailu ja paikalliset majoitukset",
     "bookNow": "Siirry palveluntarjoajalle",
     "learnMore": "Lue lisää",
     "viewAll": "Näytä kaikki",
@@ -22,7 +22,7 @@
     "plan": "Suunnittele matkasi",
     "cityBreaks": "Kaupunkilomat",
     "coastalFinland": "Rannikon Suomi",
-        "ruralFinland": "Maaseutu & saaristo",
+        "ruralFinland": "Maaseutu ja saaristo",
     "blog": "Blogi",
     "contact": "Yhteystiedot",
     "admin": "Hallinta",
@@ -42,15 +42,15 @@
     "featuredDestinations": "Kesäkohteet",
     "featuredDestinationsDesc": "Rauhallisia kohteita Etelä-Suomessa, Länsi-Suomessa, Kaakkois-Suomessa ja Ahvenanmaalla",
     "popularExperiences": "Tekemistä ja näkemistä",
-    "popularExperiencesDesc": "Oikeita paikallisia elämyksiä: melontaa, pyöräilyä, saunaa ja saaristopäiviä",
-    "uniqueStays": "Majoituksia persoonalla",
+    "popularExperiencesDesc": "Aitoja paikallisia elämyksiä: melontaa, pyöräilyä, saunomista ja saaristopäiviä",
+    "uniqueStays": "Majoituksia, joissa on luonnetta",
     "uniqueStaysDesc": "Mökkejä, boutique-taloja, merenrantahuviloita ja glampingia",
     "whyFinland": "Miksi Suomi?",
     "whyFinlandDesc": "Syitä rakastua pohjoismaiseen elämäntapaan",
     "testimonials": "Mitä vieraamme sanovat",
     "blog": "Matkainspiraatiota",
     "newsletter": "Saa matkainspiraatiota",
-    "newsletterDesc": "Vinkkejä, erikoistarjouksia ja revontulihälytyksiä suoraan sähköpostiisi."
+    "newsletterDesc": "Matkavinkkejä ja ajankohtaisia tarjouksia suoraan sähköpostiisi."
   },
   "why": {
     "nature": {

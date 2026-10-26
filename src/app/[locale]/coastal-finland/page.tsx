@@ -36,12 +36,12 @@ const places: Place[] = [
     imageAlt: { fi: "Mathildedalin satama ja meri", es: "Puerto y mar de Mathildedal", en: "Mathildedal harbour and sea" },
     gallery: [photoLibrary.mathildedalVillage, photoLibrary.teijoNationalPark, photoLibrary.sauna],
     intro: {
-      fi: "Mathildedal on historiallinen ruukkikylä meren ja Teijon kansallispuiston välissä. Ruukkimiljöö, pienet putiikit, kahvilat, ravintolat ja luonto tekevät paikasta poikkeuksellisen helposti lähestyttävän Slow Finland -kohteen.",
+      fi: "Mathildedal on historiallinen ruukkikylä meren ja Teijon kansallispuiston välissä. Ruukkimiljöö, pienet putiikit, kahvilat, ravintolat ja luonto tekevät siitä helposti lähestyttävän kiireettömän matkailun kohteen.",
       es: "Mathildedal es un histórico pueblo siderúrgico entre el mar y el Parque Nacional de Teijo. Su mezcla de patrimonio industrial, pequeñas tiendas, cafés, restaurantes y naturaleza convierte el lugar en una escapada muy especial.",
       en: "Mathildedal is a historic ironworks village between the sea and Teijo National Park. Its combination of industrial heritage, small shops, cafés, restaurants and nature makes it a distinctive slow-travel destination.",
     },
     stay: {
-      fi: "Majoitustarjonta ulottuu boutique-hotellista ja kattohuoneista merenrantamökkeihin, glampingiin sekä Teijon kansallispuiston lähellä oleviin luontomajoituksiin.",
+      fi: "Majoitusvaihtoehtoja on boutique-hotellista ja kattohuoneistoista merenrantamökkeihin, glamping-majoitukseen sekä Teijon kansallispuiston lähistön luontomajoituksiin.",
       es: "El alojamiento va desde hoteles boutique y habitaciones panorámicas hasta cabañas junto al mar, glamping y alojamientos de naturaleza cerca del parque.",
       en: "Stay options range from boutique hotels and rooftop rooms to seaside cottages, glamping and nature accommodation close to the national park.",
     },
@@ -51,7 +51,7 @@ const places: Place[] = [
       en: "Food is part of the village experience: seasonal ingredients, local flavours, seaside dining, cafés, craft beer and coffee roasted in the village.",
     },
     do: {
-      fi: "Teijon reiteille voi lähteä jalan, pyörällä tai vesille. Paikallisesti voi vuokrata pyöriä, fatbikeja, kajakkeja, kanootteja, SUP-lautoja ja soutuveneitä. Kalastus on alueen suosittu aktiviteetti.",
+      fi: "Teijon reiteille voi lähteä jalan tai pyörällä, ja vesille pääsee vuokravälineillä. Alueelta voi vuokrata tavallisia pyöriä, fatbikeja, kajakkeja, kanootteja, SUP-lautoja ja soutuveneitä. Kalastus on alueella suosittua.",
       es: "Puedes recorrer Teijo a pie, en bicicleta o sobre el agua. En la zona hay alquiler de bicicletas, fatbikes, kayaks, canoas, SUP y botes de remos, además de pesca.",
       en: "Explore Teijo on foot, by bike or on the water. Local rentals include bicycles, fatbikes, kayaks, canoes, SUP boards and rowing boats, while fishing is another popular activity.",
     },
@@ -71,7 +71,7 @@ const places: Place[] = [
       { name: { fi: "Hotel Mathildedal", es: "Hotel Mathildedal", en: "Hotel Mathildedal" }, text: { fi: "Boutique-majoitusta historiallisessa ruukkimiljöössä.", es: "Alojamiento boutique en un entorno histórico.", en: "Boutique accommodation in a historic ironworks setting." }, url: "https://mathildedal.fi/" },
       { name: { fi: "Mathildan Marina", es: "Mathildan Marina", en: "Mathildan Marina" }, text: { fi: "Satamahotelli, ravintola, sauna ja vierasvenesatama meren äärellä.", es: "Hotel de puerto, restaurante, sauna y marina junto al mar.", en: "Harbour hotel, restaurant, sauna and guest marina by the sea." }, url: "https://www.mathildanmarina.fi/" },
       { name: { fi: "Matri House", es: "Matri House", en: "Matri House" }, text: { fi: "Historiallinen boutique-talo ja sesonkiravintola.", es: "Casa boutique histórica y restaurante de temporada.", en: "Historic boutique house and seasonal restaurant." }, url: "https://matrihouse.fi/" },
-            { name: { fi: "Natura Viva / Teijon Luontokeskus", es: "Natura Viva / Centro de Visitantes de Teijo", en: "Natura Viva / Teijo Visitor Centre" }, text: { fi: "Luontokeskus, vuokrakalusto ja majoituspalveluita Matildanjärvellä.", es: "Centro de naturaleza, alquiler de equipo y alojamiento junto a Matildanjärvi.", en: "Nature centre, equipment rental and accommodation by Lake Matildanjärvi." }, url: "https://naturaviva.fi/" },
+            { name: { fi: "Natura Viva / Teijon Luontokeskus", es: "Natura Viva / Centro de Visitantes de Teijo", en: "Natura Viva / Teijo Visitor Centre" }, text: { fi: "Luontokeskus, vuokravälineitä ja majoituspalveluja Matildanjärvellä.", es: "Centro de naturaleza, alquiler de equipo y alojamiento junto a Matildanjärvi.", en: "Nature centre, equipment rental and accommodation by Lake Matildanjärvi." }, url: "https://naturaviva.fi/" },
       { name: { fi: "Meri-Ruukin lomakylä", es: "Meri-Ruukin", en: "Meri-Ruukki Holiday Village" }, text: { fi: "Kuuden hengen loma-asuntoja, merenrantasauna, ranta, laituri ja soutuveneitä Mathildedalin lähellä.", es: "Alojamientos para seis, sauna junto al mar, playa, embarcadero y botes de remos cerca de Mathildedal.", en: "Six-person holiday homes, seaside sauna, beach, pier and rowing boats near Mathildedal." }, url: "https://meri-ruukki.fi/" },
       { name: { fi: "Bistro Bruket", es: "Bistro Bruket", en: "Bistro Bruket" }, text: { fi: "Bistro, lounas, á la carte, BBQ ja kesäinen terassi meren äärellä.", es: "Bistró con menú, almuerzo, BBQ y terraza de verano junto al mar.", en: "A bistro with lunch, à la carte, BBQ and a summer terrace by the sea." }, url: "https://bistrobruket.fi/" },
       { name: { fi: "Kyläravintola Terho", es: "Kyläravintola Terho", en: "Kyläravintola Terho" }, text: { fi: "Kylän olohuone, ruokaa, livemusiikkia, Beer Garden ja kyläpaahtimon kahvit.", es: "Restaurante local con música en directo, Beer Garden y café tostado en el pueblo.", en: "A village living room with food, live music, a Beer Garden and locally roasted coffee." }, url: "https://www.ravintolaterho.fi/" },

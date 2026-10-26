@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
   const copy = locale === "fi"
-    ? { title: "Suunnittele matkasi Suomeen | Finland Experience", description: "Luo inspiraatiopohjainen matkasuunnitelma tarkistetusta mökki-, elämyksiä ja kohteita sisältävästä katalogista." }
+    ? { title: "Suunnittele matkasi Suomeen | Finland Experience", description: "Luo alustava matkasuunnitelma tarkistettujen majoitusten, elämysten ja kohteiden pohjalta." }
     : locale === "es"
       ? { title: "Diseña tu viaje a Finlandia | Finland Experience", description: "Crea una propuesta de viaje usando un catálogo verificado de alojamientos, experiencias y destinos." }
       : { title: "Plan Your Finland Trip | Finland Experience", description: "Create a trip starting point from a verified catalogue of stays, experiences and destinations." };

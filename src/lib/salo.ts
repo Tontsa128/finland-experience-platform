@@ -117,7 +117,7 @@ export const saloProviders: SaloProvider[] = [
     category: "stay",
     name: "Majoitus Mathildedal",
     description: {
-      fi: "Mökki Mathildedalin kylässä. Ajantasainen hinta ja saatavuus pyydetään suoraan majoittajalta.",
+      fi: "Mökki Mathildedalin kylässä. Tarkista ajantasainen hinta ja saatavuus suoraan majoittajalta.",
       es: "Casa de vacaciones en Mathildedal. Consulta directamente al anfitrión el precio y la disponibilidad actuales.",
       en: "Holiday cottage in Mathildedal. Ask the provider directly for the current price and availability.",
     },
@@ -165,7 +165,7 @@ export const saloProviders: SaloProvider[] = [
     category: "nature",
     name: "Teijon kansallispuisto",
     description: {
-      fi: "Järviä, metsiä, kallioita ja reittejä ympäri vuoden. Kansallispuiston perusluonto on maksuton; vuokrattavista palveluista veloitetaan erikseen.",
+      fi: "Järviä, metsiä, kallioita ja reittejä ympäri vuoden. Kansallispuistoon pääsy on maksutonta; vuokrapalveluista veloitetaan erikseen.",
       es: "Lagos, bosques, rocas y senderos durante todo el año. El acceso básico al parque es gratuito; los servicios de alquiler se cobran aparte.",
       en: "Lakes, forests, rocks and trails year-round. Basic access to the national park is free; rental services are charged separately.",
     },
@@ -202,7 +202,7 @@ export const saloProviders: SaloProvider[] = [
     category: "stay",
     name: "Saaristomökit Särkisalossa",
     description: {
-      fi: "Kahdeksan merenrantamökkiä Salon eteläisessä saaristossa. Vaihtoehtoja pienistä mökeistä suurempiin huviloihin, puusauna, laituri ja terassi.",
+      fi: "Salon eteläisessä saaristossa on kahdeksan merenrantamökkiä pienistä mökeistä suurempiin huviloihin. Majoituksiin kuuluu puusauna, laituri ja terassi.",
       es: "Ocho cabañas junto al mar en el archipiélago de Särkisalo, desde pequeñas cabañas hasta villas, con sauna de leña y embarcadero.",
       en: "Eight seaside cottages in the Särkisalo archipelago, from compact cabins to larger villas, with wood-fired sauna and pier.",
     },
@@ -215,7 +215,7 @@ export const saloProviders: SaloProvider[] = [
     category: "stay",
     name: "Matildanjärven kämpät",
     description: {
-      fi: "Kaksi vuokrattavaa kämppää Teijon kansallispuistossa Luontokeskuksen lähellä. Kummassakin majoittuu enintään kuusi; saunavuoro kuuluu majoitukseen.",
+      fi: "Teijon kansallispuistossa, luontokeskuksen lähellä, on kaksi vuokrattavaa kämppää. Kumpaankin mahtuu enintään kuusi henkilöä, ja majoitukseen sisältyy saunavuoro.",
       es: "Dos alojamientos de alquiler cerca del centro de visitantes del Parque Nacional de Teijo, con capacidad para seis personas cada uno y sauna incluida.",
       en: "Two rental cabins near the Teijo National Park visitor centre, each sleeping up to six, with a sauna session included.",
     },
@@ -228,7 +228,7 @@ export const saloProviders: SaloProvider[] = [
     category: "nature",
     name: "Förby Marina",
     description: {
-      fi: "Suojaisa pienvenesatama Särkisalon Förbyssä. Vierasvenelaituri, veneilypalvelut, kesäkahvila ja uimapaikka.",
+      fi: "Särkisalon Förbyssä sijaitsee suojaisa pienvenesatama, jossa on vierasvenelaituri, veneilypalveluja, kesäkahvila ja uimapaikka.",
       es: "Puerto deportivo protegido en Förby, Särkisalo, con muelle de visitantes, servicios náuticos, café de verano y zona de baño.",
       en: "A sheltered marina in Förby, Särkisalo, with guest berths, boating services, a summer café and a nearby swimming spot.",
     },

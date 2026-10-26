@@ -63,7 +63,7 @@ export default async function RuralFinlandPage({ params }: { params: Promise<{ l
       : {
           eyebrow: "Maaseutumatkailu, mökit ja aidot elämykset",
           title: "Suomi, jonka kokee hitaasti",
-          intro: "Oma mökki veden äärellä, savusauna, saaristo, metsät, historialliset ruukkikylät ja lähiruoka – matkalle, jossa yksityisyys ja paikallinen elämä ovat osa ylellisyyttä.",
+          intro: "Oma mökki veden äärellä, savusauna, saaristo, metsät, historialliset ruukkikylät ja lähiruoka luovat matkakokemuksen, jossa yksityisyys ja paikallinen elämä ovat osa ylellisyyttä.",
           reserve: "Löydä paikalliset palveluntarjoajat",
           how: "Näin sivusto toimii",
           steps: ["Inspiroidu ja valitse alue", "Siirry palveluntarjoajan omalle sivulle", "Varaa ja maksa suoraan palveluntarjoajalle"],

@@ -14,7 +14,7 @@ const items = [
       en: "Pumpkin Weeks in Salo",
     },
     text: {
-      fi: "Kurpitsapuisto uudella paikalla Vaskiontie 50:ssä, Halikko. Puisto on avoinna klo 10–22.",
+      fi: "Kurpitsapuisto sijaitsee uudessa osoitteessa Vaskiontie 50, Halikko. Puisto on avoinna klo 10–22.",
       es: "El parque de calabazas se traslada a Vaskiontie 50, Halikko. Abierto de 10:00 a 22:00.",
       en: "The pumpkin park moves to Vaskiontie 50 in Halikko. Open daily 10am–10pm.",
     },
