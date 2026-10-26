@@ -2,6 +2,7 @@ import Image from "next/image";
 
 type Props = {
   sourceUrl: string;
+  imageUrl?: string;
   alt: string;
 };
 
@@ -66,8 +67,8 @@ async function getOrganizerImage(sourceUrl: string) {
   }
 }
 
-export async function EventImage({ sourceUrl, alt }: Props) {
-  const imageUrl = await getOrganizerImage(sourceUrl);
+export async function EventImage({ sourceUrl, imageUrl: suppliedImageUrl, alt }: Props) {
+  const imageUrl = suppliedImageUrl || await getOrganizerImage(sourceUrl);
   if (!imageUrl) {
     return (
       <div className="mb-5 flex aspect-[16/9] items-center justify-center rounded-[1.25rem] bg-brand-50 px-6 text-center text-sm text-brand-700">
