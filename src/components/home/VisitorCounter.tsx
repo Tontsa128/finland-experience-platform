@@ -6,7 +6,7 @@ import { Users, CalendarDays } from "lucide-react";
 type VisitorStats = { monthlyVisitors: number; totalVisitors: number };
 
 const copy = {
-  fi: { month: "Kävijää tässä kuussa", total: "Kävijää yhteensä" },
+  fi: { month: "Kävijöitä tässä kuussa", total: "Kävijöitä yhteensä" },
   en: { month: "Visitors this month", total: "Visitors overall" },
   es: { month: "Visitantes este mes", total: "Visitantes en total" },
 } as const;
