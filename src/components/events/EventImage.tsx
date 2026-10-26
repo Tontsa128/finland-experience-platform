@@ -5,14 +5,37 @@ type Props = {
   alt: string;
 };
 
-function readMeta(html: string, property: string) {
-  const patterns = [
-    new RegExp(`<meta[^>]+property=[\\\"']${property}[\\\"'][^>]+content=[\\\"']([^\\\"']+)[\\\"']`, "i"),
-    new RegExp(`<meta[^>]+content=[\\\"']([^\\\"']+)[\\\"'][^>]+property=[\\\"']${property}[\\\"']`, "i"),
-  ];
-  for (const pattern of patterns) {
-    const match = html.match(pattern);
-    if (match?.[1]) return match[1];
+function metaContent(html: string, key: string) {
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  for (const tag of tags) {
+    const attrs: Record<string, string> = {};
+    for (const match of tag.matchAll(/([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)) {
+      attrs[match[1].toLowerCase()] = match[2] ?? match[3] ?? match[4] ?? "";
+    }
+    const identity = (attrs.property ?? attrs.name ?? attrs.itemprop ?? "").toLowerCase();
+    if (identity === key.toLowerCase() && attrs.content) return attrs.content;
+  }
+  return null;
+}
+
+function jsonLdImage(html: string) {
+  for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const data = JSON.parse(match[1]);
+      const queue = Array.isArray(data) ? [...data] : [data];
+      while (queue.length) {
+        const item = queue.shift();
+        if (!item || typeof item !== "object") continue;
+        if (Array.isArray(item)) { queue.push(...item); continue; }
+        const image = item.image;
+        if (typeof image === "string") return image;
+        if (Array.isArray(image) && typeof image[0] === "string") return image[0];
+        if (image && typeof image === "object" && typeof image.url === "string") return image.url;
+        if (item["@graph"]) queue.push(item["@graph"]);
+      }
+    } catch {
+      // Ignore malformed JSON-LD and continue to the next candidate.
+    }
   }
   return null;
 }
@@ -20,14 +43,24 @@ function readMeta(html: string, property: string) {
 async function getOrganizerImage(sourceUrl: string) {
   try {
     const response = await fetch(sourceUrl, {
-      headers: { "User-Agent": "FINNEXPRIENCE-event-image-fetcher/1.0" },
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; FINNEXPRIENCE/1.0; event image attribution)",
+        Accept: "text/html,application/xhtml+xml",
+      },
       next: { revalidate: 21600 },
-      signal: AbortSignal.timeout(7000),
+      signal: AbortSignal.timeout(9000),
     });
     if (!response.ok) return null;
     const html = await response.text();
-    const raw = readMeta(html, "og:image") || readMeta(html, "twitter:image");
-    return raw ? new URL(raw, sourceUrl).toString() : null;
+    const raw =
+      metaContent(html, "og:image") ||
+      metaContent(html, "twitter:image") ||
+      metaContent(html, "image");
+    const structured = raw || jsonLdImage(html);
+    if (!structured) return null;
+    const resolved = new URL(structured.replaceAll("&amp;", "&"), sourceUrl);
+    if (resolved.protocol !== "https:" && resolved.protocol !== "http:") return null;
+    return resolved.toString();
   } catch {
     return null;
   }
@@ -35,7 +68,13 @@ async function getOrganizerImage(sourceUrl: string) {
 
 export async function EventImage({ sourceUrl, alt }: Props) {
   const imageUrl = await getOrganizerImage(sourceUrl);
-  if (!imageUrl) return null;
+  if (!imageUrl) {
+    return (
+      <div className="mb-5 flex aspect-[16/9] items-center justify-center rounded-[1.25rem] bg-brand-50 px-6 text-center text-sm text-brand-700">
+        Tapahtuman kuva tarkistetaan järjestäjältä
+      </div>
+    );
+  }
 
   return (
     <div className="relative mb-5 aspect-[16/9] overflow-hidden rounded-[1.25rem] bg-slate-100">
