@@ -159,6 +159,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
   const locale = (rawLocale in copy ? rawLocale : "en") as Locale;
   const c = copy[locale];
   const categoryLabel = (category: typeof providers[number]["category"]) => category === "stay" ? c.stayCategory : category === "food" ? c.foodCategory : category === "activity" ? c.activityCategory : category === "culture" ? c.cultureCategory : c.shopCategory;
+  const officialLocalePath = locale === "fi" ? "fi" : "en";
 
   return (
     <main className="bg-white text-brand-950">
@@ -171,7 +172,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
           <p className="mt-6 max-w-3xl text-lg leading-8 text-white/90 sm:text-xl">{c.intro}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#palvelut" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">{c.plan}<ArrowDown className="h-4 w-4" /></a>
-            <a href="https://visitmathildedal.fi/fi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3.5 text-sm font-bold text-white">{c.official}<ArrowUpRight className="h-4 w-4" /></a>
+            <a href={`https://visitmathildedal.fi/${officialLocalePath}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3.5 text-sm font-bold text-white">{c.official}<ArrowUpRight className="h-4 w-4" /></a>
             <a href={`/${locale}/mathildedal/suunnittele`} className="inline-flex items-center gap-2 rounded-full border border-gold-300/70 bg-gold-300/10 px-6 py-3.5 text-sm font-bold text-white hover:bg-gold-300/20">{c.planner}<ArrowRight className="h-4 w-4" /></a>
           </div>
         </div>
@@ -235,7 +236,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
           })}
           <div className="mt-12 rounded-2xl border border-brand-200 bg-white p-6 text-sm leading-7 text-slate-600">
             {c.disclaimer}
-            <p className="mt-3"><a className="font-semibold text-brand-800 underline" href="https://visitmathildedal.fi/fi" target="_blank" rel="noopener noreferrer">{c.official}</a> · <a className="font-semibold text-brand-800 underline" href="https://visitmathildedal.fi/fi/tapahtumat" target="_blank" rel="noopener noreferrer">{c.allEvents}</a> · <a className="font-semibold text-brand-800 underline" href="https://visitmathildedal.fi/fi/aktiviteetit" target="_blank" rel="noopener noreferrer">{c.activityCategory}</a></p>
+            <p className="mt-3"><a className="font-semibold text-brand-800 underline" href={`https://visitmathildedal.fi/${officialLocalePath}`} target="_blank" rel="noopener noreferrer">{c.official}</a> · <a className="font-semibold text-brand-800 underline" href={`https://visitmathildedal.fi/${officialLocalePath === "fi" ? "fi/tapahtumat" : "en/events"}`} target="_blank" rel="noopener noreferrer">{c.allEvents}</a> · <a className="font-semibold text-brand-800 underline" href={`https://visitmathildedal.fi/${officialLocalePath === "fi" ? "fi/aktiviteetit" : "en/activities"}`} target="_blank" rel="noopener noreferrer">{c.activityCategory}</a></p>
           </div>
         </div>
       </section>
