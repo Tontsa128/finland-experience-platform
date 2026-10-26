@@ -25,7 +25,7 @@ const copy = {
     countryside: "Perniö, Halikko ja Wiurila",
     countrysideText: "Salon maaseutu antaa matkalle toisen rytmin: kartanot, kylät, paikallishistoria, museot, lähiruoka ja pienet yritykset sopivat hyvin auto-, pyörä- ja päiväretkiin.",
     routes: "Reitit – tee Salosta oma matkasi",
-    routesText: "Saloa voi rakentaa päiväretkestä usean yön lomaan. Valmiita reittien ideoita ovat rannikkoreitti, kulttuurireitti, ruukkikylien pyöräilyreitti, lähiruokakierros, melottava saaristokierros ja Salo–Lehmijärvi–Teijo-retkeilyreitti.",
+    routesText: "Saloon voi tulla päiväretkelle tai jäädä useaksi yöksi. Reitti-ideoita ovat rannikkoreitti, kulttuurireitti, ruukkikylien pyöräilyreitti, lähiruokakierros, melontaretki saaristossa ja Salo–Lehmijärvi–Teijo-retkeilyreitti.",
     providers: "Salon paikalliset palveluntarjoajat",
     providersText: "Alta löydät majoituksia, elämyksiä, ruokapaikkoja ja luontokohteita. Lopullinen varaus ja sopimus tehdään aina suoraan palveluntarjoajan kanssa.",
     browse: "Avaa Salo-kohteet",
