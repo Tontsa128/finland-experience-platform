@@ -224,7 +224,16 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
   const slide = activeSlides[active] ?? activeSlides[0];
   const text = slide.copy || copy[locale][slide.key] || copy[locale].summer;
-  const href = slide.external ? slide.href : `/${locale}${slide.href}`;
+  // Route every generic Mathildedal hero destination to the same canonical guide.
+  // CMS slides may still contain either of the older destination URLs.
+  const isMathildedalLink =
+    slide.key === "mathildedal" ||
+    /\/destinations\/(?:salo-)?mathildedal(?:[/?#]|$)/.test(slide.href);
+  const href = slide.external
+    ? slide.href
+    : isMathildedalLink
+      ? `/${locale}/destinations/salo-mathildedal`
+      : `/${locale}${slide.href}`;
 
   const getImage = (item: Slide & { copy?: SlideCopy }) => {
     if (!failedImages[item.key]) return item.image;
