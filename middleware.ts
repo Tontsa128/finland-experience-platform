@@ -84,6 +84,16 @@ async function getAdminRole(req: NextRequest) {
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
+  // Keep one canonical Mathildedal destination page. The older standalone
+  // overview route duplicated /destinations/salo-mathildedal and caused
+  // different entry points to show different destination content.
+  const mathildedalOverview = pathname.match(/^\\/(fi|es|en)\\/mathildedal\\/?$/);
+  if (mathildedalOverview) {
+    const redirectUrl = req.nextUrl.clone();
+    redirectUrl.pathname = `/${mathildedalOverview[1]}/destinations/salo-mathildedal`;
+    return NextResponse.redirect(redirectUrl, 308);
+  }
+
   if (isAdminPath(pathname)) {
     if (pathname === "/admin/login" || /^\/(fi|es|en)\/admin\/login$/.test(pathname)) {
       return handleLocalizedRequest(req);
