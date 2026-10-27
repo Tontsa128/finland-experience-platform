@@ -228,7 +228,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   // CMS slides may still contain either of the older destination URLs.
   const isMathildedalLink =
     slide.key === "mathildedal" ||
-    /\\/destinations\\/(?:salo-)?mathildedal(?:[/?#]|$)/.test(slide.href);
+    /\/destinations\/(?:salo-)?mathildedal(?:[/?#]|$)/.test(slide.href);
   const href = slide.external
     ? slide.href
     : isMathildedalLink
