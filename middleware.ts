@@ -87,7 +87,7 @@ export async function middleware(req: NextRequest) {
   // Keep one canonical Mathildedal destination page. The older standalone
   // overview route duplicated /destinations/salo-mathildedal and caused
   // different entry points to show different destination content.
-  const mathildedalOverview = pathname.match(/^\\/(fi|es|en)\\/mathildedal\\/?$/);
+  const mathildedalOverview = pathname.match(/^\/(fi|es|en)\/mathildedal\/?$/);
   if (mathildedalOverview) {
     const redirectUrl = req.nextUrl.clone();
     redirectUrl.pathname = `/${mathildedalOverview[1]}/destinations/salo-mathildedal`;
