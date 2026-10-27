@@ -232,7 +232,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const href = slide.external
     ? slide.href
     : isMathildedalLink
-      ? `/${locale}/mathildedal`
+      ? `/${locale}/destinations/salo-mathildedal`
       : `/${locale}${slide.href}`;
 
   const getImage = (item: Slide & { copy?: SlideCopy }) => {
