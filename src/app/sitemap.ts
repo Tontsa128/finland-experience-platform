@@ -14,8 +14,8 @@ export const revalidate = 3600;
 const basePaths = [
   "",
   "destinations",
+  "destinations/salo-mathildedal",
   "salo",
-  "mathildedal",
   "mathildedal/suunnittele",
   "mathildedal/majoitus",
   "mathildedal/ruoka",
