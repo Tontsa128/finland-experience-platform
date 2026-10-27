@@ -308,7 +308,7 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
         </div>
       </section>
       <section className="container-narrow py-12 sm:py-16">
-        <Link href={`/${locale}/mathildedal`} className="inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:underline"><ArrowLeft className="h-4 w-4" />{back}</Link>
+        <Link href={`/${locale}/destinations/salo-mathildedal`} className="inline-flex items-center gap-2 text-sm font-bold text-brand-800 hover:underline"><ArrowLeft className="h-4 w-4" />{back}</Link>
         <p className="mt-7 max-w-3xl leading-8 text-slate-600">{c.description}</p>
         <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {category.providers.map((provider) => (
