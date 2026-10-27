@@ -60,6 +60,16 @@ function handleLocalizedRequest(req: NextRequest) {
   return response;
 }
 
+function redirectLegacyMathildedal(req: NextRequest) {
+  const match = req.nextUrl.pathname.match(/^\/(fi|es|en)\/mathildedal(?:\/.*)?\/?$/);
+  if (!match) return null;
+
+  const locale = match[1] as (typeof locales)[number];
+  const redirectUrl = req.nextUrl.clone();
+  redirectUrl.pathname = `/${locale}/destinations/salo-mathildedal`;
+  return setLocaleCookie(NextResponse.redirect(redirectUrl, 308), locale);
+}
+
 async function getAdminRole(req: NextRequest) {
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !(process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)) {
     return { role: null, response: null as NextResponse | null, configured: false };
@@ -83,6 +93,9 @@ async function getAdminRole(req: NextRequest) {
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  const mathildedalRedirect = redirectLegacyMathildedal(req);
+  if (mathildedalRedirect) return mathildedalRedirect;
 
   if (isAdminPath(pathname)) {
     if (pathname === "/admin/login" || /^\/(fi|es|en)\/admin\/login$/.test(pathname)) {

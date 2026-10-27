@@ -66,7 +66,7 @@ export default async function MathildedalPlanner({ params }: { params: Promise<{
   return (
     <main className="bg-snow py-12 sm:py-20">
       <div className="container-narrow">
-        <Link href={`/${locale}/mathildedal`} className="text-sm font-semibold text-brand-700 hover:text-brand-950">← Mathildedal</Link>
+        <Link href={`/${locale}/destinations/salo-mathildedal`} className="text-sm font-semibold text-brand-700 hover:text-brand-950">← Mathildedal</Link>
         <header className="mt-8 max-w-4xl">
           <p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{c.eyebrow}</p>
           <h1 className="mt-3 font-display text-4xl font-bold leading-tight text-brand-950 sm:text-6xl">{c.heading}</h1>
