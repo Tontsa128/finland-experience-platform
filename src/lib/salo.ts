@@ -466,8 +466,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Archipelago stays on Pettu island. Villa Lönnviken sleeps eight with a beach sauna; Lilla Lönnviken sleeps four with an indoor sauna and private pier.",
     },
     url: "https://www.lonnviken.com",
-    image: providerImages.villas,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/03/Villa-Lonnviken-933x768.jpg",
+    imageCredit: "Salon Kohteet — Villa Lönnviken",
   },
   {
     id: "meri-ruukin-lomakyla",
@@ -505,8 +505,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Year-round cottage for seven in Vaskio; in summer there is also a separate sleeping hut, forest pond and smoke sauna.",
     },
     url: "https://toivontila.fi/",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/oper%C3%A4.jpg",
+    imageCredit: "Salon Kohteet — Onnenperän Mökki",
   },
   {
     id: "leipyolin-tila",
@@ -544,8 +544,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A small organic farm by the Kiskonjoki river. The simple Muonamiehen cottage is available for summer rental.",
     },
     url: "https://alaspaanmaatila.fi",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/m%C3%B6kki.jpg",
+    imageCredit: "Salon Kohteet — Alaspään maatilan vuokramökki",
   },
   {
     id: "villa-viola",
@@ -557,8 +557,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Villa-style summer cottage in Suomusjärvi with indoor bathroom, kitchen, Wi-Fi, electric sauna and a hot-tub terrace.",
     },
     url: "https://www.lomalaperla.com",
-    image: providerImages.villas,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Lomalaperla.4-4-1150x768.jpg",
+    imageCredit: "Salon Kohteet — Villa Viola",
   },
   {
     id: "villa-laperla",
