@@ -312,7 +312,6 @@ export const saloProviders: SaloProvider[] = [
     url: "https://tiiranta.fi/",
     image: photoLibrary.sarkisalo,
     imageCredit: "Visit Salo / Salon Kohteet",
-    imageCredit: "Visit Salo / Salon Kohteet",
   },
   {
     id: "vuorovetten-jaatelo",
@@ -339,7 +338,6 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.salo.fi/",
     image: photoLibrary.saunaCottage,
     imageCredit: "Wikimedia Commons, CC BY-SA 3.0",
-    imageCredit: "Salon kaupunki / Salon Kohteet",
   },
   {
     id: "sarkisalo-fishing",
@@ -366,7 +364,6 @@ export const saloProviders: SaloProvider[] = [
     url: "https://hoitolakukkuvilla.fi/kesan-joogatunnit/",
     image: photoLibrary.hankoRegattaBeach,
     imageCredit: "Wikimedia Commons, CC BY-SA 4.0",
-    imageCredit: "Visit Salo / Salon Kohteet",
   },
   {
     id: "vuohensaari-camping",
