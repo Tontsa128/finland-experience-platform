@@ -144,7 +144,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
               >
                 <Image
-                  src={destination.images?.[0] || fallbackSummerImage}
+                  src={destinations.find((item) => item.slug === destination.slug)?.images?.[0] || destination.images?.[0] || fallbackSummerImage}
                   alt={destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
