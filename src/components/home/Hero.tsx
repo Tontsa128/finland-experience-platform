@@ -10,9 +10,9 @@ import { photoLibrary } from "@/lib/photo-library";
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
 function normalizeHomepageHref(href: string): string {
-  // CMS slides can outlive the old Mathildedal page. Always send legacy links
-  // (including coastal-finland#mathildedal) to the canonical destination page.
-  if (/(?:^|\\/)mathildedal(?:\\/|#|$)/i.test(href) || /#mathildedal(?:$|[?&])/i.test(href)) {
+  // CMS slides can outlive the old Mathildedal page. Always send internal
+  // Mathildedal links (including coastal-finland#mathildedal) to the canonical page.
+  if (!/^https?:\\/\\//i.test(href) && /mathildedal/i.test(href)) {
     return "/destinations/salo-mathildedal";
   }
   return href;
