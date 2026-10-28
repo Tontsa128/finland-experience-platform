@@ -149,9 +149,11 @@ Supabase CLI käyttää vain hakemistoa `supabase/migrations/`. Vanha erillinen 
 
 Puhdas tietokantatarkistus tehdään paikallisessa Supabase-ympäristössä:
 
+Supabase CLI ei ole sovelluksen asennusriippuvuus: tietokantakomennot lataavat version 1.226.4 vain silloin, kun komento suoritetaan paikallisesti. Cloudflare-sovelluksen build ei siksi suorita CLI:n GitHub-binäärilatausta.
+
 ```bash
-supabase db reset
-supabase db push
+npm run db:reset
+npm run db:push
 ```
 
 ## Riippuvuudet
