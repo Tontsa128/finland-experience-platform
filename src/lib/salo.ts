@@ -427,8 +427,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Year-round seaside villa for 1–6 guests on Ulkoluoto, with a private pier, rowing boat and west-facing shore.",
     },
     url: "https://www.finnholm.net",
-    image: providerImages.villas,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://cdn-datahub.visitfinland.com/images/de37d4a0-d7d9-11ee-ab44-79c504d53bde.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub — Finnholmenin Strandbo-kohdekuva",
   },
   {
     id: "aava-adventures",
@@ -518,8 +518,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Farm accommodation in the Kiskonjoki valley, including bed & breakfast and cottage rental.",
     },
     url: "https://www.leipyoli.com",
-    image: providerImages.hotel,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/P%C3%A4%C3%A4rakennus-2-1366x768.jpg",
+    imageCredit: "Salon Kohteet — Leipyölin tilan päärakennus",
   },
   {
     id: "villa-nennebo",
