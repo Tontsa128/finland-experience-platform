@@ -453,8 +453,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Waterfront cottages, barn accommodation, camping and a smoke sauna in a quiet rural setting near Särkisalo.",
     },
     url: "https://www.katiskanmaki.com",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/07/IMG_2490-1024x768.jpg",
+    imageCredit: "Salon Kohteet — Katiskanmäen caravan-alue",
   },
   {
     id: "lonnviken",
@@ -479,8 +479,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Six-person seaside cottages near Mathildedal, with private sauna and fireplace, plus a pier and rowing boats.",
     },
     url: "https://meri-ruukki.fi/",
-    image: providerImages.villas,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/Meri-Ruukin-Lomakyl%C3%A4-1366x768.jpg",
+    imageCredit: "Salon Kohteet — Meri-Ruukin lomakylä",
   },
   {
     id: "topilan-tupa",
@@ -531,8 +531,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Two villas on Pettu island, with private shore, sea views and a traditional archipelago atmosphere.",
     },
     url: "https://www.villanennebo.fi/",
-    image: providerImages.villas,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Nennebo-web-1366x768.jpg",
+    imageCredit: "Salon Kohteet — Villa Nennebon virallinen kohdekuva",
   },
   {
     id: "alaspaan-maatila",
@@ -570,8 +570,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Traditional Finnish summer cottage in Suomusjärvi with wood-fired sauna, hot tub and a large terrace.",
     },
     url: "https://www.lomalaperla.com",
-    image: providerImages.villas,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/IMG_7052-7-1152x768.jpg",
+    imageCredit: "Salon Kohteet — Villa Laperlan terassi",
   },
   {
     id: "villa-viktoria",
