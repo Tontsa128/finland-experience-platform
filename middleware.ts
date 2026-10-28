@@ -85,7 +85,7 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   if (isAdminPath(pathname)) {
-    if (pathname === "/admin/login" || /^\/(fi|es|en)\/admin\/login$/.test(pathname)) {
+    if (/^\/admin\/(?:login|forgot-password|recovery)$/.test(pathname) || /^\/(fi|es|en)\/admin\/(?:login|forgot-password|recovery)$/.test(pathname)) {
       return handleLocalizedRequest(req);
     }
 

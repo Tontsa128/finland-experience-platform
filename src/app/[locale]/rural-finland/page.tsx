@@ -4,6 +4,7 @@ import { ArrowUpRight, Check, Compass, Sparkles, Utensils } from "lucide-react";
 import { photoLibrary } from "@/lib/photo-library";
 import { localizedUrl } from "@/lib/seo";
 import type { Locale } from "@/types";
+import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
@@ -33,6 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function RuralFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
+  const cmsPage = await getPageOverride(locale, "rural-finland");
+  if (cmsPage) return <PageOverride page={cmsPage} locale={locale} />;
   const isEs = locale === "es";
   const isEn = locale === "en";
 

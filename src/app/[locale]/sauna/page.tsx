@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, Flame, HeartPulse, Leaf, Moon, ShieldCheck } 
 import { photoLibrary } from "@/lib/photo-library";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import type { Locale } from "@/types";
+import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 
 const gallery = [
   {
@@ -295,6 +296,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function SaunaPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = localeOf(rawLocale);
+  const cmsPage = await getPageOverride(locale, "sauna");
+  if (cmsPage) return <PageOverride page={cmsPage} locale={locale} />;
   const x = copy[locale];
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, FileText, ImageIcon, MapPinned, Menu, Sparkles, Waves, Home, Files, Newspaper } from "lucide-react";
+import { ArrowRight, CalendarDays, FileText, ImageIcon, MapPinned, Menu, Sparkles, Waves, Home, Files, Newspaper } from "lucide-react";
 
 const sections = [
   { href: "/admin/content-studio", label: "✦ Content Studio", text: "Keskitetty editori FI/EN/ES-sisällölle, AI-käännökset, SEO ja julkaisu.", icon: Sparkles },
@@ -11,6 +11,7 @@ const sections = [
   { href: "/admin/properties", label: "Majoitukset", text: "Mökit, huvilat, hinnat, vierasmäärät ja SEO-tekstit.", icon: FileText },
   { href: "/admin/experiences", label: "Elämykset", text: "Sauna, veneily, kalastus ja muut varattavat elämykset.", icon: Waves },
   { href: "/admin/media", label: "Kuvapankki", text: "Lataa kuvia ja hallitse FI/ES/EN-alt-tekstejä.", icon: ImageIcon },
+  { href: "/admin/events", label: "Tapahtumat", text: "Tarkista lähteistä haetut tapahtumat, käyttöoikeudet ja julkaisu.", icon: CalendarDays },
   { href: "/admin/pages", label: "Sivut", text: "Luo uusia sivuja, muokkaa tekstejä ja julkaise ne ilman koodia.", icon: Files },
   { href: "/admin/blog", label: "Blogi", text: "Kirjoita, käännä ja julkaise monikielisiä matkaoppaita.", icon: Newspaper },
   { href: "/admin/navigation", label: "Navigaatio", text: "Päävalikko, CTA-linkit ja sivuston rakenteen hallinta.", icon: Menu },

@@ -6,6 +6,7 @@ import type { Locale } from "@/types";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { saloProviders } from "@/lib/salo";
+import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 
 type Localized = Record<Locale, string>;
 
@@ -306,6 +307,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function CoastalFinlandPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
+  const cmsPage = await getPageOverride(locale, "coastal-finland");
+  if (cmsPage) return <PageOverride page={cmsPage} locale={locale} />;
   const isFi = locale === "fi";
   const copy = locale === "fi"
     ? { eyebrow: "HIDDEN COASTAL FINLAND", title: "Viisi rannikon paikkaa, joista on helppo aloittaa", intro: "Mathildedalin ruukkikylä, Naantalin saaristo, Turku, Hanko ja Ahvenanmaa näyttävät Suomen rannikon eri puolet. Täällä reitti ei ole paketti – sinä päätät, missä viivyt.", note: "Löydä ensin paikka. Tarkista sitten ajantasaiset palvelut ja jatka suoraan palveluntarjoajalle.", nearby: "Myös tämä kuuluu samaan merelliseen kokonaisuuteen", nearbyText: "Särkisalo täydentää Salon rannikkokokonaisuutta: mökkejä, satamia, ravintoloita, melontaa, kalastusta, rantoja ja paikallista saaristoelämää." }

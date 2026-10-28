@@ -81,6 +81,10 @@ export default async function AccommodationsPage({ params }: { params: Promise<{
 
   return (
     <div className="bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
       <section className="relative min-h-[58vh] overflow-hidden bg-brand-950 text-white">
         <Image
           src={photoLibrary.turkuArchipelagoHouse}
