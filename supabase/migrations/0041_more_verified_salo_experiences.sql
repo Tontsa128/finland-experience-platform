@@ -8,7 +8,7 @@ BEGIN
   SELECT id INTO pid FROM public.providers WHERE slug='luontoriihi-provider' LIMIT 1;
   IF pid IS NULL THEN
     INSERT INTO public.providers(id,name,slug,provider_type,website_url,region,verified,verified_at,verified_notes,active)
-    VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:luontoriihi'),'LuontoRiihi','luontoriihi-provider','https://www.luontoriihi.fi/finnish-nature-experiences/','Salo',true,now(),'Editorial source checked against current Visit Finland / VisitSalo listings; no commercial partnership claim.',true)
+    VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:luontoriihi'),'LuontoRiihi','luontoriihi-provider','experience','https://www.luontoriihi.fi/finnish-nature-experiences/','Salo',true,now(),'Editorial source checked against current Visit Finland / VisitSalo listings; no commercial partnership claim.',true)
     RETURNING id INTO pid;
   ELSE
     UPDATE public.providers
@@ -59,7 +59,7 @@ BEGIN
   SELECT id INTO pid FROM public.providers WHERE slug='mathildedal-provider' LIMIT 1;
   IF pid IS NULL THEN
     INSERT INTO public.providers(id,name,slug,provider_type,website_url,region,verified,verified_at,verified_notes,active)
-    VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:hotel-mathildedal'),'Hotel Mathildedal','mathildedal-provider','https://www.mathildedal.fi/','Salo',true,now(),'Editorial source checked against current provider experience listing; no commercial partnership claim.',true)
+    VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:hotel-mathildedal'),'Hotel Mathildedal','mathildedal-provider','experience','https://www.mathildedal.fi/','Salo',true,now(),'Editorial source checked against current provider experience listing; no commercial partnership claim.',true)
     RETURNING id INTO pid;
   END IF;
 
@@ -78,3 +78,4 @@ BEGIN
   INSERT INTO public.experience_media(experience_id,media_id,sort_order) VALUES(eid,mid,0) ON CONFLICT DO NOTHING;
   INSERT INTO public.provider_experience_links(provider_id,experience_id) VALUES(pid,eid) ON CONFLICT DO NOTHING;
 END $$;
+

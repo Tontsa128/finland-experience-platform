@@ -8,7 +8,7 @@ BEGIN
   -- Gicel
   SELECT id INTO cid FROM public.experience_categories WHERE slug='culture-history' LIMIT 1;
   INSERT INTO public.providers(id,name,slug,provider_type,website_url,address,region,verified,verified_at,verified_notes,active)
-  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:rikalan-krouvi'),'Ravintola Rikalan Krouvi','rikalan-krouvi-provider','https://rikalankrouvi.fi/gicel-experience/','Rikalantie 74, 24800 Halikko, Salo','Salo',true,now(),'Current provider page checked; no commercial partnership claim.',true)
+  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:rikalan-krouvi'),'Ravintola Rikalan Krouvi','rikalan-krouvi-provider','experience','https://rikalankrouvi.fi/gicel-experience/','Rikalantie 74, 24800 Halikko, Salo','Salo',true,now(),'Current provider page checked; no commercial partnership claim.',true)
   ON CONFLICT(slug) DO UPDATE SET website_url=EXCLUDED.website_url,address=EXCLUDED.address,verified=true,verified_at=now(),active=true
   RETURNING id INTO pid;
   INSERT INTO public.experiences(destination_id,category_id,slug,status,published_at,address,provider_direct_url,source_url,editorial_verified,audience_tags,season_tags,experience_tags)
@@ -28,10 +28,7 @@ BEGIN
 
   -- Cinnamon buns
   SELECT id INTO cid FROM public.experience_categories WHERE slug='food-farm' LIMIT 1;
-  INSERT INTO public.providers(id,name,slug,provider_type,website_url,address,region,verified,verified_at,verified_notes,active)
-  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:hotel-mathildedal'),'Hotel Mathildedal','hotel-mathildedal-provider','https://www.mathildedal.fi/','Ruukinrannantie 6, 25660 Mathildedal','Salo',true,now(),'Current provider experience listing checked; no commercial partnership claim.',true)
-  ON CONFLICT(slug) DO UPDATE SET website_url=EXCLUDED.website_url,address=EXCLUDED.address,verified=true,verified_at=now(),active=true
-  RETURNING id INTO pid;
+  SELECT id INTO pid FROM public.providers WHERE slug='mathildedal-provider' LIMIT 1;
   INSERT INTO public.experiences(destination_id,category_id,slug,status,published_at,latitude,longitude,address,provider_direct_url,source_url,editorial_verified,audience_tags,season_tags,experience_tags)
   VALUES(did,cid,'cinnamon-bun-baking-mathildedal','published',now(),60.1660,22.9540,'Ruukinrannantie 6, 25660 Mathildedal','https://www.mathildedal.fi/','https://kohteet.visitsalo.fi/en/cinnamon-bun-baking-a-traditional-finnish-treat/',true,ARRAY['families','couples','friends','groups'],ARRAY['spring','summer','autumn','winter'],ARRAY['food','local','hands-on'])
   ON CONFLICT(slug) DO UPDATE SET category_id=EXCLUDED.category_id,status='published',latitude=EXCLUDED.latitude,longitude=EXCLUDED.longitude,address=EXCLUDED.address,provider_direct_url=EXCLUDED.provider_direct_url,source_url=EXCLUDED.source_url,editorial_verified=true,audience_tags=EXCLUDED.audience_tags,season_tags=EXCLUDED.season_tags,experience_tags=EXCLUDED.experience_tags,updated_at=now()
@@ -50,7 +47,7 @@ BEGIN
   -- Fine dining
   SELECT id INTO cid FROM public.experience_categories WHERE slug='food-farm' LIMIT 1;
   INSERT INTO public.providers(id,name,slug,provider_type,website_url,address,region,verified,verified_at,verified_notes,active)
-  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:teijo-cafe-bakery'),'Teijo Cafe & Bakery','teijo-cafe-bakery-provider','https://www.metsaravintola.fi/','Telakkatie 25, 25570 Teijo','Salo',true,now(),'Current VisitSalo / Visit Finland listing checked; no commercial partnership claim.',true)
+  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:teijo-cafe-bakery'),'Teijo Cafe & Bakery','teijo-cafe-bakery-provider','experience','https://www.metsaravintola.fi/','Telakkatie 25, 25570 Teijo','Salo',true,now(),'Current VisitSalo / Visit Finland listing checked; no commercial partnership claim.',true)
   ON CONFLICT(slug) DO UPDATE SET website_url=EXCLUDED.website_url,address=EXCLUDED.address,verified=true,verified_at=now(),active=true
   RETURNING id INTO pid;
   INSERT INTO public.experiences(destination_id,category_id,slug,status,published_at,latitude,longitude,address,provider_direct_url,source_url,editorial_verified,audience_tags,season_tags,experience_tags)
@@ -88,7 +85,7 @@ BEGIN
 
   -- Forest yoga / sound bowls
   INSERT INTO public.providers(id,name,slug,provider_type,website_url,address,region,verified,verified_at,verified_notes,active)
-  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:hoitola-kukkuvilla'),'Hoitola Kukkuvilla','hoitola-kukkuvilla-provider','https://hoitolakukkuvilla.fi/hoitola-kukkuvilla-in-english/','Kukkulinnantie 11, 25210 Vartsala, Salo','Salo',true,now(),'Current provider website and VisitSalo listing checked; no commercial partnership claim.',true)
+  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:hoitola-kukkuvilla'),'Hoitola Kukkuvilla','hoitola-kukkuvilla-provider','experience','https://hoitolakukkuvilla.fi/hoitola-kukkuvilla-in-english/','Kukkulinnantie 11, 25210 Vartsala, Salo','Salo',true,now(),'Current provider website and VisitSalo listing checked; no commercial partnership claim.',true)
   ON CONFLICT(slug) DO UPDATE SET website_url=EXCLUDED.website_url,address=EXCLUDED.address,verified=true,verified_at=now(),active=true
   RETURNING id INTO pid;
   SELECT id INTO cid FROM public.experience_categories WHERE slug='sauna-wellness' LIMIT 1;
@@ -110,7 +107,7 @@ BEGIN
   -- Private outdoor skills
   SELECT id INTO cid FROM public.experience_categories WHERE slug='nature' LIMIT 1;
   INSERT INTO public.providers(id,name,slug,provider_type,website_url,address,region,verified,verified_at,verified_notes,active)
-  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:valla-outdoors'),'Valla Outdoors','valla-outdoors-provider','https://vallaoutdoors.com/','Kuivastontie 431, 25500 Perniö, Salo','Salo',true,now(),'Current VisitSalo listing checked; no commercial partnership claim.',true)
+  VALUES(uuid_generate_v5(uuid_ns_url(),'finnexprience:provider:valla-outdoors'),'Valla Outdoors','valla-outdoors-provider','experience','https://vallaoutdoors.com/','Kuivastontie 431, 25500 Perniö, Salo','Salo',true,now(),'Current VisitSalo listing checked; no commercial partnership claim.',true)
   ON CONFLICT(slug) DO UPDATE SET website_url=EXCLUDED.website_url,address=EXCLUDED.address,verified=true,verified_at=now(),active=true
   RETURNING id INTO pid;
   INSERT INTO public.experiences(destination_id,category_id,slug,status,published_at,address,provider_direct_url,source_url,editorial_verified,audience_tags,season_tags,experience_tags)
@@ -162,3 +159,4 @@ BEGIN
   INSERT INTO public.experience_media(experience_id,media_id,sort_order) VALUES(eid,mid,0) ON CONFLICT DO NOTHING;
   INSERT INTO public.provider_experience_links(provider_id,experience_id) VALUES((SELECT id FROM public.providers WHERE slug='hoitola-kukkuvilla-provider' LIMIT 1),eid) ON CONFLICT DO NOTHING;
 END $$;
+
