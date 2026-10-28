@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  const { locale: rawLocale, slug } = await params;
  const locale = rawLocale as Locale;
  if (!locales.includes(locale)) return {};
- const {data}=await supabaseAdmin.from("site_pages").select("title,seo_title,seo_description,canonical_url,noindex").eq("locale",locale).eq("slug",slug).eq("published",true).maybeSingle();
+ const {data}=await supabaseAdmin.from("site_pages").select("title,seo_title,seo_description,canonical_url,noindex").eq("locale",locale).eq("slug",slug).eq("published",true).or(`publish_at.is.null,publish_at.lte.${new Date().toISOString()}`).maybeSingle();
  if(!data)return {};
  const canonical = data.canonical_url || localizedUrl(locale, "pages/" + slug);
  return {
@@ -28,7 +28,7 @@ export default async function CustomPage({params}:Props){
  const { locale: rawLocale, slug } = await params;
  if(!["fi","es","en"].includes(rawLocale))notFound();
  const locale=rawLocale as "fi"|"en"|"es";
- const {data,error}=await supabaseAdmin.from("site_pages").select("title,content,blocks,canonical_url").eq("locale",locale).eq("slug",slug).eq("published",true).maybeSingle();
+ const {data,error}=await supabaseAdmin.from("site_pages").select("title,content,blocks,canonical_url").eq("locale",locale).eq("slug",slug).eq("published",true).or(`publish_at.is.null,publish_at.lte.${new Date().toISOString()}`).maybeSingle();
  if(error||!data)notFound();
  const blocks=Array.isArray(data.blocks)?data.blocks.filter((b:any)=>b?.visible!==false):[];
  const copy=(b:any)=>b?.content?.[locale]||b?.content?.fi||{};

@@ -95,6 +95,20 @@ npm run build
 
 GitHub Actions suorittaa samat neljä tarkistusta jokaisella main-haaran pushilla ja pull requestilla.
 
+## CMS, mediat ja tapahtumasyöte
+
+Uusien CMS-ominaisuuksien käyttöönotto edellyttää Supabase-migraatioiden ajamista ennen sovelluspäivitystä. Uusin migraatio lisää mediasisällön käyttöoikeus- ja sijaintitiedot, sivujen ajastuksen sekä tapahtumien, tapahtumapaikkojen ja syötteiden taulut. Käytä tavallista julkaisuprosessia ja tarkista kohdeprojekti ennen `npm run db:push` -komentoa.
+
+CMS löytyy reitiltä `/admin/cms`. Sivujen editorilla voi tehdä luonnoksia, esikatsella sivuja, palauttaa tallennettuja versioita ja ajastaa julkaisuja. Olemassa olevien sauna-, maaseutu-, rannikko- ja Salo-laskeutumissivujen sisällön voi korvata luomalla CMS-sivun samalla slugilla ja halutulla kielellä.
+
+Tapahtumasyötteen käyttöönotto:
+
+1. Lisää CMS:n Tapahtumat-näkymässä lähteen julkinen RSS- tai Atom-HTTPS-osoite sekä alue ja käyttöehtojen linkki.
+2. Jätä automaattijulkaisu pois päältä, kunnes lähteen tietojen käyttö ja lisenssit on tarkistettu. Uudet tapahtumat tulevat tällöin tarkastettaviksi.
+3. Cloudflare Worker tarvitsee salaisuuden `EVENT_SYNC_TOKEN`. Worker ajaa tapahtumien haun kuuden tunnin välein ja kutsuu suojattua `/api/cron/events`-reittiä.
+
+Syötteen kuvia ei julkaista oletuksena. Automaattinen kuvien käyttö edellyttää lähteelle kirjattua lisenssiä, ja julkinen tapahtumakuva näytetään vain, kun kuvan oikeudet on merkitty tarkistetuiksi.
+
 ## Monikielisyys
 
 Käyttöliittymä tukee seuraavia kieliä:

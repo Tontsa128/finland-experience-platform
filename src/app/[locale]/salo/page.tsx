@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Building2, Camera, Compass, Flame, Map, Mountain, Waves } from "lucide-react";
 import type { Locale } from "@/types";
+import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
@@ -96,6 +97,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function SaloPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
+  const cmsPage = await getPageOverride(locale, "salo");
+  if (cmsPage) return <PageOverride page={cmsPage} locale={locale} />;
   const c = copy[locale] || copy.en;
   const featured = fallbackDestinations.filter((d) => ["salo-mathildedal", "rosala"].includes(d.slug));
 

@@ -62,6 +62,12 @@ export async function POST(req: NextRequest) {
     const altEs = String(form.get("alt_es") || "").trim() || null;
     const altEn = String(form.get("alt_en") || "").trim() || null;
     const title = String(form.get("title") || "").trim() || null;
+    const sourceUrl = String(form.get("source_url") || "").trim();
+    if (sourceUrl && !/^https:\/\//i.test(sourceUrl)) {
+      await supabaseAdmin.storage.from("cms-media").remove([path]);
+      return NextResponse.json({ error: "Lähdeosoitteen tulee olla HTTPS." }, { status: 400 });
+    }
+    const rightsStatus = ["unknown", "licensed", "permission_granted", "public_domain"].includes(String(form.get("rights_status"))) ? String(form.get("rights_status")) : "unknown";
 
     const { data: media, error: mediaError } = await supabaseAdmin.from("media").insert({
       filename: file.name,
@@ -74,8 +80,14 @@ export async function POST(req: NextRequest) {
       alt_es: altEs,
       alt_en: altEn,
       title,
+      description: String(form.get("description") || "").trim().slice(0, 2000) || null,
+      source_url: sourceUrl || null,
+      license: String(form.get("license") || "").trim().slice(0, 300) || null,
+      rights_status: rightsStatus,
+      location_tag: String(form.get("location_tag") || "").trim().slice(0, 160) || null,
+      category_tag: String(form.get("category_tag") || "").trim().slice(0, 120) || null,
       type: "image",
-    }).select("id,filename,url,storage_path,mime_type,size_bytes,alt_fi,alt_es,alt_en,title,created_at").single();
+    }).select("id,filename,url,storage_path,mime_type,size_bytes,alt_fi,alt_es,alt_en,title,description,source_url,license,rights_status,location_tag,category_tag,created_at").single();
 
     if (mediaError) {
       await supabaseAdmin.storage.from("cms-media").remove([path]);

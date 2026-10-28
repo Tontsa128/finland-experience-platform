@@ -6,6 +6,8 @@ import type { Locale } from "@/types";
 import { saloEvents } from "@/lib/salo";
 import { naantaliEvents } from "@/lib/naantali";
 import { EventImage } from "@/components/events/EventImage";
+import { EventImageDisplay } from "@/components/events/EventImageDisplay";
+import { getPublishedEvents } from "@/lib/public-events";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 const heroImage = "https://cdn-datahub.visitfinland.com/images/2c7e7830-f614-11f0-ad78-29bd5b45e175.jpeg?s=1800";
@@ -15,8 +17,10 @@ function formatDate(value: string, locale: Locale) {
     day: "numeric",
     month: "long",
     year: "numeric",
-  }).format(new Date(value + "T12:00:00"));
+  }).format(/^\d{4}-\d{2}-\d{2}$/.test(value) ? new Date(value + "T12:00:00") : new Date(value));
 }
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
@@ -33,7 +37,8 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
   const today = new Date().toISOString().slice(0, 10);
-  const events = [...saloEvents, ...naantaliEvents]
+  const managedEvents = await getPublishedEvents();
+  const events = (managedEvents.length ? managedEvents : [...saloEvents, ...naantaliEvents])
     .filter((event) => (event.end || event.start) >= today)
     .sort((a, b) => a.start.localeCompare(b.start));
 
@@ -104,7 +109,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
 
   return (
     <div className="bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": eventSchema }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": eventSchema }).replace(/</g, "\\u003c") }} />
       <section className="relative min-h-[56vh] overflow-hidden bg-brand-950 text-white">
         <Image src={heroImage} alt={copy.title} fill priority sizes="100vw" className="object-cover opacity-65" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/45 to-brand-950/10" />
@@ -132,7 +137,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
           {events.map((event) => (
             <article key={event.id} className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
               <div className="p-6 pb-0">
-                <EventImage sourceUrl={event.url} imageUrl={event.image} alt={event.title[locale] || event.title.en || event.title.fi} locale={locale} />
+                {managedEvents.length ? <EventImageDisplay imageUrl={event.image || null} alt={event.title[locale] || event.title.en || event.title.fi} locale={locale} /> : <EventImage sourceUrl={event.url} imageUrl={event.image} alt={event.title[locale] || event.title.en || event.title.fi} locale={locale} />}
               </div>
               <div className="p-6 pt-4">
                 <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">

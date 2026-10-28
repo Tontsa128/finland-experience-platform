@@ -20,21 +20,26 @@ export async function GET() {
 }
 
 export async function POST(req:NextRequest) {
-  if (!await guard()) return NextResponse.json({error:"Forbidden"},{status:403});
+  const admin=await guard(); if (!admin) return NextResponse.json({error:"Forbidden"},{status:403});
   try{
     const body=await req.json();
     const slug=String(body.slug||"").trim().toLowerCase().replace(/[^a-z0-9-]+/g,"-").replace(/^-|-$/g,"").slice(0,80);
     const locale=String(body.locale||"fi");
     const title=String(body.title||"").trim().slice(0,160);
     const canonicalUrl=String(body.canonical_url||"").trim().slice(0,500);
+    const publishAt=body.publish_at ? new Date(body.publish_at) : null;
     if(!slug||!locales.includes(locale as typeof locales[number])||!title)return NextResponse.json({error:"Slug, kieli ja otsikko ovat pakollisia."},{status:400});
     if(canonicalUrl && !/^(\/|https?:\/\/)/i.test(canonicalUrl))return NextResponse.json({error:"Virheellinen canonical URL."},{status:400});
+    if(publishAt && !Number.isFinite(publishAt.getTime()))return NextResponse.json({error:"Virheellinen julkaisuaika."},{status:400});
+    const { data: previous, error: previousError } = await supabaseAdmin.from("site_pages").select("*").eq("slug",slug).eq("locale",locale).maybeSingle();
+    if(previousError)return NextResponse.json({error:previousError.message},{status:500});
     const {data,error}=await supabaseAdmin.from("site_pages").upsert({
       slug,locale,title,content:String(body.content||"").slice(0,50000),seo_title:String(body.seo_title||"").slice(0,160)||null,
       seo_description:String(body.seo_description||"").slice(0,320)||null,canonical_url:canonicalUrl||null,
-      noindex:Boolean(body.noindex),published:Boolean(body.published),updated_at:new Date().toISOString()
+      noindex:Boolean(body.noindex),published:Boolean(body.published),publish_at:publishAt?.toISOString()||null,updated_at:new Date().toISOString()
     },{onConflict:"slug,locale"}).select("*").single();
     if(error)return NextResponse.json({error:error.message},{status:400});
+    await supabaseAdmin.from("cms_revisions").insert({entity_type:"site_page",entity_id:String(data.id),locale,payload:previous||data,created_by:admin.user.id});
     return NextResponse.json({page:data});
   }catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Virheellinen pyyntö."},{status:400});}
 }
@@ -43,6 +48,8 @@ export async function DELETE(req:NextRequest) {
   if (!await guard()) return NextResponse.json({error:"Forbidden"},{status:403});
   const slug=req.nextUrl.searchParams.get("slug"); const locale=req.nextUrl.searchParams.get("locale");
   if(!slug||!locales.includes(locale as typeof locales[number]))return NextResponse.json({error:"Virheelliset tiedot."},{status:400});
+  const {data:page}=await supabaseAdmin.from("site_pages").select("*").eq("slug",slug).eq("locale",locale).maybeSingle();
+  if(page)await supabaseAdmin.from("cms_revisions").insert({entity_type:"site_page",entity_id:String(page.id),locale,payload:page});
   const {error}=await supabaseAdmin.from("site_pages").delete().eq("slug",slug).eq("locale",locale);
   if(error)return NextResponse.json({error:error.message},{status:400});
   return NextResponse.json({ok:true});

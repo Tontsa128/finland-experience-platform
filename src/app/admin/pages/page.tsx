@@ -3,13 +3,15 @@ import Link from "next/link";
 import { useEffect,useState } from "react";
 import { translateFinnishText } from "@/components/admin/AITranslationPanel";
 
-type Page={id:string;slug:string;locale:string;title:string;content:string|null;seo_title:string|null;seo_description:string|null;canonical_url:string|null;noindex:boolean;published:boolean};
-const empty:Page={id:"",slug:"",locale:"fi",title:"",content:"",seo_title:"",seo_description:"",canonical_url:"",noindex:false,published:false};
+type Page={id:string;slug:string;locale:string;title:string;content:string|null;seo_title:string|null;seo_description:string|null;canonical_url:string|null;noindex:boolean;published:boolean;publish_at:string|null};
+type Revision={id:string;created_at:string;payload:Page};
+const empty:Page={id:"",slug:"",locale:"fi",title:"",content:"",seo_title:"",seo_description:"",canonical_url:"",noindex:false,published:false,publish_at:null};
 
 export default function PagesAdminPage(){
- const [pages,setPages]=useState<Page[]>([]); const [form,setForm]=useState<Page>(empty); const [error,setError]=useState(""); const [notice,setNotice]=useState(""); const [busy,setBusy]=useState(false);
+ const [pages,setPages]=useState<Page[]>([]); const [form,setForm]=useState<Page>(empty); const [error,setError]=useState(""); const [notice,setNotice]=useState(""); const [busy,setBusy]=useState(false); const [revisions,setRevisions]=useState<Revision[]>([]);
  async function load(){const r=await fetch("/api/admin/pages",{cache:"no-store"});const b=await r.json();if(!r.ok)throw new Error(b.error||"Sivuja ei voitu ladata.");setPages(b.pages||[]);}
  useEffect(()=>{load().catch(e=>setError(e.message));},[]);
+ useEffect(()=>{if(!form.id){setRevisions([]);return;}fetch(`/api/admin/revisions?entity_type=site_page&entity_id=${encodeURIComponent(form.id)}`,{cache:"no-store"}).then(async r=>{const b=await r.json();if(!r.ok)throw new Error(b.error||"Versiohistoriaa ei voitu ladata.");setRevisions(b.revisions||[]);}).catch(e=>setError(e.message));},[form.id]);
  async function save(){setBusy(true);setError("");setNotice("");try{
   if(form.locale==="fi"){
     const [titleTr,contentTr,seoTitleTr,seoDescTr]=await Promise.all([
@@ -36,6 +38,7 @@ export default function PagesAdminPage(){
   await load();
  }catch(e){setError(e instanceof Error?e.message:"Tallennus epäonnistui.");}finally{setBusy(false);}}
  async function remove(page:Page){if(!confirm(`Poistetaanko sivu "${page.title}"?`))return;const r=await fetch(`/api/admin/pages?slug=${encodeURIComponent(page.slug)}&locale=${page.locale}`,{method:"DELETE"});const b=await r.json();if(!r.ok){setError(b.error||"Poisto epäonnistui.");return;}if(form.id===page.id)setForm(empty);await load();}
+ async function restore(revision:Revision){if(!confirm(`Palautetaanko versio ${new Date(revision.created_at).toLocaleString("fi-FI")}? Nykyinen sisältö tallennetaan historiaan.`))return;setBusy(true);setError("");try{const r=await fetch("/api/admin/revisions",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({revisionId:revision.id})});const b=await r.json();if(!r.ok)throw new Error(b.error||"Versiota ei voitu palauttaa.");await load();const restored=(b.result||revision.payload) as Page;setForm(restored);setNotice("Aiempi sivuversio palautettu.");}catch(e){setError(e instanceof Error?e.message:"Palautus epäonnistui.");}finally{setBusy(false);}}
  return <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-8"><div className="mx-auto max-w-7xl">
   <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-sm font-semibold text-emerald-700">CMS / Sivut</p><h1 className="mt-1 text-3xl font-bold text-slate-950">Luo ja muokkaa sivuja</h1><p className="mt-2 max-w-2xl text-slate-500">Luo uusia sisältösivuja ilman koodimuutoksia. Julkaisematon sivu ei näy julkisella sivustolla.</p></div><Link href="/admin/cms" className="text-sm font-semibold text-emerald-700">← CMS</Link></div>
   <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.5fr]">
@@ -49,10 +52,12 @@ export default function PagesAdminPage(){
      <label className="text-sm font-semibold sm:col-span-2">Sisältö<textarea value={form.content||""} onChange={e=>setForm({...form,content:e.target.value})} rows={12} className="mt-2 w-full rounded-xl border px-3 py-3 font-sans leading-6"/></label>
      <label className="text-sm font-semibold">SEO-otsikko<input value={form.seo_title||""} onChange={e=>setForm({...form,seo_title:e.target.value})} className="mt-2 w-full rounded-xl border px-3 py-3"/></label>
      <label className="text-sm font-semibold">SEO-kuvaus<input value={form.seo_description||""} onChange={e=>setForm({...form,seo_description:e.target.value})} className="mt-2 w-full rounded-xl border px-3 py-3"/></label>
+     <label className="text-sm font-semibold">Ajastettu julkaisu<input type="datetime-local" value={form.publish_at?new Date(form.publish_at).toISOString().slice(0,16):""} onChange={e=>setForm({...form,publish_at:e.target.value?new Date(e.target.value).toISOString():null})} className="mt-2 w-full rounded-xl border px-3 py-3"/><span className="mt-1 block text-xs font-normal text-slate-500">Jätä tyhjäksi julkaistaksesi heti, kun sivu on merkitty julkaistuksi.</span></label>
     </div>
     <div className="mt-4 flex flex-wrap gap-4 text-sm"><label className="flex items-center gap-2"><input type="checkbox" checked={form.published} onChange={e=>setForm({...form,published:e.target.checked})}/> Julkaistu</label><label className="flex items-center gap-2"><input type="checkbox" checked={form.noindex} onChange={e=>setForm({...form,noindex:e.target.checked})}/> Älä indeksoi</label></div>
     {error&&<p className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-700">{error}</p>}{notice&&<p className="mt-4 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-700">{notice}</p>}
-    <div className="mt-5 flex flex-wrap gap-3"><button disabled={busy} onClick={save} className="rounded-xl bg-slate-950 px-5 py-3 font-semibold text-white disabled:opacity-50">{busy?"Tallennetaan…":"Tallenna sivu"}</button>{form.id&&<button onClick={()=>remove(form)} className="rounded-xl border border-red-200 px-5 py-3 font-semibold text-red-700">Poista</button>}</div>
+    <div className="mt-5 flex flex-wrap gap-3"><button disabled={busy} onClick={save} className="rounded-xl bg-slate-950 px-5 py-3 font-semibold text-white disabled:opacity-50">{busy?"Tallennetaan…":"Tallenna sivu"}</button>{form.id&&<><Link target="_blank" href={`/admin/preview/pages/${encodeURIComponent(form.slug)}?locale=${encodeURIComponent(form.locale)}`} className="rounded-xl border px-5 py-3 font-semibold">Esikatsele</Link><button onClick={()=>remove(form)} className="rounded-xl border border-red-200 px-5 py-3 font-semibold text-red-700">Poista</button></>}</div>
+    {form.id&&<details className="mt-6 rounded-xl border p-4"><summary className="cursor-pointer text-sm font-semibold">Versiohistoria ({revisions.length})</summary><div className="mt-3 space-y-2">{revisions.map(revision=><div key={revision.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-slate-50 p-3"><span className="text-xs">{new Date(revision.created_at).toLocaleString("fi-FI")} · {revision.payload?.title||"Sivusisältö"}</span><button type="button" disabled={busy} onClick={()=>void restore(revision)} className="rounded-lg border bg-white px-3 py-2 text-xs font-semibold disabled:opacity-50">Palauta</button></div>)}{!revisions.length&&<p className="text-xs text-slate-500">Versioita ei vielä ole.</p>}</div></details>}
    </section>
   </div>
  </div></main>;

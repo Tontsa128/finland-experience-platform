@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "finland-experience-platform",
-  "main": ".open-next/worker.js",
+  "main": "custom-worker.ts",
   "compatibility_date": "2025-03-25",
   "previews": {},
   "compatibility_flags": ["nodejs_compat"],
@@ -14,5 +14,8 @@
       "binding": "WORKER_SELF_REFERENCE",
       "service": "finland-experience-platform"
     }
-  ]
+  ],
+  "triggers": {
+    "crons": ["0 */6 * * *"]
+  }
 }

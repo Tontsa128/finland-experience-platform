@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useState } from "react";
+import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Compass, LockKeyhole, Mail, ShieldAlert } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
@@ -107,6 +108,8 @@ function AdminLoginContent() {
             {loading ? "Kirjaudutaan..." : "Kirjaudu hallintaan"}
           </button>
         </form>
+
+        <p className="mt-4 text-center text-sm"><Link href="/admin/forgot-password" className="font-semibold text-emerald-700 hover:underline">Unohtuiko salasana?</Link></p>
 
         <p className="mt-5 text-center text-xs text-slate-400">
           Käyttäjät ja roolit hallitaan Supabase Auth + profiles -mallilla.
