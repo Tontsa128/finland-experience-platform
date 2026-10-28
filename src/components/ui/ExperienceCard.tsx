@@ -10,7 +10,7 @@ import { formatPrice } from "@/lib/utils";
 export function ExperienceCard({ experience, index = 0 }: { experience: Experience; index?: number }) {
   const locale = useLocale();
   const t = useTranslations("common");
-  const fallbackImage = experience.tags?.some((tag) => /sauna|smoke/i.test(tag)) ? photoLibrary.saunaTraditionalSmoke : photoLibrary.teijoNationalPark;
+  const fallbackImage = experience.tags?.some((tag: string) => /sauna|smoke/i.test(tag)) ? photoLibrary.saunaTraditionalSmoke : photoLibrary.teijoNationalPark;
   const [imageSrc, setImageSrc] = useState(experience.images?.[0] || fallbackImage);
 
   return (
