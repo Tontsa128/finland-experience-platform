@@ -10,12 +10,25 @@ import { photoLibrary } from "@/lib/photo-library";
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
 function normalizeHomepageHref(href: string): string {
-  // CMS slides can outlive the old Mathildedal page. Always send internal
-  // Mathildedal links (including coastal-finland#mathildedal) to the canonical page.
-  if (!href.startsWith("http://") && !href.startsWith("https://") && /mathildedal/i.test(href)) {
+  // CMS and built-in slides can retain links to retired Mathildedal routes.
+  // Do not rewrite external provider URLs.
+  const value = href.trim();
+  const lower = value.toLowerCase();
+  if (!value || lower.startsWith("http://") || lower.startsWith("https://") || value.startsWith("//")) return value;
+
+  const path = value.split(/[?#]/, 1)[0].replace(/\/$/, "");
+  const withoutLocale = path.startsWith("/fi/") || path.startsWith("/es/") || path.startsWith("/en/")
+    ? path.slice(3)
+    : path;
+  if (
+    withoutLocale === "/mathildedal" ||
+    withoutLocale.startsWith("/mathildedal/") ||
+    withoutLocale === "/coastal-finland" ||
+    lower.includes("mathildedal")
+  ) {
     return "/destinations/salo-mathildedal";
   }
-  return href;
+  return value;
 }
 
 type Slide = {
@@ -208,6 +221,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
       return slides.map((item) => ({
         ...item,
+        href: normalizeHomepageHref(item.href),
         copy: copy[locale][item.key],
       }));
     },
