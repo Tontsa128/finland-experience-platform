@@ -47,13 +47,7 @@ In Google OAuth, add the production site origin as an authorized JavaScript orig
 
 The first admin can sign in at `/admin/login` with the configured Google or GitHub account. The callback promotes only the configured verified email.
 
-Public account registration creates a `CUSTOMER` account. It must never grant admin access automatically. Create/promote the intended administrator explicitly from the SQL editor:
-
-```sql
-update public.profiles
-set role = 'SUPER_ADMIN', updated_at = now()
-where id = '<AUTH_USER_UUID>';
-```
+Public account registration creates a `CUSTOMER` account and never grants admin access. The OAuth promotion only applies to the exact verified email configured in `CMS_SUPER_ADMIN_EMAIL`.
 
 Supported roles:
 
