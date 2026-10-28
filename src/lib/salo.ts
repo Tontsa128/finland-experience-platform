@@ -297,8 +297,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Private cruises aboard m/s Sabrina around Särkisalo and nearby waters, designed for groups.",
     },
     url: "https://www.krailantila.fi/tilausristeilyt/",
-    image: photoLibrary.turkuArchipelago,
-    imageCredit: "Archipelago landscape, Wikimedia Commons licensed photo",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2022/04/Ms-Sabrina-Kuva-%C2%A9Ville-Soderman_.jpg",
+    imageCredit: "Ville Söderman / Salon Kohteet — Krailan tilan tilausristeilyt",
   },
   {
     id: "tiiranta",
@@ -310,8 +310,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A year-round café, restaurant and grocery shop in central Särkisalo, with a guest pier.",
     },
     url: "https://tiiranta.fi/",
-    image: photoLibrary.sarkisalo,
-    imageCredit: "Visit Salo / Salon Kohteet",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/07/20200610_110048_resized-1-576x768.jpg",
+    imageCredit: "Salon Kohteet — Tiirannan terassi ja merimaisema",
   },
   {
     id: "vuorovetten-jaatelo",
@@ -336,8 +336,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A small seaside sauna in Förby managed by the City of Salo, for about 7–8 people.",
     },
     url: "https://www.salo.fi/",
-    image: photoLibrary.saunaCottage,
-    imageCredit: "Wikimedia Commons, CC BY-SA 3.0",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2026/03/Niksaari-2-1024x768.jpg",
+    imageCredit: "Salon Kohteet / Salon kaupunki — Niksaaren sauna",
   },
   {
     id: "sarkisalo-fishing",
@@ -401,8 +401,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Container rooms on the roof of a historic industrial building in Mathildedal, with a large view window, private bathroom and breakfast.",
     },
     url: "https://www.mathildedal.fi",
-    image: providerImages.hotel,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://cdn-datahub.visitfinland.com/images/afeb54a0-c30d-11ed-8fb6-cd05a147400e.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub — Kattohuoneen kohdekuva",
   },
   {
     id: "villa-signell",
