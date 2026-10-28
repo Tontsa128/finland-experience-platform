@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 12549)
-Total output lines: 535
-
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -236,7 +233,29 @@ const places: Place[] = [
       en: "Choose from hotels, cottages, B&Bs, camping and small archipelago stays. Many cottages are available year-round.",
     },
     food: {
-      fi: "Pyöräilyreitit yhdistävät ravintoloita ja kahviloita, ja kesällä paikal…549 tokens truncated…ñas y alojamientos del archipiélago.", en: "A broad selection of cottages and archipelago accommodation." }, url: "https://visitaland.com/en/accommodation/cottage/", officialGuide: true },
+      fi: "Pyöräilyreitit yhdistävät ravintoloita ja kahviloita, ja kesällä paikalliset saaristopaikat ovat tärkeä osa matkantekoa.",
+      es: "Las rutas en bicicleta conectan restaurantes y cafés, y en verano la gastronomía local forma parte esencial del viaje.",
+      en: "Cycling routes connect restaurants and cafés, making local food part of the journey, especially in summer.",
+    },
+    do: {
+      fi: "Ahvenanmaan saariston reiteillä voi pyöräillä saarelta toiselle siltojen ja lauttayhteyksien avulla. Matkaa voi jatkaa myös Suomen saaristoreitille.",
+      es: "Puedes recorrer el archipiélago en bicicleta, cruzando puentes y utilizando ferris entre las islas. También puedes combinar la ruta con el archipiélago finlandés.",
+      en: "Cycle across islands using bridges and ferries, then combine the Åland route with the Finnish Archipelago Trail.",
+    },
+    nature: {
+      fi: "Kastelholm, saariston avoimet maisemat, metsät ja rannat tuovat luontoa lähelle. Pienissä saaristokunnissa yöpyminen hidastaa matkaa tarkoituksella.",
+      es: "Kastelholm, bosques, costas y paisajes abiertos forman parte del atractivo. Pasar la noche en las islas hace que el viaje sea todavía más pausado.",
+      en: "Kastelholm, forests, shorelines and open island landscapes are part of the appeal. Staying overnight on the smaller islands makes the journey even slower.",
+    },
+    sauna: {
+      fi: "Monissa Ahvenanmaan mökeissä on oma sauna, ja saaristossa on myös sauna- ja kylpyläpalveluja. Tarkista kohdekohtainen tarjonta ja aukiolo palveluntarjoajalta.",
+      es: "Muchas cabañas de Åland tienen sauna privada y también existen servicios de sauna y spa. Comprueba la oferta concreta con el proveedor.",
+      en: "Many Åland cottages have a private sauna, and there are also sauna and spa services. Check the exact offer directly with the provider.",
+    },
+    official: "https://visitaland.com/en/",
+    officialLabel: { fi: "Tutustu Visit Ålandiin", es: "Descubre Visit Åland", en: "Explore Visit Åland" },
+    providers: [
+      { name: { fi: "Visit Åland · mökit", es: "Visit Åland · cabañas", en: "Visit Åland · cottages" }, text: { fi: "Laaja mökki- ja saaristomajoitusten kooste.", es: "Amplia selección de cabañas y alojamientos del archipiélago.", en: "A broad selection of cottages and archipelago accommodation." }, url: "https://visitaland.com/en/accommodation/cottage/", officialGuide: true },
       { name: { fi: "Visit Åland · pyöräily", es: "Visit Åland · ciclismo", en: "Visit Åland · cycling" }, text: { fi: "Pyöräilyreitit ja saaristoreitti lauttoineen.", es: "Rutas en bicicleta y la ruta del archipiélago con ferris.", en: "Cycling routes and the archipelago trail with ferries." }, url: "https://visitaland.com/en/experience/outdoor/cycle-in-aland/", officialGuide: true },
       { name: { fi: "Visit Åland · hotellit", es: "Visit Åland · hoteles", en: "Visit Åland · hotels" }, text: { fi: "Hotelleja kaupungissa ja saaristossa.", es: "Hoteles en Mariehamn y en el archipiélago.", en: "Hotels in Mariehamn and the archipelago." }, url: "https://visitaland.com/en/accommodation/hotel/", officialGuide: true },
     ],
