@@ -349,8 +349,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Archipelago fishing stays at Ylöstalo cottages in Särkisalo, with boat and guide options.",
     },
     url: "https://www.ylostalo.fi/fi/vuokraveneet",
-    image: providerImages.villas,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://www.ylostalo.fi/wp-content/uploads/2025/11/30hp-768x576.webp",
+    imageCredit: "Ylöstalon matkailutila — 30 hv vuokravene",
   },
   {
     id: "forby-rantajooga",
@@ -440,8 +440,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A sauna cottage in Förby, Särkisalo. The provider also offers kayak rental and guided archipelago trips.",
     },
     url: "https://www.aavaadventures.fi",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2022/06/20220527_125816-2-1366x615.jpg",
+    imageCredit: "Salon Kohteet — Aava Adventuresin mökki",
   },
   {
     id: "katiskanmaeki",
@@ -492,8 +492,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A cosy five-person sauna cottage in the Halikko countryside, with wood-fired sauna, fireplace and terrace.",
     },
     url: "https://toivontila.fi/",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/Topilan-Tupa-045c6d1ce3a54be1-medium.jpg",
+    imageCredit: "Salon Kohteet — Topilan Tupa",
   },
   {
     id: "onnenperan-mokki",
