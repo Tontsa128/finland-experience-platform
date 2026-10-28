@@ -11,8 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test": "npm run test:i18n && node --import tsx --test --test-reporter=spec src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts",
     "test:watch": "node --import tsx --test --watch src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts",
-    "db:push": "supabase db push",
-    "db:reset": "supabase db reset",
+    "db:push": "npx --yes supabase@1.226.4 db push",
+    "db:reset": "npx --yes supabase@1.226.4 db reset",
     "test:i18n": "node scripts/check-i18n.mjs",
     "build:cloudflare": "opennextjs-cloudflare build"
   },
@@ -42,7 +42,6 @@
     "eslint": "^10.13.0",
     "eslint-config-next": "16.4.2",
     "tsx": "^4.4.0",
-    "supabase": "^1.120.0",
     "@types/leaflet": "^1.9.20",
     "@opennextjs/cloudflare": "1.20.13"
   },

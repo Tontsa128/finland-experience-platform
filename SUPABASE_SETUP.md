@@ -4,14 +4,14 @@
 
 - `@supabase/supabase-js` – palvelinpuolen Supabase-asiakas
 - `@supabase/ssr` – Auth-istuntojen käsittely
-- `supabase` – Supabase CLI
+- Supabase CLI ladataan versiona 1.226.4 vain tietokantakomennon käynnistyessä
 
 ## Migraatiot
 
-Tietokannan migraatiot ovat hakemistossa `supabase/migrations/`. Suorita ne järjestyksessä:
+Tietokannan migraatiot ovat hakemistossa `supabase/migrations/`. Suorita ne järjestyksessä. CLI ladataan npx:llä vain tätä paikallista komentoa varten, eikä sitä asenneta Cloudflare build -ympäristöön:
 
 ```bash
-supabase db push
+npm run db:push
 ```
 
 Nykyinen schema sisältää CMS-sisällöt, asiakas-/admin-tunnistautumisen, palveluntarjoajat, varmennukset, liidit, partner-portaalin ja Concierge-metatiedot.

@@ -16,10 +16,10 @@ The service-role key is server-only and must never be exposed to the browser.
 
 ## 2. Apply migrations
 
-Run the migrations in order:
+Run the migrations in order with `npm run db:push`. This command downloads the pinned Supabase CLI only when run locally; the CLI is not installed during the Cloudflare application build.
 
 ```bash
-supabase db push
+npm run db:push
 ```
 
 The auth hardening migration creates a profile automatically for every new Supabase Auth user.
