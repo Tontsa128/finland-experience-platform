@@ -12,7 +12,7 @@ type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
 function normalizeHomepageHref(href: string): string {
   // CMS slides can outlive the old Mathildedal page. Always send internal
   // Mathildedal links (including coastal-finland#mathildedal) to the canonical page.
-  if (!/^https?:\\/\\//i.test(href) && /mathildedal/i.test(href)) {
+  if (!href.startsWith("http://") && !href.startsWith("https://") && /mathildedal/i.test(href)) {
     return "/destinations/salo-mathildedal";
   }
   return href;
