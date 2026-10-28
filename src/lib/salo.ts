@@ -48,7 +48,7 @@ export const saloProviders: SaloProvider[] = [
     },
     url: "https://visitsalo.fi",
     image: photoLibrary.saloVeturitalli,
-    imageCredit: "Visit Salo / Salon Kohteet",
+    imageCredit: "Motopark / Wikimedia Commons — Veturitalli, Salo (public domain)",
   },
   {
     id: "visit-mathildedal",
@@ -167,8 +167,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Local guided tours and experiences in Salo.",
     },
     url: "https://salonoppaat.johku.com",
-    image: photoLibrary.teijoNationalPark,
-    imageCredit: "Visit Salo / Salon Kohteet",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2026/04/VISITSALO-SalonOppaat-paakuva-1920-x-1080-px-1366x768.jpg",
+    imageCredit: "Salon Kohteet — Salon Oppaat ry:n opasryhmäkuva",
   },
   {
     id: "teijo-national-park",
