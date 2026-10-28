@@ -9,6 +9,15 @@ import type { HomepageSettings } from "@/lib/public-content";
 import { photoLibrary } from "@/lib/photo-library";
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
+function normalizeHomepageHref(href: string): string {
+  // CMS slides can outlive the old Mathildedal page. Always send legacy links
+  // (including coastal-finland#mathildedal) to the canonical destination page.
+  if (/(?:^|\\/)mathildedal(?:\\/|#|$)/i.test(href) || /#mathildedal(?:$|[?&])/i.test(href)) {
+    return "/destinations/salo-mathildedal";
+  }
+  return href;
+}
+
 type Slide = {
   key: string;
   image: string;
@@ -191,7 +200,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
           credit: item.credit || "",
           creditUrl: item.creditUrl,
-          href: item.href || "/destinations",
+          href: normalizeHomepageHref(item.href || "/destinations"),
           external: item.external ?? (String(item.href || "").startsWith("https://") || String(item.href || "").startsWith("http://")),
           copy: item.copy[locale],
         }));
