@@ -48,6 +48,7 @@ export async function GET(request: NextRequest) {
     !user ||
     !user.email_confirmed_at ||
     user.email?.trim().toLowerCase() !== allowedEmail ||
+    typeof provider !== "string" ||
     !["google", "github"].includes(provider)
   ) {
     await supabase.auth.signOut();
