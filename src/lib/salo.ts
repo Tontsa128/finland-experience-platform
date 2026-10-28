@@ -1,4 +1,5 @@
 import type { Locale } from "@/types";
+import { photoLibrary } from "@/lib/photo-library";
 
 export type SaloProvider = {
   id: string;
