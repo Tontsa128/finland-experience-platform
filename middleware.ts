@@ -117,6 +117,19 @@ export async function middleware(req: NextRequest) {
     return auth.response ?? NextResponse.next();
   }
 
+  const localizedMathildedal = pathname.match(/^\/(fi|es|en)\/mathildedal(?:\/|$)/);
+  const unlocalizedMathildedal = pathname === "/mathildedal" || pathname.startsWith("/mathildedal/");
+  if (localizedMathildedal || unlocalizedMathildedal) {
+    const locale = (localizedMathildedal?.[1] ??
+      req.cookies.get("NEXT_LOCALE")?.value ??
+      getLocaleFromCountry(req.headers.get("x-vercel-ip-country")) ??
+      getLocaleFromBrowser(req) ??
+      defaultLocale) as (typeof locales)[number];
+    const redirectUrl = req.nextUrl.clone();
+    redirectUrl.pathname = `/${locale}/destinations/salo-mathildedal`;
+    return setLocaleCookie(NextResponse.redirect(redirectUrl, 308), locale);
+  }
+
   const legacyRoute = ["/destinos", "/experiencias", "/privacy", "/terms"].find(
     (route) => pathname === route || pathname.startsWith(route + "/"),
   );
@@ -173,5 +186,6 @@ export const config = {
     "/experiencias/:path*",
     "/privacy",
     "/terms",
+    "/mathildedal/:path*",
   ],
 };
