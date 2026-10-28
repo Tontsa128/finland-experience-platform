@@ -47,6 +47,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Salo's official tourism site for destinations, events, local food, stays and nature.",
     },
     url: "https://visitsalo.fi",
+    image: photoLibrary.saloVeturitalli,
+    imageCredit: "Visit Salo / Salon Kohteet",
   },
   {
     id: "visit-mathildedal",
@@ -58,6 +60,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Local tourism and events guide for Mathildedal.",
     },
     url: "https://visitmathildedal.fi",
+    image: photoLibrary.mathildedalHarbour,
+    imageCredit: "Visit Mathildedal / Wikimedia Commons licensed harbour photo",
   },
   {
     id: "hotel-mathildedal",
@@ -122,6 +126,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Holiday cottage in Mathildedal. Ask the provider directly for the current price and availability.",
     },
     url: "https://www.majoitusmathildedal.com",
+    image: providerImages.hotel,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "teijo-action-park",
@@ -147,6 +153,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Guided fishing, boat and island trips in the Archipelago Sea.",
     },
     url: "https://www.chilloutfishing.fi",
+    image: providerImages.marina,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
     price: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta",
   },
   {
@@ -159,6 +167,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Local guided tours and experiences in Salo.",
     },
     url: "https://salonoppaat.johku.com",
+    image: photoLibrary.teijoNationalPark,
+    imageCredit: "Visit Salo / Salon Kohteet",
   },
   {
     id: "teijo-national-park",
@@ -183,6 +193,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Golf in the coastal landscape of Teijo. Check the current green fee directly with the club.",
     },
     url: "https://meriteijogolf.com",
+    image: providerImages.actionPark,
+    imageCredit: "Visit Salo / Salon Kohteet",
   },
   {
     id: "mathildedal-brewery",
@@ -285,6 +297,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Private cruises aboard m/s Sabrina around Särkisalo and nearby waters, designed for groups.",
     },
     url: "https://www.krailantila.fi/tilausristeilyt/",
+    image: photoLibrary.turkuArchipelago,
+    imageCredit: "Archipelago landscape, Wikimedia Commons licensed photo",
   },
   {
     id: "tiiranta",
@@ -296,6 +310,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A year-round café, restaurant and grocery shop in central Särkisalo, with a guest pier.",
     },
     url: "https://tiiranta.fi/",
+    image: photoLibrary.sarkisalo,
+    imageCredit: "Visit Salo / Salon Kohteet",
     imageCredit: "Visit Salo / Salon Kohteet",
   },
   {
@@ -321,6 +337,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A small seaside sauna in Förby managed by the City of Salo, for about 7–8 people.",
     },
     url: "https://www.salo.fi/",
+    image: photoLibrary.saunaCottage,
+    imageCredit: "Wikimedia Commons, CC BY-SA 3.0",
     imageCredit: "Salon kaupunki / Salon Kohteet",
   },
   {
@@ -333,6 +351,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Archipelago fishing stays at Ylöstalo cottages in Särkisalo, with boat and guide options.",
     },
     url: "https://www.ylostalo.fi/fi/vuokraveneet",
+    image: providerImages.villas,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "forby-rantajooga",
@@ -344,6 +364,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Gentle beach yoga in the calm coastal setting of Förby, surrounded by the sounds of water and nature.",
     },
     url: "https://hoitolakukkuvilla.fi/kesan-joogatunnit/",
+    image: photoLibrary.hankoRegattaBeach,
+    imageCredit: "Wikimedia Commons, CC BY-SA 4.0",
     imageCredit: "Visit Salo / Salon Kohteet",
   },
   {
@@ -382,6 +404,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Container rooms on the roof of a historic industrial building in Mathildedal, with a large view window, private bathroom and breakfast.",
     },
     url: "https://www.mathildedal.fi",
+    image: providerImages.hotel,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "villa-signell",
@@ -406,6 +430,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Year-round seaside villa for 1–6 guests on Ulkoluoto, with a private pier, rowing boat and west-facing shore.",
     },
     url: "https://www.finnholm.net",
+    image: providerImages.villas,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "aava-adventures",
@@ -417,6 +443,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A sauna cottage in Förby, Särkisalo. The provider also offers kayak rental and guided archipelago trips.",
     },
     url: "https://www.aavaadventures.fi",
+    image: providerImages.cabins,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "katiskanmaeki",
@@ -428,6 +456,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Waterfront cottages, barn accommodation, camping and a smoke sauna in a quiet rural setting near Särkisalo.",
     },
     url: "https://www.katiskanmaki.com",
+    image: providerImages.cabins,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "lonnviken",
@@ -439,6 +469,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Archipelago stays on Pettu island. Villa Lönnviken sleeps eight with a beach sauna; Lilla Lönnviken sleeps four with an indoor sauna and private pier.",
     },
     url: "https://www.lonnviken.com",
+    image: providerImages.villas,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "meri-ruukin-lomakyla",
@@ -450,6 +482,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Six-person seaside cottages near Mathildedal, with private sauna and fireplace, plus a pier and rowing boats.",
     },
     url: "https://meri-ruukki.fi/",
+    image: providerImages.villas,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "topilan-tupa",
@@ -461,6 +495,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A cosy five-person sauna cottage in the Halikko countryside, with wood-fired sauna, fireplace and terrace.",
     },
     url: "https://toivontila.fi/",
+    image: providerImages.cabins,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "onnenperan-mokki",
@@ -472,6 +508,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Year-round cottage for seven in Vaskio; in summer there is also a separate sleeping hut, forest pond and smoke sauna.",
     },
     url: "https://toivontila.fi/",
+    image: providerImages.cabins,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "leipyolin-tila",
@@ -483,6 +521,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Farm accommodation in the Kiskonjoki valley, including bed & breakfast and cottage rental.",
     },
     url: "https://www.leipyoli.com",
+    image: providerImages.hotel,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "villa-nennebo",
@@ -494,6 +534,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Two villas on Pettu island, with private shore, sea views and a traditional archipelago atmosphere.",
     },
     url: "https://www.villanennebo.fi/",
+    image: providerImages.villas,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "alaspaan-maatila",
@@ -505,6 +547,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A small organic farm by the Kiskonjoki river. The simple Muonamiehen cottage is available for summer rental.",
     },
     url: "https://alaspaanmaatila.fi",
+    image: providerImages.cabins,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "villa-viola",
@@ -516,6 +560,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Villa-style summer cottage in Suomusjärvi with indoor bathroom, kitchen, Wi-Fi, electric sauna and a hot-tub terrace.",
     },
     url: "https://www.lomalaperla.com",
+    image: providerImages.villas,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "villa-laperla",
@@ -527,6 +573,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Traditional Finnish summer cottage in Suomusjärvi with wood-fired sauna, hot tub and a large terrace.",
     },
     url: "https://www.lomalaperla.com",
+    image: providerImages.villas,
+    imageCredit: "Visit Salo / Visit Finland DataHub",
   },
   {
     id: "villa-viktoria",
