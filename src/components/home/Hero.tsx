@@ -186,14 +186,33 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const cmsSlides = (settings?.homepageSlides ?? [])
     .filter((item) => {
       const localized = item.copy?.[locale];
+      const finnishCopy = item.copy?.fi;
+      const hasLocalizedCopy =
+        typeof localized?.title === "string" &&
+        localized.title.trim().length > 0 &&
+        typeof localized?.text === "string" &&
+        localized.text.trim().length > 0;
+      const normalize = (value?: string) =>
+        (value ?? "").normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
+      const sameAsFinnishTitle =
+        Boolean(normalize(localized?.title)) &&
+        normalize(localized?.title) === normalize(finnishCopy?.title);
+      const sameAsFinnishText =
+        Boolean(normalize(localized?.text)) &&
+        normalize(localized?.text) === normalize(finnishCopy?.text);
+      // A copied description is strong evidence that the CMS language fields are
+      // misconfigured. For titles, only reject longer phrases: short place names
+      // such as "Nauvo" can legitimately be identical across languages.
+      const isUntranslatedCopy =
+        locale !== "fi" &&
+        hasLocalizedCopy &&
+        (sameAsFinnishText || (sameAsFinnishTitle && normalize(localized?.title).split(" ").length >= 3));
       return (
         item.enabled !== false &&
         typeof item.imageUrl === "string" &&
         item.imageUrl.trim().length > 0 &&
-        typeof localized?.title === "string" &&
-        localized.title.trim().length > 0 &&
-        typeof localized?.text === "string" &&
-        localized.text.trim().length > 0
+        hasLocalizedCopy &&
+        !isUntranslatedCopy
       );
     })
     .sort((a, b) => a.sortOrder - b.sortOrder);

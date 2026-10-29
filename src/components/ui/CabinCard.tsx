@@ -21,7 +21,7 @@ export function CabinCard({ cabin, index = 0 }: { cabin: Cabin; index?: number }
         <Image src={imageSrc} alt={cabin.name[locale as keyof typeof cabin.name] || cabin.name.en} fill priority={index < 2} sizes="(max-width:768px) 100vw,33vw" onError={() => { if (imageSrc !== fallbackImage) setImageSrc(fallbackImage); }} className="object-cover transition duration-700 ease-out group-hover:scale-110" />
       </div>
       <div className="p-5">
-        <div className="mb-1 text-xs uppercase tracking-wider text-brand-600">{cabin.location}</div>
+        <div className="mb-1 text-xs uppercase tracking-wider text-brand-600">{cabin.locationByLocale?.[locale as Locale] || cabin.location}</div>
         <h3 className="font-display text-xl font-semibold text-brand-900">{cabin.name[locale as keyof typeof cabin.name] || cabin.name.en}</h3>
         <p className="mt-2 line-clamp-2 text-sm text-slate-600">{cabin.description[locale as keyof typeof cabin.description] || cabin.description.en}</p>
         <div className="mt-4 text-sm font-semibold text-brand-900">{price}</div>
