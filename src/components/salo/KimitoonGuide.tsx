@@ -95,7 +95,8 @@ const categories: { id: Category; title: Record<Locale, string>; image: string; 
 const places = [
   { title: "Taalintehdas", sub: { fi: "Ruukkihistoriaa, vierasvenesatama ja kylän palvelut.", en: "Ironworks heritage, guest harbour and village services.", es: "Patrimonio industrial, puerto deportivo y servicios del pueblo." }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg", url: "https://www.visitkimitoon.fi/fi/" },
   { title: "Kasnäs", sub: { fi: "Satama ja yhteydet ulkosaaristoon.", en: "Harbour and connections to the outer islands.", es: "Puerto y conexiones con las islas exteriores." }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/Kasnas-gasthamn-760x507.jpg", url: "https://www.visitkimitoon.fi/fi/suunnittele/kemionsaareen/" },
-  { title: "Rosala ja Bengtskär", sub: { fi: "Viikinkihistoriaa, saaristoretkiä ja majakkamaisemia.", en: "Viking history, island excursions and lighthouse scenery.", es: "Historia vikinga, excursiones y paisajes de faros." }, image: photoLibrary.rosalaVikingCentre, url: "https://rosala-viking-centre.johku.com/" },
+  { title: "Rosala ja Bengtskär", sub: { fi: "Viikinkikeskus, saariston merireitit ja Bengtskärin majakka. Tarkista risteilyt ja kohteiden aukiolo suoraan järjestäjältä.", en: "A Viking centre, archipelago sea routes and Bengtskär Lighthouse. Check cruises and opening details with the operator.", es: "Centro vikingo, rutas marítimas y el faro de Bengtskär. Consulta las excursiones y horarios directamente con el operador." }, image: photoLibrary.rosalaVikingCentre, url: "https://rosala.net/fi/tidtabeller/" },
+  { title: "Söderlångvikin kartano", sub: { fi: "Kartano, taide ja puistomaisemat Kemiönsaaren kulttuuriperinnön äärellä.", en: "A manor, art and parkland rooted in Kimitoön’s cultural heritage.", es: "Una mansión, arte y jardines ligados al patrimonio cultural de Kimitoön." }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/soderlangvik-760x507.jpg", url: "https://www.soderlangvik.fi/" },
   { title: "Sagalund", sub: { fi: "Ulkomuseo ja paikallista kulttuuriperintöä Kemiössä.", en: "Open-air museum and local heritage in Kimito.", es: "Museo al aire libre y patrimonio local en Kimito." }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2023/05/sagalund30-760x507.jpg", url: "https://www.sagalund.fi/" }
 ];
 
@@ -129,6 +130,31 @@ export function KimitoonGuide({ locale, category }: { locale: Locale; category?:
           <div className="container-narrow"><p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{t.title}</p><h1 className="mt-3 font-display text-4xl font-bold sm:text-6xl">{detail?.[0] ?? t.title}</h1><p className="mt-5 max-w-3xl text-lg leading-8 text-white/80">{detail?.[1] ?? ""}</p><Link href={`/${locale}/destinations/kemionsaari`} className="mt-6 inline-flex font-bold text-gold-300 underline">{locale === "fi" ? "Takaisin Kemiönsaaren oppaaseen" : locale === "es" ? "Volver a la guía de Kimitoön" : "Back to the Kimitoön guide"} →</Link></div>
         </section>
       )}
+      {!category || category === "saaristo" ? (
+        <section className="bg-brand-950 py-14 text-white sm:py-20">
+          <div className="container-narrow">
+            <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{locale === "fi" ? "Rosala · Hiittinen · Bengtskär" : locale === "es" ? "Rosala · Hiittinen · Bengtskär" : "Rosala · Hiittinen · Bengtskär"}</p>
+                <h2 className="mt-3 font-display text-3xl font-bold sm:text-5xl">{locale === "fi" ? "Saariseikkailu alkaa Kasnäsistä" : locale === "es" ? "Tu aventura isleña comienza en Kasnäs" : "Your island adventure starts in Kasnäs"}</h2>
+                <p className="mt-5 leading-7 text-white/80">{locale === "fi" ? "Aja Kasnäsiin ja jatka M/S Auroralla Rosalan saarelle. Maksuton autolautta kulkee ympäri vuoden; merimatka kestää noin 30 minuuttia. Långnäsin lauttarannasta on noin viisi kilometriä Rosalan Viikinkikeskukseen. Tarkista päivän aikataulu ennen lähtöä." : locale === "es" ? "Conduce hasta Kasnäs y continúa en el ferry M/S Aurora hasta la isla de Rosala. El ferry para coches es gratuito y funciona todo el año; la travesía dura unos 30 minutos. Desde el muelle de Långnäs hay unos cinco kilómetros hasta el Centro Vikingo de Rosala. Comprueba el horario antes de salir." : "Drive to Kasnäs and continue by M/S Aurora to Rosala. The car ferry is free and operates year-round; the crossing takes around 30 minutes. From the Långnäs landing, it is about five kilometres to Rosala Viking Centre. Check the timetable before setting off."}</p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a href="https://rosala.fi/fi/bilfarjan-ms-aurora/" target="_blank" rel="noreferrer" className="inline-flex rounded-full bg-white px-5 py-3 text-sm font-bold text-brand-950">{locale === "fi" ? "M/S Auroran aikataulu ja ohjeet" : locale === "es" ? "Horario e información del ferry" : "M/S Aurora timetable and details"} ↗</a>
+                  <a href="https://rosala.net/fi/tidtabeller/" target="_blank" rel="noreferrer" className="inline-flex rounded-full border border-white/40 px-5 py-3 text-sm font-bold text-white">{locale === "fi" ? "Bussit ja muut yhteydet" : locale === "es" ? "Autobuses y otras conexiones" : "Buses and other connections"} ↗</a>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-3xl border border-white/15 bg-white/5">
+                <img src="https://cdn.johku.com/rosala/largefiles/94.jpg" alt={locale === "fi" ? "Matkustajavene merellä Rosalan saaristossa" : locale === "es" ? "Barco de pasajeros en el archipiélago de Rosala" : "Passenger boat travelling through the Rosala archipelago"} loading="lazy" className="h-64 w-full object-cover sm:h-80" />
+                <div className="p-5">
+                  <h3 className="font-display text-xl font-bold">{locale === "fi" ? "Rosala ja Bengtskär samalla retkellä" : locale === "es" ? "Rosala y Bengtskär en una excursión" : "Rosala and Bengtskär in one trip"}</h3>
+                  <p className="mt-2 text-sm leading-6 text-white/75">{locale === "fi" ? "Kesäkaudella järjestetään Saariston Loistoreitti -päiväristeilyjä Viikinkikeskukseen ja Bengtskärin majakalle. Lähtöajat ja liikennöintikausi voivat muuttua vuosittain – varmista tiedot varauspalvelusta." : locale === "es" ? "En verano se organizan excursiones de día a Rosala Viking Centre y al faro de Bengtskär. Las fechas y salidas pueden cambiar cada año; confirma los detalles en la web de reservas." : "In summer, day cruises visit Rosala Viking Centre and Bengtskär Lighthouse. Dates and departure times can change each year, so confirm details with the booking operator."}</p>
+                  <a href="https://rosala.johku.com/" target="_blank" rel="noreferrer" className="mt-4 inline-flex font-bold text-gold-300 underline underline-offset-4">{locale === "fi" ? "Katso risteilyt ja varaa suoraan" : locale === "es" ? "Ver excursiones y reservar" : "View cruises and book direct"} →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
       {!category || category === "ruoka" || category === "majoitus" ? <KansakouluSpotlight locale={locale} /> : null}
       <section className="container-narrow py-14 sm:py-20">
         {!category ? <div className="mb-8"><p className="text-xs font-bold uppercase tracking-[.2em] text-brand-700">{t.explore}</p><h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{t.categories}</h2></div> : null}
