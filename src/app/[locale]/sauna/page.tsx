@@ -151,7 +151,7 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
   return (
     <main className="bg-white text-brand-950">
       <section className="relative isolate min-h-[60svh] overflow-hidden bg-brand-950 text-white">
-        <Image src={photoLibrary.naturaVivaTeijo} alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image src="https://cdn.johku.com/naturaviva/files/589/w374-h237-s/image.Matildanj%C3%A4rvensauna-2.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/95 via-brand-950/45 to-brand-950/10" />
         <div className="container-narrow relative flex min-h-[60svh] items-end py-14 sm:py-20">
           <div className="max-w-4xl">
