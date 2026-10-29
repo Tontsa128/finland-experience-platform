@@ -49,6 +49,7 @@ const categoryKeys = ["stay", "sauna", "food", "nature", "experience"] as const;
 
 export function LuxuryDirectory({ locale }: { locale: Locale }) {
   const l = labels[locale];
+  const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
 
   return (
     <section className="bg-brand-50 py-16 sm:py-24">
@@ -109,7 +110,7 @@ export function LuxuryDirectory({ locale }: { locale: Locale }) {
                 <a href={entry.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
                   {entry.linkLabel?.[locale] || l.visit}<ArrowUpRight className="h-4 w-4" />
                 </a>
-                {entry.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">Kuva: {entry.imageCredit}</p> : null}
+                {entry.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{photoCreditLabel} {entry.imageCredit}</p> : null}
               </div>
             </article>
           ))}
