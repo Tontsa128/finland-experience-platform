@@ -216,6 +216,67 @@ const places: SaunaPlace[] = [
     source: "https://kohteet.visitsalo.fi/kokkilan-uimaranta/",
     booking: "https://salo.fi/vapaa-aika-ja-matkailu/liikunta/ulkoliikuntapaikat/uimarannat/",
     status: { fi: "Käyttökatko / rakennustyöt", en: "Unavailable during construction", es: "No disponible durante las obras" }
+  },
+  {
+    name: "Teijon kyläsauna",
+    location: "Teijo · Kyläsepänkuja 2",
+    description: {
+      fi: "Perinteinen kyläsauna historiallisessa ruukkikylässä. Tarkista avoimet vuorot ja mahdolliset yksityisvaraukset kyläyhdistykseltä.",
+      en: "A traditional community sauna in the historic ironworks village. Check public sessions and possible private bookings with the local association.",
+      es: "Sauna comunitaria tradicional en el histórico pueblo siderúrgico. Consulta los turnos públicos y posibles reservas privadas con la asociación local."
+    },
+    access: { fi: "Yleisösauna · tarkista ajantasaiset vuorot", en: "Public sauna · check current sessions", es: "Sauna pública · consulta los turnos actuales" },
+    type: { fi: "Yleisösauna", en: "Public sauna", es: "Sauna pública" },
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Traditional_Finnish_smoke_sauna.jpg",
+    imageCredit: "JP Korpi-Vartiainen · CC BY-SA 4.0 · kuvituskuva",
+    source: "https://www.teijo.fi/",
+    booking: "https://www.teijo.fi/"
+  },
+  {
+    name: "Kiskon Uimalaitos",
+    location: "Kisko · Kirkkojärven ranta",
+    description: {
+      fi: "Järvenrantasauna, puulämmitteiset löylyt ja mahdollisuus pulahtaa järveen. Kohteella on julkisia saunavuoroja ja yksityisvarauksia; tarkista järjestäjältä ennen matkaa.",
+      en: "A lakeside sauna with wood-heated steam and the option of a refreshing lake dip. Public sessions and private bookings are available; confirm details with the operator before visiting.",
+      es: "Sauna junto al lago, con calor de leña y posibilidad de darse un baño. Hay turnos públicos y reservas privadas; confirma los detalles con el operador antes de ir."
+    },
+    access: { fi: "Yleisövuorot · yksityisvaraus", en: "Public sessions · private booking", es: "Turnos públicos · reserva privada" },
+    type: { fi: "Yleisösauna · vuokrasauna", en: "Public sauna · rental", es: "Sauna pública · alquiler" },
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sauna_boat_20180802.jpg",
+    imageCredit: "Santeri Viinamäki · CC BY-SA 4.0 · kuvituskuva",
+    source: "https://www.kiskonuimalaitos.fi/",
+    booking: "https://www.kiskonuimalaitos.fi/"
+  },
+  {
+    name: "Rata 57:n saunatila",
+    location: "Salo · Salorankatu 5–7",
+    description: {
+      fi: "Vuokrattava saunatila ryhmille, johon voi yhdistää keilailua ja muita sisäaktiviteetteja. Varaus ja ajantasainen hinta suoraan palveluntarjoajalta.",
+      en: "A bookable sauna venue for groups, with bowling and other indoor activities available nearby. Contact the provider for reservations and current pricing.",
+      es: "Espacio de sauna reservable para grupos, con bolos y otras actividades interiores disponibles. Contacta directamente con el proveedor para reservar y consultar precios."
+    },
+    access: { fi: "Yksityis- ja ryhmävaraukset", en: "Private and group bookings", es: "Reservas privadas y de grupos" },
+    type: { fi: "Vuokrasauna · ryhmät", en: "Rental sauna · groups", es: "Sauna de alquiler · grupos" },
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rajaportti_sauna1.jpg",
+    imageCredit: "Visa580 · CC BY-SA 3.0 · kuvituskuva",
+    source: "https://rata57.fi/aktiviteetti/sauna/",
+    booking: "https://rata57.fi/aktiviteetti/sauna/",
+    capacity: "n. 8–12 saunojalle"
+  },
+  {
+    name: "Sokeritilojen sauna",
+    location: "Salo · Sokerikatu 1",
+    description: {
+      fi: "Keskustan tapahtuma- ja kokoustiloihin liittyvä sauna- ja lounge-elämys. Varmista saunan saatavuus, ryhmäkoko ja ehdot suoraan tilan tarjoajalta.",
+      en: "A sauna and lounge experience connected to a central Salo event and meeting venue. Confirm availability, group size and terms directly with the operator.",
+      es: "Experiencia de sauna y salón vinculada a un espacio céntrico para eventos y reuniones en Salo. Confirma disponibilidad, capacidad y condiciones con el operador."
+    },
+    access: { fi: "Yksityisvaraus / tapahtumat", en: "Private booking / events", es: "Reserva privada / eventos" },
+    type: { fi: "Vuokrasauna · lounge", en: "Rental sauna · lounge", es: "Sauna de alquiler · salón" },
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/L%C3%B6yly_Sauna,_Helsinki_(2022).jpg",
+    imageCredit: "Sandun De Silva · CC BY-SA 4.0 · kuvituskuva",
+    source: "https://sokeritilat.fi/",
+    booking: "https://sokeritilat.fi/"
   }
 ];
 
