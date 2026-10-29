@@ -8,6 +8,7 @@ import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
+import { photoLibrary } from "@/lib/photo-library";
 
 type Params = { locale: string; slug: string };
 
@@ -58,6 +59,12 @@ function resolveProvider(slug: string, locale: Locale) {
   }
   return null;
 }
+
+type LocalPhoto = { src: string; alt: Record<Locale, string>; credit: string; source: string };
+const mathildedalAreaPhotos: LocalPhoto[] = [
+  { src: photoLibrary.mathildedalHarbour, alt: { fi: "Mathildedalin satama auringonlaskussa", en: "Mathildedal harbour at sunset", es: "Puerto de Mathildedal al atardecer" }, credit: "Kotivalo", source: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg" },
+  { src: photoLibrary.mathildedalVillage, alt: { fi: "Mathildedalin historialliset työväenasunnot", en: "Historic workers’ houses in Mathildedal", es: "Antiguas viviendas de trabajadores en Mathildedal" }, credit: "Kotivalo", source: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
+];
 
 type LocalGuide = { intro: string; highlights: string[]; planning: string; highlightsTitle: string; planningTitle: string; nearbyTitle: string };
 
@@ -201,6 +208,21 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
             if (!guide) return null;
             return (
               <div className="mt-10 space-y-8">
+                <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {[...(provider.image ? [{ src: provider.image, alt: provider.name, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...mathildedalAreaPhotos].map((photo, index) => (
+                      <figure key={photo.src} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                        <div className="relative aspect-[4/3] bg-slate-100">
+                          <Image src={photo.src} alt={index === 0 ? (locale === "fi" ? `${provider.name} – kohdekuva` : locale === "es" ? `${provider.name} – imagen del lugar` : `${provider.name} – place photo`) : photo.alt[locale]} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-300 hover:scale-[1.02]" />
+                        </div>
+                        <figcaption className="space-y-1 px-3 py-2 text-xs text-slate-600">
+                          <p>{index === 0 ? (locale === "fi" ? "Palveluntarjoajan kohdekuva" : locale === "es" ? "Imagen del proveedor" : "Provider photo") : photo.alt[locale]}</p>
+                          <p>{locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:"} {photo.credit} · <a href={photo.source} target="_blank" rel="noreferrer" className="underline underline-offset-2">{locale === "fi" ? "lähde" : locale === "es" ? "fuente" : "source"}</a></p>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
                 <section className="rounded-3xl border border-brand-100 bg-brand-50 p-6 sm:p-8">
                   <h3 className="font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
                   <p className="mt-4 text-base leading-8 text-slate-700">{guide.intro}</p>
