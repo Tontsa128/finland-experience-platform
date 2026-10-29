@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
-import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
+import { buildLocalizedMetadata } from "@/lib/seo";
 import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 
