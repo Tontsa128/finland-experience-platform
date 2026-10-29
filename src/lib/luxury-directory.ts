@@ -8,6 +8,7 @@ export type LuxuryDirectoryEntry = {
   description: Record<Locale, string>;
   url: string;
   price?: string;
+  priceByLocale?: Partial<Record<Locale, string>>;
   image?: string;
   imageCredit?: string;
   tags: string[];
@@ -29,6 +30,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
     },
     url: "https://www.herrankukkaro.fi",
     price: "Majoitus 108–288 €/mökki/yö; savusauna + saaristoruoka 65 €/hlö",
+    priceByLocale: { fi: "Majoitus 108–288 €/mökki/yö; savusauna + saaristoruoka 65 €/hlö", en: "Accommodation €108–288 per cottage/night; smoke sauna + archipelago meal €65 per person", es: "Alojamiento 108–288 € por cabaña/noche; sauna de humo + comida del archipiélago 65 € por persona" },
     image: "https://le-de.cdn-website.com/437c2bac51dd486c80c3e153a9033393/dms3rep/multi/opt/Kuva8-8066abf8-1920w.jpg",
     imageCredit: "Herrankukkaro",
     tags: ["smoke sauna", "archipelago", "local food", "stay"]
@@ -45,6 +47,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
     },
     url: "https://airistospa.fi",
     price: "Saunat + altaat 1 050–1 300 € + 10 €/hlö; kalastusvene oppaalla alkaen 650 € / 4 h",
+    priceByLocale: { fi: "Saunat + altaat 1 050–1 300 € + 10 €/hlö; kalastusvene oppaalla alkaen 650 € / 4 h", en: "Saunas + pools €1,050–1,300 + €10 per person; guided fishing boat from €650 / 4 hours", es: "Saunas + piscinas 1.050–1.300 € + 10 € por persona; barco de pesca con guía desde 650 € / 4 horas" },
     tags: ["smoke sauna", "sea", "fishing", "villas"]
   },
   {

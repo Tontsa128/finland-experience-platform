@@ -14,7 +14,9 @@ type Props = {
 };
 
 function label(item: MapItem, locale: Props["locale"]) {
-  return item.name?.[locale] || item.name?.fi || item.slug;
+  // Keep map labels in the selected language; use English or the slug as a
+  // fallback instead of leaking a Finnish name onto an English/Spanish map.
+  return item.name?.[locale] || item.name?.en || item.slug;
 }
 
 export default function ExperienceMap({ items, locale, selectedSlug, onSelect, className = "" }: Props) {

@@ -12,6 +12,13 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 
 const heroImage = "https://cdn-datahub.visitfinland.com/images/2c7e7830-f614-11f0-ad78-29bd5b45e175.jpeg?s=1800";
 
+function localizedEventText(value: Record<Locale, string>, locale: Locale): string {
+  const localized = value[locale]?.trim();
+  if (localized) return localized;
+  // Use English as the neutral fallback, never Finnish on EN/ES routes.
+  return value.en?.trim() || "";
+}
+
 function formatDate(value: string, locale: Locale) {
   return new Intl.DateTimeFormat(locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-GB", {
     day: "numeric",
@@ -38,13 +45,19 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
   const locale = rawLocale as Locale;
   const today = new Date().toISOString().slice(0, 10);
   const managedEvents = await getPublishedEvents();
-  const events = (managedEvents.length ? managedEvents : [...saloEvents, ...naantaliEvents])
-    .filter((event) => (event.end || event.start) >= today)
-    .sort((a, b) => a.start.localeCompare(b.start));
+  const inDateRange = <T extends { start: string; end?: string; title: Record<Locale, string> }>(items: T[]) =>
+    items
+      .filter((event) => (event.end || event.start) >= today && Boolean(localizedEventText(event.title, locale)))
+      .sort((a, b) => a.start.localeCompare(b.start));
+
+  const managedLocalized = inDateRange(managedEvents);
+  const events = managedLocalized.length
+    ? managedLocalized
+    : inDateRange([...saloEvents, ...naantaliEvents]);
 
   const eventSchema = events.slice(0, 40).map((event) => ({
     "@type": "Event",
-    name: event.title[locale] || event.title.en || event.title.fi,
+    name: localizedEventText(event.title, locale),
     startDate: event.start,
     endDate: event.end || event.start,
     eventStatus: "https://schema.org/EventScheduled",
@@ -137,16 +150,16 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
           {events.map((event) => (
             <article key={event.id} className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
               <div className="p-6 pb-0">
-                {managedEvents.length ? <EventImageDisplay imageUrl={event.image || null} alt={event.title[locale] || event.title.en || event.title.fi} locale={locale} /> : <EventImage sourceUrl={event.url} imageUrl={event.image} alt={event.title[locale] || event.title.en || event.title.fi} locale={locale} />}
+                {managedEvents.length ? <EventImageDisplay imageUrl={event.image || null} alt={localizedEventText(event.title, locale)} locale={locale} /> : <EventImage sourceUrl={event.url} imageUrl={event.image} alt={localizedEventText(event.title, locale)} locale={locale} />}
               </div>
               <div className="p-6 pt-4">
                 <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
                   <span>{formatDate(event.start, locale)}</span>
                   {event.end ? <><span>→</span><span>{formatDate(event.end, locale)}</span></> : null}
                 </div>
-                <h2 className="mt-3 font-display text-2xl font-bold text-brand-950">{event.title[locale] || event.title.en || event.title.fi}</h2>
+                <h2 className="mt-3 font-display text-2xl font-bold text-brand-950">{localizedEventText(event.title, locale)}</h2>
                 <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-500"><MapPin className="h-4 w-4" />{event.location}</p>
-                <p className="mt-4 leading-7 text-slate-600">{event.description[locale] || event.description.en || event.description.fi}</p>
+                <p className="mt-4 leading-7 text-slate-600">{localizedEventText(event.description, locale)}</p>
                 <a href={event.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{copy.provider}<ArrowRight className="h-4 w-4" /></a>
               </div>
             </article>

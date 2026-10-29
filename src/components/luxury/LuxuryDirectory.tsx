@@ -94,10 +94,10 @@ export function LuxuryDirectory({ locale }: { locale: Locale }) {
                 <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{entry.name}</h3>
                 <p className="mt-3 leading-7 text-slate-600">{entry.description[locale]}</p>
 
-                {entry.price ? (
+                {(entry.priceByLocale?.[locale] || (locale === "fi" ? entry.price : undefined)) ? (
                   <div className="mt-4 flex gap-2 rounded-2xl bg-brand-50 p-3 text-sm text-brand-900">
                     <Tag className="mt-0.5 h-4 w-4 shrink-0" />
-                    <span><strong>{l.price}:</strong> {entry.price}</span>
+                    <span><strong>{l.price}:</strong> {entry.priceByLocale?.[locale] || entry.price}</span>
                   </div>
                 ) : null}
 
