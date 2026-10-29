@@ -506,14 +506,19 @@ export async function getHomepageSettings(): Promise<HomepageSettings | null> {
     if (error || !data) return null;
 
     const value = (key: string) => String((data as Record<string, unknown>)[key] ?? "");
+    const heroEyebrow = { fi: value("hero_eyebrow_fi"), es: value("hero_eyebrow_es"), en: value("hero_eyebrow_en") };
+    const heroTitle = { fi: value("hero_title_fi"), es: value("hero_title_es"), en: value("hero_title_en") };
+    const heroDescription = { fi: value("hero_description_fi"), es: value("hero_description_es"), en: value("hero_description_en") };
+    const heroCtaLabel = { fi: value("hero_cta_label_fi"), es: value("hero_cta_label_es"), en: value("hero_cta_label_en") };
+    const heroSecondaryLabel = { fi: value("hero_secondary_label_fi"), es: value("hero_secondary_label_es"), en: value("hero_secondary_label_en") };
     return {
       heroImageUrl: value("hero_image_url"),
-      heroEyebrow: { fi: value("hero_eyebrow_fi"), es: value("hero_eyebrow_es"), en: value("hero_eyebrow_en") },
-      heroTitle: { fi: value("hero_title_fi"), es: value("hero_title_es"), en: value("hero_title_en") },
-      heroDescription: { fi: value("hero_description_fi"), es: value("hero_description_es"), en: value("hero_description_en") },
-      heroCtaLabel: { fi: value("hero_cta_label_fi"), es: value("hero_cta_label_es"), en: value("hero_cta_label_en") },
+      heroEyebrow: { fi: heroEyebrow.fi, es: translatedValue("es", heroEyebrow), en: translatedValue("en", heroEyebrow) },
+      heroTitle: { fi: heroTitle.fi, es: translatedValue("es", heroTitle), en: translatedValue("en", heroTitle) },
+      heroDescription: { fi: heroDescription.fi, es: translatedValue("es", heroDescription), en: translatedValue("en", heroDescription) },
+      heroCtaLabel: { fi: heroCtaLabel.fi, es: translatedValue("es", heroCtaLabel), en: translatedValue("en", heroCtaLabel) },
       heroCtaUrl: value("hero_cta_url") || "/destinations",
-      heroSecondaryLabel: { fi: value("hero_secondary_label_fi"), es: value("hero_secondary_label_es"), en: value("hero_secondary_label_en") },
+      heroSecondaryLabel: { fi: heroSecondaryLabel.fi, es: translatedValue("es", heroSecondaryLabel), en: translatedValue("en", heroSecondaryLabel) },
       heroSecondaryUrl: value("hero_secondary_url") || "/destinations",
       featuredDestinationIds: idList((data as Record<string, unknown>).homepage_featured_destination_ids),
       featuredPropertyIds: idList((data as Record<string, unknown>).homepage_featured_property_ids),
