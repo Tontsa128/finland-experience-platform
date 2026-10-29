@@ -45,7 +45,7 @@ export function KansakouluSpotlight({ locale }: { locale: Locale }) {
     <section aria-labelledby="kansakoulu-spotlight-title" className="bg-stone-50 py-14 sm:py-20">
       <div className="container-narrow">
         <div className="mb-7 max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[.22em] text-terracotta">{t.eyebrow}</p>
+          <p className="text-xs font-bold uppercase tracking-[.22em] text-brand-700">{t.eyebrow}</p>
           <h2 id="kansakoulu-spotlight-title" className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-5xl">
             {locale === "fi" ? "Yövy, herkuttele ja koe saariston lämmin tunnelma" : locale === "es" ? "Alójate, disfruta de la gastronomía y siente el archipiélago" : "Stay, savour and experience the warmth of the archipelago"}
           </h2>
