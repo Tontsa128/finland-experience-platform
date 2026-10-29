@@ -264,6 +264,11 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
           en: translatedValue("en", descriptions, fallback?.description.en || ""),
         },
         location: locations.fi || locations.en || property.region || "",
+        locationByLocale: {
+          fi: translatedValue("fi", locations, property.region || ""),
+          es: translatedValue("es", locations, translatedValue("en", locations, property.region || "")),
+          en: translatedValue("en", locations, property.region || ""),
+        },
         region: property.region || "",
         pricePerNight: Number(property.base_price_eur || 0),
         images,
