@@ -53,6 +53,7 @@ const nextConfig = {
       { protocol: "https", hostname: "cdn.sanity.io" },
       { protocol: "https", hostname: "cbaul-cdnwnd.com" },
       { protocol: "https", hostname: "www.ylostalo.fi" },
+      { protocol: "https", hostname: "www.kansakouluun.fi" },
       { protocol: "https", hostname: "launokorpi.com" },
       { protocol: "https", hostname: "golf-pass.brightspotcdn.com" },
       { protocol: "https", hostname: "meriteijobikepark.com" },
