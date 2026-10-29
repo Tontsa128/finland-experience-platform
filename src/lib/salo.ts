@@ -5,6 +5,7 @@ export type SaloProvider = {
   id: string;
   category: "tourism" | "stay" | "experience" | "nature" | "food";
   name: string;
+  nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
   url: string;
   price?: string;
@@ -123,6 +124,7 @@ export const saloProviders: SaloProvider[] = [
     id: "majoitus-mathildedal",
     category: "stay",
     name: "Majoitus Mathildedal",
+    nameByLocale: { fi: "Majoitus Mathildedal", en: "Accommodation in Mathildedal", es: "Alojamiento en Mathildedal" },
     description: {
       fi: "Mökki Mathildedalin kylässä. Ajantasainen hinta ja saatavuus pyydetään suoraan majoittajalta.",
       es: "Casa de vacaciones en Mathildedal. Consulta directamente al anfitrión el precio y la disponibilidad actuales.",
@@ -179,6 +181,7 @@ export const saloProviders: SaloProvider[] = [
     id: "teijo-national-park",
     category: "nature",
     name: "Teijon kansallispuisto",
+    nameByLocale: { fi: "Teijon kansallispuisto", en: "Teijo National Park", es: "Parque Nacional de Teijo" },
     description: {
       fi: "Järviä, metsiä, kallioita ja reittejä ympäri vuoden. Kansallispuiston perusluonto on maksuton; vuokrattavista palveluista veloitetaan erikseen.",
       es: "Lagos, bosques, rocas y senderos durante todo el año. El acceso básico al parque es gratuito; los servicios de alquiler se cobran aparte.",
@@ -205,6 +208,7 @@ export const saloProviders: SaloProvider[] = [
     id: "mathildedal-brewery",
     category: "food",
     name: "Mathildedalin Kyläpanimo",
+    nameByLocale: { fi: "Mathildedalin Kyläpanimo", en: "Mathildedal Village Brewery", es: "Cervecería del pueblo de Mathildedal" },
     description: {
       fi: "Kyläläisten perustama pienpanimo Mathildedalin sydämessä. Ryhmille järjestetään panimoesittelyjä.",
       es: "Microcervecería local en el corazón de Mathildedal, con visitas para grupos.",
@@ -218,6 +222,7 @@ export const saloProviders: SaloProvider[] = [
     id: "saaristomokit-sarkisalo",
     category: "stay",
     name: "Saaristomökit Särkisalossa",
+    nameByLocale: { fi: "Saaristomökit Särkisalossa", en: "Archipelago Cottages in Särkisalo", es: "Cabañas del archipiélago en Särkisalo" },
     description: {
       fi: "Kahdeksan merenrantamökkiä Salon eteläisessä saaristossa. Vaihtoehtoja pienistä mökeistä suurempiin huviloihin, puusauna, laituri ja terassi.",
       es: "Ocho cabañas junto al mar en el archipiélago de Särkisalo, desde pequeñas cabañas hasta villas, con sauna de leña y embarcadero.",
@@ -231,6 +236,7 @@ export const saloProviders: SaloProvider[] = [
     id: "matildanjarven-kampat",
     category: "stay",
     name: "Matildanjärven kämpät",
+    nameByLocale: { fi: "Matildanjärven kämpät", en: "Matildanjärvi Rental Cabins", es: "Cabañas de alquiler de Matildanjärvi" },
     description: {
       fi: "Kaksi vuokrattavaa kämppää Teijon kansallispuistossa Luontokeskuksen lähellä. Kummassakin majoittuu enintään kuusi; saunavuoro kuuluu majoitukseen.",
       es: "Dos alojamientos de alquiler cerca del centro de visitantes del Parque Nacional de Teijo, con capacidad para seis personas cada uno y sauna incluida.",
@@ -270,6 +276,7 @@ export const saloProviders: SaloProvider[] = [
     id: "saaristoravintola-nixor",
     category: "food",
     name: "Saaristoravintola Nixor",
+    nameByLocale: { fi: "Saaristoravintola Nixor", en: "Nixor Archipelago Restaurant", es: "Restaurante del archipiélago Nixor" },
     description: {
       fi: "Rento terassiravintola Särkisalon Niksaaressa. Kesäruokaa, saaristomaisemaa ja ohjelmaa kuten livemusiikkia.",
       es: "Restaurante-terraza relajado en Niksari, Särkisalo, con comida de verano, vistas del archipiélago y música en directo.",
@@ -296,6 +303,8 @@ export const saloProviders: SaloProvider[] = [
     id: "krailan-sabrina",
     category: "experience",
     name: "Krailan tila – tilausristeilyt",
+    nameByLocale: { fi: "Krailan tila – tilausristeilyt", en: "Kraila Farm – Private Cruises", es: "Granja Kraila – Cruceros privados" },
+    nameByLocale: { fi: "Krailan tila – tilausristeilyt", en: "Kraila Farm – Private Cruises", es: "Granja Kraila – Cruceros privados" },
     description: {
       fi: "Tilausristeilyjä m/s Sabrinalla Särkisalon ja lähialueiden vesillä. Ryhmille suunniteltu tapa kokea saariston maisemat mereltä.",
       es: "Cruceros privados en el m/s Sabrina por las aguas de Särkisalo y sus alrededores, pensados para grupos.",
@@ -335,6 +344,7 @@ export const saloProviders: SaloProvider[] = [
     id: "niksaaren-sauna",
     category: "nature",
     name: "Niksaaren sauna",
+    nameByLocale: { fi: "Niksaaren sauna", en: "Niksari Sauna", es: "Sauna de Niksari" },
     description: {
       fi: "Salon kaupungin ylläpitämä pieni merellinen sauna Förbyssä, noin 7–8 henkilölle, suihku- ja pukutiloineen.",
       es: "Pequeña sauna junto al mar en Förby gestionada por la ciudad de Salo, para unas 7–8 personas.",
@@ -348,6 +358,7 @@ export const saloProviders: SaloProvider[] = [
     id: "sarkisalo-fishing",
     category: "experience",
     name: "Ylöstalo – saaristokalastus",
+    nameByLocale: { fi: "Ylöstalo – saaristokalastus", en: "Ylöstalo – Archipelago Fishing", es: "Ylöstalo – Pesca en el archipiélago" },
     description: {
       fi: "Saaristokalastuslomia Särkisalossa Ylöstalon mökeissä. Kohteisiin voi yhdistää veneen ja kalastusoppaan.",
       es: "Estancias de pesca en las cabañas de Ylöstalo en Särkisalo, con opciones de barco y guía.",
@@ -361,6 +372,7 @@ export const saloProviders: SaloProvider[] = [
     id: "forby-rantajooga",
     category: "experience",
     name: "Lempeä rantajooga – Förby",
+    nameByLocale: { fi: "Lempeä rantajooga – Förby", en: "Gentle Beach Yoga – Förby", es: "Yoga suave en la playa – Förby" },
     description: {
       fi: "Rantajoogaa Förbyn rauhallisessa merellisessä ympäristössä, veden ja luonnon äänien keskellä.",
       es: "Yoga suave junto al mar en el tranquilo entorno de Förby, acompañado por los sonidos del agua y la naturaleza.",
@@ -374,6 +386,7 @@ export const saloProviders: SaloProvider[] = [
     id: "vuohensaari-camping",
     category: "stay",
     name: "Vuohensaaren leirintäalue",
+    nameByLocale: { fi: "Vuohensaaren leirintäalue", en: "Vuohensaari Camping", es: "Camping Vuohensaari" },
     description: {
       fi: "Meren ympäröimä majoituskohde lähellä Salon keskustaa. Leirintämökkejä ja -huoneita, sauna, uimaranta sekä kesäkauden ravintola ja aktiviteetteja.",
       es: "Alojamiento junto al mar cerca del centro de Salo, con cabañas y habitaciones, sauna, playa y actividades de verano.",
@@ -387,6 +400,7 @@ export const saloProviders: SaloProvider[] = [
     id: "teijo-tentsile",
     category: "stay",
     name: "Tentsile-majoitus Teijon kansallispuistossa",
+    nameByLocale: { fi: "Tentsile-majoitus Teijon kansallispuistossa", en: "Tentsile Tree Tent in Teijo National Park", es: "Alojamiento Tentsile en el Parque Nacional de Teijo" },
     description: {
       fi: "Kolmen hengen Tentsile-puumajoite Matildanjärven lähellä. Majoitukseen kuuluu Luontokeskuksen peseytymistilojen käyttö ja saunavuoroalennus.",
       es: "Alojamiento Tentsile para hasta tres personas junto al lago Matildanjärvi, cerca del Parque Nacional de Teijo.",
@@ -400,6 +414,7 @@ export const saloProviders: SaloProvider[] = [
     id: "kattohuone-mathildedal",
     category: "stay",
     name: "Kattohuone – Elämysmajoitus",
+    nameByLocale: { fi: "Kattohuone – Elämysmajoitus", en: "Rooftop Container Accommodation", es: "Alojamiento en contenedores en la azotea" },
     description: {
       fi: "Mathildedalin vanhan kokoonpanohallin katolle rakennettu merikonttimajoitus. Maisemaikkuna, oma kylpyhuone ja hotellin aamiainen.",
       es: "Alojamiento en contenedores sobre un antiguo edificio industrial de Mathildedal, con gran ventana panorámica, baño privado y desayuno.",
@@ -604,6 +619,7 @@ export const saloProviders: SaloProvider[] = [
     id: "kruuvan-mokit",
     category: "stay",
     name: "Kruuvan mökit",
+    nameByLocale: { fi: "Kruuvan mökit", en: "Kruuva Cottages", es: "Cabañas Kruuva" },
     description: {
       fi: "Kahdeksan hengen Villa Kruuva merenlahden äärellä. Varusteltu ympärivuotiseen lomailuun, saunat ja merimaisemat.",
       es: "Villa Kruuva para ocho personas junto a una bahía marina, equipada para estancias durante todo el año y con sauna.",
