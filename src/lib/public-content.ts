@@ -133,6 +133,26 @@ function localized<T extends Record<string, unknown>>(translations: Array<T & { 
   ) as Record<Locale, string>;
 }
 
+function normalizeTranslation(value: string): string {
+  return value.normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
+}
+
+/**
+ * A populated CMS translation is not necessarily translated. Never present a
+ * value copied from Finnish in an English or Spanish field: use the curated
+ * localized catalogue fallback, or leave the field empty rather than leaking
+ * Finnish text to visitors.
+ */
+function translatedValue(locale: Locale, values: Record<Locale, string>, fallback = ""): string {
+  const candidate = (values[locale] ?? "").trim();
+  if (!candidate) return fallback;
+  if (locale !== "fi") {
+    const finnish = (values.fi ?? "").trim();
+    if (finnish && normalizeTranslation(candidate) === normalizeTranslation(finnish)) return fallback;
+  }
+  return candidate;
+}
+
 async function getVerifiedExperienceIds(): Promise<Set<string>> {
   const [{ data: links }, { data: providers }] = await Promise.all([
     supabaseAdmin.from("provider_experience_links").select("experience_id,provider_id"),
@@ -234,14 +254,14 @@ export async function getPublishedProperties(): Promise<Cabin[]> {
         id: String(property.id),
         slug: property.slug,
         name: {
-          fi: names.fi || fallback?.name.fi || names.en || property.slug,
-          es: names.es || fallback?.name.es || names.en || property.slug,
-          en: names.en || fallback?.name.en || property.slug,
+          fi: translatedValue("fi", names, fallback?.name.fi || names.en || property.slug),
+          es: translatedValue("es", names, fallback?.name.es || translatedValue("en", names) || property.slug),
+          en: translatedValue("en", names, fallback?.name.en || property.slug),
         },
         description: {
-          fi: descriptions.fi || fallback?.description.fi || names.fi || "",
-          es: descriptions.es || fallback?.description.es || descriptions.en || names.en || "",
-          en: descriptions.en || fallback?.description.en || "",
+          fi: translatedValue("fi", descriptions, fallback?.description.fi || names.fi || ""),
+          es: translatedValue("es", descriptions, fallback?.description.es || translatedValue("en", descriptions)),
+          en: translatedValue("en", descriptions, fallback?.description.en || ""),
         },
         location: locations.fi || locations.en || property.region || "",
         region: property.region || "",
@@ -304,19 +324,19 @@ export async function getPublishedDestinations(): Promise<Destination[]> {
         id: destination.id,
         slug: destination.slug,
         name: {
-          fi: names.fi || fallback?.name.fi || names.en || destination.slug,
-          es: names.es || fallback?.name.es || names.en || destination.slug,
-          en: names.en || fallback?.name.en || destination.slug,
+          fi: translatedValue("fi", names, fallback?.name.fi || names.en || destination.slug),
+          es: translatedValue("es", names, fallback?.name.es || translatedValue("en", names) || destination.slug),
+          en: translatedValue("en", names, fallback?.name.en || destination.slug),
         },
         shortDescription: {
-          fi: shortDescriptions.fi || fallback?.shortDescription.fi || shortDescriptions.en || "",
-          es: shortDescriptions.es || fallback?.shortDescription.es || shortDescriptions.en || "",
-          en: shortDescriptions.en || fallback?.shortDescription.en || "",
+          fi: translatedValue("fi", shortDescriptions, fallback?.shortDescription.fi || shortDescriptions.en || ""),
+          es: translatedValue("es", shortDescriptions, fallback?.shortDescription.es || translatedValue("en", shortDescriptions)),
+          en: translatedValue("en", shortDescriptions, fallback?.shortDescription.en || ""),
         },
         description: {
-          fi: descriptions.fi || fallback?.description.fi || descriptions.en || firstDescription,
-          es: descriptions.es || fallback?.description.es || descriptions.en || "",
-          en: descriptions.en || fallback?.description.en || "",
+          fi: translatedValue("fi", descriptions, fallback?.description.fi || descriptions.en || firstDescription),
+          es: translatedValue("es", descriptions, fallback?.description.es || translatedValue("en", descriptions)),
+          en: translatedValue("en", descriptions, fallback?.description.en || ""),
         },
         region: destination.region || "",
         images: Array.from(new Set([image, ...gallery].filter((url): url is string => typeof url === "string" && url.length > 0))),
@@ -373,19 +393,19 @@ export async function getPublishedExperiences(): Promise<Experience[]> {
         id: experience.id,
         slug: experience.slug,
         name: {
-          fi: names.fi || fallback?.name.fi || names.en || experience.slug,
-          es: names.es || fallback?.name.es || names.en || experience.slug,
-          en: names.en || fallback?.name.en || experience.slug,
+          fi: translatedValue("fi", names, fallback?.name.fi || names.en || experience.slug),
+          es: translatedValue("es", names, fallback?.name.es || translatedValue("en", names) || experience.slug),
+          en: translatedValue("en", names, fallback?.name.en || experience.slug),
         },
         description: {
-          fi: descriptions.fi || fallback?.description.fi || shorts.fi || "",
-          es: descriptions.es || fallback?.description.es || descriptions.en || shorts.es || "",
-          en: descriptions.en || fallback?.description.en || shorts.en || "",
+          fi: translatedValue("fi", descriptions, fallback?.description.fi || shorts.fi || ""),
+          es: translatedValue("es", descriptions, fallback?.description.es || translatedValue("en", descriptions) || translatedValue("es", shorts)),
+          en: translatedValue("en", descriptions, fallback?.description.en || translatedValue("en", shorts)),
         },
         shortDescription: {
-          fi: shorts.fi || fallback?.shortDescription.fi || shorts.en || "",
-          es: shorts.es || fallback?.shortDescription.es || shorts.en || "",
-          en: shorts.en || fallback?.shortDescription.en || "",
+          fi: translatedValue("fi", shorts, fallback?.shortDescription.fi || ""),
+          es: translatedValue("es", shorts, fallback?.shortDescription.es || translatedValue("en", shorts)),
+          en: translatedValue("en", shorts, fallback?.shortDescription.en || ""),
         },
         price: Number(pricing?.adult_price_eur ?? pricing?.base_price_eur ?? 0),
         duration: experience.duration_minutes ? `${experience.duration_minutes} min` : "",
@@ -452,19 +472,19 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
         id: String(post.id),
         slug: post.slug,
         title: {
-          fi: titles.fi || titles.en || post.slug,
-          es: titles.es || titles.en || post.slug,
-          en: titles.en || post.slug,
+          fi: translatedValue("fi", titles, titles.en || post.slug),
+          es: translatedValue("es", titles, translatedValue("en", titles) || post.slug),
+          en: translatedValue("en", titles, post.slug),
         },
         excerpt: {
-          fi: excerpts.fi || excerpts.en || "",
-          es: excerpts.es || excerpts.en || "",
-          en: excerpts.en || "",
+          fi: translatedValue("fi", excerpts, excerpts.en || ""),
+          es: translatedValue("es", excerpts, translatedValue("en", excerpts)),
+          en: translatedValue("en", excerpts, ""),
         },
         content: {
-          fi: contents.fi || contents.en || "",
-          es: contents.es || contents.en || "",
-          en: contents.en || "",
+          fi: translatedValue("fi", contents, contents.en || ""),
+          es: translatedValue("es", contents, translatedValue("en", contents)),
+          en: translatedValue("en", contents, ""),
         },
         image: cover?.url || "",
         author: post.author_name || "Finland Experience",
