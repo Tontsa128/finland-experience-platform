@@ -11,6 +11,7 @@ const labels = {
 
 export function SaloDirectory({ locale, category }: { locale: Locale; category?: SaloProvider["category"] }) {
   const l = labels[locale];
+  const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
   const providers = category ? saloProviders.filter((provider) => provider.category === category) : saloProviders;
   return (
     <section className="bg-brand-50 py-16 sm:py-24">
@@ -50,7 +51,7 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
                 <a href={provider.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
                   {(provider.url.includes("visitsalo.fi") || provider.url.includes("visitmathildedal.fi") || provider.url.includes("luontoon.fi")) ? l.guide : l.visit}<ArrowUpRight className="h-4 w-4" />
                 </a>
-                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">Kuva: {provider.imageCredit}</p> : null}
+                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{photoCreditLabel} {provider.imageCredit}</p> : null}
               </div>
             </article>
           ))}
