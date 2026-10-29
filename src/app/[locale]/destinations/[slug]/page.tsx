@@ -161,7 +161,7 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} /> : null}
+      {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} area="mathildedal" /> : null}
       {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
 
 
