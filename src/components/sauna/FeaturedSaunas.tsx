@@ -229,8 +229,8 @@ const places: SaunaPlace[] = [
     type: { fi: "Yleisösauna · vuokrattava", en: "Public sauna · private rental", es: "Sauna pública · alquiler privado" },
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Traditional_Finnish_smoke_sauna.jpg",
     imageCredit: "JP Korpi-Vartiainen · CC BY-SA 4.0 · kuvituskuva",
-    source: "https://www.teijo.fi/",
-    booking: "https://www.teijo.fi/"
+    source: "https://www.teijo.fi/palveluja/kylasauna/",
+    booking: "https://www.teijo.fi/palveluja/kylasauna/"
   },
   {
     name: "Kiskon Uimalaitos",
