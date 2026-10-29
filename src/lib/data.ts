@@ -190,6 +190,30 @@ export const destinations: Destination[] = [
     tags: ["turku", "culture", "archipelago", "summer"],
     activities: ["Turku Castle", "Aura River", "archipelago cycling", "boat trips", "museums & markets", "local food"]
   }
+  ,
+  {
+    id: "kemionsaari",
+    slug: "kemionsaari",
+    name: { fi: "Kemiö ja Kemiönsaari", es: "Kimitoön y el archipiélago", en: "Kimitoön and the Archipelago" },
+    description: {
+      fi: "Saariston oma rytmi, vanhat ruukkimaisemat, pienet kylät, satamat, lähiruoka ja ulkosaariston retket. Kemiönsaari yhdistää paikallisen elämän ja Saaristomeren luonnon.",
+      es: "El ritmo tranquilo del archipiélago, pueblos históricos, puertos, gastronomía local y excursiones a las islas exteriores. Kimitoön combina la vida local con la naturaleza del mar del Archipiélago.",
+      en: "The gentle rhythm of island life, historic villages, harbours, local food and trips to the outer islands. Kimitoön combines everyday local life with the nature of the Archipelago Sea."
+    },
+    shortDescription: {
+      fi: "Saaristokyliä, satamia, lähiruokaa ja merellisiä retkiä",
+      es: "Pueblos isleños, puertos, productos locales y excursiones marítimas",
+      en: "Island villages, harbours, local food and sea adventures"
+    },
+    region: "Southwest Finland",
+    images: [photoLibrary.rosalaVikingCentre, photoLibrary.turkuArchipelago],
+    priceFrom: 0,
+    featured: true,
+    coordinates: { lat: 60.167, lng: 22.729 },
+    tags: ["kemionsaari", "kimitoon", "archipelago", "kasnas", "rosala", "local-food"],
+    accommodationIds: [],
+    activities: ["Dalsbruk harbour and historic ironworks", "Kasnäs and ferry connections", "Rosala Viking Centre", "Bengtskär lighthouse trips", "Sagalund open-air museum", "local cafés, shops and seasonal markets"]
+  }
 ];
 
 export const cabins: Cabin[] = [
