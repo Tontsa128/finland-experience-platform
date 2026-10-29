@@ -304,7 +304,6 @@ export const saloProviders: SaloProvider[] = [
     category: "experience",
     name: "Krailan tila – tilausristeilyt",
     nameByLocale: { fi: "Krailan tila – tilausristeilyt", en: "Kraila Farm – Private Cruises", es: "Granja Kraila – Cruceros privados" },
-    nameByLocale: { fi: "Krailan tila – tilausristeilyt", en: "Kraila Farm – Private Cruises", es: "Granja Kraila – Cruceros privados" },
     description: {
       fi: "Tilausristeilyjä m/s Sabrinalla Särkisalon ja lähialueiden vesillä. Ryhmille suunniteltu tapa kokea saariston maisemat mereltä.",
       es: "Cruceros privados en el m/s Sabrina por las aguas de Särkisalo y sus alrededores, pensados para grupos.",
