@@ -151,31 +151,31 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
 
   return (
     <main className="bg-white text-brand-950">
-      <section className="relative isolate min-h-[60svh] overflow-hidden bg-brand-950 text-white">
+      <section className="relative isolate min-h-[48svh] sm:min-h-[56svh] overflow-hidden bg-brand-950 text-white">
         <Image src="https://cdn.johku.com/naturaviva/files/589/w374-h237-s/image.Matildanj%C3%A4rvensauna-2.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/95 via-brand-950/45 to-brand-950/10" />
-        <div className="container-narrow relative flex min-h-[60svh] min-w-0 items-end py-10 sm:py-16 lg:py-20">
+        <div className="container-narrow relative flex min-h-[48svh] min-w-0 items-end py-7 sm:min-h-[56svh] sm:py-12 lg:py-16">
           <div className="min-w-0 max-w-4xl">
             <p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{c.eyebrow}</p>
-            <h1 className="mt-4 max-w-[16ch] break-words font-display text-4xl font-bold leading-[1.08] tracking-tight [overflow-wrap:anywhere] md:text-6xl lg:text-7xl">{c.heading}</h1>
-            <p className="mt-5 max-w-3xl break-words text-base leading-7 text-white/90 sm:mt-6 sm:text-lg sm:leading-8 lg:text-xl">{c.intro}</p>
-            <Link href="#sauna-rentals" className="mt-7 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full bg-gold-300 px-5 py-3.5 text-left text-sm font-bold text-brand-950 hover:bg-gold-200 sm:px-6">
+            <h1 className="mt-3 max-w-[18ch] break-words font-display text-3xl font-bold leading-[1.1] tracking-tight [overflow-wrap:anywhere] sm:text-4xl md:text-5xl lg:text-6xl">{c.heading}</h1>
+            <p className="mt-4 max-w-3xl break-words text-sm leading-6 text-white/90 sm:mt-5 sm:text-base sm:leading-7 lg:text-lg lg:leading-8">{c.intro}</p>
+            <Link href="#sauna-rentals" className="mt-5 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full bg-gold-300 px-4 py-3 text-left text-xs font-bold text-brand-950 hover:bg-gold-200 sm:mt-6 sm:px-5 sm:py-3.5 sm:text-sm">
               {c.listTitle}<ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="container-narrow py-8 sm:py-12" aria-label="Sauna experience carousel">
+      <section className="container-narrow py-5 sm:py-8 lg:py-12" aria-label="Sauna experience carousel">
         <SaunaCarousel items={heroSlides} locale={locale} imageLabel={locale === "fi" ? "Kuva" : locale === "es" ? "Imagen" : "Image"} />
       </section>
 
-      <section id="sauna-rentals" className="scroll-mt-24 py-10 sm:py-16">
+      <section id="sauna-rentals" className="scroll-mt-20 py-7 sm:py-12 lg:py-16">
         <FeaturedSaunas locale={locale} />
       </section>
 
       {galleries.map((gallery) => (
-        <section key={gallery.id} id={gallery.id} className="border-t border-brand-100 py-12 sm:py-16">
+        <section key={gallery.id} id={gallery.id} className="border-t border-brand-100 py-8 sm:py-12 lg:py-16">
           <div className="container-narrow grid gap-5 lg:grid-cols-[.75fr_1.25fr] lg:items-start">
             <div className="lg:sticky lg:top-24">
               <h2 className="font-display text-3xl font-bold leading-tight sm:text-4xl">{gallery.title[locale]}</h2>
