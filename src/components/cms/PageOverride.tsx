@@ -60,8 +60,9 @@ function localizedPageIsComplete(page: PageRecord, finnishPage: PageRecord | nul
     ? (finnishPage.blocks as Block[]).filter((block) => block?.visible !== false)
     : blocks;
 
-  for (const [index, block] of blocks.entries()) {
-    if (block.type === "spacer" || block.type === "image" || block.type === "gallery") continue;
+  for (let index = 0; index < blocks.length; index += 1) {
+    const block = blocks[index];
+    if (!block || block.type === "spacer" || block.type === "image" || block.type === "gallery") continue;
 
     const localizedCopy = block.content?.[locale] ?? {};
     const matchingFinnishBlock =
