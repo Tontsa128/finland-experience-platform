@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, ExternalLink, MapPin, Sparkles, Tag } from "lucide-react";
 import type { Locale } from "@/types";
 import { luxuryDirectory } from "@/lib/luxury-directory";
@@ -15,7 +16,7 @@ const labels = {
     experience: "Elämys",
     price: "Hintaesimerkki",
     visit: "Siirry palveluntarjoajalle",
-    direct: "Varaa ja maksa suoraan palveluntarjoajalle.",
+    direct: "Varaa ja maksa suoraan palveluntarjoajalle.", details: "Avaa kohdesivu",
   },
   es: {
     eyebrow: "Luxury & Authentic Finland",
@@ -28,7 +29,7 @@ const labels = {
     experience: "Experiencia",
     price: "Precio orientativo",
     visit: "Ir al proveedor",
-    direct: "Reserva y paga directamente con el proveedor.",
+    direct: "Reserva y paga directamente con el proveedor.", details: "Ver ficha del lugar",
   },
   en: {
     eyebrow: "Luxury & Authentic Finland",
@@ -41,7 +42,7 @@ const labels = {
     experience: "Experience",
     price: "Price example",
     visit: "Visit provider",
-    direct: "Book and pay directly with the provider.",
+    direct: "Book and pay directly with the provider.", details: "View provider page",
   },
 } as const;
 
@@ -76,9 +77,9 @@ export function LuxuryDirectory({ locale }: { locale: Locale }) {
           {luxuryDirectory.map((entry) => (
             <article key={entry.id} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
               {entry.image ? (
-                <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
+                <Link href={`/${locale}/providers/directory-${entry.id}`} aria-label={`${entry.nameByLocale?.[locale] || entry.name} — ${l.details}`} className="relative block aspect-[16/10] overflow-hidden bg-brand-100">
                   <Image src={entry.image} alt={entry.nameByLocale?.[locale] || entry.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                </div>
+                </Link>
               ) : (
                 <div className="flex aspect-[16/10] items-center justify-center bg-brand-950 p-8 text-white">
                   <ExternalLink className="h-9 w-9 text-gold-300" />
@@ -107,9 +108,12 @@ export function LuxuryDirectory({ locale }: { locale: Locale }) {
                   ))}
                 </div>
 
-                <a href={entry.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
-                  {entry.linkLabel?.[locale] || l.visit}<ArrowUpRight className="h-4 w-4" />
-                </a>
+                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <Link href={`/${locale}/providers/directory-${entry.id}`} className="inline-flex items-center gap-2 text-sm font-bold text-brand-950 underline underline-offset-4">{l.details}</Link>
+                  <a href={entry.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-brand-800">
+                    {entry.linkLabel?.[locale] || l.visit}<ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </div>
                 {entry.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{photoCreditLabel} {entry.imageCredit}</p> : null}
               </div>
             </article>

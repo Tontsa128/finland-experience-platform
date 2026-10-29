@@ -1,12 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Tag } from "lucide-react";
 import type { Locale } from "@/types";
 import { saloProviders, type SaloProvider } from "@/lib/salo";
 
 const labels = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider", guide: "Open official guide" },
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
 } as const;
 
 export function SaloDirectory({ locale, category }: { locale: Locale; category?: SaloProvider["category"] }) {
@@ -30,9 +31,9 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
           {providers.map((provider) => (
             <article key={provider.id} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
               {provider.image ? (
-                <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
+                <Link href={`/${locale}/providers/salo-${provider.id}`} aria-label={`${provider.nameByLocale?.[locale] || provider.name} — ${l.details}`} className="relative block aspect-[16/10] overflow-hidden bg-brand-100">
                   <Image src={provider.image} alt={provider.nameByLocale?.[locale] || provider.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                </div>
+                </Link>
               ) : (
                 <div className="flex aspect-[16/10] items-center justify-center bg-brand-950 p-8 text-center text-white">
                   <ExternalLink className="h-9 w-9 text-gold-300" />
@@ -48,9 +49,12 @@ export function SaloDirectory({ locale, category }: { locale: Locale; category?:
                     <span><strong>{l.price}:</strong> {provider.priceByLocale?.[locale] || provider.price}</span>
                   </div>
                 ) : null}
-                <a href={provider.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
-                  {(provider.url.includes("visitsalo.fi") || provider.url.includes("visitmathildedal.fi") || provider.url.includes("luontoon.fi")) ? l.guide : l.visit}<ArrowUpRight className="h-4 w-4" />
-                </a>
+                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <Link href={`/${locale}/providers/salo-${provider.id}`} className="inline-flex items-center gap-2 text-sm font-bold text-brand-950 underline underline-offset-4">{l.details}</Link>
+                  <a href={provider.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-brand-800">
+                    {(provider.url.includes("visitsalo.fi") || provider.url.includes("visitmathildedal.fi") || provider.url.includes("luontoon.fi")) ? l.guide : l.visit}<ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </div>
                 {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{photoCreditLabel} {provider.imageCredit}</p> : null}
               </div>
             </article>
