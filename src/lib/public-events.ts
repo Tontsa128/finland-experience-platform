@@ -24,10 +24,10 @@ export async function getPublishedEvents(): Promise<PublicEvent[]> {
     return data.map((row: any) => {
       const location = Array.isArray(row.event_locations) ? row.event_locations[0] : row.event_locations;
       const fiTitle = String(row.title_fi || "");
-      const enTitle = String(row.title_en || fiTitle);
+      const enTitle = String(row.title_en || "");
       const esTitle = String(row.title_es || enTitle);
       const fiDescription = String(row.description_fi || "");
-      const enDescription = String(row.description_en || fiDescription);
+      const enDescription = String(row.description_en || "");
       const esDescription = String(row.description_es || enDescription);
       return {
         id: String(row.id),
