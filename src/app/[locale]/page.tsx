@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/home/Hero";
+import { KansakouluSpotlight } from "@/components/home/KansakouluSpotlight";
 import { VisitorCounter } from "@/components/home/VisitorCounter";
 import { photoLibrary } from "@/lib/photo-library";
 import { DestinationCard } from "@/components/ui/DestinationCard";
@@ -98,6 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <VisitorCounter locale={locale as "fi" | "es" | "en"} />
       <Hero settings={homepage} />
+      <KansakouluSpotlight locale={locale as "fi" | "en" | "es"} />
       <section className="border-y border-brand-100 bg-white py-7 sm:py-8">
         <div className="container-narrow">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
