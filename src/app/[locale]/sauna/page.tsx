@@ -284,6 +284,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: rawLocale } = await params;
   const locale = localeOf(rawLocale);
   const x = copy[locale];
+  const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
   return buildLocalizedMetadata({
     locale,
     title: x.title,
@@ -362,7 +363,7 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
               <p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{x.heritage}</p>
               <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-6xl">{x.cinematicTitle}</h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl">{x.cinematicText}</p>
-              <p className="mt-6 text-[10px] font-semibold uppercase tracking-[.14em] text-white/45">Kuva: Kospo75</p>
+              <p className="mt-6 text-[10px] font-semibold uppercase tracking-[.14em] text-white/45">{photoCreditLabel} Kospo75</p>
             </div>
           </div>
         </div>
@@ -375,7 +376,7 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
               <div className="relative min-h-[360px] lg:min-h-0">
                 <Image src={photoLibrary.saunaWhisking} alt={x.loylyPanelTitle} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent lg:bg-gradient-to-r" />
-                <div className="absolute bottom-0 left-0 p-6 text-xs font-semibold uppercase tracking-[.14em] text-white/55 sm:p-8">Kuva: Ville Kurki</div>
+                <div className="absolute bottom-0 left-0 p-6 text-xs font-semibold uppercase tracking-[.14em] text-white/55 sm:p-8">{photoCreditLabel} Ville Kurki</div>
               </div>
               <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
                 <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{x.loylyPanelEyebrow}</p>
