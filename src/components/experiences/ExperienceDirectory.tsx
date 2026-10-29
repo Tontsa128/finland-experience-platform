@@ -93,12 +93,15 @@ const copy = {
 } as const;
 
 function text(value: Record<Locale, string>, locale: Locale) {
-  return value[locale] || value.fi || value.en || "";
+  const localized = value[locale]?.trim();
+  if (localized) return localized;
+  // English/Spanish content must never silently fall back to Finnish.
+  return locale === "fi" ? "" : value.en?.trim() || "";
 }
 
 function navigationUrl(item: Experience) {
   if (item.coordinates) return `https://www.google.com/maps/dir/?api=1&destination=${item.coordinates.lat},${item.coordinates.lng}`;
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address || item.region || item.name.fi)}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address || item.region || item.name.en || item.slug)}`;
 }
 
 export default function ExperienceDirectory({ experiences, locale }: Props) {
