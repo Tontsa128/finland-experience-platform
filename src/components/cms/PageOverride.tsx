@@ -18,7 +18,7 @@ const copyFields = ["eyebrow", "title", "text"] as const;
 type CopyField = (typeof copyFields)[number];
 
 function normalize(value: string): string {
-  return value.normalize("NFKC").replace(/\\s+/g, " ").trim().toLocaleLowerCase();
+  return value.normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
 }
 
 function hasText(value: unknown): value is string {
@@ -27,7 +27,7 @@ function hasText(value: unknown): value is string {
 
 function looksLikeFinnishFallback(candidate: string, finnish: string, field: CopyField): boolean {
   if (!candidate || !finnish || normalize(candidate) !== normalize(finnish)) return false;
-  const words = candidate.trim().split(/\\s+/).filter(Boolean).length;
+  const words = candidate.trim().split(/\s+/).filter(Boolean).length;
   // Keep legitimate names and short labels such as "Sauna" or "Mathildedal",
   // but reject whole copied headings and descriptions.
   return field === "text"
@@ -39,7 +39,7 @@ function looksLikeFinnishFallback(candidate: string, finnish: string, field: Cop
 
 function sameMeaningfulPageText(candidate: unknown, finnish: unknown, field: "title" | "content"): boolean {
   if (!hasText(candidate) || !hasText(finnish) || normalize(candidate) !== normalize(finnish)) return false;
-  const words = candidate.trim().split(/\\s+/).filter(Boolean).length;
+  const words = candidate.trim().split(/\s+/).filter(Boolean).length;
   return field === "content"
     ? candidate.trim().length >= 45
     : words >= 4 || candidate.trim().length >= 36;
