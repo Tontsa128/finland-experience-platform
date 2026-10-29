@@ -125,7 +125,7 @@ export function KimitoonGuide({ locale, category }: { locale: Locale; category?:
         </>
       ) : (
         <section className="bg-brand-950 py-16 text-white sm:py-20">
-          <div className="container-narrow"><p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{t.title}</p><h1 className="mt-3 font-display text-4xl font-bold sm:text-6xl">{detail[0]}</h1><p className="mt-5 max-w-3xl text-lg leading-8 text-white/80">{detail[1]}</p><Link href={`/${locale}/destinations/kemionsaari`} className="mt-6 inline-flex font-bold text-gold-300 underline">{locale === "fi" ? "Takaisin Kemiönsaaren oppaaseen" : locale === "es" ? "Volver a la guía de Kimitoön" : "Back to the Kimitoön guide"} →</Link></div>
+          <div className="container-narrow"><p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{t.title}</p><h1 className="mt-3 font-display text-4xl font-bold sm:text-6xl">{detail?.[0] ?? t.title}</h1><p className="mt-5 max-w-3xl text-lg leading-8 text-white/80">{detail?.[1] ?? ""}</p><Link href={`/${locale}/destinations/kemionsaari`} className="mt-6 inline-flex font-bold text-gold-300 underline">{locale === "fi" ? "Takaisin Kemiönsaaren oppaaseen" : locale === "es" ? "Volver a la guía de Kimitoön" : "Back to the Kimitoön guide"} →</Link></div>
         </section>
       )}
       <section className="container-narrow py-14 sm:py-20">
