@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: rawLocale, slug } = await params;
   const locale = rawLocale as Locale;
   if (!locales.includes(locale)) return {};
+  if (slug === "kemionsaari") return buildLocalizedMetadata({ locale, title: locale === "fi" ? "Kemiönsaari – saaristo, majoitus ja paikalliset maut" : locale === "es" ? "Kimitoön – archipiélago, alojamiento y gastronomía local" : "Kimitoön – archipelago, stays and local flavours", description: locale === "fi" ? "Löydä Kemiönsaaren saaristokohteet, majoitus, ravintolat ja paikalliset elämykset. Varaa suoraan palveluntarjoajalta." : locale === "es" ? "Descubre el archipiélago de Kimitoön, alojamientos, restaurantes y experiencias locales. Reserva directamente." : "Discover Kimitoön’s archipelago, places to stay, restaurants and local experiences. Book directly with providers.", path: "destinations/kemionsaari", image: "https://www.kansakouluun.fi/wp-content/uploads/2017/05/ravintola.jpg" });
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
   const source = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
@@ -36,6 +37,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function DestinationDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale: rawLocale, slug } = await params;
   const locale = rawLocale as Locale;
+  if (slug === "kemionsaari" && locales.includes(locale)) {
+    return <div className="bg-white"><KimitoonGuide locale={locale} /></div>;
+  }
   const cmsDestinations = await getPublishedDestinations();
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
