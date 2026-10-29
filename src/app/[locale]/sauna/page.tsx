@@ -71,18 +71,18 @@ const heroSlides: Slide[] = [
     source: "https://tervarumpu.fi/fi_FI/naturaviva-sauna-teijon-kansallispuisto",
   },
   {
-    image: photoLibrary.herrankukkaroSauna,
-    title: { fi: "Savusauna saariston tunnelmassa", en: "Smoke sauna in the archipelago", es: "Sauna de humo en el archipiélago" },
-    text: { fi: "Perinteinen saunaelämys puun, veden ja saaristoluonnon keskellä.", en: "A traditional sauna experience among wood, water and island nature.", es: "Una experiencia tradicional entre madera, agua y naturaleza insular." },
-    credit: "Herrankukkaro",
-    source: "https://www.herrankukkaro.fi/kokous/saunat-ja-kylvyt",
+    image: "https://cdn-datahub.visitfinland.com/images/e6b2c520-c1cf-11ed-8fb6-cd05a147400e.jpeg?s=1280",
+    title: { fi: "Mathildan Marinan sauna & lounge", en: "Mathildan Marina sauna & lounge", es: "Sauna y lounge de Mathildan Marina" },
+    text: { fi: "Yksityinen saunahetki satamassa – kaksi saunaa, meriterassi ja varattava ulkoporeallas.", en: "A private sauna session by the harbour, with two saunas, a sea-view terrace and a bookable hot tub.", es: "Una sesión privada junto al puerto, con dos saunas, terraza con vistas al mar y jacuzzi reservable." },
+    credit: "Mathildan Marina / Visit Finland DataHub",
+    source: "https://mathildanmarina.fi/saunat/",
   },
   {
-    image: photoLibrary.saunaBoat,
-    title: { fi: "Sauna meren äärellä", en: "Sauna by the sea", es: "Sauna junto al mar" },
-    text: { fi: "Merellinen saunatunnelma ja vilvoittelu veden äärellä.", en: "Maritime sauna atmosphere and a refreshing moment by the water.", es: "Ambiente marinero de sauna y un momento refrescante junto al agua." },
-    credit: "Santeri Viinamäki · CC BY-SA 4.0",
-    source: "https://commons.wikimedia.org/wiki/File:Sauna_boat_20180802.jpg",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2026/03/Niksaari-2-1024x768.jpg",
+    title: { fi: "Niksaaren merellinen sauna", en: "Niksaari sauna by the sea", es: "Sauna marítima de Niksaari" },
+    text: { fi: "Saaristomaisema, yleisiä kesävuoroja ja erikseen varattava yksityiskäyttö.", en: "Archipelago scenery, public summer sessions and separate private bookings.", es: "Paisaje de archipiélago, turnos públicos de verano y reservas privadas." },
+    credit: "Visit Salo / Salon kaupunki",
+    source: "https://kohteet.visitsalo.fi/niksaaren-sauna/",
   },
 ];
 
@@ -170,11 +170,6 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
       </section>
 
       <section id="sauna-rentals" className="scroll-mt-24 py-10 sm:py-16">
-        <div className="container-narrow mb-8 max-w-4xl">
-          <p className="text-xs font-bold uppercase tracking-[.18em] text-brand-600">FINNEXPRIENCE · SALO</p>
-          <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">{c.listTitle}</h2>
-          <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">{c.listIntro}</p>
-        </div>
         <FeaturedSaunas locale={locale} />
       </section>
 
