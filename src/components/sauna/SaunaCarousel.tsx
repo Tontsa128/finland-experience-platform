@@ -44,13 +44,13 @@ export function SaunaCarousel({ items, locale, imageLabel }: Props) {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-5 sm:mt-8 lg:mt-10">
       <div
         className="relative overflow-hidden rounded-[2rem] bg-brand-950 shadow-card"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="relative aspect-[4/3] min-h-[380px] sm:aspect-[16/8] sm:min-h-0 lg:aspect-[16/7]">
+        <div className="relative aspect-[4/3] min-h-[260px] sm:aspect-[16/8] sm:min-h-0 lg:aspect-[16/7]">
           <Image
             key={item.image}
             src={item.image}
@@ -66,15 +66,15 @@ export function SaunaCarousel({ items, locale, imageLabel }: Props) {
             {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white sm:p-9 lg:p-12">
+          <div className="absolute bottom-0 left-0 right-0 p-4 text-white sm:p-7 lg:p-12">
             <div className="max-w-3xl">
-              <p className="font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              <p className="font-display text-xl font-bold leading-tight sm:text-3xl lg:text-5xl">
                 {item.title[locale]}
               </p>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
+              <p className="mt-2 max-w-2xl text-sm leading-5 text-white/85 sm:mt-3 sm:text-base sm:leading-7 lg:text-lg lg:leading-8">
                 {item.text[locale]}
               </p>
-              <p className="mt-4 text-[10px] font-semibold uppercase tracking-[.14em] text-white/55">
+              <p className="mt-2 text-[9px] font-semibold uppercase tracking-[.1em] text-white/65 sm:mt-4 sm:text-[10px] sm:tracking-[.14em]">
                 {imageLabel}: {item.credit}
               </p>
             </div>
