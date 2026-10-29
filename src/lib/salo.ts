@@ -8,6 +8,7 @@ export type SaloProvider = {
   description: Record<Locale, string>;
   url: string;
   price?: string;
+  priceByLocale?: Partial<Record<Locale, string>>;
   image?: string;
   imageCredit?: string;
   officialGuide?: boolean;
@@ -88,6 +89,7 @@ export const saloProviders: SaloProvider[] = [
     },
     url: "https://www.mathildanmarina.fi",
     price: "2026: alkaen 149 €/vrk",
+    priceByLocale: { fi: "2026: alkaen 149 €/vrk", en: "2026: from €149/day", es: "2026: desde 149 €/día" },
     image: providerImages.marina,
     imageCredit: "Visit Salo / Visit Finland DataHub",
   },
@@ -141,6 +143,7 @@ export const saloProviders: SaloProvider[] = [
     },
     url: "https://www.meriteijo.fi",
     price: "Rinneautoilu: 2 kierrosta 16 €, 4 kierrosta 26 €, 5 kierrosta 32 €/hlö",
+    priceByLocale: { fi: "Rinneautoilu: 2 kierrosta 16 €, 4 kierrosta 26 €, 5 kierrosta 32 €/hlö", en: "Mountain carting: 2 rides €16, 4 rides €26, 5 rides €32 per person", es: "Kart de montaña: 2 vueltas 16 €, 4 vueltas 26 €, 5 vueltas 32 € por persona" },
     image: providerImages.actionPark,
     imageCredit: "Visit Salo",
   },
@@ -157,6 +160,7 @@ export const saloProviders: SaloProvider[] = [
     image: providerImages.marina,
     imageCredit: "Visit Salo / Visit Finland DataHub",
     price: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta",
+    priceByLocale: { fi: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta", en: "Price depends on the trip and group size — check with the provider", es: "El precio depende de la excursión y del tamaño del grupo; consúltalo con el proveedor" },
   },
   {
     id: "salon-oppaat",
