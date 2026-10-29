@@ -80,7 +80,7 @@ const copy = {
       tapahtumat: ["Conoce la vida local", "El calendario reúne mercados, conciertos, exposiciones y actividades comunitarias. Confirma las fechas con los organizadores."]
     }
   }
-} satisfies Record<Locale, any>;
+};
 
 const categories: { id: Category; title: Record<Locale, string>; image: string; url: string }[] = [
   { id: "saaristo", title: { fi: "Saaristo ja satamat", en: "Islands and harbours", es: "Islas y puertos" }, image: photoLibrary.rosalaVikingCentre, url: "https://www.visitkimitoon.fi/fi/nae-ja-koe/" },
