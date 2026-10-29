@@ -277,6 +277,67 @@ const places: SaunaPlace[] = [
     imageCredit: "Sandun De Silva · CC BY-SA 4.0 · kuvituskuva",
     source: "https://sokeritilat.fi/",
     booking: "https://sokeritilat.fi/"
+  },
+  {
+    name: "Kirjakkalan Ruukkikylän rantasaunat",
+    location: "Kirjakkala · Hamarijärventie 62",
+    description: {
+      fi: "Hamarijärven rannalla on kaksi saunaa omilla pesu- ja pukuhuoneilla sekä varattava lämmin ulkopalju. Takkatupa ja järvimaisema sopivat ryhmille, juhliin ja virkistyspäiviin.",
+      en: "Two lakeside saunas with their own washing and changing rooms, plus a bookable hot tub. The fireplace room and lake scenery suit groups, celebrations and retreats.",
+      es: "Dos saunas junto al lago con vestuarios y duchas propios, además de una bañera caliente reservable. La sala con chimenea y el paisaje son ideales para grupos y celebraciones."
+    },
+    access: { fi: "Vuokraus yksityisille ja ryhmille", en: "Private and group rental", es: "Alquiler privado y para grupos" },
+    type: { fi: "Vuokrasauna · palju", en: "Rental sauna · hot tub", es: "Sauna de alquiler · bañera caliente" },
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
+    imageCredit: "Kospo75 · CC BY-SA 3.0 · kuvituskuva",
+    source: "https://www.ruukkikyla.fi/hinnasto/",
+    booking: "https://www.ruukkikyla.fi/hinnasto/",
+    capacity: "2 saunaa · 7 hlö/sauna"
+  },
+  {
+    name: "Salakallion sauna",
+    location: "Halikko · Salaistentie 782",
+    description: {
+      fi: "Sauna ja kirkasvetinen uimapaikka caravan-alueella. Yleiset saunavuorot sisältyvät alueen majoitusmaksuun; tarkista vierailu- ja vuorokäytännöt suoraan ylläpitäjältä.",
+      en: "A sauna and clear-water swimming spot at a caravan park. Public sauna sessions are included in the site fee; confirm visitor access and session details with the operator.",
+      es: "Sauna y zona de baño de aguas claras en un camping para caravanas. Los turnos públicos están incluidos en la tarifa del área; confirma el acceso y los horarios con el operador."
+    },
+    access: { fi: "Yleisövuoroja alueen aukiolon mukaan", en: "Public sessions subject to site schedule", es: "Turnos públicos según el horario del área" },
+    type: { fi: "Yleisösauna · uimapaikka", en: "Public sauna · swimming spot", es: "Sauna pública · zona de baño" },
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sauna_boat_20180802.jpg",
+    imageCredit: "Santeri Viinamäki · CC BY-SA 4.0 · kuvituskuva",
+    source: "https://salakallio.fi/palvelut",
+    booking: "https://salakallio.fi/"
+  },
+  {
+    name: "Onnenperän savusauna",
+    location: "Vaskio · Onnenperäntie 400",
+    description: {
+      fi: "Metsälammen äärellä sijaitseva savusauna, jonka lämmitys voidaan sopia osana mökin vuokrausta. Tarkista savusaunan lämmitys ja ehdot omistajalta.",
+      en: "A smoke sauna beside a forest pond, with heating available by arrangement as part of the cottage rental. Confirm the sauna arrangements directly with the owner.",
+      es: "Sauna de humo junto a una laguna forestal; se puede acordar su calentamiento como parte del alquiler de la cabaña. Consulta las condiciones con el propietario."
+    },
+    access: { fi: "Vuokraus ja savusaunan lämmitys sopimuksen mukaan", en: "Rental; smoke sauna heated by arrangement", es: "Alquiler; calentamiento de la sauna de humo bajo acuerdo" },
+    type: { fi: "Vuokrattava savusauna", en: "Rental smoke sauna", es: "Sauna de humo de alquiler" },
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Traditional_Finnish_smoke_sauna.jpg",
+    imageCredit: "JP Korpi-Vartiainen · CC BY-SA 4.0 · kuvituskuva",
+    source: "https://kohteet.visitsalo.fi/onnenperan-mokki/",
+    booking: "https://toivontila.fi/"
+  },
+  {
+    name: "Topilan Tupa · saunamökki",
+    location: "Halikko · Ikeläntie",
+    description: {
+      fi: "Tunnelmallinen vuokrattava saunamökki rauhallisessa maalaismaisemassa. Puulämmitteinen sauna, terassi ja varusteet pienelle seurueelle; tarkista vapaat ajat suoraan omistajalta.",
+      en: "A cosy rental sauna cottage in peaceful countryside, with a wood-heated sauna, terrace and facilities for a small group. Check availability directly with the owner.",
+      es: "Acogedora cabaña de alquiler con sauna de leña en un entorno rural tranquilo, terraza y equipamiento para un grupo pequeño. Consulta la disponibilidad con el propietario."
+    },
+    access: { fi: "Yksityisvaraus", en: "Private booking", es: "Reserva privada" },
+    type: { fi: "Vuokrattava saunamökki", en: "Rental sauna cottage", es: "Cabaña con sauna de alquiler" },
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
+    imageCredit: "Kospo75 · CC BY-SA 3.0 · kuvituskuva",
+    source: "https://kohteet.visitsalo.fi/topilan-tupa-vuokramokki/",
+    booking: "https://toivontila.fi/"
   }
 ];
 
@@ -315,7 +376,7 @@ export function FeaturedSaunas({ locale }: { locale: Locale }) {
       </div>
       <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {places.map((place) => {
-          const isRental = place.type.fi.includes("Vuokrasauna") || place.type.fi.includes("vuokrasauna");
+          const isRental = place.type.fi.toLowerCase().includes("vuokr");
           const isBeach = place.type.fi.includes("uimaranta") || place.type.fi.includes("uimapaikka");
           const kind = isRental ? x.rental : isBeach ? x.beach : x.public;
           return (
