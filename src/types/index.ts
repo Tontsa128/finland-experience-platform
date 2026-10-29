@@ -62,6 +62,8 @@ export interface Cabin {
   name: Record<Locale, string>;
   description: Record<Locale, string>;
   location: string;
+  /** Locale-specific location labels from CMS, when available. */
+  locationByLocale?: Record<Locale, string>;
   region: string;
   pricePerNight: number;
   images: string[];
