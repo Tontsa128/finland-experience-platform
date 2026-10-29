@@ -86,16 +86,16 @@ const categories: { id: Category; title: Record<Locale, string>; image: string; 
   { id: "saaristo", title: { fi: "Saaristo ja satamat", en: "Islands and harbours", es: "Islas y puertos" }, image: photoLibrary.rosalaVikingCentre, url: "https://www.visitkimitoon.fi/fi/nae-ja-koe/" },
   { id: "luonto", title: { fi: "Luonto ja retket", en: "Nature and trails", es: "Naturaleza y rutas" }, image: photoLibrary.turkuArchipelago, url: "https://www.visitkimitoon.fi/fi/nae-ja-koe/luonto-ulkoilu/" },
   { id: "kulttuuri", title: { fi: "Historia ja kulttuuri", en: "History and culture", es: "Historia y cultura" }, image: photoLibrary.rosalaVikingHall, url: "https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/" },
-  { id: "ruoka", title: { fi: "Kahvilat ja paikalliset maut", en: "Cafés and local flavours", es: "Cafeterías y sabores locales" }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2023/05/365_ENG_digi.pdf", url: "https://www.visitkimitoon.fi/fi/syo-ja-majoitu/ravintolat-kahvilat/" },
+  { id: "ruoka", title: { fi: "Kahvilat ja paikalliset maut", en: "Cafés and local flavours", es: "Cafeterías y sabores locales" }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg", url: "https://www.visitkimitoon.fi/fi/syo-ja-majoitu/ravintolat-kahvilat/" },
   { id: "majoitus", title: { fi: "Majoitus", en: "Places to stay", es: "Alojamiento" }, image: "https://cdn.johku.com/rosala/largefiles/577.jpg", url: "https://www.visitkimitoon.fi/fi/syo-ja-majoitu/majoitus/" },
   { id: "tapahtumat", title: { fi: "Tapahtumat", en: "Events", es: "Eventos" }, image: photoLibrary.rosalaVikingHall, url: "https://www.visitkimitoon.fi/fi/nae-ja-koe/tapahtumat/tapahtumakalenteri/" }
 ];
 
 const places = [
-  { title: "Taalintehdas", sub: { fi: "Ruukkihistoriaa, vierasvenesatama ja kylän palvelut.", en: "Ironworks heritage, guest harbour and village services.", es: "Patrimonio industrial, puerto deportivo y servicios del pueblo." }, image: photoLibrary.turkuArchipelagoHouse, url: "https://www.visitkimitoon.fi/fi/" },
-  { title: "Kasnäs", sub: { fi: "Satama ja yhteydet ulkosaaristoon.", en: "Harbour and connections to the outer islands.", es: "Puerto y conexiones con las islas exteriores." }, image: photoLibrary.turkuArchipelago, url: "https://www.visitkimitoon.fi/fi/plan/" },
+  { title: "Taalintehdas", sub: { fi: "Ruukkihistoriaa, vierasvenesatama ja kylän palvelut.", en: "Ironworks heritage, guest harbour and village services.", es: "Patrimonio industrial, puerto deportivo y servicios del pueblo." }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Kimitoon-KV-kartta-etusivu-2026_-Stella-01-760x540.png", url: "https://www.visitkimitoon.fi/fi/" },
+  { title: "Kasnäs", sub: { fi: "Satama ja yhteydet ulkosaaristoon.", en: "Harbour and connections to the outer islands.", es: "Puerto y conexiones con las islas exteriores." }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/05/5_oskari_harma_kupla-580x328.jpg", url: "https://www.visitkimitoon.fi/fi/plan/" },
   { title: "Rosala ja Bengtskär", sub: { fi: "Viikinkihistoriaa, saaristoretkiä ja majakkamaisemia.", en: "Viking history, island excursions and lighthouse scenery.", es: "Historia vikinga, excursiones y paisajes de faros." }, image: photoLibrary.rosalaVikingCentre, url: "https://rosala-viking-centre.johku.com/" },
-  { title: "Sagalund", sub: { fi: "Ulkomuseo ja paikallista kulttuuriperintöä Kemiössä.", en: "Open-air museum and local heritage in Kimito.", es: "Museo al aire libre y patrimonio local en Kimito." }, image: photoLibrary.turkuArchipelagoHouse, url: "https://www.sagalund.fi/" }
+  { title: "Sagalund", sub: { fi: "Ulkomuseo ja paikallista kulttuuriperintöä Kemiössä.", en: "Open-air museum and local heritage in Kimito.", es: "Museo al aire libre y patrimonio local en Kimito." }, image: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg", url: "https://www.sagalund.fi/" }
 ];
 
 export function KimitoonGuide({ locale, category }: { locale: Locale; category?: Category }) {
