@@ -193,7 +193,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         typeof localized?.text === "string" &&
         localized.text.trim().length > 0;
       const normalize = (value?: string) =>
-        (value ?? "").normalize("NFKC").replace(/\\s+/g, " ").trim().toLocaleLowerCase();
+        (value ?? "").normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
       const sameAsFinnishTitle =
         Boolean(normalize(localized?.title)) &&
         normalize(localized?.title) === normalize(finnishCopy?.title);
