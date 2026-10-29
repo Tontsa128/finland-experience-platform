@@ -5,10 +5,17 @@ import { ArrowRight, ArrowUpRight, BedDouble, Bike, Coffee, Leaf, MapPin, Waves,
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { saloProviders } from "@/lib/salo";
+import { saloProviders, type SaloProvider } from "@/lib/salo";
 import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 
 type Localized = Record<Locale, string>;
+
+const providerCategoryLabels: Record<Locale, Record<SaloProvider["category"], string>> = {
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local" },
+};
+
 
 type Place = {
   slug: string;
@@ -467,11 +474,11 @@ export default async function CoastalFinlandPage({ params }: { params: Promise<{
               <a key={provider.id} href={provider.url} target="_blank" rel="noopener noreferrer" className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
                 {provider.image ? (
                   <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/10] overflow-hidden rounded-t-3xl">
-                    <Image src={provider.image} alt={provider.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                    <Image src={provider.image} alt={provider.nameByLocale?.[locale] || provider.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
                   </div>
                 ) : null}
-                <p className="text-[10px] font-bold uppercase tracking-[.16em] text-brand-600">{provider.category}</p>
-                <h3 className="mt-2 font-display text-xl font-bold text-brand-950">{provider.name}</h3>
+                <p className="text-[10px] font-bold uppercase tracking-[.16em] text-brand-600">{providerCategoryLabels[locale][provider.category]}</p>
+                <h3 className="mt-2 font-display text-xl font-bold text-brand-950">{provider.nameByLocale?.[locale] || provider.name}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>
                 <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{provider.officialGuide ? (locale === "fi" ? "Avaa virallinen opas" : locale === "es" ? "Abrir guía oficial" : "Open official guide") : (locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit provider")}<ArrowUpRight className="h-3.5 w-3.5" /></span>
               </a>
@@ -481,7 +488,7 @@ export default async function CoastalFinlandPage({ params }: { params: Promise<{
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {sarkisaloProviders.slice(8, 14).map((provider) => (
               <a key={provider.id} href={provider.url} target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-white bg-white/80 p-5 shadow-sm">
-                <h3 className="font-semibold text-brand-950">{provider.name}</h3>
+                <h3 className="font-semibold text-brand-950">{provider.nameByLocale?.[locale] || provider.name}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>
               </a>
             ))}

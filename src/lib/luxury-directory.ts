@@ -4,7 +4,9 @@ export type LuxuryDirectoryEntry = {
   id: string;
   category: "stay" | "sauna" | "food" | "nature" | "experience";
   location: string;
+  locationByLocale?: Partial<Record<Locale, string>>;
   name: string;
+  nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
   url: string;
   price?: string;
@@ -39,6 +41,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
     id: "airisto-spa",
     category: "sauna",
     location: "Turun saaristo · Parainen",
+    locationByLocale: { fi: "Turun saaristo · Parainen", en: "Turku Archipelago · Parainen", es: "Archipiélago de Turku · Parainen" },
     name: "Airisto Spa",
     description: {
       fi: "Merenrannan savusauna, saunat ja altaat, saaristomajoitus, illallinen, kalastus ja veneily.",
@@ -143,6 +146,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
     category: "food",
     location: "Mathildedal · Salo",
     name: "Mathildedalin Kyläpanimo",
+    nameByLocale: { fi: "Mathildedalin Kyläpanimo", en: "Mathildedal Village Brewery", es: "Cervecería del pueblo de Mathildedal" },
     description: {
       fi: "Kyläläisten perustama pienpanimo ruukkikylän sydämessä. Oluita voi maistella ja ostaa mukaan.",
       es: "Microcervecería fundada por los vecinos en el corazón de Mathildedal, con cervezas locales para degustar y llevar.",
@@ -184,6 +188,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
     category: "experience",
     location: "Teijo · Salo",
     name: "Kirjakkalan Ruukkikylä",
+    nameByLocale: { fi: "Kirjakkalan Ruukkikylä", en: "Kirjakkala Ironworks Village", es: "Pueblo industrial de Kirjakkala" },
     description: {
       fi: "Pieni ruukkikylä Teijon alueella, josta löytyy paikallisia luonto- ja kalastuselämyksiä.",
       es: "Pequeño pueblo siderúrgico de la zona de Teijo con experiencias de naturaleza y pesca.",
@@ -197,6 +202,7 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
     category: "nature",
     location: "Teijo · Salo",
     name: "Teijon kansallispuisto",
+    nameByLocale: { fi: "Teijon kansallispuisto", en: "Teijo National Park", es: "Parque Nacional de Teijo" },
     description: {
       fi: "Järviä, metsiä, kallioita ja reittejä. Kalastus, melonta, soutu ja nuotiopaikat tekevät päivästä aidosti suomalaisen.",
       es: "Lagos, bosques, rocas y senderos. Pesca, kayak, remo y lugares de fuego para una experiencia finlandesa auténtica.",

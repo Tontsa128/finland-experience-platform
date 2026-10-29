@@ -77,7 +77,7 @@ export function LuxuryDirectory({ locale }: { locale: Locale }) {
             <article key={entry.id} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
               {entry.image ? (
                 <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                  <Image src={entry.image} alt={entry.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  <Image src={entry.image} alt={entry.nameByLocale?.[locale] || entry.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
                 </div>
               ) : (
                 <div className="flex aspect-[16/10] items-center justify-center bg-brand-950 p-8 text-white">
@@ -88,10 +88,10 @@ export function LuxuryDirectory({ locale }: { locale: Locale }) {
               <div className="p-6">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-brand-600">
                   <MapPin className="h-3.5 w-3.5" />
-                  {entry.location}
+                  {entry.locationByLocale?.[locale] || entry.location}
                 </div>
                 <div className="mt-2 text-xs font-semibold uppercase tracking-[.14em] text-terracotta">{l[entry.category]}</div>
-                <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{entry.name}</h3>
+                <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{entry.nameByLocale?.[locale] || entry.name}</h3>
                 <p className="mt-3 leading-7 text-slate-600">{entry.description[locale]}</p>
 
                 {(entry.priceByLocale?.[locale] || (locale === "fi" ? entry.price : undefined)) ? (
