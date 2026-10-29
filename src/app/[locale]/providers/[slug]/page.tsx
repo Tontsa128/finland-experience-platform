@@ -206,11 +206,12 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
           {(() => {
             const guide = mathildedalGuides[slug]?.[locale];
             if (!guide) return null;
+            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...mathildedalAreaPhotos];
             return (
               <div className="mt-10 space-y-8">
                 <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {[...(provider.image ? [{ src: provider.image, alt: provider.name, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...mathildedalAreaPhotos].map((photo, index) => (
+                    {galleryPhotos.map((photo, index) => (
                       <figure key={photo.src} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
                         <div className="relative aspect-[4/3] bg-slate-100">
                           <Image src={photo.src} alt={index === 0 ? (locale === "fi" ? `${provider.name} – kohdekuva` : locale === "es" ? `${provider.name} – imagen del lugar` : `${provider.name} – place photo`) : photo.alt[locale]} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-300 hover:scale-[1.02]" />
