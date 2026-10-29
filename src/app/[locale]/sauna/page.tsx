@@ -284,7 +284,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: rawLocale } = await params;
   const locale = localeOf(rawLocale);
   const x = copy[locale];
-  const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
   return buildLocalizedMetadata({
     locale,
     title: x.title,
@@ -300,6 +299,7 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
   const cmsPage = await getPageOverride(locale, "sauna");
   if (cmsPage) return <PageOverride page={cmsPage} locale={locale} />;
   const x = copy[locale];
+  const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
 
   return (
     <main className="bg-white text-brand-950">
