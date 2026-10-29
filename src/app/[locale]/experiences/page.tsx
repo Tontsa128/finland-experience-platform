@@ -30,7 +30,7 @@ export default async function ExperiencesPage({ params }: { params: Promise<{ lo
     itemListElement: experiences.map((experience, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: experience.name[locale] || experience.name.fi,
+      name: experience.name[locale] || experience.name.en || experience.slug,
       url: `/${locale}/experiences/${experience.slug}`,
     })),
   };
