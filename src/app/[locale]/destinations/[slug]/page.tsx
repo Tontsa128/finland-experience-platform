@@ -11,6 +11,7 @@ import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
+import { RuukkikylaGuide } from "@/components/salo/RuukkikylaGuide";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale: rawLocale, slug } = await params;
@@ -161,7 +162,7 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} area="mathildedal" /> : null}
+      {d.slug === "salo-mathildedal" ? <><SaloDirectory locale={locale} area="mathildedal" /><RuukkikylaGuide village="mathildedal" locale={locale} /></> : null}
       {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
 
 
