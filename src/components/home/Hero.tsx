@@ -186,14 +186,26 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const cmsSlides = (settings?.homepageSlides ?? [])
     .filter((item) => {
       const localized = item.copy?.[locale];
+      const finnishCopy = item.copy?.fi;
+      const hasLocalizedCopy =
+        typeof localized?.title === "string" &&
+        localized.title.trim().length > 0 &&
+        typeof localized?.text === "string" &&
+        localized.text.trim().length > 0;
+      // CMS entries sometimes contain Finnish text copied into the EN/ES fields.
+      // Treat an exact match with the Finnish title or description as untranslated
+      // and use the built-in, properly localized slide instead.
+      const isUntranslatedCopy =
+        locale !== "fi" &&
+        hasLocalizedCopy &&
+        ((localized.title.trim() === finnishCopy?.title?.trim()) ||
+          (localized.text.trim() === finnishCopy?.text?.trim()));
       return (
         item.enabled !== false &&
         typeof item.imageUrl === "string" &&
         item.imageUrl.trim().length > 0 &&
-        typeof localized?.title === "string" &&
-        localized.title.trim().length > 0 &&
-        typeof localized?.text === "string" &&
-        localized.text.trim().length > 0
+        hasLocalizedCopy &&
+        !isUntranslatedCopy
       );
     })
     .sort((a, b) => a.sortOrder - b.sortOrder);
