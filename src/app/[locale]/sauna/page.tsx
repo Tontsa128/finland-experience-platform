@@ -154,12 +154,12 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
       <section className="relative isolate min-h-[60svh] overflow-hidden bg-brand-950 text-white">
         <Image src="https://cdn.johku.com/naturaviva/files/589/w374-h237-s/image.Matildanj%C3%A4rvensauna-2.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/95 via-brand-950/45 to-brand-950/10" />
-        <div className="container-narrow relative flex min-h-[60svh] items-end py-14 sm:py-20">
-          <div className="max-w-4xl">
+        <div className="container-narrow relative flex min-h-[60svh] min-w-0 items-end py-10 sm:py-16 lg:py-20">
+          <div className="min-w-0 max-w-4xl">
             <p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{c.eyebrow}</p>
-            <h1 className="mt-4 font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-7xl">{c.heading}</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/90 sm:text-xl">{c.intro}</p>
-            <Link href="#sauna-rentals" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold-300 px-6 py-3.5 text-sm font-bold text-brand-950 hover:bg-gold-200">
+            <h1 className="mt-4 max-w-[16ch] break-words font-display text-4xl font-bold leading-[1.08] tracking-tight [overflow-wrap:anywhere] md:text-6xl lg:text-7xl">{c.heading}</h1>
+            <p className="mt-5 max-w-3xl break-words text-base leading-7 text-white/90 sm:mt-6 sm:text-lg sm:leading-8 lg:text-xl">{c.intro}</p>
+            <Link href="#sauna-rentals" className="mt-7 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full bg-gold-300 px-5 py-3.5 text-left text-sm font-bold text-brand-950 hover:bg-gold-200 sm:px-6">
               {c.listTitle}<ArrowRight className="h-4 w-4" />
             </Link>
           </div>
