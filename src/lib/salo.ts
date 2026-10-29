@@ -131,8 +131,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A well-equipped 84 m² holiday cottage in the coastal village of Mathildedal. It has two bedrooms, a loft, an open-plan living room and kitchen, a sauna and a terrace. The cottage sleeps eight, with additional accommodation for three available by enquiry in a separate garden building. Use of an outdoor hot tub is included, and the property has a private sandy beach. Confirm terms and availability directly with the provider.",
     },
     url: "https://www.majoitusmathildedal.com/mokki/",
-    image: undefined,
-    imageCredit: undefined,
+    image: "https://d4d4e74ade.clvaw-cdnwnd.com/eabd10f3c41b97fc14c0a19b87f7a10b/200000047-d9a21d9a24/85cc8050-12ed-4a1d-8572-68241e7ab62c.JPG?ph=d4d4e74ade",
+    imageCredit: "Majoitus Mathildedal — official provider website",
   },
   {
     id: "teijo-action-park",
