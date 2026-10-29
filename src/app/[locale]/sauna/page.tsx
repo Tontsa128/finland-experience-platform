@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FeaturedSaunas } from "@/components/sauna/FeaturedSaunas";
+import { LegacySaunaContent } from "@/components/sauna/LegacySaunaContent";
 import { SaunaCarousel } from "@/components/sauna/SaunaCarousel";
 import { photoLibrary } from "@/lib/photo-library";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -194,6 +195,15 @@ export default async function SaunaPage({ params }: { params: Promise<{ locale: 
             {c.explore}<ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+      </section>
+
+      <section id="sauna-heritage" className="border-t-4 border-gold-300 bg-white pt-12 sm:pt-16" aria-labelledby="sauna-heritage-heading">
+        <div className="container-narrow mb-8">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "SAUNAN PERINNE JA HYVINVOINTI" : locale === "es" ? "TRADICIÓN Y BIENESTAR DE LA SAUNA" : "SAUNA HERITAGE & WELLBEING"}</p>
+          <h2 id="sauna-heritage-heading" className="mt-3 font-display text-3xl font-bold sm:text-4xl">{locale === "fi" ? "Tutustu myös saunan historiaan ja elämyksiin" : locale === "es" ? "Descubre también la historia y las experiencias de la sauna" : "Explore sauna history and experiences"}</h2>
+          <p className="mt-4 max-w-3xl leading-7 text-slate-600">{locale === "fi" ? "Uuden saunahaun jälkeen säilyvät myös aiemman saunasivun tarinat, suomalainen saunaperinne, hyvinvointi ja lähteet." : locale === "es" ? "Después del directorio de saunas, conservamos también las historias, la tradición finlandesa, el bienestar y las fuentes de la página anterior." : "After the new sauna directory, the previous page's stories, Finnish sauna heritage, wellbeing content and sources remain available below."}</p>
+        </div>
+        <LegacySaunaContent locale={locale} />
       </section>
     </main>
   );
