@@ -14,7 +14,7 @@ const mathildedalPhotos: Photo[] = [
 ];
 
 const teijoPhotos: Photo[] = [
-  { src: "https://upload.wikimedia.org/wikipedia/commons/0/08/Anttipoffi_workers%27_quarters_in_Mathildedal.jpg", alt: { fi: "Historiallinen ruukkikylämiljöö lähialueella", en: "Historic ironworks-village setting in the nearby area", es: "Entorno histórico de un pueblo siderúrgico cercano" }, credit: "Kotivalo · CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
+  { src: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Teijon_kirkko_ja_kartano_vanha.jpg", alt: { fi: "Teijon kirkko ja kartano historiallisessa ruukkikylässä", en: "Teijo Church and Manor in the historic ironworks village", es: "Iglesia y mansión de Teijo en el pueblo siderúrgico histórico" }, credit: "Motopark · Public domain", source: "https://commons.wikimedia.org/wiki/File:Teijon_kirkko_ja_kartano_vanha.jpg" },
   { src: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Punassuo2.jpg", alt: { fi: "Teijon alueen luonto ja suomaisema", en: "Nature and wetland scenery in the Teijo area", es: "Naturaleza y paisaje de humedal en la zona de Teijo" }, credit: "Vnnen · CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Punassuo2.jpg" },
   { src: "https://cdn.johku.com/naturaviva/largefiles/676/webp/teijo-national-park-rental-shop.webp", alt: { fi: "Teijon kansallispuiston retkeilypalvelu", en: "Outdoor services in Teijo National Park", es: "Servicios de actividades al aire libre en el Parque Nacional de Teijo" }, credit: "Natura Viva", source: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop" },
 ];
