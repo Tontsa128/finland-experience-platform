@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CustomPage({ params }: Props) {
  const { locale: rawLocale, slug } = await params;
- if (!locales.includes(rawLocale)) notFound();
+ if (!locales.includes(rawLocale as Locale)) notFound();
  const locale = rawLocale as Locale;
  const data = await getPageOverride(locale, slug);
  if (!data) notFound();
