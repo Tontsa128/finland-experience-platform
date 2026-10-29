@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Locale } from "@/types";
 
 type Village = "mathildedal" | "teijo";
@@ -55,9 +56,9 @@ const events: Record<Village, EventItem[]> = {
 };
 
 const copy = {
-  fi: { title: "Tutustu ruukkikylään", intro: "Historiaa, paikallisia makuja, pieniä puoteja ja tapahtumia. Tarkista palveluiden aukiolo ja tapahtumien tiedot aina järjestäjiltä.", gallery: "Kylän kuvagalleria", places: "Kahvilat, ravintolat ja paikalliset palvelut", events: "Tapahtumat ja kylän ohjelma", source: "Kuva ja lähdetiedot", visit: "Avaa virallinen sivu", eventDate: "Ajankohta" },
-  en: { title: "Explore the ironworks village", intro: "History, local flavours, independent shops and community events. Always confirm opening times and event details with the organisers.", gallery: "Village photo gallery", places: "Cafés, restaurants and local places", events: "Events and village programme", source: "Photo and source details", visit: "Visit official website", eventDate: "Date" },
-  es: { title: "Descubre el pueblo siderúrgico", intro: "Historia, sabores locales, pequeñas tiendas y eventos comunitarios. Confirma siempre los horarios y detalles con los organizadores.", gallery: "Galería fotográfica del pueblo", places: "Cafeterías, restaurantes y comercios locales", events: "Eventos y actividades", source: "Datos de la foto y fuente", visit: "Abrir web oficial", eventDate: "Fecha" },
+  fi: { title: "Tutustu ruukkikylään", intro: "Historiaa, paikallisia makuja, pieniä puoteja ja tapahtumia. Tarkista palveluiden aukiolo ja tapahtumien tiedot aina järjestäjiltä.", gallery: "Kylän kuvagalleria", places: "Kahvilat, ravintolat ja paikalliset palvelut", events: "Tapahtumat ja kylän ohjelma", source: "Kuva ja lähdetiedot", visit: "Avaa virallinen sivu", eventDate: "Ajankohta", otherVillage: "Tutustu myös Teijon ruukkikylään" },
+  en: { title: "Explore the ironworks village", intro: "History, local flavours, independent shops and community events. Always confirm opening times and event details with the organisers.", gallery: "Village photo gallery", places: "Cafés, restaurants and local places", events: "Events and village programme", source: "Photo and source details", visit: "Visit official website", eventDate: "Date", otherVillage: "Explore Teijo Ironworks Village too" },
+  es: { title: "Descubre el pueblo siderúrgico", intro: "Historia, sabores locales, pequeñas tiendas y eventos comunitarios. Confirma siempre los horarios y detalles con los organizadores.", gallery: "Galería fotográfica del pueblo", places: "Cafeterías, restaurantes y comercios locales", events: "Eventos y actividades", source: "Datos de la foto y fuente", visit: "Abrir web oficial", eventDate: "Fecha", otherVillage: "Descubre también el pueblo siderúrgico de Teijo" },
 } satisfies Record<Locale, Record<string, string>>;
 
 export function RuukkikylaGuide({ village, locale }: { village: Village; locale: Locale }) {
@@ -123,6 +124,11 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
               </article>
             ))}
           </div>
+        </div>
+        <div className="mt-12 border-t border-stone-200 pt-8">
+          <Link href={village === "mathildedal" ? "/" + locale + "/destinations/teijon-ruukkikyla" : "/" + locale + "/destinations/salo-mathildedal"} className="inline-flex rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-brand-950 transition hover:bg-stone-100">
+            {village === "mathildedal" ? t.otherVillage : (locale === "fi" ? "Tutustu myös Mathildedalin ruukkikylään" : locale === "es" ? "Descubre también Mathildedal" : "Explore Mathildedal Ironworks Village too")} →
+          </Link>
         </div>
       </div>
     </section>
