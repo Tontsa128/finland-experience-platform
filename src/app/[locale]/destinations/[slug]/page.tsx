@@ -11,6 +11,8 @@ import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { NaantaliDirectory } from "@/components/naantali/NaantaliDirectory";
+import { RuukkikylaGuide } from "@/components/salo/RuukkikylaGuide";
+import { KimitoonGuide } from "@/components/salo/KimitoonGuide";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale: rawLocale, slug } = await params;
@@ -125,6 +127,15 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
           back: "Back to destinations",
         };
 
+  if (d.slug === "kemionsaari") {
+    return (
+      <div className="bg-white">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
+        <KimitoonGuide locale={locale} />
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }} />
@@ -161,7 +172,7 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {d.slug === "salo-mathildedal" ? <SaloDirectory locale={locale} /> : null}
+      {d.slug === "salo-mathildedal" ? <><SaloDirectory locale={locale} area="mathildedal" /><RuukkikylaGuide village="mathildedal" locale={locale} /></> : null}
       {d.slug === "naantali" ? <NaantaliDirectory locale={locale} /> : null}
 
 

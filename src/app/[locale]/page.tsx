@@ -166,6 +166,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      <section className="bg-stone-50 py-16 sm:py-20">
+        <div className="container-narrow">
+          <div className="grid overflow-hidden rounded-[2rem] bg-brand-950 text-white shadow-card lg:grid-cols-[1.05fr_.95fr]">
+            <div className="relative min-h-[320px] sm:min-h-[420px]">
+              <Image src={photoLibrary.rosalaVikingCentre} alt={locale === "fi" ? "Rosalan saaristoelämys Kemiönsaaressa" : locale === "es" ? "Experiencia del archipiélago en Rosala, Kimitoön" : "Archipelago experience in Rosala, Kimitoön"} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <span className="absolute bottom-5 left-5 rounded-full bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-brand-950">{locale === "fi" ? "Uusi kohdealue" : locale === "es" ? "Nuevo destino" : "New destination"}</span>
+            </div>
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+              <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{locale === "fi" ? "Saariston portti · Varsinais-Suomi" : locale === "es" ? "Puerta al archipiélago · Finlandia suroccidental" : "Gateway to the archipelago · Southwest Finland"}</p>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">{locale === "fi" ? "Kemiö ja Kemiönsaari" : locale === "es" ? "Kimitoön y el archipiélago" : "Kimitoön and the Archipelago"}</h2>
+              <p className="mt-5 text-base leading-7 text-white/75">{locale === "fi" ? "Satamia, saaristokyliä, paikallisia makuja, historiaa ja merellisiä retkiä. Löydä saariston oma rytmi ja suunnittele matka suoraan paikallisten palveluntarjoajien avulla." : locale === "es" ? "Puertos, pueblos isleños, sabores locales, historia y excursiones marítimas. Descubre el ritmo del archipiélago y planifica tu viaje con proveedores locales." : "Harbours, island villages, local flavours, history and sea adventures. Discover the archipelago at your own pace and plan your trip with local providers."}</p>
+              <Link href={"/" + locale + "/destinations/kemionsaari"} className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-gold-100">
+                {locale === "fi" ? "Tutustu Kemiönsaareen" : locale === "es" ? "Descubre Kimitoön" : "Explore Kimitoön"} <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
       <SeasonalHighlights locale={locale as "fi" | "es" | "en"} />
       <LocalIcons locale={locale as "fi" | "es" | "en"} />
 

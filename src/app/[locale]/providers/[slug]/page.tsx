@@ -8,6 +8,7 @@ import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
+import { photoLibrary } from "@/lib/photo-library";
 
 type Params = { locale: string; slug: string };
 
@@ -58,6 +59,62 @@ function resolveProvider(slug: string, locale: Locale) {
   }
   return null;
 }
+
+type LocalPhoto = { src: string; alt: Record<Locale, string>; credit: string; source: string };
+const mathildedalAreaPhotos: LocalPhoto[] = [
+  { src: photoLibrary.mathildedalHarbour, alt: { fi: "Mathildedalin satama auringonlaskussa", en: "Mathildedal harbour at sunset", es: "Puerto de Mathildedal al atardecer" }, credit: "Kotivalo", source: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg" },
+  { src: photoLibrary.mathildedalVillage, alt: { fi: "Mathildedalin historialliset työväenasunnot", en: "Historic workers’ houses in Mathildedal", es: "Antiguas viviendas de trabajadores en Mathildedal" }, credit: "Kotivalo", source: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
+];
+
+type LocalGuide = { intro: string; highlights: string[]; planning: string; highlightsTitle: string; planningTitle: string; nearbyTitle: string };
+
+const mathildedalGuides: Record<string, Record<Locale, LocalGuide>> = {
+  "salo-hotel-mathildedal": {
+    fi: { intro: "Hotel Mathildedal on pieni boutique-hotelli historiallisessa Mathildedalin ruukkikylässä. Tämä alasivu kokoaa hotellin olennaisen tiedon ja auttaa yhdistämään majoituksen kylän muihin vierailukohteisiin.", highlights: ["Boutique-majoitus historiallisessa ruukkikylässä", "Teijon kansallispuiston läheisyys", "Mahdollisuus tutustua kylän ravintoloihin, putiikkeihin ja paikallisiin elämyksiin"], planning: "Huonetyypit, ajantasaiset hinnat, aamiainen, sisäänkirjautuminen, esteettömyys ja saatavuus on tarkistettava suoraan hotellilta ennen varausta.", highlightsTitle: "Mikä tekee kohteesta kiinnostavan?", planningTitle: "Ennen vierailua", nearbyTitle: "Tutustu myös Mathildedaliin" },
+    en: { intro: "Hotel Mathildedal is a small boutique hotel in the historic Mathildedal ironworks village. This page brings together the key information and helps you combine a stay with other places in the village.", highlights: ["Boutique accommodation in a historic ironworks village", "Close to Teijo National Park", "Explore village restaurants, independent shops and local experiences"], planning: "Confirm room types, current rates, breakfast, check-in, accessibility and availability directly with the hotel before booking.", highlightsTitle: "What makes it worth a visit?", planningTitle: "Before you visit", nearbyTitle: "Explore Mathildedal too" },
+    es: { intro: "Hotel Mathildedal es un pequeño hotel boutique en el histórico pueblo siderúrgico de Mathildedal. Esta página reúne la información principal y ayuda a combinar la estancia con otros lugares del pueblo.", highlights: ["Alojamiento boutique en un pueblo siderúrgico histórico", "Cerca del Parque Nacional de Teijo", "Descubre restaurantes, tiendas independientes y experiencias locales"], planning: "Confirma directamente con el hotel los tipos de habitación, tarifas actuales, desayuno, entrada, accesibilidad y disponibilidad antes de reservar.", highlightsTitle: "¿Qué lo hace especial?", planningTitle: "Antes de la visita", nearbyTitle: "Descubre también Mathildedal" }
+  },
+  "salo-mathildan-marina": {
+    fi: { intro: "Mathildan Marina yhdistää sataman, majoituksen, ravintolan ja saunat meren äärellä. Kohde sopii matkailijalle, joka haluaa tutustua Mathildedaliin merellisestä lähtöpisteestä.", highlights: ["Satamahotelli ja vierasvenesatama", "Ravintola ja saunaosasto", "Majoitusvaihtoehto veneellä tai maitse saapuvalle"], planning: "Tarkista suoraan Marinalta huoneiden ja saunojen saatavuus, ravintolan aukiolo, satamapaikat, pysäköinti sekä palvelukohtaiset hinnat.", highlightsTitle: "Palvelut ja tunnelma", planningTitle: "Suunnittele vierailu", nearbyTitle: "Lähialueen kohteet" },
+    en: { intro: "Mathildan Marina brings together a harbour, accommodation, a restaurant and saunas by the sea. It is a useful starting point for exploring Mathildedal from the waterfront.", highlights: ["Harbour hotel and guest marina", "Restaurant and sauna facilities", "A place to stay whether arriving by boat or by land"], planning: "Check room and sauna availability, restaurant opening times, berths, parking and service-specific prices directly with the Marina.", highlightsTitle: "Facilities and atmosphere", planningTitle: "Plan your visit", nearbyTitle: "Places nearby" },
+    es: { intro: "Mathildan Marina reúne puerto, alojamiento, restaurante y saunas junto al mar. Es un buen punto de partida para descubrir Mathildedal desde el paseo marítimo.", highlights: ["Hotel junto al puerto y marina para visitantes", "Restaurante y saunas", "Alojamiento tanto para quienes llegan en barco como por carretera"], planning: "Consulta directamente con Marina la disponibilidad de habitaciones y saunas, los horarios del restaurante, los amarres, el aparcamiento y los precios de cada servicio.", highlightsTitle: "Servicios y ambiente", planningTitle: "Planifica la visita", nearbyTitle: "Lugares cercanos" }
+  },
+  "salo-matri-house": {
+    fi: { intro: "Matri House on historiallinen boutique-majoituskohde Mathildedalin sydämessä. Sen vuonna 1840 rakennettu talo ja yksilölliset huoneet tuovat majoitukseen oman luonteensa.", highlights: ["Vuonna 1840 rakennettu historiallinen talo", "Kuusi yksilöllistä huonetta", "Sijainti Mathildedalin kylämiljöössä"], planning: "Varmista suoraan Matri Houselta huoneiden varustelu, saatavuus, hinnat, sisäänkirjautumisohjeet ja mahdolliset erityistarpeet.", highlightsTitle: "Kohteen erityispiirteet", planningTitle: "Hyvä tietää ennen varausta", nearbyTitle: "Yhdistä vierailuun" },
+    en: { intro: "Matri House is a historic boutique stay in the heart of Mathildedal. Its 1840 building and individually designed rooms give the accommodation a distinctive character.", highlights: ["Historic building dating to 1840", "Six individually styled rooms", "Set within Mathildedal village"], planning: "Confirm room facilities, availability, rates, check-in instructions and any special requirements directly with Matri House.", highlightsTitle: "What defines the stay", planningTitle: "Before booking", nearbyTitle: "Combine your visit with" },
+    es: { intro: "Matri House es un alojamiento boutique histórico en el corazón de Mathildedal. Su edificio de 1840 y sus habitaciones individuales le dan un carácter propio.", highlights: ["Edificio histórico de 1840", "Seis habitaciones con diseño individual", "Ubicación en el pueblo de Mathildedal"], planning: "Confirma directamente con Matri House el equipamiento de las habitaciones, la disponibilidad, las tarifas, las instrucciones de llegada y cualquier necesidad especial.", highlightsTitle: "Características del alojamiento", planningTitle: "Antes de reservar", nearbyTitle: "Combina la visita con" }
+  },
+  "salo-matilda-villas": {
+    fi: { intro: "Matilda Villas tarjoaa huvila- ja mökkimajoitusta Mathildedalin merellisessä ympäristössä. Kohteen kuvaus ja varausvaihtoehdot kannattaa tarkistaa suoraan majoittajalta, jotta seurueelle sopiva kokonaisuus löytyy.", highlights: ["Mökkimajoitusta meren tuntumassa", "Kohde sopii oman majoitusratkaisun etsivälle seurueelle", "Mathildedal ja Teijon alue ovat tutustuttavissa saman vierailun aikana"], planning: "Tarkista majoitusyksikön koko, vuodepaikat, varustelu, ranta- ja yhteiskäyttöalueiden ehdot, hinnat sekä saatavuus suoraan palveluntarjoajalta.", highlightsTitle: "Majoituksen vahvuudet", planningTitle: "Tarkista ennen varausta", nearbyTitle: "Tutustu myös alueeseen" },
+    en: { intro: "Matilda Villas offers villa and cottage accommodation in the coastal surroundings of Mathildedal. Check the provider's current descriptions and booking options directly to find the right fit for your group.", highlights: ["Cottage-style stays close to the sea", "An option for groups seeking their own accommodation", "Mathildedal and the wider Teijo area can be explored on the same visit"], planning: "Confirm the unit size, beds, facilities, terms for beach and shared areas, rates and availability directly with the provider.", highlightsTitle: "Accommodation highlights", planningTitle: "Check before booking", nearbyTitle: "Explore the wider area" },
+    es: { intro: "Matilda Villas ofrece alojamiento en villas y cabañas en el entorno costero de Mathildedal. Consulta directamente la descripción actual y las opciones de reserva para elegir la alternativa adecuada para tu grupo.", highlights: ["Alojamiento tipo cabaña cerca del mar", "Una opción para grupos que buscan alojamiento propio", "Mathildedal y la zona de Teijo se pueden explorar en la misma visita"], planning: "Confirma directamente con el proveedor el tamaño de la unidad, las camas, el equipamiento, las condiciones de la playa y las zonas comunes, las tarifas y la disponibilidad.", highlightsTitle: "Ventajas del alojamiento", planningTitle: "Comprueba antes de reservar", nearbyTitle: "Explora también la zona" }
+  },
+  "salo-majoitus-mathildedal": {
+    fi: { intro: "Majoitus Mathildedal on 84 m²:n lomamökki, jossa kuvauksen mukaan on kaksi makuuhuonetta, parvi, olohuone-keittiö, sauna ja terassi. Ilmoitettu majoituskapasiteetti ja lisämajoituksen ehdot tulee vahvistaa majoittajalta.", highlights: ["84 m²:n lomamökki", "Kaksi makuuhuonetta, parvi, sauna ja terassi", "Kuvauksen mukaan ulkoporeammeen käyttö sisältyy vuokraan"], planning: "Varmista ennen varausta henkilömäärä, lisämajoituksen ehdot, poreammeen käyttö, yksityisen rannan käyttöehdot, hinta ja saatavuus suoraan majoittajalta.", highlightsTitle: "Mökin ominaisuudet", planningTitle: "Tärkeää ennen varausta", nearbyTitle: "Lisää tekemistä vierailulle" },
+    en: { intro: "Majoitus Mathildedal is an 84 m² holiday cottage described as having two bedrooms, a loft, an open-plan living room and kitchen, a sauna and a terrace. Confirm the stated capacity and any extra accommodation directly with the host.", highlights: ["An 84 m² holiday cottage", "Two bedrooms, a loft, sauna and terrace", "The listing says use of an outdoor hot tub is included"], planning: "Before booking, confirm guest capacity, extra accommodation terms, hot tub use, private beach conditions, rates and availability directly with the host.", highlightsTitle: "Cottage features", planningTitle: "Important before booking", nearbyTitle: "Add more to your visit" },
+    es: { intro: "Majoitus Mathildedal es una casa vacacional de 84 m² que, según la descripción, dispone de dos dormitorios, altillo, salón-cocina, sauna y terraza. Confirma con el anfitrión la capacidad indicada y las condiciones del alojamiento adicional.", highlights: ["Casa vacacional de 84 m²", "Dos dormitorios, altillo, sauna y terraza", "El anuncio indica que se incluye el uso de una bañera de hidromasaje exterior"], planning: "Antes de reservar, confirma directamente con el anfitrión la capacidad, las condiciones del alojamiento adicional, el uso del jacuzzi, las condiciones de la playa privada, las tarifas y la disponibilidad.", highlightsTitle: "Características de la casa", planningTitle: "Importante antes de reservar", nearbyTitle: "Completa tu visita" }
+  },
+  "salo-mathildedal-brewery": {
+    fi: { intro: "Mathildedalin Kyläpanimo on kyläläisten perustama pienpanimo ruukkikylän sydämessä. Se tuo paikallisen juomakulttuurin osaksi Mathildedalin kyläelämää.", highlights: ["Paikallinen pienpanimo", "Sijainti historiallisessa ruukkikylässä", "Ryhmille voidaan järjestää panimoesittelyjä palveluntarjoajan ilmoituksen mukaan"], planning: "Tarkista panimolta ajantasaiset aukioloajat, tuotteiden saatavuus, mahdolliset maistelut ja ryhmävierailujen ehdot. Ikärajat ja myyntiehdot määräytyvät palveluntarjoajan mukaan.", highlightsTitle: "Paikallinen makuelämys", planningTitle: "Vierailun käytännöt", nearbyTitle: "Löydä kylän muut palvelut" },
+    en: { intro: "Mathildedal Village Brewery is a small brewery founded by local residents in the heart of the ironworks village. It adds local drinks culture to the village experience.", highlights: ["A local small brewery", "Located in the historic ironworks village", "The provider lists brewery introductions for groups"], planning: "Check current opening times, product availability, tastings and group-visit arrangements with the brewery. Age limits and sales terms are set by the provider.", highlightsTitle: "A local taste", planningTitle: "Practical visit details", nearbyTitle: "Discover other village services" },
+    es: { intro: "Mathildedal Village Brewery es una pequeña cervecería fundada por vecinos en el corazón del pueblo siderúrgico. Forma parte de la cultura local de bebidas y de la vida del pueblo.", highlights: ["Pequeña cervecería local", "Situada en el histórico pueblo siderúrgico", "El proveedor ofrece presentaciones de la cervecería para grupos"], planning: "Consulta con la cervecería los horarios actuales, la disponibilidad de productos, las degustaciones y las visitas para grupos. Los límites de edad y las condiciones de venta los establece el proveedor.", highlightsTitle: "Sabores locales", planningTitle: "Información práctica", nearbyTitle: "Descubre otros servicios del pueblo" }
+  },
+  "directory-bistro-bruket": {
+    fi: { intro: "Bistro Bruket on Mathildedalin ruukkikylään liittyvä ravintolakohde. Sen oma verkkosivusto ja ajantasainen palvelutarjonta kannattaa tarkistaa ennen vierailua.", highlights: ["Ravintola Mathildedalin ruukkikylässä", "Kuvauksen mukaan painotus on sesongeissa ja lähiraaka-aineissa", "Helppo yhdistää kylässä kiertelyyn ja muihin paikallisiin kohteisiin"], planning: "Varmista suoraan ravintolalta aukioloajat, ruokalista, pöytävaraukset, erityisruokavaliot ja ajantasaiset hinnat.", highlightsTitle: "Ruokailu kylässä", planningTitle: "Ennen ravintolavierailua", nearbyTitle: "Yhdistä muihin kohteisiin" },
+    en: { intro: "Bistro Bruket is a restaurant associated with Mathildedal's ironworks village. Check its own website for current service details before visiting.", highlights: ["A restaurant in Mathildedal's ironworks village", "The listing describes a focus on seasonal and local ingredients", "Easy to combine with a walk around the village and other local places"], planning: "Confirm opening times, menu, table reservations, dietary requirements and current prices directly with the restaurant.", highlightsTitle: "Dining in the village", planningTitle: "Before dining", nearbyTitle: "Combine with other places" },
+    es: { intro: "Bistro Bruket es un restaurante vinculado al pueblo siderúrgico de Mathildedal. Consulta su propia web para conocer los servicios actuales antes de visitarlo.", highlights: ["Restaurante en el pueblo siderúrgico de Mathildedal", "La ficha destaca los productos locales y de temporada", "Se puede combinar con un paseo por el pueblo y otros lugares locales"], planning: "Confirma directamente con el restaurante los horarios, el menú, las reservas, las necesidades dietéticas y los precios actuales.", highlightsTitle: "Comer en el pueblo", planningTitle: "Antes de ir al restaurante", nearbyTitle: "Combínalo con otros lugares" }
+  }
+};
+
+const mathildedalRelated = [
+  { slug: "salo-hotel-mathildedal", name: { fi: "Hotel Mathildedal", en: "Hotel Mathildedal", es: "Hotel Mathildedal" } },
+  { slug: "salo-mathildan-marina", name: { fi: "Mathildan Marina", en: "Mathildan Marina", es: "Mathildan Marina" } },
+  { slug: "salo-matri-house", name: { fi: "Matri House", en: "Matri House", es: "Matri House" } },
+  { slug: "salo-matilda-villas", name: { fi: "Matilda Villas", en: "Matilda Villas", es: "Matilda Villas" } },
+  { slug: "salo-majoitus-mathildedal", name: { fi: "Majoitus Mathildedal", en: "Accommodation in Mathildedal", es: "Alojamiento en Mathildedal" } },
+  { slug: "salo-mathildedal-brewery", name: { fi: "Mathildedalin Kyläpanimo", en: "Mathildedal Village Brewery", es: "Cervecería de Mathildedal" } },
+  { slug: "directory-bistro-bruket", name: { fi: "Bistro Bruket", en: "Bistro Bruket", es: "Bistro Bruket" } }
+];
 
 const copy = {
   fi: {
@@ -146,6 +203,50 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
             </figure>
           ) : null}
           {provider.tags.length > 0 ? <div className="mt-5 flex flex-wrap gap-2">{provider.tags.map((tag) => <span key={tag} className="rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800">{tag}</span>)}</div> : null}
+          {(() => {
+            const guide = mathildedalGuides[slug]?.[locale];
+            if (!guide) return null;
+            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...mathildedalAreaPhotos];
+            return (
+              <div className="mt-10 space-y-8">
+                <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {galleryPhotos.map((photo, index) => (
+                      <figure key={photo.src} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                        <div className="relative aspect-[4/3] bg-slate-100">
+                          <Image src={photo.src} alt={index === 0 ? (locale === "fi" ? `${provider.name} – kohdekuva` : locale === "es" ? `${provider.name} – imagen del lugar` : `${provider.name} – place photo`) : photo.alt[locale]} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-300 hover:scale-[1.02]" />
+                        </div>
+                        <figcaption className="space-y-1 px-3 py-2 text-xs text-slate-600">
+                          <p>{index === 0 ? (locale === "fi" ? "Palveluntarjoajan kohdekuva" : locale === "es" ? "Imagen del proveedor" : "Provider photo") : photo.alt[locale]}</p>
+                          <p>{locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:"} {photo.credit} · <a href={photo.source} target="_blank" rel="noreferrer" className="underline underline-offset-2">{locale === "fi" ? "lähde" : locale === "es" ? "fuente" : "source"}</a></p>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
+                <section className="rounded-3xl border border-brand-100 bg-brand-50 p-6 sm:p-8">
+                  <h3 className="font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
+                  <p className="mt-4 text-base leading-8 text-slate-700">{guide.intro}</p>
+                </section>
+                <section>
+                  <h3 className="font-display text-2xl font-bold text-brand-950">{guide.highlightsTitle}</h3>
+                  <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {guide.highlights.map((highlight) => <li key={highlight} className="rounded-2xl border border-slate-200 p-4 text-sm leading-7 text-slate-700"><span className="mr-2 font-bold text-brand-700">✓</span>{highlight}</li>)}
+                  </ul>
+                </section>
+                <section className="rounded-3xl border border-slate-200 p-6 sm:p-8">
+                  <h3 className="font-display text-xl font-bold text-brand-950">{guide.planningTitle}</h3>
+                  <p className="mt-3 leading-7 text-slate-700">{guide.planning}</p>
+                </section>
+                <section>
+                  <h3 className="font-display text-2xl font-bold text-brand-950">{guide.nearbyTitle}</h3>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {mathildedalRelated.filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}
+                  </div>
+                </section>
+              </div>
+            );
+          })()}
         </article>
 
         <aside className="h-fit min-w-0 rounded-2xl border border-brand-100 bg-brand-50 p-5 sm:p-7 lg:sticky lg:top-24">
