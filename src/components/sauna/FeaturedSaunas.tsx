@@ -58,7 +58,7 @@ const places: SaunaPlace[] = [
       es: "Una sauna panorámica en la azotea del pueblo histórico, con vistas abiertas y ambiente patrimonial. Consulta directamente con el hotel las opciones de reserva."
     },
     access: { fi: "Tiedustele varaus suoraan hotellilta", en: "Enquire directly with the hotel", es: "Consulta directamente con el hotel" },
-    type: { fi: "Maisemasauna · varmistettava saatavuus", en: "View sauna · availability to confirm", es: "Sauna panorámica · confirmar disponibilidad" },
+    type: { fi: "Vuokrasauna · saatavuus varmistettava", en: "Rental sauna · availability to confirm", es: "Sauna de alquiler · confirmar disponibilidad" },
     image: "https://cdn-datahub.visitfinland.com/images/67490c50-bc54-11ef-9fcc-d37cec752366.jpeg?s=1280",
     imageCredit: "Hotel Mathildedal / Visit Finland DataHub",
     source: "https://mathildedal.fi/",
@@ -226,7 +226,7 @@ const places: SaunaPlace[] = [
       es: "Sauna comunitaria tradicional en el histórico pueblo siderúrgico. Consulta los turnos públicos y posibles reservas privadas con la asociación local."
     },
     access: { fi: "Yleisösauna · tarkista ajantasaiset vuorot", en: "Public sauna · check current sessions", es: "Sauna pública · consulta los turnos actuales" },
-    type: { fi: "Yleisösauna", en: "Public sauna", es: "Sauna pública" },
+    type: { fi: "Yleisösauna · vuokrattava", en: "Public sauna · private rental", es: "Sauna pública · alquiler privado" },
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Traditional_Finnish_smoke_sauna.jpg",
     imageCredit: "JP Korpi-Vartiainen · CC BY-SA 4.0 · kuvituskuva",
     source: "https://www.teijo.fi/",
