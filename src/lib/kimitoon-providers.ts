@@ -1459,6 +1459,211 @@ export const kimitoonProviders: KimitoonProvider[] = [
     imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["kahvila","vohvelit"]
   }
 
+  {
+    id:"nordic-activities-solutions",categories:["aktiviteetit","luonto","saaristo","talviaktiviteetit"],
+    name:{fi:"Nordic Activities & Solutions",en:"Nordic Activities & Solutions",es:"Nordic Activities & Solutions"},
+    description:{
+      fi:"Kemiönsaarella toimiva elämys- ja välinevuokrausyritys. Palveluihin kuuluvat kajakkivuokraus, opastetut melonta- ja eräretket, kalliokiipeily ja laskeutuminen sekä talvella ski touring ja splitboarding. Yritys räätälöi myös asiakkaan toiveisiin sopivia retkiä.",
+      en:"An adventure and equipment-rental company on Kimitoön. Services include kayak rental, guided paddling and wilderness trips, rock climbing and abseiling, plus ski touring and splitboarding in winter. Custom adventures can also be arranged.",
+      es:"Empresa de aventuras y alquiler de equipos en Kimitoön. Ofrece alquiler de kayaks, excursiones guiadas de remo y naturaleza, escalada y rápel, además de esquí de travesía y splitboard en invierno. También organiza experiencias a medida."
+    },
+    location:{fi:"Rosendal Östra 108, 25860 Björkboda",en:"Rosendal Östra 108, 25860 Björkboda",es:"Rosendal Östra 108, 25860 Björkboda"},
+    websiteUrl:"https://www.nordicactivities.fi/",sourceUrl:"https://www.nordicactivities.fi/",
+    imageCredit:"Nordic Activities & Solutions",imageSource:"https://www.nordicactivities.fi/",tags:["kajakkivuokraus","opastetut retket","kalliokiipeily","talviaktiviteetit"],contact:{phone:"+358 400 600 711",address:"Rosendal Östra 108, 25860 Björkboda"}
+  },
+  {
+    id:"spelman-ohoj",categories:["tapahtumat","kulttuuri","tapahtumapaikat","aktiviteetit"],
+    name:{fi:"Spelmän Ohoj!",en:"Spelmän Ohoj!",es:"Spelmän Ohoj!"},
+    description:{
+      fi:"Kemiönsaarella toimiva kulttuuriyhdistys, joka tuottaa saariston kansanmusiikkiin perustuvia konsertteja, tapahtumia ja harrastusmahdollisuuksia. Toiminta vaalii saariston omaa musiikkiperintöä; ajankohtaiset konsertit ja harjoitukset löytyvät yhdistyksen sivuilta.",
+      en:"A cultural association on Kimitoön producing concerts, events and music activities rooted in the archipelago's folk traditions. It works to preserve local musical heritage; current concerts and rehearsals are published on its website.",
+      es:"Asociación cultural de Kimitoön que organiza conciertos, eventos y actividades musicales basadas en la música tradicional del archipiélago. Promueve el patrimonio musical local; los conciertos y ensayos actuales se publican en su web."
+    },
+    location:{fi:"Kemiönsaari · Ullman's Villa, Taalintehdas",en:"Kimitoön · Ullman's Villa, Dalsbruk",es:"Kimitoön · Ullman's Villa, Dalsbruk"},
+    websiteUrl:"https://ohoj.fi/fi/",sourceUrl:"https://ohoj.fi/fi/",
+    imageCredit:"Spelmän Ohoj!",imageSource:"https://ohoj.fi/fi/",tags:["kansanmusiikki","konsertit","kulttuuriperintö"]
+  },
+  {
+    id:"vainion-liikenne",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Vainion Liikenne",en:"Vainion Liikenne",es:"Vainion Liikenne"},
+    description:{
+      fi:"Kemiönsaarelle kulkeva linja-autoyhtiö. Virallisella reittisivulla on Salo–Kemiö-yhteys sekä kesäkauden Helsinki–Teijo–Kemiö–Taalintehdas–Kasnäs-linja. Aikataulut ja kausivuorot muuttuvat, joten tarkista voimassa oleva PDF ja liput ennen matkaa.",
+      en:"A bus operator serving Kimitoön. Its official route page lists the Salo–Kimito connection and a summer route from Helsinki via Teijo, Kimito and Dalsbruk to Kasnäs. Timetables and seasonal services change, so check the current PDF and tickets before travelling.",
+      es:"Operador de autobuses con servicios a Kimitoön. Su página oficial incluye la ruta Salo–Kimito y una línea de verano desde Helsinki vía Teijo, Kimito y Dalsbruk hasta Kasnäs. Los horarios y servicios de temporada cambian; consulta el PDF vigente y los billetes antes de viajar."
+    },
+    location:{fi:"Reittiliikenne: Salo–Kemiö–Kasnäs",en:"Routes: Salo–Kimito–Kasnäs",es:"Rutas: Salo–Kimito–Kasnäs"},
+    websiteUrl:"https://vainionliikenne.fi/reittiliikenne/",sourceUrl:"https://www.visitkimitoon.fi/fi/suunnittele/kemionsaareen/",
+    imageCredit:"Vainion Liikenne / Visit Kemiönsaari",imageSource:"https://vainionliikenne.fi/reittiliikenne/",tags:["linja-auto","Salo–Kemiö","Helsinki–Kasnäs"]
+  },
+  {
+    id:"seutu-plus",kind:"resource",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Seutu+ – paikallisliikenteen liput",en:"Seutu+ – regional transport tickets",es:"Seutu+ – billetes de transporte regional"},
+    description:{
+      fi:"Seutu+ on Turun seudun ja Kemiönsaaren paikallisliikenteen lippupalvelu. Kemiönsaarta palvelevat muun muassa vuorot 720–727 Turku–Kemiönsaari–Sauvo sekä linja 530 Salo–Kemiö. Tarkista matkustuskausi ja ajantasaiset aikataulut Seutu+-palvelusta.",
+      en:"Seutu+ is the regional ticketing service for local transport in the Turku area and Kimitoön. Services include routes 720–727 between Turku, Kimitoön and Sauvo, and route 530 between Salo and Kimito. Check the travel season and current timetables in Seutu+.",
+      es:"Seutu+ es el servicio de billetes para el transporte regional en la zona de Turku y Kimitoön. Incluye las rutas 720–727 entre Turku, Kimitoön y Sauvo, y la ruta 530 entre Salo y Kimito. Consulta la temporada y los horarios actuales en Seutu+."
+    },
+    location:{fi:"Kemiönsaari, Salo ja Turun seutu",en:"Kimitoön, Salo and Turku region",es:"Kimitoön, Salo y región de Turku"},
+    websiteUrl:"https://www.seutuplus.fi/",sourceUrl:"https://www.kemionsaari.fi/asuminen-ja-ymparisto/liikenne-tiet-ja-yleiset-alueet/tiet-ja-liikenne/joukkoliikenne/",
+    imageCredit:"Seutu+ / Kemiönsaaren kunta",imageSource:"https://www.kemionsaari.fi/asuminen-ja-ymparisto/liikenne-tiet-ja-yleiset-alueet/tiet-ja-liikenne/joukkoliikenne/",tags:["joukkoliikenne","linja-autot","liput"]
+  },
+  {
+    id:"ms-aurora-car-ferry",kind:"place",categories:["kuljetukset","saaristo","muut-palvelut"],
+    name:{fi:"M/S Aurora – Kasnäs–Rosala",en:"M/S Aurora – Kasnäs–Rosala",es:"M/S Aurora – Kasnäs–Rosala"},
+    description:{
+      fi:"Maksuton autolautta yhdistää Kasnäsin ja Rosalan ympäri vuoden. Merimatka kestää noin 30 minuuttia. Tarkista päivän aikataulu ja mahdolliset poikkeukset Rosalan viralliselta sivulta ennen lähtöä.",
+      en:"A free car ferry connects Kasnäs and Rosala year-round. The crossing takes about 30 minutes. Check the daily timetable and any service changes on Rosala's official website before departure.",
+      es:"Un ferry gratuito para coches conecta Kasnäs y Rosala durante todo el año. La travesía dura unos 30 minutos. Consulta el horario diario y posibles cambios en la web oficial de Rosala antes de salir."
+    },
+    location:{fi:"Långnäsin ja Kasnäsin lauttarannat",en:"Långnäs and Kasnäs ferry landings",es:"Muelles de Långnäs y Kasnäs"},
+    websiteUrl:"https://rosala.fi/fi/bilfarjan-ms-aurora/",sourceUrl:"https://www.visitkimitoon.fi/fi/suunnittele/kemionsaareen/",
+    imageCredit:"Rosala / Visit Kemiönsaari",imageSource:"https://rosala.fi/fi/bilfarjan-ms-aurora/",tags:["autolautta","maksuton","ympäri vuoden"]
+  },
+  {
+    id:"kimitoon-activity-map",kind:"resource",categories:["aktiviteetit","luonto","saaristo","talviaktiviteetit","muut-palvelut"],
+    name:{fi:"Kemiönsaaren aktiviteettikartta",en:"Kimitoön Activity Map",es:"Mapa de actividades de Kimitoön"},
+    description:{
+      fi:"Kemiönsaaren virallinen aktiviteettikartta kokoaa 277 karttakohdetta. Suodattimilla voi etsiä sisä- ja ulkoaktiviteetteja, vesiretkeilyä, retkeilyreittejä, kausikohteita ja esteettömiä paikkoja. Kartta sisältää muun muassa luontopolkuja, uimarantoja, satamia, hiihtolatuja, kiipeilykallioita ja liikuntapaikkoja.",
+      en:"The official Kimitoön activity map brings together 277 mapped places. Filters cover indoor and outdoor activities, water excursions, hiking routes, seasonal places and accessible sites. The map includes nature trails, beaches, harbours, ski tracks, climbing rocks and sports facilities.",
+      es:"El mapa oficial de actividades de Kimitoön reúne 277 lugares. Sus filtros incluyen actividades interiores y exteriores, excursiones acuáticas, rutas de senderismo, lugares de temporada y sitios accesibles. Incluye senderos naturales, playas, puertos, pistas de esquí, zonas de escalada e instalaciones deportivas."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["277 karttakohdetta","luonto","ulkoilu","vesiretkeily","talvi"]
+  },
+  {
+    id:"ekniemi-luontopolut",kind:"place",categories:["luonto","aktiviteetit","talviaktiviteetit"],
+    name:{fi:"Ekniemen luontopolut ja talviuintipaikka",en:"Ekniemi Nature Trails and Winter Swimming",es:"Senderos y baño invernal de Ekniemi"},
+    description:{
+      fi:"Ekniemen lomakylän yhteydessä on luontopolkuja, uimaranta ja talviuintipaikka. Aktiviteettikartta listaa myös alueen opastaulut ja näköalatornin. Tarkista alueen palvelut ja mahdolliset rajoitukset kartasta.",
+      en:"Ekniemi Holiday Village has nature trails, a beach and a winter-swimming spot. The activity map also lists trail information boards and a lookout tower. Check current facilities and any restrictions on the map.",
+      es:"Junto al complejo vacacional de Ekniemi hay senderos naturales, playa y zona de baño invernal. El mapa también incluye paneles informativos y una torre de observación. Consulta los servicios y restricciones actuales."
+    },
+    location:{fi:"Ekniemen lomakylä, Kemiönsaari",en:"Ekniemi Holiday Village, Kimitoön",es:"Complejo vacacional Ekniemi, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["luontopolku","uimaranta","talviuinti","näköalatorni"]
+  },
+  {
+    id:"biskopso-nature-trail",kind:"place",categories:["luonto","aktiviteetit"],
+    name:{fi:"Biskopsön luontopolku ja näköalatorni",en:"Biskopsö Nature Trail and Lookout Tower",es:"Sendero y mirador de Biskopsö"},
+    description:{
+      fi:"Biskopsön luontopolku ja näköalatorni ovat Kemiönsaaren virallisessa aktiviteettikartassa. Tarkista reitin lähtöpiste, kulkuyhteydet ja mahdolliset kausirajoitukset kartasta.",
+      en:"Biskopsö Nature Trail and its lookout tower are listed on Kimitoön's official activity map. Check the trailhead, transport connections and any seasonal restrictions on the map.",
+      es:"El sendero natural y la torre panorámica de Biskopsö aparecen en el mapa oficial de actividades de Kimitoön. Consulta el inicio del sendero, las conexiones y posibles restricciones estacionales."
+    },
+    location:{fi:"Biskopsö, Kemiönsaari",en:"Biskopsö, Kimitoön",es:"Biskopsö, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["luontopolku","näköalatorni"]
+  },
+  {
+    id:"kasnas-geological-trail",kind:"place",categories:["luonto","aktiviteetit","hyvinvointi"],
+    name:{fi:"Kasnäsin geologinen luontopolku",en:"Kasnäs Geological Nature Trail",es:"Sendero geológico de Kasnäs"},
+    description:{
+      fi:"Kasnäsin geologinen luontopolku on merkitty Kemiönsaaren viralliseen aktiviteettikarttaan. Reitin opastaulut esittelevät alueen geologiaa. Tarkista reitin lähtöpaikka ja ajantasaiset tiedot kartasta.",
+      en:"The Kasnäs Geological Nature Trail is listed on Kimitoön's official activity map. Information boards introduce the area's geology. Check the trailhead and current details on the map.",
+      es:"El sendero geológico de Kasnäs figura en el mapa oficial de actividades de Kimitoön. Los paneles informativos presentan la geología de la zona. Consulta el inicio y los detalles actuales en el mapa."
+    },
+    location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["geologia","luontopolku","opastaulut"]
+  },
+  {
+    id:"lammala-nature-trail",kind:"place",categories:["luonto","aktiviteetit"],
+    name:{fi:"Lammalan luontopolku",en:"Lammala Nature Trail",es:"Sendero natural de Lammala"},
+    description:{
+      fi:"Lammalan luontopolku on Kemiönsaaren aktiviteettikartassa merkitty retkikohde. Kartasta löytyvät myös polun opastaulut ja lähialueen palvelusatama.",
+      en:"Lammala Nature Trail is listed as an outdoor destination on Kimitoön's activity map. The map also shows trail information boards and the nearby service harbour.",
+      es:"El sendero natural de Lammala aparece como destino al aire libre en el mapa de actividades de Kimitoön. El mapa también muestra paneles informativos y el puerto de servicios cercano."
+    },
+    location:{fi:"Lammala, Kemiönsaari",en:"Lammala, Kimitoön",es:"Lammala, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["luontopolku","retkeily","satama"]
+  },
+  {
+    id:"hogland-nature-trail",kind:"place",categories:["luonto","aktiviteetit"],
+    name:{fi:"Höglandin luontopolku",en:"Högland Nature Trail",es:"Sendero natural de Högland"},
+    description:{
+      fi:"Höglandin luontopolku, näköalatorni, telttailualue ja tulentekopaikka löytyvät Kemiönsaaren aktiviteettikartasta. Tarkista reitin pituus ja palvelut kartasta ennen retkeä.",
+      en:"Högland Nature Trail, lookout tower, camping area and fire site are listed on Kimitoön's activity map. Check trail length and facilities before setting out.",
+      es:"El sendero de Högland, la torre panorámica, la zona de acampada y el lugar para hacer fuego aparecen en el mapa de actividades de Kimitoön. Consulta la longitud y los servicios antes de salir."
+    },
+    location:{fi:"Högland, Kemiönsaari",en:"Högland, Kimitoön",es:"Högland, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["luontopolku","näköalatorni","telttailu"]
+  },
+  {
+    id:"yxskar-nature-trail",kind:"place",categories:["luonto","aktiviteetit","saaristo"],
+    name:{fi:"Yxskärin luontopolku",en:"Yxskär Nature Trail",es:"Sendero natural de Yxskär"},
+    description:{
+      fi:"Yxskärin luontopolku, opastaulu, retkisatama ja tulentekopaikka on merkitty Kemiönsaaren viralliseen aktiviteettikarttaan. Tarkista saareen pääsy ja mahdolliset vene- tai säärajoitukset ennen retkeä.",
+      en:"Yxskär Nature Trail, information board, excursion harbour and fire site are listed on Kimitoön's official activity map. Check island access and any boat or weather restrictions before visiting.",
+      es:"El sendero natural de Yxskär, su panel informativo, puerto de excursión y lugar para hacer fuego aparecen en el mapa oficial de actividades. Comprueba el acceso a la isla y las condiciones marítimas antes de la visita."
+    },
+    location:{fi:"Yxskär, Kemiönsaaren saaristo",en:"Yxskär, Kimitoön archipelago",es:"Yxskär, archipiélago de Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["luontopolku","retkisatama","saaristo"]
+  },
+  {
+    id:"taalintehdas-ski-track",kind:"place",categories:["talviaktiviteetit","luonto","aktiviteetit"],
+    name:{fi:"Taalintehtaan hiihtolatu",en:"Dalsbruk Ski Track",es:"Pista de esquí de Dalsbruk"},
+    description:{
+      fi:"Taalintehtaan hiihtolatu on merkitty Kemiönsaaren aktiviteettikarttaan. Ladun kunto ja ylläpito riippuvat lumitilanteesta; tarkista ajantasainen tieto kartasta ennen lähtöä.",
+      en:"The Dalsbruk ski track is listed on Kimitoön's activity map. Track condition and maintenance depend on snow conditions; check current information before setting out.",
+      es:"La pista de esquí de Dalsbruk figura en el mapa de actividades de Kimitoön. Su estado y mantenimiento dependen de la nieve; consulta la información actual antes de salir."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["hiihto","latu","talvi"]
+  },
+  {
+    id:"langdalen-ski-track",kind:"place",categories:["talviaktiviteetit","luonto","aktiviteetit"],
+    name:{fi:"Långdalenin peltolatu",en:"Långdalen Field Ski Track",es:"Pista de esquí de Långdalen"},
+    description:{
+      fi:"Långdalenin peltolatu on Kemiönsaaren aktiviteettikarttaan merkitty talviliikuntakohde. Tarkista lumitilanne ja ladun ajantasainen ylläpito ennen lähtöä.",
+      en:"The Långdalen field ski track is listed as a winter activity on Kimitoön's activity map. Check snow conditions and current track maintenance before setting out.",
+      es:"La pista de esquí de campo de Långdalen aparece como actividad invernal en el mapa de Kimitoön. Comprueba la nieve y el mantenimiento actual antes de salir."
+    },
+    location:{fi:"Långdalen, Kemiönsaari",en:"Långdalen, Kimitoön",es:"Långdalen, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["hiihto","latu","talvi"]
+  },
+  {
+    id:"labbnas-winter-swimming",kind:"place",categories:["talviaktiviteetit","hyvinvointi","luonto"],
+    name:{fi:"Labbnäsin talviuintipaikka",en:"Labbnäs Winter Swimming",es:"Baño invernal de Labbnäs"},
+    description:{
+      fi:"Labbnäsin talviuintipaikka on merkitty Kemiönsaaren aktiviteettikarttaan. Tarkista pukutilat, käyttöehdot ja ajantasainen ylläpito suoraan kohteesta.",
+      en:"Labbnäs winter-swimming spot is listed on Kimitoön's activity map. Confirm changing facilities, access rules and current maintenance directly at the site.",
+      es:"La zona de baño invernal de Labbnäs aparece en el mapa de actividades de Kimitoön. Consulta vestuarios, normas de uso y mantenimiento directamente en el lugar."
+    },
+    location:{fi:"Labbnäs, Dragsfjärd",en:"Labbnäs, Dragsfjärd",es:"Labbnäs, Dragsfjärd"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["talviuinti","hyvinvointi"]
+  },
+  {
+    id:"soderlangvik-winter-swimming",kind:"place",categories:["talviaktiviteetit","hyvinvointi","luonto"],
+    name:{fi:"Söderlångvikin talviuintipaikka",en:"Söderlångvik Winter Swimming",es:"Baño invernal de Söderlångvik"},
+    description:{
+      fi:"Söderlångvikin talviuintipaikka on listattu Kemiönsaaren aktiviteettikarttaan. Tarkista kulku, käyttöehdot ja mahdolliset palvelut kartasta ja kohteen ylläpitäjältä.",
+      en:"Söderlångvik winter-swimming spot is listed on Kimitoön's activity map. Check access, usage rules and available facilities on the map and with the site operator.",
+      es:"La zona de baño invernal de Söderlångvik aparece en el mapa de actividades de Kimitoön. Consulta acceso, normas y servicios disponibles en el mapa y con el responsable del lugar."
+    },
+    location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["talviuinti","hyvinvointi"]
+  },
+  {
+    id:"senatsberget-wellbeing-trail",kind:"place",categories:["hyvinvointi","luonto","aktiviteetit"],
+    name:{fi:"Senatsbergetin hyvinvointipolku",en:"Senatsberget Wellbeing Trail",es:"Sendero de bienestar de Senatsberget"},
+    description:{
+      fi:"Senatsbergetin hyvinvointipolku, laavu ja näköalatorni on merkitty Kemiönsaaren aktiviteettikarttaan. Kohde sopii rauhalliseen ulkoiluun ja luonnossa palautumiseen. Tarkista reitin tiedot kartasta.",
+      en:"Senatsberget Wellbeing Trail, shelter and lookout tower are listed on Kimitoön's activity map. The site is suited to gentle outdoor activity and time in nature. Check route details on the map.",
+      es:"El sendero de bienestar de Senatsberget, su refugio y torre panorámica aparecen en el mapa de actividades de Kimitoön. Es un lugar para paseos tranquilos y descanso en la naturaleza. Consulta la ruta en el mapa."
+    },
+    location:{fi:"Senatsberget, Kemiönsaari",en:"Senatsberget, Kimitoön",es:"Senatsberget, Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
+    imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["hyvinvointipolku","laavu","näköalatorni"]
+  }
+
 ];
 
 export function getKimitoonProviders(category?: KimitoonCategory) {
