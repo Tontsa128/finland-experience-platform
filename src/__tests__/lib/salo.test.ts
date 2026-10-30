@@ -5,7 +5,7 @@ import { firstValidHttpUrl } from "@/lib/utils";
 
 const allowedCategories: SaloProviderCategory[] = [
   "tourism", "stay", "experience", "nature", "food", "shopping",
-  "wellbeing", "culture", "events", "archipelago",
+  "wellbeing", "culture", "events", "archipelago", "localFood",
 ];
 
 test("Salo provider directory has unique canonical provider IDs", () => {
@@ -33,6 +33,11 @@ test("provider images always include a source or credit", () => {
 });
 
 test("cross-listed providers appear in every relevant category without duplicate records", () => {
+  for (const providerId of ["leipyolin-tila", "lepola-drinks", "mathildedal-brewery", "alaspaan-maatila", "finnholm-strandbo", "matildankartano", "pohjolan-tila", "katiskanmaeki", "lahiruokapuoti-puhti", "vuorovetten-jaatelo"]) {
+    const provider = saloProviders.find((item) => item.id === providerId);
+    assert.ok(provider, `Missing local-food provider ${providerId}`);
+    assert.ok(getSaloProviderCategories(provider).includes("localFood"), `${providerId} must be listed in the local-food category`);
+  }
   const marina = saloProviders.find((provider) => provider.id === "mathildan-marina");
   const fishing = saloProviders.find((provider) => provider.id === "chill-out-fishing");
   assert.ok(marina);

@@ -5,9 +5,9 @@ import type { Locale } from "@/types";
 import { getSaloProviderCategories, saloProviders, type SaloProvider } from "@/lib/salo";
 
 const labels = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", shopping: "Ostokset ja käsityö", wellbeing: "Hyvinvointi ja sauna", culture: "Kulttuuri ja historia", events: "Tapahtumat ja juhlatilat", archipelago: "Meri ja saaristo", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", shopping: "Compras y artesanía", wellbeing: "Bienestar y sauna", culture: "Cultura e historia", events: "Eventos y espacios para celebraciones", archipelago: "Mar y archipiélago", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", shopping: "Shopping & crafts", wellbeing: "Wellbeing & sauna", culture: "Culture & history", events: "Events & venues", archipelago: "Sea & archipelago", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Ruoka ja kahvilat", localFood: "Lähiruoka ja maatilapuodit", shopping: "Ostokset ja käsityö", wellbeing: "Hyvinvointi ja sauna", culture: "Kulttuuri ja historia", events: "Tapahtumat ja juhlatilat", archipelago: "Meri ja saaristo", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía y cafeterías", localFood: "Productores locales y tiendas de granja", shopping: "Compras y artesanía", wellbeing: "Bienestar y sauna", culture: "Cultura e historia", events: "Eventos y espacios para celebraciones", archipelago: "Mar y archipiélago", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Food & cafés", localFood: "Local food & farm shops", shopping: "Shopping & crafts", wellbeing: "Wellbeing & sauna", culture: "Culture & history", events: "Events & venues", archipelago: "Sea & archipelago", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
 } as const;
 
 export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: "mathildedal" | "teijo" | "kirjakkala" }) {
@@ -44,7 +44,7 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
         </div>
 
         <div className="space-y-12">
-          {(category ? [category] : ["stay", "food", "experience", "nature", "wellbeing", "culture", "events", "archipelago", "shopping", "tourism"] as const)
+          {(category ? [category] : ["stay", "food", "localFood", "experience", "nature", "wellbeing", "culture", "events", "archipelago", "shopping", "tourism"] as const)
             .map((groupCategory) => ({
               category: groupCategory,
               items: providers.filter((provider) => getSaloProviderCategories(provider).includes(groupCategory)),

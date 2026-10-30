@@ -21,6 +21,12 @@ const categoryConfig = {
     en: { title: "Food and cafés in Salo", description: "Discover restaurants, cafés, local flavours and food-related places to visit." },
     es: { title: "Gastronomía y cafeterías en Salo", description: "Descubre restaurantes, cafeterías, sabores locales y lugares gastronómicos." },
   },
+  lahiruoka: {
+    category: "localFood",
+    fi: { title: "Lähiruoka ja maatilapuodit Salossa", description: "Tutustu Salon lähiruokatuottajiin, maatilapuoteihin, marjatiloihin ja sesonkikohteisiin. Tarkista myyntipisteiden aukiolo suoraan tuottajalta." },
+    en: { title: "Local food and farm shops in Salo", description: "Discover local food producers, farm shops, berry farms and seasonal stops around Salo. Confirm sales-point opening times directly with each producer." },
+    es: { title: "Productos locales y tiendas de granja en Salo", description: "Descubre productores locales, tiendas de granja, fincas de bayas y puntos de venta de temporada. Confirma los horarios directamente con cada productor." },
+  },
   elamykset: {
     category: "experience",
     fi: { title: "Aktiviteetit ja elämykset Salossa", description: "Opastukset, veneily, kalastus, golf ja muut paikalliset elämykset." },

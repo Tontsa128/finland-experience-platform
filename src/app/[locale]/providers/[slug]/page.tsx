@@ -28,6 +28,7 @@ function resolveProvider(slug: string, locale: Locale) {
       culture: { fi: "Kulttuuri ja historia", en: "Culture and history", es: "Cultura e historia" },
       events: { fi: "Tapahtumat ja juhlatilat", en: "Events and venues", es: "Eventos y espacios para celebraciones" },
       archipelago: { fi: "Meri ja saaristo", en: "Sea and archipelago", es: "Mar y archipiélago" },
+      localFood: { fi: "Lähiruoka ja maatilapuodit", en: "Local food and farm shops", es: "Productos locales y tiendas de granja" },
     }[item.category][locale];
     return {
       kind: "provider" as const,

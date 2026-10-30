@@ -1,7 +1,7 @@
 import type { Locale } from "@/types";
 import { photoLibrary } from "@/lib/photo-library";
 
-export type SaloProviderCategory = "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture" | "events" | "archipelago";
+export type SaloProviderCategory = "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture" | "events" | "archipelago" | "localFood";
 
 export type SaloProvider = {
   id: string;
@@ -247,6 +247,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "mathildedal-brewery",
+    directoryCategories: ["localFood"],
     category: "food",
     name: "Mathildedalin Kyläpanimo",
     nameByLocale: { fi: "Mathildedalin Kyläpanimo", en: "Mathildedal Village Brewery", es: "Cervecería del pueblo de Mathildedal" },
@@ -369,6 +370,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "vuorovetten-jaatelo",
+    directoryCategories: ["localFood"],
     category: "food",
     name: "Vuorovetten Jäätelö",
     description: {
@@ -481,6 +483,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "finnholm-strandbo",
+    directoryCategories: ["localFood"],
     category: "stay",
     name: "Finnholm – Strandbo",
     description: {
@@ -508,7 +511,7 @@ export const saloProviders: SaloProvider[] = [
   {
     id: "katiskanmaeki",
     location: "Ylönkylä, Salo",
-    contact: { phone: "+358 50 517 7759", email: "sumppu@ebaana.net", address: "Särkisalontie 2, 25610 Ylönkylä" },    directoryCategories: ["food","events","wellbeing","experience","shopping"],
+    contact: { phone: "+358 50 517 7759", email: "sumppu@ebaana.net", address: "Särkisalontie 2, 25610 Ylönkylä" },    directoryCategories: ["food","events","wellbeing","experience","shopping", "localFood"],
     category: "stay",
     name: "Katiskanmäki",
     description: {
@@ -576,6 +579,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "leipyolin-tila",
+    directoryCategories: ["localFood"],
     category: "stay",
     name: "Leipyölin tila",
     description: {
@@ -602,6 +606,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "alaspaan-maatila",
+    directoryCategories: ["localFood"],
     category: "stay",
     name: "Alaspään maatila – Muonamiehen mökki",
     description: {
@@ -916,7 +921,7 @@ export const saloProviders: SaloProvider[] = [
 
   {
     id: "matildankartano",
-    directoryCategories: ["shopping"],
+    directoryCategories: ["shopping", "localFood"],
     category: "food",
     name: "Matildankartanon leipomokahvila",
     nameByLocale: { fi: "Matildankartanon leipomokahvila", en: "Matildankartano Bakery Café", es: "Panadería y cafetería Matildankartano" },
@@ -931,7 +936,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "lahiruokapuoti-puhti",
-    directoryCategories: ["food"],
+    directoryCategories: ["food", "localFood"],
     category: "shopping",
     name: "Lähiruokapuoti Puhti",
     description: {
@@ -1025,7 +1030,7 @@ export const saloProviders: SaloProvider[] = [
     id: "lepola-drinks",
     location: "Ylönkylä, Salo",
     contact: { phone: "+358 40 725 0233", email: "info@lepoladrinks.fi", address: "Fabriikintie 61, 25610 Ylönkylä" },    category: "food",
-    directoryCategories: ["shopping"],
+    directoryCategories: ["shopping", "localFood"],
     name: "Lepola Drinks",
     nameByLocale: { fi: "Lepola Drinks", en: "Lepola Drinks", es: "Lepola Drinks" },
     description: {
@@ -1041,7 +1046,7 @@ export const saloProviders: SaloProvider[] = [
     id: "pohjolan-tila",
     location: "Kisko, Salo",
     contact: { phone: "+358 40 701 7963", email: "minnapohjola1@gmail.com", address: "Tieksmäentie 459, 25460 Kisko" },    category: "food",
-    directoryCategories: ["shopping", "events", "experience"],
+    directoryCategories: ["shopping", "events", "experience", "localFood"],
     name: "Pohjolan tila",
     nameByLocale: { fi: "Pohjolan tila", en: "Pohjola Farm", es: "Granja Pohjola" },
     description: {
