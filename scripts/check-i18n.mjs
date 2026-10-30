@@ -50,19 +50,18 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
   console.error("Document language check failed: src/app/layout.tsx must set <html lang={locale}> using getLocale() from next-intl/server.");
 }
 
-// Kansakoulu placement regression guard: keep the editorial spotlight on the
-// homepage only. The Kimitoön guide must retain category-specific provider
-// cards without rendering the homepage spotlight a second time.
+// Kansakoulu placement regression guard: the user requested that its
+// promotional card not appear on the homepage. Keep the dedicated stay and
+// restaurant cards on the Kimitoön destination guide instead.
 const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
-const homepageHasSpotlight = homepageSource.includes('import { KansakouluSpotlight } from "@/components/home/KansakouluSpotlight";')
-  && /<KansakouluSpotlight\s+locale=/.test(homepageSource);
-const guideHasDuplicateSpotlight = kimitoonGuideSource.includes("KansakouluSpotlight");
+const homepageHasKansakouluCard = homepageSource.includes("KansakouluSpotlight")
+  || homepageSource.includes("kansakoulu");
 const guideKeepsCategoryCards = kimitoonGuideSource.includes("KimitoonKansakouluCategoryCard")
   && /<KimitoonKansakouluCategoryCard\s+locale=/.test(kimitoonGuideSource);
-if (!homepageHasSpotlight || guideHasDuplicateSpotlight || !guideKeepsCategoryCards) {
+if (homepageHasKansakouluCard || !guideKeepsCategoryCards) {
   failed = true;
-  console.error("Kansakoulu placement check failed: keep one spotlight on the homepage and retain the accommodation/food category cards on the Kimitoön guide.");
+  console.error("Kansakoulu placement check failed: keep the homepage free of the Kansakoulu promotional card and retain the accommodation/food cards on the Kimitoön guide.");
 }
 
 // Sitemap regression guards: do not advertise redirected Mathildedal
