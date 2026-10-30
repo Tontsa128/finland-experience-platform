@@ -19,7 +19,7 @@ export type KimitoonProvider = {
   imageCredit: string;
   imageSource: string;
   tags: string[];
-  contact?: { phone?: string; address?: string };
+  contact?: { phone?: string; address?: string; email?: string };
 };
 
 const imageBase = "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/";
@@ -1185,9 +1185,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
       en:"The Kimitoön business guide describes Hotel Galaxy as a high-standard small hotel with 10 rooms, two of them with kitchens. Confirm room facilities, prices and availability directly with the hotel.",
       es:"La guía empresarial de Kimitoön describe Hotel Galaxy como un pequeño hotel de categoría alta con 10 habitaciones, dos de ellas con cocina. Consulta directamente los servicios, precios y disponibilidad."
     },
-    location:{fi:"Arkadiantie 11, 25700 Kemiö",en:"Arkadiantie 11, 25700 Kimito",es:"Arkadiantie 11, 25700 Kimito"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["hotelli","10 huonetta","keittiö"],contact:{phone:"02 420 6312",address:"Arkadiantie 11, 25700 Kemiö"}
+    location:{fi:"Arkadiavägen 11, 25700 Kemiö",en:"Arkadiavägen 11, 25700 Kimito",es:"Arkadiavägen 11, 25700 Kimito"},
+    websiteUrl:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",sourceUrl:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",
+    imageCredit:"Mac Daniel's Grill Oy Ab / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",tags:["hotelli","10 huonetta","keittiö"],contact:{phone:"02 420 6312",address:"Arkadiavägen 11, 25700 Kemiö",email:"info@macdanielsgrill.fi"}
   },
   {
     id:"saariloma-net",categories:["majoitus"],
