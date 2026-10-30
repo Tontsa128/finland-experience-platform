@@ -17,6 +17,7 @@ export type SaloProvider = {
   priceByLocale?: Partial<Record<Locale, string>>;
   image?: string;
   imageCredit?: string;
+  imageRightsStatus?: "pending" | "verified";
   officialGuide?: boolean;
 };
 
@@ -234,6 +235,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://meriteijogolf.com",
     image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golf_aktiviteetit.jpg?itok=lpvm1Tl0",
     imageCredit: "Visit Mathildedal — Meri-Teijo Golf course listing; reuse permission to confirm",
+    imageRightsStatus: "pending",
   },
   {
     id: "ravintola-terho",
