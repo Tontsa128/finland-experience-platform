@@ -39,6 +39,12 @@ const categoryConfig = {
     en: { title: "Shopping and crafts in Salo", description: "Local shops, design, crafts, clothing and regional products." },
     es: { title: "Compras y artesanía en Salo", description: "Tiendas locales, diseño, artesanía, ropa y productos regionales." },
   },
+  tapahtumat: {
+    category: "events",
+    fi: { title: "Tapahtumat ja juhlatilat Salossa", description: "Paikalliset tapahtumapaikat, juhlatilat ja järjestäjien ajantasaiset tapahtumatiedot." },
+    en: { title: "Events and venues in Salo", description: "Local event venues, celebration spaces and current event information from organisers." },
+    es: { title: "Eventos y espacios en Salo", description: "Espacios locales para eventos y celebraciones e información actualizada de los organizadores." },
+  },
   kulttuuri: {
     category: "culture",
     fi: { title: "Kulttuuri ja historia Salossa", description: "Historialliset kohteet, ruukkiperintö, museot, kirkot ja paikallinen kulttuuri." },
