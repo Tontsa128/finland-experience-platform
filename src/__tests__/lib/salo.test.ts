@@ -77,7 +77,7 @@ test("Salo catalogue inventory matches the audited production dataset", () => {
 
   const imageBacked = saloProviders.filter((provider) => Boolean(provider.image));
   assert.equal(imageBacked.length, 90, "Only source-backed provider photos may be counted as image-backed");
-  assert.equal(saloProviders.filter((provider) => getSaloProviderCategories(provider).includes("localFood")).length, 38, "Cross-listing must not duplicate canonical providers");
+  assert.equal(saloProviders.filter((provider) => getSaloProviderCategories(provider).includes("localFood")).length, 39, "Cross-listing must not duplicate canonical providers");
   assert.deepEqual(
     saloProviders.filter((provider) => !provider.image).map((provider) => provider.id).sort(),
     [
