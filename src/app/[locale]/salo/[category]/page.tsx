@@ -39,6 +39,12 @@ const categoryConfig = {
     en: { title: "Shopping and crafts in Salo", description: "Local shops, design, crafts, clothing and regional products." },
     es: { title: "Compras y artesanía en Salo", description: "Tiendas locales, diseño, artesanía, ropa y productos regionales." },
   },
+  saaristo: {
+    category: "archipelago",
+    fi: { title: "Meri ja saaristo Salossa", description: "Veneretket, saariretket, vierasvenesatamat ja saaristomajoitus Salon rannikkoalueella." },
+    en: { title: "Sea and archipelago in Salo", description: "Boat trips, island excursions, guest harbours and island accommodation along the Salo coast." },
+    es: { title: "Mar y archipiélago en Salo", description: "Excursiones en barco, visitas a islas, puertos deportivos y alojamientos en el archipiélago de Salo." },
+  },
   tapahtumat: {
     category: "events",
     fi: { title: "Tapahtumat ja juhlatilat Salossa", description: "Paikalliset tapahtumapaikat, juhlatilat ja järjestäjien ajantasaiset tapahtumatiedot." },
