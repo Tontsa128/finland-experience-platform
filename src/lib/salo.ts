@@ -181,7 +181,7 @@ export const saloProviders: SaloProvider[] = [
       es: "Pesca guiada, excursiones en barco y visitas a islas en el Mar del Archipiélago. Las salidas pueden organizarse desde puertos como Mathildedal, Förby y Kasnäs; consulta opciones y precios actuales con el proveedor.",
       en: "Guided fishing, boat and island trips in the Archipelago Sea, with departure harbours including Mathildedal, Förby and Kasnäs. Routes and options depend on weather and group needs; check current offers with the provider.",
     },
-    url: "https://chilloutolmos.fi/",
+    url: "https://chilloutfishing.fi/",
     price: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta",
     priceByLocale: { fi: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta", en: "Price depends on the trip and group size — check with the provider", es: "El precio depende de la excursión y del tamaño del grupo; consúltalo con el proveedor" },
   },
