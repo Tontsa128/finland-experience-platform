@@ -257,7 +257,7 @@ export function KimitoonPlaceDetail({ locale, place }: { locale: Locale; place: 
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
-            <Link href={`/${locale}/destinations/kemionsaari`} className="font-semibold text-brand-800 underline underline-offset-4">{common.back}</Link>
+            <Link href={`/${locale}/kimitoon`} className="font-semibold text-brand-800 underline underline-offset-4">{common.back}</Link>
             <a href="https://www.visitkimitoon.fi/fi/kohteet/" target="_blank" rel="noreferrer" className="font-semibold text-brand-800 underline underline-offset-4">{t.sourceText} ↗</a>
           </div>
         </div>
