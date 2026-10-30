@@ -589,16 +589,16 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("05e15580-ff43-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["museo","taide","kartano"]
   },
   {
-    id:"glassgaraget",categories:["ostokset","kulttuuri"],
+    id:"glassgaraget",categories:["ostokset","ruoka","kulttuuri"],
     name:{fi:"Glassgaraget – tilapuoti ja kahvila",en:"Glassgaraget – farm shop and café",es:"Glassgaraget – tienda de granja y cafetería"},
     description:{
-      fi:"Tilapuodin ja kahvilan yhdistelmä Kemiönsaaren virallisessa kohdehakemistossa. Tarkista myymälän valikoima, kahvilapalvelut ja aukiolo suoraan toimijalta.",
-      en:"A farm shop and café featured in the official Kimitoön destination directory. Check the shop selection, café services and opening times directly with the operator.",
-      es:"Tienda de granja y cafetería incluida en el directorio oficial de destinos de Kimitoön. Consulta la selección, los servicios y los horarios directamente con el operador."
+      fi:"Söderlångvikin kartanon tilapuoti, käsityömyymälä ja jäätelökahvila Amos Andersonin entisessä autotallissa. Valikoimaan kuuluu kartanon omenoista valmistettuja tuotteita, kuten omenamehua ja -hilloa, oman mehiläistarhan hunajaa sekä paikallisia käsitöitä, koruja ja tekstiilejä. Kahvilassa tarjoillaan Söderlångvik Glass -jäätelöä. Tarkista kausittaiset aukioloajat suoraan kartanolta.",
+      en:"Söderlångvik Manor's farm shop, craft shop and ice cream café in Amos Anderson's former garage. The selection includes the estate's apple products, such as juice and jam, honey from its own bees, and locally made crafts, jewellery and textiles. The café serves Söderlångvik Glass ice cream. Check seasonal opening times directly with the estate.",
+      es:"Tienda de la finca Söderlångvik, tienda de artesanía y cafetería de helados situada en el antiguo garaje de Amos Anderson. La selección incluye productos de manzana de la finca, como zumo y mermelada, miel de sus propias colmenas y artesanía, joyería y textiles locales. La cafetería sirve helado Söderlångvik Glass. Consulta los horarios de temporada directamente con la finca."
     },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/kohteet/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:image("431dc520-0e37-11f0-88da-256e05b1f1a0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["tilapuoti","kahvila","ostokset"]
+    location:{fi:"Amos Andersonin tie 2, 25870 Dragsfjärd",en:"Amos Anderson vägen 2, 25870 Dragsfjärd",es:"Amos Anderson vägen 2, 25870 Dragsfjärd"},
+    websiteUrl:"https://soderlangvik.fi/fi/tervetuloa/tilapuoti-glassgaraget/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/glassgaraget-tilapuoti/",
+    imageCredit:"Visit Kemiönsaari / kohteen tiedot",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/glassgaraget-tilapuoti/",tags:["tilapuoti","kahvila","jäätelö","lähiruoka","käsityöt"],contact:{phone:"+358 2 424 662",address:"Amos Andersonin tie 2, 25870 Dragsfjärd",email:"sales@soderlangvik.fi"}
   },
   {
     id:"baltic-jazz",categories:["tapahtumat"],
