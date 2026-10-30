@@ -3,7 +3,7 @@ import { photoLibrary } from "@/lib/photo-library";
 
 export type SaloProvider = {
   id: string;
-  category: "tourism" | "stay" | "experience" | "nature" | "food" | "shopping";
+  category: "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing";
   name: string;
   nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
@@ -749,6 +749,49 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.visitmathildedal.fi/fi/ostokset",
     image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/psx_20221106_095253_2.jpg?itok=PQZPi2SI",
     imageCredit: "Visit Mathildedal — official destination listing",
+  },
+
+
+  {
+    id: "mathildedal-keskuspuisto",
+    category: "experience",
+    name: "Mathildedalin Keskuspuisto",
+    description: {
+      fi: "Koko perheen vapaa-ajanviettopaikka Mathildedalin ruukkikylässä. Alueella on Adventure-minigolf, tennis- ja padelkentät sekä kesäkauden kahvila ja vaihtuva Street Food -auto. Tarkista ajantasaiset aukiolot ja varaukset yritykseltä.",
+      es: "Espacio de ocio para toda la familia en el pueblo siderúrgico de Mathildedal. Cuenta con minigolf Adventure, pistas de tenis y pádel, cafetería de verano y puesto de comida itinerante. Consulta horarios y reservas actuales con el establecimiento.",
+      en: "A family leisure destination in Mathildedal ironworks village, with Adventure mini golf, tennis and padel courts, a summer café and rotating street-food van. Confirm current opening times and bookings with the venue.",
+    },
+    url: "https://www.mathildedalinkeskuspuisto.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/kokoalue-2-1025x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Mathildedalin Keskuspuisto",
+  },
+  {
+    id: "mathildedal-meriuimapaikka",
+    category: "nature",
+    name: "Mathildedalin meriuimapaikka",
+    nameByLocale: { fi: "Mathildedalin meriuimapaikka", en: "Mathildedal Seaside Swimming Beach", es: "Playa de baño de Mathildedal" },
+    description: {
+      fi: "Loivasti syvenevä hiekkaranta Mathildedalissa. Rannalla on kaksi pukusuojaa ja käymälä; uimavalvontaa ei ole. Tarkista vedenlaatu Salon kaupungin tiedoista.",
+      es: "Playa de arena de poca profundidad en Mathildedal. Hay dos vestuarios y aseo; no hay servicio de socorrismo. Consulta la calidad del agua en la información municipal.",
+      en: "A gently shelving sandy beach in Mathildedal, with two changing rooms and a toilet. There is no lifeguard service. Check water-quality information from the city.",
+    },
+    url: "https://kohteet.visitsalo.fi/mathildedalin-meriuimapaikka/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/03/Mathildedal-uimaranta-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Mathildedal swimming beach",
+  },
+  {
+    id: "matildanjarven-sauna",
+    category: "wellbeing",
+    name: "Matildanjärven sauna",
+    nameByLocale: { fi: "Matildanjärven sauna", en: "Matildanjärvi Lakeside Sauna", es: "Sauna junto al lago Matildanjärvi" },
+    description: {
+      fi: "Natura Vivan itsepalvelusauna sijaitsee Matildanjärven rannalla Teijon kansallispuistossa. Hirsisaunassa on pukuhuone ja terassi järvinäköalalla; vieressä on yleinen hiekkapohjainen uimapaikka. Vahvista vuorot ja ajantasaiset ehdot varauskalenterista.",
+      es: "Sauna de autoservicio de Natura Viva junto al lago Matildanjärvi, en el Parque Nacional de Teijo. Cuenta con vestuario y terraza con vistas al lago; al lado hay una zona pública de baño con fondo de arena. Comprueba turnos y condiciones en el calendario de reservas.",
+      en: "A self-service Natura Viva sauna on the shore of Lake Matildanjärvi in Teijo National Park. The log-built sauna has a changing room and a terrace overlooking the lake, with a public sandy swimming area nearby. Check current slots and terms in the booking calendar.",
+    },
+    url: "https://naturaviva.fi/fi_FI/matildanjarven-rantasauna/sauna-teijon-kansallispuisto",
+    image: "https://cdn-datahub.visitfinland.com/images/a2446f90-7cba-11ef-a1fa-c33120773bf0.png?s=1280",
+    imageCredit: "Visit Finland DataHub / Natura Viva",
   },
 
 ];
