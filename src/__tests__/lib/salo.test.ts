@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getSaloProviderCategories, saloProviders, type SaloProviderCategory } from "@/lib/salo";
+import { getSaloProviderCategories, getSaloProviderImage, saloProviders, type SaloProviderCategory } from "@/lib/salo";
 import { firstValidHttpUrl } from "@/lib/utils";
 
 const allowedCategories: SaloProviderCategory[] = [
@@ -95,4 +95,12 @@ test("Salo catalogue inventory matches the audited production dataset", () => {
     ].sort(),
     "Providers without a verified matching image must remain image-free",
   );
+});
+
+
+test("provider images with pending rights are never exposed for public rendering", () => {
+  const golf = saloProviders.find((provider) => provider.id === "meri-teijo-golf");
+  assert.ok(golf, "Meri-Teijo Golf profile must exist");
+  assert.equal(golf.imageRightsStatus, "pending");
+  assert.equal(getSaloProviderImage(golf), undefined, "Image with unconfirmed reuse permission must not be rendered");
 });
