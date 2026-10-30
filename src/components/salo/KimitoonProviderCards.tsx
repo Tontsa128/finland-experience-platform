@@ -50,7 +50,7 @@ export function KimitoonProviderCards({ locale, category }: { locale: Locale; ca
                   <div className="px-6 text-center text-white">
                     <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{locale === "fi" ? "Palveluntarjoaja" : locale === "es" ? "Proveedor" : "Provider"}</p>
                     <p className="mt-3 font-display text-2xl font-semibold">{item.name[locale]}</p>
-                    <p className="mt-2 text-xs text-white/70">{locale === "fi" ? "Kohdekuvaa ei ole vielä varmennettu" : locale === "es" ? "Foto pendiente de verificación" : "Provider photo not yet verified"}</p>
+                    <p className="mt-2 text-xs text-white/70">{locale === "fi" ? "Kohdekuvaa ei ole vielä varmennettu" : locale === "es" ? "Foto pendiente de verificación" : "Photo not yet verified"}</p>
                   </div>
                 )}
               </div>
