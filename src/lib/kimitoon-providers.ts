@@ -257,7 +257,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
     websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-kasnas-2/",
     image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-760x430.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-kasnas-2/",tags:["hotelli","kylpylä","ravintola","satama"],
-    contact:{phone:"02 5210 100",address:"Kasnäsvägen 1294, 25930 Kasnäs"}
+    contact:{phone:"02 5210 100",email:"info@kasnas.com",address:"Kasnäsintie 1294, 25930 Kasnäs"}
   },
   {
     id:"soderlangvik-glamping",categories:["majoitus","luonto"],
@@ -269,7 +269,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
     websiteUrl:"https://soderlangvik.fi/fi/glamping/",sourceUrl:"https://soderlangvik.fi/fi/glamping/",
-    image:image("d9b5e0e0-ff40-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://soderlangvik.fi/fi/glamping/",tags:["glamping","kartano","luonto"]
+    image:image("d9b5e0e0-ff40-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://soderlangvik.fi/fi/glamping/",tags:["glamping","kartano","luonto"],contact:{phone:"+358 50 331 1977",email:"glamping@soderlangvik.fi",address:"Amos Andersonin tie 2, 25870 Dragsfjärd"}
   },
   {
     id:"bengtskar-lighthouse-stay",categories:["majoitus","kulttuuri","aktiviteetit","saaristo","luonto"],
