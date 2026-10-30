@@ -4,7 +4,7 @@
 
 The 2026 Visit Salo brochure contains a local-food map with **42 map entries**: 39 farms, shops and local-food producers (numbered 4–42 in the brochure) plus three Vuorovetten ice-cream kiosks.
 
-The Salo directory currently contains 88 unique provider profiles overall. **26 canonical provider profiles are represented in the separate local-food category**: 25 of the 39 producers and one Vuorovetten operator profile for all three kiosk locations. Fourteen producer entries still need their own verified profile or a confirmed canonical-provider mapping.
+The Salo directory currently contains 88 unique provider profiles overall. **26 canonical provider profiles are represented in the separate local-food category**: 25 of the 39 producers and one Vuorovetten operator profile for all three kiosk locations. Nine producer entries still need their own verified profile or a confirmed canonical-provider mapping.
 
 Primary sources:
 - Visit Salo, *Salo matkailuesite 2026*, pages 40–43: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
@@ -40,6 +40,12 @@ Primary sources:
 | Vaski Cider & Distillery | `vaski-cider-distillery` | Added with Visit Salo photo, visitor-experience details and contact |
 | Hallonmäen tila | `hallonmaen-tila` | Added as a separate legal entity from Hallonmäen Siideripanimo, with official farm-shop photo |
 | Heinän Puutarha | `heinan-puutarha` | Added with Visit Salo chilli-product photo and source credit |
+
+| Hästön Maatila | `haston-maatila` | Added with Visit Salo field photo and current farm details |
+| Ilolan tila | `ilolan-tila` | Added with Visit Salo raspberry photo and by-appointment self-picking details |
+| Kurjen maatila | `kurjen-maatila` | Added with Visit Salo strawberry photo and two sales locations |
+| Maneliuksen mansikkatila | `maneliuksen-mansikkatila` | Added with Visit Salo strawberry-harvest photo and seasonal sales details |
+| Meisalan Marja | `meisalan-marja` | Added with Visit Salo berry-farm photo and current provider contact |
 
 ## Remaining official map entries
 
@@ -80,7 +86,7 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 
 ## Publication and image rules
 
-- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. Twenty-six provider profiles are currently cross-listed there; fourteen official map entries remain.
+- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. Thirty-one provider profiles are currently cross-listed there; nine official map entries remain.
 - Do not copy seasonal opening hours or brochure prices into permanent descriptions without checking the provider’s current official channel.
 - Do not invent a provider photo or use an unrelated farm/food image. If an official matching image cannot be verified, publish the provider with no image until a suitable image and credit are available.
 - Preserve source URL and image credit for every published photo.
