@@ -136,7 +136,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
               <div key={key} className="rounded-xl bg-brand-50/70 px-3 py-3">
                 <p className="px-1 text-sm font-bold text-brand-950">{labelFor(key)}</p>
                 <div className="mt-1 grid grid-cols-2 gap-2">
-                  <Link onClick={() => setOpen(false)} href={`/${locale}/destinations/salo-mathildedal`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Mathildedal</Link>
+                  <Link onClick={() => setOpen(false)} href={`/${locale}/mathildedal`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Mathildedal</Link>
                   <Link onClick={() => setOpen(false)} href={`/${locale}/destinations/teijon-ruukkikyla`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Teijo</Link>
                   <Link onClick={() => setOpen(false)} href={`/${locale}/destinations/kirjakkalan-ruukkikyla`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Kirjakkala</Link>
                 </div>
