@@ -1222,8 +1222,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Hostal en el centro de Dalsbruk, a unos 100 metros de la plaza del mercado. KSG destaca sus habitaciones de calidad y zonas comunes bien equipadas. Consulta directamente los tipos de habitación, servicios y disponibilidad."
     },
     location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
-    websiteUrl:"https://www.dbhostel.fi/",sourceUrl:"https://ksg.fi/fi/foretag/db-hostel/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/db-hostel/",tags:["hostelli","taalintehdas"],contact:{phone:"+358 50 350 4930",email:"info@dbhostel.fi",address:"Masuunintie 5, 25900 Taalintehdas"}
+    websiteUrl:"https://www.dbhostel.fi/",sourceUrl:"https://www.dbhostel.fi/",
+    image:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_173606-1024x781.jpg",imageCredit:"DB Hostel",imageSource:"https://www.dbhostel.fi/",tags:["hostelli","taalintehdas"],contact:{phone:"+358 50 350 4930",email:"info@dbhostel.fi",address:"Masuunintie 5, 25900 Taalintehdas"}
   },
   {
     id:"viggskar-vuokramokit",categories:["majoitus","saaristo","luonto"],
