@@ -3,7 +3,7 @@ import { photoLibrary } from "@/lib/photo-library";
 
 export type SaloProvider = {
   id: string;
-  category: "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing";
+  category: "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture";
   name: string;
   nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
@@ -136,7 +136,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "teijon-masuuni",
-    category: "experience",
+    category: "culture",
     name: "Teijon Masuuni",
     nameByLocale: { fi: "Teijon Masuuni", en: "Teijo Masuuni", es: "Teijo Masuuni" },
     description: {
@@ -794,6 +794,22 @@ export const saloProviders: SaloProvider[] = [
     url: "https://naturaviva.fi/fi_FI/matildanjarven-rantasauna/sauna-teijon-kansallispuisto",
     image: "https://cdn-datahub.visitfinland.com/images/a2446f90-7cba-11ef-a1fa-c33120773bf0.png?s=1280",
     imageCredit: "Visit Finland DataHub / Natura Viva",
+  },
+
+
+  {
+    id: "teijon-kirkko",
+    category: "culture",
+    name: "Teijon kirkko",
+    nameByLocale: { fi: "Teijon kirkko", en: "Teijo Church", es: "Iglesia de Teijo" },
+    description: {
+      fi: "Teijon ruukkikylän historiallinen kivikirkko rakennettiin vuonna 1829. Kirkko tunnetaan Suomen pienimpänä kivikirkkona ja sen arkkitehtuuri jäljittelee kiinalaista pagodia. Vierailuajat ja mahdolliset opastukset tarkistetaan Salon seurakunnalta.",
+      es: "Iglesia histórica de piedra del pueblo siderúrgico de Teijo, construida en 1829. Se considera la iglesia de piedra más pequeña de Finlandia y su arquitectura recuerda a una pagoda china. Consulta horarios y visitas guiadas con la parroquia de Salo.",
+      en: "The historic stone church in Teijo ironworks village was built in 1829. It is known as Finland's smallest stone church, with architecture inspired by a Chinese pagoda. Check visitor access and guided visits with Salo Parish.",
+    },
+    url: "https://www.salonseurakunta.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Teijonkirkko-edest%C3%A4-web-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Teijo Church",
   },
 
 ];
