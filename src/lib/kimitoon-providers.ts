@@ -13,7 +13,7 @@ export type KimitoonProvider = {
   location: Record<Locale, string>;
   websiteUrl: string;
   sourceUrl: string;
-  image: string;
+  image?: string;
   imageCredit: string;
   imageSource: string;
   tags: string[];
