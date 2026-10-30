@@ -618,18 +618,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     websiteUrl:"https://www.balticjazz.com/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/tapahtumat/",
     image:image("f49c5f30-f8d3-11ed-b821-95e694c35326.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Baltic Jazz",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/tapahtumat/",tags:["festivaali","musiikki","kesä"]
   },
-  {
-    id:"kasnas-spa-wellbeing",categories:["hyvinvointi"],
-    name:{fi:"Kasnäsin kylpylä ja hyvinvointi",en:"Kasnäs Spa and wellbeing",es:"Spa y bienestar de Kasnäs"},
-    description:{
-      fi:"Kasnäsin kylpyläpalvelut osana Spa Hotel Kasnäsin lomakeskusta. Tarkista allasosaston, saunojen, hoitojen ja muiden hyvinvointipalvelujen ajantasaiset tiedot palveluntarjoajalta.",
-      en:"Spa services within the Spa Hotel Kasnäs resort. Check current information about pools, saunas, treatments and other wellbeing services with the provider.",
-      es:"Servicios de spa dentro del complejo Spa Hotel Kasnäs. Consulta la información actual sobre piscinas, saunas, tratamientos y otros servicios directamente con el proveedor."
-    },
-    location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
-    websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://www.kasnas.com/",
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/Kasnas-gasthamn-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",tags:["kylpylä","sauna","hyvinvointi"]
-  },
+
   {
     id:"dalsbruk-harbour",categories:["saaristo"],
     name:{fi:"Taalintehtaan vierasvenesatama",en:"Dalsbruk Guest Harbour",es:"Puerto deportivo de Dalsbruk"},
@@ -714,79 +703,11 @@ export const kimitoonProviders: KimitoonProvider[] = [
     websiteUrl:"https://bengtskar.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",
     image:image("230658b0-52a6-11ec-ae70-f70f11991cb8-Bengtskar_RobinS_4.jpg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["majakka","historia","museo","saari"]
   },
-  {
-    id:"taksi-ja-tilausliikenne",categories:["kuljetukset"],
-    name:{fi:"Taksit ja tilausliikenne Kemiönsaarella",en:"Taxis and charter transport on Kimitoön",es:"Taxis y transporte concertado en Kimitoön"},
-    description:{
-      fi:"Kemiönsaaren matkailusivusto kokoaa taksi- ja tilausliikenteen ohjeita matkailijoille. Varmista kuljetusyritys, saatavuus, reitti ja hinta suoraan liikennöitsijältä.",
-      en:"The Kimitoön tourism site provides information about taxis and charter transport for visitors. Confirm the operator, availability, route and price directly with the transport company.",
-      es:"La web turística de Kimitoön reúne información sobre taxis y transporte concertado. Confirma el operador, la disponibilidad, la ruta y el precio directamente con la empresa."
-    },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/suunnittele/taksi-ja-tilausliikenne/",sourceUrl:"https://www.visitkimitoon.fi/fi/suunnittele/taksi-ja-tilausliikenne/",
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/dalsbruk-gasthamn1-1-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/suunnittele/taksi-ja-tilausliikenne/",tags:["taksi","kuljetus","tilausajo"]
-  },
-  {
-    id:"glassgaraget-shop",categories:["ostokset"],
-    name:{fi:"Paikalliset puodit ja lähiruoka",en:"Local shops and food producers",es:"Tiendas locales y productores de alimentos"},
-    description:{
-      fi:"Kemiönsaaren virallinen kohdehakemisto kokoaa paikallisia ostos- ja lähiruokakohteita. Tutustu yrityksiin ja tarkista tuotevalikoima sekä aukiolo suoraan toimijoilta.",
-      en:"The official Kimitoön destination directory lists local shops and food producers. Explore the businesses and confirm product ranges and opening times directly with them.",
-      es:"El directorio oficial de destinos de Kimitoön reúne tiendas locales y productores de alimentos. Descubre los negocios y confirma sus productos y horarios directamente."
-    },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/kohteet/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["ostokset","lähiruoka","paikalliset yritykset"]
-  },
-  {
-    id:"winter-activities-kimitoon",categories:["talviaktiviteetit"],
-    name:{fi:"Kemiönsaaren talviaktiviteetit",en:"Winter activities on Kimitoön",es:"Actividades de invierno en Kimitoön"},
-    description:{
-      fi:"Talvikauden retket ja aktiviteetit kootaan viralliseen aktiviteettikarttaan ja järjestäjien omiin kanaviin. Tarkista olosuhteet, reittien käytettävyys ja palvelujen aukiolo ennen lähtöä.",
-      en:"Winter excursions and activities are listed in the official activity map and organisers' own channels. Check conditions, route access and service opening before setting out.",
-      es:"Las excursiones y actividades de invierno se publican en el mapa oficial y en los canales de los organizadores. Comprueba las condiciones, el acceso a las rutas y los horarios antes de salir."
-    },
-    location:{fi:"Kemiönsaari ja ulkosaaret",en:"Kimitoön and the outer islands",es:"Kimitoön y las islas exteriores"},
-    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/oro-flygbilder6-760x427.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["talvi","luonto","aktiviteetit"]
-  },
-  {
-    id:"event-venues-kimitoon",categories:["tapahtumapaikat"],
-    name:{fi:"Kemiönsaaren tapahtuma- ja juhlatilat",en:"Event and celebration venues on Kimitoön",es:"Espacios para eventos y celebraciones en Kimitoön"},
-    description:{
-      fi:"Kemiönsaaren kohdehakemistossa on erillinen tapahtumapaikkojen luokka. Tila, kapasiteetti, tekniikka, tarjoilu ja varaus on varmistettava aina suoraan tilan ylläpitäjältä.",
-      en:"The official Kimitoön destination directory has a dedicated event-venue category. Confirm capacity, equipment, catering and booking directly with each venue.",
-      es:"El directorio oficial de Kimitoön cuenta con una categoría específica de espacios para eventos. Confirma capacidad, equipamiento, catering y reserva directamente con cada espacio."
-    },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/kohteet/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2023/05/sagalund30-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["juhlat","kokoukset","tapahtumat"]
-  },
-  {
-    id:"kimitoon-activity-map",categories:["muut-palvelut"],
-    name:{fi:"Kemiönsaaren aktiviteettikartta",en:"Kimitoön Activity Map",es:"Mapa de actividades de Kimitoön"},
-    description:{
-      fi:"Kunnan ylläpitämä digitaalinen kartta kokoaa liikunta- ja retkeilykohteita sekä palveluja. Karttaa uudistetaan siten, että myös matkailuyritysten majoitukset, vuokrauspalvelut, elämykset, kaupat, ravintolat ja kahvilat tulevat paremmin löydettäviksi.",
-      en:"A municipal digital map bringing together outdoor and activity locations and services. The update is intended to make accommodation, rentals, experiences, shops, restaurants and cafés easier to discover.",
-      es:"Mapa digital municipal que reúne lugares de actividades al aire libre y servicios. La actualización busca facilitar el descubrimiento de alojamientos, alquileres, experiencias, tiendas, restaurantes y cafeterías."
-    },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://www.kemionsaari.fi/2026/08/20/kemionsaaren-aktiviteettikartta-2-0-nakyvyytta-palveluntarjoajille/",
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/oro-flygbilder6-760x427.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://kartta.kemionsaari.fi/",tags:["kartta","matkailupalvelut","reittitieto"]
-  }
-  // Additional providers from the Kemiönsaari Business Guide (KSG).
-  {
-    id:"labbnas-lomakoti",categories:["majoitus","ruoka","hyvinvointi","tapahtumapaikat"],
-    name:{fi:"Labbnäsin Lomakoti",en:"Labbnäs Holiday Home",es:"Alojamiento Labbnäs"},
-    description:{
-      fi:"Entiseen pappilaan rakennettu luonnonläheinen lomakoti Dragsfjärdissä. Labbnäs tarjoaa majoitusta, tilausravintolan saariston ja kotiruoan mauilla, ryhmäruokailuja, kursseja ja retriittejä. Kokoukset voi yhdistää rantasaunaan ja kesäjuhlia järjestää pihapiirissä.",
-      en:"A nature-focused holiday home in a former vicarage in Dragsfjärd. Labbnäs offers accommodation, a reservation restaurant serving archipelago-inspired and home-style food, group dining, courses and retreats. Meetings can be combined with the lakeside sauna, and summer celebrations can be held on the grounds.",
-      es:"Alojamiento rodeado de naturaleza en una antigua casa parroquial de Dragsfjärd. Labbnäs ofrece alojamiento, restaurante bajo reserva con cocina local y casera, comidas para grupos, cursos y retiros. Las reuniones pueden combinarse con la sauna junto al lago y las celebraciones de verano pueden organizarse en el recinto."
-    },
-    location:{fi:"Labbnäsvägen 66, 25870 Dragsfjärd",en:"Labbnäsvägen 66, 25870 Dragsfjärd",es:"Labbnäsvägen 66, 25870 Dragsfjärd"},
-    websiteUrl:"https://www.labbnas.fi/",sourceUrl:"https://ksg.fi/fi/foretag/labbnas-semesterhem/",
-    image:"https://ksg.fi/wp-content/uploads/2026/01/labbnas-header-1-1-1-1-1-1-1-1-1-1.png",imageCredit:"Labbnäs / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/labbnas-semesterhem/",tags:["majoitus","tilausravintola","rantasauna","juhlatilat"],contact:{phone:"040 83 30 495",address:"Labbnäsvägen 66, 25870 Dragsfjärd"}
-  },
+
+
+
+
+
   {
     id:"storfinnhova-gard",categories:["majoitus","ruoka","hyvinvointi","tapahtumapaikat"],
     name:{fi:"Storfinnhova Gård",en:"Storfinnhova Gård",es:"Storfinnhova Gård"},
