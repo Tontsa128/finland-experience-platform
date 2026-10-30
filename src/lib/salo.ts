@@ -1471,8 +1471,8 @@ export const saloProviders: SaloProvider[] = [
     id: "vaanelan-puutarha",
     category: "localFood",
     name: "Vaanelan puutarha",
-    location: "Päivärinteentie 30, 25520 Perniö, Salo",
-    contact: { phone: "+358 400 720 800", email: "ismo@vaanela.fi", address: "Päivärinteentie 30, 25520 Perniö" },
+    location: "Päivärinteentie 14, 25520 Perniö, Salo",
+    contact: { phone: "+358 400 720 800", email: "ismo@vaanela.fi", address: "Päivärinteentie 14, 25520 Perniö" },
     description: {
       fi: "Perniöläinen puutarhayritys viljelee muun muassa salaatteja, mansikoita ja vadelmia. Tilapuodin aukiolo on kausiluonteinen: yrityksen sivu ilmoittaa sen olevan suljettu ja palvelevan jälleen seuraavana kesänä. Tilauksia voi tiedustella suoraan yritykseltä.",
       en: "A garden business in Perniö growing lettuce, strawberries and raspberries. The farm shop is seasonal; the company currently states that it is closed and will reopen next summer. Contact the business directly about orders.",
