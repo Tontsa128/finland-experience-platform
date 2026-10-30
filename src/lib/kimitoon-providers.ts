@@ -1663,6 +1663,247 @@ export const kimitoonProviders: KimitoonProvider[] = [
     imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["hyvinvointipolku","laavu","näköalatorni"]
   }
 
+  {
+    id:"bjorknas-care-water-taxi",categories:["kuljetukset","saaristo","aktiviteetit"],
+    name:{fi:"Björknäs Care Oy – vesitaksi",en:"Björknäs Care Oy – water taxi",es:"Björknäs Care Oy – taxi acuático"},
+    description:{
+      fi:"Kemiönsaaren palveluopas listaa Björknäs Care Oy:n enintään 11 henkilön vesitaksipalveluna. Varmista reitti, matkustajamäärä, aikataulu ja sääolosuhteisiin liittyvät käytännöt suoraan toimijalta.",
+      en:"The Kimitoön business guide lists Björknäs Care Oy as a water-taxi service for up to 11 passengers. Confirm route, passenger capacity, schedule and weather-related arrangements directly with the operator.",
+      es:"La guía empresarial de Kimitoön incluye Björknäs Care Oy como taxi acuático para hasta 11 pasajeros. Confirma ruta, capacidad, horario y condiciones meteorológicas directamente con el operador."
+    },
+    location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/bjorknas-care-oy/",sourceUrl:"https://ksg.fi/sv/foretag/bjorknas-care-oy/",
+    imageCredit:"Björknäs Care Oy / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/bjorknas-care-oy/",tags:["vesitaksi","enintään 11 matkustajaa"]
+  },
+  {
+    id:"dalsbruks-sjotrafik",categories:["kuljetukset","saaristo"],
+    name:{fi:"Dalsbruks Sjötrafik Ab",en:"Dalsbruks Sjötrafik Ab",es:"Dalsbruks Sjötrafik Ab"},
+    description:{
+      fi:"Taalintehtaan ja lähisaariston vesitaksiliikenne. KSG:n mukaan yritys tarjoaa taksivenekuljetuksia Dalsbrukin ympäristössä. Varaa reitti ja varmista kuljetuksen kapasiteetti suoraan yritykseltä.",
+      en:"Water-taxi transport around Dalsbruk and nearby islands. KSG lists the company for taxi-boat services in the Dalsbruk area. Arrange the route and confirm passenger capacity directly with the operator.",
+      es:"Transporte en taxi acuático por Dalsbruk y las islas cercanas. KSG incluye la empresa para servicios de taxi-barco en la zona. Organiza la ruta y confirma la capacidad directamente con el operador."
+    },
+    location:{fi:"Taalintehdas ja lähisaaristo",en:"Dalsbruk and nearby islands",es:"Dalsbruk e islas cercanas"},
+    websiteUrl:"https://ksg.fi/sv/foretag/dalsbruks-sjotrafik-ab/",sourceUrl:"https://ksg.fi/sv/foretag/dalsbruks-sjotrafik-ab/",
+    imageCredit:"Dalsbruks Sjötrafik / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/dalsbruks-sjotrafik-ab/",tags:["vesitaksi","saaristokuljetus"]
+  },
+  {
+    id:"db-marina",categories:["saaristo","muut-palvelut"],
+    name:{fi:"DB Marina",en:"DB Marina",es:"DB Marina"},
+    description:{
+      fi:"Taalintehtaan veneilijöiden palvelupiste. Kemiönsaaren palveluopas kuvaa DB Marinan palvelupisteeksi veneenomistajien tarpeisiin. Tarkista laituripaikat, palvelut ja kausitiedot suoraan marinasta.",
+      en:"A boating service point in Dalsbruk. The Kimitoön business guide describes DB Marina as a service point for boat owners. Confirm berths, facilities and seasonal information directly with the marina.",
+      es:"Punto de servicio náutico en Dalsbruk. La guía empresarial de Kimitoön describe DB Marina como un centro de servicios para propietarios de embarcaciones. Consulta amarres, instalaciones y temporada directamente con el puerto."
+    },
+    location:{fi:"Taalintehtaan satama",en:"Dalsbruk harbour",es:"Puerto de Dalsbruk"},
+    websiteUrl:"https://ksg.fi/sv/foretag/db-marina/",sourceUrl:"https://ksg.fi/sv/foretag/db-marina/",
+    imageCredit:"DB Marina / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/db-marina/",tags:["veneilypalvelut","satama"]
+  },
+  {
+    id:"fma-leif-gustafsson",categories:["saaristo","kuljetukset","muut-palvelut"],
+    name:{fi:"Fma Leif Gustafsson",en:"Fma Leif Gustafsson",es:"Fma Leif Gustafsson"},
+    description:{
+      fi:"Kemiönsaaren palveluopas listaa yrityksen venepaikkoihin, veneiden lämmin- ja kylmäsäilytykseen, venehuoltoon, venetrailerien vuokraukseen, mökkihuoltoon ja pieniin merikuljetuksiin.",
+      en:"The Kimitoön business guide lists berths, heated and cold boat storage, boat service, boat-trailer rental, cottage maintenance and small sea transports among the company's services.",
+      es:"La guía empresarial de Kimitoön incluye amarres, almacenamiento de embarcaciones en naves frías y cálidas, mantenimiento, alquiler de remolques, mantenimiento de cabañas y pequeños transportes marítimos."
+    },
+    location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/fma-leif-gustafsson/",sourceUrl:"https://ksg.fi/sv/foretag/fma-leif-gustafsson/",
+    imageCredit:"Fma Leif Gustafsson / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/fma-leif-gustafsson/",tags:["venepaikat","talvisäilytys","venetrailerit","merikuljetukset"]
+  },
+  {
+    id:"jimmys-boat-service",categories:["saaristo","muut-palvelut"],
+    name:{fi:"Jimmy's Boat Service",en:"Jimmy's Boat Service",es:"Jimmy's Boat Service"},
+    description:{
+      fi:"Veneiden, moottoreiden ja mönkijöiden huoltopalvelu. KSG:n mukaan yritys tarjoaa myös Polaris-merkin valtuutettua huoltoa.",
+      en:"Service and maintenance for boats, motors and ATVs. KSG also lists the company as an authorised Polaris service provider.",
+      es:"Servicio y mantenimiento de embarcaciones, motores y quads. KSG también indica que es un servicio autorizado de Polaris."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/jimmys-boat-service/",sourceUrl:"https://ksg.fi/sv/foretag/jimmys-boat-service/",
+    imageCredit:"Jimmy's Boat Service / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/jimmys-boat-service/",tags:["veneen huolto","moottorit","mönkijät"]
+  },
+  {
+    id:"rosala-gasthamn-tb-marin",categories:["saaristo","ostokset","muut-palvelut"],
+    name:{fi:"Rosala Gästhamn – TB-Marin",en:"Rosala Guest Harbour – TB-Marin",es:"Puerto deportivo de Rosala – TB-Marin"},
+    description:{
+      fi:"Rosalan vierasvenesatama, jossa KSG:n mukaan on veneiden ja moottoreiden talvisäilytystä, rakennustöitä, elintarvikekioski ja vierasvenesatama. Tarkista laituripaikat, kioskikausi ja satamapalvelut suoraan toimijalta.",
+      en:"A guest harbour in Rosala. KSG lists winter storage for boats and engines, construction services, a food kiosk and guest-harbour facilities. Confirm berths, kiosk season and harbour services directly with the operator.",
+      es:"Puerto deportivo en Rosala. KSG menciona almacenamiento invernal de embarcaciones y motores, trabajos de construcción, quiosco de alimentos y servicios portuarios. Consulta amarres, temporada del quiosco y servicios directamente con el operador."
+    },
+    location:{fi:"Rosala, Kemiönsaari",en:"Rosala, Kimitoön",es:"Rosala, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/rosala-gasthamn-tb-marin/",sourceUrl:"https://ksg.fi/sv/foretag/rosala-gasthamn-tb-marin/",
+    imageCredit:"TB-Marin / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/rosala-gasthamn-tb-marin/",tags:["vierasvenesatama","talvisäilytys","kioski"]
+  },
+  {
+    id:"wilson-charter",categories:["kuljetukset","saaristo","aktiviteetit"],
+    name:{fi:"Wilson Charter Oy Ab",en:"Wilson Charter Oy Ab",es:"Wilson Charter Oy Ab"},
+    description:{
+      fi:"Saariston tilausvenekuljetuksia ja risteilyjä tarjoava yritys. KSG:n mukaan käytössä on 135-, 80- ja 40-paikkaisia taksiveneitä, ja risteilykohteisiin kuuluvat Bengtskär ja Örö. Tarkista reitit, aikataulut ja ryhmävaraukset suoraan yritykseltä.",
+      en:"A charter-boat and cruise operator in the archipelago. KSG lists taxi boats for 135, 80 and 40 passengers, with cruises to Bengtskär and Örö. Confirm routes, schedules and group bookings directly with the company.",
+      es:"Operador de barcos chárter y excursiones por el archipiélago. KSG menciona barcos taxi para 135, 80 y 40 pasajeros, con cruceros a Bengtskär y Örö. Consulta rutas, horarios y reservas de grupos directamente con la empresa."
+    },
+    location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/wilson-charter-oy-ab/",sourceUrl:"https://ksg.fi/sv/foretag/wilson-charter-oy-ab/",
+    imageCredit:"Wilson Charter / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/wilson-charter-oy-ab/",tags:["taksivene","risteily","Bengtskär","Örö"]
+  },
+  {
+    id:"dalsbruks-gasthamn",kind:"place",categories:["saaristo","muut-palvelut"],
+    name:{fi:"Taalintehtaan vierasvenesatama",en:"Dalsbruk Guest Harbour",es:"Puerto deportivo de Dalsbruk"},
+    description:{
+      fi:"Täyden palvelun vierasvenesatama Taalintehtaan keskustassa. Tarkista ajantasaiset laituripaikat, palvelut, satamamaksut ja kausitiedot sataman omasta palvelukanavasta.",
+      en:"A full-service guest harbour in central Dalsbruk. Check current berths, facilities, harbour fees and seasonal information through the harbour's official service channel.",
+      es:"Puerto deportivo con servicios completos en el centro de Dalsbruk. Consulta amarres, instalaciones, tarifas y temporada en el canal oficial del puerto."
+    },
+    location:{fi:"Taalintehtaan keskusta",en:"Central Dalsbruk",es:"Centro de Dalsbruk"},
+    websiteUrl:"https://ksg.fi/sv/foretag/dalsbruks-gasthamn/",sourceUrl:"https://ksg.fi/sv/foretag/dalsbruks-gasthamn/",
+    imageCredit:"Dalsbruks Gästhamn / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/dalsbruks-gasthamn/",tags:["vierasvenesatama","täyden palvelun satama"]
+  },
+  {
+    id:"kasnas-taxibat",categories:["kuljetukset","saaristo","aktiviteetit"],
+    name:{fi:"Kasnäsin taksivene",en:"Kasnäs Water Taxi",es:"Taxi acuático de Kasnäs"},
+    description:{
+      fi:"Kasnäsistä lähtevä taksivenepalvelu. KSG:n mukaan veneisiin mahtuu enintään 8 tai 12 matkustajaa. Varmista reitti, matkustajamäärä ja varaus suoraan kuljettajalta.",
+      en:"A water-taxi service departing from Kasnäs. KSG lists boats with capacity for up to 8 or 12 passengers. Confirm route, capacity and booking directly with the operator.",
+      es:"Servicio de taxi acuático con salida desde Kasnäs. KSG indica embarcaciones para un máximo de 8 o 12 pasajeros. Confirma ruta, capacidad y reserva directamente con el operador."
+    },
+    location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/kasnas-taxibat/",sourceUrl:"https://ksg.fi/sv/foretag/kasnas-taxibat/",
+    imageCredit:"Kasnäs Taxibåt / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/kasnas-taxibat/",tags:["taksivene","saaristokuljetus"]
+  },
+  {
+    id:"d-marin",categories:["saaristo","muut-palvelut"],
+    name:{fi:"D-Marin Oy Ab",en:"D-Marin Oy Ab",es:"D-Marin Oy Ab"},
+    description:{
+      fi:"Veneiden ja moottoreiden korjauspalvelu sekä vuokrattavia laituripaikkoja. KSG listaa yrityksen myös vierasvenesatamien yhteydessä.",
+      en:"Boat and engine repair services with rental berths. KSG also lists the company among guest-harbour services.",
+      es:"Servicio de reparación de embarcaciones y motores, con amarres disponibles para alquilar. KSG también incluye la empresa entre los servicios de puertos deportivos."
+    },
+    location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/d-marin-oy-ab/",sourceUrl:"https://ksg.fi/sv/foretag/d-marin-oy-ab/",
+    imageCredit:"D-Marin / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/d-marin-oy-ab/",tags:["venekorjaus","moottorihuolto","laituripaikat"]
+  },
+  {
+    id:"dalsbruks-batservice",categories:["saaristo","muut-palvelut"],
+    name:{fi:"Dalsbruks Båtservice Ab",en:"Dalsbruks Båtservice Ab",es:"Dalsbruks Båtservice Ab"},
+    description:{
+      fi:"Taalintehtaan venealan palveluyritys. KSG:n mukaan palveluihin kuuluvat moottorihuolto ja korjaus, veneiden säilytys sekä laituripaikat.",
+      en:"A boating-services company in Dalsbruk. KSG lists engine servicing and repairs, boat storage and berths among its services.",
+      es:"Empresa de servicios náuticos en Dalsbruk. KSG incluye mantenimiento y reparación de motores, almacenamiento de embarcaciones y amarres."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/dalsbruks-batservice-ab/",sourceUrl:"https://ksg.fi/sv/foretag/dalsbruks-batservice-ab/",
+    imageCredit:"Dalsbruks Båtservice / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/dalsbruks-batservice-ab/",tags:["moottorihuolto","venekorjaus","venepaikat"]
+  },
+  {
+    id:"biskopso-boat-service",categories:["kuljetukset","saaristo","muut-palvelut"],
+    name:{fi:"Biskopsö båt- och fastighetsservice",en:"Biskopsö Boat and Property Service",es:"Servicio náutico e inmobiliario de Biskopsö"},
+    description:{
+      fi:"Biskopsön alueen vene- ja kiinteistöpalvelu. KSG:n mukaan yritys tarjoaa venetaksia ja veneiden säilytystä. Varmista kuljetukset, reitit ja säilytysmahdollisuudet suoraan toimijalta.",
+      en:"Boat and property services in the Biskopsö area. KSG lists water-taxi transport and boat storage. Confirm transport, routes and storage availability directly with the operator.",
+      es:"Servicios náuticos e inmobiliarios en la zona de Biskopsö. KSG menciona taxi acuático y almacenamiento de embarcaciones. Consulta transporte, rutas y disponibilidad directamente con el operador."
+    },
+    location:{fi:"Biskopsö, Kemiönsaaren saaristo",en:"Biskopsö, Kimitoön archipelago",es:"Biskopsö, archipiélago de Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/biskopso-bat-fastighetsservice/",sourceUrl:"https://ksg.fi/sv/foretag/biskopso-bat-fastighetsservice/",
+    imageCredit:"Biskopsö båt- och fastighetsservice / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/biskopso-bat-fastighetsservice/",tags:["venetaksi","veneen säilytys"]
+  },
+  {
+    id:"be-marina",categories:["saaristo"],
+    name:{fi:"BE-Marina Oy Ab",en:"BE-Marina Oy Ab",es:"BE-Marina Oy Ab"},
+    description:{
+      fi:"Taalintehtaan venepaikkoja tarjoava marina. Tarkista vapaat paikat, laituripalvelut ja kausiehdot suoraan marinasta.",
+      en:"A marina offering berths in Dalsbruk. Confirm available spaces, quay services and seasonal terms directly with the marina.",
+      es:"Puerto deportivo que ofrece amarres en Dalsbruk. Consulta plazas disponibles, servicios del muelle y condiciones de temporada directamente con el puerto."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/be-marina-oy-ab/",sourceUrl:"https://ksg.fi/sv/foretag/be-marina-oy-ab/",
+    imageCredit:"BE-Marina / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/be-marina-oy-ab/",tags:["venepaikat","marina"]
+  },
+  {
+    id:"soljeholmen-marina",categories:["saaristo","muut-palvelut"],
+    name:{fi:"Söljeholmen Marina Ab Oy",en:"Söljeholmen Marina Ab Oy",es:"Söljeholmen Marina Ab Oy"},
+    description:{
+      fi:"Palvelullisia venepaikkoja tarjoava marina. KSG:n mukaan alueella on Volvo Penta -huolto sekä Suzuki- ja Honda-palveluja. Tarkista vapaat paikat ja huoltopalvelut suoraan marinasta.",
+      en:"A marina offering serviced berths. KSG lists Volvo Penta service as well as Suzuki and Honda services. Confirm berth availability and maintenance services directly with the marina.",
+      es:"Puerto deportivo con amarres y servicios. KSG menciona servicio Volvo Penta y servicios Suzuki y Honda. Consulta amarres y mantenimiento directamente con el puerto."
+    },
+    location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/soljeholmen-marina-ab-oy/",sourceUrl:"https://ksg.fi/sv/foretag/soljeholmen-marina-ab-oy/",
+    imageCredit:"Söljeholmen Marina / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/soljeholmen-marina-ab-oy/",tags:["venepaikat","Volvo Penta","Suzuki","Honda"]
+  },
+  {
+    id:"seapoint-dalsbruk",categories:["saaristo","muut-palvelut"],
+    name:{fi:"Seapoint Dalsbruk",en:"Seapoint Dalsbruk",es:"Seapoint Dalsbruk"},
+    description:{
+      fi:"Veneiden ja autojen polttoainemyynti Taalintehtaalla ympäri vuorokauden. Tarkista maksutavat ja polttoainelaadut suoraan palvelupisteestä.",
+      en:"24-hour fuel sales for boats and cars in Dalsbruk. Confirm payment methods and fuel types directly with the service point.",
+      es:"Venta de combustible para embarcaciones y coches en Dalsbruk las 24 horas. Consulta directamente los métodos de pago y tipos de combustible."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/seapoint-dalsbruk/",sourceUrl:"https://ksg.fi/sv/foretag/seapoint-dalsbruk/",
+    imageCredit:"Seapoint Dalsbruk / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/seapoint-dalsbruk/",tags:["polttoaine","veneet","autot","24/7"]
+  },
+  {
+    id:"kimitoon-sjoraddare",categories:["saaristo","muut-palvelut"],
+    name:{fi:"Kemiönsaaren Meripelastajat ry",en:"Kimitoön Sea Rescue Association",es:"Asociación de Salvamento Marítimo de Kimitoön"},
+    description:{
+      fi:"Vapaaehtoinen meripelastusyhdistys, jonka tehtävänä on auttaa vesillä liikkuvia. Hätätilanteessa soita aina yleiseen hätänumeroon 112; yhdistyksen omat kanavat on tarkoitettu lisätietoon ja toimintaan osallistumiseen.",
+      en:"A volunteer sea-rescue association helping people on the water. In an emergency, always call the general emergency number 112; the association's own channels provide further information and participation details.",
+      es:"Asociación voluntaria de salvamento marítimo que ayuda a las personas en el agua. En caso de emergencia, llama siempre al número general 112; los canales de la asociación ofrecen información y participación."
+    },
+    location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/kimitoons-sjoraddare-rf/",sourceUrl:"https://ksg.fi/sv/foretag/kimitoons-sjoraddare-rf/",
+    imageCredit:"Kemiönsaaren Meripelastajat / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/kimitoons-sjoraddare-rf/",tags:["vapaaehtoinen meripelastus","turvallisuus"]
+  },
+  {
+    id:"kimitoon-batservice",categories:["saaristo","ostokset","muut-palvelut"],
+    name:{fi:"Kimitoöns Båtservice Ab",en:"Kimitoöns Båtservice Ab",es:"Kimitoöns Båtservice Ab"},
+    description:{
+      fi:"Veneilyvarusteiden myyntiä ja ammattimaista asennusta Kemiönsaarella. Tarkista tuotevalikoima ja asennuspalvelut suoraan yritykseltä.",
+      en:"Boat-equipment sales and professional installation on Kimitoön. Confirm the product range and installation services directly with the company.",
+      es:"Venta e instalación profesional de equipamiento náutico en Kimitoön. Consulta directamente la gama de productos y los servicios de instalación."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/kimitoons-batservice-ab/",sourceUrl:"https://ksg.fi/sv/foretag/kimitoons-batservice-ab/",
+    imageCredit:"Kimitoöns Båtservice / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/kimitoons-batservice-ab/",tags:["veneilyvarusteet","asennus"]
+  },
+  {
+    id:"osterbergs-bat-och-tra",categories:["saaristo","muut-palvelut"],
+    name:{fi:"Österbergs Båt och Trä",en:"Österbergs Båt och Trä",es:"Österbergs Båt och Trä"},
+    description:{
+      fi:"Puisten veneiden rakentamista ja korjausta. Kemiönsaaren palveluopas listaa yrityksen venealan toimijaksi.",
+      en:"Construction and repair of wooden boats. The Kimitoön business guide lists the company as a local boating specialist.",
+      es:"Construcción y reparación de embarcaciones de madera. La guía empresarial de Kimitoön incluye la empresa entre los especialistas náuticos locales."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/osterbergs-bat-och-tra/",sourceUrl:"https://ksg.fi/sv/foretag/osterbergs-bat-och-tra/",
+    imageCredit:"Österbergs Båt och Trä / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/osterbergs-bat-och-tra/",tags:["puuveneet","veneenrakennus","korjaus"]
+  },
+  {
+    id:"ag-service",categories:["saaristo","muut-palvelut"],
+    name:{fi:"AG Service Ab Oy",en:"AG Service Ab Oy",es:"AG Service Ab Oy"},
+    description:{
+      fi:"Veneiden, mönkijöiden ja vesijettien säilytys- ja moottorihuoltopalvelu. KSG listaa yrityksen venepaikkojen ja talvisäilytyksen toimijaksi.",
+      en:"Storage and engine service for boats, ATVs and water scooters. KSG lists the company among berth and winter-storage providers.",
+      es:"Almacenamiento y mantenimiento de motores para embarcaciones, quads y motos acuáticas. KSG incluye la empresa entre los proveedores de amarres y almacenamiento invernal."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/ag-service-ab-oy/",sourceUrl:"https://ksg.fi/sv/foretag/ag-service-ab-oy/",
+    imageCredit:"AG Service / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/ag-service-ab-oy/",tags:["veneen säilytys","moottorihuolto","vesijetit"]
+  },
+  {
+    id:"lillbacka-brygga",kind:"place",categories:["saaristo","hyvinvointi","ruoka"],
+    name:{fi:"Lillbackan vieraslaituri",en:"Lillbacka Guest Pier",es:"Embarcadero de visitantes de Lillbacka"},
+    description:{
+      fi:"Vieraslaituri, jossa on paikkoja noin 50 veneelle poijuissa ja ankkurissa. KSG:n mukaan alueella on hiekkaranta, kaunis ympäristö, puulämmitteinen sauna ja rantamökki, jossa on baari. Tarkista paikkatilanne ja palvelujen aukiolo suoraan ylläpitäjältä.",
+      en:"A guest pier with space for about 50 boats at buoys and anchorages. KSG lists a sandy beach, scenic surroundings, a wood-fired sauna and a beach hut with a bar. Confirm berth availability and service hours directly with the operator.",
+      es:"Embarcadero para visitantes con espacio para unos 50 barcos en boyas y fondeos. KSG menciona playa de arena, entorno natural, sauna de leña y una cabaña junto a la playa con bar. Consulta amarres y horarios directamente con el responsable."
+    },
+    location:{fi:"Lillbacka, Kemiönsaaren saaristo",en:"Lillbacka, Kimitoön archipelago",es:"Lillbacka, archipiélago de Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/lillbacka-brygga/",sourceUrl:"https://ksg.fi/sv/foretag/lillbacka-brygga/",
+    imageCredit:"Lillbacka brygga / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/lillbacka-brygga/",tags:["vieraslaituri","sauna","ranta","baari"]
+  }
+
 ];
 
 export function getKimitoonProviders(category?: KimitoonCategory) {
