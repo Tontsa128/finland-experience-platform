@@ -988,8 +988,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     location:{fi:"Arkadiavägen 11, 25700 Kemiö",en:"Arkadiavägen 11, 25700 Kimito",es:"Arkadiavägen 11, 25700 Kimito"},
     websiteUrl:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",sourceUrl:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",
     imageCredit:"Mac Daniel's Grill / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",tags:["kahvila","ravintola","pub","juhlatilat","kokoukset"],contact:{phone:"02 420 6312",address:"Arkadiavägen 11, 25700 Kemiö"}
-  }
-
+  },
   {
     id:"cafe-adele",categories:["ruoka","tapahtumapaikat"],
     name:{fi:"Café Adéle",en:"Café Adéle",es:"Café Adéle"},
@@ -1169,8 +1168,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     location:{fi:"Gamla bruksvägen 2, 25860 Björkboda",en:"Gamla bruksvägen 2, 25860 Björkboda",es:"Gamla bruksvägen 2, 25860 Björkboda"},
     websiteUrl:"https://www.bjorkbodadressage.fi/",sourceUrl:"https://ksg.fi/fi/foretag/bjorkboda-bruksgard/",
     imageCredit:"Björkbodan Ruukinkartano / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/bjorkboda-bruksgard/",tags:["majoitus","juhlatilat","kokoukset","ratsastus"],contact:{phone:"040 581 0878",address:"Gamla bruksvägen 2, 25860 Björkboda"}
-  }
-
+  },
   {
     id:"hotel-galaxy",categories:["majoitus","ruoka"],
     name:{fi:"Hotel Galaxy",en:"Hotel Galaxy",es:"Hotel Galaxy"},
@@ -1266,8 +1264,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     location:{fi:"Kemiönsaari ja Turunmaa",en:"Kimitoön and the Turku archipelago",es:"Kimitoön y el archipiélago de Turku"},
     websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
     imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["mökkivuokraus","kiinteistönvälitys"]
-  }
-
+  },
   {
     id:"luddes-taxi",categories:["kuljetukset","muut-palvelut"],
     name:{fi:"Luddes Taxi",en:"Luddes Taxi",es:"Luddes Taxi"},
