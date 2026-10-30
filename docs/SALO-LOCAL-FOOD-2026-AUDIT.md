@@ -25,6 +25,12 @@ The following official map entries already have a corresponding code-backed prov
 | Lähiruoka Puhti | `lahiruokapuoti-puhti` | Confirm current operator, official link and image |
 | Vuorovetten Jäätelö kiosks | `vuorovetten-jaatelo` | One canonical operator profile should list all three kiosk locations |
 
+| Ellun kanat ja munat | `ellun-kanat-ja-munat` | Added with official farm photo, description and contact details |
+| Kalliolan Tila | `kalliolan-tila` | Added with official pasture photo, description and contact details |
+| Kirakan kalkkuna | `kirakan-kalkkuna` | Added with official turkey-product photo and seasonal farm-shop details |
+| Kosken kartano | `kosken-kartano` | Added with Visit Salo photo, organic farm description and contact details |
+| Mikkolan tila | `mikkolan-tila` | Added with Visit Salo photo, lamb/wool profile and farm experience details |
+
 ## Remaining official map entries
 
 The following entries do not yet have a dedicated local-food profile in the current Salo directory. They must be checked against their own current official channel before publication; the brochure is an inventory source, not proof that every sales point or seasonal shop is currently open. The first five entries below have now been added with verified official descriptions, contact details and matching photos; the remaining 25 still need individual profile work.
