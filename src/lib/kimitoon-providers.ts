@@ -395,13 +395,13 @@ export const kimitoonProviders: KimitoonProvider[] = [
     id:"farmors-cafe",categories:["ruoka"],
     name:{fi:"Farmors Café",en:"Farmors Café",es:"Farmors Café"},
     description:{
-      fi:"Kemiönsaaren matkailuhakemistossa esitelty kahvila. Tarkista kauden leivonnaiset, palvelut ja aukiolo suoraan kahvilalta ennen vierailua.",
-      en:"A café featured in the Kimitoön tourism directory. Check seasonal pastries, services and opening times directly with the café before visiting.",
-      es:"Cafetería incluida en el directorio turístico de Kimitoön. Consulta los dulces de temporada, los servicios y los horarios directamente con la cafetería antes de visitarla."
+      fi:"Högsåran saarella historiallisessa Gamla Lillstuganin luotsimökissä toimiva saaristokahvila ja ravintola. Farmors Café on palvellut vuodesta 1994. Päivittäin vaihtuva ruokalista rakentuu sesongin ja paikallisten tuottajien raaka-aineista, ja annoksia viimeistellään oman puutarhan kukilla ja yrteillä. Saareen saavutaan Svartnäsin lossilla; auto kannattaa jättää Svartnäsiin ja jatkaa kävellen tai pyörällä.",
+      en:"An archipelago café and restaurant in the historic Gamla Lillstugan pilot cottage on Högsåra island. Farmors Café has welcomed visitors since 1994. Its changing daily menu is built around seasonal ingredients from local producers and dishes are finished with flowers and herbs from its own garden. Reach the island by ferry from Svartnäs; visitors are encouraged to leave the car there and continue on foot or by bicycle.",
+      es:"Cafetería y restaurante del archipiélago en la histórica casa de práctico Gamla Lillstugan, en la isla de Högsåra. Farmors Café recibe visitantes desde 1994. Su menú diario cambia según la temporada y utiliza ingredientes de productores locales; los platos se terminan con flores y hierbas de su propio jardín. Se llega a la isla en ferry desde Svartnäs; se recomienda dejar el coche allí y continuar a pie o en bicicleta."
     },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:image("1dedf000-55cf-11f1-a99c-e5a59b9f35a4.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["kahvila","leivonnaiset"]
+    location:{fi:"Högsåra Byväg 49 C, 25960 Högsåra",en:"Högsåra Byväg 49 C, 25960 Högsåra",es:"Högsåra Byväg 49 C, 25960 Högsåra"},
+    websiteUrl:"https://www.farmorscafe.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/farmors-cafe-2/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/301a8cd0-49e9-11f1-acb5-5ba5e2fcebfb.jpeg-760x1140.jpeg",imageCredit:"Farmors Café / Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/farmors-cafe-2/",contact:{phone:"+358 50 564 7039",address:"Högsåra Byväg 49 C, 25960 Högsåra"},tags:["saaristokahvila","ravintola","sesonkiruoka","Högsåra"]
   },
   {
     id:"rumpan-bar",categories:["ruoka"],
