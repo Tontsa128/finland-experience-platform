@@ -111,8 +111,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     kemionsaari: photoLibrary.rosalaVikingCentre,
     hanko: photoLibrary.hankoRegattaBeach,
     naantali: photoLibrary.naantaliOldTown,
-    turku: photoLibrary.turkuCastle,
-    aland: photoLibrary.alandHarbour,
+    turku: photoLibrary.turkuAura,
+    aland: photoLibrary.aland,
   };
   const coastalHighlights = ["salo-mathildedal", "kemionsaari", "hanko", "naantali", "turku", "aland"]
     .map((slug) => {
