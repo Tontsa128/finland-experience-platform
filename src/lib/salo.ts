@@ -203,6 +203,20 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Visit Mathildedal — Meri-Teijo Golf course listing; reuse permission to confirm",
   },
   {
+    id: "ravintola-terho",
+    category: "food",
+    name: "Ravintola Terho",
+    nameByLocale: { fi: "Ravintola Terho", en: "Restaurant Terho", es: "Restaurante Terho" },
+    description: {
+      fi: "Mathildedalin kyläravintola tunnetaan kiviarinauunissa paistetuista pizzoista, oman paahtimon kahvista, paikallisista juomista ja takapihan keikoista.",
+      en: "A village restaurant in Mathildedal known for stone-deck oven pizzas, coffee from its own roastery, local drinks and live music in the backyard.",
+      es: "Restaurante local en Mathildedal, conocido por sus pizzas al horno de piedra, el café de su propio tostador, las bebidas locales y la música en directo en el patio."
+    },
+    url: "https://www.ravintolaterho.fi/",
+    image: "https://static.wixstatic.com/media/5e5929_9e5a4f06a1794080a2b8d42c24e055d2~mv2.jpg/v1/crop/x_0%2Cy_461%2Cw_1365%2Ch_948/fill/w_829%2Ch_542%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/terho-web-85.jpg",
+    imageCredit: "Ravintola Terho — official website",
+  },
+  {
     id: "mathildedal-brewery",
     category: "food",
     name: "Mathildedalin Kyläpanimo",
