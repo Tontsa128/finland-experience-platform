@@ -106,10 +106,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         images: [photoLibrary.rosalaVikingCentre, photoLibrary.rosalaVikingHall],
       }
     : null;
+  const coastalCardImages: Record<string, string> = {
+    "salo-mathildedal": photoLibrary.sarkisalo,
+    kemionsaari: photoLibrary.rosalaVikingCentre,
+    hanko: photoLibrary.hankoRegattaBeach,
+    naantali: photoLibrary.naantaliOldTown,
+    turku: photoLibrary.turkuCastle,
+    aland: photoLibrary.alandHarbour,
+  };
   const coastalHighlights = ["salo-mathildedal", "kemionsaari", "hanko", "naantali", "turku", "aland"]
-    .map((slug) => slug === "kemionsaari"
-      ? kimitoonDestination
-      : catalogDestinations.find((item) => item.slug === slug) ?? destinations.find((item) => item.slug === slug))
+    .map((slug) => {
+      const destination = slug === "kemionsaari"
+        ? kimitoonDestination
+        : catalogDestinations.find((item) => item.slug === slug) ?? destinations.find((item) => item.slug === slug);
+      return destination
+        ? { ...destination, images: [coastalCardImages[slug] || destination.images[0], ...destination.images.slice(1)] }
+        : null;
+    })
     .filter(Boolean)
     .slice(0, 6) as typeof destinations;
 
