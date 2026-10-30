@@ -180,7 +180,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-orion-57"),sourceUrl:source("villa-orion-57"),
-    image:image("c61f3c50-7392-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-orion-57"),tags:["villa"]
+    image:image("d4906620-7391-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-orion-57"),tags:["villa"]
   },
   {
     id:"villa-otava-15",category:"majoitus",
@@ -192,7 +192,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-otava-15"),sourceUrl:source("villa-otava-15"),
-    image:image("1d7eca10-7393-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-otava-15"),tags:["villa"]
+    image:image("c61f3c50-7392-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-otava-15"),tags:["villa"]
   },
   {
     id:"villa-pohjantahti-18",category:"majoitus",
@@ -204,7 +204,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-pohjantahti-18"),sourceUrl:source("villa-pohjantahti-18"),
-    image:image("0aa27440-17f1-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-pohjantahti-18"),tags:["villa"]
+    image:image("616e1b00-7392-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-pohjantahti-18"),tags:["villa"]
   },
   {
     id:"villa-sirius-56",category:"majoitus",
@@ -216,7 +216,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-sirius-56"),sourceUrl:source("villa-sirius-56"),
-    image:image("e41032b0-665a-11ed-9d9c-2ddc96e1236d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-sirius-56"),tags:["villa"]
+    image:image("1d7eca10-7393-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-sirius-56"),tags:["villa"]
   },
   {
     id:"villa-ulrika",category:"majoitus",
@@ -228,7 +228,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-ulrika"),sourceUrl:source("villa-ulrika"),
-    image:image("8ead5540-d2f8-11ed-8ed8-859d0a6307f5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-ulrika"),tags:["villa"]
+    image:image("a015e1d0-a993-11ef-9f10-5bce05865e51.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-ulrika"),tags:["villa"]
   },
   // Other accommodation providers from the official destination catalogue.
   {
@@ -253,7 +253,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
     websiteUrl:"https://soderlangvik.fi/fi/glamping/",sourceUrl:"https://soderlangvik.fi/fi/glamping/",
-    image:image("05e15580-ff43-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://soderlangvik.fi/fi/glamping/",tags:["glamping","kartano","luonto"]
+    image:image("d9b5e0e0-ff40-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://soderlangvik.fi/fi/glamping/",tags:["glamping","kartano","luonto"]
   },
   {
     id:"bengtskar-lighthouse-stay",category:"majoitus",
@@ -289,7 +289,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Sebbholmen, Kemiönsaari",en:"Sebbholmen, Kimitoön",es:"Sebbholmen, Kimitoön"},
     websiteUrl:"https://sebbholmen.fi/",sourceUrl:source("sebbholmen-ecocamp-tentsile-teltat"),
-    image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("sebbholmen-ecocamp-tentsile-teltat"),tags:["tentsile","telttamajoitus","saaristo"]
+    image:image("f4b44880-659d-11ed-9d9c-2ddc96e1236d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("sebbholmen-ecocamp-tentsile-teltat"),tags:["tentsile","telttamajoitus","saaristo"]
   },
   {
     id:"merikruunu-hotel",category:"majoitus",
@@ -301,7 +301,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
     websiteUrl:"https://www.merikruunu.fi/",sourceUrl:source("hotelli-ravintola-merikruunu"),
-    image:image("d3ae3db0-9574-11ed-95a7-e96820c1f2b7.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["hotelli","ravintola","pub","saaristo"]
+    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["hotelli","ravintola","pub","saaristo"]
   },
   {
     id:"bb-heedbacka",category:"majoitus",
@@ -325,7 +325,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
     websiteUrl:source("dals-inn-bed-breakfast"),sourceUrl:source("dals-inn-bed-breakfast"),
-    image:image("518abac0-bb41-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("dals-inn-bed-breakfast"),tags:["bed-and-breakfast","taalintehdas"]
+    image:image("50f5e9e0-ac50-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("dals-inn-bed-breakfast"),tags:["bed-and-breakfast","taalintehdas"]
   },
   {
     id:"ekniemi-holiday-village",category:"majoitus",
@@ -350,7 +350,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kolabackavägen 1a, Taalintehdas",en:"Kolabackavägen 1a, Dalsbruk",es:"Kolabackavägen 1a, Dalsbruk"},
     websiteUrl:source("holmbergs-fisk-cafe-four-c"),sourceUrl:source("holmbergs-fisk-cafe-four-c"),
-    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("holmbergs-fisk-cafe-four-c"),tags:["kahvila","kala","lähiruoka"]
+    image:image("e63be190-0326-11f0-bf08-bd872a4d1405.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("holmbergs-fisk-cafe-four-c"),tags:["kahvila","kala","lähiruoka"]
   },
   {
     id:"amos-krog",category:"ruoka",
@@ -374,7 +374,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("stalls-bar-food"),sourceUrl:source("stalls-bar-food"),
-    image:image("adffcfb0-721c-11f1-a837-25a499af5612.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("stalls-bar-food"),tags:["ravintola","baari"]
+    image:image("696862b1-31ac-11f0-981a-3b9c14904d67.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("stalls-bar-food"),tags:["ravintola","baari"]
   },
   {
     id:"farmors-cafe",category:"ruoka",
@@ -471,7 +471,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Hiittinen, Kemiönsaari",en:"Hiittinen, Kimitoön",es:"Hiittinen, Kimitoön"},
     websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("kajakkivuokraus-hiittisissa"),
-    image:image("4e7bae40-2a98-11f1-a489-cdb238875479.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kajakkivuokraus-hiittisissa"),tags:["kajakki","vuokraus","vesillä"]
+    image:image("7b0e2d00-2cfd-11f0-981a-3b9c14904d67.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kajakkivuokraus-hiittisissa"),tags:["kajakki","vuokraus","vesillä"]
   },
   {
     id:"kalliokiipeily",category:"aktiviteetit",
@@ -483,7 +483,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("kalliokiipeily-ja-laskeutuminen"),
-    image:image("27a7b290-b46d-11ed-a101-0d79684aa620.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kalliokiipeily-ja-laskeutuminen"),tags:["kiipeily","ulkoilu","opastus"]
+    image:image("269d1530-c367-11ed-8fb6-cd05a147400e.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kalliokiipeily-ja-laskeutuminen"),tags:["kiipeily","ulkoilu","opastus"]
   },
   {
     id:"nordic-gravel-kimitoon",category:"aktiviteetit",
@@ -519,7 +519,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
     websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("opastetut-melontaretket-saaristomerella-kajakkivuokraus"),
-    image:image("d2543620-1901-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("opastetut-melontaretket-saaristomerella-kajakkivuokraus"),tags:["melonta","kajakki","opastus"]
+    image:image("43d3bbb0-bdc5-11ed-a101-0d79684aa620.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("opastetut-melontaretket-saaristomerella-kajakkivuokraus"),tags:["melonta","kajakki","opastus"]
   },
   {
     id:"saariston-loistoreitti",category:"aktiviteetit",
@@ -543,7 +543,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
     websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("sauva-kalastuselamys"),
-    image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("sauva-kalastuselamys"),tags:["kalastus","merielämys"]
+    image:image("5ace8090-dbf4-11ee-b0f4-2dd7468e4ebd.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("sauva-kalastuselamys"),tags:["kalastus","merielämys"]
   },
   {
     id:"merigalleria-fabrik",category:"kulttuuri",
@@ -567,7 +567,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Björkboda, Kemiönsaari",en:"Björkboda, Kimitoön",es:"Björkboda, Kimitoön"},
     websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("kulturhus-bjorkboda-kubu"),
-    image:image("837b6d00-456d-11ee-807b-e549c99fd69d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kulturhus-bjorkboda-kubu"),tags:["kulttuuri","näyttely","tapahtuma"]
+    image:image("a65ac7f0-5f13-11f0-ae44-c12d0d4b9580.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kulturhus-bjorkboda-kubu"),tags:["kulttuuri","näyttely","tapahtuma"]
   },
   {
     id:"soderlangvik-museum",category:"kulttuuri",
