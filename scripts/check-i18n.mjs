@@ -80,6 +80,7 @@ if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
 // exactly one dedicated area guide, and every guide is generated and indexed.
 const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
 const saloAreaDataSource = await readFile(path.resolve("src/lib/salo-areas.ts"), "utf8");
+const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
 const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
 const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
 const providerArrayStart = saloDataSource.indexOf("export const saloProviders: SaloProvider[] = [");
