@@ -353,12 +353,20 @@ const content: Record<Locale, Record<KimitoonAttraction, AttractionCopy>> = {
   }
 };
 
+const placeLocations: Record<KimitoonAttraction, string> = {
+  taalintehdas: "Taalintehtaan vierasvenesatama, Dalsbruk, Kemiönsaari, Finland",
+  kasnas: "Spa Hotel Kasnäs, Kasnäs, Kemiönsaari, Finland",
+  soderlangvik: "Söderlångvikin kartano, Söderlångvik, Kemiönsaari, Finland",
+  sagalund: "Sagalund Museum, Kemiö, Kemiönsaari, Finland",
+  oro: "Örö Fortress Island, Kemiönsaari, Finland"
+};
+
 export function KimitoonAttractionDetail({ locale, place }: { locale: Locale; place: KimitoonAttraction }) {
   const t = content[locale][place];
   const labels = {
-    fi: { region: "Kemiö ja Kemiönsaari · Saaristo", back: "Takaisin Kemiönsaaren oppaaseen", direct: "Siirry palveluntarjoajalle", read: "Lue lisää", source: "Lähde ja kuvatiedot" },
-    en: { region: "Kimito and Kimitoön · Archipelago", back: "Back to the Kimitoön guide", direct: "Visit the provider", read: "Read more", source: "Source and image credits" },
-    es: { region: "Kimito y Kimitoön · Archipiélago", back: "Volver a la guía de Kimitoön", direct: "Visitar al proveedor", read: "Más información", source: "Fuente y créditos de imagen" }
+    fi: { region: "Kemiö ja Kemiönsaari · Saaristo", back: "Takaisin Kemiönsaaren oppaaseen", direct: "Siirry palveluntarjoajalle", read: "Lue lisää", source: "Lähde ja kuvatiedot", location: "Sijainti ja kartta", map: "Avaa sijainti kartalla" },
+    en: { region: "Kimito and Kimitoön · Archipelago", back: "Back to the Kimitoön guide", direct: "Visit the provider", read: "Read more", source: "Source and image credits", location: "Location and map", map: "Open location in map" },
+    es: { region: "Kimito y Kimitoön · Archipiélago", back: "Volver a la guía de Kimitoön", direct: "Visitar al proveedor", read: "Más información", source: "Fuente y créditos de imagen", location: "Ubicación y mapa", map: "Abrir ubicación en el mapa" }
   }[locale];
 
   return (
@@ -399,6 +407,16 @@ export function KimitoonAttractionDetail({ locale, place }: { locale: Locale; pl
           </ul>
           <a href={t.officialUrl} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-brand-950 px-5 py-3 text-center font-semibold text-white hover:bg-brand-800">{t.officialLabel} ↗</a>
         </aside>
+      </section>
+
+      <section className="bg-brand-50 py-10 sm:py-14">
+        <div className="container-narrow flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.18em] text-brand-700">{labels.location}</p>
+            <p className="mt-2 text-lg font-semibold text-brand-950">{placeLocations[place]}</p>
+          </div>
+          <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeLocations[place])}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-full border border-brand-300 bg-white px-5 py-3 text-sm font-semibold text-brand-950 hover:bg-brand-100">{labels.map} ↗</a>
+        </div>
       </section>
 
       <section className="border-y border-stone-200 bg-stone-50 py-8">
