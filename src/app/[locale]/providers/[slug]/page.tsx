@@ -23,7 +23,7 @@ function resolveProvider(slug: string, locale: Locale) {
       experience: { fi: "Elämys", en: "Experience", es: "Experiencia" },
       nature: { fi: "Luonto", en: "Nature", es: "Naturaleza" },
       food: { fi: "Ruoka ja juoma", en: "Food and drink", es: "Gastronomía" },
-    }[item.categories[0]][locale];
+    }[item.category][locale];
     return {
       name: item.nameByLocale?.[locale] || item.name,
       description: item.description[locale],
