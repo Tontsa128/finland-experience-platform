@@ -19,12 +19,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!locales.includes(rawLocale as Locale) || !categories.includes(rawCategory as Category)) return {};
   const locale = rawLocale as Locale;
   const category = rawCategory as Category;
+  const categoryImages: Partial<Record<Category, string>> = {
+    saaristo: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/dalsbruk-gasthamn1-1-760x507.jpg",
+    luonto: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/oro-flygbilder6-760x427.jpg",
+    kulttuuri: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2023/05/sagalund30-760x507.jpg",
+    ruoka: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg"
+  };
   return buildLocalizedMetadata({
     locale,
     title: names[locale][category],
     description: names[locale][category],
     path: "destinations/kemionsaari/" + category,
-    image: "https://cdn.johku.com/rosala/largefiles/577.jpg"
+    ...(categoryImages[category] ? { image: categoryImages[category] } : {})
   });
 }
 
