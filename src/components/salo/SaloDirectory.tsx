@@ -66,9 +66,14 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
                           <Image src={provider.image} alt={provider.nameByLocale?.[locale] || provider.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
                         </Link>
                       ) : (
-                        <div className="flex aspect-[16/10] items-center justify-center bg-brand-950 p-8 text-center text-white">
-                          <ExternalLink className="h-9 w-9 text-gold-300" />
-                        </div>
+                        <Link
+                          href={`/${locale}/providers/salo-${provider.id}`}
+                          aria-label={`${provider.nameByLocale?.[locale] || provider.name} — ${l.details}`}
+                          className="flex aspect-[16/10] flex-col items-center justify-center gap-3 bg-brand-50 p-8 text-center text-brand-900 transition-colors hover:bg-brand-100"
+                        >
+                          <ExternalLink className="h-8 w-8 text-amber-700" />
+                          <span className="text-sm font-semibold">{l.details}</span>
+                        </Link>
                       )}
                       <div className="p-6">
                         <div className="text-xs font-bold uppercase tracking-[.16em] text-brand-600">{l[group.category]}</div>
