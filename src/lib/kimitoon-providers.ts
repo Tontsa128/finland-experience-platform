@@ -59,7 +59,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Villa terminada en 2022 en Merikruunu Archipelago Village. La ficha oficial describe un entorno junto al mar, terraza y bañera de hidromasaje exterior. Confirma la capacidad y las condiciones con el anfitrión."
     },
     location:{fi:"Täysihoitolantie 6, Kemiönsaari",en:"Täysihoitolantie 6, Kimitoön",es:"Täysihoitolantie 6, Kimitoön"},
-    websiteUrl:"https://www.airbnb.fi/",sourceUrl:source("villa-cecilia-55-3"),
+    websiteUrl:source("villa-cecilia-55-3"),sourceUrl:source("villa-cecilia-55-3"),
     image:image("08f6f310-309b-11ee-9fb4-c344224e6fd0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / kohteen virallinen esittely",imageSource:source("villa-cecilia-55-3"),tags:["villa","poreallas","merikruunu"]
   },
   {
@@ -167,7 +167,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Villa incluida en el directorio oficial de destinos de Kimitoön. Consulta las características, la capacidad y la disponibilidad directamente en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-mimosa-37"),sourceUrl:source("villa-mimosa-37"),
+    websiteUrl:source("villa-mimosa-37-2"),sourceUrl:source("villa-mimosa-37"),
     image:image("7bc26960-7393-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-mimosa-37"),tags:["villa"]
   },
   {
@@ -179,7 +179,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento incluido en el directorio turístico oficial de Kimitoön. Consulta la descripción, el equipamiento y la reserva en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-orion-57"),sourceUrl:source("villa-orion-57"),
+    websiteUrl:source("villa-orion-57-2"),sourceUrl:source("villa-orion-57"),
     image:image("d4906620-7391-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-orion-57"),tags:["villa"]
   },
   {
@@ -191,7 +191,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Villa presentada en el directorio turístico oficial de Kimitoön. Consulta los detalles, el equipamiento y la disponibilidad en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-otava-15"),sourceUrl:source("villa-otava-15"),
+    websiteUrl:source("villa-otava-15-2"),sourceUrl:source("villa-otava-15"),
     image:image("c61f3c50-7392-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-otava-15"),tags:["villa"]
   },
   {
@@ -203,7 +203,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento incluido en el directorio turístico oficial de Kimitoön. Confirma los servicios, el equipamiento y la reserva en la ficha del alojamiento."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-pohjantahti-18"),sourceUrl:source("villa-pohjantahti-18"),
+    websiteUrl:source("villa-pohjantahti-18-2"),sourceUrl:source("villa-pohjantahti-18"),
     image:image("616e1b00-7392-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-pohjantahti-18"),tags:["villa"]
   },
   {
@@ -215,7 +215,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Villa incluida en el directorio turístico oficial de Kimitoön. Consulta el equipamiento, la capacidad y la disponibilidad actuales en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-sirius-56"),sourceUrl:source("villa-sirius-56"),
+    websiteUrl:source("villa-sirius-56-2"),sourceUrl:source("villa-sirius-56"),
     image:image("1d7eca10-7393-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-sirius-56"),tags:["villa"]
   },
   {
@@ -227,7 +227,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento presentado en el directorio turístico oficial de Kimitoön. Consulta la información actual y el canal de reserva en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-ulrika"),sourceUrl:source("villa-ulrika"),
+    websiteUrl:source("villa-ulrika-2"),sourceUrl:source("villa-ulrika"),
     image:image("a015e1d0-a993-11ef-9f10-5bce05865e51.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-ulrika"),tags:["villa"]
   },
   // Other accommodation providers from the official destination catalogue.
@@ -240,8 +240,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Hotel y complejo vacacional junto al mar en Kasnäs. La web turística oficial destaca el hotel, el spa, el restaurante, el puerto deportivo y la zona de caravanas."
     },
     location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
-    websiteUrl:"https://www.kasnas.com/",sourceUrl:source("spa-hotel-kasnas-2"),
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/Kasnas-gasthamn-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",tags:["hotelli","kylpylä","ravintola","satama"]
+    websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-kasnas-2/",
+    image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-760x430.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-kasnas-2/",tags:["hotelli","kylpylä","ravintola","satama"]
   },
   {
     id:"soderlangvik-glamping",category:"majoitus",
@@ -300,7 +300,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Hotel histórico del archipiélago en Dragsfjärd. La ficha oficial presenta el hotel y el restaurante; confirma habitaciones, servicios, precios y horarios directamente con el hotel."
     },
     location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
-    websiteUrl:"https://www.merikruunu.fi/",sourceUrl:source("hotelli-ravintola-merikruunu"),
+    websiteUrl:"https://www.merikruunu.fi/ravintola",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",
     image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["hotelli","ravintola","pub","saaristo"]
   },
   {
@@ -312,7 +312,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento bed and breakfast incluido en el directorio turístico oficial de Kimitoön. Confirma los tipos de habitación, el desayuno, los servicios y la reserva directamente con el anfitrión."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("b-b-hembacka"),sourceUrl:source("b-b-hembacka"),
+    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
     image:image("1cf56a30-bf5e-11ed-8fb6-cd05a147400e.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("b-b-hembacka"),tags:["bed-and-breakfast","majoitus"]
   },
   {
@@ -324,7 +324,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento bed and breakfast en la zona de Dalsbruk. Consulta la disponibilidad, los servicios y las condiciones de reserva directamente con el establecimiento."
     },
     location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
-    websiteUrl:source("dals-inn-bed-breakfast"),sourceUrl:source("dals-inn-bed-breakfast"),
+    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
     image:image("50f5e9e0-ac50-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("dals-inn-bed-breakfast"),tags:["bed-and-breakfast","taalintehdas"]
   },
   {
@@ -336,7 +336,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Complejo vacacional junto al mar cuya ficha oficial destaca la naturaleza, el alojamiento y las experiencias. Consulta las cabañas y la disponibilidad directamente con el operador."
     },
     location:{fi:"Ekniemi, Kemiönsaari",en:"Ekniemi, Kimitoön",es:"Ekniemi, Kimitoön"},
-    websiteUrl:source("ekniemen-lomakyla-luonnonrauhaa-majoitusta-ja-elamyksia-meren-aarella"),sourceUrl:source("ekniemen-lomakyla-luonnonrauhaa-majoitusta-ja-elamyksia-meren-aarella"),
+    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
     image:image("32f73db0-4a92-11f0-9fff-ed17829cd958.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("ekniemen-lomakyla-luonnonrauhaa-majoitusta-ja-elamyksia-meren-aarella"),tags:["lomakylä","merenranta","majoitus"]
   },
   // Food, cafés and local producers.
@@ -349,7 +349,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Combinación de pescadería y cafetería en la antigua oficina de correos de Dalsbruk. Consulta la selección de pescado, la oferta de cafetería y los horarios directamente con el negocio."
     },
     location:{fi:"Kolabackavägen 1a, Taalintehdas",en:"Kolabackavägen 1a, Dalsbruk",es:"Kolabackavägen 1a, Dalsbruk"},
-    websiteUrl:source("holmbergs-fisk-cafe-four-c"),sourceUrl:source("holmbergs-fisk-cafe-four-c"),
+    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
     image:image("e63be190-0326-11f0-bf08-bd872a4d1405.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("holmbergs-fisk-cafe-four-c"),tags:["kahvila","kala","lähiruoka"]
   },
   {
@@ -361,8 +361,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Restaurante de la mansión Söderlångvik. Combina la comida con una visita a la mansión, el museo, las exposiciones y los huertos; consulta el menú y los horarios actuales con el restaurante."
     },
     location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
-    websiteUrl:"https://soderlangvik.fi/",sourceUrl:source("ravintola-amos-krog"),
-    image:image("9efd56f0-f79a-11ec-bd67-a5b329105a0d.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:source("ravintola-amos-krog"),tags:["ravintola","kartano","lähiruoka"]
+    websiteUrl:"https://www.amoskrog.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/ravintola-amos-krog/",
+    image:image("750471d0-0e30-11f0-88da-256e05b1f1a0.jpeg-760x430.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/ravintola-amos-krog/",tags:["ravintola","kartano","lähiruoka"]
   },
   {
     id:"stalls-bar-food",category:"ruoka",
@@ -373,7 +373,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Establecimiento gastronómico incluido en el directorio oficial de restaurantes y cafeterías de Kimitoön. Consulta el menú, los servicios y los horarios actuales directamente con el restaurante."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("stalls-bar-food"),sourceUrl:source("stalls-bar-food"),
+    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
     image:image("696862b1-31ac-11f0-981a-3b9c14904d67.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("stalls-bar-food"),tags:["ravintola","baari"]
   },
   {
@@ -385,7 +385,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Cafetería incluida en el directorio turístico de Kimitoön. Consulta los dulces de temporada, los servicios y los horarios directamente con la cafetería antes de visitarla."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("farmors-cafe"),sourceUrl:source("farmors-cafe"),
+    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
     image:image("1dedf000-55cf-11f1-a99c-e5a59b9f35a4.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("farmors-cafe"),tags:["kahvila","leivonnaiset"]
   },
   {
@@ -410,7 +410,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
     websiteUrl:"https://www.merikruunu.fi/",sourceUrl:source("hotelli-ravintola-merikruunu"),
-    image:image("d3ae3db0-9574-11ed-95a7-e96820c1f2b7.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["ravintola","pub","hotelli"]
+    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["ravintola","pub","hotelli"]
   },
   {
     id:"db-bistro-runda-munken",category:"ruoka",
@@ -422,7 +422,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
     websiteUrl:source("db-bistro-runda-munken"),sourceUrl:source("db-bistro-runda-munken"),
-    image:image("518abac0-bb41-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("db-bistro-runda-munken"),tags:["ravintola","taalintehdas"]
+    image:image("03ed40f0-91af-11f0-8258-4d9e02b2458f.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("db-bistro-runda-munken"),tags:["ravintola","taalintehdas"]
   },
   {
     id:"oro-restaurant-12",category:"ruoka",
@@ -459,7 +459,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Bengtskär ja Kemiönsaaren ulkosaaristo",en:"Bengtskär and the outer Kimitoön archipelago",es:"Bengtskär y el archipiélago exterior de Kimitoön"},
     websiteUrl:"https://rosala.johku.com/",sourceUrl:source("haahkasafari-bengtskarin-majakalle"),
-    image:image("d3ae3db0-9574-11ed-95a7-e96820c1f2b7.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("haahkasafari-bengtskarin-majakalle"),tags:["meriretki","bengtskar","luonto"]
+    image:image("d3ae3db0-9574-11ed-95a7-e96820c1f2b7.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",tags:["meriretki","bengtskar","luonto"]
   },
   {
     id:"kajakkivuokraus-hiittinen",category:"aktiviteetit",
@@ -579,7 +579,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
     websiteUrl:"https://soderlangvik.fi/",sourceUrl:source("soderlangvikin-museo"),
-    image:image("837b6d00-456d-11ee-807b-e549c99fd69d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:source("soderlangvikin-museo"),tags:["museo","taide","kartano"]
+    image:image("05e15580-ff43-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:source("soderlangvikin-museo"),tags:["museo","taide","kartano"]
   },
   {
     id:"glassgaraget",category:"ostokset",
