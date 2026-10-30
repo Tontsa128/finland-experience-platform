@@ -10,6 +10,19 @@ Primary sources:
 - Visit Salo, *Salo matkailuesite 2026*, pages 40–43: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
 - Official local-food map: https://salofood.fi/
 
+Provider-level verification sources used for the latest contact and offer checks:
+- Wanhantuvan Ankkala — https://www.wanhantuvanankkala.fi/yhteystiedot/
+- Puutarha Siimes — https://www.puutarhasiimes.fi/
+- Rannikon Puutarha — https://rannikonpuutarha.fi/ota-yhteytta/
+- Vaanelan puutarha — https://vaanela.fi/yhteystiedot/
+- Veljesten kurkut — https://veljestenkurkut.fi/
+- Wiberg's — https://wibergs.fi/fi
+- Chill Out Fishing — https://chilloutfishing.fi/en/fishing-trips/
+- Meriniityn Lihakauppa — https://kohteet.visitsalo.fi/meriniityn-lihakauppa/
+- Kivihovi Herkku & Lahja — https://kivihovi.fi/palvelut
+- Lepola Shop / Marjajaloste Meritalo Oy — https://meritalo.com/tilamyymala
+
+
 ## Current profile matching
 
 | Official map entry | Canonical profile | Status / follow-up |
