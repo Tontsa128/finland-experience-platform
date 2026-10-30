@@ -12,6 +12,7 @@ export type SaloProvider = {
   priceByLocale?: Partial<Record<Locale, string>>;
   image?: string;
   imageCredit?: string;
+  imageSource?: string;
   officialGuide?: boolean;
 };
 
@@ -175,6 +176,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://chilloutfishing.fi/",
     image: "https://cdn-datahub.visitfinland.com/images/f398fd30-e7a3-11ef-a1a5-c5de292a73ba.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub — Chill Out Fishing boat trip listing",
+    imageSource: "https://kohteet.visitsalo.fi/en/chill-grill-boat-trip-excursion/",
     price: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta",
     priceByLocale: { fi: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta", en: "Price depends on the trip and group size — check with the provider", es: "El precio depende de la excursión y del tamaño del grupo; consúltalo con el proveedor" },
   },
@@ -632,6 +634,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.lomalaperla.com/moumlkki-3.html",
     image: "https://www.lomalaperla.com/uploads/1/0/3/7/103702596/gpjpucpjqtqjss1wxug8dw_1_orig.jpg",
     imageCredit: "Lomalaperla — Villa Viktoria official website",
+    imageSource: "https://www.lomalaperla.com/moumlkki-3.html",
   },
   {
     id: "villa-frans",
@@ -646,6 +649,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.lomalaperla.com/moumlkki-4.html",
     image: "https://www.lomalaperla.com/uploads/1/0/3/7/103702596/editor/img-4961-2.jpg?1624728709=",
     imageCredit: "Lomalaperla — Villa Frans official website",
+    imageSource: "https://www.lomalaperla.com/moumlkki-4.html",
   },
   {
     id: "teijon-kammari",
@@ -659,6 +663,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/",
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/panorama-1152x768.jpg",
     imageCredit: "Salon Kohteet / Visit Salo — Teijon Kammari official listing",
+    imageSource: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/",
   },
   {
     id: "kruuvan-mokit",
@@ -673,6 +678,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.kruuvanmokit.fi",
     image: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-maisema-01-3-819x1024.webp",
     imageCredit: "Kruuvan mökit — official provider website",
+    imageSource: "https://www.kruuvanmokit.fi/",
   },
   {
     id: "meri-veikko",
@@ -686,6 +692,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.lonnviken.com/fi/meri-veikko",
     image: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c846690215630ca95d_20220826_150455%20re%203.jpg",
     imageCredit: "Saaristotila Lönnviken — Meri-Veikko official website",
+    imageSource: "https://www.lonnviken.com/fi/meri-veikko",
   },
 
 ];
