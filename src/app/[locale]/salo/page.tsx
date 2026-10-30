@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Building2, Camera, Compass, Flame, Map, Mountain, Waves } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, Building2, Camera, Compass, Flame, Info, Map, Mountain, ShoppingBag, TreePine, Utensils, Waves } from "lucide-react";
 import type { Locale } from "@/types";
 import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import { saloProviders } from "@/lib/salo";
 import { destinations as fallbackDestinations } from "@/lib/data";
 
 const copy = {
@@ -160,6 +161,49 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
             const Icon = route.icon;
             return <a key={route.title.en} href={route.url} target="_blank" rel="noopener noreferrer" className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card"><Icon className="h-7 w-7 text-brand-700" /><h3 className="mt-5 font-display text-2xl font-bold text-brand-950">{route.title[locale]}</h3><p className="mt-3 text-sm leading-7 text-slate-600">{route.text[locale]}</p><span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{locale === "fi" ? "Katso reitti" : locale === "es" ? "Ver la ruta" : "View route"}<ArrowUpRight className="h-3.5 w-3.5" /></span></a>;
           })}
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-24">
+        <div className="container-narrow">
+          <div className="mb-9 max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Tutustu alueen tarjontaan" : locale === "es" ? "Explora la región" : "Explore the region"}</p>
+            <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Löydä Salon oikea puoli" : locale === "es" ? "Descubre todo lo que ofrece Salo" : "Find your side of Salo"}</h2>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{locale === "fi" ? "Valitse kiinnostava teema ja tutustu sen alla oleviin todellisiin paikallisiin palveluihin. Jokaiselta palvelukortilta pääset palveluntarjoajan omalle sivulle." : locale === "es" ? "Elige un tema y descubre los servicios locales reales que reúne. Desde cada ficha puedes continuar directamente a la web del proveedor." : "Choose a theme to explore real local services. Every provider card links directly to the provider's own website."}</p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { slug: "majoitus", category: "stay", icon: BedDouble, title: { fi: "Majoitus", en: "Accommodation", es: "Alojamiento" }, description: { fi: "Hotellit, mökit ja saariston yöpymispaikat.", en: "Hotels, cottages and island stays.", es: "Hoteles, cabañas y alojamientos en las islas." } },
+              { slug: "ruoka", category: "food", icon: Utensils, title: { fi: "Ruoka ja kahvilat", en: "Food and cafés", es: "Gastronomía y cafeterías" }, description: { fi: "Ravintolat, kahvilat ja paikalliset maut.", en: "Restaurants, cafés and local flavours.", es: "Restaurantes, cafeterías y sabores locales." } },
+              { slug: "elamykset", category: "experience", icon: Compass, title: { fi: "Aktiviteetit ja elämykset", en: "Activities and experiences", es: "Actividades y experiencias" }, description: { fi: "Opastukset, veneily, kalastus ja tekeminen.", en: "Guided trips, boating, fishing and activities.", es: "Visitas guiadas, navegación, pesca y actividades." } },
+              { slug: "luonto", category: "nature", icon: TreePine, title: { fi: "Luonto ja retkeily", en: "Nature and outdoors", es: "Naturaleza y aire libre" }, description: { fi: "Kansallispuisto, rannat ja luontokohteet.", en: "National park, beaches and outdoor places.", es: "Parque nacional, playas y espacios naturales." } },
+              { slug: "ostokset", category: "shopping", icon: ShoppingBag, title: { fi: "Ostokset ja käsityö", en: "Shopping and crafts", es: "Compras y artesanía" }, description: { fi: "Paikalliset puodit, design ja käsityö.", en: "Local shops, design and handmade goods.", es: "Tiendas locales, diseño y productos artesanales." } },
+              { slug: "matkailuinfo", category: "tourism", icon: Info, title: { fi: "Matkailuinfo ja oppaat", en: "Tourism information and guides", es: "Información turística y guías" }, description: { fi: "Viralliset oppaat ja paikallinen matkailutieto.", en: "Official guides and local visitor information.", es: "Guías oficiales e información local para visitantes." } },
+            ].map((item) => {
+              const Icon = item.icon;
+              const image = saloProviders.find((provider) => provider.category === item.category && provider.image)?.image || photoLibrary.saloVeturitalli;
+              return (
+                <Link key={item.slug} href={`/${locale}/salo/${item.slug}`} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
+                  <div className="relative aspect-[16/9] overflow-hidden bg-brand-100">
+                    <Image src={image} alt={item.title[locale]} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
+                    <Icon className="absolute bottom-4 left-4 h-8 w-8 text-white drop-shadow" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-display text-2xl font-bold text-brand-950">{item.title[locale]}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">{item.description[locale]}</p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Tutustu" : locale === "es" ? "Descubrir" : "Explore"} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="mt-7 flex flex-wrap gap-5 border-t border-slate-200 pt-6 text-sm font-semibold">
+            <a href="https://visitsalo.fi/kulttuuri-ja-nahtavyydet/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">{locale === "fi" ? "Kulttuuri ja nähtävyydet" : locale === "es" ? "Cultura y lugares de interés" : "Culture and sights"} <ArrowUpRight className="h-4 w-4" /></a>
+            <a href="https://visitsalo.fi/tapahtumat/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">{locale === "fi" ? "Tapahtumat" : locale === "es" ? "Eventos" : "Events"} <ArrowUpRight className="h-4 w-4" /></a>
+            <Link href={`/${locale}/destinations/teijon-ruukkikyla`} className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">{locale === "fi" ? "Ruukkikylät: Teijo" : locale === "es" ? "Pueblos siderúrgicos: Teijo" : "Ironworks villages: Teijo"} <ArrowUpRight className="h-4 w-4" /></Link>
+            <Link href={`/${locale}/mathildedal`} className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">Mathildedal <ArrowUpRight className="h-4 w-4" /></Link>
+          </div>
         </div>
       </section>
 
