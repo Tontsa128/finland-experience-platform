@@ -61,6 +61,7 @@ function resolveProvider(slug: string, locale: Locale) {
   if (slug.startsWith("kimitoon-")) {
     const item = getKimitoonProvider(slug.slice("kimitoon-".length));
     if (!item) return null;
+    const categoryKey: KimitoonCategory = item.categories[0];
     const category = {
       majoitus: { fi: "Majoitus", en: "Accommodation", es: "Alojamiento" },
       ruoka: { fi: "Ruoka ja juoma", en: "Food and drink", es: "Gastronomía" },
@@ -75,7 +76,7 @@ function resolveProvider(slug: string, locale: Locale) {
       tapahtumapaikat: { fi: "Tapahtumapaikat", en: "Event venues", es: "Espacios para eventos" },
       "muut-palvelut": { fi: "Matkailupalvelut", en: "Visitor services", es: "Servicios para visitantes" },
       tapahtumat: { fi: "Tapahtumat", en: "Events", es: "Eventos" },
-    }[item.category][locale];
+    }[categoryKey][locale];
     return {
       name: item.name[locale],
       description: item.description[locale],
