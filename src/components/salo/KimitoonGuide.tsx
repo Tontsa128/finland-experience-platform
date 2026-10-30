@@ -157,7 +157,7 @@ export function KimitoonGuide({ locale, category }: { locale: Locale; category?:
           </div>
         </section>
       ) : null}
-      {!category || category === "ruoka" || category === "majoitus" ? <KansakouluSpotlight locale={locale} /> : null}
+      {!category ? <KansakouluSpotlight locale={locale} /> : null}
       <section className="container-narrow py-14 sm:py-20">
         {!category ? <div className="mb-8"><p className="text-xs font-bold uppercase tracking-[.2em] text-brand-700">{t.explore}</p><h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{t.categories}</h2></div> : null}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
