@@ -25,6 +25,10 @@ export function getSaloProviderCategories(provider: Pick<SaloProvider, "category
   return Array.from(new Set([provider.category, ...(provider.directoryCategories || [])]));
 }
 
+export function getSaloProviderImage(provider: Pick<SaloProvider, "image" | "imageRightsStatus">): string | undefined {
+  return provider.imageRightsStatus === "pending" ? undefined : provider.image;
+}
+
 export type SaloEvent = {
   id: string;
   start: string;
