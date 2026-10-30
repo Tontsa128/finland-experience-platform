@@ -1904,6 +1904,163 @@ export const kimitoonProviders: KimitoonProvider[] = [
     imageCredit:"Lillbacka brygga / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/lillbacka-brygga/",tags:["vieraslaituri","sauna","ranta","baari"]
   }
 
+  {
+    id:"rosala-taxi",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Rosala Taxi",en:"Rosala Taxi",es:"Rosala Taxi"},
+    description:{
+      fi:"Rosalan alueen taksi- ja henkilökuljetuspalvelu Kemiönsaaren palveluoppaan mukaan. Varmista noutopaikka, aikataulu ja kuljetuksen saatavuus suoraan kuljettajalta.",
+      en:"Taxi and passenger transport in the Rosala area, listed in the Kimitoön business guide. Confirm pick-up point, schedule and availability directly with the driver.",
+      es:"Servicio de taxi y transporte de pasajeros en la zona de Rosala, incluido en la guía empresarial de Kimitoön. Confirma punto de recogida, horario y disponibilidad directamente con el conductor."
+    },
+    location:{fi:"Rosala, Kemiönsaari",en:"Rosala, Kimitoön",es:"Rosala, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/rosala-taxi/",sourceUrl:"https://ksg.fi/sv/foretag/rosala-taxi/",
+    imageCredit:"Rosala Taxi / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/rosala-taxi/",tags:["taksi","henkilökuljetus"]
+  },
+  {
+    id:"taxi-hellsberg",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Taxi Hellsberg Ab Oy",en:"Taxi Hellsberg Ab Oy",es:"Taxi Hellsberg Ab Oy"},
+    description:{
+      fi:"Taksi- ja henkilökuljetuspalvelu Kemiönsaarella. KSG:n mukaan käytössä on 1+4-paikkainen taksi. Varmista kuljetuksen saatavuus ja mahdollinen esteettömyys suoraan kuljettajalta.",
+      en:"Taxi and passenger transport on Kimitoön. KSG lists a 1+4-seat taxi. Confirm availability and any accessibility requirements directly with the driver.",
+      es:"Servicio de taxi y transporte de pasajeros en Kimitoön. KSG indica un taxi de 1+4 plazas. Consulta disponibilidad y necesidades de accesibilidad directamente con el conductor."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/taxi-hellsberg-ab-oy/",sourceUrl:"https://ksg.fi/sv/foretag/taxi-hellsberg-ab-oy/",
+    imageCredit:"Taxi Hellsberg / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/taxi-hellsberg-ab-oy/",tags:["taksi","henkilökuljetus"]
+  },
+  {
+    id:"taxi-jan-wallenius",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Taxi Jan Wallenius",en:"Taxi Jan Wallenius",es:"Taxi Jan Wallenius"},
+    description:{
+      fi:"Paikallinen taksi- ja henkilökuljetuspalvelu Kemiönsaaren palveluoppaan mukaan. Varaa matka ja varmista auton sopivuus omiin tarpeisiin suoraan kuljettajalta.",
+      en:"A local taxi and passenger transport service listed in the Kimitoön business guide. Book your journey and confirm vehicle suitability directly with the driver.",
+      es:"Servicio local de taxi y transporte de pasajeros incluido en la guía empresarial de Kimitoön. Reserva el trayecto y confirma el vehículo directamente con el conductor."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/taxi-jan-wallenius/",sourceUrl:"https://ksg.fi/sv/foretag/taxi-jan-wallenius/",
+    imageCredit:"Taxi Jan Wallenius / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/taxi-jan-wallenius/",tags:["taksi","henkilökuljetus"]
+  },
+  {
+    id:"taxi-kim-gustafsson",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Taxi Kim Gustafsson",en:"Taxi Kim Gustafsson",es:"Taxi Kim Gustafsson"},
+    description:{
+      fi:"Paikallinen taksi- ja henkilökuljetuspalvelu Kemiönsaarella. Tarkista matkan saatavuus, noutopaikka ja aikataulu suoraan kuljettajalta.",
+      en:"A local taxi and passenger transport service on Kimitoön. Confirm journey availability, pick-up point and schedule directly with the driver.",
+      es:"Servicio local de taxi y transporte de pasajeros en Kimitoön. Consulta disponibilidad, punto de recogida y horario directamente con el conductor."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/taxi-kim-gustafsson/",sourceUrl:"https://ksg.fi/sv/foretag/taxi-kim-gustafsson/",
+    imageCredit:"Taxi Kim Gustafsson / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/taxi-kim-gustafsson/",tags:["taksi","henkilökuljetus"]
+  },
+  {
+    id:"taxi-sahlgren",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Taxi Sahlgren",en:"Taxi Sahlgren",es:"Taxi Sahlgren"},
+    description:{
+      fi:"Paikallinen taksi- ja henkilökuljetuspalvelu Kemiönsaaren palveluoppaan mukaan. Varmista kuljetuksen saatavuus ja varaus suoraan kuljettajalta.",
+      en:"A local taxi and passenger transport service listed in the Kimitoön business guide. Confirm availability and booking directly with the driver.",
+      es:"Servicio local de taxi y transporte de pasajeros incluido en la guía empresarial de Kimitoön. Consulta disponibilidad y reserva directamente con el conductor."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/taxi-sahlgren/",sourceUrl:"https://ksg.fi/sv/foretag/taxi-sahlgren/",
+    imageCredit:"Taxi Sahlgren / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/taxi-sahlgren/",tags:["taksi","henkilökuljetus"]
+  },
+  {
+    id:"bruksteatern",categories:["kulttuuri","tapahtumat","tapahtumapaikat"],
+    name:{fi:"Bruksteatern r.f.",en:"Bruksteatern Theatre",es:"Teatro Bruksteatern"},
+    description:{
+      fi:"Taalintehtaalla toimiva harrastajateatteriryhmä Kemiönsaarella. Esitysten ajankohdat, ohjelmisto, liput ja mahdolliset vierailuesitykset julkaistaan teatterin omissa kanavissa.",
+      en:"An amateur theatre group based in Dalsbruk on Kimitoön. Performance dates, programme, tickets and possible guest performances are published through the theatre's own channels.",
+      es:"Grupo de teatro aficionado con sede en Dalsbruk, en Kimitoön. Las fechas, el programa, las entradas y posibles actuaciones se publican en los canales del teatro."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/bruksteatern-r-f/",sourceUrl:"https://ksg.fi/sv/foretag/bruksteatern-r-f/",
+    imageCredit:"Bruksteatern / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/bruksteatern-r-f/",tags:["harrastajateatteri","esitykset","kulttuuri"]
+  },
+  {
+    id:"brukshallen",kind:"place",categories:["aktiviteetit","hyvinvointi","tapahtumapaikat"],
+    name:{fi:"Brukshallen – liikunta- ja kuntosali",en:"Brukshallen – sports and fitness hall",es:"Brukshallen – pabellón deportivo y gimnasio"},
+    description:{
+      fi:"Taalintehtaan kuntosali ja liikuntahalli Kemiönsaaren palveluoppaan urheilu- ja vapaa-aikakohteissa. Tarkista käyttövuorot, kertamaksut, kulku ja mahdolliset yleisövuorot suoraan ylläpitäjältä.",
+      en:"A gym and sports hall in Dalsbruk, listed in the Kimitoön business guide's sports and leisure category. Confirm public access, opening slots, fees and facilities directly with the operator.",
+      es:"Gimnasio y pabellón deportivo en Dalsbruk, incluido en la categoría de deporte y ocio de la guía empresarial de Kimitoön. Consulta acceso público, horarios, tarifas e instalaciones directamente con el responsable."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/brukshallen/",sourceUrl:"https://ksg.fi/sv/foretag/brukshallen/",
+    imageCredit:"Brukshallen / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/brukshallen/",tags:["kuntosali","liikuntahalli"]
+  },
+  {
+    id:"bjorkboda-dressage",categories:["aktiviteetit","luonto","muut-palvelut"],
+    name:{fi:"Björkboda Dressage rf",en:"Björkboda Dressage Association",es:"Asociación Björkboda Dressage"},
+    description:{
+      fi:"Björkbodassa toimiva hevos- ja ratsastustoiminnan yhdistys. Kemiönsaaren palveluopas listaa yhdistyksen eläinpalveluihin ja urheilu- ja vapaa-ajan toimintaan. Kysy suoraan yhdistykseltä vierailuista, tunneista ja yleisötapahtumista.",
+      en:"An equestrian association based in Björkboda. The Kimitoön business guide lists it under animal services and sports and leisure. Contact the association about visits, lessons and public events.",
+      es:"Asociación ecuestre con sede en Björkboda. La guía empresarial de Kimitoön la incluye en servicios de animales y deporte y ocio. Consulta visitas, clases y eventos públicos directamente con la asociación."
+    },
+    location:{fi:"Björkboda, Kemiönsaari",en:"Björkboda, Kimitoön",es:"Björkboda, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/bjorkboda-dressage-rf/",sourceUrl:"https://ksg.fi/sv/foretag/bjorkboda-dressage-rf/",
+    imageCredit:"Björkboda Dressage / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/bjorkboda-dressage-rf/",tags:["hevoset","ratsastus","yhdistys"]
+  },
+  {
+    id:"kimitoons-ryttare",categories:["aktiviteetit","luonto","muut-palvelut"],
+    name:{fi:"Kimitoöns Ryttare r.f.",en:"Kimitoöns Ryttare Riding Association",es:"Asociación ecuestre Kimitoöns Ryttare"},
+    description:{
+      fi:"Kemiönsaaren ratsastus- ja hevosurheiluyhdistys. Palveluopas listaa yhdistyksen urheilu- ja vapaa-aikatoimijoihin. Tarkista mahdolliset yleisötapahtumat, ratsastustoiminta ja vierailumahdollisuudet suoraan yhdistykseltä.",
+      en:"An equestrian and horse-sports association on Kimitoön. The business guide lists it among sports and leisure organisations. Confirm public events, riding activities and visitor opportunities directly with the association.",
+      es:"Asociación ecuestre y de deporte hípico de Kimitoön. La guía empresarial la incluye entre las organizaciones deportivas y de ocio. Consulta eventos públicos, actividades ecuestres y visitas directamente con la asociación."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/kimitoons-ryttare-r-f/",sourceUrl:"https://ksg.fi/sv/foretag/kimitoons-ryttare-r-f/",
+    imageCredit:"Kimitoöns Ryttare / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/kimitoons-ryttare-r-f/",tags:["ratsastus","hevosurheilu","yhdistys"]
+  },
+  {
+    id:"kimitoons-golfare",categories:["aktiviteetit","tapahtumat","muut-palvelut"],
+    name:{fi:"Kimitoöns Golfare rf",en:"Kimitoön Golf Association",es:"Asociación de Golf de Kimitoön"},
+    description:{
+      fi:"Kemiönsaaren golfyhdistys, jonka kotikenttiin KSG:n mukaan kuuluvat Bjärkas Golf ja Meri-Teijo Golf. Yhdistyksen kautta voi tarkistaa paikallisen golfharrastuksen, tapahtumien ja kurssien ajankohtaiset tiedot.",
+      en:"Kimitoön's golf association. KSG lists Bjärkas Golf and Meri-Teijo Golf as its home courses. Check current local golf activities, events and courses through the association.",
+      es:"Asociación de golf de Kimitoön. KSG indica que sus campos de referencia son Bjärkas Golf y Meri-Teijo Golf. Consulta actividades, eventos y cursos actuales a través de la asociación."
+    },
+    location:{fi:"Kemiönsaari ja Teijo",en:"Kimitoön and Teijo",es:"Kimitoön y Teijo"},
+    websiteUrl:"https://ksg.fi/sv/foretag/kimitoons-golfare-rf/",sourceUrl:"https://ksg.fi/sv/foretag/kimitoons-golfare-rf/",
+    imageCredit:"Kimitoöns Golfare / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/kimitoons-golfare-rf/",tags:["golf","kurssit","tapahtumat"]
+  },
+  {
+    id:"kimitoon-music-festival",categories:["tapahtumat","kulttuuri","tapahtumapaikat"],
+    name:{fi:"Föreningen för Kimitoöns Musikfestspel rf",en:"Kimitoön Music Festival Association",es:"Asociación del Festival de Música de Kimitoön"},
+    description:{
+      fi:"Kemiönsaaren kamarimusiikkifestivaalin ja musiikki- ja tanssileirien järjestäjä. Ajankohtainen ohjelma, konserttipaikat, liput ja leirien ilmoittautuminen julkaistaan järjestäjän omissa kanavissa.",
+      en:"The organiser of Kimitoön's chamber music festival and music and dance camps. Current programmes, concert venues, tickets and camp registration are published through the organiser's own channels.",
+      es:"Organizador del festival de música de cámara de Kimitoön y de campamentos de música y danza. Los programas, salas, entradas e inscripciones se publican en los canales oficiales del organizador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/foreningen-for-kimitoons-musikfestspel-rf/",sourceUrl:"https://ksg.fi/sv/foretag/foreningen-for-kimitoons-musikfestspel-rf/",
+    imageCredit:"Föreningen för Kimitoöns Musikfestspel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/foreningen-for-kimitoons-musikfestspel-rf/",tags:["kamarimusiikki","festivaali","musiikkileiri","tanssileiri"]
+  },
+  {
+    id:"baltic-gospel-singers",categories:["tapahtumat","kulttuuri"],
+    name:{fi:"Baltic Gospel Singers r.f.",en:"Baltic Gospel Singers",es:"Baltic Gospel Singers"},
+    description:{
+      fi:"Kemiönsaarella toimiva gospelkuoro ja kulttuuriyhdistys. Yhdistyksen esiintymiset ja konsertit ovat tapahtumakalenterin kautta seurattavaa kulttuuritarjontaa; tarkista ajankohtaiset esiintymiset yhdistyksen omista kanavista.",
+      en:"A gospel choir and cultural association on Kimitoön. Performances and concerts form part of the local cultural calendar; check upcoming appearances through the association's own channels.",
+      es:"Coro gospel y asociación cultural de Kimitoön. Sus actuaciones y conciertos forman parte de la oferta cultural local; consulta próximas actuaciones en los canales de la asociación."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/baltic-gospel-singers-r-f/",sourceUrl:"https://ksg.fi/sv/foretag/baltic-gospel-singers-r-f/",
+    imageCredit:"Baltic Gospel Singers / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/baltic-gospel-singers-r-f/",tags:["gospel","kuoro","konsertit"]
+  },
+  {
+    id:"salon-oppaat-kimitoon",categories:["aktiviteetit","kulttuuri","muut-palvelut"],
+    name:{fi:"Salon Oppaat ry – Kemiönsaari",en:"Salo Guides – Kimitoön",es:"Guías de Salo – Kimitoön"},
+    description:{
+      fi:"Suomen Opasliiton auktorisoituja matkailuoppaita Kemiönsaarella ja Salossa. Kysy opastettuja kierroksia, kielivaihtoehtoja ja ryhmille sopivia ohjelmia suoraan yhdistykseltä.",
+      en:"Authorised Finnish Guide Association guides in Kimitoön and Salo. Ask the association about guided tours, available languages and programmes for groups.",
+      es:"Guías autorizados de la Asociación Finlandesa de Guías en Kimitoön y Salo. Consulta visitas guiadas, idiomas y programas para grupos directamente con la asociación."
+    },
+    location:{fi:"Kemiönsaari ja Salo",en:"Kimitoön and Salo",es:"Kimitoön y Salo"},
+    websiteUrl:"https://ksg.fi/sv/foretag/salon-oppaat-ry-kemionsaari-salo-guider-kimitoon/",sourceUrl:"https://ksg.fi/sv/foretag/salon-oppaat-ry-kemionsaari-salo-guider-kimitoon/",
+    imageCredit:"Salon Oppaat ry / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/salon-oppaat-ry-kemionsaari-salo-guider-kimitoon/",tags:["auktorisoidut oppaat","opastetut kierrokset","Salo","Kemiönsaari"]
+  }
+
 ];
 
 export function getKimitoonProviders(category?: KimitoonCategory) {
