@@ -88,6 +88,11 @@ const providerArrayEnd = saloDataSource.indexOf("\n];", providerArrayStart);
 const providerIds = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
   ? [...saloDataSource.slice(providerArrayStart, providerArrayEnd).matchAll(/\bid:\s*"([^"]+)"/g)].map((match) => match[1])
   : [];
+const providerArraySource = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
+  ? saloDataSource.slice(providerArrayStart, providerArrayEnd)
+  : "";
+const providerImageCount = [...providerArraySource.matchAll(/^\\s+image:\\s*/gm)].length;
+const providerCreditCount = [...providerArraySource.matchAll(/^\\s+imageCredit:\\s*/gm)].length;
 const areaMapStart = saloAreaDataSource.indexOf("export const areaProviderIds:");
 const areaMapEnd = saloAreaDataSource.indexOf("\n};", areaMapStart);
 const areaMap = areaMapStart >= 0 && areaMapEnd > areaMapStart ? saloAreaDataSource.slice(areaMapStart, areaMapEnd) : "";
@@ -108,10 +113,12 @@ const photoSourceLabelIsLocalized = [
   'photoSource: "Fuente de la foto"',
   'photoSource: "Photo source"',
 ].every((label) => saloDirectorySource.includes(label));
-if (providerIds.length !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
+if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
+    providerImageCount,
+    providerCreditCount,
     duplicateAreaIds,
     missingAreaIds,
     unknownAreaIds,
