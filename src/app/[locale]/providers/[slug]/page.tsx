@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { saloProviders } from "@/lib/salo";
+import { getSaloProviderImage, saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { photoLibrary } from "@/lib/photo-library";
 import { getKimitoonProvider, getKimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
@@ -35,7 +35,7 @@ function resolveProvider(slug: string, locale: Locale) {
       name: item.nameByLocale?.[locale] || item.name,
       description: item.description[locale],
       category,
-      image: item.imageRightsStatus === "pending" ? undefined : item.image,
+      image: getSaloProviderImage(item),
       imageCredit: item.imageCredit,
       location: item.location || "Salo, Varsinais-Suomi",
       contact: item.contact,
@@ -59,7 +59,7 @@ function resolveProvider(slug: string, locale: Locale) {
       name: item.nameByLocale?.[locale] || item.name,
       description: item.description[locale],
       category,
-      image: item.imageRightsStatus === "pending" ? undefined : item.image,
+      image: getSaloProviderImage(item),
       imageCredit: item.imageCredit,
       location: item.locationByLocale?.[locale] || item.location,
       website: item.url,
@@ -91,7 +91,7 @@ function resolveProvider(slug: string, locale: Locale) {
       name: item.name[locale],
       description: item.description[locale],
       category,
-      image: item.imageRightsStatus === "pending" ? undefined : item.image,
+      image: getSaloProviderImage(item),
       imageCredit: item.imageCredit,
       imageSource: item.imageSource,
       contact: item.contact,
