@@ -419,13 +419,14 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "vuohensaari-camping",
+    directoryCategories: ["food","experience","events","archipelago","wellbeing"],
     category: "stay",
     name: "Vuohensaaren leirintäalue",
     nameByLocale: { fi: "Vuohensaaren leirintäalue", en: "Vuohensaari Camping", es: "Camping Vuohensaari" },
     description: {
-      fi: "Meren ympäröimä majoituskohde lähellä Salon keskustaa. Leirintämökkejä ja -huoneita, sauna, uimaranta sekä kesäkauden ravintola ja aktiviteetteja.",
-      es: "Alojamiento junto al mar cerca del centro de Salo, con cabañas y habitaciones, sauna, playa y actividades de verano.",
-      en: "Seaside accommodation close to Salo centre, with camping cabins and rooms, sauna, beach and summer activities.",
+      fi: "Pieni suojaisa saari reilun neljän kilometrin päässä Salon keskustasta. Majoitusvaihtoehtoihin kuuluvat matkailuauto- ja vaunupaikat, telttapaikat, leirintämökit ja huoneet. Saarella on huoltorakennus, tilauksesta lämpiävä puusauna, uimaranta, luontopolku, leikkipaikka, minigolf, SUP- ja kanoottimahdollisuuksia sekä kesäteatteria ja tansseja.",
+      es: "Pequeña isla protegida a poco más de cuatro kilómetros del centro de Salo. Ofrece parcelas para autocaravanas, caravanas y tiendas, además de cabañas y habitaciones. Cuenta con edificio de servicios, sauna de leña bajo reserva, playa, sendero natural, parque infantil, minigolf, actividades SUP y piragüismo, además de teatro y bailes de verano.",
+      en: "A small sheltered island just over four kilometres from central Salo. Accommodation includes motorhome, caravan and tent pitches, camping cabins and rooms. Facilities include a service building, wood-fired sauna on request, beach, nature trail, playground, mini golf, SUP and canoeing, plus summer theatre and dances.",
     },
     url: "https://www.visitvuohensaari.fi",
     image: "https://cdn-datahub.visitfinland.com/images/0eed73e0-0120-11f1-ad78-29bd5b45e175.jpeg?s=1280",
@@ -500,14 +501,15 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "katiskanmaeki",
+    directoryCategories: ["food","events","wellbeing","experience","shopping"],
     category: "stay",
     name: "Katiskanmäki",
     description: {
-      fi: "Rauhallisia rantamökkejä järven ja pienen metsälammen äärellä, lisäksi aittamajoitusta, leirintää ja savusauna.",
-      es: "Cabañas junto al agua, alojamiento en granero, camping y sauna de humo en un entorno rural de Särkisalo.",
-      en: "Waterfront cottages, barn accommodation, camping and a smoke sauna in a quiet rural setting near Särkisalo.",
+      fi: "Salon Ylönkylässä sijaitseva matkailukohde kokoaa yhteen rantamökit, aittamajoituksen, caravan- ja leirintäalueen, savusaunan, juhlatila Firapelin sekä ympäri vuorokauden avoinna olevan itsepalveluperiaatteella toimivan lähiruokakioski Pikantin.",
+      es: "Destino rural en Ylönkylä, Salo, con cabañas junto al agua, alojamiento en granero, zona para caravanas y camping, sauna de humo, el espacio para eventos Firapeli y el quiosco de productos locales Pikantti, abierto las 24 horas en autoservicio.",
+      en: "A rural destination in Ylönkylä, Salo, bringing together waterfront cottages, barn accommodation, a caravan and camping area, smoke sauna, Firapeli event venue and the Pikantti local-food kiosk, open 24 hours with self-service.",
     },
-    url: "https://www.katiskanmaki.com",
+    url: "https://katiskanmaki.fi/",
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/07/IMG_2490-1024x768.jpg",
     imageCredit: "Salon Kohteet — Katiskanmäen caravan-alue",
   },
@@ -526,6 +528,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "meri-ruukin-lomakyla",
+    directoryCategories: ["wellbeing","archipelago","experience"],
     category: "stay",
     name: "Meri-Ruukin lomakylä",
     description: {
@@ -960,21 +963,7 @@ export const saloProviders: SaloProvider[] = [
   },
 
 
-  {
-    id: "vuohensaaren-leirintaalue",
-    category: "stay",
-    directoryCategories: ["food", "experience", "events", "archipelago", "wellbeing"],
-    name: "Vuohensaaren leirintäalue",
-    nameByLocale: { fi: "Vuohensaaren leirintäalue", en: "Vuohensaari Camping", es: "Camping Vuohensaari" },
-    description: {
-      fi: "Suojaisalla saarella Salon edustalla sijaitseva leirintäalue tarjoaa paikkoja matkailuautoille, -vaunuille ja teltoille sekä mökkejä ja huoneita. Alueella on kahvila-ravintola, puusauna, uimaranta, luontopolku, minigolf ja SUP- sekä kanoottimahdollisuuksia. Kesäkaudella saarella järjestetään myös tapahtumia ja kesäteatteria.",
-      es: "Camping en una isla protegida frente a Salo, con parcelas para autocaravanas, caravanas y tiendas, además de cabañas y habitaciones. Cuenta con cafetería-restaurante, sauna de leña, playa, sendero natural, minigolf y actividades SUP y piragüismo. En verano también se organizan eventos y teatro.",
-      en: "A sheltered island campsite just off Salo, with pitches for motorhomes, caravans and tents, plus cabins and rooms. Facilities include a café-restaurant, wood-fired sauna, swimming beach, nature trail, mini golf, SUP and canoeing. Summer events and theatre are also held on the island.",
-    },
-    url: "https://www.visitvuohensaari.fi",
-    image: "https://cdn-datahub.visitfinland.com/images/0eed73e0-0120-11f1-ad78-29bd5b45e175.jpeg?s=1280",
-    imageCredit: "Visit Finland DataHub / Vuohensaari",
-  },
+
   {
     id: "hotel-fjalar",
     category: "stay",
@@ -989,21 +978,7 @@ export const saloProviders: SaloProvider[] = [
     image: "https://cdn-datahub.visitfinland.com/images/ebfc1ff0-6b41-11ef-95af-1d4477f6ffc7.jpeg?s=1280",
     imageCredit: "Visit Finland DataHub / Hotel Fjalar",
   },
-  {
-    id: "katiskan-maki",
-    category: "stay",
-    directoryCategories: ["food", "events", "wellbeing", "experience", "shopping"],
-    name: "Katiskanmäki",
-    nameByLocale: { fi: "Katiskanmäki", en: "Katiskanmäki", es: "Katiskanmäki" },
-    description: {
-      fi: "Ylönkylän maaseutukohde kokoaa yhteen vuokramökit, aittamajoituksen, leirintäalueen ja savusaunan. Lähiruokakioski Pikantti toimii itsepalveluperiaatteella vuoden jokaisena päivänä, ja Juhlatalo Firapeli tarjoaa juhlatilat jopa 120 hengelle. Sijainti on noin viiden kilometrin päässä Teijon kansallispuistosta.",
-      es: "Destino rural en Ylönkylä con cabañas de alquiler, alojamiento en granero, camping y sauna de humo. El quiosco de productos locales Pikantti funciona en autoservicio todos los días del año y el salón Firapeli ofrece espacio para celebraciones de hasta 120 personas. Está a unos cinco kilómetros del Parque Nacional de Teijo.",
-      en: "A rural destination in Ylönkylä bringing together rental cottages, barn accommodation, a campsite and a smoke sauna. The Pikantti local-food kiosk operates on a self-service basis every day of the year, while Firapeli event hall accommodates celebrations for up to 120 guests. It is about five kilometres from Teijo National Park.",
-    },
-    url: "https://www.katiskanmaki.com",
-    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/07/IMG_2490-1024x768.jpg",
-    imageCredit: "Visit Salo / Salon Kohteet — Katiskanmäki",
-  },
+
   {
     id: "ystavyyden-majatalo",
     category: "stay",
@@ -1034,21 +1009,7 @@ export const saloProviders: SaloProvider[] = [
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Yl%C3%B6stalon-matkailutila-%E2%80%93-8.jpg",
     imageCredit: "Visit Salo / Salon Kohteet — Ylöstalon Matkailutila",
   },
-  {
-    id: "meri-ruukin-lomakyla",
-    category: "stay",
-    directoryCategories: ["wellbeing", "archipelago", "experience"],
-    name: "Meri-Ruukin lomakylä",
-    nameByLocale: { fi: "Meri-Ruukin lomakylä", en: "Meri-Ruukki Holiday Village", es: "Complejo vacacional Meri-Ruukki" },
-    description: {
-      fi: "Mathildedalissa, noin 800 metrin kävelymatkan päässä ruukkikylästä ja Teijon kansallispuiston vieressä sijaitseva lomakylä. Alueella on 20 ympärivuotiseen käyttöön tarkoitettua mökkiä, erikseen vuokrattava merenrantasauna, uimapaikka, laituri, soutuveneitä ja grillipaikkoja. Mökkeihin mahtuu kuusi henkilöä.",
-      es: "Complejo vacacional en Mathildedal, a unos 800 metros a pie del pueblo siderúrgico y junto al Parque Nacional de Teijo. Cuenta con 20 cabañas disponibles todo el año, sauna junto al mar para alquiler independiente, zona de baño, embarcadero, botes de remo y barbacoas. Cada cabaña tiene capacidad para seis personas.",
-      en: "A holiday village in Mathildedal, about an 800-metre walk from the ironworks village and beside Teijo National Park. It has 20 year-round cabins, a separately rentable seaside sauna, swimming area, pier, rowboats and barbecue areas. Each cabin accommodates six people.",
-    },
-    url: "https://meri-ruukki.fi",
-    image: "https://www.visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/meriruukki_1-e1561028111229-uai-1032x688.jpg?itok=JQk5Z9DZ",
-    imageCredit: "Visit Mathildedal — Meri-Ruukin lomakylä",
-  },
+
 
 ];
 
