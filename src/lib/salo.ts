@@ -77,7 +77,8 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "hotel-mathildedal",
-null    category: "stay",
+    location: "Mathildedal, Salo",
+    contact: { phone: "+358 50 354 2487", email: "info@mathildedal.fi", address: "Ruukinrannantie 6, 25660 Mathildedal" },    category: "stay",
     name: "Hotel Mathildedal",
     description: {
       fi: "13 huoneen boutique-hotelli historiallisessa ruukkikylässä Teijon kansallispuiston vieressä.",
@@ -90,7 +91,8 @@ null    category: "stay",
   },
   {
     id: "mathildan-marina",
-null    directoryCategories: ["food", "archipelago"],
+    location: "Mathildedal, Salo",
+    contact: { phone: "+358 2 250 2432", email: "info@mathildanmarina.fi", address: "Ruukinrannantie 4, 25660 Mathildedal" },    directoryCategories: ["food", "archipelago"],
     category: "stay",
     name: "Mathildan Marina",
     description: {
@@ -146,7 +148,8 @@ null    directoryCategories: ["food", "archipelago"],
   },
   {
     id: "teijon-masuuni",
-null    category: "culture",
+    location: "Teijo, Salo",
+    contact: { phone: "+358 40 482 2224", email: "galleria@teijonmasuuni.fi", address: "Telakkatie 17, 25570 Teijo" },    category: "culture",
     name: "Teijon Masuuni",
     nameByLocale: { fi: "Teijon Masuuni", en: "Teijo Masuuni", es: "Teijo Masuuni" },
     description: {
@@ -421,7 +424,8 @@ null    category: "culture",
   },
   {
     id: "vuohensaari-camping",
-null    directoryCategories: ["food","experience","events","archipelago","wellbeing"],
+    location: "Vuohensaari, Salo",
+    contact: { phone: "+358 50 353 8141", email: "info@visitvuohensaari.fi", address: "Satamakatu 102, 24100 Salo" },    directoryCategories: ["food","experience","events","archipelago","wellbeing"],
     category: "stay",
     name: "Vuohensaaren leirintäalue",
     nameByLocale: { fi: "Vuohensaaren leirintäalue", en: "Vuohensaari Camping", es: "Camping Vuohensaari" },
@@ -503,7 +507,8 @@ null    directoryCategories: ["food","experience","events","archipelago","wellbe
   },
   {
     id: "katiskanmaeki",
-null    directoryCategories: ["food","events","wellbeing","experience","shopping"],
+    location: "Ylönkylä, Salo",
+    contact: { phone: "+358 50 517 7759", email: "sumppu@ebaana.net", address: "Särkisalontie 2, 25610 Ylönkylä" },    directoryCategories: ["food","events","wellbeing","experience","shopping"],
     category: "stay",
     name: "Katiskanmäki",
     description: {
@@ -530,7 +535,8 @@ null    directoryCategories: ["food","events","wellbeing","experience","shopping
   },
   {
     id: "meri-ruukin-lomakyla",
-null    directoryCategories: ["wellbeing","archipelago","experience"],
+    location: "Mathildedal, Salo",
+    contact: { phone: "+358 400 872 172", email: "info@meri-ruukki.fi", address: "Kiikunmäentie 28, 25660 Mathildedal" },    directoryCategories: ["wellbeing","archipelago","experience"],
     category: "stay",
     name: "Meri-Ruukin lomakylä",
     description: {
@@ -833,7 +839,8 @@ null    directoryCategories: ["wellbeing","archipelago","experience"],
 
   {
     id: "teijon-arkki",
-null    category: "food",
+    location: "Teijo, Salo",
+    contact: { phone: "+358 45 239 6414", address: "Telakkatie 25, 25570 Teijo" },    category: "food",
     name: "Ravintola Teijon Arkki & Teijo Cafe & Bakery",
     nameByLocale: { fi: "Ravintola Teijon Arkki & Teijo Cafe & Bakery", en: "Teijon Arkki Restaurant & Teijo Cafe & Bakery", es: "Restaurante Teijon Arkki y Teijo Cafe & Bakery" },
     description: {
@@ -1016,7 +1023,8 @@ null    category: "food",
 
   {
     id: "lepola-drinks",
-null    category: "food",
+    location: "Ylönkylä, Salo",
+    contact: { phone: "+358 40 725 0233", email: "info@lepoladrinks.fi", address: "Fabriikintie 61, 25610 Ylönkylä" },    category: "food",
     directoryCategories: ["shopping"],
     name: "Lepola Drinks",
     nameByLocale: { fi: "Lepola Drinks", en: "Lepola Drinks", es: "Lepola Drinks" },
@@ -1031,7 +1039,8 @@ null    category: "food",
   },
   {
     id: "pohjolan-tila",
-null    category: "food",
+    location: "Kisko, Salo",
+    contact: { phone: "+358 40 701 7963", email: "minnapohjola1@gmail.com", address: "Tieksmäentie 459, 25460 Kisko" },    category: "food",
     directoryCategories: ["shopping", "events", "experience"],
     name: "Pohjolan tila",
     nameByLocale: { fi: "Pohjolan tila", en: "Pohjola Farm", es: "Granja Pohjola" },
@@ -1046,7 +1055,8 @@ null    category: "food",
   },
   {
     id: "kylatalo-punaportti",
-null    category: "events",
+    location: "Teijo / Mathildedal, Salo",
+    contact: { phone: "+358 50 405 8384", email: "punaportti@teijo.fi", address: "Punaportintie 163, 25570 Teijo" },    category: "events",
     directoryCategories: ["wellbeing", "archipelago"],
     name: "Kylätalo Punaportti",
     nameByLocale: { fi: "Kylätalo Punaportti", en: "Punaportti Village Hall", es: "Centro comunitario Punaportti" },
