@@ -91,7 +91,7 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
                             {(provider.url.includes("visitsalo.fi") || provider.url.includes("visitmathildedal.fi") || provider.url.includes("luontoon.fi")) ? l.guide : l.visit}<ArrowUpRight className="h-4 w-4" />
                           </a>
                         </div>
-                        {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{photoCreditLabel} {provider.imageCredit}</p> : null}
+                        {getSaloProviderImage(provider) && provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{photoCreditLabel} {provider.imageCredit}</p> : null}
                       </div>
                     </article>
                   ))}
