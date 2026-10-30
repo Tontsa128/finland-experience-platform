@@ -73,7 +73,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .from("site_pages")
         .select("slug,locale,updated_at")
         .eq("published", true)
-        .eq("noindex", false),
+        .eq("noindex", false)
+        .in("locale", locales),
     ]);
 
     const dynamicEntries: MetadataRoute.Sitemap = [
