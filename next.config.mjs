@@ -56,6 +56,7 @@ const nextConfig = {
       { protocol: "https", hostname: "www.kansakouluun.fi" },
       { protocol: "https", hostname: "www.lomalaperla.com" },
       { protocol: "https", hostname: "www.kruuvanmokit.fi" },
+      { protocol: "https", hostname: "www.dbhostel.fi" },
       { protocol: "https", hostname: "cdn.prod.website-files.com" },
       { protocol: "https", hostname: "d4d4e74ade.clvaw-cdnwnd.com" },
       { protocol: "https", hostname: "www.teijonmasuuni.fi" },
