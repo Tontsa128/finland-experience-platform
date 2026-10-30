@@ -2,18 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Tag } from "lucide-react";
 import type { Locale } from "@/types";
-import { saloProviders, type SaloProvider } from "@/lib/salo";
+import { getSaloProviderCategories, saloProviders, type SaloProvider } from "@/lib/salo";
 
 const labels = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", shopping: "Ostokset ja käsityö", wellbeing: "Hyvinvointi ja sauna", culture: "Kulttuuri ja historia", events: "Tapahtumat ja juhlatilat", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", shopping: "Compras y artesanía", wellbeing: "Bienestar y sauna", culture: "Cultura e historia", events: "Eventos y espacios para celebraciones", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", shopping: "Shopping & crafts", wellbeing: "Wellbeing & sauna", culture: "Culture & history", events: "Events & venues", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", shopping: "Ostokset ja käsityö", wellbeing: "Hyvinvointi ja sauna", culture: "Kulttuuri ja historia", events: "Tapahtumat ja juhlatilat", archipelago: "Meri ja saaristo", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", shopping: "Compras y artesanía", wellbeing: "Bienestar y sauna", culture: "Cultura e historia", events: "Eventos y espacios para celebraciones", archipelago: "Mar y archipiélago", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", shopping: "Shopping & crafts", wellbeing: "Wellbeing & sauna", culture: "Culture & history", events: "Events & venues", archipelago: "Sea & archipelago", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
 } as const;
 
 export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: "mathildedal" | "teijo" | "kirjakkala" }) {
   const l = labels[locale];
   const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
-  const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery", "ravintola-terho", "kaarnalaiva", "matildan-kesakauppa", "piironki-dock-helsinki", "ruukin-kehraamo", "second-chance-mathildedal", "vinttipuoti", "mathildedal-keskuspuisto", "mathildedal-meriuimapaikka", "matildankartano", "lahiruokapuoti-puhti", "matilda-talo", "matildanjarven-sauna", "matildanjarven-kampat", "teijo-tentsile", "vicksbackinlahden-kota"]);
+  const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery", "ravintola-terho", "kaarnalaiva", "matildan-kesakauppa", "piironki-dock-helsinki", "ruukin-kehraamo", "second-chance-mathildedal", "vinttipuoti", "mathildedal-keskuspuisto", "mathildedal-meriuimapaikka", "chill-out-fishing", "matildankartano", "lahiruokapuoti-puhti", "matilda-talo", "matildanjarven-sauna", "matildanjarven-kampat", "teijo-tentsile", "vicksbackinlahden-kota"]);
   const teijoIds = new Set(["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf", "matildanjarven-sauna", "matildanjarven-kampat", "teijo-tentsile", "teijon-kammari", "teijon-kirkko", "teijon-arkki", "teijon-juhlatila", "teijon-kylasauna", "vicksbackinlahden-kota"]);
   const kirjakkalaIds = new Set(["kirjakkalan-ruukkikyla", "valla-outdoors"]);
   const areaProviders = area === "mathildedal"
@@ -44,10 +44,10 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
         </div>
 
         <div className="space-y-12">
-          {(category ? [category] : ["stay", "food", "experience", "nature", "wellbeing", "culture", "events", "shopping", "tourism"] as const)
+          {(category ? [category] : ["stay", "food", "experience", "nature", "wellbeing", "culture", "events", "archipelago", "shopping", "tourism"] as const)
             .map((groupCategory) => ({
               category: groupCategory,
-              items: providers.filter((provider) => provider.category === groupCategory),
+              items: providers.filter((provider) => getSaloProviderCategories(provider).includes(groupCategory)),
             }))
             .filter((group) => group.items.length > 0)
             .map((group) => (
