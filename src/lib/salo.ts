@@ -199,8 +199,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Golf in the coastal landscape of Teijo. Check the current green fee directly with the club.",
     },
     url: "https://meriteijogolf.com",
-    image: providerImages.actionPark,
-    imageCredit: "Visit Salo / Salon Kohteet",
+    image: "https://golf-pass.brightspotcdn.com/ea/6e/37dba4c66386c14950d0e3601306/81507.jpg",
+    imageCredit: "GolfPass — Meri-Teijo Golf course photo; reuse permission to confirm",
   },
   {
     id: "mathildedal-brewery",
