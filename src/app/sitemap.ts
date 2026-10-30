@@ -8,6 +8,8 @@ import {
   getPublishedBlogPosts,
 } from "@/lib/public-content";
 import { supabaseAdmin } from "@/lib/supabase";
+import { saloProviders } from "@/lib/salo";
+import { luxuryDirectory } from "@/lib/luxury-directory";
 
 export const revalidate = 3600;
 
@@ -30,6 +32,7 @@ const basePaths = [
   "destinations/kemionsaari/kohde/kansakoulu-ravintola",
   "destinations/rosala",
   "destinations/bengtskar",
+  "destinations/teijon-ruukkikyla",
   "salo",
   "turku",
   "naantali",
@@ -97,6 +100,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           url: siteUrl + "/" + locale + "/experiences/" + item.slug,
           changeFrequency: "weekly" as const,
           priority: 0.7,
+        })),
+      ),
+      ...saloProviders.flatMap((provider) =>
+        locales.map((locale) => ({
+          url: siteUrl + "/" + locale + "/providers/salo-" + provider.id,
+          changeFrequency: "monthly" as const,
+          priority: 0.6,
+        })),
+      ),
+      ...luxuryDirectory.flatMap((provider) =>
+        locales.map((locale) => ({
+          url: siteUrl + "/" + locale + "/providers/directory-" + provider.id,
+          changeFrequency: "monthly" as const,
+          priority: 0.6,
         })),
       ),
       ...blogPosts.flatMap((post) =>
