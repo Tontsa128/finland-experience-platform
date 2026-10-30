@@ -94,7 +94,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...experiences.flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/experiences/" + item.slug,
-          lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
         })),
