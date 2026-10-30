@@ -39,6 +39,8 @@ const nextConfig = {
       { protocol: "https", hostname: "matrihouse.fi" },
       { protocol: "https", hostname: "visitnaantali.com" },
       { protocol: "https", hostname: "static.wixstatic.com" },
+      { protocol: "https", hostname: "www.lomalaperla.com" },
+      { protocol: "https", hostname: "lomalaperla.com" },
       { protocol: "https", hostname: "upload.wikimedia.org" },
       { protocol: "https", hostname: "thumb.wikimedia.org" },
       { protocol: "https", hostname: "commons.wikimedia.org" },
