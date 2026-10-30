@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { photoLibrary } from "@/lib/photo-library";
+import { photoCredits, photoLibrary } from "@/lib/photo-library";
+import { saloProviders } from "@/lib/salo";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
@@ -16,19 +17,39 @@ function isSaloArea(value: string): value is SaloArea {
   return Object.prototype.hasOwnProperty.call(areaProviderIds, value);
 }
 
-function getAreaImage(area: SaloArea): string | null {
-  switch (area) {
-    case "mathildedal":
-      return photoLibrary.mathildedalHarbour;
-    case "teijo":
-      return photoLibrary.teijoNationalPark;
-    case "sarkisalo":
-      return photoLibrary.sarkisalo;
-    case "salo":
-      return photoLibrary.saloVeturitalli;
-    default:
-      return null;
+function getAreaImage(area: SaloArea): { src: string; credit: string; source: string } | null {
+  const providerImageIds: Partial<Record<SaloArea, string>> = {
+    pernio: "leipyolin-tila",
+    halikko: "topilan-tupa",
+    vaskio: "onnenperan-mokki",
+    suomusjarvi: "villa-frans",
+  };
+  const providerId = providerImageIds[area];
+  if (providerId) {
+    const provider = saloProviders.find((item) => item.id === providerId);
+    return provider?.image
+      ? {
+          src: provider.image,
+          credit: provider.imageCredit || provider.name,
+          source: provider.imageSource || provider.url,
+        }
+      : null;
   }
+
+  const src = area === "mathildedal"
+    ? photoLibrary.mathildedalHarbour
+    : area === "teijo"
+      ? photoLibrary.teijoNationalPark
+      : area === "sarkisalo"
+        ? photoLibrary.sarkisalo
+        : area === "salo"
+          ? photoLibrary.saloVeturitalli
+          : null;
+  if (!src) return null;
+  const attribution = photoCredits.find((photo) => photo.url === src);
+  return attribution
+    ? { src, credit: `${attribution.credit} · ${attribution.license}`, source: attribution.sourcePage }
+    : null;
 }
 
 export function generateStaticParams() {
@@ -52,7 +73,7 @@ export async function generateMetadata({
     title: copy.title,
     description: copy.intro,
     path: `salo/${rawArea}`,
-    image: getAreaImage(rawArea) || undefined,
+    image: getAreaImage(rawArea)?.src,
   });
 }
 
@@ -76,7 +97,7 @@ export default async function SaloAreaPage({
       <section className="relative isolate overflow-hidden bg-brand-950 text-white">
         {image ? (
           <Image
-            src={image}
+            src={image.src}
             alt={copy.title}
             fill
             priority
@@ -96,6 +117,16 @@ export default async function SaloAreaPage({
           <p className="mt-8 text-xs font-bold uppercase tracking-[.24em] text-gold-300">{copy.eyebrow}</p>
           <h1 className="mt-5 max-w-5xl font-display text-5xl font-bold leading-[.98] sm:text-7xl">{copy.title}</h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-white/80 sm:text-xl">{copy.intro}</p>
+          {image ? (
+            <a
+              href={image.source}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-block text-[11px] text-white/65 underline decoration-white/30 underline-offset-4 transition hover:text-white"
+            >
+              {locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:"} {image.credit}
+            </a>
+          ) : null}
         </div>
       </section>
 
