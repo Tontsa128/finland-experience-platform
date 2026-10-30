@@ -54,6 +54,8 @@ const nextConfig = {
       { protocol: "https", hostname: "cbaul-cdnwnd.com" },
       { protocol: "https", hostname: "www.ylostalo.fi" },
       { protocol: "https", hostname: "www.kansakouluun.fi" },
+      { protocol: "https", hostname: "www.visitkimitoon.fi" },
+      { protocol: "https", hostname: "visitkimitoon.fi" },
       { protocol: "https", hostname: "launokorpi.com" },
       { protocol: "https", hostname: "golf-pass.brightspotcdn.com" },
       { protocol: "https", hostname: "meriteijobikepark.com" },
