@@ -114,6 +114,30 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
           <p className="mt-5 max-w-3xl text-lg leading-8 text-white/75">{copy.description}</p>
         </div>
       </section>
+      {category === "lahiruoka" ? (
+        <section className="container-narrow py-8">
+          <div className="rounded-3xl border border-brand-100 bg-brand-50 p-6 sm:p-8">
+            <h2 className="font-display text-2xl font-bold text-brand-950">
+              {locale === "fi" ? "Salon virallinen lähiruokakartta" : locale === "es" ? "Mapa oficial de productos locales de Salo" : "Salo's official local-food map"}
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700">
+              {locale === "fi"
+                ? "Visit Salon vuoden 2026 matkailuesite kokoaa lähiruokakarttaan 42 myyntipistettä. Tarkista tilapuodin tai suoramyyntipaikan aukiolo ennen vierailua."
+                : locale === "es"
+                  ? "La guía turística de Visit Salo de 2026 reúne 42 puntos de venta en su mapa de productos locales. Comprueba los horarios de las tiendas y ventas directas antes de visitar."
+                  : "Visit Salo's 2026 travel guide lists 42 sales points on its local-food map. Check farm-shop and direct-sales opening times before visiting."}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-5 text-sm font-bold text-brand-800">
+              <a href="https://salofood.fi/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 underline underline-offset-4">
+                {locale === "fi" ? "Avaa Salon lähiruokakartta" : locale === "es" ? "Abrir el mapa de productos locales" : "Open the local-food map"} <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a href="https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 underline underline-offset-4">
+                {locale === "fi" ? "Vuoden 2026 matkailuesite (PDF)" : locale === "es" ? "Guía turística 2026 (PDF)" : "2026 tourism guide (PDF)"} <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </section>
+      ) : null}
       <SaloDirectory locale={locale} category={config.category} />
       <section className="container-narrow py-12">
         <p className="text-sm leading-7 text-slate-600">

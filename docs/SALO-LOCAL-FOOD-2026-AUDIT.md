@@ -79,7 +79,7 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 
 ## Publication and image rules
 
-- Add the distinct **Lähiruoka ja maatilapuodit** category rather than mixing farms into restaurant/café cards.
+- The distinct **Lähiruoka ja maatilapuodit** category is now implemented separately from restaurant/café cards. Ten existing provider profiles have been cross-listed there; the 30 remaining official map entries still require individual verification and addition.
 - Do not copy seasonal opening hours or brochure prices into permanent descriptions without checking the provider’s current official channel.
 - Do not invent a provider photo or use an unrelated farm/food image. If an official matching image cannot be verified, publish the provider with no image until a suitable image and credit are available.
 - Preserve source URL and image credit for every published photo.

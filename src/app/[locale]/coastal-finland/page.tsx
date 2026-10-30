@@ -11,9 +11,9 @@ import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 type Localized = Record<Locale, string>;
 
 const providerCategoryLabels: Record<Locale, Record<SaloProvider["category"], string>> = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", shopping: "Ostokset ja käsityö", wellbeing: "Hyvinvointi ja sauna", culture: "Kulttuuri ja historia", events: "Tapahtumat ja juhlatilat", archipelago: "Meri ja saaristo", localFood: "Lähiruoka ja maatilapuodit" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", shopping: "Shopping & crafts", wellbeing: "Wellbeing & sauna", culture: "Culture & history", events: "Events & venues", archipelago: "Sea & archipelago", localFood: "Local food & farm shops" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", shopping: "Compras y artesanía", wellbeing: "Bienestar y sauna", culture: "Cultura e historia", events: "Eventos y espacios", archipelago: "Mar y archipiélago", localFood: "Productores locales y tiendas de granja" },
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Ruoka ja kahvilat", shopping: "Ostokset ja käsityö", wellbeing: "Hyvinvointi ja sauna", culture: "Kulttuuri ja historia", events: "Tapahtumat ja juhlatilat", archipelago: "Meri ja saaristo", localFood: "Lähiruoka ja maatilapuodit" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Food & cafés", shopping: "Shopping & crafts", wellbeing: "Wellbeing & sauna", culture: "Culture & history", events: "Events & venues", archipelago: "Sea & archipelago", localFood: "Local food & farm shops" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía y cafeterías", shopping: "Compras y artesanía", wellbeing: "Bienestar y sauna", culture: "Cultura e historia", events: "Eventos y espacios", archipelago: "Mar y archipiélago", localFood: "Productores locales y tiendas de granja" },
 };
 
 
