@@ -136,7 +136,7 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
         es: "Pueblo siderúrgico histórico junto al lago Hamarijärvi, con alojamiento, sauna y actividades al aire libre.",
       },
       alt: { fi: "Kirjakkalan ruukkikylän rakennus", en: "Building in Kirjakkala Ironworks Village", es: "Edificio del pueblo siderúrgico de Kirjakkala" },
-      image: kirjakkalaProvider?.image || photoLibrary.teijoNationalPark,
+      image: kirjakkalaProvider?.image || "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kirjakkala-rakennus-web-1366x768.jpg",
       credit: kirjakkalaProvider?.imageCredit || "Visit Salo / Salon Kohteet",
     },
   ];
