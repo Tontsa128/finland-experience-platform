@@ -25,6 +25,7 @@ function resolveProvider(slug: string, locale: Locale) {
       food: { fi: "Ruoka ja juoma", en: "Food and drink", es: "Gastronomía" },
       shopping: { fi: "Ostokset ja käsityö", en: "Shopping and crafts", es: "Compras y artesanía" },
       wellbeing: { fi: "Hyvinvointi ja sauna", en: "Wellbeing and sauna", es: "Bienestar y sauna" },
+      culture: { fi: "Kulttuuri ja historia", en: "Culture and history", es: "Cultura e historia" },
     }[item.category][locale];
     return {
       kind: "provider" as const,
