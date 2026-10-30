@@ -13,6 +13,41 @@ import { getKimitoonProvider, getKimitoonProviders, type KimitoonCategory } from
 
 type Params = { locale: string; slug: string };
 
+const saloProviderLocations: Record<string, Record<Locale, string>> = {
+  "visit-salo": { fi: "Salo", en: "Salo", es: "Salo" },
+  "visit-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "hotel-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "mathildan-marina": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "matilda-villas": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "matri-house": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "majoitus-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "ravintola-terho": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "mathildedal-brewery": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "teijon-masuuni": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "teijo-action-park": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "teijo-national-park": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "meri-teijo-golf": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "matildanjarven-kampat": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "teijo-tentsile": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "teijon-kammari": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "saaristomokit-sarkisalo": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "forby-marina": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "cafe-vinssi": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "saaristoravintola-nixor": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "villa-meri-sarkisalo": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "krailan-sabrina": { fi: "Särkisalo · Perniö · Salo", en: "Särkisalo · Perniö · Salo", es: "Särkisalo · Perniö · Salo" },
+  "tiiranta": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "niksaaren-sauna": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "sarkisalo-fishing": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "forby-rantajooga": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "leipyolin-tila": { fi: "Perniö · Salo", en: "Perniö · Salo", es: "Perniö · Salo" },
+  "villa-nennebo": { fi: "Perniö · Salo", en: "Perniö · Salo", es: "Perniö · Salo" },
+  "alaspaan-maatila": { fi: "Perniö · Salo", en: "Perniö · Salo", es: "Perniö · Salo" },
+  "topilan-tupa": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "salon-oppaat": { fi: "Salo", en: "Salo", es: "Salo" },
+  "vuohensaaren-leirintaalue": { fi: "Salo", en: "Salo", es: "Salo" },
+};
+
 function resolveProvider(slug: string, locale: Locale) {
   if (slug.startsWith("salo-")) {
     const item = saloProviders.find((provider) => provider.id === slug.slice(5));
@@ -31,7 +66,7 @@ function resolveProvider(slug: string, locale: Locale) {
       category,
       image: item.image,
       imageCredit: item.imageCredit,
-      location: "Salo · Mathildedal · Teijo",
+      location: saloProviderLocations[item.id]?.[locale] || (locale === "fi" ? "Salon seutu" : locale === "es" ? "Región de Salo" : "Salo region"),
       website: item.url,
       price: item.priceByLocale?.[locale] || (locale === "fi" ? item.price : undefined),
       tags: [] as string[],
