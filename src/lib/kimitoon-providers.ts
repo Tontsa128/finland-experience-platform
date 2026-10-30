@@ -315,7 +315,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
     websiteUrl:"https://www.merikruunu.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",
-    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",tags:["hotelli","ravintola","pub","saaristo"]
+    categoryImages:{ruoka:"https://static.wixstatic.com/media/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg/v1/fill/w_382%2Ch_509%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg"},image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",tags:["hotelli","ravintola","pub","saaristo"]
   },
   {
     id:"bb-heedbacka",categories:["majoitus"],
@@ -414,18 +414,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",sourceUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",
     image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",tags:["baari","ravintola"]
   },
-  {
-    id:"merikruunu-restaurant",categories:["ruoka"],
-    name:{fi:"Merikruunun ravintola ja Pub Svarte Krona",en:"Merikruunu Restaurant & Pub Svarte Krona",es:"Restaurante Merikruunu y Pub Svarte Krona"},
-    description:{
-      fi:"Hotelli Merikruunun yhteydessä toimiva ravintola- ja pubipalvelu. Menu, palveluajat ja kausittainen tarjonta on tarkistettava suoraan hotellilta.",
-      en:"Restaurant and pub services at Hotel Merikruunu. Check the menu, service hours and seasonal offering directly with the hotel.",
-      es:"Restaurante y pub del Hotel Merikruunu. Consulta el menú, los horarios de servicio y la oferta de temporada directamente con el hotel."
-    },
-    location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
-    websiteUrl:"https://www.merikruunu.fi/ravintola",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",
-    image:"https://static.wixstatic.com/media/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg/v1/fill/w_382%2Ch_509%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg",imageCredit:"Hotel Merikruunu",imageSource:"https://www.merikruunu.fi/ravintola",tags:["ravintola","pub","hotelli"]
-  },
+
   {
     id:"db-bistro-runda-munken",categories:["ruoka"],
     name:{fi:"DB Bistro Runda Munken",en:"DB Bistro Runda Munken",es:"DB Bistro Runda Munken"},
@@ -692,18 +681,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",
     image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/dalsbruk-gasthamn1-1-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["historia","ruukki","kävely"]
   },
-  {
-    id:"bengtskar-lighthouse-visit",categories:["kulttuuri","aktiviteetit","saaristo","luonto"],
-    name:{fi:"Bengtskärin majakka ja museo",en:"Bengtskär Lighthouse and Museum",es:"Faro y museo de Bengtskär"},
-    description:{
-      fi:"Avomeren majakka ja historiallinen vierailukohde. Merikuljetus, aukiolo, näyttelyt ja mahdollinen majoitus on varmistettava suoraan kohteen ylläpitäjältä.",
-      en:"An offshore lighthouse and historic visitor attraction. Boat transport, opening times, exhibitions and any accommodation must be confirmed with the site operator.",
-      es:"Faro en mar abierto y lugar histórico de visita. Confirma el transporte marítimo, los horarios, las exposiciones y el posible alojamiento con el operador."
-    },
-    location:{fi:"Bengtskär, Kemiönsaaren ulkosaaristo",en:"Bengtskär, outer Kimitoön archipelago",es:"Bengtskär, archipiélago exterior de Kimitoön"},
-    websiteUrl:"https://bengtskar.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",
-    image:image("230658b0-52a6-11ec-ae70-f70f11991cb8-Bengtskar_RobinS_4.jpg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["majakka","historia","museo","saari"]
-  },
+
 
 
 
@@ -829,18 +807,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     websiteUrl:"https://www.kalkholmenmarina.fi/",sourceUrl:"https://ksg.fi/fi/foretag/kalkholmen-marina/",
     image:"https://ksg.fi/wp-content/uploads/2026/04/Nayttokuva-2026-04-14-130951.png",imageCredit:"Kalkholmen Marina / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kalkholmen-marina/",tags:["vierasvenesatama","padel","sauna","tankkaus"],contact:{phone:"040 529 1258",address:"Kalkholmsvägen 43, 25830 Västanfjärd"}
   },
-  {
-    id:"kasnas-badhus",categories:["hyvinvointi","aktiviteetit"],
-    name:{fi:"Kasnäsin Kylpylä",en:"Kasnäs Spa",es:"Spa de Kasnäs"},
-    description:{
-      fi:"Kasnäsin kylpyläpalvelut osana merellistä lomakeskusta. Kemiönsaaren palveluoppaan mukaan palvelu liittyy myös hierontaan, kehonhoitoon ja liikuntaan. Tarkista allasosaston, saunojen ja muiden palvelujen ajantasaiset tiedot Kasnäsistä.",
-      en:"Spa services within the seaside resort of Kasnäs. The Kimitoön business guide also categorises the service under massage, body care and fitness. Confirm current pool, sauna and other service details with Kasnäs.",
-      es:"Servicios de spa dentro del complejo costero de Kasnäs. La guía empresarial de Kimitoön también lo clasifica en masaje, cuidado corporal y actividad física. Confirma los servicios actuales de piscina, sauna y otros tratamientos con Kasnäs."
-    },
-    location:{fi:"Kasnäsvägen 1294, 25930 Kasnäs",en:"Kasnäsvägen 1294, 25930 Kasnäs",es:"Kasnäsvägen 1294, 25930 Kasnäs"},
-    websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://ksg.fi/fi/foretag/kasnas-badhus-1/",
-    imageCredit:"Kasnäs / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kasnas-badhus-1/",tags:["kylpylä","sauna","hyvinvointi"],contact:{phone:"02 5210 100",address:"Kasnäsvägen 1294, 25930 Kasnäs"}
-  },
+
   {
     id:"kimitoon-guides",categories:["aktiviteetit","kulttuuri","muut-palvelut"],
     name:{fi:"Kemiönsaaren oppaat ry",en:"Kimitoön Guides Association",es:"Asociación de guías de Kimitoön"},
