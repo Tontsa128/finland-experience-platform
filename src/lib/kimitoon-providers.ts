@@ -256,7 +256,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
     websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-kasnas-2/",
-    image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-760x430.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-kasnas-2/",tags:["hotelli","kylpylä","ravintola","satama"]
+    image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-760x430.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-kasnas-2/",tags:["hotelli","kylpylä","ravintola","satama"],
+    contact:{phone:"02 5210 100",address:"Kasnäsvägen 1294, 25930 Kasnäs"}
   },
   {
     id:"soderlangvik-glamping",categories:["majoitus","luonto"],
@@ -352,7 +353,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Ekniemi, Kemiönsaari",en:"Ekniemi, Kimitoön",es:"Ekniemi, Kimitoön"},
     websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:image("32f73db0-4a92-11f0-9fff-ed17829cd958.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["lomakylä","merenranta","majoitus"]
+    image:image("32f73db0-4a92-11f0-9fff-ed17829cd958.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["lomakylä","merenranta","majoitus"],
+    contact:{phone:"050 5483 592",address:"Campingvägen 55, 25700 Kimito"}
   },
   // Food, cafés and local producers.
   {
@@ -389,7 +391,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:image("696862b1-31ac-11f0-981a-3b9c14904d67.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["ravintola","baari"]
+    image:image("696862b1-31ac-11f0-981a-3b9c14904d67.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["ravintola","baari"],
+    contact:{phone:"0400 436 956",address:"Stallbacksvägen 6, 25900 Dalsbruk"}
   },
   {
     id:"farmors-cafe",categories:["ruoka"],
@@ -1000,7 +1003,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Museovägen 7, 25700 Kemiö",en:"Museovägen 7, 25700 Kimito",es:"Museovägen 7, 25700 Kimito"},
     websiteUrl:"https://ksg.fi/sv/foretag/cafe-adele/",sourceUrl:"https://ksg.fi/sv/foretag/cafe-adele/",
-    imageCredit:"Café Adéle / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/cafe-adele/",tags:["kahvila","lounas","catering","juhlatila"]
+    imageCredit:"Café Adéle / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/cafe-adele/",tags:["kahvila","lounas","catering","juhlatila"],
+    contact:{phone:"040 849 8770",address:"Museovägen 7, 25700 Kimito"}
   },
   {
     id:"konditori-mazarin",categories:["ruoka","ostokset"],
@@ -1037,7 +1041,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kärravägen 203, 25870 Dragsfjärd",en:"Kärravägen 203, 25870 Dragsfjärd",es:"Kärravägen 203, 25870 Dragsfjärd"},
     websiteUrl:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",sourceUrl:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",
-    imageCredit:"Tmi Kerstin Forsbom / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",tags:["lounas","kotiruoka","pitopalvelu","kotiinkuljetus"]
+    imageCredit:"Tmi Kerstin Forsbom / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",tags:["lounas","kotiruoka","pitopalvelu","kotiinkuljetus"],
+    contact:{phone:"040 577 3699",address:"Kärravägen 203, 25870 Dragsfjärd"}
   },
   {
     id:"catering-thomas-ahlberg",categories:["ruoka","tapahtumapaikat"],
