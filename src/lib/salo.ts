@@ -634,6 +634,20 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Lomalaperla — Villa Viktoria official website",
   },
   {
+    id: "villa-frans",
+    category: "stay",
+    name: "Villa Frans",
+    nameByLocale: { fi: "Villa Frans", en: "Villa Frans", es: "Villa Frans" },
+    description: {
+      fi: "Lomalaperlan ympärivuotinen huvila Suomusjärvellä. Kolme makuuhuonetta, sähkösauna, suihku, sisä-WC ja terassin poreallas. Vahvista vuodepaikat, ehdot ja hinnat suoraan majoittajalta.",
+      en: "A year-round holiday villa in Suomusjärvi by Lomalaperla. Three bedrooms, an electric sauna, shower, indoor toilet and a hot tub on the terrace. Confirm capacity, terms and rates directly with the host.",
+      es: "Villa vacacional disponible todo el año en Suomusjärvi, gestionada por Lomalaperla. Tres dormitorios, sauna eléctrica, ducha, aseo interior y jacuzzi en la terraza. Confirma la capacidad, las condiciones y las tarifas directamente con el anfitrión.",
+    },
+    url: "https://www.lomalaperla.com/moumlkki-4.html",
+    image: "https://www.lomalaperla.com/uploads/1/0/3/7/103702596/editor/img-4961-2.jpg?1624728709=",
+    imageCredit: "Lomalaperla — Villa Frans official website",
+  },
+  {
     id: "teijon-kammari",
     category: "stay",
     name: "Teijon Kammari",
