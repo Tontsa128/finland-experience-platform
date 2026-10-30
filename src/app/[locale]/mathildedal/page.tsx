@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BedDouble, Compass, ShoppingBag, TreePine, Utensils, CalendarDays } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, Compass, Flame, ShoppingBag, TreePine, Utensils, CalendarDays } from "lucide-react";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -64,7 +64,8 @@ const categories = [
   { slug: "ruoka", category: "food", icon: Utensils, title: { fi: "Ruoka ja kahvilat", en: "Food and cafés", es: "Gastronomía y cafeterías" }, description: { fi: "Ravintolat, kahvilat, leipomo ja paikalliset juomat.", en: "Restaurants, cafés, bakery and local drinks.", es: "Restaurantes, cafeterías, panadería y bebidas locales." } },
   { slug: "ostokset", category: "shopping", icon: ShoppingBag, title: { fi: "Ostokset ja käsityö", en: "Shopping and crafts", es: "Compras y artesanía" }, description: { fi: "Puodit, design, käsityö ja paikalliset tuotteet.", en: "Independent shops, design, crafts and local products.", es: "Tiendas independientes, diseño, artesanía y productos locales." } },
   { slug: "aktiviteetit", category: "experience", icon: Compass, title: { fi: "Aktiviteetit", en: "Activities", es: "Actividades" }, description: { fi: "Veneilyä, opastuksia, pyöräilyä ja muita elämyksiä.", en: "Boating, guided activities, cycling and experiences.", es: "Navegación, actividades guiadas, ciclismo y experiencias." } },
-  { slug: "luonto", category: "nature", icon: TreePine, title: { fi: "Meri ja luonto", en: "Sea and nature", es: "Mar y naturaleza" }, description: { fi: "Rantamaisemat, uimapaikat ja Teijon kansallispuisto.", en: "Coastal scenery, swimming spots and Teijo National Park.", es: "Paisajes costeros, zonas de baño y Parque Nacional de Teijo." } },
+  { slug: "luonto", category: "nature", icon: TreePine, title: { fi: "Meri ja luonto", en: "Sea and nature", es: "Mar y naturaleza" }, description: { fi: "Rantamaisemat, uimapaikat ja lähiluonto.", en: "Coastal scenery, swimming spots and nearby nature.", es: "Paisajes costeros, zonas de baño y naturaleza cercana." } },
+  { slug: "hyvinvointi", category: "wellbeing", icon: Flame, title: { fi: "Sauna ja hyvinvointi", en: "Sauna and wellbeing", es: "Sauna y bienestar" }, description: { fi: "Saunomista ja palautumista järven ja luonnon äärellä.", en: "Sauna and relaxation by the lake and in nature.", es: "Sauna y descanso junto al lago y la naturaleza." } },
   { slug: "tapahtumat", category: null, icon: CalendarDays, title: { fi: "Tapahtumat", en: "Events", es: "Eventos" }, description: { fi: "Kylän tapahtumat ja sesonkiohjelma järjestäjien sivuilta.", en: "Village events and seasonal programme from the organisers.", es: "Eventos del pueblo y programa de temporada de los organizadores." } },
 ] as const;
 
@@ -122,7 +123,8 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((item) => {
               const Icon = item.icon;
-              const image = item.category ? saloProviders.find((provider) => provider.category === item.category && provider.image && ["hotel-mathildedal", "ravintola-terho", "kaarnalaiva", "teijo-action-park", "teijo-national-park"].includes(provider.id))?.image : photoLibrary.mathildedalHarbour;
+              const preferredProviderId = { stay: "hotel-mathildedal", food: "ravintola-terho", shopping: "kaarnalaiva", experience: "mathildedal-keskuspuisto", nature: "mathildedal-meriuimapaikka", wellbeing: "matildanjarven-sauna" };
+              const image = item.category ? saloProviders.find((provider) => provider.id === preferredProviderId[item.category])?.image : photoLibrary.mathildedalHarbour;
               const href = item.slug === "tapahtumat" ? "#mathildedal-events" : `/${locale}/mathildedal/${item.slug}`;
               return (
                 <Link key={item.slug} href={href} className="group overflow-hidden rounded-[1.5rem] border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-card">
