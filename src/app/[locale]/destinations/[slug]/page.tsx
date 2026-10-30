@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: rawLocale, slug } = await params;
   const locale = rawLocale as Locale;
   if (!locales.includes(locale)) return {};
+  if (slug === "salo-mathildedal" || slug === "mathildedal") return buildLocalizedMetadata({ locale, title: locale === "fi" ? "Mathildedal – merellinen ruukkikylä" : locale === "es" ? "Mathildedal – pueblo siderúrgico junto al mar" : "Mathildedal – an ironworks village by the sea", description: locale === "fi" ? "Historiallinen ruukkimiljöö, pienet puodit, paikalliset maut ja meri kohtaavat Mathildedalissa." : locale === "es" ? "Patrimonio industrial, pequeñas tiendas, sabores locales y el mar se encuentran en Mathildedal." : "Historic industrial heritage, independent shops, local flavours and the sea come together in Mathildedal.", path: "mathildedal", image: photoLibrary.mathildedalHarbour });
   if (slug === "kemionsaari") return buildLocalizedMetadata({ locale, title: locale === "fi" ? "Kemiönsaari – saaristo, majoitus ja paikalliset maut" : locale === "es" ? "Kimitoön – archipiélago, alojamiento y gastronomía local" : "Kimitoön – archipelago, stays and local flavours", description: locale === "fi" ? "Löydä Kemiönsaaren saaristokohteet, majoitus, ravintolat ja paikalliset elämykset. Varaa suoraan palveluntarjoajalta." : locale === "es" ? "Descubre el archipiélago de Kimitoön, alojamientos, restaurantes y experiencias locales. Reserva directamente." : "Discover Kimitoön’s archipelago, places to stay, restaurants and local experiences. Book directly with providers.", path: "destinations/kemionsaari", image: photoLibrary.rosalaVikingCentre });
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
@@ -37,6 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function DestinationDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale: rawLocale, slug } = await params;
   const locale = rawLocale as Locale;
+  if ((slug === "salo-mathildedal" || slug === "mathildedal") && locales.includes(locale)) permanentRedirect(`/${locale}/mathildedal`);
   if (slug === "kemionsaari" && locales.includes(locale)) {
     return <div className="bg-white"><KimitoonGuide locale={locale} /></div>;
   }
