@@ -9,7 +9,7 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { photoLibrary } from "@/lib/photo-library";
-import { getKimitoonProvider, getKimitoonProviders } from "@/lib/kimitoon-providers";
+import { getKimitoonProvider, getKimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
 
 type Params = { locale: string; slug: string };
 
@@ -295,12 +295,21 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   });
 }
 
-export default async function ProviderDetailPage({ params }: { params: Promise<Params> }) {
+export default async function ProviderDetailPage({ params, searchParams }: { params: Promise<Params>; searchParams: Promise<{ from?: string | string[] }> }) {
   const { locale: rawLocale, slug } = await params;
+  const { from } = await searchParams;
   if (!locales.includes(rawLocale as Locale)) notFound();
   const locale = rawLocale as Locale;
   const provider = resolveProvider(slug, locale);
   if (!provider) notFound();
+  const kimitoonProvider = slug.startsWith("kimitoon-") ? getKimitoonProvider(slug.slice("kimitoon-".length)) : null;
+  const requestedCategory = Array.isArray(from) ? from[0] : from;
+  const returnCategory = kimitoonProvider && requestedCategory && kimitoonProvider.categories.includes(requestedCategory as KimitoonCategory)
+    ? requestedCategory as KimitoonCategory
+    : kimitoonProvider?.categories[0];
+  const relatedKimitoonProviders = kimitoonProvider
+    ? getKimitoonProviders(returnCategory).filter((place) => place.id !== kimitoonProvider.id).slice(0, 4)
+    : [];
   const c = copy[locale];
 
   return (
@@ -319,9 +328,12 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/95 via-brand-950/45 to-brand-950/10" />
         <div className="container-narrow relative flex min-h-[42svh] min-w-0 items-end py-8 sm:min-h-[54svh] sm:py-14">
           <div className="max-w-4xl">
-            <Link href={slug.startsWith("kimitoon-") ? `/${locale}/kimitoon` : `/${locale}/destinations`} className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/20 px-4 py-2 text-sm font-semibold text-white hover:bg-black/40">
-              <ArrowLeft className="h-4 w-4" />{slug.startsWith("kimitoon-") ? (locale === "fi" ? "Takaisin Kemiönsaaren oppaaseen" : locale === "es" ? "Volver a la guía de Kimitoön" : "Back to the Kimitoön guide") : c.back}
-            </Link>
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              <Link href={slug.startsWith("kimitoon-") ? (returnCategory ? `/${locale}/destinations/kemionsaari/${returnCategory}` : `/${locale}/kimitoon`) : `/${locale}/destinations`} className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/20 px-4 py-2 text-sm font-semibold text-white hover:bg-black/40">
+                <ArrowLeft className="h-4 w-4" />{slug.startsWith("kimitoon-") ? (locale === "fi" ? "Takaisin tähän teemaan" : locale === "es" ? "Volver a esta categoría" : "Back to this category") : c.back}
+              </Link>
+              {slug.startsWith("kimitoon-") ? <Link href={`/${locale}/kimitoon`} className="inline-flex rounded-full border border-white/30 bg-black/20 px-4 py-2 text-sm font-semibold text-white hover:bg-black/40">{locale === "fi" ? "Kemiönsaaren pääopas" : locale === "es" ? "Guía principal de Kimitoön" : "Kimitoön main guide"}</Link> : null}
+            </div>
             <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{c.eyebrow} · {provider.category}</p>
             <h1 className="mt-3 break-words font-display text-3xl font-bold leading-tight [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">{provider.name}</h1>
             <p className="mt-4 flex items-start gap-2 text-sm text-white/85 sm:text-base"><MapPin className="mt-0.5 h-4 w-4 shrink-0" />{provider.location}</p>
@@ -389,7 +401,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
                   <h3 className="font-display text-2xl font-bold text-brand-950">{guide.nearbyTitle}</h3>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     {slug.startsWith("kimitoon-")
-                      ? getKimitoonProviders().filter((place) => place.id !== slug.slice("kimitoon-".length)).slice(0, 4).map((place) => <Link key={place.id} href={`/${locale}/providers/kimitoon-${place.id}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)
+                      ? relatedKimitoonProviders.map((place) => <Link key={place.id} href={`/${locale}/providers/kimitoon-${place.id}?from=${returnCategory || place.categories[0]}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)
                       : (teijoGuides[slug] ? teijoRelated : mathildedalRelated).filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}
                   </div>
                 </section>
