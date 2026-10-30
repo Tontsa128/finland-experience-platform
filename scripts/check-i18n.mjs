@@ -97,7 +97,8 @@ const missingAreaIds = providerIds.filter((id) => !assignedProviderIds.includes(
 const unknownAreaIds = assignedProviderIds.filter((id) => !providerIds.includes(id));
 const renderedAreas = [...areaMap.matchAll(/^\s+([a-z]+):\s*\[/gm)].map((match) => match[1]);
 const areaRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}/.test(saloAreaPageSource);
-const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")\n  && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
+const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
+  && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
 const areaCardsLinkToRoutes = saloPageSource.includes('href={`/${locale}/salo/${area.id}`}');
 const sitemapIncludesAreaRoutes = (await readFile(path.resolve("src/app/sitemap.ts"), "utf8")).includes("...saloAreaPaths");
 if (providerIds.length !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || renderedAreas.length !== 8) {
