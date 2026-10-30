@@ -4,7 +4,7 @@
 
 The 2026 Visit Salo brochure contains a local-food map with **42 map entries**: 39 farms, shops and local-food producers (numbered 4–42 in the brochure) plus three Vuorovetten ice-cream kiosks.
 
-The current branch contains 101 unique Salo provider profiles: 30 accommodation, 12 experiences, 10 food and café, 29 primary local-food, 7 shopping and crafts, 4 nature, 2 culture, 2 wellbeing, 3 events and 2 tourism-information profiles. Cross-listing adds ten existing canonical profiles to the local-food category, so 39 profiles appear there without duplicating provider records. The 2026 brochure is a discovery source, not proof that every outlet is currently open. Seven additional local-food profiles have been added across the two updates: Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa; Kivihovi's Herkku & Lahja shop is also now included. The current catalogue has 90 image-backed profiles; eleven remain deliberately image-free until a matching, rights-cleared asset is verified.
+The current branch contains 101 unique Salo provider profiles: 30 accommodation, 12 experiences, 10 food and café, 29 primary local-food, 7 shopping and crafts, 4 nature, 2 culture, 2 wellbeing, 3 events and 2 tourism-information profiles. Cross-listing adds ten existing canonical profiles to the local-food category, so 39 profiles appear there without duplicating provider records. The 2026 brochure is a discovery source, not proof that every outlet is currently open. Seven additional local-food profiles have been added across the two updates: Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa; Kivihovi's Herkku & Lahja shop is also now included. The current catalogue has 90 provider profiles with an image asset recorded. One asset (Meri-Teijo Golf) is withheld from all public rendering because reuse permission is still unconfirmed; 89 image-backed profiles are therefore currently displayed. Eleven additional providers remain deliberately image-free until a matching, rights-cleared asset is verified.
 
 Primary sources:
 - Visit Salo, *Salo matkailuesite 2026*, pages 40–43: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
@@ -97,6 +97,10 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 - **Alaspään maatila, Finnholm and Leipyölin tila:** existing accommodation profiles may represent operators that also sell local produce. Cross-list the existing canonical profile rather than adding a second profile for the same operator.
 - **Vuorovetten Jäätelö:** one operator, three kiosk locations.
 - **Öyrilän Isontalon lammastila:** the farm is in Perniö, but its products are also sold seasonally at Mathildedal Vinttipuoti; its canonical profile is included in the Mathildedal area directory for that reason.
+
+## Image-rights hold
+
+- **Meri-Teijo Golf:** the image URL points to a Visit Mathildedal listing, but the current source credit explicitly says reuse permission is still to be confirmed. The asset remains in the source record for traceability and is marked `imageRightsStatus: "pending"`; both the directory card and provider detail page suppress it until permission is verified. This is not counted as a publicly usable image.
 
 ## Publication and image rules
 
