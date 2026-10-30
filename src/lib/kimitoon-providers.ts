@@ -1457,8 +1457,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
     websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
     imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["kahvila","vohvelit"]
-  }
-
+  },
   {
     id:"nordic-activities-solutions",categories:["aktiviteetit","luonto","saaristo","talviaktiviteetit"],
     name:{fi:"Nordic Activities & Solutions",en:"Nordic Activities & Solutions",es:"Nordic Activities & Solutions"},
