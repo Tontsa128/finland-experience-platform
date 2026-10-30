@@ -10,6 +10,7 @@ import {
 import { supabaseAdmin } from "@/lib/supabase";
 import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
+import { kimitoonProviders } from "@/lib/kimitoon-providers";
 
 export const revalidate = 3600;
 
@@ -19,6 +20,13 @@ const basePaths = [
   "destinations/kemionsaari",
   "destinations/kemionsaari/majoitus",
   "destinations/kemionsaari/ruoka",
+  "destinations/kemionsaari/aktiviteetit",
+  "destinations/kemionsaari/hyvinvointi",
+  "destinations/kemionsaari/kuljetukset",
+  "destinations/kemionsaari/ostokset",
+  "destinations/kemionsaari/talviaktiviteetit",
+  "destinations/kemionsaari/tapahtumapaikat",
+  "destinations/kemionsaari/muut-palvelut",
   "destinations/kemionsaari/luonto",
   "destinations/kemionsaari/kulttuuri",
   "destinations/kemionsaari/saaristo",
@@ -72,6 +80,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: siteUrl + "/" + locale + "/providers/salo-" + provider.id,
         changeFrequency: "monthly" as const,
         priority: 0.6,
+      })),
+    ),
+    ...kimitoonProviders.flatMap((provider) =>
+      locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/providers/kimitoon-" + provider.id,
+        changeFrequency: "monthly" as const,
+        priority: 0.65,
       })),
     ),
     ...luxuryDirectory.flatMap((provider) =>
