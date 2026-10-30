@@ -1,0 +1,772 @@
+import type { Locale } from "@/types";
+
+export type KimitoonCategory =
+  | "majoitus" | "ruoka" | "aktiviteetit" | "saaristo" | "luonto"
+  | "kulttuuri" | "hyvinvointi" | "kuljetukset" | "ostokset"
+  | "talviaktiviteetit" | "tapahtumapaikat" | "muut-palvelut" | "tapahtumat";
+
+export type KimitoonProvider = {
+  id: string;
+  category: KimitoonCategory;
+  name: Record<Locale, string>;
+  description: Record<Locale, string>;
+  location: Record<Locale, string>;
+  websiteUrl: string;
+  sourceUrl: string;
+  image: string;
+  imageCredit: string;
+  imageSource: string;
+  tags: string[];
+};
+
+const imageBase = "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/";
+const sourceBase = "https://www.visitkimitoon.fi/fi/kohteet/";
+const image = (file: string) => imageBase + file;
+const source = (slug: string) => sourceBase + slug + "/";
+
+export const kimitoonProviders: KimitoonProvider[] = [
+  // Accommodation — every villa is a separate bookable listing and its own card.
+  {
+    id:"villa-aurora-35", category:"majoitus",
+    name:{fi:"Villa Aurora #35",en:"Villa Aurora #35",es:"Villa Aurora #35"},
+    description:{
+      fi:"Merikruunun alueella sijaitseva vuonna 2022 valmistunut 44 m² huvila. Virallisessa kohde-esittelyssä mainitaan sauna, terassi, täysin varusteltu keittiö sekä majoitus enintään viidelle hengelle.",
+      en:"A 44 m² villa completed in 2022 in the Merikruunu area. The official listing describes a sauna, terrace, fully equipped kitchen and accommodation for up to five guests.",
+      es:"Villa de 44 m² terminada en 2022 en la zona de Merikruunu. La ficha oficial describe sauna, terraza, cocina equipada y capacidad para hasta cinco personas."
+    },
+    location:{fi:"Täysihoitolantie 6, Kemiönsaari",en:"Täysihoitolantie 6, Kimitoön",es:"Täysihoitolantie 6, Kimitoön"},
+    websiteUrl:"https://www.vuokrahuvilasaaristossa.com/",sourceUrl:source("villa-aurora-35-2"),
+    image:image("41576b80-17e2-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / kohteen virallinen esittely",imageSource:source("villa-aurora-35-2"),tags:["villa","sauna","merikruunu"]
+  },
+  {
+    id:"villa-bergholmen",category:"majoitus",
+    name:{fi:"Villa Bergholmen",en:"Villa Bergholmen",es:"Villa Bergholmen"},
+    description:{
+      fi:"Oma saarikohde Taalintehtaan edustalla. Virallinen esittely kertoo venekuljetuksesta, huvilan kahdeksan hengen kapasiteetista sekä mahdollisuudesta kokouksiin, juhliin ja kalastusretkiin.",
+      en:"A private island retreat off Dalsbruk. The official listing describes boat transfers, accommodation for eight in the main villa and facilities for meetings, celebrations and fishing trips.",
+      es:"Alojamiento en una isla frente a Dalsbruk. La ficha oficial describe traslados en barco, capacidad para ocho personas en la villa principal y espacios para reuniones, celebraciones y pesca."
+    },
+    location:{fi:"Taalintehtaan edusta, Kemiönsaari",en:"Off Dalsbruk, Kimitoön",es:"Frente a Dalsbruk, Kimitoön"},
+    websiteUrl:"https://www.villabergholmen.fi/",sourceUrl:source("villa-bergholmen-2"),
+    image:image("e6dfb0d0-3c4a-11ee-807b-e549c99fd69d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / kohteen virallinen esittely",imageSource:source("villa-bergholmen-2"),tags:["saari","villa","juhlat","kalastus"]
+  },
+  {
+    id:"villa-cecilia-55",category:"majoitus",
+    name:{fi:"Villa Cecilia #55",en:"Villa Cecilia #55",es:"Villa Cecilia #55"},
+    description:{
+      fi:"Merikruunun saaristokylässä sijaitseva vuonna 2022 valmistunut huvila. Virallinen esittely kuvaa metsänreunan merimaisemaa, terassia ja poreallasta. Tarkista henkilömäärä ja ehdot suoraan vuokraajalta.",
+      en:"A villa completed in 2022 in Merikruunu Archipelago Village. The official listing describes a woodland-edge seaside setting, terrace and outdoor hot tub. Confirm occupancy and terms with the host.",
+      es:"Villa terminada en 2022 en Merikruunu Archipelago Village. La ficha oficial describe un entorno junto al mar, terraza y bañera de hidromasaje exterior. Confirma la capacidad y las condiciones con el anfitrión."
+    },
+    location:{fi:"Täysihoitolantie 6, Kemiönsaari",en:"Täysihoitolantie 6, Kimitoön",es:"Täysihoitolantie 6, Kimitoön"},
+    websiteUrl:"https://www.airbnb.fi/",sourceUrl:source("villa-cecilia-55-3"),
+    image:image("08f6f310-309b-11ee-9fb4-c344224e6fd0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / kohteen virallinen esittely",imageSource:source("villa-cecilia-55-3"),tags:["villa","poreallas","merikruunu"]
+  },
+  {
+    id:"villa-eden-16",category:"majoitus",
+    name:{fi:"Villa Eden #16",en:"Villa Eden #16",es:"Villa Eden #16"},
+    description:{
+      fi:"Merikruunun saaristokylän huvila, jossa virallisen esittelyn mukaan on sauna, meriterassi ja ulkoporeallas. Vuonna 2022 valmistunut 44 m² huvila sijaitsee hotellin palveluiden lähellä.",
+      en:"A villa in Merikruunu Archipelago Village. The official listing describes a sauna, sea-facing terrace and outdoor hot tub. The 44 m² villa was completed in 2022 and is close to hotel services.",
+      es:"Villa en Merikruunu Archipelago Village. La ficha oficial describe sauna, terraza con vistas al mar y bañera de hidromasaje exterior. La villa de 44 m² se terminó en 2022 y está cerca de los servicios del hotel."
+    },
+    location:{fi:"Täysihoitolantie 6, Kemiönsaari",en:"Täysihoitolantie 6, Kimitoön",es:"Täysihoitolantie 6, Kimitoön"},
+    websiteUrl:"https://www.villaeden.fi/",sourceUrl:source("villa-eden-2"),
+    image:image("5b75b640-27bc-11ee-9fb4-c344224e6fd0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / kohteen virallinen esittely",imageSource:source("villa-eden-2"),tags:["villa","sauna","poreallas"]
+  },
+  {
+    id:"villa-edith-4",category:"majoitus",
+    name:{fi:"Villa Edith #4",en:"Villa Edith #4",es:"Villa Edith #4"},
+    description:{
+      fi:"Kemiönsaaren virallisessa matkailuhakemistossa esiteltävä Merikruunun alueen huvila. Tarkista huonejako, varustelu, henkilömäärä ja ajantasainen saatavuus kohteen omalta sivulta.",
+      en:"A villa in the Merikruunu area featured in the official Kimitoön tourism directory. Check the layout, facilities, occupancy and current availability on the property's own page.",
+      es:"Villa de la zona de Merikruunu incluida en el directorio turístico oficial de Kimitoön. Consulta la distribución, el equipamiento, la capacidad y la disponibilidad actual en la página del alojamiento."
+    },
+    location:{fi:"Merikruunu, Kemiönsaari",en:"Merikruunu, Kimitoön",es:"Merikruunu, Kimitoön"},
+    websiteUrl:source("villa-edith-4-2"),sourceUrl:source("villa-edith-4-2"),
+    image:image("854969d0-1597-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-edith-4-2"),tags:["villa","merikruunu"]
+  },
+  {
+    id:"villa-eko-8",category:"majoitus",
+    name:{fi:"Villa Eko #8",en:"Villa Eko #8",es:"Villa Eko #8"},
+    description:{
+      fi:"Kemiönsaaren viralliseen matkailuhakemistoon kuuluva huvila. Tarkista kohteen ajantasainen kuvaus, varustelu ja varauskanava suoraan virallisesta kohdekortista.",
+      en:"A villa listed in the official Kimitoön tourism directory. Check the current description, facilities and booking channel in the official property listing.",
+      es:"Villa incluida en el directorio turístico oficial de Kimitoön. Consulta la descripción actual, el equipamiento y el canal de reserva en la ficha oficial."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-eko-8-2"),sourceUrl:source("villa-eko-8-2"),
+    image:image("9483e2f0-2a22-11ee-9fb4-c344224e6fd0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-eko-8-2"),tags:["villa"]
+  },
+  {
+    id:"villa-isla-7",category:"majoitus",
+    name:{fi:"Villa Isla #7",en:"Villa Isla #7",es:"Villa Isla #7"},
+    description:{
+      fi:"Kemiönsaaren virallisen matkailuhakemiston huvila. Varmista majoituksen yksityiskohdat, palvelut ja saatavuus suoraan kohteen omasta varauskanavasta.",
+      en:"A villa listed in the official Kimitoön tourism directory. Confirm accommodation details, facilities and availability directly through the property's booking channel.",
+      es:"Villa incluida en el directorio turístico oficial de Kimitoön. Confirma los detalles, servicios y disponibilidad directamente en el canal de reserva del alojamiento."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-isla-7"),sourceUrl:source("villa-isla-7"),
+    image:image("a8d20f60-2c62-11ee-9fb4-c344224e6fd0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-isla-7"),tags:["villa"]
+  },
+  {
+    id:"villa-jolla-2",category:"majoitus",
+    name:{fi:"Villa Jolla #2",en:"Villa Jolla #2",es:"Villa Jolla #2"},
+    description:{
+      fi:"Kemiönsaaren virallisessa hakemistossa esiteltävä huvila. Tarkista ajantasaiset majoitustiedot, varustelu ja ehdot suoraan kohteen omalta sivulta.",
+      en:"A villa featured in the official Kimitoön directory. Check current accommodation details, facilities and terms on the property's own page.",
+      es:"Villa presentada en el directorio oficial de Kimitoön. Consulta los datos actuales del alojamiento, el equipamiento y las condiciones en su propia página."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-jolla-2-3"),sourceUrl:source("villa-jolla-2-3"),
+    image:image("0b330de0-2c5d-11ee-9fb4-c344224e6fd0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-jolla-2-3"),tags:["villa"]
+  },
+  {
+    id:"villa-kruunula-39",category:"majoitus",
+    name:{fi:"Villa Kruunula #39",en:"Villa Kruunula #39",es:"Villa Kruunula #39"},
+    description:{
+      fi:"Merikruunun alueen huvila Kemiönsaaren virallisessa matkailuhakemistossa. Tarkista kohteen omalta sivulta ajantasainen varustelu, henkilömäärä ja varausohjeet.",
+      en:"A villa in the Merikruunu area listed by the official Kimitoön tourism directory. Check current facilities, occupancy and booking instructions on the property's own page.",
+      es:"Villa de la zona de Merikruunu incluida en el directorio turístico oficial de Kimitoön. Consulta el equipamiento, la capacidad y las instrucciones de reserva en su propia página."
+    },
+    location:{fi:"Merikruunu, Kemiönsaari",en:"Merikruunu, Kimitoön",es:"Merikruunu, Kimitoön"},
+    websiteUrl:source("villa-kruunula-39-2"),sourceUrl:source("villa-kruunula-39-2"),
+    image:image("0240d750-1a4a-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-kruunula-39-2"),tags:["villa","merikruunu"]
+  },
+  {
+    id:"villa-lux-3",category:"majoitus",
+    name:{fi:"Villa Lux #3",en:"Villa Lux #3",es:"Villa Lux #3"},
+    description:{
+      fi:"Kemiönsaaren virallisessa matkailuhakemistossa esiteltävä huvila. Tarkista kohteen yksityiskohtaiset tiedot, varustelu ja saatavuus suoraan virallisesta kohdekortista.",
+      en:"A villa featured in the official Kimitoön tourism directory. Check detailed property information, facilities and availability directly in the official listing.",
+      es:"Villa presentada en el directorio turístico oficial de Kimitoön. Consulta los detalles, el equipamiento y la disponibilidad directamente en la ficha oficial."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-lux-3-2"),sourceUrl:source("villa-lux-3-2"),
+    image:image("c22af490-8388-11ee-9fca-6fdb01d69922.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-lux-3-2"),tags:["villa"]
+  },
+  {
+    id:"villa-matilda-19",category:"majoitus",
+    name:{fi:"Villa Matilda #19",en:"Villa Matilda #19",es:"Villa Matilda #19"},
+    description:{
+      fi:"Kemiönsaaren viralliseen matkailuhakemistoon kuuluva huvila. Ajantasaiset tilat, henkilömäärä, hinnat ja varausohjeet tarkistetaan suoraan kohteen omalta sivulta.",
+      en:"A villa included in the official Kimitoön tourism directory. Confirm current facilities, occupancy, prices and booking instructions on the property's own page.",
+      es:"Villa incluida en el directorio turístico oficial de Kimitoön. Confirma los servicios, la capacidad, los precios y las instrucciones de reserva en su propia página."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-matilda-19-2"),sourceUrl:source("villa-matilda-19-2"),
+    image:image("1931dc10-2d47-11ee-9fb4-c344224e6fd0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-matilda-19-2"),tags:["villa"]
+  },
+  {
+    id:"villa-mimosa-37",category:"majoitus",
+    name:{fi:"Villa Mimosa #37",en:"Villa Mimosa #37",es:"Villa Mimosa #37"},
+    description:{
+      fi:"Kemiönsaaren virallisen kohdehakemiston huvila. Tarkista majoituksen ominaisuudet, henkilömäärä ja saatavuus suoraan kohteen omalta sivulta.",
+      en:"A villa listed in the official Kimitoön destination directory. Check accommodation features, occupancy and availability directly on the property's own page.",
+      es:"Villa incluida en el directorio oficial de destinos de Kimitoön. Consulta las características, la capacidad y la disponibilidad directamente en su propia página."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-mimosa-37"),sourceUrl:source("villa-mimosa-37"),
+    image:image("7bc26960-7393-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-mimosa-37"),tags:["villa"]
+  },
+  {
+    id:"villa-orion-57",category:"majoitus",
+    name:{fi:"Villa Orion #57",en:"Villa Orion #57",es:"Villa Orion #57"},
+    description:{
+      fi:"Kemiönsaaren virallisen matkailuhakemiston majoituskohde. Tarkista ajantasainen kuvaus, varustelu ja varaus suoraan kohteen omalta sivulta.",
+      en:"An accommodation listing in the official Kimitoön tourism directory. Check the current description, facilities and booking details on the property's own page.",
+      es:"Alojamiento incluido en el directorio turístico oficial de Kimitoön. Consulta la descripción, el equipamiento y la reserva en su propia página."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-orion-57"),sourceUrl:source("villa-orion-57"),
+    image:image("c61f3c50-7392-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-orion-57"),tags:["villa"]
+  },
+  {
+    id:"villa-otava-15",category:"majoitus",
+    name:{fi:"Villa Otava #15",en:"Villa Otava #15",es:"Villa Otava #15"},
+    description:{
+      fi:"Kemiönsaaren virallisessa matkailuhakemistossa esitelty huvila. Tarkista kohteen omalta sivulta majoitustiedot, varustelu ja saatavuus.",
+      en:"A villa featured in the official Kimitoön tourism directory. Check accommodation details, facilities and availability on the property's own page.",
+      es:"Villa presentada en el directorio turístico oficial de Kimitoön. Consulta los detalles, el equipamiento y la disponibilidad en su propia página."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-otava-15"),sourceUrl:source("villa-otava-15"),
+    image:image("1d7eca10-7393-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-otava-15"),tags:["villa"]
+  },
+  {
+    id:"villa-pohjantahti-18",category:"majoitus",
+    name:{fi:"Villa Pohjantähti #18",en:"Villa Pohjantähti #18",es:"Villa Pohjantähti #18"},
+    description:{
+      fi:"Kemiönsaaren virallisen matkailuhakemiston majoituskohde. Varmista ajantasaiset palvelut, varustelu ja varaus suoraan kohteen omasta esittelystä.",
+      en:"An accommodation listing in the official Kimitoön tourism directory. Confirm current services, facilities and booking details in the property's own listing.",
+      es:"Alojamiento incluido en el directorio turístico oficial de Kimitoön. Confirma los servicios, el equipamiento y la reserva en la ficha del alojamiento."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-pohjantahti-18"),sourceUrl:source("villa-pohjantahti-18"),
+    image:image("0aa27440-17f1-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-pohjantahti-18"),tags:["villa"]
+  },
+  {
+    id:"villa-sirius-56",category:"majoitus",
+    name:{fi:"Villa Sirius #56",en:"Villa Sirius #56",es:"Villa Sirius #56"},
+    description:{
+      fi:"Kemiönsaaren virallisen matkailuhakemiston huvila. Tarkista kohteen omalta sivulta nykyinen varustelu, henkilömäärä ja saatavuus.",
+      en:"A villa listed in the official Kimitoön tourism directory. Check current facilities, occupancy and availability on the property's own page.",
+      es:"Villa incluida en el directorio turístico oficial de Kimitoön. Consulta el equipamiento, la capacidad y la disponibilidad actuales en su propia página."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-sirius-56"),sourceUrl:source("villa-sirius-56"),
+    image:image("e41032b0-665a-11ed-9d9c-2ddc96e1236d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-sirius-56"),tags:["villa"]
+  },
+  {
+    id:"villa-ulrika",category:"majoitus",
+    name:{fi:"Villa Ulrika",en:"Villa Ulrika",es:"Villa Ulrika"},
+    description:{
+      fi:"Kemiönsaaren virallisessa matkailuhakemistossa esiteltävä majoituskohde. Ajantasaiset tiedot ja varauskanava tarkistetaan kohteen omalta sivulta.",
+      en:"An accommodation listing in the official Kimitoön tourism directory. Check current information and the booking channel on the property's own page.",
+      es:"Alojamiento presentado en el directorio turístico oficial de Kimitoön. Consulta la información actual y el canal de reserva en su propia página."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("villa-ulrika"),sourceUrl:source("villa-ulrika"),
+    image:image("8ead5540-d2f8-11ed-8ed8-859d0a6307f5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-ulrika"),tags:["villa"]
+  },
+  // Other accommodation providers from the official destination catalogue.
+  {
+    id:"spa-hotel-kasnas",category:"majoitus",
+    name:{fi:"Spa Hotel Kasnäs",en:"Spa Hotel Kasnäs",es:"Spa Hotel Kasnäs"},
+    description:{
+      fi:"Kasnäsin merellinen hotelli- ja lomakeskus. Virallinen matkailusivusto nostaa esiin hotellin, kylpylän, ravintolan, vierasvenesataman ja caravan-alueen.",
+      en:"A seaside hotel and resort in Kasnäs. The official tourism site highlights the hotel, spa, restaurant, guest harbour and caravan area.",
+      es:"Hotel y complejo vacacional junto al mar en Kasnäs. La web turística oficial destaca el hotel, el spa, el restaurante, el puerto deportivo y la zona de caravanas."
+    },
+    location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
+    websiteUrl:"https://www.kasnas.com/",sourceUrl:source("spa-hotel-kasnas-2"),
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/Kasnas-gasthamn-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",tags:["hotelli","kylpylä","ravintola","satama"]
+  },
+  {
+    id:"soderlangvik-glamping",category:"majoitus",
+    name:{fi:"Söderlångvik Glamping",en:"Söderlångvik Glamping",es:"Söderlångvik Glamping"},
+    description:{
+      fi:"Glamping-majoitus Söderlångvikin kartanon alueella. Tarkista kauden ajankohta, majoituksen sisältö ja saatavuus suoraan palveluntarjoajalta.",
+      en:"Glamping accommodation at Söderlångvik Manor. Confirm the operating season, what's included and availability directly with the provider.",
+      es:"Alojamiento glamping en la finca de Söderlångvik. Confirma la temporada, los servicios incluidos y la disponibilidad directamente con el proveedor."
+    },
+    location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
+    websiteUrl:"https://soderlangvik.fi/fi/glamping/",sourceUrl:"https://soderlangvik.fi/fi/glamping/",
+    image:image("05e15580-ff43-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://soderlangvik.fi/fi/glamping/",tags:["glamping","kartano","luonto"]
+  },
+  {
+    id:"bengtskar-lighthouse-stay",category:"majoitus",
+    name:{fi:"Yö Bengtskärin majakassa",en:"Stay overnight at Bengtskär Lighthouse",es:"Alojamiento en el faro de Bengtskär"},
+    description:{
+      fi:"Yöpymismahdollisuus avomeren majakkasaarella. Merikuljetus, kausi, huoneet ja vierailun ehdot on tarkistettava suoraan majakan ylläpitäjältä.",
+      en:"An overnight stay on a lighthouse island in the open sea. Confirm boat transport, season, rooms and visitor terms directly with the lighthouse operator.",
+      es:"Alojamiento en una isla con faro en mar abierto. Confirma el transporte marítimo, la temporada, las habitaciones y las condiciones directamente con el operador."
+    },
+    location:{fi:"Bengtskär, Kemiönsaaren ulkosaaristo",en:"Bengtskär, outer Kimitoön archipelago",es:"Bengtskär, archipiélago exterior de Kimitoön"},
+    websiteUrl:"https://bengtskar.fi/",sourceUrl:source("yobengtskarin-majakassa"),
+    image:image("230658b0-52a6-11ec-ae70-f70f11991cb8-Bengtskar_RobinS_4.jpg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("yobengtskarin-majakassa"),tags:["majakka","ulkosaaristo","erikoismajoitus"]
+  },
+  {
+    id:"sebbholmen-ecocamp-cottages",category:"majoitus",
+    name:{fi:"Sebbholmen EcoCamp – mökit",en:"Sebbholmen EcoCamp – cabins",es:"Sebbholmen EcoCamp – cabañas"},
+    description:{
+      fi:"Saaristossa sijaitseva mökkimajoitus. Tarkista mökkien varustelu, kulkuyhteydet, kausi ja varaus suoraan EcoCampin omasta palvelusta.",
+      en:"Cottage accommodation in the archipelago. Check cabin facilities, access, season and booking directly with EcoCamp.",
+      es:"Alojamiento en cabañas en el archipiélago. Consulta el equipamiento, el acceso, la temporada y la reserva directamente con EcoCamp."
+    },
+    location:{fi:"Sebbholmen, Kemiönsaari",en:"Sebbholmen, Kimitoön",es:"Sebbholmen, Kimitoön"},
+    websiteUrl:"https://sebbholmen.fi/",sourceUrl:source("sebbholmen-ecocamp-mokit"),
+    image:image("4c590120-6594-11ed-9d9c-2ddc96e1236d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("sebbholmen-ecocamp-mokit"),tags:["mökit","saaristo","luonto"]
+  },
+  {
+    id:"sebbholmen-tentsile",category:"majoitus",
+    name:{fi:"Sebbholmen EcoCamp – Tentsile-teltat",en:"Sebbholmen EcoCamp – Tentsile tents",es:"Sebbholmen EcoCamp – tiendas Tentsile"},
+    description:{
+      fi:"Tentsile-telttamajoitus EcoCampin saaristokohteessa. Tarkista kausi, varustelu, saapumisohjeet ja saatavuus suoraan palveluntarjoajalta.",
+      en:"Tentsile tent accommodation at the EcoCamp archipelago site. Confirm the season, equipment, arrival instructions and availability with the provider.",
+      es:"Alojamiento en tiendas Tentsile en el destino insular de EcoCamp. Confirma la temporada, el equipamiento, las instrucciones de llegada y la disponibilidad con el proveedor."
+    },
+    location:{fi:"Sebbholmen, Kemiönsaari",en:"Sebbholmen, Kimitoön",es:"Sebbholmen, Kimitoön"},
+    websiteUrl:"https://sebbholmen.fi/",sourceUrl:source("sebbholmen-ecocamp-tentsile-teltat"),
+    image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("sebbholmen-ecocamp-tentsile-teltat"),tags:["tentsile","telttamajoitus","saaristo"]
+  },
+  {
+    id:"merikruunu-hotel",category:"majoitus",
+    name:{fi:"Hotelli & Ravintola Merikruunu",en:"Hotel & Restaurant Merikruunu",es:"Hotel y Restaurante Merikruunu"},
+    description:{
+      fi:"Historiallinen saaristohotelli Dragsfjärdissä. Virallinen kohdesivu esittelee hotellin ja ravintolan; tarkista huoneet, palvelut, hinnat ja aukiolo suoraan hotellilta.",
+      en:"A historic archipelago hotel in Dragsfjärd. The official listing presents the hotel and restaurant; confirm rooms, services, prices and opening times directly with the hotel.",
+      es:"Hotel histórico del archipiélago en Dragsfjärd. La ficha oficial presenta el hotel y el restaurante; confirma habitaciones, servicios, precios y horarios directamente con el hotel."
+    },
+    location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
+    websiteUrl:"https://www.merikruunu.fi/",sourceUrl:source("hotelli-ravintola-merikruunu"),
+    image:image("d3ae3db0-9574-11ed-95a7-e96820c1f2b7.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["hotelli","ravintola","pub","saaristo"]
+  },
+  {
+    id:"bb-heedbacka",category:"majoitus",
+    name:{fi:"B & B Hembacka",en:"B&B Hembacka",es:"B&B Hembacka"},
+    description:{
+      fi:"Bed & breakfast -majoitus Kemiönsaaren virallisessa matkailuhakemistossa. Tarkista huonetyypit, aamiainen, palvelut ja varaus suoraan majoittajalta.",
+      en:"A bed and breakfast listed in the official Kimitoön tourism directory. Confirm room types, breakfast, services and booking directly with the host.",
+      es:"Alojamiento bed and breakfast incluido en el directorio turístico oficial de Kimitoön. Confirma los tipos de habitación, el desayuno, los servicios y la reserva directamente con el anfitrión."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("b-b-hembacka"),sourceUrl:source("b-b-hembacka"),
+    image:image("1cf56a30-bf5e-11ed-8fb6-cd05a147400e.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("b-b-hembacka"),tags:["bed-and-breakfast","majoitus"]
+  },
+  {
+    id:"dals-inn",category:"majoitus",
+    name:{fi:"Dals Inn Bed & Breakfast",en:"Dals Inn Bed & Breakfast",es:"Dals Inn Bed & Breakfast"},
+    description:{
+      fi:"Bed & breakfast -majoitus Taalintehtaan alueella. Tarkista huoneiden saatavuus, palvelut ja varausehdot suoraan majoituspaikalta.",
+      en:"Bed and breakfast accommodation in the Dalsbruk area. Check room availability, services and booking terms directly with the property.",
+      es:"Alojamiento bed and breakfast en la zona de Dalsbruk. Consulta la disponibilidad, los servicios y las condiciones de reserva directamente con el establecimiento."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:source("dals-inn-bed-breakfast"),sourceUrl:source("dals-inn-bed-breakfast"),
+    image:image("518abac0-bb41-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("dals-inn-bed-breakfast"),tags:["bed-and-breakfast","taalintehdas"]
+  },
+  {
+    id:"ekniemi-holiday-village",category:"majoitus",
+    name:{fi:"Ekniemen lomakylä",en:"Ekniemi Holiday Village",es:"Complejo vacacional Ekniemi"},
+    description:{
+      fi:"Meren äärellä sijaitseva lomakylä, jonka virallinen esittely nostaa esiin luonnonrauhan, majoituksen ja elämykset. Tarkista mökkivalikoima ja saatavuus suoraan toimijalta.",
+      en:"A seaside holiday village whose official listing highlights nature, accommodation and experiences. Check cottage options and availability directly with the operator.",
+      es:"Complejo vacacional junto al mar cuya ficha oficial destaca la naturaleza, el alojamiento y las experiencias. Consulta las cabañas y la disponibilidad directamente con el operador."
+    },
+    location:{fi:"Ekniemi, Kemiönsaari",en:"Ekniemi, Kimitoön",es:"Ekniemi, Kimitoön"},
+    websiteUrl:source("ekniemen-lomakyla-luonnonrauhaa-majoitusta-ja-elamyksia-meren-aarella"),sourceUrl:source("ekniemen-lomakyla-luonnonrauhaa-majoitusta-ja-elamyksia-meren-aarella"),
+    image:image("32f73db0-4a92-11f0-9fff-ed17829cd958.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("ekniemen-lomakyla-luonnonrauhaa-majoitusta-ja-elamyksia-meren-aarella"),tags:["lomakylä","merenranta","majoitus"]
+  },
+  // Food, cafés and local producers.
+  {
+    id:"holmbergs-four-c",category:"ruoka",
+    name:{fi:"Holmbergs Fisk & Café Four C",en:"Holmbergs Fisk & Café Four C",es:"Holmbergs Fisk & Café Four C"},
+    description:{
+      fi:"Taalintehtaan vanhassa postitalossa toimiva kalakaupan ja kahvilan yhdistelmä. Tarkista päivän kalavalikoima, kahvilatuotteet ja aukiolo suoraan yritykseltä.",
+      en:"A fish shop and café in the former post office building in Dalsbruk. Check the day's fish selection, café offering and opening times directly with the business.",
+      es:"Combinación de pescadería y cafetería en la antigua oficina de correos de Dalsbruk. Consulta la selección de pescado, la oferta de cafetería y los horarios directamente con el negocio."
+    },
+    location:{fi:"Kolabackavägen 1a, Taalintehdas",en:"Kolabackavägen 1a, Dalsbruk",es:"Kolabackavägen 1a, Dalsbruk"},
+    websiteUrl:source("holmbergs-fisk-cafe-four-c"),sourceUrl:source("holmbergs-fisk-cafe-four-c"),
+    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("holmbergs-fisk-cafe-four-c"),tags:["kahvila","kala","lähiruoka"]
+  },
+  {
+    id:"amos-krog",category:"ruoka",
+    name:{fi:"Ravintola Amos Krog",en:"Restaurant Amos Krog",es:"Restaurante Amos Krog"},
+    description:{
+      fi:"Söderlångvikin kartanon ravintola. Yhdistä ruokailu kartanon, museon, näyttelyiden ja omenatarhojen vierailuun; tarkista ajankohtainen menu ja aukiolo ravintolalta.",
+      en:"The restaurant at Söderlångvik Manor. Combine a meal with a visit to the manor, museum, exhibitions and apple orchards; check the current menu and opening times with the restaurant.",
+      es:"Restaurante de la mansión Söderlångvik. Combina la comida con una visita a la mansión, el museo, las exposiciones y los huertos; consulta el menú y los horarios actuales con el restaurante."
+    },
+    location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
+    websiteUrl:"https://soderlangvik.fi/",sourceUrl:source("ravintola-amos-krog"),
+    image:image("9efd56f0-f79a-11ec-bd67-a5b329105a0d.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:source("ravintola-amos-krog"),tags:["ravintola","kartano","lähiruoka"]
+  },
+  {
+    id:"stalls-bar-food",category:"ruoka",
+    name:{fi:"Stall’s Bar & Food",en:"Stall’s Bar & Food",es:"Stall’s Bar & Food"},
+    description:{
+      fi:"Kemiönsaaren virallisen matkailusivuston ravintola- ja kahvilahakemistossa esitelty ruokapaikka. Tarkista nykyinen ruokalista, palvelut ja aukiolo suoraan ravintolalta.",
+      en:"A food venue featured in the official Kimitoön restaurant and café directory. Check the current menu, services and opening times directly with the restaurant.",
+      es:"Establecimiento gastronómico incluido en el directorio oficial de restaurantes y cafeterías de Kimitoön. Consulta el menú, los servicios y los horarios actuales directamente con el restaurante."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("stalls-bar-food"),sourceUrl:source("stalls-bar-food"),
+    image:image("adffcfb0-721c-11f1-a837-25a499af5612.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("stalls-bar-food"),tags:["ravintola","baari"]
+  },
+  {
+    id:"farmors-cafe",category:"ruoka",
+    name:{fi:"Farmors Café",en:"Farmors Café",es:"Farmors Café"},
+    description:{
+      fi:"Kemiönsaaren matkailuhakemistossa esitelty kahvila. Tarkista kauden leivonnaiset, palvelut ja aukiolo suoraan kahvilalta ennen vierailua.",
+      en:"A café featured in the Kimitoön tourism directory. Check seasonal pastries, services and opening times directly with the café before visiting.",
+      es:"Cafetería incluida en el directorio turístico de Kimitoön. Consulta los dulces de temporada, los servicios y los horarios directamente con la cafetería antes de visitarla."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:source("farmors-cafe"),sourceUrl:source("farmors-cafe"),
+    image:image("1dedf000-55cf-11f1-a99c-e5a59b9f35a4.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("farmors-cafe"),tags:["kahvila","leivonnaiset"]
+  },
+  {
+    id:"rumpan-bar",category:"ruoka",
+    name:{fi:"Rumpan Bar",en:"Rumpan Bar",es:"Rumpan Bar"},
+    description:{
+      fi:"Rumpan Bar kuuluu Visit Kemiönsaaren ravintola- ja kahvilahakemistoon. Tarkista palvelun tämänhetkinen kausi, ruoka- ja juomatarjonta sekä aukiolo suoraan toimijalta.",
+      en:"Rumpan Bar is listed in Visit Kimitoön's restaurant and café directory. Confirm its current season, food and drink offering and opening times directly with the operator.",
+      es:"Rumpan Bar figura en el directorio de restaurantes y cafeterías de Visit Kimitoön. Confirma la temporada, la oferta de comida y bebida y los horarios directamente con el operador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",sourceUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",tags:["baari","ravintola"]
+  },
+  {
+    id:"merikruunu-restaurant",category:"ruoka",
+    name:{fi:"Merikruunun ravintola ja Pub Svarte Krona",en:"Merikruunu Restaurant & Pub Svarte Krona",es:"Restaurante Merikruunu y Pub Svarte Krona"},
+    description:{
+      fi:"Hotelli Merikruunun yhteydessä toimiva ravintola- ja pubipalvelu. Menu, palveluajat ja kausittainen tarjonta on tarkistettava suoraan hotellilta.",
+      en:"Restaurant and pub services at Hotel Merikruunu. Check the menu, service hours and seasonal offering directly with the hotel.",
+      es:"Restaurante y pub del Hotel Merikruunu. Consulta el menú, los horarios de servicio y la oferta de temporada directamente con el hotel."
+    },
+    location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
+    websiteUrl:"https://www.merikruunu.fi/",sourceUrl:source("hotelli-ravintola-merikruunu"),
+    image:image("d3ae3db0-9574-11ed-95a7-e96820c1f2b7.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["ravintola","pub","hotelli"]
+  },
+  {
+    id:"db-bistro-runda-munken",category:"ruoka",
+    name:{fi:"DB Bistro Runda Munken",en:"DB Bistro Runda Munken",es:"DB Bistro Runda Munken"},
+    description:{
+      fi:"Taalintehtaan ruokapaikka Kemiönsaaren virallisessa matkailuhakemistossa. Tarkista ruokalista, palveluajat ja mahdolliset pöytävaraukset suoraan ravintolalta.",
+      en:"A Dalsbruk dining venue in the official Kimitoön tourism directory. Check the menu, service hours and any table reservations directly with the restaurant.",
+      es:"Restaurante de Dalsbruk incluido en el directorio turístico oficial de Kimitoön. Consulta el menú, los horarios y las reservas directamente con el restaurante."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:source("db-bistro-runda-munken"),sourceUrl:source("db-bistro-runda-munken"),
+    image:image("518abac0-bb41-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("db-bistro-runda-munken"),tags:["ravintola","taalintehdas"]
+  },
+  {
+    id:"oro-restaurant-12",category:"ruoka",
+    name:{fi:"Örö Ravintola 12",en:"Örö Restaurant 12",es:"Restaurante 12 de Örö"},
+    description:{
+      fi:"Örön linnakesaaren ravintola. Tarkista merikuljetukset, kauden aukiolo, päivän menu ja palvelut ennen saarelle lähtöä.",
+      en:"The restaurant on Örö Fortress Island. Check boat connections, seasonal opening, the day's menu and services before travelling to the island.",
+      es:"Restaurante de la isla fortificada de Örö. Consulta las conexiones marítimas, la apertura de temporada, el menú del día y los servicios antes de viajar a la isla."
+    },
+    location:{fi:"Örön linnakesaari, Kemiönsaari",en:"Örö Fortress Island, Kimitoön",es:"Isla fortificada de Örö, Kimitoön"},
+    websiteUrl:"https://www.oro.fi/",sourceUrl:source("oro-ravintola-12"),
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/8ead5540-d2f8-11ed-8ed8-859d0a6307f5.jpeg-374x211.jpeg",imageCredit:"Visit Kemiönsaari",imageSource:source("oro-ravintola-12"),tags:["ravintola","saari","retkikohde"]
+  },
+  // Activities, outdoor, culture, events and local services.
+  {
+    id:"jahti-eugenia",category:"aktiviteetit",
+    name:{fi:"Jahti Eugenia – purjehdukset ja yleisöretket",en:"Yacht Eugenia – sailing trips",es:"Yate Eugenia – excursiones a vela"},
+    description:{
+      fi:"Perinteinen purjealus, jolla järjestetään yleisöpurjehduksia, tilauspurjehduksia ja teemaristeilyjä Kemiönsaaren saaristossa. Tarkista reitit ja lähtöpäivät järjestäjältä.",
+      en:"A traditional sailing vessel offering public sails, private charters and themed trips in the Kimitoön archipelago. Check routes and departure dates with the operator.",
+      es:"Embarcación tradicional que ofrece salidas públicas, chárteres privados y excursiones temáticas por el archipiélago de Kimitoön. Consulta rutas y fechas con el operador."
+    },
+    location:{fi:"Taalintehdas ja Kemiönsaaren saaristo",en:"Dalsbruk and the Kimitoön archipelago",es:"Dalsbruk y el archipiélago de Kimitoön"},
+    websiteUrl:"https://www.jahtieugenia.fi/",sourceUrl:source("meriseikkailu-jahti-eugenialla-oron-linnakesaarelle-yleisopurjehdus"),
+    image:image("01c4bf90-bde0-11ef-b4f3-d183349518f6.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("meriseikkailu-jahti-eugenialla-oron-linnakesaarelle-yleisopurjehdus"),tags:["purjehdus","meriretki","historiallinen alus"]
+  },
+  {
+    id:"haahkasafari-bengtskar",category:"aktiviteetit",
+    name:{fi:"Haahkasafari Bengtskärin majakalle",en:"Eider safari to Bengtskär Lighthouse",es:"Safari de eideres al faro de Bengtskär"},
+    description:{
+      fi:"Merellinen retkituote Bengtskärin majakan suuntaan. Tarkista retken toteutuminen, ajankohta, lähtöpaikka ja sääehdot suoraan järjestäjältä.",
+      en:"A sea excursion towards Bengtskär Lighthouse. Confirm operating dates, departure point and weather conditions directly with the organiser.",
+      es:"Excursión marítima hacia el faro de Bengtskär. Confirma fechas, punto de salida y condiciones meteorológicas directamente con el organizador."
+    },
+    location:{fi:"Bengtskär ja Kemiönsaaren ulkosaaristo",en:"Bengtskär and the outer Kimitoön archipelago",es:"Bengtskär y el archipiélago exterior de Kimitoön"},
+    websiteUrl:"https://rosala.johku.com/",sourceUrl:source("haahkasafari-bengtskarin-majakalle"),
+    image:image("d3ae3db0-9574-11ed-95a7-e96820c1f2b7.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("haahkasafari-bengtskarin-majakalle"),tags:["meriretki","bengtskar","luonto"]
+  },
+  {
+    id:"kajakkivuokraus-hiittinen",category:"aktiviteetit",
+    name:{fi:"Kajakkivuokraus Hiittisissä",en:"Kayak rental in Hiittinen",es:"Alquiler de kayaks en Hiittinen"},
+    description:{
+      fi:"Kajakkivuokraus Hiittisten saaristossa. Varmista kaluston saatavuus, vuokrausehdot, turvallisuusohjeet ja säärajat suoraan palveluntarjoajalta.",
+      en:"Kayak rental in the Hiittinen archipelago. Confirm equipment availability, rental terms, safety guidance and weather limits directly with the provider.",
+      es:"Alquiler de kayaks en el archipiélago de Hiittinen. Confirma la disponibilidad del equipo, las condiciones, las instrucciones de seguridad y los límites meteorológicos con el proveedor."
+    },
+    location:{fi:"Hiittinen, Kemiönsaari",en:"Hiittinen, Kimitoön",es:"Hiittinen, Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("kajakkivuokraus-hiittisissa"),
+    image:image("4e7bae40-2a98-11f1-a489-cdb238875479.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kajakkivuokraus-hiittisissa"),tags:["kajakki","vuokraus","vesillä"]
+  },
+  {
+    id:"kalliokiipeily",category:"aktiviteetit",
+    name:{fi:"Kalliokiipeily ja laskeutuminen",en:"Rock climbing and abseiling",es:"Escalada en roca y rápel"},
+    description:{
+      fi:"Kemiönsaaren aktiviteettihakemistossa esitelty kiipeilyelämys. Varmista toteutuspaikka, ohjaus, osallistujavaatimukset ja varaus suoraan järjestäjältä.",
+      en:"A climbing experience featured in the Kimitoön activity directory. Confirm the location, guiding, participant requirements and booking directly with the organiser.",
+      es:"Experiencia de escalada incluida en el directorio de actividades de Kimitoön. Confirma el lugar, la guía, los requisitos y la reserva directamente con el organizador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("kalliokiipeily-ja-laskeutuminen"),
+    image:image("27a7b290-b46d-11ed-a101-0d79684aa620.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kalliokiipeily-ja-laskeutuminen"),tags:["kiipeily","ulkoilu","opastus"]
+  },
+  {
+    id:"nordic-gravel-kimitoon",category:"aktiviteetit",
+    name:{fi:"Nordic Gravel Series Kemiönsaari",en:"Nordic Gravel Series Kimitoön",es:"Nordic Gravel Series Kimitoön"},
+    description:{
+      fi:"Kemiönsaaren soratiepyöräilyyn liittyvä tapahtuma ja reittikokonaisuus. Tarkista tulevat tapahtumapäivät, reitit ja osallistumisohjeet järjestäjän omista kanavista.",
+      en:"A gravel-cycling event and route experience on Kimitoön. Check future event dates, routes and participation details through the organiser's channels.",
+      es:"Evento y experiencia de ciclismo gravel en Kimitoön. Consulta próximas fechas, rutas e información de participación en los canales del organizador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://nordicgravel.com/",sourceUrl:source("nordic-gravel-series-kemionsaari"),
+    image:image("ba25d1f0-a1eb-11ec-a15a-251d534f22f6-Nordic_Gravel_Series-KimitoDJI_0442-photo_Ville_Vappula-web.jpg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Nordic Gravel Series",imageSource:source("nordic-gravel-series-kemionsaari"),tags:["pyöräily","soratie","tapahtuma"]
+  },
+  {
+    id:"guided-walk-dalsbruk",category:"aktiviteetit",
+    name:{fi:"Opastettu kävely Taalintehtaalla",en:"Guided walk in Dalsbruk",es:"Paseo guiado por Dalsbruk"},
+    description:{
+      fi:"Opastettu kävely Taalintehtaan ruukkikylässä. Tarkista kierroksen kieli, kesto, lähtöpaikka ja varaus suoraan oppaalta tai järjestäjältä.",
+      en:"A guided walk through the historic ironworks village of Dalsbruk. Confirm language, duration, meeting point and booking directly with the guide or organiser.",
+      es:"Paseo guiado por el histórico pueblo siderúrgico de Dalsbruk. Confirma el idioma, la duración, el punto de encuentro y la reserva con el guía u organizador."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("opastettu-rento-kavely-taalintehtaalla"),
+    image:image("9c3094f0-1b2a-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("opastettu-rento-kavely-taalintehtaalla"),tags:["opastus","historia","kävely"]
+  },
+  {
+    id:"guided-kayak-archipelago",category:"aktiviteetit",
+    name:{fi:"Opastetut melontaretket ja kajakkivuokraus",en:"Guided kayak tours and kayak rental",es:"Rutas guiadas en kayak y alquiler"},
+    description:{
+      fi:"Opastettuja melontaretkiä ja kajakkivuokrausta Saaristomerellä. Tarkista reitit, kalusto, turvallisuusohjeet ja säästä riippuvat ehdot järjestäjältä.",
+      en:"Guided kayaking trips and kayak rental in the Archipelago Sea. Check routes, equipment, safety guidance and weather-related terms with the organiser.",
+      es:"Excursiones guiadas en kayak y alquiler en el mar del Archipiélago. Consulta rutas, equipo, seguridad y condiciones meteorológicas con el organizador."
+    },
+    location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("opastetut-melontaretket-saaristomerella-kajakkivuokraus"),
+    image:image("d2543620-1901-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("opastetut-melontaretket-saaristomerella-kajakkivuokraus"),tags:["melonta","kajakki","opastus"]
+  },
+  {
+    id:"saariston-loistoreitti",category:"aktiviteetit",
+    name:{fi:"Saariston loistoreitti – Bengtskär ja Viikinkikeskus",en:"Archipelago Lighthouse Route – Bengtskär and Viking Centre",es:"Ruta de los faros – Bengtskär y Centro Vikingo"},
+    description:{
+      fi:"Meriretki, joka yhdistää Bengtskärin majakan ja Rosalan Viikinkikeskuksen. Lähtöajat, liikennöintikausi ja sääehdot tarkistetaan suoraan varauspalvelusta.",
+      en:"A sea excursion connecting Bengtskär Lighthouse and Rosala Viking Centre. Check departures, operating season and weather conditions through the booking service.",
+      es:"Excursión marítima que conecta el faro de Bengtskär y el Centro Vikingo de Rosala. Consulta salidas, temporada y condiciones meteorológicas en el servicio de reservas."
+    },
+    location:{fi:"Kasnäs, Rosala ja Bengtskär",en:"Kasnäs, Rosala and Bengtskär",es:"Kasnäs, Rosala y Bengtskär"},
+    websiteUrl:"https://rosala.johku.com/",sourceUrl:source("saariston-loistoreitti-risteily-bengtskariin-ja-viikinkikeskukseen"),
+    image:image("bfa3bc50-a5e7-11ec-ae3f-d90d6bc680b4-Bengtskar-lighthouse-from-the-sea.jpg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("saariston-loistoreitti-risteily-bengtskariin-ja-viikinkikeskukseen"),tags:["risteily","bengtskar","rosala"]
+  },
+  {
+    id:"sauva-kalastuselamys",category:"aktiviteetit",
+    name:{fi:"Sauva – kalastuselämys",en:"Sauva – fishing experience",es:"Sauva – experiencia de pesca"},
+    description:{
+      fi:"Kalastuselämys Kemiönsaaren saaristossa. Tarkista kalastusmuoto, välineet, kesto, osallistujamäärä ja varaus suoraan järjestäjältä.",
+      en:"A fishing experience in the Kimitoön archipelago. Confirm the type of fishing, equipment, duration, group size and booking directly with the organiser.",
+      es:"Experiencia de pesca en el archipiélago de Kimitoön. Confirma la modalidad, el equipo, la duración, el tamaño del grupo y la reserva con el organizador."
+    },
+    location:{fi:"Kemiönsaaren saaristo",en:"Kimitoön archipelago",es:"Archipiélago de Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("sauva-kalastuselamys"),
+    image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("sauva-kalastuselamys"),tags:["kalastus","merielämys"]
+  },
+  {
+    id:"merigalleria-fabrik",category:"kulttuuri",
+    name:{fi:"Merigalleria Fabrik",en:"Merigalleria Fabrik",es:"Merigalleria Fabrik"},
+    description:{
+      fi:"Taidegalleria Kemiönsaaren kulttuurikohteiden hakemistossa. Tarkista ajankohtaiset näyttelyt, aukiolo ja vierailuohjeet suoraan gallerialta.",
+      en:"An art gallery listed among Kimitoön's cultural destinations. Check current exhibitions, opening times and visitor information directly with the gallery.",
+      es:"Galería de arte incluida entre los destinos culturales de Kimitoön. Consulta las exposiciones, los horarios y la información para visitantes directamente con la galería."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",sourceUrl:source("merigalleria-fabrik"),
+    image:image("e3ec5b50-f7f9-11ef-82bd-bd0293da0d2e.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("merigalleria-fabrik"),tags:["taide","galleria","näyttely"]
+  },
+  {
+    id:"kubu-kulturhus",category:"kulttuuri",
+    name:{fi:"Kulturhus Björkboda (KUBU)",en:"Kulturhus Björkboda (KUBU)",es:"Kulturhus Björkboda (KUBU)"},
+    description:{
+      fi:"Björkbodan kulttuuritila, jossa järjestetään näyttelyitä ja ohjelmaa. Tarkista ajankohtainen näyttelykalenteri ja tapahtumien tiedot KUBUn omista kanavista.",
+      en:"A cultural venue in Björkboda hosting exhibitions and programmes. Check the current exhibition calendar and event details through KUBU's own channels.",
+      es:"Espacio cultural en Björkboda con exposiciones y actividades. Consulta la programación y los detalles de los eventos en los canales de KUBU."
+    },
+    location:{fi:"Björkboda, Kemiönsaari",en:"Björkboda, Kimitoön",es:"Björkboda, Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/aktiviteetit/",sourceUrl:source("kulturhus-bjorkboda-kubu"),
+    image:image("837b6d00-456d-11ee-807b-e549c99fd69d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("kulturhus-bjorkboda-kubu"),tags:["kulttuuri","näyttely","tapahtuma"]
+  },
+  {
+    id:"soderlangvik-museum",category:"kulttuuri",
+    name:{fi:"Söderlångvikin museo",en:"Söderlångvik Museum",es:"Museo Söderlångvik"},
+    description:{
+      fi:"Söderlångvikin kartanon päärakennuksessa toimiva museo ja taidekohde. Yhdistä vierailuun kartanon puisto, omenatarhat, ravintola ja luontopolut; tarkista aukiolo viralliselta sivulta.",
+      en:"A museum and art destination in the main building of Söderlångvik Manor. Combine the visit with the manor park, apple orchards, restaurant and nature trails; check opening times on the official site.",
+      es:"Museo y destino artístico en el edificio principal de la mansión Söderlångvik. Combina la visita con el parque, los huertos, el restaurante y los senderos; consulta los horarios en la web oficial."
+    },
+    location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
+    websiteUrl:"https://soderlangvik.fi/",sourceUrl:source("soderlangvikin-museo"),
+    image:image("837b6d00-456d-11ee-807b-e549c99fd69d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:source("soderlangvikin-museo"),tags:["museo","taide","kartano"]
+  },
+  {
+    id:"glassgaraget",category:"ostokset",
+    name:{fi:"Glassgaraget – tilapuoti ja kahvila",en:"Glassgaraget – farm shop and café",es:"Glassgaraget – tienda de granja y cafetería"},
+    description:{
+      fi:"Tilapuodin ja kahvilan yhdistelmä Kemiönsaaren virallisessa kohdehakemistossa. Tarkista myymälän valikoima, kahvilapalvelut ja aukiolo suoraan toimijalta.",
+      en:"A farm shop and café featured in the official Kimitoön destination directory. Check the shop selection, café services and opening times directly with the operator.",
+      es:"Tienda de granja y cafetería incluida en el directorio oficial de destinos de Kimitoön. Consulta la selección, los servicios y los horarios directamente con el operador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/kohteet/",sourceUrl:source("glassgaraget-tilapuoti-ja-kahvila"),
+    image:image("431dc520-0e37-11f0-88da-256e05b1f1a0.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("glassgaraget-tilapuoti-ja-kahvila"),tags:["tilapuoti","kahvila","ostokset"]
+  },
+  {
+    id:"baltic-jazz",category:"tapahtumat",
+    name:{fi:"Baltic Jazz",en:"Baltic Jazz",es:"Baltic Jazz"},
+    description:{
+      fi:"Taalintehtaan ja Kemiönsaaren tunnettu jazzfestivaali. Tarkista seuraavan tapahtumavuoden ohjelma, liput, esiintyjät ja aikataulut suoraan festivaalin järjestäjältä.",
+      en:"A well-known jazz festival in Dalsbruk and Kimitoön. Check the next festival programme, tickets, performers and schedules directly with the organiser.",
+      es:"Festival de jazz conocido en Dalsbruk y Kimitoön. Consulta el próximo programa, las entradas, los artistas y los horarios directamente con el organizador."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://www.balticjazz.com/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/tapahtumat/",
+    image:image("f49c5f30-f8d3-11ed-b821-95e694c35326.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Baltic Jazz",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/tapahtumat/",tags:["festivaali","musiikki","kesä"]
+  },
+  {
+    id:"kasnas-spa-wellbeing",category:"hyvinvointi",
+    name:{fi:"Kasnäsin kylpylä ja hyvinvointi",en:"Kasnäs Spa and wellbeing",es:"Spa y bienestar de Kasnäs"},
+    description:{
+      fi:"Kasnäsin kylpyläpalvelut osana Spa Hotel Kasnäsin lomakeskusta. Tarkista allasosaston, saunojen, hoitojen ja muiden hyvinvointipalvelujen ajantasaiset tiedot palveluntarjoajalta.",
+      en:"Spa services within the Spa Hotel Kasnäs resort. Check current information about pools, saunas, treatments and other wellbeing services with the provider.",
+      es:"Servicios de spa dentro del complejo Spa Hotel Kasnäs. Consulta la información actual sobre piscinas, saunas, tratamientos y otros servicios directamente con el proveedor."
+    },
+    location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
+    websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://www.kasnas.com/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/Kasnas-gasthamn-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",tags:["kylpylä","sauna","hyvinvointi"]
+  },
+  {
+    id:"dalsbruk-harbour",category:"saaristo",
+    name:{fi:"Taalintehtaan vierasvenesatama",en:"Dalsbruk Guest Harbour",es:"Puerto deportivo de Dalsbruk"},
+    description:{
+      fi:"Taalintehtaan vierasvenesatama on yksi Kemiönsaaren virallisen matkailusivuston esiin nostamista satamista. Tarkista palvelut, venepaikat ja satamatoimiston aukiolo sataman omista tiedoista.",
+      en:"Dalsbruk Guest Harbour is one of the harbours highlighted by the official Kimitoön tourism site. Check services, berths and harbour office hours in the harbour's own information.",
+      es:"El puerto deportivo de Dalsbruk es uno de los puertos destacados por la web turística oficial de Kimitoön. Consulta servicios, amarres y horarios en la información del puerto."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/suunnittele/vierasvenesatamat/",sourceUrl:"https://www.visitkimitoon.fi/fi/suunnittele/vierasvenesatamat/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/dalsbruk-gasthamn1-1-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/suunnittele/vierasvenesatamat/",tags:["satama","veneily","taalintehdas"]
+  },
+  {
+    id:"kasnas-harbour",category:"saaristo",
+    name:{fi:"Kasnäsin vierasvenesatama",en:"Kasnäs Guest Harbour",es:"Puerto deportivo de Kasnäs"},
+    description:{
+      fi:"Kasnäsin satama toimii tärkeänä porttina ulkosaaristoon ja yhteyksiin Örön sekä muiden merikohteiden suuntaan. Tarkista satamapalvelut ja yhteydet ennen matkaa.",
+      en:"Kasnäs harbour is an important gateway to the outer archipelago and boat connections towards Örö and other sea destinations. Check harbour services and connections before travelling.",
+      es:"El puerto de Kasnäs es una puerta importante al archipiélago exterior y a las conexiones marítimas hacia Örö y otros destinos. Consulta los servicios y conexiones antes de viajar."
+    },
+    location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
+    websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://www.visitkimitoon.fi/fi/suunnittele/vierasvenesatamat/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/Kasnas-gasthamn-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/suunnittele/vierasvenesatamat/",tags:["satama","veneily","ulkosaaristo"]
+  },
+  {
+    id:"oro-guest-harbour",category:"saaristo",
+    name:{fi:"Örön vierasvenesatama",en:"Örö Guest Harbour",es:"Puerto deportivo de Örö"},
+    description:{
+      fi:"Örön linnakesaaren vierasvenesatama palvelee omalla veneellä saapuvia. Tarkista sataman ajantasaiset palvelut, paikkatilanne ja saaren muut palvelut ennen lähtöä.",
+      en:"Örö Guest Harbour serves visitors arriving by private boat. Check current harbour services, berth availability and other island services before departure.",
+      es:"El puerto deportivo de Örö recibe a quienes llegan en barco propio. Consulta los servicios, la disponibilidad de amarres y otros servicios de la isla antes de salir."
+    },
+    location:{fi:"Örön linnakesaari, Kemiönsaari",en:"Örö Fortress Island, Kimitoön",es:"Isla fortificada de Örö, Kimitoön"},
+    websiteUrl:"https://www.oro.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/suunnittele/vierasvenesatamat/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/oro-flygbilder6-760x427.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/suunnittele/vierasvenesatamat/",tags:["satama","veneily","saari"]
+  },
+  {
+    id:"sagalund-museum",category:"kulttuuri",
+    name:{fi:"Sagalundin museo",en:"Sagalund Museum",es:"Museo Sagalund"},
+    description:{
+      fi:"Kemiön ulkomuseo ja kulttuurikohde, jossa esitellään paikallista historiaa ja rakennusperintöä. Tarkista näyttelyt, tapahtumat ja vierailuajat museon omilta sivuilta.",
+      en:"An open-air museum and cultural destination in Kimito, presenting local history and built heritage. Check exhibitions, events and visiting hours on the museum's own website.",
+      es:"Museo al aire libre y destino cultural en Kimito que presenta la historia y el patrimonio local. Consulta exposiciones, eventos y horarios en la web del museo."
+    },
+    location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
+    websiteUrl:"https://www.sagalund.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2023/05/sagalund30-760x507.jpg",imageCredit:"Visit Kemiönsaari / Sagalund",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["museo","kulttuuri","historia"]
+  },
+  {
+    id:"soderlangvik-manor",category:"kulttuuri",
+    name:{fi:"Söderlångvikin kartano",en:"Söderlångvik Manor",es:"Mansión Söderlångvik"},
+    description:{
+      fi:"Kartanoalue yhdistää museon, taiteen, omenatarhat, ravintolan, tapahtumat ja luontopolut. Tarkista kausittaiset palvelut ja vierailutiedot kartanon omilta sivuilta.",
+      en:"The manor estate combines a museum, art, apple orchards, restaurant, events and nature trails. Check seasonal services and visitor information on the estate's own website.",
+      es:"La finca combina museo, arte, huertos de manzanos, restaurante, eventos y senderos. Consulta los servicios de temporada y la información para visitantes en la web de la finca."
+    },
+    location:{fi:"Söderlångvik, Kemiönsaari",en:"Söderlångvik, Kimitoön",es:"Söderlångvik, Kimitoön"},
+    websiteUrl:"https://soderlangvik.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2023/03/sloderlangvik-museum2-760x507.jpg",imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["kartano","museo","omenatarha","luonto"]
+  },
+  {
+    id:"taalintehdas-ironworks",category:"kulttuuri",
+    name:{fi:"Taalintehtaan ruukkiperintö",en:"Dalsbruk Ironworks Heritage",es:"Patrimonio siderúrgico de Dalsbruk"},
+    description:{
+      fi:"Taalintehtaan historiallinen ruukkimiljöö kertoo alueen teollisesta historiasta. Tutustu alueen reitteihin ja nähtävyyksiin paikan päällä sekä virallisissa matkailutiedoissa.",
+      en:"The historic ironworks setting of Dalsbruk tells the story of the area's industrial past. Explore local routes and sights on site and through official visitor information.",
+      es:"El entorno histórico de la ferrería de Dalsbruk cuenta el pasado industrial de la zona. Descubre las rutas y los lugares de interés en el propio pueblo y en la información turística oficial."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/dalsbruk-gasthamn1-1-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["historia","ruukki","kävely"]
+  },
+  {
+    id:"bengtskar-lighthouse-visit",category:"kulttuuri",
+    name:{fi:"Bengtskärin majakka ja museo",en:"Bengtskär Lighthouse and Museum",es:"Faro y museo de Bengtskär"},
+    description:{
+      fi:"Avomeren majakka ja historiallinen vierailukohde. Merikuljetus, aukiolo, näyttelyt ja mahdollinen majoitus on varmistettava suoraan kohteen ylläpitäjältä.",
+      en:"An offshore lighthouse and historic visitor attraction. Boat transport, opening times, exhibitions and any accommodation must be confirmed with the site operator.",
+      es:"Faro en mar abierto y lugar histórico de visita. Confirma el transporte marítimo, los horarios, las exposiciones y el posible alojamiento con el operador."
+    },
+    location:{fi:"Bengtskär, Kemiönsaaren ulkosaaristo",en:"Bengtskär, outer Kimitoön archipelago",es:"Bengtskär, archipiélago exterior de Kimitoön"},
+    websiteUrl:"https://bengtskar.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",
+    image:image("230658b0-52a6-11ec-ae70-f70f11991cb8-Bengtskar_RobinS_4.jpg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["majakka","historia","museo","saari"]
+  },
+  {
+    id:"taksi-ja-tilausliikenne",category:"kuljetukset",
+    name:{fi:"Taksit ja tilausliikenne Kemiönsaarella",en:"Taxis and charter transport on Kimitoön",es:"Taxis y transporte concertado en Kimitoön"},
+    description:{
+      fi:"Kemiönsaaren matkailusivusto kokoaa taksi- ja tilausliikenteen ohjeita matkailijoille. Varmista kuljetusyritys, saatavuus, reitti ja hinta suoraan liikennöitsijältä.",
+      en:"The Kimitoön tourism site provides information about taxis and charter transport for visitors. Confirm the operator, availability, route and price directly with the transport company.",
+      es:"La web turística de Kimitoön reúne información sobre taxis y transporte concertado. Confirma el operador, la disponibilidad, la ruta y el precio directamente con la empresa."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/suunnittele/taksi-ja-tilausliikenne/",sourceUrl:"https://www.visitkimitoon.fi/fi/suunnittele/taksi-ja-tilausliikenne/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/dalsbruk-gasthamn1-1-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/suunnittele/taksi-ja-tilausliikenne/",tags:["taksi","kuljetus","tilausajo"]
+  },
+  {
+    id:"glassgaraget-shop",category:"ostokset",
+    name:{fi:"Paikalliset puodit ja lähiruoka",en:"Local shops and food producers",es:"Tiendas locales y productores de alimentos"},
+    description:{
+      fi:"Kemiönsaaren virallinen kohdehakemisto kokoaa paikallisia ostos- ja lähiruokakohteita. Tutustu yrityksiin ja tarkista tuotevalikoima sekä aukiolo suoraan toimijoilta.",
+      en:"The official Kimitoön destination directory lists local shops and food producers. Explore the businesses and confirm product ranges and opening times directly with them.",
+      es:"El directorio oficial de destinos de Kimitoön reúne tiendas locales y productores de alimentos. Descubre los negocios y confirma sus productos y horarios directamente."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/kohteet/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["ostokset","lähiruoka","paikalliset yritykset"]
+  },
+  {
+    id:"winter-activities-kimitoon",category:"talviaktiviteetit",
+    name:{fi:"Kemiönsaaren talviaktiviteetit",en:"Winter activities on Kimitoön",es:"Actividades de invierno en Kimitoön"},
+    description:{
+      fi:"Talvikauden retket ja aktiviteetit kootaan viralliseen aktiviteettikarttaan ja järjestäjien omiin kanaviin. Tarkista olosuhteet, reittien käytettävyys ja palvelujen aukiolo ennen lähtöä.",
+      en:"Winter excursions and activities are listed in the official activity map and organisers' own channels. Check conditions, route access and service opening before setting out.",
+      es:"Las excursiones y actividades de invierno se publican en el mapa oficial y en los canales de los organizadores. Comprueba las condiciones, el acceso a las rutas y los horarios antes de salir."
+    },
+    location:{fi:"Kemiönsaari ja ulkosaaret",en:"Kimitoön and the outer islands",es:"Kimitoön y las islas exteriores"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/oro-flygbilder6-760x427.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["talvi","luonto","aktiviteetit"]
+  },
+  {
+    id:"event-venues-kimitoon",category:"tapahtumapaikat",
+    name:{fi:"Kemiönsaaren tapahtuma- ja juhlatilat",en:"Event and celebration venues on Kimitoön",es:"Espacios para eventos y celebraciones en Kimitoön"},
+    description:{
+      fi:"Kemiönsaaren kohdehakemistossa on erillinen tapahtumapaikkojen luokka. Tila, kapasiteetti, tekniikka, tarjoilu ja varaus on varmistettava aina suoraan tilan ylläpitäjältä.",
+      en:"The official Kimitoön destination directory has a dedicated event-venue category. Confirm capacity, equipment, catering and booking directly with each venue.",
+      es:"El directorio oficial de Kimitoön cuenta con una categoría específica de espacios para eventos. Confirma capacidad, equipamiento, catering y reserva directamente con cada espacio."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://www.visitkimitoon.fi/fi/kohteet/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2023/05/sagalund30-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["juhlat","kokoukset","tapahtumat"]
+  },
+  {
+    id:"kimitoon-activity-map",category:"muut-palvelut",
+    name:{fi:"Kemiönsaaren aktiviteettikartta",en:"Kimitoön Activity Map",es:"Mapa de actividades de Kimitoön"},
+    description:{
+      fi:"Kunnan ylläpitämä digitaalinen kartta kokoaa liikunta- ja retkeilykohteita sekä palveluja. Karttaa uudistetaan siten, että myös matkailuyritysten majoitukset, vuokrauspalvelut, elämykset, kaupat, ravintolat ja kahvilat tulevat paremmin löydettäviksi.",
+      en:"A municipal digital map bringing together outdoor and activity locations and services. The update is intended to make accommodation, rentals, experiences, shops, restaurants and cafés easier to discover.",
+      es:"Mapa digital municipal que reúne lugares de actividades al aire libre y servicios. La actualización busca facilitar el descubrimiento de alojamientos, alquileres, experiencias, tiendas, restaurantes y cafeterías."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://www.kemionsaari.fi/2026/08/20/kemionsaaren-aktiviteettikartta-2-0-nakyvyytta-palveluntarjoajille/",
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/oro-flygbilder6-760x427.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://kartta.kemionsaari.fi/",tags:["kartta","matkailupalvelut","reittitieto"]
+  }
+];
+
+export function getKimitoonProviders(category?: KimitoonCategory) {
+  return category ? kimitoonProviders.filter((provider) => provider.category === category) : kimitoonProviders;
+}
+
+export function getKimitoonProvider(id: string) {
+  return kimitoonProviders.find((provider) => provider.id === id) ?? null;
+}
