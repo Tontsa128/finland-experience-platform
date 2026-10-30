@@ -11,9 +11,9 @@ import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 type Localized = Record<Locale, string>;
 
 const providerCategoryLabels: Record<Locale, Record<SaloProvider["category"], string>> = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local" },
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", shopping: "Ostokset ja käsityö", wellbeing: "Hyvinvointi ja sauna", culture: "Kulttuuri ja historia", events: "Tapahtumat ja juhlatilat" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", shopping: "Shopping & crafts", wellbeing: "Wellbeing & sauna", culture: "Culture & history", events: "Events & venues" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", shopping: "Compras y artesanía", wellbeing: "Bienestar y sauna", culture: "Cultura e historia", events: "Eventos y espacios" },
 };
 
 
