@@ -119,7 +119,7 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           </div>
         </div>
         <div className="mt-12 border-t border-stone-200 pt-8">
-          <Link href={village === "mathildedal" ? "/" + locale + "/destinations/teijon-ruukkikyla" : "/" + locale + "/destinations/salo-mathildedal"} className="inline-flex rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-brand-950 transition hover:bg-stone-100">
+          <Link href={village === "mathildedal" ? "/" + locale + "/destinations/teijon-ruukkikyla" : "/" + locale + "/mathildedal"} className="inline-flex rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-brand-950 transition hover:bg-stone-100">
             {village === "mathildedal" ? t.otherVillage : (locale === "fi" ? "Tutustu myös Mathildedalin ruukkikylään" : locale === "es" ? "Descubre también Mathildedal" : "Explore Mathildedal Ironworks Village too")} →
           </Link>
         </div>
