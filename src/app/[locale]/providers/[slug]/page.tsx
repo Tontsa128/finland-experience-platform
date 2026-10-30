@@ -76,6 +76,20 @@ const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
     { src: "https://static.wixstatic.com/media/43c9db_106f9b1e0bf94dc5ba9f699b8a55f4d6~mv2.jpg/v1/fill/w_871%2Ch_553%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/terho-web-71_edited.jpg", alt: { fi: "Terhon pizza ja paikallinen juoma", en: "Pizza and a local drink at Terho", es: "Pizza y bebida local en Terho" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" }
   ]
 };
+const teijoMasuuniPhotos: LocalPhoto[] = [
+  { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/Paviljonki-1024x779.jpg", alt: { fi: "Teijon Masuunin paviljonki historiallisessa ruukkimiljöössä", en: "Teijo Masuuni pavilion in the historic ironworks setting", es: "Pabellón de Teijo Masuuni en el entorno histórico de la ferrería" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" },
+  { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/P6290434-1-1024x844.jpg", alt: { fi: "Teijon Masuunin kahvila ja historiallinen masuunirakenne", en: "Teijo Masuuni café and historic blast-furnace structure", es: "Cafetería de Teijo Masuuni y estructura histórica del alto horno" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" },
+  { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/IMG_5245-1024x731.jpg", alt: { fi: "Teijon Masuunin historiallinen sisätila", en: "Historic interior at Teijo Masuuni", es: "Interior histórico de Teijo Masuuni" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" },
+  { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/16107548_1364868076917824_8770303024311624317_o-1024x991.jpg", alt: { fi: "Teijon Masuunin ruukkimiljöö", en: "The ironworks setting at Teijo Masuuni", es: "Entorno de la antigua ferrería de Teijo Masuuni" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" },
+  { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/IMG_2027-1024x819.jpg", alt: { fi: "Teijon Masuunin näyttely- ja kahvilaympäristö", en: "Exhibition and café setting at Teijo Masuuni", es: "Espacio de exposiciones y cafetería de Teijo Masuuni" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" },
+  { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/focaccia-1-scaled.jpg", alt: { fi: "Masuunin kahvilan focaccia-leipä", en: "Focaccia at the Masuuni café", es: "Focaccia de la cafetería Masuuni" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" }
+];
+
+const teijoRelated = [
+  { slug: "salo-teijo-action-park", name: { fi: "Teijo Ski & Action Park", en: "Teijo Ski & Action Park", es: "Teijo Ski & Action Park" } },
+  { slug: "salo-teijo-national-park", name: { fi: "Teijon kansallispuisto", en: "Teijo National Park", es: "Parque Nacional de Teijo" } },
+  { slug: "salo-meri-teijo-golf", name: { fi: "Meri-Teijo Golf", en: "Meri-Teijo Golf", es: "Meri-Teijo Golf" } }
+];
 
 type LocalGuide = { intro: string; highlights: string[]; planning: string; highlightsTitle: string; planningTitle: string; nearbyTitle: string };
 
@@ -119,6 +133,14 @@ const mathildedalGuides: Record<string, Record<Locale, LocalGuide>> = {
     fi: { intro: "Bistro Bruket on Mathildedalin ruukkikylään liittyvä ravintolakohde. Sen oma verkkosivusto ja ajantasainen palvelutarjonta kannattaa tarkistaa ennen vierailua.", highlights: ["Ravintola Mathildedalin ruukkikylässä", "Kuvauksen mukaan painotus on sesongeissa ja lähiraaka-aineissa", "Helppo yhdistää kylässä kiertelyyn ja muihin paikallisiin kohteisiin"], planning: "Varmista suoraan ravintolalta aukioloajat, ruokalista, pöytävaraukset, erityisruokavaliot ja ajantasaiset hinnat.", highlightsTitle: "Ruokailu kylässä", planningTitle: "Ennen ravintolavierailua", nearbyTitle: "Yhdistä muihin kohteisiin" },
     en: { intro: "Bistro Bruket is a restaurant associated with Mathildedal's ironworks village. Check its own website for current service details before visiting.", highlights: ["A restaurant in Mathildedal's ironworks village", "The listing describes a focus on seasonal and local ingredients", "Easy to combine with a walk around the village and other local places"], planning: "Confirm opening times, menu, table reservations, dietary requirements and current prices directly with the restaurant.", highlightsTitle: "Dining in the village", planningTitle: "Before dining", nearbyTitle: "Combine with other places" },
     es: { intro: "Bistro Bruket es un restaurante vinculado al pueblo siderúrgico de Mathildedal. Consulta su propia web para conocer los servicios actuales antes de visitarlo.", highlights: ["Restaurante en el pueblo siderúrgico de Mathildedal", "La ficha destaca los productos locales y de temporada", "Se puede combinar con un paseo por el pueblo y otros lugares locales"], planning: "Confirma directamente con el restaurante los horarios, el menú, las reservas, las necesidades dietéticas y los precios actuales.", highlightsTitle: "Comer en el pueblo", planningTitle: "Antes de ir al restaurante", nearbyTitle: "Combínalo con otros lugares" }
+  }
+};
+
+const teijoGuides: Record<string, Record<Locale, LocalGuide>> = {
+  "salo-teijon-masuuni": {
+    fi: { intro: "Teijon Masuuni toimii vuonna 1686 perustetun ruukin historiallisessa miljöössä. Paikalla yhdistyvät vanha masuuni, vaihtuvat taidenäyttelyt, kahvila, taide- ja käsityöputiikki sekä pienyrittäjien työtilat.", highlights: ["Viisi erilaista näyttelytilaa ja vaihtuvia näyttelyitä", "Paikan päällä valmistettuja makeita ja suolaisia leivonnaisia sekä erikoiskahveja", "Taide- ja käsityöputiikki, tapahtumia ja ryhmävierailuja"], planning: "Tarkista ajankohtaiset näyttelyt, kahvilan aukiolo, tapahtumat ja ryhmävierailujen järjestelyt suoraan Teijon Masuunilta. Näyttelyihin on virallisen sivuston mukaan vapaa pääsy.", highlightsTitle: "Taide, kahvila ja ruukkihistoria", planningTitle: "Suunnittele vierailu", nearbyTitle: "Tutustu myös Teijon alueeseen" },
+    en: { intro: "Teijo Masuuni is set in the historic ironworks founded in 1686. The site brings together the old blast furnace, changing art exhibitions, a café, an art and craft shop and workspaces for independent makers.", highlights: ["Five exhibition spaces with changing exhibitions", "Sweet and savoury pastries made on site, plus speciality coffee", "An art and craft shop, events and group visits"], planning: "Check current exhibitions, café opening times, events and group-visit arrangements directly with Teijo Masuuni. The official website states that admission to exhibitions is free.", highlightsTitle: "Art, café and ironworks heritage", planningTitle: "Plan your visit", nearbyTitle: "Explore the Teijo area" },
+    es: { intro: "Teijo Masuuni se encuentra en el histórico recinto siderúrgico fundado en 1686. Reúne el antiguo alto horno, exposiciones de arte cambiantes, una cafetería, una tienda de arte y artesanía y talleres de creadores independientes.", highlights: ["Cinco espacios expositivos con muestras temporales", "Repostería dulce y salada elaborada allí mismo y café especial", "Tienda de arte y artesanía, eventos y visitas para grupos"], planning: "Consulta directamente con Teijo Masuuni las exposiciones actuales, el horario de la cafetería, los eventos y las visitas para grupos. La web oficial indica que la entrada a las exposiciones es gratuita.", highlightsTitle: "Arte, cafetería y patrimonio industrial", planningTitle: "Planifica la visita", nearbyTitle: "Descubre también la zona de Teijo" }
   }
 };
 
@@ -221,9 +243,9 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
           ) : null}
           {provider.tags.length > 0 ? <div className="mt-5 flex flex-wrap gap-2">{provider.tags.map((tag) => <span key={tag} className="rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800">{tag}</span>)}</div> : null}
           {(() => {
-            const guide = mathildedalGuides[slug]?.[locale];
+            const guide = mathildedalGuides[slug]?.[locale] || teijoGuides[slug]?.[locale];
             if (!guide) return null;
-            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...mathildedalAreaPhotos];
+            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(teijoGuides[slug] ? [] : mathildedalAreaPhotos)];
             return (
               <div className="mt-10 space-y-8">
                 <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
@@ -258,7 +280,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
                 <section>
                   <h3 className="font-display text-2xl font-bold text-brand-950">{guide.nearbyTitle}</h3>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    {mathildedalRelated.filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}
+                    {(teijoGuides[slug] ? teijoRelated : mathildedalRelated).filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}
                   </div>
                 </section>
               </div>
