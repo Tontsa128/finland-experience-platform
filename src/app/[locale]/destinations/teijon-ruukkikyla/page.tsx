@@ -62,7 +62,7 @@ export default async function TeijoIronworksVillagePage({ params }: { params: Pr
   return (
     <main className="bg-white">
       <section className="relative isolate overflow-hidden bg-stone-900">
-        <img src="https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/masuuni_terassi1-%E2%80%93-kopio-1156x768.jpg" alt={locale === "fi" ? "Teijon Masuunin historiallinen rakennus ja terassi" : locale === "es" ? "Edificio histórico y terraza de Teijo Masuuni" : "Historic Teijo Masuuni building and terrace"} className="absolute inset-0 h-full w-full object-cover opacity-70" />
+        <Image src="https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/masuuni_terassi1-%E2%80%93-kopio-1156x768.jpg" alt={locale === "fi" ? "Teijon Masuunin historiallinen rakennus ja terassi" : locale === "es" ? "Edificio histórico y terraza de Teijo Masuuni" : "Historic Teijo Masuuni building and terrace"} fill priority sizes="100vw" className="object-cover opacity-70" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
         <div className="container-narrow relative flex min-h-[60vh] items-end py-16 text-white sm:min-h-[68vh] sm:py-20">
           <div className="max-w-4xl">
@@ -84,7 +84,7 @@ export default async function TeijoIronworksVillagePage({ params }: { params: Pr
           <h2 className="font-display text-3xl font-bold text-brand-950">{t.landscapeTitle}</h2>
           <p className="mt-4 leading-8 text-slate-700">{t.landscape}</p>
           <p className="mt-4 rounded-2xl bg-amber-50 p-4 text-sm leading-6 text-amber-950">{t.notice}</p>
-          <p className="mt-4 text-xs text-slate-500">{t.source}: <a className="underline" href="https://www.teijo.fi/tervetuloakyliin/teijo/" target="_blank" rel="noreferrer">teijo.fi</a> · <a className="underline" href="https://visitsalo.fi/mathildedalin-ruukkikyla/" target="_blank" rel="noreferrer">visitsalo.fi</a></p>
+          <p className="mt-4 text-xs text-slate-500">{t.source}: <a className="underline" href="https://www.teijo.fi/tervetuloakyliin/teijo/" target="_blank" rel="noreferrer">teijo.fi</a> · <a className="underline" href="https://kohteet.visitsalo.fi/teijon-masuuni/" target="_blank" rel="noreferrer">visitsalo.fi</a></p>
         </article>
       </section>
       <section className="bg-stone-50 py-14 sm:py-20">
