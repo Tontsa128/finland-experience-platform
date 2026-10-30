@@ -6,7 +6,6 @@ import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
-import { RuukkikylaGuide } from "@/components/salo/RuukkikylaGuide";
 import type { SaloProvider } from "@/lib/salo";
 
 const categories = {
@@ -92,9 +91,6 @@ export default async function MathildedalCategoryPage({ params }: { params: Prom
         <a href="https://www.visitmathildedal.fi/fi/aukioloajat" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800 underline underline-offset-4">
           {locale === "fi" ? "Visit Mathildedal – ajankohtaiset aukioloajat" : locale === "es" ? "Visit Mathildedal – horarios actuales" : "Visit Mathildedal – current opening times"} <ArrowUpRight className="h-4 w-4" />
         </a>
-        <div className="mt-8">
-          <RuukkikylaGuide village="mathildedal" locale={locale} />
-        </div>
       </section>
     </main>
   );
