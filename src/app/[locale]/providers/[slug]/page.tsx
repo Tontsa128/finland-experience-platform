@@ -104,6 +104,9 @@ const mathildedalAreaPhotos: LocalPhoto[] = [
 ];
 
 const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
+  "kimitoon-merikruunu-hotel": [
+    { src:"https://static.wixstatic.com/media/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg/v1/fill/w_382%2Ch_509%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg", alt:{fi:"Hotel Merikruunun ravintolan tapasannos",en:"Tapas served at Hotel Merikruunu's restaurant",es:"Tapas del restaurante Hotel Merikruunu"}, credit:"Hotel Merikruunu", source:"https://www.merikruunu.fi/ravintola" }
+  ],
   "kimitoon-labbnas-lomakoti": [
     { src:"https://ksg.fi/wp-content/uploads/2026/01/1-1024x768.jpeg", alt:{fi:"Labbnäsin Lomakodin sisätilat",en:"Interior at Labbnäs Holiday Home",es:"Interior del alojamiento Labbnäs"}, credit:"Labbnäs", source:"https://ksg.fi/fi/foretag/labbnas-semesterhem/" },
     { src:"https://ksg.fi/wp-content/uploads/2026/01/sommar-kalas-i-lidret--1024x683.jpg", alt:{fi:"Labbnäsin juhlatila kesäjuhliin",en:"Labbnäs barn venue for summer celebrations",es:"Espacio de celebraciones de verano en Labbnäs"}, credit:"Labbnäs", source:"https://ksg.fi/fi/foretag/labbnas-semesterhem/" }
