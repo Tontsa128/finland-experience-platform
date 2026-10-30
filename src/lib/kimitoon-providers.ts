@@ -1902,7 +1902,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     location:{fi:"Lillbacka, Kemiönsaaren saaristo",en:"Lillbacka, Kimitoön archipelago",es:"Lillbacka, archipiélago de Kimitoön"},
     websiteUrl:"https://ksg.fi/sv/foretag/lillbacka-brygga/",sourceUrl:"https://ksg.fi/sv/foretag/lillbacka-brygga/",
     imageCredit:"Lillbacka brygga / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/lillbacka-brygga/",tags:["vieraslaituri","sauna","ranta","baari"]
-  }
+  },
 
   {
     id:"rosala-taxi",categories:["kuljetukset","muut-palvelut"],
