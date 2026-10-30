@@ -633,11 +633,13 @@ export const saloProviders: SaloProvider[] = [
     category: "stay",
     name: "Villa Viktoria",
     description: {
-      fi: "Luksushuvilatasoinen kesämökki Suomusjärvellä. Sähkösauna, takka, hyvin varusteltu keittiö ja terassi porealtaalla.",
-      es: "Villa de verano de nivel lujo en Suomusjärvi, con sauna eléctrica, chimenea, cocina equipada y terraza con jacuzzi.",
-      en: "Luxury villa-style summer cottage in Suomusjärvi with electric sauna, fireplace, equipped kitchen and hot-tub terrace.",
+      fi: "Villa Viktoria on Suomusjärvellä sijaitseva vuokramökki, jossa on kaksi erillistä makuuhuonetta ja vuodepaikat enintään kahdeksalle. Mökissä on sähkösauna, suihku, sisä-wc ja ulkoporeallas. Etelään avautuvalla terassilla on kaasugrilli ja ruokailuryhmä.",
+      es: "Villa Viktoria es una casa de vacaciones en Suomusjärvi con dos dormitorios y capacidad máxima para ocho personas. Dispone de sauna eléctrica, ducha, aseo interior y jacuzzi exterior. La terraza orientada al sur cuenta con parrilla de gas y zona de comedor.",
+      en: "Villa Viktoria is a holiday cottage in Suomusjärvi with two separate bedrooms and a maximum capacity of eight guests. It has an electric sauna, shower, indoor toilet and outdoor hot tub. The south-facing terrace includes a gas grill and dining area.",
     },
-    url: "https://www.lomalaperla.com",
+    url: "https://www.lomalaperla.com/moumlkki-3.html",
+    image: "https://www.lomalaperla.com/uploads/1/0/3/7/103702596/gpjpucpjqtqjss1wxug8dw_1_orig.jpg",
+    imageCredit: "Lomalaperla — Villa Viktoria (official provider website)",
   },
   {
     id: "teijon-kammari",
