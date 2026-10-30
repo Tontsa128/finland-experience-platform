@@ -53,11 +53,6 @@ These **14 entries** remain to be individually verified and added or mapped to a
 
 | No. | Name | Address / area | Contact or website in the 2026 brochure |
 |---:|---|---|---|
-| 25 | Hästön maatila | Hästöntie 910, 25500 Perniö | 050 042 8902 · https://hastonmaatila.fi |
-| 26 | Ilolan tila | Järvintie 136, Muurla | 040 531 5845 · Facebook: Ilolan tila |
-| 27 | Kurjen mansikkatila | Romsilantie 608, Salo | 041 319 1068 · https://kurjenmaatila.fi |
-| 28 | Maneliuksen mansikka | Merikulmantie 684, Salo | 044 336 8386 · Facebook: Maneliuksen mansikkatila |
-| 30 | Meisalan Marja | Koivuniementie 42, Vartsala | 050 032 4211 · https://meisalanmarja.fi |
 | 31 | Meritalo | Kemiöntie 1008, 25610 Ylönkylä | 040 725 0233 · https://meritalo.com |
 | 32 | Ohrakasken tila | Kaitasuontie 93, Raatala, Salo | 040 836 8271 · Facebook: Ohrakasken tila |
 | 34 | Puutarha Siimes | Pataojantie 40, 25470 Kisko | 040 516 6583 · https://puutarhasiimes.fi |
