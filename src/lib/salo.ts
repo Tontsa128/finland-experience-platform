@@ -1033,16 +1033,16 @@ export const saloProviders: SaloProvider[] = [
   {
     id: "lepola-drinks",
     location: "Ylönkylä, Salo",
-    contact: { phone: "+358 40 725 0233", email: "info@lepoladrinks.fi", address: "Fabriikintie 61, 25610 Ylönkylä" },    category: "food",
+    contact: { phone: "+358 40 725 0233", email: "emmi@lepoladrinks.fi", address: "Kemiöntie 1008, 25610 Ylönkylä" },    category: "food",
     directoryCategories: ["shopping", "localFood"],
     name: "Lepola Drinks",
     nameByLocale: { fi: "Lepola Drinks", en: "Lepola Drinks", es: "Lepola Drinks" },
     description: {
-      fi: "Ylönkylässä toimiva Lepola Drinks valmistaa käsityöläissiideriä paikallisista omenoista. Lepola Shopin yhteydessä on myymälä ja kesäterassi; kahvilassa tarjoillaan juomien lisäksi paikallisista raaka-aineista valmistettuja suolaisia tarjottavia. Aukiolo vaihtelee sesongin mukaan, joten tarkista ajantasaiset tiedot palveluntarjoajalta.",
-      en: "Lepola Drinks makes handcrafted cider from locally grown apples in Ylönkylä. The Lepola Shop has a store and summer terrace, while its café serves drinks and savoury items made with local ingredients. Opening times vary by season, so check current details with the provider.",
-      es: "Lepola Drinks elabora sidra artesanal con manzanas locales en Ylönkylä. La tienda Lepola Shop cuenta con terraza de verano y cafetería, donde también se sirven opciones saladas preparadas con ingredientes locales. Los horarios varían según la temporada; consulta la información actual con el proveedor.",
+      fi: "Ylönkylässä toimiva Lepola Drinks on Marjajaloste Meritalo Oy:n juomabrändi. Lepola Shopin tilamyymälä myy käsityöläissiiderien lisäksi Meritalon hilloja ja mehuja; kesäkaudella myymälän yhteydessä toimii terassi. Talvikaudella palvellaan sopimuksen mukaan, joten sovi vierailusta etukäteen.",
+      en: "Lepola Drinks is the beverage brand of Marjajaloste Meritalo Oy in Ylönkylä. The Lepola Shop farm store sells handcrafted cider as well as Meritalo jams and juices; a terrace operates during the summer season. Winter visits are by appointment, so arrange your visit in advance.",
+      es: "Lepola Drinks es la marca de bebidas de Marjajaloste Meritalo Oy, en Ylönkylä. La tienda Lepola Shop vende sidras artesanales, además de mermeladas y zumos de Meritalo; en verano dispone de una terraza. Durante el invierno, las visitas se atienden con cita previa.",
     },
-    url: "https://lepoladrinks.fi/",
+    url: "https://meritalo.com/tilamyymala",
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/02/Lepola-Drinks_7207-1366x768.jpg",
     imageCredit: "Salon Kohteet — Lepola Drinks",
   },
@@ -1523,13 +1523,36 @@ export const saloProviders: SaloProvider[] = [
     category: "localFood",
     name: "Meriniityn Lihakauppa",
     location: "Salo",
-    contact: { phone: "+358 2 735 8817", email: "info@meriniitynlihakauppa.fi", address: "Valimonkatu 4, 24100 Salo" },
+    contact: { phone: "+358 2 735 880", email: "info@meriniitynlihakauppa.fi", address: "Valimonkatu 4, 24100 Salo" },
     description: {
       fi: "Meriniityn Lihakauppa on Perniön 1930 -makkaratehtaan yhteydessä toimiva tehtaanmyymälä Salossa. Valikoimaan kuuluu tehtaan lihatuotteita, erikoismakkaroita ja muita paikallisia herkkuja. Tuotevalikoima ja myymälän aukiolo kannattaa tarkistaa ennen vierailua suoraan tehtaanmyymälästä.",
       en: "Meriniityn Butcher Shop is the factory shop of Perniön 1930 sausage maker in Salo. Its range includes the producer's meat products, speciality sausages and other local delicacies. Check the current product range and shop hours directly with the factory shop before visiting.",
       es: "Meriniityn Lihakauppa es la tienda de fábrica del productor de embutidos Perniön 1930, en Salo. Su selección incluye productos cárnicos del fabricante, salchichas especiales y otras especialidades locales. Consulta directamente con la tienda la selección actual y el horario antes de visitarla."
     },
-    url: "https://pernion1930.fi/yhteystiedot/"
+    url: "https://kohteet.visitsalo.fi/meriniityn-lihakauppa/"
+  },
+  {
+    id: "kivihovi-herkku-lahja",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Liikenneasema Kivihovi — Herkku & Lahja",
+    nameByLocale: {
+      fi: "Kivihovi — Herkku & Lahja",
+      en: "Kivihovi — Herkku & Lahja",
+      es: "Kivihovi — Herkku & Lahja",
+    },
+    location: "Bulevardi 10, 25410 Suomusjärvi, Salo",
+    contact: {
+      phone: "+358 41 732 1474",
+      email: "liikenneasema@kivihovi.fi",
+      address: "Bulevardi 10, 25410 Suomusjärvi",
+    },
+    description: {
+      fi: "Kivihovin Herkku & Lahja -puodissa on lähialueen tuottajien tuotteita, paikallisia herkkuja ja lahjaideoita. Puoti toimii Suomusjärven liikenneaseman yhteydessä. Tarkista ajantasainen valikoima suoraan Kivihovista.",
+      en: "Kivihovi's Herkku & Lahja shop offers products from nearby producers, local food and gift ideas at the service station in Suomusjärvi. Check the current selection directly with Kivihovi.",
+      es: "La tienda Herkku & Lahja de Kivihovi ofrece productos de productores cercanos, especialidades locales e ideas de regalo en la estación de servicio de Suomusjärvi. Consulta la selección actual directamente con Kivihovi.",
+    },
+    url: "https://kivihovi.fi/palvelut",
   },
 ];
 
