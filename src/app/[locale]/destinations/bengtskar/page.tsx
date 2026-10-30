@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     en: { title: "Bengtskär – lighthouse and sea excursions", description: "Plan a visit to Bengtskär Lighthouse and check current boat transfer schedules directly with the operator." },
     es: { title: "Bengtskär: faro y excursiones marítimas", description: "Planifica la visita al faro de Bengtskär y consulta los horarios actuales del transporte marítimo directamente con el operador." },
   } as const;
-  return buildLocalizedMetadata({ locale: locale as Locale, title: copy[locale as Locale].title, description: copy[locale as Locale].description, path: "destinations/bengtskar", image: "https://cdn.johku.com/rosala/largefiles/94.jpg" });
+  return buildLocalizedMetadata({ locale: locale as Locale, title: copy[locale as Locale].title, description: copy[locale as Locale].description, path: "destinations/bengtskar", image: "https://www.bengtskar.fi/wp-content/uploads/2024/05/SisselOchFyren-2-1024x512.jpg" });
 }
 
 export default async function BengtskarPage({ params }: { params: Promise<{ locale: string }> }) {
