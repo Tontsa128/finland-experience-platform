@@ -360,6 +360,13 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
 
         <aside className="h-fit min-w-0 rounded-2xl border border-brand-100 bg-brand-50 p-5 sm:p-7 lg:sticky lg:top-24">
           {provider.price ? <div className="mb-5"><p className="text-xs font-bold uppercase tracking-wider text-brand-600">{c.price}</p><p className="mt-2 break-words font-semibold text-brand-950">{provider.price}</p></div> : null}
+          {"contact" in provider && provider.contact ? (
+            <div className="mb-5 rounded-2xl border border-brand-100 bg-white p-4">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-brand-700">{locale === "fi" ? "Yhteystiedot" : locale === "es" ? "Contacto" : "Contact"}</h2>
+              {provider.contact.phone ? <p className="mt-3 text-sm"><span className="font-semibold">{locale === "fi" ? "Puhelin" : locale === "es" ? "Teléfono" : "Phone"}:</span> <a href={`tel:${provider.contact.phone.replace(/[^+0-9]/g, "")}`} className="underline underline-offset-2">{provider.contact.phone}</a></p> : null}
+              {provider.contact.address ? <p className="mt-2 text-sm leading-6"><span className="font-semibold">{locale === "fi" ? "Osoite" : locale === "es" ? "Dirección" : "Address"}:</span> {provider.contact.address}</p> : null}
+            </div>
+          ) : null}
           <p className="text-sm leading-6 text-slate-700">{c.direct}</p>
           <a href={provider.website} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-950 px-5 py-3.5 text-center text-sm font-bold text-white hover:bg-brand-800">
             {"websiteLabel" in provider && provider.websiteLabel ? provider.websiteLabel : c.visit}<ArrowUpRight className="h-4 w-4 shrink-0" />
