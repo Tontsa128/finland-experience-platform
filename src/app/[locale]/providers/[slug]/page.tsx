@@ -82,8 +82,12 @@ function resolveProvider(slug: string, locale: Locale) {
       category,
       image: item.image,
       imageCredit: item.imageCredit,
+      imageSource: item.imageSource,
       location: item.location[locale],
       website: item.websiteUrl,
+      websiteLabel: item.websiteUrl.includes("visitkimitoon.fi")
+        ? (locale === "fi" ? "Avaa virallinen kohdekortti" : locale === "es" ? "Abrir ficha oficial del destino" : "Open official destination listing")
+        : (locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit the provider"),
       tags: item.tags,
     };
   }
@@ -97,6 +101,30 @@ const mathildedalAreaPhotos: LocalPhoto[] = [
 ];
 
 const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
+  "kimitoon-villa-mimosa-37": [
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/7bc353c0-7393-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Mimosa – oleskelutilat ja merellinen huvila", en: "Villa Mimosa – living spaces and seaside villa", es: "Villa Mimosa – espacios interiores y villa junto al mar" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-mimosa-37-2/" },
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/7bc32cb0-7393-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Mimosa – huvilan sisätilat", en: "Villa Mimosa – villa interior", es: "Villa Mimosa – interior de la villa" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-mimosa-37-2/" },
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/7bc2b780-7393-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Mimosa – makuutilat", en: "Villa Mimosa – sleeping area", es: "Villa Mimosa – zona de descanso" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-mimosa-37-2/" }
+  ],
+  "kimitoon-villa-orion-57": [
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/f2046080-7391-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Orion – sisätilat", en: "Villa Orion – interior", es: "Villa Orion – interior" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-orion-57-2/" },
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/93173ac0-7391-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Orion – huvila ja oleskelutila", en: "Villa Orion – villa and lounge", es: "Villa Orion – villa y sala de estar" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-orion-57-2/" },
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/a6d7afe0-7391-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Orion – terassialue", en: "Villa Orion – terrace area", es: "Villa Orion – zona de terraza" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-orion-57-2/" }
+  ],
+  "kimitoon-villa-pohjantahti-18": [
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/616e6920-7392-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Pohjantähti – oleskelutila", en: "Villa Pohjantähti – living area", es: "Villa Pohjantähti – sala de estar" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-pohjantahti-18-2/" },
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/616eb740-7392-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Pohjantähti – makuutila", en: "Villa Pohjantähti – sleeping area", es: "Villa Pohjantähti – zona de descanso" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-pohjantahti-18-2/" },
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/616f0560-7392-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Pohjantähti – sauna ja pesutilat", en: "Villa Pohjantähti – sauna and washroom", es: "Villa Pohjantähti – sauna y baño" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-pohjantahti-18-2/" }
+  ],
+  "kimitoon-villa-sirius-56": [
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/1d7ef120-7393-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Sirius – huvilan sisätilat", en: "Villa Sirius – villa interior", es: "Villa Sirius – interior de la villa" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-sirius-56-2/" }
+  ],
+  "kimitoon-villa-ulrika": [
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/dd26d0e0-fc17-11ee-95fa-33f7dd2e7fc6.jpeg-760x570.jpeg", alt: { fi: "Villa Ulrika – majoitustilan kuva", en: "Villa Ulrika – accommodation interior", es: "Villa Ulrika – interior del alojamiento" }, credit: "Visit Kemiönsaari", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-ulrika-2/" }
+  ],
+  "kimitoon-villa-valo-9": [
+    { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/25513420-17f1-11ee-aef2-f342e71dcccc.jpeg-760x760.jpeg", alt: { fi: "Villa Valo – majoituskohteen kuva", en: "Villa Valo – accommodation photo", es: "Villa Valo – imagen del alojamiento" }, credit: "Visit Kemiönsaari", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-valo-9-2/" }
+  ],
   "salo-ravintola-terho": [
     { src: "https://static.wixstatic.com/media/684b51_9e9c0f2aaa0e47b98c7fac7ec58c40df~mv2.jpg/v1/fit/w_674%2Ch_450%2Cq_90%2Cenc_avif%2Cquality_auto/684b51_9e9c0f2aaa0e47b98c7fac7ec58c40df~mv2.jpg", alt: { fi: "Asiakkaita nauttimassa Terhon takapihan keikkaillasta", en: "Guests enjoying a live-music evening in Terho's backyard", es: "Clientes disfrutando de una noche de música en directo en el patio de Terho" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" },
     { src: "https://static.wixstatic.com/media/684b51_ef3379734b144d43bfadcd454368a546~mv2.jpg/v1/fit/w_674%2Ch_450%2Cq_90%2Cenc_avif%2Cquality_auto/684b51_ef3379734b144d43bfadcd454368a546~mv2.jpg", alt: { fi: "Terhon ikkuna ja köynnöskasvit ravintolan ulkoseinällä", en: "The window and climbing vines on Terho's restaurant exterior", es: "Ventana y plantas trepadoras en la fachada del restaurante Terho" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" },
@@ -282,7 +310,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
               nearbyTitle: locale === "fi" ? "Tutustu muihin Kemiönsaaren kohteisiin" : locale === "es" ? "Descubre otros lugares de Kimitoön" : "Explore more places on Kimitoön",
             } : null);
             if (!guide) return null;
-            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(slug.startsWith("salo-") && !teijoGuides[slug] ? mathildedalAreaPhotos : [])];
+            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: ("imageSource" in provider && provider.imageSource) ? provider.imageSource : provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(slug.startsWith("salo-") && !teijoGuides[slug] ? mathildedalAreaPhotos : [])];
             return (
               <div className="mt-10 space-y-8">
                 <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
@@ -331,7 +359,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
           {provider.price ? <div className="mb-5"><p className="text-xs font-bold uppercase tracking-wider text-brand-600">{c.price}</p><p className="mt-2 break-words font-semibold text-brand-950">{provider.price}</p></div> : null}
           <p className="text-sm leading-6 text-slate-700">{c.direct}</p>
           <a href={provider.website} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-950 px-5 py-3.5 text-center text-sm font-bold text-white hover:bg-brand-800">
-            {c.visit}<ArrowUpRight className="h-4 w-4 shrink-0" />
+            {"websiteLabel" in provider && provider.websiteLabel ? provider.websiteLabel : c.visit}<ArrowUpRight className="h-4 w-4 shrink-0" />
           </a>
           <p className="mt-3 break-all text-xs text-slate-500">{provider.website}</p>
         </aside>
