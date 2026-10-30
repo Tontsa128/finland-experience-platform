@@ -79,7 +79,7 @@ if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
 // Salo regional directory regression guard: every provider must belong to
 // exactly one dedicated area guide, and every guide is generated and indexed.
 const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
-const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
+const saloAreaDataSource = await readFile(path.resolve("src/lib/salo-areas.ts"), "utf8");
 const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
 const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
 const providerArrayStart = saloDataSource.indexOf("export const saloProviders: SaloProvider[] = [");
@@ -87,9 +87,9 @@ const providerArrayEnd = saloDataSource.indexOf("\n];", providerArrayStart);
 const providerIds = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
   ? [...saloDataSource.slice(providerArrayStart, providerArrayEnd).matchAll(/\bid:\s*"([^"]+)"/g)].map((match) => match[1])
   : [];
-const areaMapStart = saloDirectorySource.indexOf("const areaProviderIds:");
-const areaMapEnd = saloDirectorySource.indexOf("\n};", areaMapStart);
-const areaMap = areaMapStart >= 0 && areaMapEnd > areaMapStart ? saloDirectorySource.slice(areaMapStart, areaMapEnd) : "";
+const areaMapStart = saloAreaDataSource.indexOf("export const areaProviderIds:");
+const areaMapEnd = saloAreaDataSource.indexOf("\n};", areaMapStart);
+const areaMap = areaMapStart >= 0 && areaMapEnd > areaMapStart ? saloAreaDataSource.slice(areaMapStart, areaMapEnd) : "";
 const assignedProviderIds = [...areaMap.matchAll(/^\s+[a-z]+:\s*\[([^\]]*)\]/gm)]
   .flatMap((match) => [...match[1].matchAll(/"([^"]+)"/g)].map((idMatch) => idMatch[1]));
 const duplicateAreaIds = assignedProviderIds.filter((id, index) => assignedProviderIds.indexOf(id) !== index);
