@@ -3,6 +3,34 @@ import { photoLibrary } from "@/lib/photo-library";
 
 export type SaloProviderCategory = "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture" | "events" | "archipelago" | "localFood";
 
+export type SaloImageRightsEvidence = {
+  rightsHolder: string;
+  permissionReference: string;
+  allowedUse: string;
+  attribution: string;
+  modificationPermission: string;
+  verifiedAt: string;
+  reviewedBy: string;
+};
+
+export function hasVerifiedSaloImageRights(
+  asset: { imageRightsStatus?: "pending" | "verified"; imageRightsEvidence?: Partial<SaloImageRightsEvidence> },
+): boolean {
+  const evidence = asset.imageRightsEvidence;
+  if (asset.imageRightsStatus !== "verified" || !evidence) return false;
+  const required = [
+    evidence.rightsHolder,
+    evidence.permissionReference,
+    evidence.allowedUse,
+    evidence.attribution,
+    evidence.modificationPermission,
+    evidence.verifiedAt,
+    evidence.reviewedBy,
+  ];
+  return required.every((value) => typeof value === "string" && value.trim().length > 0)
+    && Number.isFinite(Date.parse(evidence.verifiedAt || ""));
+}
+
 export type SaloProvider = {
   id: string;
   category: SaloProviderCategory;
@@ -18,6 +46,7 @@ export type SaloProvider = {
   image?: string;
   imageCredit?: string;
   imageRightsStatus?: "pending" | "verified";
+  imageRightsEvidence?: Partial<SaloImageRightsEvidence>;
   officialGuide?: boolean;
 };
 
@@ -25,8 +54,8 @@ export function getSaloProviderCategories(provider: Pick<SaloProvider, "category
   return Array.from(new Set([provider.category, ...(provider.directoryCategories || [])]));
 }
 
-export function getSaloProviderImage(provider: Pick<SaloProvider, "image" | "imageRightsStatus">): string | undefined {
-  return provider.imageRightsStatus === "pending" ? undefined : provider.image;
+export function getSaloProviderImage(provider: Pick<SaloProvider, "image" | "imageRightsStatus" | "imageRightsEvidence">): string | undefined {
+  return hasVerifiedSaloImageRights(provider) ? provider.image : undefined;
 }
 
 export type SaloEvent = {
