@@ -66,7 +66,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries = locales.flatMap((locale) =>
     basePaths.map((path) => ({
       url: siteUrl + "/" + locale + (path ? "/" + path : ""),
-      lastModified: new Date(),
       changeFrequency: path === "" ? "daily" as const : "weekly" as const,
       priority: path === "" ? 1 : 0.8,
     })),
@@ -89,7 +88,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...destinations.flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/destinations/" + canonicalDestinationSlug(item.slug),
-          lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
         })),
@@ -113,7 +111,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...blogPosts.flatMap((post) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/blog/" + post.slug,
-          lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
           changeFrequency: "monthly" as const,
           priority: 0.6,
         })),
