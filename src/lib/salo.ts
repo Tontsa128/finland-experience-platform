@@ -639,6 +639,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A small seaside cottage in Teijo with a wood-fired sauna, kitchenette and balcony facing the sea.",
     },
     url: "https://kohteet.visitsalo.fi/teijon-kammari/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/panorama-1152x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Teijon Kammari",
   },
   {
     id: "kruuvan-mokit",
