@@ -13,7 +13,7 @@ const labels = {
 export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: "mathildedal" | "teijo" }) {
   const l = labels[locale];
   const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
-  const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery", "ravintola-terho", "kaarnalaiva", "matildan-kesakauppa", "piironki-dock-helsinki", "ruukin-kehraamo", "second-chance-mathildedal", "vinttipuoti", "mathildedal-keskuspuisto", "mathildedal-meriuimapaikka"]);
+  const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery", "ravintola-terho", "kaarnalaiva", "matildan-kesakauppa", "piironki-dock-helsinki", "ruukin-kehraamo", "second-chance-mathildedal", "vinttipuoti", "mathildedal-keskuspuisto", "mathildedal-meriuimapaikka", "matildanjarven-sauna", "matildanjarven-kampat", "teijo-tentsile"]);
   const teijoIds = new Set(["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf", "matildanjarven-sauna", "matildanjarven-kampat", "teijo-tentsile", "teijon-kammari"]);
   const areaProviders = area === "mathildedal"
     ? saloProviders.filter((provider) => mathildedalIds.has(provider.id))
