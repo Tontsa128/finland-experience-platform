@@ -4,7 +4,7 @@
 
 The 2026 Visit Salo brochure contains a local-food map with **42 map entries**: 39 farms, shops and local-food producers (numbered 4–42 in the brochure) plus three Vuorovetten ice-cream kiosks.
 
-The current branch contains 101 unique Salo provider profiles: 30 accommodation, 12 experiences, 10 food and café, 29 primary local-food, 7 shopping and crafts, 4 nature, 2 culture, 2 wellbeing, 3 events and 2 tourism-information profiles. Cross-listing adds nine existing canonical profiles to the local-food category, so 38 profiles appear there without duplicating provider records. The 2026 brochure is a discovery source, not proof that every outlet is currently open. Seven additional local-food profiles have been added across the two updates: Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa; Kivihovi's Herkku & Lahja shop is also now included. The current catalogue has 90 image-backed profiles; eleven remain deliberately image-free until a matching, rights-cleared asset is verified.
+The current branch contains 101 unique Salo provider profiles: 30 accommodation, 12 experiences, 10 food and café, 29 primary local-food, 7 shopping and crafts, 4 nature, 2 culture, 2 wellbeing, 3 events and 2 tourism-information profiles. Cross-listing adds ten existing canonical profiles to the local-food category, so 39 profiles appear there without duplicating provider records. The 2026 brochure is a discovery source, not proof that every outlet is currently open. Seven additional local-food profiles have been added across the two updates: Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa; Kivihovi's Herkku & Lahja shop is also now included. The current catalogue has 90 image-backed profiles; eleven remain deliberately image-free until a matching, rights-cleared asset is verified.
 
 Primary sources:
 - Visit Salo, *Salo matkailuesite 2026*, pages 40–43: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
@@ -81,7 +81,7 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 
 ## Publication and image rules
 
-- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. The current code contains 29 primary local-food profiles and 38 local-food category appearances after cross-listing; automated tests lock the canonical inventory and expected image coverage.
+- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. The current code contains 29 primary local-food profiles and 39 local-food category appearances after cross-listing; automated tests lock the canonical inventory and expected image coverage.
 - Do not copy seasonal opening hours or brochure prices into permanent descriptions without checking the provider’s current official channel.
 - Do not invent a provider photo or use an unrelated farm/food image. If an official matching image cannot be verified, publish the provider with no image until a suitable image and credit are available.
 - Preserve the source URL and image credit for every published photo. Current image coverage is 90/101; the eleven providers without verified matching imagery must remain image-free rather than receiving substitute photos.
