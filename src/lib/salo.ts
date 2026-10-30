@@ -957,6 +957,97 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Visit Finland DataHub / Valla Outdoors",
   },
 
+
+  {
+    id: "vuohensaaren-leirintaalue",
+    category: "stay",
+    directoryCategories: ["food", "experience", "events", "archipelago", "wellbeing"],
+    name: "Vuohensaaren leirintäalue",
+    nameByLocale: { fi: "Vuohensaaren leirintäalue", en: "Vuohensaari Camping", es: "Camping Vuohensaari" },
+    description: {
+      fi: "Suojaisalla saarella Salon edustalla sijaitseva leirintäalue tarjoaa paikkoja matkailuautoille, -vaunuille ja teltoille sekä mökkejä ja huoneita. Alueella on kahvila-ravintola, puusauna, uimaranta, luontopolku, minigolf ja SUP- sekä kanoottimahdollisuuksia. Kesäkaudella saarella järjestetään myös tapahtumia ja kesäteatteria.",
+      es: "Camping en una isla protegida frente a Salo, con parcelas para autocaravanas, caravanas y tiendas, además de cabañas y habitaciones. Cuenta con cafetería-restaurante, sauna de leña, playa, sendero natural, minigolf y actividades SUP y piragüismo. En verano también se organizan eventos y teatro.",
+      en: "A sheltered island campsite just off Salo, with pitches for motorhomes, caravans and tents, plus cabins and rooms. Facilities include a café-restaurant, wood-fired sauna, swimming beach, nature trail, mini golf, SUP and canoeing. Summer events and theatre are also held on the island.",
+    },
+    url: "https://www.visitvuohensaari.fi",
+    image: "https://cdn-datahub.visitfinland.com/images/0eed73e0-0120-11f1-ad78-29bd5b45e175.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub / Vuohensaari",
+  },
+  {
+    id: "hotel-fjalar",
+    category: "stay",
+    directoryCategories: ["wellbeing", "culture"],
+    name: "Hotel Fjalar",
+    description: {
+      fi: "Yksityinen 19 huoneen hotelli Salon keskustan tuntumassa. Hotellissa on sauna- ja sisäuima-allasosasto sekä aamiainen. Rakennus on Saloran perustajan entinen koti, ja hotellissa voi tutustua Salon ja Nokian paikallishistoriaan.",
+      es: "Hotel privado de 19 habitaciones cerca del centro de Salo. Dispone de sauna, piscina cubierta y desayuno. El edificio fue la antigua casa del fundador de Salora y permite conocer parte de la historia industrial local.",
+      en: "A privately owned 19-room hotel close to central Salo, with a sauna, indoor swimming pool and breakfast. The building was once the home of Salora's founder and offers a glimpse into local Salora and Nokia history.",
+    },
+    url: "https://www.fjalar.fi",
+    image: "https://cdn-datahub.visitfinland.com/images/ebfc1ff0-6b41-11ef-95af-1d4477f6ffc7.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub / Hotel Fjalar",
+  },
+  {
+    id: "katiskan-maki",
+    category: "stay",
+    directoryCategories: ["food", "events", "wellbeing", "experience", "shopping"],
+    name: "Katiskanmäki",
+    nameByLocale: { fi: "Katiskanmäki", en: "Katiskanmäki", es: "Katiskanmäki" },
+    description: {
+      fi: "Ylönkylän maaseutukohde kokoaa yhteen vuokramökit, aittamajoituksen, leirintäalueen ja savusaunan. Lähiruokakioski Pikantti toimii itsepalveluperiaatteella vuoden jokaisena päivänä, ja Juhlatalo Firapeli tarjoaa juhlatilat jopa 120 hengelle. Sijainti on noin viiden kilometrin päässä Teijon kansallispuistosta.",
+      es: "Destino rural en Ylönkylä con cabañas de alquiler, alojamiento en granero, camping y sauna de humo. El quiosco de productos locales Pikantti funciona en autoservicio todos los días del año y el salón Firapeli ofrece espacio para celebraciones de hasta 120 personas. Está a unos cinco kilómetros del Parque Nacional de Teijo.",
+      en: "A rural destination in Ylönkylä bringing together rental cottages, barn accommodation, a campsite and a smoke sauna. The Pikantti local-food kiosk operates on a self-service basis every day of the year, while Firapeli event hall accommodates celebrations for up to 120 guests. It is about five kilometres from Teijo National Park.",
+    },
+    url: "https://www.katiskanmaki.com",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/07/IMG_2490-1024x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Katiskanmäki",
+  },
+  {
+    id: "ystavyyden-majatalo",
+    category: "stay",
+    directoryCategories: ["events", "wellbeing", "experience"],
+    name: "Ystävyyden Majatalo",
+    nameByLocale: { fi: "Ystävyyden Majatalo", en: "Ystävyyden Majatalo Guesthouse", es: "Casa de huéspedes Ystävyyden Majatalo" },
+    description: {
+      fi: "Kodikas majatalo Kruusilassa Turun ja Helsingin välissä. Majoituksen lisäksi talo järjestää kursseja, lomia, juhlia, koulutuksia ja retriittejä. Ryhmätilat soveltuvat Visit Salon kohdekuvauksen mukaan noin 12–50 hengelle.",
+      es: "Casa de huéspedes acogedora en Kruusila, entre Turku y Helsinki. Además del alojamiento, organiza cursos, vacaciones, celebraciones, formación y retiros. Según la ficha de Visit Salo, sus espacios sirven para grupos de aproximadamente 12 a 50 personas.",
+      en: "A welcoming guesthouse in Kruusila between Turku and Helsinki. Alongside accommodation, it hosts courses, holidays, celebrations, training and retreats. Visit Salo's listing describes group facilities for approximately 12–50 people.",
+    },
+    url: "https://ystavyydenmajatalo.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Yst%C3%A4vyyden-Majatalo.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Ystävyyden Majatalo",
+  },
+  {
+    id: "ylostalon-matkailutila",
+    category: "stay",
+    directoryCategories: ["archipelago", "food", "events", "wellbeing", "experience"],
+    name: "Ylöstalon Matkailutila",
+    nameByLocale: { fi: "Ylöstalon Matkailutila", en: "Ylöstalo Holiday Farm", es: "Alojamiento rural Ylöstalo" },
+    description: {
+      fi: "Särkisalon saaristossa toimiva matkailutila, jonka palveluihin kuuluvat mökkimajoitus, merellinen Villa Meri -juhlatila, Restaurant Nixor sekä sauna- ja ryhmäpalvelut. Tarkista eri palvelujen sesonkiaikaiset aukiolot ja saatavuus suoraan Ylöstalolta.",
+      es: "Alojamiento rural en el archipiélago de Särkisalo, con cabañas, el espacio para eventos junto al mar Villa Meri, el restaurante Nixor y servicios de sauna y grupos. Consulta directamente con Ylöstalo los horarios de temporada y la disponibilidad.",
+      en: "A holiday farm in the Särkisalo archipelago offering cottage accommodation, the seaside Villa Meri event venue, Restaurant Nixor and sauna and group services. Confirm seasonal opening times and availability directly with Ylöstalo.",
+    },
+    url: "https://www.ylostalo.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Yl%C3%B6stalon-matkailutila-%E2%80%93-8.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Ylöstalon Matkailutila",
+  },
+  {
+    id: "meri-ruukin-lomakyla",
+    category: "stay",
+    directoryCategories: ["wellbeing", "archipelago", "experience"],
+    name: "Meri-Ruukin lomakylä",
+    nameByLocale: { fi: "Meri-Ruukin lomakylä", en: "Meri-Ruukki Holiday Village", es: "Complejo vacacional Meri-Ruukki" },
+    description: {
+      fi: "Mathildedalissa, noin 800 metrin kävelymatkan päässä ruukkikylästä ja Teijon kansallispuiston vieressä sijaitseva lomakylä. Alueella on 20 ympärivuotiseen käyttöön tarkoitettua mökkiä, erikseen vuokrattava merenrantasauna, uimapaikka, laituri, soutuveneitä ja grillipaikkoja. Mökkeihin mahtuu kuusi henkilöä.",
+      es: "Complejo vacacional en Mathildedal, a unos 800 metros a pie del pueblo siderúrgico y junto al Parque Nacional de Teijo. Cuenta con 20 cabañas disponibles todo el año, sauna junto al mar para alquiler independiente, zona de baño, embarcadero, botes de remo y barbacoas. Cada cabaña tiene capacidad para seis personas.",
+      en: "A holiday village in Mathildedal, about an 800-metre walk from the ironworks village and beside Teijo National Park. It has 20 year-round cabins, a separately rentable seaside sauna, swimming area, pier, rowboats and barbecue areas. Each cabin accommodates six people.",
+    },
+    url: "https://meri-ruukki.fi",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/meriruukki_1-e1561028111229-uai-1032x688.jpg?itok=JQk5Z9DZ",
+    imageCredit: "Visit Mathildedal — Meri-Ruukin lomakylä",
+  },
+
 ];
 
 export const saloEvents: SaloEvent[] = [
