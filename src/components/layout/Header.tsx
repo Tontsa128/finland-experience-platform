@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Globe, Menu, UserRound, X } from "lucide-react";
+import { ChevronDown, Globe, Menu, UserRound, X } from "lucide-react";
 import { useState } from "react";
 
 type NavigationItem = { id: string; label: string; href: string; sortOrder: number };
@@ -26,7 +26,10 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   ] as const;
 
   const baseItems = navigation.length ? navigation.map((item) => [item.id, item.href] as const) : fallbackItems;
-  const withPlan = baseItems.some(([key]) => key === "plan") ? baseItems : [...baseItems, ["plan", "plan"] as const];
+  const withRuukkikylat = baseItems.some(([key]) => key === "ruukkikylat")
+    ? baseItems
+    : baseItems.flatMap((item) => item[0] === "destinations" ? [item, ["ruukkikylat", "ruukkikylat"] as const] : [item]);
+  const withPlan = withRuukkikylat.some(([key]) => key === "plan") ? withRuukkikylat : [...withRuukkikylat, ["plan", "plan"] as const];
   const withSauna = withPlan.some(([key]) => key === "sauna") ? withPlan : [...withPlan, ["sauna", "sauna"] as const];
   const items = withSauna.some(([key]) => key === "ruralFinland") ? withSauna : [...withSauna, ["ruralFinland", "rural-finland"] as const];
   const labels = new Map(navigation.map((item) => [item.id, item.label]));
@@ -48,6 +51,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   };
 
   const labelFor = (key: string) => {
+    if (key === "ruukkikylat") return locale === "fi" ? "Ruukkikylät" : locale === "es" ? "Pueblos siderúrgicos" : "Ironworks villages";
     // Prefer locale JSON for known navigation keys so stale CMS labels cannot
     // leak Finnish text into English or Spanish navigation.
     const translatedKeys = new Set([
@@ -101,7 +105,17 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
       <div className="hidden border-t border-slate-100 lg:block">
         <div className="container-narrow overflow-x-auto">
           <nav className="flex min-w-max items-center gap-6 py-3">
-            {items.map(([key, p]) => (
+            {items.map(([key, p]) => key === "ruukkikylat" ? (
+              <details key={key} className="group relative">
+                <summary className="flex cursor-pointer list-none items-center gap-1 text-sm font-medium text-slate-600 transition hover:text-brand-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600">
+                  {labelFor(key)} <ChevronDown className="h-3.5 w-3.5 transition group-open:rotate-180" />
+                </summary>
+                <div className="absolute left-0 top-full z-50 mt-3 min-w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl">
+                  <Link href={`/${locale}/destinations/salo-mathildedal`} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900" onClick={() => setOpen(false)}>Mathildedal</Link>
+                  <Link href={`/${locale}/destinations/teijon-ruukkikyla`} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900" onClick={() => setOpen(false)}>Teijo</Link>
+                </div>
+              </details>
+            ) : (
               <Link key={key} href={href(p)} className={`text-sm font-medium transition hover:text-brand-600 ${path === href(p) ? "text-brand-700" : "text-slate-600"}`}>
                 {labelFor(key)}
               </Link>
@@ -117,7 +131,15 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
             <Link href={`/${locale}/account/login`} onClick={() => setOpen(false)} className="block rounded-xl bg-brand-50 px-3 py-3 text-base font-semibold text-brand-900">
               {ui.account} / {ui.login}
             </Link>
-            {items.map(([key, p]) => (
+            {items.map(([key, p]) => key === "ruukkikylat" ? (
+              <div key={key} className="rounded-xl bg-brand-50/70 px-3 py-3">
+                <p className="px-1 text-sm font-bold text-brand-950">{labelFor(key)}</p>
+                <div className="mt-1 grid grid-cols-2 gap-2">
+                  <Link onClick={() => setOpen(false)} href={`/${locale}/destinations/salo-mathildedal`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Mathildedal</Link>
+                  <Link onClick={() => setOpen(false)} href={`/${locale}/destinations/teijon-ruukkikyla`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Teijo</Link>
+                </div>
+              </div>
+            ) : (
               <Link key={key} onClick={() => setOpen(false)} href={href(p)} aria-current={path === href(p) ? "page" : undefined} className={`block rounded-xl px-3 py-3 text-base font-medium ${path === href(p) ? "bg-brand-50 text-brand-900" : "text-slate-700 hover:bg-brand-50 hover:text-brand-900"}`}>
                 {labelFor(key)}
               </Link>
