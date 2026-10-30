@@ -11,7 +11,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { kimitoonProviders } from "@/lib/kimitoon-providers";
-import { areaProviderIds } from "@/components/salo/SaloDirectory";
+import { areaProviderIds } from "@/lib/salo-areas";
 
 export const revalidate = 3600;
 
