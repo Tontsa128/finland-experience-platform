@@ -812,6 +812,36 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Visit Salo / Salon Kohteet — Teijo Church",
   },
 
+
+  {
+    id: "teijon-arkki",
+    category: "food",
+    name: "Ravintola Teijon Arkki & Teijo Cafe & Bakery",
+    nameByLocale: { fi: "Ravintola Teijon Arkki & Teijo Cafe & Bakery", en: "Teijon Arkki Restaurant & Teijo Cafe & Bakery", es: "Restaurante Teijon Arkki y Teijo Cafe & Bakery" },
+    description: {
+      fi: "Teijon vierasvenesataman vieressä toimiva 70-paikkainen lounasravintola. Kesäkaudella tarjolla on myös à la carte -ruokailua; tiloissa toimii lisäksi pieni leipomomyymälä. Juhla- ja pitopalvelut varataan suoraan ravintolasta.",
+      es: "Restaurante de 70 plazas junto al puerto deportivo de Teijo, con almuerzo durante todo el año y servicio a la carta en verano. En el mismo local hay una pequeña tienda-panadería. Consulta directamente con el restaurante los servicios para celebraciones y catering.",
+      en: "A 70-seat restaurant beside Teijo guest harbour, serving lunch year-round and à la carte meals in summer. A small bakery shop operates on the same premises. Contact the restaurant directly for private events and catering.",
+    },
+    url: "https://www.ravintolateijonarkki.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/ravintola-1150x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Ravintola Teijon Arkki",
+  },
+  {
+    id: "kirjakkalan-ruukkikyla",
+    category: "experience",
+    name: "Kirjakkalan Ruukkikylä / Extreme Fun",
+    nameByLocale: { fi: "Kirjakkalan Ruukkikylä / Extreme Fun", en: "Kirjakkala Ironworks Village / Extreme Fun", es: "Pueblo siderúrgico de Kirjakkala / Extreme Fun" },
+    description: {
+      fi: "Historiallinen ruukkikylä Hamarinjärven rannalla Teijon kansallispuiston retkeilyreittien yhteydessä. Palveluihin kuuluvat majoitus-, kokous- ja saunapalvelut sekä outdoor- ja melontakeskus. Tarkista majoitustilojen saatavuus ja aktiviteetit suoraan palveluntarjoajalta.",
+      es: "Pueblo siderúrgico histórico a orillas del lago Hamarinjärvi, junto a las rutas del Parque Nacional de Teijo. Ofrece alojamiento, salas de reuniones, sauna y un centro de actividades al aire libre y piragüismo. Consulta disponibilidad y actividades directamente con el proveedor.",
+      en: "A historic ironworks village on Lake Hamarinjärvi beside the trails of Teijo National Park. Services include accommodation, meeting and sauna facilities, plus an outdoor and canoeing centre. Confirm availability and activities directly with the provider.",
+    },
+    url: "https://www.ruukkikyla.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kirjakkala-rakennus-web-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Kirjakkalan Ruukkikylä",
+  },
+
 ];
 
 export const saloEvents: SaloEvent[] = [
