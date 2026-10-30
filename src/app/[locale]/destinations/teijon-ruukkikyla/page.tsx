@@ -125,8 +125,17 @@ export default async function TeijoIronworksVillagePage({ params }: { params: Pr
       </section>
       <SaloDirectory locale={locale} area="teijo" />
       <RuukkikylaGuide village="teijo" locale={locale} />
-      <section className="container-narrow py-12">
-        <Link href={`/${locale}/mathildedal`} className="inline-flex rounded-full border border-stone-300 px-5 py-3 text-sm font-bold text-brand-950 hover:bg-stone-50">{t.mathildedal} →</Link>
+      <section className="container-narrow grid gap-4 py-12 sm:grid-cols-2">
+        <Link href={`/${locale}/mathildedal`} className="rounded-2xl border border-stone-200 p-6 transition hover:bg-stone-50">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700">{locale === "fi" ? "Toinen ruukkikylä" : locale === "es" ? "Otro pueblo siderúrgico" : "Another ironworks village"}</span>
+          <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">Mathildedal</h3>
+          <p className="mt-2 text-sm text-slate-600">{t.mathildedal}</p>
+        </Link>
+        <Link href={`/${locale}/destinations/kirjakkalan-ruukkikyla`} className="rounded-2xl border border-stone-200 p-6 transition hover:bg-stone-50">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700">{locale === "fi" ? "Kolmas ruukkikylä" : locale === "es" ? "Otro pueblo siderúrgico" : "Another ironworks village"}</span>
+          <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">Kirjakkala</h3>
+          <p className="mt-2 text-sm text-slate-600">{locale === "fi" ? "Tutustu Hamarijärven rannan historialliseen ruukkikylään." : locale === "es" ? "Descubre el histórico pueblo siderúrgico junto al lago Hamarijärvi." : "Explore the historic ironworks village beside Lake Hamarijärvi."}</p>
+        </Link>
       </section>
     </main>
   );
