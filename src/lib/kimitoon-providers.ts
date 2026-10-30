@@ -7,6 +7,7 @@ export type KimitoonCategory =
 
 export type KimitoonProvider = {
   id: string;
+  kind?: "provider" | "place" | "resource";
   categories: KimitoonCategory[];
   name: Record<Locale, string>;
   description: Record<Locale, string>;
