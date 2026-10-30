@@ -5,7 +5,7 @@ type Village = "mathildedal" | "teijo";
 
 type Photo = { src: string; alt: Record<Locale, string>; credit: string; source: string };
 type Place = { name: string; type: string; description: Record<Locale, string>; url: string; image?: Photo["src"] };
-type EventItem = { title: string; date: string; description: Record<Locale, string>; url: string; image?: Photo["src"] };
+type EventItem = { title: string; date: string; description: Record<Locale, string>; url: string; image?: Photo["src"]; imageCredit?: string; imageSource?: string };
 
 const mathildedalPhotos: Photo[] = [
   { src: "https://visitmathildedal.fi/sites/default/files/bannerikuvat/kahvi-ravintolat-banneri.jpg", alt: { fi: "Mathildedalin kahvilan valoisa sisätila", en: "Bright café interior in Mathildedal", es: "Interior luminoso de una cafetería en Mathildedal" }, credit: "Visit Mathildedal", source: "https://visitmathildedal.fi/en/restaurants-and-cafes" },
@@ -44,8 +44,8 @@ const places: Record<Village, Place[]> = {
 
 const events: Record<Village, EventItem[]> = {
   mathildedal: [
-    { title: "Mathildedalin Joulumarkkinat", date: "21.11. ja 28.11.2026", description: { fi: "Ruukkitehtaiden joulumarkkinoilla korostuvat paikalliset herkut, käsityöt ja historiallisen kylän joulutunnelma. Tarkista tapahtuman järjestäjän sivulta mahdolliset muutokset.", en: "Christmas markets at the ironworks feature local treats, crafts and the historic village atmosphere. Check the organiser's page for updates.", es: "Los mercados navideños reúnen productos locales, artesanía y el ambiente histórico del pueblo. Consulta posibles cambios en la página oficial." }, url: "https://mathildedal.fi/tapahtumat/", image: mathildedalPhotos[2].src },
-    { title: "Jouluun Hiljentyminen", date: "23.12.2026", description: { fi: "Perinteinen aatonaaton tapahtuma Mathildedalin Ruukkitehtailla.", en: "A long-running Christmas-eve-eve gathering at Mathildedal Ironworks.", es: "Encuentro tradicional de víspera de Nochebuena en la antigua ferrería de Mathildedal." }, url: "https://mathildedal.fi/tapahtumat/", image: mathildedalPhotos[2].src },
+    { title: "Mathildedalin Joulumarkkinat", date: "21.11. ja 28.11.2026", description: { fi: "Ruukkitehtaiden joulumarkkinoilla korostuvat paikalliset herkut, käsityöt ja historiallisen kylän joulutunnelma. Tarkista tapahtuman järjestäjän sivulta mahdolliset muutokset.", en: "Christmas markets at the ironworks feature local treats, crafts and the historic village atmosphere. Check the organiser's page for updates.", es: "Los mercados navideños reúnen productos locales, artesanía y el ambiente histórico del pueblo. Consulta posibles cambios en la página oficial." }, url: "https://mathildedal.fi/2026/04/27/mathildedalin-joulumarkkinat-21-11-28-11-2026/", image: "https://mathildedal.fi/wp-content/uploads/2026/04/38SV_VPL6961-pieni-scaled-e1777271867275.jpg", imageCredit: "Hotel Mathildedal", imageSource: "https://mathildedal.fi/2026/04/27/mathildedalin-joulumarkkinat-21-11-28-11-2026/" },
+    { title: "Jouluun Hiljentyminen", date: "23.12.2026", description: { fi: "Perinteinen aatonaaton tapahtuma Mathildedalin Ruukkitehtailla.", en: "A long-running Christmas-eve-eve gathering at Mathildedal Ironworks.", es: "Encuentro tradicional de víspera de Nochebuena en la antigua ferrería de Mathildedal." }, url: "https://mathildedal.fi/tapahtumat/" },
     { title: "Tapahtumakalenteri", date: "Päivittyvä ohjelma", description: { fi: "Kylällä järjestetään vuoden mittaan markkinoita, kulttuuriohjelmaa, musiikkia ja sesonkitapahtumia. Tarkista aina päivämäärä järjestäjältä.", en: "Markets, cultural events, music and seasonal activities take place throughout the year. Always confirm dates with the organiser.", es: "Durante el año hay mercados, cultura, música y actividades de temporada. Confirma siempre las fechas con la organización." }, url: "https://visitmathildedal.fi/fi/tapahtumat" },
   ],
   teijo: [
@@ -114,7 +114,7 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           <div className="grid gap-5 lg:grid-cols-3">
             {events[village].map((event) => (
               <article key={event.title} className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-                {event.image ? <img src={event.image} alt={event.title} loading="lazy" className="h-48 w-full object-cover" /> : null}
+                {event.image ? <figure><img src={event.image} alt={event.title} loading="lazy" className="h-48 w-full object-cover" />{event.imageCredit && event.imageSource ? <figcaption className="px-5 pt-2 text-xs text-slate-500">{t.source}: {event.imageCredit} · <a href={event.imageSource} target="_blank" rel="noreferrer" className="underline underline-offset-2">{t.visit}</a></figcaption> : null}</figure> : null}
                 <div className="p-5">
                   <p className="text-xs font-bold uppercase tracking-wider text-brand-700">{t.eventDate}: {event.date}</p>
                   <h4 className="mt-2 font-display text-xl font-bold text-brand-950">{event.title}</h4>
