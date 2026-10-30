@@ -38,12 +38,14 @@ export function KimitoonProviderCards({ locale, category }: { locale: Locale; ca
         </p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((item) => (
+        {items.map((item) => {
+          const cardImage = item.categoryImages?.[category] || item.image;
+          return (
           <article key={item.id} className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
             <Link href={`/${locale}/providers/kimitoon-${item.id}`} className="block">
               <div className="relative flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800">
-                {item.image ? (
-                  <img src={item.image} alt={item.name[locale]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                {cardImage ? (
+                  <img src={cardImage} alt={item.name[locale]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                 ) : (
                   <div className="px-6 text-center text-white">
                     <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{locale === "fi" ? "Palveluntarjoaja" : locale === "es" ? "Proveedor" : "Provider"}</p>
@@ -63,7 +65,8 @@ export function KimitoonProviderCards({ locale, category }: { locale: Locale; ca
               {t.source}: {item.imageCredit} · <a href={item.imageSource} target="_blank" rel="noreferrer" className="underline underline-offset-2">{locale === "fi" ? "lähde" : locale === "es" ? "fuente" : "source"}</a>
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
