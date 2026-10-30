@@ -159,7 +159,22 @@ const scheduleUrl = "https://rosala.net/fi/tidtabeller/";
 export function KimitoonPlaceDetail({ locale, place }: { locale: Locale; place: Place }) {
   const t = content[locale][place];
   const common = content[locale];
-  const heroImage = place === "rosala" ? photoLibrary.rosalaVikingCentre : "https://cdn.johku.com/rosala/largefiles/94.jpg";
+  const heroImage = place === "rosala" ? photoLibrary.rosalaVikingCentre : "https://www.bengtskar.fi/wp-content/uploads/2024/05/SisselOchFyren-2-1024x512.jpg";
+  const galleryPhotos = place === "rosala"
+    ? [
+        { src: "https://rosala.fi/wp-content/uploads/2016/04/rosala-farmansgarden-2.jpg", alt: { fi: "Rosalan viikinkikylän historiallinen pihapiiri", en: "The historic setting of Rosala Viking Village", es: "El entorno histórico de la aldea vikinga de Rosala" } },
+        { src: "https://rosala.fi/wp-content/uploads/2016/04/rosala-farmansgarden-8.jpg", alt: { fi: "Rosalan viikinkikylän rakennuksia", en: "Buildings in Rosala Viking Village", es: "Edificios de la aldea vikinga de Rosala" } },
+        { src: "https://rosala.fi/wp-content/uploads/2016/04/rosala-farmansgarden-4.jpg", alt: { fi: "Viikinkikylän miljöö Rosalassa", en: "The Viking village atmosphere in Rosala", es: "El ambiente de la aldea vikinga en Rosala" } },
+        { src: "https://rosala.fi/wp-content/uploads/2016/04/rosala-farmansgarden-5.jpg", alt: { fi: "Rosalan viikinkikeskuksen ulkoalue", en: "Outdoor area at Rosala Viking Centre", es: "Zona exterior del Centro Vikingo de Rosala" } },
+      ]
+    : [
+        { src: "https://www.bengtskar.fi/wp-content/uploads/2024/05/SisselOchFyren-2-1024x512.jpg", alt: { fi: "Bengtskärin majakka ja avomeri", en: "Bengtskär Lighthouse and the open sea", es: "El faro de Bengtskär y el mar abierto" } },
+        { src: "https://www.bengtskar.fi/wp-content/uploads/2018/04/kahvi-ja-pulla.jpg", alt: { fi: "Kahvihetki Bengtskärin majakalla", en: "Coffee break at Bengtskär Lighthouse", es: "Una pausa para tomar café en el faro de Bengtskär" } },
+        { src: "https://www.bengtskar.fi/wp-content/uploads/2018/07/n%C3%A4e-ja-koe.jpg", alt: { fi: "Bengtskärin majakkasaaren nähtävyydet", en: "Sights and experiences on Bengtskär Lighthouse Island", es: "Lugares y experiencias en la isla del faro de Bengtskär" } },
+      ];
+  const galleryTitle = place === "rosala"
+    ? (locale === "fi" ? "Kuvia Rosalan viikinkikeskuksesta" : locale === "es" ? "Imágenes del Centro Vikingo de Rosala" : "Rosala Viking Centre gallery")
+    : (locale === "fi" ? "Kuvia Bengtskärin majakalta" : locale === "es" ? "Imágenes del faro de Bengtskär" : "Bengtskär Lighthouse gallery");
 
   return (
     <main className="bg-white text-brand-950">
@@ -207,6 +222,28 @@ export function KimitoonPlaceDetail({ locale, place }: { locale: Locale; place: 
             {t.practical.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </aside>
+      </section>
+
+      <section className="container-narrow py-12 sm:py-16">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-700">{common.region}</p>
+            <h2 className="mt-2 font-display text-3xl font-bold sm:text-4xl">{galleryTitle}</h2>
+          </div>
+          <a href={place === "rosala" ? "https://rosala.fi/en/galleri/" : "https://www.bengtskar.fi/en/photo-gallery/"} target="_blank" rel="noreferrer" className="font-semibold text-brand-800 underline underline-offset-4">
+            {locale === "fi" ? "Katso palveluntarjoajan kuvagalleria" : locale === "es" ? "Ver la galería oficial" : "View the provider's photo gallery"} ↗
+          </a>
+        </div>
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {galleryPhotos.map((photo) => (
+            <figure key={photo.src} className="group overflow-hidden rounded-2xl bg-stone-100">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img src={photo.src} alt={photo.alt[locale]} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+              </div>
+              <figcaption className="p-3 text-xs leading-5 text-slate-600">{photo.alt[locale]} · {place === "rosala" ? "rosala.fi" : "bengtskar.fi"}</figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
 
       <section className="bg-brand-50 py-10 sm:py-14">
