@@ -26,6 +26,8 @@ const basePaths = [
   "destinations/kemionsaari/kohde/soderlangvik",
   "destinations/kemionsaari/kohde/sagalund",
   "destinations/kemionsaari/kohde/oro",
+  "destinations/kemionsaari/kohde/kansakoulu",
+  "destinations/kemionsaari/kohde/kansakoulu-ravintola",
   "destinations/rosala",
   "destinations/bengtskar",
   "salo",
