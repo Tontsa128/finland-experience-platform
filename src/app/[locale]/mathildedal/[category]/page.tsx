@@ -45,7 +45,7 @@ const categories = {
     en: { title: "Sauna and wellbeing", description: "The lakeside sauna at Matildanjärvi and nearby relaxation services." },
     es: { title: "Sauna y bienestar", description: "La sauna junto al lago Matildanjärvi y servicios cercanos de descanso." },
   },
-} as const satisfies Record<string, { category: SaloProvider["category"]; fi: { title: string; description: string }; en: { title: string; description: string }; es: { title: string; description: string }>;
+} as const satisfies Record<string, { category: SaloProvider["category"]; fi: { title: string; description: string }; en: { title: string; description: string }; es: { title: string; description: string } }>;
 
 type CategorySlug = keyof typeof categories;
 
