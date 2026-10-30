@@ -325,7 +325,7 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
         description: provider.description,
         url: provider.website,
         image: provider.image ? [provider.image] : undefined,
-        address: { "@type": "PostalAddress", addressLocality: provider.location, addressCountry: "FI" },
+        ...(provider.kind !== "resource" ? { address: { "@type": "PostalAddress", addressLocality: provider.location, addressCountry: "FI" } } : {}),
       }).replace(/</g, "\\u003c") }} />
       <section className="relative isolate min-h-[42svh] overflow-hidden bg-brand-950 text-white sm:min-h-[54svh]">
         {provider.image ? <Image src={provider.image} alt={provider.name} fill priority sizes="100vw" className="object-cover" /> : null}
