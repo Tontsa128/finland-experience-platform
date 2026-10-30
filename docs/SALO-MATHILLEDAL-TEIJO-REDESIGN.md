@@ -42,6 +42,8 @@ Tämä dokumentti erottaa nykyisestä repositoriosta varmennetut tekniset havain
 ### Teijo, Kirjakkala ja Mutainen
 
 - Teijon Ruukkikylät – alueen kylät ja historia: https://www.teijo.fi/tervetuloakyliin/teijon-alueen-ruukkikylat/
+- Kirjakkalan Ruukkikylä / Extreme Fun – virallinen kohdekuvaus: https://kohteet.visitsalo.fi/kirjakkalan-ruukkikyla-melontakeskus/
+- Ravintola Teijon Arkki – virallinen kohdekuvaus: https://kohteet.visitsalo.fi/ravintola-teijon-arkki/
 - Teijon Ruukkikylät – palvelut: https://www.teijo.fi/palveluja/
 - Teijon Ruukkikylät – majoitus: https://www.teijo.fi/palveluja/majoitusta/
 - Teijon Ruukkikylät – kahvilat ja ravintolat: https://www.teijo.fi/palveluja/kahvilat-ja-ravintolat/
@@ -166,6 +168,16 @@ Teijon ruukkikylä ja Teijon kansallispuisto linkitetään toisiinsa, mutta niit
 - Nykyistä Supabase CMS:ää laajennetaan tarvittaessa; rinnakkaista CMS:ää tai kovakoodattua uutta hakemistoa ei rakenneta.
 - Kaikki reitit, metatiedot, canonical/hreflang, saavutettavuus, mobiili, kuvat ja ulkoiset linkit tarkistetaan ennen julkaisua.
 - Muutokset tehdään ominaisuushaarassa, testataan CI:ssä ja julkaistaan vasta hyväksynnän jälkeen.
+
+## 7. Kirjakkala osana Ruukkikyliä
+
+Virallisen Visit Salo -kohdekuvauksen mukaan Teijon alueen kolme ruukkikylää ovat **Kirjakkala, Teijo ja Mathildedal**. Siksi Ruukkikylät-ryhmä ei saa rajoittua vain kahteen kylään.
+
+- Kirjakkalan ruukki perustettiin vuonna 1686.
+- Kylä sijaitsee Hamarijärven rannalla Teijon kansallispuiston reittiverkoston yhteydessä.
+- Kirjakkalan Ruukkikylä / Extreme Fun tarjoaa virallisen kohdekuvauksen mukaan majoitus-, kokous- ja saunapalveluja sekä outdoor- ja melontakeskuksen palveluja.
+- Kirjakkalalle lisätään oma FI/EN/ES-kohdesivu, yksi kanoninen palveluntarjoajaprofiili sekä linkit Teijon ja Mathildedalin oppaisiin.
+- Kirjakkala pidetään omana kylänään eikä sitä yhdistetä Teijon ruukkikylän profiiliin, vaikka molemmat kuuluvat samaan laajempaan Teijon alueeseen.
 
 ## 6. Toteutusjärjestys
 
