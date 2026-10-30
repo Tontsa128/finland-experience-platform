@@ -1271,7 +1271,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Redaktörsstigen 2, 25700 Kemiö",en:"Redaktörsstigen 2, 25700 Kimito",es:"Redaktörsstigen 2, 25700 Kimito"},
     websiteUrl:"https://www.seasidelkv.fi/",sourceUrl:"https://ksg.fi/fi/foretag/ab-seaside-oy-lkv/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/ab-seaside-oy-lkv/",tags:["mökkivuokraus","kiinteistönvälitys"],contact:{phone:"044 306 7012",address:"Redaktörsstigen 2, 25700 Kemiö",email:"kristian.lindroos@seasidelkv.fi"}
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/ab-seaside-oy-lkv/",tags:["mökkivuokraus","kiinteistönvälitys"],contact:{phone:"044 706 7012",address:"Redaktörstigen 2, 25700 Kemiö",email:"anneli.viljanen@seasidelkv.fi"}
   },
   {
     id:"luddes-taxi",categories:["kuljetukset","muut-palvelut"],
