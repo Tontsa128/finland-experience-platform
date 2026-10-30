@@ -173,7 +173,40 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <SaloDirectory locale={locale} />
+      <section className="container-narrow py-16 sm:py-20">
+        <div className="max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Tutustu alueittain" : locale === "es" ? "Explora por zonas" : "Explore by area"}</p>
+          <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Salon seudulla jokaisella alueella on oma luonteensa." : locale === "es" ? "Cada zona de Salo tiene su propio carácter." : "Every part of the Salo region has its own character."}</h2>
+          <p className="mt-5 text-lg leading-8 text-slate-600">{locale === "fi" ? "Valitse kylä tai alue ja tutustu sen majoitukseen, ruokaan, luontoon ja paikallisiin palveluihin. Kohteiden tiedot ja yhteydet johtavat aina suoraan palveluntarjoajalle." : locale === "es" ? "Elige un pueblo o una zona y descubre su alojamiento, gastronomía, naturaleza y servicios locales. La información y los enlaces llevan directamente a cada proveedor." : "Choose a village or area to explore its accommodation, food, nature and local services. Provider profiles and links always lead directly to the service provider."}</p>
+        </div>
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { id: "mathildedal", title: { fi: "Mathildedal", en: "Mathildedal", es: "Mathildedal" }, text: { fi: "Ruukkikylä, satama ja kyläpalvelut", en: "Ironworks village, harbour and local services", es: "Pueblo histórico, puerto y servicios locales" } },
+            { id: "teijo", title: { fi: "Teijo", en: "Teijo", es: "Teijo" }, text: { fi: "Kansallispuisto, kulttuuri ja ulkoilu", en: "National park, culture and outdoor life", es: "Parque nacional, cultura y actividades al aire libre" } },
+            { id: "sarkisalo", title: { fi: "Särkisalo & Förby", en: "Särkisalo & Förby", es: "Särkisalo y Förby" }, text: { fi: "Saaristo, satamat ja merelliset elämykset", en: "Islands, harbours and sea experiences", es: "Islas, puertos y experiencias marinas" } },
+            { id: "pernio", title: { fi: "Perniö", en: "Perniö", es: "Perniö" }, text: { fi: "Maaseutu, maatilat ja paikalliset retket", en: "Countryside, farms and local excursions", es: "Campo, granjas y excursiones locales" } },
+            { id: "halikko", title: { fi: "Halikko", en: "Halikko", es: "Halikko" }, text: { fi: "Kyläympäristö ja paikalliset palvelut", en: "Village surroundings and local services", es: "Entorno rural y servicios locales" } },
+            { id: "vaskio", title: { fi: "Vaskio", en: "Vaskio", es: "Vaskio" }, text: { fi: "Mökkimajoitusta maaseudulla", en: "Cottage stays in the countryside", es: "Casas rurales en el campo" } },
+            { id: "suomusjarvi", title: { fi: "Suomusjärvi", en: "Suomusjärvi", es: "Suomusjärvi" }, text: { fi: "Huvilat ja lomamökit", en: "Villas and holiday cottages", es: "Villas y casas de vacaciones" } },
+            { id: "salo", title: { fi: "Salo & lähialueet", en: "Salo & nearby areas", es: "Salo y alrededores" }, text: { fi: "Matkailuinfo, oppaat ja retkipalvelut", en: "Tourism information, guides and excursions", es: "Información turística, guías y excursiones" } },
+          ].map((area) => (
+            <a key={area.id} href={`#area-${area.id}`} className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card">
+              <h3 className="font-display text-xl font-bold text-brand-950 group-hover:text-brand-700">{area.title[locale]}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{area.text[locale]}</p>
+              <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-brand-700">{locale === "fi" ? "Katso alueen kohteet" : locale === "es" ? "Ver los lugares" : "Explore places"}<ArrowRight className="h-3.5 w-3.5" /></span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <SaloDirectory locale={locale} area="mathildedal" />
+      <SaloDirectory locale={locale} area="teijo" />
+      <SaloDirectory locale={locale} area="sarkisalo" />
+      <SaloDirectory locale={locale} area="pernio" />
+      <SaloDirectory locale={locale} area="halikko" />
+      <SaloDirectory locale={locale} area="vaskio" />
+      <SaloDirectory locale={locale} area="suomusjarvi" />
+      <SaloDirectory locale={locale} area="salo" />
 
       <section className="container-narrow py-16 sm:py-24">
         <div className="grid gap-6 md:grid-cols-2">
