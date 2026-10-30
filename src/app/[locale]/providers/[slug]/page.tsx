@@ -114,6 +114,16 @@ const mathildedalAreaPhotos: LocalPhoto[] = [
 ];
 
 const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
+  "kimitoon-db-hostel": [
+    { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_173606-1024x781.jpg", alt:{fi:"DB Hostellin kahden hengen huone",en:"DB Hostel twin room",es:"Habitación doble de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
+    { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_174601-1024x768.jpg", alt:{fi:"DB Hostellin neljän hengen huone parvekkeella",en:"DB Hostel four-person room with balcony",es:"Habitación para cuatro personas con balcón de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
+    { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_173116-1024x768.jpg", alt:{fi:"DB Hostellin yhteinen olohuone",en:"DB Hostel shared living room",es:"Sala de estar compartida de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
+    { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_172844-1024x768.jpg", alt:{fi:"DB Hostellin yhteiskeittiö",en:"DB Hostel shared kitchen",es:"Cocina compartida de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
+    { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_172740-1024x768.jpg", alt:{fi:"DB Hostellin ruokailutila",en:"DB Hostel dining area",es:"Comedor de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
+    { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_170519-1024x768.jpg", alt:{fi:"DB Hostellin wc- ja suihkutila",en:"DB Hostel toilet and shower facilities",es:"Aseo y ducha de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
+    { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_174830-1024x768.jpg", alt:{fi:"DB Hostellin wc-tila",en:"DB Hostel toilet facilities",es:"Aseo de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
+    { src:"https://www.dbhostel.fi/wp-content/uploads/2025/06/20250608_123954-1024x768.jpg", alt:{fi:"Näkymä DB Hostellin parvekkeelta",en:"View from DB Hostel balcony",es:"Vista desde el balcón de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" }
+  ],
   "kimitoon-bb-heedbacka": [
     { src:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/c02525b0-cfdf-11ed-8ed8-859d0a6307f5.jpeg-760x507.jpeg", alt:{fi:"Hembackan päärakennus ja pihapiiri",en:"Hembacka main building and courtyard",es:"Edificio principal y patio de Hembacka"}, credit:"Visit Kimitoön", source:"https://www.visitkimitoon.fi/en/destinations/b-b-hembacka/" },
     { src:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/f71737e0-ee25-11f0-abc6-f3555c0b7a54.jpeg-760x790.jpeg", alt:{fi:"Hembackan virallisen kuvagallerian kuva",en:"Photo from Hembacka's official destination gallery",es:"Fotografía de la galería oficial de Hembacka"}, credit:"Visit Kimitoön", source:"https://www.visitkimitoon.fi/en/destinations/b-b-hembacka/" },
