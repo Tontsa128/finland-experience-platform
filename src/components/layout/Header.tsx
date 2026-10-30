@@ -111,7 +111,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                   {labelFor(key)} <ChevronDown className="h-3.5 w-3.5 transition group-open:rotate-180" />
                 </summary>
                 <div className="absolute left-0 top-full z-50 mt-3 min-w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl">
-                  <Link href={`/${locale}/destinations/salo-mathildedal`} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900" onClick={() => setOpen(false)}>Mathildedal</Link>
+                  <Link href={`/${locale}/mathildedal`} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900" onClick={() => setOpen(false)}>Mathildedal</Link>
                   <Link href={`/${locale}/destinations/teijon-ruukkikyla`} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900" onClick={() => setOpen(false)}>Teijo</Link>
                 </div>
               </details>
