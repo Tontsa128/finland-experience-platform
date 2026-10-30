@@ -1661,7 +1661,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     location:{fi:"Senatsberget, Kemiönsaari",en:"Senatsberget, Kimitoön",es:"Senatsberget, Kimitoön"},
     websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://kartta.kemionsaari.fi/",
     imageCredit:"Kemiönsaaren kunta – aktiviteettikartta",imageSource:"https://kartta.kemionsaari.fi/",tags:["hyvinvointipolku","laavu","näköalatorni"]
-  }
+  },
 
   {
     id:"bjorknas-care-water-taxi",categories:["kuljetukset","saaristo","aktiviteetit"],
