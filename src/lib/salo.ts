@@ -3,7 +3,7 @@ import { photoLibrary } from "@/lib/photo-library";
 
 export type SaloProvider = {
   id: string;
-  category: "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture";
+  category: "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture" | "events";
   name: string;
   nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
@@ -840,6 +840,50 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.ruukkikyla.fi/",
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kirjakkala-rakennus-web-1366x768.jpg",
     imageCredit: "Visit Salo / Salon Kohteet — Kirjakkalan Ruukkikylä",
+  },
+
+
+  {
+    id: "teijon-juhlatila",
+    category: "events",
+    name: "Teijon Juhlatila",
+    nameByLocale: { fi: "Teijon Juhlatila", en: "Teijo Event Venue", es: "Espacio para eventos de Teijo" },
+    description: {
+      fi: "Rustiikkinen juhla- ja kokoustila Teijon ruukin sydämessä, lähellä merta ja Teijon kirkkoa. Juhlasaliin mahtuu noin 80 illallistajaa ja loungeen noin 40 henkilöä. Tarjoilut voi sopia naapurissa toimivan Teijo Cafe & Bakeryn kanssa.",
+      es: "Espacio rústico para celebraciones y reuniones en el corazón de la ferrería de Teijo, cerca del mar y de la iglesia. El salón tiene capacidad aproximada para 80 comensales y la zona lounge para 40 personas. Consulta el catering con Teijo Cafe & Bakery.",
+      en: "A rustic event and meeting venue in the heart of Teijo ironworks village, close to the sea and Teijo Church. The dining hall accommodates around 80 guests and the lounge around 40. Catering can be arranged with neighbouring Teijo Cafe & Bakery.",
+    },
+    url: "https://www.ravintolaterho.fi/teijon-juhlatila",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/teijonjuhlatila-web-52-1152x768.jpg",
+    imageCredit: "Riikka Lilja Photography / Visit Salo",
+  },
+  {
+    id: "teijon-kylasauna",
+    category: "wellbeing",
+    name: "Teijon Kyläsauna",
+    nameByLocale: { fi: "Teijon Kyläsauna", en: "Teijo Village Sauna", es: "Sauna comunitaria de Teijo" },
+    description: {
+      fi: "Yli 220 vuotta vanha kiviseinäinen sauna Teijon ruukkisataman lähellä. Saunassa on löylyhuone, pesuhuone, takkatupa ja pukuhuoneet; saunan edessä on pieni virtaava uintipaikka. Yleiset vuorot ja yksityisvaraukset tarkistetaan Teijon Alueen Kyläyhdistykseltä.",
+      es: "Sauna histórica de paredes de piedra, de más de 220 años, cerca del puerto siderúrgico de Teijo. Dispone de sala de sauna, duchas, sala con chimenea y vestuarios; delante hay una pequeña zona de baño con agua corriente. Consulta los turnos y reservas privadas con la asociación local.",
+      en: "A historic stone-walled sauna, more than 220 years old, near Teijo ironworks harbour. Facilities include a sauna room, washroom, fireplace room and changing rooms, with a small flowing-water swimming spot outside. Check public sessions and private bookings with the local village association.",
+    },
+    url: "https://www.teijo.fi/palveluja/kylasauna/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Py%C3%B6r%C3%A4t-sauna-1024x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Teijo Village Sauna",
+  },
+  {
+    id: "vicksbackinlahden-kota",
+    category: "experience",
+    name: "Vicksbäckinlahden varauskota",
+    nameByLocale: { fi: "Vicksbäckinlahden varauskota", en: "Vicksbäckinlahti Rental Wilderness Hut", es: "Refugio reservable de Vicksbäckinlahti" },
+    description: {
+      fi: "Natura Vivan vuokrattava hirsikota Matildanjärven pohjoisrannalla Teijon kansallispuistossa. Kodassa on istumatilaa jopa 50 hengelle ja siellä voi yöpyä kuusi henkilöä. Lähellä kulkee Matildanjärven kierros; kajakit, kanootit, SUP-laudat ja pyörät vuokrataan Natura Vivan kautta.",
+      es: "Cabaña de troncos de alquiler de Natura Viva en la orilla norte del lago Matildanjärvi, en el Parque Nacional de Teijo. Tiene capacidad para hasta 50 personas sentadas y permite pernoctar a seis. Cerca pasa la ruta circular de Matildanjärvi; los kayaks, canoas, tablas SUP y bicicletas se alquilan a través de Natura Viva.",
+      en: "A rentable log hut operated by Natura Viva on the north shore of Lake Matildanjärvi in Teijo National Park. It seats up to 50 people and can accommodate six overnight guests. The Matildanjärvi loop trail passes nearby; kayaks, canoes, SUP boards and bikes are available through Natura Viva.",
+    },
+    url: "https://naturaviva.fi/fi_FI/varauskota-teijon-kansallispuistossa/hirsikota-matildanjarvella",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Vickba%CC%88ckinlahden-kota-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Vicksbäckinlahden varauskota",
   },
 
 ];
