@@ -438,18 +438,28 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
           ) : null}
           {provider.tags.length > 0 ? <div className="mt-5 flex flex-wrap gap-2">{provider.tags.map((tag) => <span key={tag} className="rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800">{tag}</span>)}</div> : null}
           {(() => {
-            const guide = mathildedalGuides[slug]?.[locale] || teijoGuides[slug]?.[locale] || (slug.startsWith("kimitoon-") ? {
+            const isSaloProvider = slug.startsWith("salo-");
+            const guide = mathildedalGuides[slug]?.[locale] || teijoGuides[slug]?.[locale] || (isSaloProvider ? {
+              intro: provider.description,
+              highlightsTitle: locale === "fi" ? "Kohteen palvelut" : locale === "es" ? "Servicios del lugar" : "What the provider offers",
+              highlights: [] as string[],
+              planningTitle: locale === "fi" ? "Hyvä tietää ennen vierailua" : locale === "es" ? "Antes de la visita" : "Before your visit",
+              planning: locale === "fi" ? "Palvelusisältö, varustelu, aukioloajat, hinnat ja saatavuus voivat muuttua. Varmista ajantasaiset tiedot suoraan palveluntarjoajalta ennen vierailua tai varausta." : locale === "es" ? "Los servicios, las instalaciones, los horarios, los precios y la disponibilidad pueden cambiar. Confirma la información actual directamente con el proveedor antes de visitar o reservar." : "Services, facilities, opening times, prices and availability may change. Confirm current details directly with the provider before visiting or booking.",
+              nearbyTitle: locale === "fi" ? "Muita Salon seudun kohteita" : locale === "es" ? "Otros lugares de la región de Salo" : "More places in the Salo region",
+            } : (slug.startsWith("kimitoon-") ? {
               intro: provider.description,
               highlightsTitle: locale === "fi" ? "Kohteen palvelut ja ominaisuudet" : locale === "es" ? "Servicios y características" : "Services and features",
               highlights: provider.tags,
               planningTitle: locale === "fi" ? "Tarkista ennen vierailua tai varausta" : locale === "es" ? "Antes de visitar o reservar" : "Before visiting or booking",
               planning: locale === "fi" ? "Aukioloajat, kausittainen saatavuus, hinnat, palvelusisältö ja varausehdot voivat muuttua. Tarkista tiedot suoraan palveluntarjoajan omasta kanavasta ennen matkaa." : locale === "es" ? "Los horarios, la disponibilidad por temporada, los precios, los servicios y las condiciones pueden cambiar. Confirma los datos directamente con el proveedor antes de viajar." : "Opening hours, seasonal availability, prices, service details and booking terms can change. Confirm them directly with the provider before travelling.",
               nearbyTitle: locale === "fi" ? "Tutustu muihin Kemiönsaaren kohteisiin" : locale === "es" ? "Descubre otros lugares de Kimitoön" : "Explore more places on Kimitoön",
-            } : null);
+            } : null));
             if (!guide) return null;
+            const showRelated = Boolean(mathildedalGuides[slug] || teijoGuides[slug] || slug.startsWith("kimitoon-"));
             const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: ("imageSource" in provider && provider.imageSource) ? provider.imageSource : provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(new Set(["salo-visit-mathildedal", "salo-hotel-mathildedal", "salo-mathildan-marina", "salo-matilda-villas", "salo-matri-house", "salo-majoitus-mathildedal", "salo-mathildedal-brewery", "salo-ravintola-terho"]).has(slug) ? mathildedalAreaPhotos : [])];
             return (
               <div className="mt-10 space-y-8">
+                {galleryPhotos.length > 0 ? (
                 <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {galleryPhotos.map((photo, index) => (
@@ -465,20 +475,24 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
                     ))}
                   </div>
                 </section>
+                ) : null}
                 <section className="rounded-3xl border border-brand-100 bg-brand-50 p-6 sm:p-8">
                   <h3 className="font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
                   <p className="mt-4 text-base leading-8 text-slate-700">{guide.intro}</p>
                 </section>
+                {guide.highlights.length > 0 ? (
                 <section>
                   <h3 className="font-display text-2xl font-bold text-brand-950">{guide.highlightsTitle}</h3>
                   <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                     {guide.highlights.map((highlight) => <li key={highlight} className="rounded-2xl border border-slate-200 p-4 text-sm leading-7 text-slate-700"><span className="mr-2 font-bold text-brand-700">✓</span>{highlight}</li>)}
                   </ul>
                 </section>
+                ) : null}
                 <section className="rounded-3xl border border-slate-200 p-6 sm:p-8">
                   <h3 className="font-display text-xl font-bold text-brand-950">{guide.planningTitle}</h3>
                   <p className="mt-3 leading-7 text-slate-700">{guide.planning}</p>
                 </section>
+                {showRelated ? (
                 <section>
                   <h3 className="font-display text-2xl font-bold text-brand-950">{guide.nearbyTitle}</h3>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -487,6 +501,7 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
                       : (teijoGuides[slug] ? teijoRelated : mathildedalRelated).filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}
                   </div>
                 </section>
+                ) : null}
               </div>
             );
           })()}
