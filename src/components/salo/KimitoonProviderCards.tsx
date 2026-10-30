@@ -2,10 +2,10 @@ import Link from "next/link";
 import type { Locale } from "@/types";
 import { getKimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
 
-const labels: Record<Locale, { title: string; open: string; source: string; empty: string }> = {
-  fi: { title: "Palveluntarjoajat ja kohteet", open: "Avaa kohdesivu", source: "Kuva ja lähde", empty: "Tähän teemaan lisätään kohteita lähteiden varmistuessa." },
-  en: { title: "Providers and places", open: "Open detail page", source: "Photo and source", empty: "Listings will be added as their sources are verified." },
-  es: { title: "Proveedores y destinos", open: "Abrir ficha", source: "Foto y fuente", empty: "Añadiremos fichas cuando se verifiquen sus fuentes." },
+const labels: Record<Locale, { title: string; open: string; source: string; recordSource: string; empty: string }> = {
+  fi: { title: "Palveluntarjoajat ja kohteet", open: "Avaa kohdesivu", source: "Kuvan lähde", recordSource: "Tietolähde", empty: "Tähän teemaan lisätään kohteita lähteiden varmistuessa." },
+  en: { title: "Providers and places", open: "Open detail page", source: "Photo source", recordSource: "Information source", empty: "Listings will be added as their sources are verified." },
+  es: { title: "Proveedores y destinos", open: "Abrir ficha", source: "Fuente de la foto", recordSource: "Fuente de información", empty: "Añadiremos fichas cuando se verifiquen sus fuentes." },
 };
 
 export function KimitoonProviderCards({ locale, category }: { locale: Locale; category: KimitoonCategory }) {
@@ -42,7 +42,7 @@ export function KimitoonProviderCards({ locale, category }: { locale: Locale; ca
           const cardImage = item.categoryImages?.[category] || item.image;
           return (
           <article key={item.id} className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <Link href={`/${locale}/providers/kimitoon-${item.id}`} className="block">
+            <Link href={`/${locale}/providers/kimitoon-${item.id}?from=${category}`} className="block">
               <div className="relative flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800">
                 {cardImage ? (
                   <img src={cardImage} alt={item.name[locale]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
@@ -62,7 +62,7 @@ export function KimitoonProviderCards({ locale, category }: { locale: Locale; ca
               </div>
             </Link>
             <div className="px-5 pb-5 pt-2 text-xs text-slate-500">
-              {t.source}: {item.imageCredit} · <a href={item.imageSource} target="_blank" rel="noreferrer" className="underline underline-offset-2">{locale === "fi" ? "lähde" : locale === "es" ? "fuente" : "source"}</a>
+              {item.image ? t.source : t.recordSource}: {item.imageCredit} · <a href={item.imageSource} target="_blank" rel="noreferrer" className="underline underline-offset-2">{locale === "fi" ? "lähde" : locale === "es" ? "fuente" : "source"}</a>
             </div>
           </article>
           );
