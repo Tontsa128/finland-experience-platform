@@ -100,7 +100,7 @@ export default async function SaloAreaPage({
 
       <SaloDirectory locale={locale} area={area} />
 
-      <section className="bg-brand-50 py-14 sm:py-18">
+      <section className="bg-brand-50 py-14 sm:py-20">
         <div className="container-narrow flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="font-display text-2xl font-bold text-brand-950">
