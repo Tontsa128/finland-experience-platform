@@ -35,7 +35,7 @@ const content = {
     bengtskar: {
       title: "Bengtskär – majakka avomerellä",
       intro: "Bengtskärin majakka on vaikuttava merellinen retkikohde ulkosaaristossa. Vierailu vaatii kuljetuksen meritse, joten aikataulut, sää ja kausittainen saatavuus on tarkistettava ennen matkaa.",
-      imageAlt: "Saariston meriretki Rosalan ja Bengtskärin alueella",
+      imageAlt: "Bengtskärin majakka ja avomeri",
       aboutTitle: "Majakka, historia ja avomeri",
       about: "Bengtskär tunnetaan korkeasta majakastaan, näyttelyistä ja merellisestä sijainnistaan. Kohteen palvelut ja vierailumahdollisuudet ovat kausiluonteisia, ja merisää voi vaikuttaa liikennöintiin.",
       highlightsTitle: "Mitä vierailuun kuuluu?",
@@ -83,7 +83,7 @@ const content = {
     bengtskar: {
       title: "Bengtskär – a lighthouse out at sea",
       intro: "Bengtskär Lighthouse is a remarkable maritime destination in the outer archipelago. Reaching it requires a boat transfer, so check schedules, weather and seasonal availability before travelling.",
-      imageAlt: "Sea excursion in the Rosala and Bengtskär archipelago",
+      imageAlt: "Bengtskär Lighthouse and the open sea",
       aboutTitle: "Lighthouse, history and open sea",
       about: "Bengtskär is known for its tall lighthouse, exhibitions and exposed maritime setting. Visitor services are seasonal, and sea conditions can affect transport.",
       highlightsTitle: "What to experience",
@@ -131,7 +131,7 @@ const content = {
     bengtskar: {
       title: "Bengtskär: un faro en mar abierto",
       intro: "El faro de Bengtskär es un destino marítimo excepcional en el archipiélago exterior. Para llegar se necesita transporte en barco; comprueba horarios, meteorología y disponibilidad estacional antes de viajar.",
-      imageAlt: "Excursión marítima por el archipiélago de Rosala y Bengtskär",
+      imageAlt: "El faro de Bengtskär y el mar abierto",
       aboutTitle: "Faro, historia y mar abierto",
       about: "Bengtskär es conocido por su alto faro, sus exposiciones y su ubicación expuesta al mar. Los servicios son estacionales y las condiciones marítimas pueden afectar al transporte.",
       highlightsTitle: "Qué descubrir",
