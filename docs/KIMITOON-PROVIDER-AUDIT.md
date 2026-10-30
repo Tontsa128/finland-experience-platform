@@ -24,36 +24,38 @@ The accommodation model remains direct-to-provider. FINNEXPRIENCE does not take 
 
 ## Implemented provider directory
 
-The current source-backed directory contains **118 unique provider/service profiles** in `src/lib/kimitoon-providers.ts`. One provider may appear under multiple themes; category totals below are therefore not additive.
+The current source-backed directory contains **175 unique provider, service, public-place and official-resource profiles** in `src/lib/kimitoon-providers.ts`. One provider may appear under multiple themes; category totals below are therefore not additive.
 
 | Theme | Provider cards |
 |---|---:|
 | Accommodation | 45 |
-| Restaurants, cafés and food | 40 |
-| Activities and experiences | 27 |
-| Archipelago and harbours | 15 |
-| Culture and sights | 18 |
-| Nature and outdoors | 9 |
-| Wellbeing and health | 7 |
-| Event and celebration venues | 21 |
-| Shopping and local products | 19 |
-| Events and festivals | 5 |
-| Transport and connections | 10 |
-| Other visitor services | 11 |
-| Winter escapes | 1 |
+| Restaurants, cafés and food | 41 |
+| Activities and experiences | 48 |
+| Archipelago and harbours | 39 |
+| Culture and sights | 23 |
+| Nature and outdoors | 24 |
+| Wellbeing and health | 13 |
+| Event and celebration venues | 25 |
+| Shopping and local products | 21 |
+| Events and festivals | 10 |
+| Transport and connections | 31 |
+| Other visitor services | 45 |
+| Winter escapes | 8 |
 
-The directory includes provider and service entries sourced from Visit Kemiönsaari and KSG, including accommodation operators, restaurants and cafés, local shops, guides, activity operators, marinas, taxi providers, boat services, event venues, museums and cultural destinations.
+The directory includes provider, public-place and resource entries sourced from Visit Kemiönsaari and KSG, including accommodation operators, restaurants and cafés, local shops, guides, activity operators, marinas, water taxis, local taxi and bus services, boat services, event venues, museums, theatres, sports facilities, nature trails, ski tracks, winter swimming and the official activity map. The activity map itself lists 277 mapped places; the project includes a curated set of individually described places and links to the complete official map rather than inventing a separate 277-card dataset.
 
-Examples of additional providers included in the expanded KSG-backed inventory:
+Examples of additional providers and public places included in the expanded KSG-backed inventory:
 - Labbnäsin Lomakoti, Storfinnhova Gård, Ragnar Antonin Lomakylä, Bjärkas Golf, Ullman's Villa, Strandhotellet, Björkbodan Ruukinkartano, Hotel Galaxy, Saariloma.net, DB Hostel and other cottage/hostel listings.
 - Café DaCapo, Backom Café & Pub, Cafe Kompass, Bistro Marita, Bistro & Bar Road Cafe Yttis, Kasnäs Paviljong, Laituri Grilli, Restaurant Portside, Rigges Thai, Mac Daniel's Grill, Café Adéle, Konditori Mazarin, Terrassn Restaurant and other food providers.
 - Rosala Viking Centre, Örö Fortress Island, Hitis Rodd- och Kanotklubb, Arkipelag Workshop, Festival Norpas, Finlandia Sailing, Kalkholmen Marina, Kimitoön Guides, Uppgårds Fotisgolf and other activity providers.
-- Anttis Taxi, Luddes Taxi, Taxi Suominen Kjell, Nickes Taxi, Thomas Sjöblom Taxi, Taksiasema Kemiönsaari and group transport providers.
+- Anttis Taxi, Luddes Taxi, Taxi Suominen Kjell, Nickes Taxi, Thomas Sjöblom Taxi, Taxi Friberg, Taxi Hellsberg, Taxi Jan Wallenius, Taxi Kim Gustafsson, Taxi Sahlgren, Rosala Taxi, water taxis, Wilson Charter, Vainion Liikenne, Seutu+ and group transport providers.
+- Public outdoor places include Ekniemi, Biskopsö, Kasnäs, Lammala, Högland and Yxskär nature trails; Dalsbruk and Långdalen ski tracks; and winter-swimming locations at Labbnäs and Söderlångvik.
 - Holmströms Lanthandel, Kasnäs Handel, K-Knallis, K-Market Kompis, K-Supermarket Kompass, Antikvariat Kojan, Aanmaa, Ateljé Rosenblad, Öns Pärlor and other local shops.
 
 ## Page and card implementation
 
 - The Kimitoön guide now presents 13 themes: accommodation; food; activities; archipelago; nature; culture; wellbeing; transport; shopping; winter activities; events; event venues; and other visitor services.
+- The official activity map is linked as a resource and selected public places from it have their own localized destination pages.
 - Each theme links to its own category route.
 - Internal destination cards have clickable images and titles.
 - Provider cards link to their own canonical localized provider detail route: `/[locale]/providers/kimitoon-[provider-id]`.
