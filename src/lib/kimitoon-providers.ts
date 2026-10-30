@@ -1022,6 +1022,187 @@ export const kimitoonProviders: KimitoonProvider[] = [
     imageCredit:"Mac Daniel's Grill / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",tags:["kahvila","ravintola","pub","juhlatilat","kokoukset"],contact:{phone:"02 420 6312",address:"Arkadiavägen 11, 25700 Kemiö"}
   }
 
+  {
+    id:"cafe-adele",categories:["ruoka","tapahtumapaikat"],
+    name:{fi:"Café Adéle",en:"Café Adéle",es:"Café Adéle"},
+    description:{
+      fi:"Kemiön keskustan kahvila ja lounaspaikka, jossa on myös catering-palvelu. KSG:n mukaan lounaslistalla on kasvisvaihtoehtoja ja ruokaa saa mukaan. Tunnelmallista tilaa voi vuokrata juhliin, kokouksiin ja muistotilaisuuksiin.",
+      en:"A café and lunch venue in central Kimito, also offering catering. KSG notes vegetarian lunch options and takeaway meals. The cosy venue can be rented for celebrations, meetings and memorial gatherings.",
+      es:"Cafetería y restaurante de almuerzos en el centro de Kimito, también con servicio de catering. KSG menciona opciones vegetarianas y comida para llevar. El local se puede alquilar para celebraciones, reuniones y actos conmemorativos."
+    },
+    location:{fi:"Museovägen 7, 25700 Kemiö",en:"Museovägen 7, 25700 Kimito",es:"Museovägen 7, 25700 Kimito"},
+    websiteUrl:"https://www.sagalund.fi/cafe-adele/",sourceUrl:"https://ksg.fi/sv/foretag/cafe-adele/",
+    imageCredit:"Café Adéle / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/cafe-adele/",tags:["kahvila","lounas","catering","juhlatila"],contact:{phone:"040 849 8770",address:"Museovägen 7, 25700 Kemiö"}
+  },
+  {
+    id:"konditori-mazarin",categories:["ruoka","ostokset"],
+    name:{fi:"Konditori Mazarin",en:"Konditori Mazarin",es:"Konditori Mazarin"},
+    description:{
+      fi:"Konditoria, leipomo ja kahvila Kemiön keskustassa. KSG:n mukaan leipä leivotaan alusta asti itse hapanjuurella ja pitkällä kohotusajalla. Kahville voi tulla paikan päälle tai ostaa leipää mukaan.",
+      en:"A patisserie, bakery and café in central Kimito. KSG says its bread is made from scratch with sourdough and a slow process. Stop for coffee or buy freshly baked bread to take away.",
+      es:"Pastelería, panadería y cafetería en el centro de Kimito. Según KSG, el pan se elabora desde cero con masa madre y fermentación lenta. Puedes tomar un café o comprar pan recién hecho para llevar."
+    },
+    location:{fi:"Engelsbyvägen 3, 25700 Kemiö",en:"Engelsbyvägen 3, 25700 Kimito",es:"Engelsbyvägen 3, 25700 Kimito"},
+    websiteUrl:"https://ksg.fi/fi/foretag/konditori-mazarin/",sourceUrl:"https://ksg.fi/fi/foretag/konditori-mazarin/",
+    imageCredit:"Konditori Mazarin / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/konditori-mazarin/",tags:["konditoria","leipomo","kahvila"],contact:{phone:"02 421 910",address:"Engelsbyvägen 3, 25700 Kemiö"}
+  },
+  {
+    id:"ren-lyx-saaristorapu",categories:["ruoka","tapahtumapaikat"],
+    name:{fi:"Ren-Lyx & Saaristorapu",en:"Ren-Lyx & Saaristorapu",es:"Ren-Lyx & Saaristorapu"},
+    description:{
+      fi:"Kemiönsaaren catering- ja tapahtumapalvelu. KSG:n mukaan yritys järjestää juhlia ja tapahtumia sekä tarjoaa aamiaista, lounaspöytää, à la carte -ruokaa ja pizzaa. Samalla yritys tarjoaa siivouspalveluja.",
+      en:"A catering and event-services business on Kimitoön. KSG lists event and celebration arrangements, breakfast, lunch buffets, à la carte dishes and pizza. The company also offers cleaning services.",
+      es:"Empresa de catering y eventos en Kimitoön. KSG menciona organización de celebraciones, desayunos, buffet de almuerzo, platos a la carta y pizza. La empresa también ofrece servicios de limpieza."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/foretag/ren-lyx-skargardskraftan-fma-sabina-magnusson/",sourceUrl:"https://ksg.fi/fi/foretag/ren-lyx-skargardskraftan-fma-sabina-magnusson/",
+    imageCredit:"Ren-Lyx & Saaristorapu / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/ren-lyx-skargardskraftan-fma-sabina-magnusson/",tags:["catering","juhlat","tapahtumat","siivous"]
+  },
+  {
+    id:"kerstin-forsbom-catering",categories:["ruoka","tapahtumapaikat"],
+    name:{fi:"Tmi Kerstin Forsbom",en:"Tmi Kerstin Forsbom",es:"Tmi Kerstin Forsbom"},
+    description:{
+      fi:"Dragsfjärdissä toimiva lounas- ja pitopalvelu. KSG:n mukaan tarjolla on arkiruokaa, kotiruokaa, kenttäkeittiöpalvelua ja kotiinkuljetusta.",
+      en:"A lunch and catering business in Dragsfjärd. KSG lists weekday lunches, home-style meals, field-kitchen catering and home delivery.",
+      es:"Servicio de almuerzos y catering en Dragsfjärd. KSG menciona menús entre semana, comida casera, cocina móvil para eventos y entrega a domicilio."
+    },
+    location:{fi:"Kärravägen 203, 25870 Dragsfjärd",en:"Kärravägen 203, 25870 Dragsfjärd",es:"Kärravägen 203, 25870 Dragsfjärd"},
+    websiteUrl:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",sourceUrl:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",
+    imageCredit:"Tmi Kerstin Forsbom / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",tags:["lounas","kotiruoka","pitopalvelu","kotiinkuljetus"],contact:{phone:"0400 590 822",address:"Kärravägen 203, 25870 Dragsfjärd"}
+  },
+  {
+    id:"catering-thomas-ahlberg",categories:["ruoka","tapahtumapaikat"],
+    name:{fi:"Catering Thomas Åhlberg",en:"Catering Thomas Åhlberg",es:"Catering Thomas Åhlberg"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaassa catering- ja ruokatuotantopalveluihin listattu toimija. Kysy suoraan järjestäjältä tapahtumatarjoiluista, menuvaihtoehdoista ja saatavuudesta.",
+      en:"A catering and food-production provider listed in the Kimitoön business guide. Contact the operator directly about event catering, menu options and availability.",
+      es:"Proveedor de catering y producción alimentaria incluido en la guía empresarial de Kimitoön. Consulta directamente las opciones de menú, el servicio para eventos y la disponibilidad."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["catering","ruokatuotanto"]
+  },
+  {
+    id:"terrassn-restaurant",categories:["ruoka","tapahtumapaikat"],
+    name:{fi:"Terrassn Restaurant",en:"Terrassn Restaurant",es:"Terrassn Restaurant"},
+    description:{
+      fi:"Kalkholmen Marinan kesäravintola Västanfjärdissä. KSG:n mukaan ruokalistalla on salaatteja, hampurilaisia sekä kala- ja liharuokia, ja raaka-aineissa hyödynnetään mahdollisuuksien mukaan paikallisia kesätuotteita. Julkaistut aukioloajat kannattaa varmistaa ennen matkaa.",
+      en:"The summer restaurant at Kalkholmen Marina in Västanfjärd. KSG describes salads, burgers and fish and meat dishes, using local seasonal ingredients where possible. Confirm published opening times before travelling.",
+      es:"Restaurante de verano de Kalkholmen Marina en Västanfjärd. KSG menciona ensaladas, hamburguesas y platos de pescado y carne, con ingredientes locales de temporada cuando es posible. Confirma los horarios antes de viajar."
+    },
+    location:{fi:"Kalkholmsvägen 43, 25830 Västanfjärd",en:"Kalkholmsvägen 43, 25830 Västanfjärd",es:"Kalkholmsvägen 43, 25830 Västanfjärd"},
+    websiteUrl:"https://www.kalkholmenmarina.fi/",sourceUrl:"https://ksg.fi/fi/foretag/terrassn-restaurant/",
+    imageCredit:"Terrassn Restaurant / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/terrassn-restaurant/",tags:["kesäravintola","paikallinen ruoka","satama"],contact:{phone:"02 42 7575",address:"Kalkholmsvägen 43, 25830 Västanfjärd"}
+  },
+  {
+    id:"holmstroms-lanthandel",categories:["ostokset","ruoka","saaristo"],
+    name:{fi:"Holmströms Lanthandel",en:"Holmströms Lanthandel",es:"Holmströms Lanthandel"},
+    description:{
+      fi:"Aito saaristokauppa Hiittisissä laajalla päivittäistavara- ja paikallistuotevalikoimalla. Café Vikinnessä tarjoillaan lounasta ja pikaruokaa muina kuin kesäkuukausina sekä kylmiä ja lämpimiä juomia. KSG ilmoittaa kaupan olevan avoinna joka päivä.",
+      en:"A traditional archipelago shop in Hiittinen with a wide grocery and local-products selection. Café Vikinne serves lunch and fast food outside the summer season, plus hot and cold drinks. KSG lists the shop as open daily.",
+      es:"Tienda tradicional del archipiélago en Hiittinen con amplia selección de alimentos y productos locales. Café Vikinne sirve almuerzos y comida rápida fuera del verano, además de bebidas frías y calientes. KSG indica que abre todos los días."
+    },
+    location:{fi:"Hitisvägen 20, 25940 Hitis",en:"Hitisvägen 20, 25940 Hitis",es:"Hitisvägen 20, 25940 Hitis"},
+    websiteUrl:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",sourceUrl:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",
+    imageCredit:"Holmströms Lanthandel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",tags:["saaristokauppa","päivittäistavarat","kahvila","lounas"],contact:{phone:"02 466 6760",address:"Hitisvägen 20, 25940 Hitis"}
+  },
+  {
+    id:"kasnas-handel",categories:["ostokset","ruoka"],
+    name:{fi:"Kasnäs Handel",en:"Kasnäs Handel",es:"Kasnäs Handel"},
+    description:{
+      fi:"Kasnäsin ympärivuotinen päivittäistavarakauppa sataman ja lomakeskuksen yhteydessä. Tarkista ajankohtaiset palvelut ja aukiolo suoraan kaupasta.",
+      en:"A year-round grocery store in Kasnäs, close to the harbour and resort. Check current services and opening times directly with the shop.",
+      es:"Tienda de alimentación abierta todo el año en Kasnäs, cerca del puerto y del complejo vacacional. Consulta los servicios y horarios actuales directamente con la tienda."
+    },
+    location:{fi:"Kasnäsvägen 1294, 25930 Kasnäs",en:"Kasnäsvägen 1294, 25930 Kasnäs",es:"Kasnäsvägen 1294, 25930 Kasnäs"},
+    websiteUrl:"https://www.kasnas.com/sv/",sourceUrl:"https://ksg.fi/fi/foretag/kasnas-handel/",
+    imageCredit:"Kasnäs Handel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kasnas-handel/",tags:["päivittäistavarat","kauppa","ympäri vuoden"],contact:{phone:"040 511 6732",address:"Kasnäsvägen 1294, 25930 Kasnäs"}
+  },
+  {
+    id:"anttis-taxi",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Anttis Taxi Ab Oy",en:"Anttis Taxi Ab Oy",es:"Anttis Taxi Ab Oy"},
+    description:{
+      fi:"Kemiönsaarella toimiva taksipalvelu. KSG:n mukaan käytössä on kaksi 1+8-paikkaista autoa, paarivarustus ja pyörätuolivarustus. Palveluihin kuuluvat Kela-kuljetukset ja vapaa-ajan matkat.",
+      en:"A taxi service on Kimitoön. KSG lists two vehicles with 1+8 seats, stretcher equipment and wheelchair access. Services include Kela rides and leisure journeys.",
+      es:"Servicio de taxi en Kimitoön. KSG indica dos vehículos con capacidad 1+8, equipamiento para camillas y acceso para sillas de ruedas. Ofrece traslados Kela y viajes privados."
+    },
+    location:{fi:"25700 Kemiö",en:"25700 Kimito",es:"25700 Kimito"},
+    websiteUrl:"https://ksg.fi/fi/foretag/anttis-taxi-ab-oy/",sourceUrl:"https://ksg.fi/fi/foretag/anttis-taxi-ab-oy/",
+    imageCredit:"Anttis Taxi / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/anttis-taxi-ab-oy/",tags:["taksi","esteetön kuljetus","Kela-kyydit"],contact:{phone:"0400 423 636",address:"25700 Kemiö"}
+  },
+  {
+    id:"taxistation-kimitoon",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Taksiasema Kemiönsaari",en:"Taxistation Kimitoön",es:"Taxis Kimitoön"},
+    description:{
+      fi:"Paikallinen taksiasema, jonka KSG ilmoittaa tarjoavan 1+8-paikkaisen auton sekä paarien ja pyörätuolin kuljetusmahdollisuuden. Palveluihin kuuluvat myös Kela- ja matkapalvelukuljetukset.",
+      en:"A local taxi station. KSG lists a 1+8-seat vehicle with stretcher and wheelchair transport, as well as Kela and travel-service rides.",
+      es:"Parada y servicio local de taxi. KSG indica un vehículo con capacidad 1+8 y transporte para camillas y sillas de ruedas, además de traslados Kela y servicios de viaje."
+    },
+    location:{fi:"Genbölestrandvägen 69, 25870 Dragsfjärd",en:"Genbölestrandvägen 69, 25870 Dragsfjärd",es:"Genbölestrandvägen 69, 25870 Dragsfjärd"},
+    websiteUrl:"https://ksg.fi/fi/foretag/taxistation-kimitoon/",sourceUrl:"https://ksg.fi/fi/foretag/taxistation-kimitoon/",
+    imageCredit:"Taksiasema Kemiönsaari / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/taxistation-kimitoon/",tags:["taksi","esteetön kuljetus","Kela-kyydit"],contact:{phone:"0400 539 777",address:"Genbölestrandvägen 69, 25870 Dragsfjärd"}
+  },
+  {
+    id:"kimirent",categories:["aktiviteetit","kuljetukset","muut-palvelut"],
+    name:{fi:"Oy Kimirent Ab",en:"Oy Kimirent Ab",es:"Oy Kimirent Ab"},
+    description:{
+      fi:"Kemiönsaaren vuokrauspalvelu, jonka kalustoon KSG:n mukaan kuuluu muun muassa vesijettejä, perävaunuja, henkilönostimia ja muita koneita. Tarkista vesijettien saatavuus, vuokrausehdot ja muut kalustot suoraan yritykseltä.",
+      en:"A rental service on Kimitoön. KSG lists water scooters, trailers, access platforms and other equipment among its fleet. Confirm water-scooter availability, rental terms and other equipment directly with the company.",
+      es:"Servicio de alquiler en Kimitoön. KSG incluye motos acuáticas, remolques, plataformas elevadoras y otra maquinaria. Consulta la disponibilidad de motos acuáticas, las condiciones y el resto del equipo directamente con la empresa."
+    },
+    location:{fi:"Norrlångviksvägen 293, 25700 Kemiö",en:"Norrlångviksvägen 293, 25700 Kimito",es:"Norrlångviksvägen 293, 25700 Kimito"},
+    websiteUrl:"https://www.kimirent.com/",sourceUrl:"https://ksg.fi/fi/foretag/oy-kimirent-ab/",
+    imageCredit:"Oy Kimirent Ab / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/oy-kimirent-ab/",tags:["vesijetti","vuokraus","perävaunut"],contact:{phone:"040 744 0399",address:"Norrlångviksvägen 293, 25700 Kemiö"}
+  },
+  {
+    id:"actiwell",categories:["hyvinvointi","aktiviteetit"],
+    name:{fi:"Actiwell Ab Oy",en:"Actiwell Ab Oy",es:"Actiwell Ab Oy"},
+    description:{
+      fi:"Kemiössä toimiva hieronta- ja kehonhoitopalvelu, joka kuuluu myös KSG:n urheilu- ja vapaa-ajan aktiviteetteihin. Tarkista hoidot, ajanvaraus ja palvelujen saatavuus suoraan yritykseltä.",
+      en:"A massage and body-care provider in Kimito, also listed by KSG under sports and leisure activities. Check treatments, appointments and availability directly with the company.",
+      es:"Servicio de masaje y cuidado corporal en Kimito, también incluido por KSG en actividades deportivas y de ocio. Consulta tratamientos, citas y disponibilidad directamente con la empresa."
+    },
+    location:{fi:"Domarringen 6, 25700 Kemiö",en:"Domarringen 6, 25700 Kimito",es:"Domarringen 6, 25700 Kimito"},
+    websiteUrl:"https://www.actiwell.fi/",sourceUrl:"https://ksg.fi/fi/foretag/actiwell-ab-oy/",
+    imageCredit:"Actiwell / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/actiwell-ab-oy/",tags:["hieronta","kehonhoito","hyvinvointi"],contact:{phone:"044 025 7006",address:"Domarringen 6, 25700 Kemiö"}
+  },
+  {
+    id:"ullmans-villa",categories:["majoitus"],
+    name:{fi:"Ullman's Villa",en:"Ullman's Villa",es:"Ullman's Villa"},
+    description:{
+      fi:"Majoituskohde Taalintehtaan sydämessä. Kemiönsaaren palveluopas listaa sen hotellien, hostellien ja aamiaismajoitusten joukkoon. Tarkista huonetyypit, saatavuus ja varaus suoraan majoituspaikalta.",
+      en:"An accommodation property in the heart of Dalsbruk. The Kimitoön business guide lists it among hotels, hostels and B&Bs. Check room types, availability and booking directly with the property.",
+      es:"Alojamiento en el corazón de Dalsbruk. La guía empresarial de Kimitoön lo incluye entre hoteles, hostales y B&B. Consulta tipos de habitación, disponibilidad y reservas directamente con el establecimiento."
+    },
+    location:{fi:"Villavägen 1, 25900 Taalintehdas",en:"Villavägen 1, 25900 Dalsbruk",es:"Villavägen 1, 25900 Dalsbruk"},
+    websiteUrl:"https://ullmansvilla.fi/",sourceUrl:"https://ksg.fi/fi/foretag/ullmans-villa/",
+    imageCredit:"Ullman's Villa / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/ullmans-villa/",tags:["majoitus","taalintehdas"],contact:{phone:"+358 40 675 2570",address:"Villavägen 1, 25900 Taalintehdas"}
+  },
+  {
+    id:"strandhotellet",categories:["majoitus","ruoka","hyvinvointi","aktiviteetit"],
+    name:{fi:"Strandhotellet",en:"Strandhotellet",es:"Strandhotellet"},
+    description:{
+      fi:"Pieni hotelli Taalintehtaan keskustassa, jonka vanhoissa mutta kodikkaissa huoneissa on useista merinäköala. Alakerran Ravintola Strand tarjoilee bistromenua ympäri vuoden. Palveluopas mainitsee lisäksi dartsin, biljardin ja minigolfin.",
+      en:"A small hotel in central Dalsbruk, with cosy rooms, several offering sea views. Restaurant Strand downstairs serves a bistro menu year-round. The business guide also lists darts, billiards and mini golf.",
+      es:"Pequeño hotel en el centro de Dalsbruk, con habitaciones acogedoras, varias con vistas al mar. El restaurante Strand, en la planta baja, sirve menú de bistró durante todo el año. La guía también menciona dardos, billar y minigolf."
+    },
+    location:{fi:"Dalsbruksvägen 694, 25900 Taalintehdas",en:"Dalsbruksvägen 694, 25900 Dalsbruk",es:"Dalsbruksvägen 694, 25900 Dalsbruk"},
+    websiteUrl:"https://www.strandhotellet.fi/",sourceUrl:"https://ksg.fi/fi/foretag/strandhotellet-eeth-ab/",
+    imageCredit:"Strandhotellet / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/strandhotellet-eeth-ab/",tags:["hotelli","ravintola","meri","minigolf"],contact:{phone:"0400 481 028",address:"Dalsbruksvägen 694, 25900 Taalintehdas"}
+  },
+  {
+    id:"bjorkboda-ruukinkartano",categories:["majoitus","tapahtumapaikat","aktiviteetit"],
+    name:{fi:"Björkbodan Ruukinkartano",en:"Björkboda Manor",es:"Casa señorial de Björkboda"},
+    description:{
+      fi:"Björkbodan idyllisellä ruukkialueella vuokrattavia vapaa-ajan asuntoja sekä juhla- ja kokoustiloja 5–60 henkilölle vanhassa viljamakasiinissa. Asukkaiden käytössä on sauna ja ranta. Kohteessa on myös ratsastustalli ja hevosten kuntoutuspalveluja.",
+      en:"Holiday apartments in the historic ironworks setting of Björkboda, plus celebration and meeting facilities for 5–60 people in an old granary. Guests have access to a sauna and beach. The estate also has a riding stable and horse rehabilitation services.",
+      es:"Alojamientos vacacionales en el histórico entorno industrial de Björkboda y espacios para celebraciones y reuniones de 5 a 60 personas en un antiguo granero. Los huéspedes disponen de sauna y playa. La finca también cuenta con establo y rehabilitación equina."
+    },
+    location:{fi:"Gamla bruksvägen 2, 25860 Björkboda",en:"Gamla bruksvägen 2, 25860 Björkboda",es:"Gamla bruksvägen 2, 25860 Björkboda"},
+    websiteUrl:"https://www.bjorkbodadressage.fi/",sourceUrl:"https://ksg.fi/fi/foretag/bjorkboda-bruksgard/",
+    imageCredit:"Björkbodan Ruukinkartano / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/bjorkboda-bruksgard/",tags:["majoitus","juhlatilat","kokoukset","ratsastus"],contact:{phone:"040 581 0878",address:"Gamla bruksvägen 2, 25860 Björkboda"}
+  }
+
 ];
 
 export function getKimitoonProviders(category?: KimitoonCategory) {
