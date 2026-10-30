@@ -167,7 +167,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Villa incluida en el directorio oficial de destinos de Kimitoön. Consulta las características, la capacidad y la disponibilidad directamente en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-mimosa-37-2"),sourceUrl:source("villa-mimosa-37"),
+    websiteUrl:source("villa-mimosa-37-2"),sourceUrl:source("villa-mimosa-37-2"),
     image:image("7bc26960-7393-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-mimosa-37"),tags:["villa"]
   },
   {
@@ -179,7 +179,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento incluido en el directorio turístico oficial de Kimitoön. Consulta la descripción, el equipamiento y la reserva en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-orion-57-2"),sourceUrl:source("villa-orion-57"),
+    websiteUrl:source("villa-orion-57-2"),sourceUrl:source("villa-orion-57-2"),
     image:image("d4906620-7391-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-orion-57"),tags:["villa"]
   },
   {
@@ -191,7 +191,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Villa presentada en el directorio turístico oficial de Kimitoön. Consulta los detalles, el equipamiento y la disponibilidad en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-otava-15-2"),sourceUrl:source("villa-otava-15"),
+    websiteUrl:source("villa-otava-15-2"),sourceUrl:source("villa-otava-15-2"),
     image:image("c61f3c50-7392-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-otava-15"),tags:["villa"]
   },
   {
@@ -203,7 +203,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento incluido en el directorio turístico oficial de Kimitoön. Confirma los servicios, el equipamiento y la reserva en la ficha del alojamiento."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-pohjantahti-18-2"),sourceUrl:source("villa-pohjantahti-18"),
+    websiteUrl:source("villa-pohjantahti-18-2"),sourceUrl:source("villa-pohjantahti-18-2"),
     image:image("616e1b00-7392-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-pohjantahti-18"),tags:["villa"]
   },
   {
@@ -215,7 +215,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Villa incluida en el directorio turístico oficial de Kimitoön. Consulta el equipamiento, la capacidad y la disponibilidad actuales en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-sirius-56-2"),sourceUrl:source("villa-sirius-56"),
+    websiteUrl:source("villa-sirius-56-2"),sourceUrl:source("villa-sirius-56-2"),
     image:image("1d7eca10-7393-11ef-acbd-2156ce35ca31.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-sirius-56"),tags:["villa"]
   },
   {
@@ -227,10 +227,22 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento presentado en el directorio turístico oficial de Kimitoön. Consulta la información actual y el canal de reserva en su propia página."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:source("villa-ulrika-2"),sourceUrl:source("villa-ulrika"),
+    websiteUrl:source("villa-ulrika-2"),sourceUrl:source("villa-ulrika-2"),
     image:image("a015e1d0-a993-11ef-9f10-5bce05865e51.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:source("villa-ulrika"),tags:["villa"]
   },
   // Other accommodation providers from the official destination catalogue.
+  {
+    id:"villa-valo-9",category:"majoitus",
+    name:{fi:"Villa Valo #9",en:"Villa Valo #9",es:"Villa Valo #9"},
+    description:{
+      fi:"Merikruunun alueen huvila Kemiönsaaren virallisessa majoitushakemistossa. Tarkista huvilan ajantasaiset tilat, henkilömäärä, hinnat ja varaus suoraan kohteen omalta sivulta.",
+      en:"A villa in the Merikruunu area listed in the official Kimitoön accommodation directory. Confirm current facilities, occupancy, prices and booking directly through the property's own page.",
+      es:"Villa de la zona de Merikruunu incluida en el directorio oficial de alojamientos de Kimitoön. Confirma el equipamiento, la capacidad, los precios y la reserva en la página del alojamiento."
+    },
+    location:{fi:"Merikruunu, Kemiönsaari",en:"Merikruunu, Kimitoön",es:"Merikruunu, Kimitoön"},
+    websiteUrl:"https://www.merikruunu.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/villa-valo-9-2/",
+    image:image("0aa27440-17f1-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/villa-valo-9-2/",tags:["villa","merikruunu"]
+  },
   {
     id:"spa-hotel-kasnas",category:"majoitus",
     name:{fi:"Spa Hotel Kasnäs",en:"Spa Hotel Kasnäs",es:"Spa Hotel Kasnäs"},
@@ -300,8 +312,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Hotel histórico del archipiélago en Dragsfjärd. La ficha oficial presenta el hotel y el restaurante; confirma habitaciones, servicios, precios y horarios directamente con el hotel."
     },
     location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
-    websiteUrl:"https://www.merikruunu.fi/ravintola",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",
-    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["hotelli","ravintola","pub","saaristo"]
+    websiteUrl:"https://www.merikruunu.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",
+    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",tags:["hotelli","ravintola","pub","saaristo"]
   },
   {
     id:"bb-heedbacka",category:"majoitus",
@@ -409,8 +421,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Restaurante y pub del Hotel Merikruunu. Consulta el menú, los horarios de servicio y la oferta de temporada directamente con el hotel."
     },
     location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
-    websiteUrl:"https://www.merikruunu.fi/",sourceUrl:source("hotelli-ravintola-merikruunu"),
-    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:source("hotelli-ravintola-merikruunu"),tags:["ravintola","pub","hotelli"]
+    websiteUrl:"https://www.merikruunu.fi/ravintola",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",
+    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",tags:["ravintola","pub","hotelli"]
   },
   {
     id:"db-bistro-runda-munken",category:"ruoka",
