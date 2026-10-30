@@ -495,7 +495,7 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
             } : null));
             if (!guide) return null;
             const showRelated = Boolean(mathildedalGuides[slug] || teijoGuides[slug] || slug.startsWith("kimitoon-"));
-            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: ("imageSource" in provider && provider.imageSource) ? provider.imageSource : provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(new Set(["salo-visit-mathildedal", "salo-hotel-mathildedal", "salo-mathildan-marina", "salo-matilda-villas", "salo-matri-house", "salo-majoitus-mathildedal", "salo-mathildedal-brewery", "salo-ravintola-terho"]).has(slug) ? mathildedalAreaPhotos : [])];
+            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: ("imageSource" in provider && provider.imageSource) ? provider.imageSource : provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(slug === "salo-visit-mathildedal" ? mathildedalAreaPhotos : [])];
             return (
               <div className="mt-10 space-y-8">
                 {galleryPhotos.length > 0 ? (
