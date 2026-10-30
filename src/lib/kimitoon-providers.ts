@@ -328,8 +328,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento bed and breakfast incluido en el directorio turístico oficial de Kimitoön. Confirma los tipos de habitación, el desayuno, los servicios y la reserva directamente con el anfitrión."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:image("1cf56a30-bf5e-11ed-8fb6-cd05a147400e.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["bed-and-breakfast","majoitus"]
+    websiteUrl:"https://www.hembacka.fi/",sourceUrl:"https://www.visitkimitoon.fi/en/destinations/b-b-hembacka/",
+    image:image("1cf56a30-bf5e-11ed-8fb6-cd05a147400e.jpeg-374x211.jpeg"),imageCredit:"Visit Kimitoön",imageSource:"https://www.visitkimitoon.fi/en/destinations/b-b-hembacka/",tags:["bed-and-breakfast","majoitus"],contact:{phone:"+358 45 173 0050",email:"info@hembacka.fi",address:"Villkärrintie 35, 25700 Kemiö"}
   },
   {
     id:"dals-inn",categories:["majoitus"],
@@ -340,8 +340,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Alojamiento bed and breakfast en la zona de Dalsbruk. Consulta la disponibilidad, los servicios y las condiciones de reserva directamente con el establecimiento."
     },
     location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:image("50f5e9e0-ac50-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["bed-and-breakfast","taalintehdas"]
+    websiteUrl:"https://www.visitkimitoon.fi/fi/kohteet/dals-inn-bed-breakfast-3/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/dals-inn-bed-breakfast-3/",
+    image:image("50f5e9e0-ac50-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/dals-inn-bed-breakfast-3/",tags:["bed-and-breakfast","taalintehdas"],contact:{phone:"+358 45 107 6140",email:"JADalsInn@gmail.com",address:"Dalsbruksvägen 709, 25900 Dalsbruk"}
   },
   {
     id:"ekniemi-holiday-village",categories:["majoitus","ruoka","hyvinvointi","tapahtumapaikat"],
@@ -352,9 +352,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Complejo vacacional junto al mar cuya ficha oficial destaca la naturaleza, el alojamiento y las experiencias. Consulta las cabañas y la disponibilidad directamente con el operador."
     },
     location:{fi:"Ekniemi, Kemiönsaari",en:"Ekniemi, Kimitoön",es:"Ekniemi, Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:image("32f73db0-4a92-11f0-9fff-ed17829cd958.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["lomakylä","merenranta","majoitus"],
-    contact:{phone:"050 5483 592",address:"Campingvägen 55, 25700 Kimito"}
+    websiteUrl:"https://ekniemenlomakyla.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/ekniemen-lomakyla-luonnonrauhaa-majoitusta-ja-elamyksia-meren-aarella/",
+    image:image("32f73db0-4a92-11f0-9fff-ed17829cd958.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/ekniemen-lomakyla-luonnonrauhaa-majoitusta-ja-elamyksia-meren-aarella/",tags:["lomakylä","merenranta","majoitus"],
+    contact:{phone:"+358 50 5483 592",email:"ekniemenlomakyla@gmail.com",address:"Leirintäalueentie 55, 25700 Kemiönsaari"}
   },
   // Food, cafés and local producers.
   {
@@ -1198,8 +1198,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Casas vacacionales y cabañas en los entornos históricos de las ferrerías de Björkboda y Dalsbruk. Consulta ubicaciones, equipamiento, condiciones y disponibilidad directamente con el operador."
     },
     location:{fi:"Björkboda ja Taalintehdas, Kemiönsaari",en:"Björkboda and Dalsbruk, Kimitoön",es:"Björkboda y Dalsbruk, Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["mökit","loma-asunnot","ruukkimiljöö"]
+    websiteUrl:"https://ksg.fi/fi/foretag/saariloma-net/",sourceUrl:"https://ksg.fi/fi/foretag/saariloma-net/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/saariloma-net/",tags:["mökit","loma-asunnot","ruukkimiljöö"]
   },
   {
     id:"majoitusliike-pikkutikka",categories:["majoitus"],
@@ -1210,8 +1210,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Proveedor de alquiler de villas vacacionales incluido en la guía empresarial de Kimitoön. Consulta la ubicación, el equipamiento, las condiciones y las fechas disponibles en la guía oficial y con el operador."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["vuokrah huvila","loma-asunto"]
+    websiteUrl:"https://ksg.fi/fi/foretag/majoitusliike-pikkutikka/",sourceUrl:"https://ksg.fi/fi/foretag/majoitusliike-pikkutikka/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/majoitusliike-pikkutikka/",tags:["vuokrahuvila","loma-asunto"]
   },
   {
     id:"db-hostel",categories:["majoitus"],
@@ -1222,8 +1222,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Hostal en el centro de Dalsbruk, a unos 100 metros de la plaza del mercado. KSG destaca sus habitaciones de calidad y zonas comunes bien equipadas. Consulta directamente los tipos de habitación, servicios y disponibilidad."
     },
     location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["hostelli","taalintehdas"]
+    websiteUrl:"https://www.dbhostel.fi/",sourceUrl:"https://ksg.fi/fi/foretag/db-hostel/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/db-hostel/",tags:["hostelli","taalintehdas"],contact:{phone:"+358 50 350 4930",email:"info@dbhostel.fi",address:"Masuunintie 5, 25900 Taalintehdas"}
   },
   {
     id:"viggskar-vuokramokit",categories:["majoitus","saaristo","luonto"],
@@ -1234,8 +1234,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Cabañas de alquiler en Viggskär, en el archipiélago de Kimitoön. Consulta equipamiento, conexiones, condiciones y disponibilidad directamente con el operador."
     },
     location:{fi:"Viggskär, Kemiönsaari",en:"Viggskär, Kimitoön",es:"Viggskär, Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["vuokramökki","saaristo","luonto"]
+    websiteUrl:"https://ksg.fi/fi/foretag/viggskar-b-holmberg/",sourceUrl:"https://ksg.fi/fi/foretag/viggskar-b-holmberg/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/viggskar-b-holmberg/",tags:["vuokramökki","saaristo","luonto"]
   },
   {
     id:"villa-lyxfallan",categories:["majoitus"],
@@ -1246,8 +1246,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Cabaña de alquiler incluida en la guía empresarial de Kimitoön. Confirma ubicación, equipamiento, capacidad, condiciones y disponibilidad directamente con el operador."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["vuokramökki"]
+    websiteUrl:"https://ksg.fi/fi/foretag/villa-lyxfallan/",sourceUrl:"https://ksg.fi/fi/foretag/villa-lyxfallan/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/villa-lyxfallan/",tags:["vuokramökki"]
   },
   {
     id:"vano-stugor",categories:["majoitus","saaristo"],
@@ -1258,8 +1258,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Proveedor de cabañas en la isla de Vänö. KSG también menciona almacenamiento invernal de embarcaciones. Consulta cabañas, amarres, transporte y reservas directamente con el operador."
     },
     location:{fi:"Vänö, Kemiönsaaren ulkosaaristo",en:"Vänö, outer Kimitoön archipelago",es:"Vänö, archipiélago exterior de Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["mökit","veneiden talvisäilytys","saaristo"]
+    websiteUrl:"https://ksg.fi/fi/foretag/vano-stugor/",sourceUrl:"https://ksg.fi/fi/foretag/vano-stugor/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/vano-stugor/",tags:["mökit","veneiden talvisäilytys","saaristo"]
   },
   {
     id:"ab-seaside-mokkit",categories:["majoitus"],
