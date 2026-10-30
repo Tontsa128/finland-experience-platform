@@ -1329,9 +1329,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
       en:"The Kimitoön business guide lists charter transport with 20–56-seat coaches. Suitable for group transfers and excursions; confirm route, vehicle and quotation directly with the company.",
       es:"La guía empresarial de Kimitoön indica servicios de autobús privado con vehículos de 20 a 56 plazas. Para traslados de grupos y excursiones, consulta rutas, vehículos y presupuesto directamente con la empresa."
     },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["tilausajo","linja-auto","ryhmäkuljetus"]
+    location:{fi:"Teollisuustie 11, 25700 Kemiö",en:"Teollisuustie 11, 25700 Kimito",es:"Teollisuustie 11, 25700 Kimito"},
+    websiteUrl:"https://www.launokorpi.fi/",sourceUrl:"https://www.launokorpi.fi/",
+    imageCredit:"Launokorpi Tilausajot",imageSource:"https://www.launokorpi.fi/",tags:["tilausajo","linja-auto","ryhmäkuljetus"],contact:{phone:"0400 323 488",address:"Teollisuustie 11, 25700 Kemiö",email:"info@launokorpi.com"}
   },
   {
     id:"kemionsaaren-venekeskus",categories:["saaristo","ostokset","muut-palvelut"],
