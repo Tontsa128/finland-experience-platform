@@ -428,7 +428,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Restaurante de Dalsbruk incluido en el directorio turístico oficial de Kimitoön. Consulta el menú, los horarios y las reservas directamente con el restaurante."
     },
     location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
-    websiteUrl:"https://www.visitkimitoon.fi/fi/kohteet/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
+    websiteUrl:"https://www.rundamunkenbistro.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/db-bistro-runda-munken-2/",
     image:image("03ed40f0-91af-11f0-8258-4d9e02b2458f.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["ravintola","taalintehdas"]
   },
   {
@@ -1053,8 +1053,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Proveedor de catering y producción alimentaria incluido en la guía empresarial de Kimitoön. Consulta directamente las opciones de menú, el servicio para eventos y la disponibilidad."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["catering","ruokatuotanto"]
+    websiteUrl:"https://ksg.fi/fi/foretag/catering-thomas-ahlberg/",sourceUrl:"https://ksg.fi/fi/foretag/catering-thomas-ahlberg/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/catering-thomas-ahlberg/",tags:["catering","ruokatuotanto"]
   },
   {
     id:"terrassn-restaurant",categories:["ruoka","tapahtumapaikat"],
@@ -1391,8 +1391,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Supermercado con mostrador de atención en el centro de Kimito. La guía empresarial de Kimitoön lo incluye entre los comercios de alimentación."
     },
     location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["ruokakauppa","palvelutiski"]
+    websiteUrl:"https://www.k-ruoka.fi/kauppa/k-supermarket-kompass",sourceUrl:"https://ksg.fi/fi/foretag/k-supermarket-kompass/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/k-supermarket-kompass/",tags:["ruokakauppa","palvelutiski"]
   },
   {
     id:"antikvariat-kojan",categories:["ostokset","kulttuuri"],
@@ -1463,8 +1463,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Cafetería de la zona de Kasnäs, incluida en la guía empresarial de Kimitoön en cafeterías y panaderías. Consulta horarios de temporada, selección de gofres y oferta directamente con el establecimiento."
     },
     location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["kahvila","vohvelit"]
+    websiteUrl:"https://ksg.fi/fi/foretag/cafe-vaffelstugan-2/",sourceUrl:"https://ksg.fi/fi/foretag/cafe-vaffelstugan-2/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/cafe-vaffelstugan-2/",tags:["kahvila","vohvelit"]
   },
   {
     id:"nordic-activities-solutions",categories:["aktiviteetit","luonto","saaristo","talviaktiviteetit"],
