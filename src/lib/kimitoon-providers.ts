@@ -162,9 +162,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
     id:"villa-mimosa-37",category:"majoitus",
     name:{fi:"Villa Mimosa #37",en:"Villa Mimosa #37",es:"Villa Mimosa #37"},
     description:{
-      fi:"Kemiönsaaren virallisen kohdehakemiston huvila. Tarkista majoituksen ominaisuudet, henkilömäärä ja saatavuus suoraan kohteen omalta sivulta.",
-      en:"A villa listed in the official Kimitoön destination directory. Check accommodation features, occupancy and availability directly on the property's own page.",
-      es:"Villa incluida en el directorio oficial de destinos de Kimitoön. Consulta las características, la capacidad y la disponibilidad directamente en su propia página."
+      fi:"Merikruunun Tähdistö-huvila, jonka virallinen esittely kertoo omasta saunasta, ulkoporeammeesta ja noin 30 m²:n meriterassista. Huvila on 44 m² ja sopii parhaiten 2–4 hengelle, enintään kuudelle.",
+      en:"A Merikruunu Tähdistö villa. Its official listing describes a private sauna, outdoor hot tub and a sea terrace of about 30 m². The 44 m² villa is best suited to 2–4 guests, with a maximum of six.",
+      es:"Villa Tähdistö de Merikruunu. Su ficha oficial describe sauna privada, jacuzzi exterior y terraza marítima de unos 30 m². La villa de 44 m² es ideal para 2–4 personas, con un máximo de seis."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-mimosa-37-2"),sourceUrl:source("villa-mimosa-37-2"),
@@ -174,9 +174,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
     id:"villa-orion-57",category:"majoitus",
     name:{fi:"Villa Orion #57",en:"Villa Orion #57",es:"Villa Orion #57"},
     description:{
-      fi:"Kemiönsaaren virallisen matkailuhakemiston majoituskohde. Tarkista ajantasainen kuvaus, varustelu ja varaus suoraan kohteen omalta sivulta.",
-      en:"An accommodation listing in the official Kimitoön tourism directory. Check the current description, facilities and booking details on the property's own page.",
-      es:"Alojamiento incluido en el directorio turístico oficial de Kimitoön. Consulta la descripción, el equipamiento y la reserva en su propia página."
+      fi:"Vuonna 2023 valmistunut Merikruunun Tähdistö-huvila. Virallisessa esittelyssä mainitaan kaksi terassia, ulkoporeamme, grillauspaikka ja majoitus 2+3 hengelle.",
+      en:"A Merikruunu Tähdistö villa completed in 2023. The official listing mentions two terraces, an outdoor hot tub, a barbecue area and sleeping arrangements for 2+3 guests.",
+      es:"Villa Tähdistö de Merikruunu terminada en 2023. La ficha oficial menciona dos terrazas, jacuzzi exterior, zona de barbacoa y capacidad para 2+3 personas."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-orion-57-2"),sourceUrl:source("villa-orion-57-2"),
@@ -198,9 +198,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
     id:"villa-pohjantahti-18",category:"majoitus",
     name:{fi:"Villa Pohjantähti #18",en:"Villa Pohjantähti #18",es:"Villa Pohjantähti #18"},
     description:{
-      fi:"Kemiönsaaren virallisen matkailuhakemiston majoituskohde. Varmista ajantasaiset palvelut, varustelu ja varaus suoraan kohteen omasta esittelystä.",
-      en:"An accommodation listing in the official Kimitoön tourism directory. Confirm current services, facilities and booking details in the property's own listing.",
-      es:"Alojamiento incluido en el directorio turístico oficial de Kimitoön. Confirma los servicios, el equipamiento y la reserva en la ficha del alojamiento."
+      fi:"Merikruunun Tähdistö-huvila, jossa on virallisen esittelyn mukaan oma sauna merinäkymällä, kaksi yläparvea ja poreallas. 44 m²:n huvila sopii parhaiten 2–4 hengelle, enintään kuudelle.",
+      en:"A Merikruunu Tähdistö villa with a private sauna overlooking the sea, two loft sleeping areas and an outdoor hot tub, according to the official listing. The 44 m² villa is best suited to 2–4 guests, with a maximum of six.",
+      es:"Villa Tähdistö de Merikruunu con sauna privada con vistas al mar, dos altillos para dormir y jacuzzi exterior, según la ficha oficial. La villa de 44 m² es ideal para 2–4 personas, con un máximo de seis."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-pohjantahti-18-2"),sourceUrl:source("villa-pohjantahti-18-2"),
@@ -210,9 +210,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
     id:"villa-sirius-56",category:"majoitus",
     name:{fi:"Villa Sirius #56",en:"Villa Sirius #56",es:"Villa Sirius #56"},
     description:{
-      fi:"Kemiönsaaren virallisen matkailuhakemiston huvila. Tarkista kohteen omalta sivulta nykyinen varustelu, henkilömäärä ja saatavuus.",
-      en:"A villa listed in the official Kimitoön tourism directory. Check current facilities, occupancy and availability on the property's own page.",
-      es:"Villa incluida en el directorio turístico oficial de Kimitoön. Consulta el equipamiento, la capacidad y la disponibilidad actuales en su propia página."
+      fi:"Merikruunun Tähdistö-huvila, jonka virallinen esittely kertoo omasta ulkoporealtaasta, suurista terasseista ja hotellin läheisyydestä. Majoitus on ilmoitettu 2+4 hengelle.",
+      en:"A Merikruunu Tähdistö villa. The official listing describes a private outdoor hot tub, large terraces and proximity to the hotel. Sleeping capacity is listed as 2+4 guests.",
+      es:"Villa Tähdistö de Merikruunu. La ficha oficial describe jacuzzi exterior privado, terrazas amplias y cercanía al hotel. La capacidad indicada es de 2+4 personas."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:source("villa-sirius-56-2"),sourceUrl:source("villa-sirius-56-2"),
@@ -422,7 +422,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Pensionatvägen 8, Dragsfjärd",en:"Pensionatvägen 8, Dragsfjärd",es:"Pensionatvägen 8, Dragsfjärd"},
     websiteUrl:"https://www.merikruunu.fi/ravintola",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",
-    image:image("ccb22f50-877f-11ee-9fca-6fdb01d69922.png-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Merikruunu",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-merikruunu-2/",tags:["ravintola","pub","hotelli"]
+    image:"https://static.wixstatic.com/media/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg/v1/fill/w_382%2Ch_509%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg",imageCredit:"Hotel Merikruunu",imageSource:"https://www.merikruunu.fi/ravintola",tags:["ravintola","pub","hotelli"]
   },
   {
     id:"db-bistro-runda-munken",category:"ruoka",
