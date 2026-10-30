@@ -2061,6 +2061,91 @@ export const kimitoonProviders: KimitoonProvider[] = [
     imageCredit:"Salon Oppaat ry / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/salon-oppaat-ry-kemionsaari-salo-guider-kimitoon/",tags:["auktorisoidut oppaat","opastetut kierrokset","Salo","Kemiönsaari"]
   }
 
+  {
+    id:"taxi-friberg",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Taxi Friberg Oy Ab",en:"Taxi Friberg Oy Ab",es:"Taxi Friberg Oy Ab"},
+    description:{
+      fi:"Kemiönsaaren taksipalvelu. KSG:n mukaan käytössä on 1+8-paikkainen auto pyörätuoli- ja paarivarustuksella sekä 1+4-paikkainen taksi. Varmista ajoneuvon sopivuus ja varaus suoraan yritykseltä.",
+      en:"Taxi service on Kimitoön. KSG lists a 1+8-seat vehicle with wheelchair and stretcher equipment, plus a 1+4-seat taxi. Confirm vehicle suitability and booking directly with the company.",
+      es:"Servicio de taxi en Kimitoön. KSG indica un vehículo de 1+8 plazas con equipamiento para sillas de ruedas y camillas, además de un taxi de 1+4 plazas. Consulta directamente la idoneidad y la reserva."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/taxi-friberg-oy-ab/",sourceUrl:"https://ksg.fi/sv/foretag/taxi-friberg-oy-ab/",
+    imageCredit:"Taxi Friberg / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/taxi-friberg-oy/",tags:["taksi","pyörätuolikuljetus","paarikuljetus"]
+  },
+  {
+    id:"jani-launokorpi",categories:["kuljetukset","muut-palvelut","aktiviteetit"],
+    name:{fi:"Jani Launokorpi – tilausajot",en:"Jani Launokorpi – charter transport",es:"Jani Launokorpi – transporte privado"},
+    description:{
+      fi:"Kemiönsaaren palveluopas listaa Jani Launokorven linja-auton tilausajopalveluihin. Kysy suoraan reiteistä, ryhmäkuljetuksista, kalustosta ja tarjouksesta.",
+      en:"The Kimitoön business guide lists Jani Launokorpi for charter bus services. Contact the operator about routes, group transfers, vehicles and quotations.",
+      es:"La guía empresarial de Kimitoön incluye a Jani Launokorpi en servicios de autobús privado. Consulta rutas, traslados de grupos, vehículos y presupuestos directamente."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/jani-launokorpi/",sourceUrl:"https://ksg.fi/sv/foretag/jani-launokorpi/",
+    imageCredit:"Jani Launokorpi / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/jani-launokorpi/",tags:["linja-auto","tilausajo","ryhmäkuljetus"]
+  },
+  {
+    id:"carwash-kimito",categories:["muut-palvelut","kuljetukset"],
+    name:{fi:"Carwash Kimito",en:"Carwash Kimito",es:"Carwash Kimito"},
+    description:{
+      fi:"Automaattinen autopesu Kemiössä. Kemiönsaaren palveluopas ilmoittaa palvelun olevan käytettävissä ympäri vuorokauden. Tarkista pesuohjelmat ja maksutavat paikan päällä.",
+      en:"An automatic car wash in Kimito. The Kimitoön business guide lists the service as available 24/7. Check wash programmes and payment methods on site.",
+      es:"Lavado automático de coches en Kimito. La guía empresarial de Kimitoön indica que el servicio está disponible las 24 horas. Consulta programas y métodos de pago en el lugar."
+    },
+    location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/carwash-kimito-kemio/",sourceUrl:"https://ksg.fi/sv/foretag/carwash-kimito-kemio/",
+    imageCredit:"Carwash Kimito / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/carwash-kimito-kemio/",tags:["autopesu","24/7"]
+  },
+  {
+    id:"bruks-bilservice",categories:["muut-palvelut","kuljetukset"],
+    name:{fi:"Bruks Bilservice Ab",en:"Bruks Bilservice Ab",es:"Bruks Bilservice Ab"},
+    description:{
+      fi:"Taalintehtaan ajoneuvohuolto, joka tarjoaa autojen huoltoja, korjauksia ja rengastöitä. Tarkista palvelut ja ajanvaraus suoraan korjaamolta.",
+      en:"A vehicle service workshop in Dalsbruk offering car servicing, repairs and tyre work. Confirm services and appointments directly with the workshop.",
+      es:"Taller de mantenimiento de vehículos en Dalsbruk que ofrece revisiones, reparaciones y trabajos de neumáticos. Consulta servicios y citas directamente con el taller."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/bruks-bilservice-ab/",sourceUrl:"https://ksg.fi/sv/foretag/bruks-bilservice-ab/",
+    imageCredit:"Bruks Bilservice / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/bruks-bilservice-ab/",tags:["autohuolto","korjaus","rengastyöt"]
+  },
+  {
+    id:"hoijers-mekaniska",categories:["muut-palvelut","kuljetukset"],
+    name:{fi:"Höijers Mekaniska",en:"Höijers Mekaniska",es:"Höijers Mekaniska"},
+    description:{
+      fi:"Autokorjaamo, joka tarjoaa monipuolisia huolto-, korjaus-, rengas- ja vikadiagnostiikkapalveluja. Varaa huolto ja tarkista ajankohtainen palveluvalikoima suoraan korjaamolta.",
+      en:"A car workshop offering servicing, repairs, tyre work and vehicle diagnostics. Book maintenance and confirm current services directly with the workshop.",
+      es:"Taller de automóviles que ofrece mantenimiento, reparaciones, neumáticos y diagnóstico de averías. Reserva el servicio y consulta la oferta actual directamente con el taller."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/hoijers-mekaniska/",sourceUrl:"https://ksg.fi/sv/foretag/hoijers-mekaniska/",
+    imageCredit:"Höijers Mekaniska / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/hoijers-mekaniska/",tags:["autokorjaamo","rengaspalvelu","vikadiagnostiikka"]
+  },
+  {
+    id:"colorshine-matias-friman",categories:["muut-palvelut","kuljetukset"],
+    name:{fi:"Colorshine / Matias Friman",en:"Colorshine / Matias Friman",es:"Colorshine / Matias Friman"},
+    description:{
+      fi:"Ajoneuvojen kolarikorjaus- ja tuulilasipalvelu Kemiönsaarella. Kemiönsaaren palveluopas mainitsee kolarikorjaukset ja tuulilasien vaihdot.",
+      en:"Vehicle collision repair and windscreen services on Kimitoön. The Kimitoön business guide lists collision repairs and windscreen replacement.",
+      es:"Servicios de reparación de colisiones y parabrisas en Kimitoön. La guía empresarial de Kimitoön menciona reparación de golpes y sustitución de parabrisas."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/colorshine-matias-friman/",sourceUrl:"https://ksg.fi/sv/foretag/colorshine-matias-friman/",
+    imageCredit:"Colorshine / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/colorshine-matias-friman/",tags:["kolarikorjaus","tuulilasin vaihto"]
+  },
+  {
+    id:"kimito-bilmaleri",categories:["muut-palvelut","kuljetukset"],
+    name:{fi:"Kemiön Automaalaamo ja Alustasuojaus Ky",en:"Kimito Vehicle Paint and Underbody Protection",es:"Taller de pintura y protección de bajos de Kimito"},
+    description:{
+      fi:"Kolarikorjauksia ja hinauspalvelua Kemiönsaarella ja lähialueilla. Tarkista palvelun saatavuus ja hinausalue suoraan yritykseltä.",
+      en:"Collision repairs and towing services on Kimitoön and nearby areas. Confirm service availability and towing coverage directly with the company.",
+      es:"Reparación de colisiones y servicios de remolque en Kimitoön y zonas cercanas. Consulta disponibilidad y cobertura directamente con la empresa."
+    },
+    location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
+    websiteUrl:"https://ksg.fi/sv/foretag/kimito-bilmaleri-underredsbehandling-kb/",sourceUrl:"https://ksg.fi/sv/foretag/kimito-bilmaleri-underredsbehandling-kb/",
+    imageCredit:"Kemiön Automaalaamo / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/kimito-bilmaleri-underredsbehandling-kb/",tags:["kolarikorjaus","hinaus","automaalaus"]
+  }
+
 ];
 
 export function getKimitoonProviders(category?: KimitoonCategory) {
