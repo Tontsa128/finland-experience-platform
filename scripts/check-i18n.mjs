@@ -76,5 +76,36 @@ if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
   console.error("Sitemap check failed: legacy Mathildedal aliases redirect to the canonical destination and must not be listed.");
 }
 
+// Salo regional directory regression guard: every provider must belong to
+// exactly one area section, and every section must be rendered on the Salo guide.
+const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
+const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
+const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
+const providerArrayStart = saloDataSource.indexOf("export const saloProviders: SaloProvider[] = [");
+const providerArrayEnd = saloDataSource.indexOf("\\n];", providerArrayStart);
+const providerIds = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
+  ? [...saloDataSource.slice(providerArrayStart, providerArrayEnd).matchAll(/\\bid:\\s*"([^"]+)"/g)].map((match) => match[1])
+  : [];
+const areaMapStart = saloDirectorySource.indexOf("const areaProviderIds:");
+const areaMapEnd = saloDirectorySource.indexOf("\\n};", areaMapStart);
+const areaMap = areaMapStart >= 0 && areaMapEnd > areaMapStart ? saloDirectorySource.slice(areaMapStart, areaMapEnd) : "";
+const assignedProviderIds = [...areaMap.matchAll(/^\\s+[a-z]+:\\s*\\[([^\\]]*)\\]/gm)]
+  .flatMap((match) => [...match[1].matchAll(/"([^"]+)"/g)].map((idMatch) => idMatch[1]));
+const duplicateAreaIds = assignedProviderIds.filter((id, index) => assignedProviderIds.indexOf(id) !== index);
+const missingAreaIds = providerIds.filter((id) => !assignedProviderIds.includes(id));
+const unknownAreaIds = assignedProviderIds.filter((id) => !providerIds.includes(id));
+const renderedAreas = [...areaMap.matchAll(/^\\s+([a-z]+):\\s*\\[/gm)].map((match) => match[1]);
+const missingAreaSections = renderedAreas.filter((area) => !new RegExp(`<SaloDirectory\\\\s+locale=\\\\{locale\\\\}\\\\s+area=["']${area}["']`).test(saloPageSource));
+if (providerIds.length !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || missingAreaSections.length) {
+  failed = true;
+  console.error("Salo area directory check failed:", {
+    providerCount: providerIds.length,
+    duplicateAreaIds,
+    missingAreaIds,
+    unknownAreaIds,
+    missingAreaSections,
+  });
+}
+
 if (failed) process.exit(1);
-console.log(`i18n/SEO checks passed: ${locales.join(", ")} have identical key sets, locale-aware document language and safe sitemap timestamps/routes.`);
+console.log(`i18n/SEO/Salo checks passed: ${locales.join(", ")} have identical key sets, locale-aware document language, safe sitemap routes and complete area directories.`);
