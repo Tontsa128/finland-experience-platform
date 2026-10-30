@@ -40,7 +40,7 @@ These are repository facts. They do not prove that the currently connected Supab
 - Reuse `public.media` as the media source of truth.
 - Associate provider profiles with media through a provider-media relation with stable ordering and role (hero/gallery/logo); do not overload a raw external image URL as the media record.
 - Require source URL and a valid rights status before a provider image can be published.
-- Keep pending/unknown rights assets out of public rendering. The current Salo source-data guard for Meri-Teijo Golf follows this rule; the CMS version must enforce the same policy server-side.
+- Keep pending/unknown rights assets out of public rendering. The current source-data guard withholds Meri-Teijo Golf, but the other 89 image assets do not yet have explicit verified rights status; a credit string is not a licence. See `docs/SALO-IMAGE-RIGHTS-AUDIT.md`. The CMS version must require asset-level rights evidence and enforce the rule server-side.
 - Store localized alt text and captions in existing media fields.
 - Do not copy image files from third-party websites unless the applicable permission/license allows it.
 
@@ -79,6 +79,6 @@ Do not infer live schema state from repository files alone.
 
 - Supabase connection unavailable in the current tool session; target project and live migration state are not verified.
 - The 101 Salo catalogue profiles have not yet been reconciled against the live provider table.
-- Image rights and all FI/EN/ES editorial checks remain in progress.
+- Image rights are a production blocker: 90 image assets have source credits, but 89 are not explicitly rights-verified in the source data. The current pending-only guard is not sufficient for commercial publication; see `docs/SALO-IMAGE-RIGHTS-AUDIT.md`. FI/EN/ES editorial checks also remain in progress.
 - Latest rights-control code commits need a fresh CI run; the previously verified CI run belongs to baseline `56402b0`, not the latest head.
 - Do not merge or deploy production until these gates are closed.
