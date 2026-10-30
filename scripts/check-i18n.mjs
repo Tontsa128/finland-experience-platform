@@ -56,10 +56,10 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
 const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
 const homepageHasSpotlight = homepageSource.includes('import { KansakouluSpotlight } from "@/components/home/KansakouluSpotlight";')
-  && /<KansakouluSpotlight\\s+locale=/.test(homepageSource);
+  && /<KansakouluSpotlight\s+locale=/.test(homepageSource);
 const guideHasDuplicateSpotlight = kimitoonGuideSource.includes("KansakouluSpotlight");
 const guideKeepsCategoryCards = kimitoonGuideSource.includes("KimitoonKansakouluCategoryCard")
-  && /<KimitoonKansakouluCategoryCard\\s+locale=/.test(kimitoonGuideSource);
+  && /<KimitoonKansakouluCategoryCard\s+locale=/.test(kimitoonGuideSource);
 if (!homepageHasSpotlight || guideHasDuplicateSpotlight || !guideKeepsCategoryCards) {
   failed = true;
   console.error("Kansakoulu placement check failed: keep one spotlight on the homepage and retain the accommodation/food category cards on the Kimitoön guide.");
