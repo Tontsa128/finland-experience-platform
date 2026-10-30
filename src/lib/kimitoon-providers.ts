@@ -246,7 +246,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("0aa27440-17f1-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/villa-valo-9-2/",tags:["villa","merikruunu"]
   },
   {
-    id:"spa-hotel-kasnas",categories:["majoitus","ruoka","hyvinvointi","saaristo","tapahtumapaikat"],
+    id:"spa-hotel-kasnas",categories:["majoitus","ruoka","hyvinvointi","saaristo","tapahtumapaikat","talviaktiviteetit"],
     name:{fi:"Spa Hotel Kasnäs",en:"Spa Hotel Kasnäs",es:"Spa Hotel Kasnäs"},
     description:{
       fi:"Kasnäsin merellinen hotelli- ja lomakeskus. Virallinen matkailusivusto nostaa esiin hotellin, kylpylän, ravintolan, vierasvenesataman ja caravan-alueen.",
