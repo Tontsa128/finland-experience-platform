@@ -1203,6 +1203,103 @@ export const kimitoonProviders: KimitoonProvider[] = [
     imageCredit:"Björkbodan Ruukinkartano / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/bjorkboda-bruksgard/",tags:["majoitus","juhlatilat","kokoukset","ratsastus"],contact:{phone:"040 581 0878",address:"Gamla bruksvägen 2, 25860 Björkboda"}
   }
 
+  {
+    id:"hotel-galaxy",categories:["majoitus","ruoka"],
+    name:{fi:"Hotel Galaxy",en:"Hotel Galaxy",es:"Hotel Galaxy"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaan mukaan Hotel Galaxy on korkeatasoinen pieni hotelli, jossa on 10 huonetta, joista kahdessa on keittiö. Tarkista huoneiden tarkemmat varustelut, hinnat ja saatavuus suoraan hotellilta.",
+      en:"The Kimitoön business guide describes Hotel Galaxy as a high-standard small hotel with 10 rooms, two of them with kitchens. Confirm room facilities, prices and availability directly with the hotel.",
+      es:"La guía empresarial de Kimitoön describe Hotel Galaxy como un pequeño hotel de categoría alta con 10 habitaciones, dos de ellas con cocina. Consulta directamente los servicios, precios y disponibilidad."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["hotelli","10 huonetta","keittiö"]
+  },
+  {
+    id:"saariloma-net",categories:["majoitus"],
+    name:{fi:"Saariloma.net",en:"Saariloma.net",es:"Saariloma.net"},
+    description:{
+      fi:"Vapaa-ajan asuntoja ja mökkejä Björkbodan ja Taalintehtaan ruukkimiljöössä. Tarkista kohteiden sijainnit, varustelu, vuokraehdot ja saatavuus suoraan vuokraajalta.",
+      en:"Holiday homes and cottages in the historic ironworks settings of Björkboda and Dalsbruk. Confirm locations, facilities, rental terms and availability directly with the operator.",
+      es:"Casas vacacionales y cabañas en los entornos históricos de las ferrerías de Björkboda y Dalsbruk. Consulta ubicaciones, equipamiento, condiciones y disponibilidad directamente con el operador."
+    },
+    location:{fi:"Björkboda ja Taalintehdas, Kemiönsaari",en:"Björkboda and Dalsbruk, Kimitoön",es:"Björkboda y Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["mökit","loma-asunnot","ruukkimiljöö"]
+  },
+  {
+    id:"majoitusliike-pikkutikka",categories:["majoitus"],
+    name:{fi:"Majoitusliike Pikkutikka",en:"Pikkutikka Holiday Accommodation",es:"Alojamiento Pikkutikka"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaan majoitushakemistossa lomahuvilan vuokraajana listattu toimija. Tarkista huvilan sijainti, varustelu, vuokraehdot ja vapaat ajankohdat virallisesta palveluoppaasta ja vuokraajalta.",
+      en:"A holiday-villa rental provider listed in the Kimitoön business guide. Check the villa's location, facilities, rental terms and available dates through the official guide and the operator.",
+      es:"Proveedor de alquiler de villas vacacionales incluido en la guía empresarial de Kimitoön. Consulta la ubicación, el equipamiento, las condiciones y las fechas disponibles en la guía oficial y con el operador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["vuokrah huvila","loma-asunto"]
+  },
+  {
+    id:"db-hostel",categories:["majoitus"],
+    name:{fi:"DB Hostel",en:"DB Hostel",es:"DB Hostel"},
+    description:{
+      fi:"Hostelli Taalintehtaan keskustassa, noin sadan metrin päässä torilta. KSG:n esittely korostaa laadukkaita huoneita ja hyvin varusteltuja yhteistiloja. Tarkista huonetyypit, varustelu ja saatavuus suoraan hostellilta.",
+      en:"A hostel in central Dalsbruk, about 100 metres from the market square. KSG highlights quality rooms and well-equipped shared facilities. Confirm room types, amenities and availability directly with the hostel.",
+      es:"Hostal en el centro de Dalsbruk, a unos 100 metros de la plaza del mercado. KSG destaca sus habitaciones de calidad y zonas comunes bien equipadas. Consulta directamente los tipos de habitación, servicios y disponibilidad."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["hostelli","taalintehdas"]
+  },
+  {
+    id:"viggskar-vuokramokit",categories:["majoitus","saaristo","luonto"],
+    name:{fi:"Viggskärin vuokramökit",en:"Viggskär Rental Cottages",es:"Cabañas de alquiler de Viggskär"},
+    description:{
+      fi:"Vuokramökkejä Viggskärissä Kemiönsaaren saaristossa. Tarkista mökkien varustelu, kulkuyhteydet, vuokraehdot ja saatavuus suoraan vuokraajalta.",
+      en:"Rental cottages on Viggskär in the Kimitoön archipelago. Confirm facilities, transport connections, rental terms and availability directly with the operator.",
+      es:"Cabañas de alquiler en Viggskär, en el archipiélago de Kimitoön. Consulta equipamiento, conexiones, condiciones y disponibilidad directamente con el operador."
+    },
+    location:{fi:"Viggskär, Kemiönsaari",en:"Viggskär, Kimitoön",es:"Viggskär, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["vuokramökki","saaristo","luonto"]
+  },
+  {
+    id:"villa-lyxfallan",categories:["majoitus"],
+    name:{fi:"Villa Lyxfällan",en:"Villa Lyxfällan",es:"Villa Lyxfällan"},
+    description:{
+      fi:"Vuokramökki Kemiönsaaren palveluoppaan majoituslistauksessa. Tarkista mökin sijainti, varustelu, henkilömäärä, vuokraehdot ja saatavuus suoraan vuokraajalta.",
+      en:"A rental cottage listed in the Kimitoön business guide. Confirm its location, facilities, occupancy, rental terms and availability directly with the operator.",
+      es:"Cabaña de alquiler incluida en la guía empresarial de Kimitoön. Confirma ubicación, equipamiento, capacidad, condiciones y disponibilidad directamente con el operador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["vuokramökki"]
+  },
+  {
+    id:"vano-stugor",categories:["majoitus","saaristo"],
+    name:{fi:"Vänö Stugor",en:"Vänö Stugor",es:"Vänö Stugor"},
+    description:{
+      fi:"Vänön saaristossa toimiva mökkivuokraaja. KSG:n mukaan palveluihin kuuluu myös veneiden talvisäilytys. Tarkista mökkien tiedot, venepaikat, kuljetukset ja varaus suoraan toimijalta.",
+      en:"A cottage rental operator on the island of Vänö. KSG also lists winter storage for boats among its services. Confirm cottage details, berths, transport and booking directly with the operator.",
+      es:"Proveedor de cabañas en la isla de Vänö. KSG también menciona almacenamiento invernal de embarcaciones. Consulta cabañas, amarres, transporte y reservas directamente con el operador."
+    },
+    location:{fi:"Vänö, Kemiönsaaren ulkosaaristo",en:"Vänö, outer Kimitoön archipelago",es:"Vänö, archipiélago exterior de Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["mökit","veneiden talvisäilytys","saaristo"]
+  },
+  {
+    id:"ab-seaside-mokkit",categories:["majoitus"],
+    name:{fi:"Ab Seaside Oy LKV – mökkivuokraus",en:"Ab Seaside Oy LKV – cottage rentals",es:"Ab Seaside Oy LKV – alquiler de cabañas"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaan mukaan yritys välittää kiinteistöjä ja mökkivuokrausta Kemiönsaarella, Turunmaalla ja Länsi-Uudellamaalla. Tarkista vuokrattavat kohteet ja ehdot suoraan yritykseltä.",
+      en:"The Kimitoön business guide lists the company for real-estate services and cottage rentals on Kimitoön, in the Turku archipelago and in western Uusimaa. Check available properties and terms directly with the company.",
+      es:"La guía empresarial de Kimitoön incluye a la empresa en servicios inmobiliarios y alquiler de cabañas en Kimitoön, el archipiélago de Turku y el oeste de Uusimaa. Consulta propiedades y condiciones directamente con la empresa."
+    },
+    location:{fi:"Kemiönsaari ja Turunmaa",en:"Kimitoön and the Turku archipelago",es:"Kimitoön y el archipiélago de Turku"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["mökkivuokraus","kiinteistönvälitys"]
+  }
+
 ];
 
 export function getKimitoonProviders(category?: KimitoonCategory) {
