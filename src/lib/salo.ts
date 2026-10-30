@@ -1439,7 +1439,6 @@ export const saloProviders: SaloProvider[] = [
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/01/meisala.jpg",
     imageCredit: "Visit Salo / Salon Kohteet — Meisalan Marja",
   },
-,
 
   {
     id: "puutarha-siimes",
