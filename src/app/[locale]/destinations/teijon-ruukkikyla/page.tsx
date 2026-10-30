@@ -4,6 +4,7 @@ import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { RuukkikylaGuide } from "@/components/salo/RuukkikylaGuide";
+import { SaloDirectory } from "@/components/salo/SaloDirectory";
 
 const copy: Record<Locale, { title: string; lead: string; historyTitle: string; history: string; landscapeTitle: string; landscape: string; notice: string; mathildedal: string; source: string }> = {
   fi: {
@@ -79,6 +80,7 @@ export default async function TeijoIronworksVillagePage({ params }: { params: Pr
           <p className="mt-4 text-xs text-slate-500">{t.source}: <a className="underline" href="https://www.teijo.fi/tervetuloakyliin/teijo/" target="_blank" rel="noreferrer">teijo.fi</a> · <a className="underline" href="https://visitsalo.fi/mathildedalin-ruukkikyla/" target="_blank" rel="noreferrer">visitsalo.fi</a></p>
         </article>
       </section>
+      <SaloDirectory locale={locale} area="teijo" />
       <RuukkikylaGuide village="teijo" locale={locale} />
       <section className="container-narrow py-12">
         <Link href={`/${locale}/destinations/salo-mathildedal`} className="inline-flex rounded-full border border-stone-300 px-5 py-3 text-sm font-bold text-brand-950 hover:bg-stone-50">{t.mathildedal} →</Link>
