@@ -31,6 +31,12 @@ The following official map entries already have a corresponding code-backed prov
 | Kosken kartano | `kosken-kartano` | Added with Visit Salo photo, organic farm description and contact details |
 | Mikkolan tila | `mikkolan-tila` | Added with Visit Salo photo, lamb/wool profile and farm experience details |
 
+| Peltosaaren luomulammastila | `peltosaaren-luomulammastila` | Added with Visit Salo sheep photo and farm-tourism details |
+| Perniön Saunapalvi | `pernion-saunapalvi` | Added with official smokehouse product photo and seasonal shop notice |
+| Wanhantuvan Ankkala | `wanhantuvan-ankkala` | Added from official farm source; image still needs a verified matching asset |
+| Wiberg's | `wibergs` | Added from current official farm site; image still needs a stable verified asset |
+| Ylivesän luomutila | `ylivesan-luomutila` | Added with Visit Salo cattle photo and source credit |
+
 ## Remaining official map entries
 
 The following entries do not yet have a dedicated local-food profile in the current Salo directory. They must be checked against their own current official channel before publication; the brochure is an inventory source, not proof that every sales point or seasonal shop is currently open. The first five entries below have now been added with verified official descriptions, contact details and matching photos; the remaining 25 still need individual profile work.
@@ -85,7 +91,7 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 
 ## Publication and image rules
 
-- The distinct **Lähiruoka ja maatilapuodit** category is now implemented separately from restaurant/café cards. Fifteen provider profiles are now cross-listed there; the 25 remaining official map entries still require individual verification and addition.
+- The distinct **Lähiruoka ja maatilapuodit** category is now implemented separately from restaurant/café cards. Twenty provider profiles are now cross-listed there; the 20 remaining official map entries still require individual verification and addition.
 - Do not copy seasonal opening hours or brochure prices into permanent descriptions without checking the provider’s current official channel.
 - Do not invent a provider photo or use an unrelated farm/food image. If an official matching image cannot be verified, publish the provider with no image until a suitable image and credit are available.
 - Preserve source URL and image credit for every published photo.

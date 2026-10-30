@@ -33,7 +33,7 @@ test("provider images always include a source or credit", () => {
 });
 
 test("cross-listed providers appear in every relevant category without duplicate records", () => {
-  for (const providerId of ["leipyolin-tila", "lepola-drinks", "mathildedal-brewery", "alaspaan-maatila", "finnholm-strandbo", "matildankartano", "pohjolan-tila", "katiskanmaeki", "lahiruokapuoti-puhti", "vuorovetten-jaatelo", "ellun-kanat-ja-munat", "kalliolan-tila", "kirakan-kalkkuna", "kosken-kartano", "mikkolan-tila"]) {
+  for (const providerId of ["leipyolin-tila", "lepola-drinks", "mathildedal-brewery", "alaspaan-maatila", "finnholm-strandbo", "matildankartano", "pohjolan-tila", "katiskanmaeki", "lahiruokapuoti-puhti", "vuorovetten-jaatelo", "ellun-kanat-ja-munat", "kalliolan-tila", "kirakan-kalkkuna", "kosken-kartano", "mikkolan-tila", "peltosaaren-luomulammastila", "pernion-saunapalvi", "wanhantuvan-ankkala", "wibergs", "ylivesan-luomutila"]) {
     const provider = saloProviders.find((item) => item.id === providerId);
     assert.ok(provider, `Missing local-food provider ${providerId}`);
     assert.ok(getSaloProviderCategories(provider).includes("localFood"), `${providerId} must be listed in the local-food category`);
