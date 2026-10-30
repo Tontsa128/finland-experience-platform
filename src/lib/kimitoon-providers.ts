@@ -1012,7 +1012,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Engelsbyvägen 3, 25700 Kemiö",en:"Engelsbyvägen 3, 25700 Kimito",es:"Engelsbyvägen 3, 25700 Kimito"},
     websiteUrl:"https://ksg.fi/fi/foretag/konditori-mazarin/",sourceUrl:"https://ksg.fi/fi/foretag/konditori-mazarin/",
-    imageCredit:"Konditori Mazarin / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/konditori-mazarin/",tags:["konditoria","leipomo","kahvila"]
+    imageCredit:"Konditori Mazarin / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/konditori-mazarin/",tags:["konditoria","leipomo","kahvila"],
     contact:{phone:"02 421 910",address:"Engelsbyvägen 3, 25700 Kemiö"}
   },
   {
@@ -1073,7 +1073,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Hitisvägen 20, 25940 Hitis",en:"Hitisvägen 20, 25940 Hitis",es:"Hitisvägen 20, 25940 Hitis"},
     websiteUrl:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",sourceUrl:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",
-    imageCredit:"Holmströms Lanthandel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",tags:["saaristokauppa","päivittäistavarat","kahvila","lounas"]
+    imageCredit:"Holmströms Lanthandel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",tags:["saaristokauppa","päivittäistavarat","kahvila","lounas"],
     contact:{phone:"02 466 6760",address:"Hitisvägen 20, 25940 Hitis"}
   },
   {
@@ -1362,7 +1362,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["ruokakauppa","posti","päivittäistavarat"]
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["ruokakauppa","posti","päivittäistavarat"],
     contact:{phone:"040 561 2662",address:"Lammalavägen 98, 25830 Västanfjärd"}
   },
   {
