@@ -180,13 +180,15 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "chill-out-fishing",
+    location: "Karuna, Sauvo; retkien lähtöpaikkoja muun muassa Mathildedal, Kokkila ja Förby",
+    contact: { phone: "+358 45 350 6304", email: "hendrywahlsten@gmail.com", address: "Ahventie 6, 21590 Karuna" },
     directoryCategories: ["archipelago"],
     category: "experience",
     name: "Chill Out Fishing",
     description: {
-      fi: "Ohjattuja kalastus-, vene- ja saariretkiä Saaristomerellä. Lähtösatamia ovat muun muassa Kokkila, Mathildedal, Förby ja Kasnäs. Retket räätälöidään sään, reitin ja ryhmän mukaan; ajantasaiset vaihtoehdot ja hinnat löytyvät palveluntarjoajan verkkokaupasta.",
-      es: "Pesca guiada, excursiones en barco y visitas a islas en el Mar del Archipiélago. Las salidas pueden organizarse desde puertos como Mathildedal, Förby y Kasnäs; consulta opciones y precios actuales con el proveedor.",
-      en: "Guided fishing, boat and island trips in the Archipelago Sea, with departure harbours including Mathildedal, Förby and Kasnäs. Routes and options depend on weather and group needs; check current offers with the provider.",
+      fi: "Ohjattuja kalastusretkiä 1–4 hengelle sekä vene- ja saariretkiä 1–6 hengelle Saaristomerellä. Lähtösatamia ovat Kokkila, Mathildedal, Förby, Skata, Västanfjärd, Taalintehdas ja Kasnäs. Retkien reitti ja toteutus suunnitellaan sään ja ryhmän mukaan; tarkista ajantasaiset vaihtoehdot suoraan oppaalta.",
+      es: "Excursiones de pesca guiadas para 1–4 personas y paseos en barco o visitas a islas para 1–6 personas en el Mar del Archipiélago. Los puertos de salida incluyen Kokkila, Mathildedal, Förby, Skata, Västanfjärd, Taalintehdas y Kasnäs. Las rutas dependen del tiempo y del grupo; confirma las opciones actuales directamente con el guía.",
+      en: "Guided fishing trips for 1–4 people and boat or island trips for 1–6 people in the Archipelago Sea. Departure harbours include Kokkila, Mathildedal, Förby, Skata, Västanfjärd, Taalintehdas and Kasnäs. Routes and arrangements depend on weather and group needs; confirm current options directly with the guide.",
     },
     url: "https://chilloutfishing.fi/",
     price: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta",
