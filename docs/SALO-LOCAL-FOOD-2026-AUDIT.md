@@ -28,7 +28,7 @@ Provider-level verification sources used for the latest contact and offer checks
 | Official map entry | Canonical profile | Status / follow-up |
 |---|---|---|
 | Leipyölin tila | `leipyolin-tila` | Existing accommodation profile cross-listed in local food; verify farm-shop offer and photo rights |
-| Lepola Drinks | `lepola-drinks` | Cross-listed; confirm relationship with the Meritalo brand before adding another profile |
+| Lepola Drinks | `lepola-drinks` | Cross-listed; official Meritalo source confirms it is the beverage brand of Marjajaloste Meritalo Oy; keep one canonical provider profile |
 | Mathildedalin Kyläpanimo & Olutpuoti | `mathildedal-brewery` | Cross-listed; verify current photo rights |
 | Alaspään maatila | `alaspaan-maatila` | Existing farm/accommodation profile cross-listed; confirm direct-sale details |
 | Finnholm-tila | `finnholm-strandbo` | Existing accommodation profile cross-listed; one operator profile should cover seasonal direct sales |
@@ -74,7 +74,7 @@ The seven previously outstanding profiles (Puutarha Siimes, Rannikon Puutarha, V
 | 32 | Ohrakasken tila | Kaitasuontie 93, Raatala, Salo | 040 836 8271 · Facebook: Ohrakasken tila | **Added** |
 | 36 | Rinteen luomutila | Kiviarontie 185, 25110 Salo | 040 519 5575 · Facebook: Rinteen luomutila | **Added** |
 | 39 | Liikenneasema Kivihovi — Herkku & Lahja | Bulevardi 10, 25410 Suomusjärvi | 041 732 1474 · liikenneasema@kivihovi.fi | **Added** |
-| 41 | Meriniityn lihakauppa | Valimonkatu 4, 24100 Salo | 02 735 8817 · Instagram: Meriniitynliha | **Added** |
+| 41 | Meriniityn lihakauppa | Valimonkatu 4, 24100 Salo | 02 735 880 · Instagram: Meriniitynliha | **Added** |
 
 ## Three ice-cream kiosks — one operator profile
 
