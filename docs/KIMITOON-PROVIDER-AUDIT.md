@@ -91,3 +91,30 @@ The project owner has confirmed general permission to use business information a
 3. Keep every provider's FI/EN/ES content distinct and fact-based.
 4. External provider channels handle booking, payment and service contracts.
 5. Every provider page must have a working return path, localized metadata, source references and responsive accessible layout.
+
+
+## Current completeness snapshot (30 October 2026)
+
+The 175-profile count describes the directory inventory, not a claim that every profile is publication-complete. A code audit of the current branch found:
+
+- 175 unique IDs; no duplicate profile IDs.
+- 60 profiles have a primary card image; 115 currently use the truthful no-photo state.
+- 14 profiles have an additional provider-specific photo gallery (30 gallery assets in the detail-page gallery map). The remaining providers need source-by-source image discovery; never fill gaps with unrelated or generated provider photos.
+- 41 profiles currently have structured phone/address contact fields; 134 do not yet have structured contact details. This is a data-completeness backlog, not proof that the provider has no public contact information.
+- 21 profiles currently point to the general KSG homepage rather than a direct provider listing or official booking/contact page. Replace these with the exact official listing/channel when verified.
+- All 175 profiles have FI/EN/ES names and descriptions, and the IDs are unique. This does not replace a human language and factual review.
+
+Priority completion order:
+1. Accommodation and food: verify direct provider channels, contact details, room/service facts, current menus and opening information.
+2. Match and expand provider-specific image galleries, starting with the providers whose official pages publish multiple relevant images.
+3. Transport, activity and event operators: verify direct booking/contact channels, seasonal operation and practical visitor information.
+4. Complete reciprocal hreflang/canonical and metadata checks, then test every category and provider route in FI/EN/ES.
+5. Migrate the curated provider catalogue into the existing protected Supabase provider CMS before claiming that the directory is fully CMS-managed. The current 175-profile source file is a code-backed catalogue; the existing providers table and admin verification interface are present, but the Kimitoön catalogue is not yet fully connected to that CMS.
+
+## Navigation and CI repairs after the inventory expansion
+
+- Provider cards now pass their originating category to the detail page, so visitors can return to the exact theme as well as the Kimitoön main guide.
+- Related Kimitoön links are selected from the originating theme rather than always showing the first four records in the global catalogue.
+- Cards distinguish photo credits from general information-source credits when a profile has no photo.
+- Structured contacts have been added where current KSG source pages provided reliable phone/address details.
+- The PR's previous TypeScript failure was traced to stale plural categories lookups in the Salo and luxury-directory provider branches; those two branches now use the actual singular category field. The latest workflow must pass before merge.
