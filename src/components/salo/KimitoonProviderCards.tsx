@@ -48,7 +48,7 @@ export function KimitoonProviderCards({ locale, category }: { locale: Locale; ca
                   <img src={cardImage} alt={item.name[locale]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                 ) : (
                   <div className="px-6 text-center text-white">
-                    <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{locale === "fi" ? "Palveluntarjoaja" : locale === "es" ? "Proveedor" : "Provider"}</p>
+                    <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{item.kind === "resource" ? (locale === "fi" ? "Virallinen tietolähde" : locale === "es" ? "Fuente oficial" : "Official resource") : item.kind === "place" ? (locale === "fi" ? "Kohde" : locale === "es" ? "Lugar" : "Place") : (locale === "fi" ? "Palveluntarjoaja" : locale === "es" ? "Proveedor" : "Provider")}</p>
                     <p className="mt-3 font-display text-2xl font-semibold">{item.name[locale]}</p>
                     <p className="mt-2 text-xs text-white/70">{locale === "fi" ? "Kohdekuvaa ei ole vielä varmennettu" : locale === "es" ? "Foto pendiente de verificación" : "Photo not yet verified"}</p>
                   </div>
