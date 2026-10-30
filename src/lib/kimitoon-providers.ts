@@ -17,6 +17,7 @@ export type KimitoonProvider = {
   imageCredit: string;
   imageSource: string;
   tags: string[];
+  contact?: { phone?: string; address?: string };
 };
 
 const imageBase = "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/";
@@ -773,6 +774,333 @@ export const kimitoonProviders: KimitoonProvider[] = [
     websiteUrl:"https://kartta.kemionsaari.fi/",sourceUrl:"https://www.kemionsaari.fi/2026/08/20/kemionsaaren-aktiviteettikartta-2-0-nakyvyytta-palveluntarjoajille/",
     image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/oro-flygbilder6-760x427.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://kartta.kemionsaari.fi/",tags:["kartta","matkailupalvelut","reittitieto"]
   }
+  // Additional providers from the Kemiönsaari Business Guide (KSG).
+  {
+    id:"labbnas-lomakoti",categories:["majoitus","ruoka","hyvinvointi","tapahtumapaikat"],
+    name:{fi:"Labbnäsin Lomakoti",en:"Labbnäs Holiday Home",es:"Alojamiento Labbnäs"},
+    description:{
+      fi:"Entiseen pappilaan rakennettu luonnonläheinen lomakoti Dragsfjärdissä. Labbnäs tarjoaa majoitusta, tilausravintolan saariston ja kotiruoan mauilla, ryhmäruokailuja, kursseja ja retriittejä. Kokoukset voi yhdistää rantasaunaan ja kesäjuhlia järjestää pihapiirissä.",
+      en:"A nature-focused holiday home in a former vicarage in Dragsfjärd. Labbnäs offers accommodation, a reservation restaurant serving archipelago-inspired and home-style food, group dining, courses and retreats. Meetings can be combined with the lakeside sauna, and summer celebrations can be held on the grounds.",
+      es:"Alojamiento rodeado de naturaleza en una antigua casa parroquial de Dragsfjärd. Labbnäs ofrece alojamiento, restaurante bajo reserva con cocina local y casera, comidas para grupos, cursos y retiros. Las reuniones pueden combinarse con la sauna junto al lago y las celebraciones de verano pueden organizarse en el recinto."
+    },
+    location:{fi:"Labbnäsvägen 66, 25870 Dragsfjärd",en:"Labbnäsvägen 66, 25870 Dragsfjärd",es:"Labbnäsvägen 66, 25870 Dragsfjärd"},
+    websiteUrl:"https://www.labbnas.fi/",sourceUrl:"https://ksg.fi/fi/foretag/labbnas-semesterhem/",
+    image:"https://ksg.fi/wp-content/uploads/2026/01/labbnas-header-1-1-1-1-1-1-1-1-1-1.png",imageCredit:"Labbnäs / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/labbnas-semesterhem/",tags:["majoitus","tilausravintola","rantasauna","juhlatilat"],contact:{phone:"040 83 30 495",address:"Labbnäsvägen 66, 25870 Dragsfjärd"}
+  },
+  {
+    id:"storfinnhova-gard",categories:["majoitus","ruoka","hyvinvointi","tapahtumapaikat"],
+    name:{fi:"Storfinnhova Gård",en:"Storfinnhova Gård",es:"Storfinnhova Gård"},
+    description:{
+      fi:"Björkbodassa sijaitseva maatilakohde, jossa voi yöpyä huviloissa ja puumajoissa. Palveluihin kuuluvat ravintola ja catering sekä maanalainen graniittinen savusauna ja perinteinen sauna. Soveltuu myös ryhmille ja tapahtumille.",
+      en:"A countryside destination in Björkboda offering stays in villas and tree accommodation. Services include a restaurant, catering, an underground granite smoke sauna and a traditional sauna. The venue also caters for groups and events.",
+      es:"Alojamiento rural en Björkboda con villas y cabañas en los árboles. Ofrece restaurante, catering, una sauna de humo subterránea de granito y una sauna tradicional. También recibe grupos y eventos."
+    },
+    location:{fi:"Finnhovavägen 163, 25860 Björkboda",en:"Finnhovavägen 163, 25860 Björkboda",es:"Finnhovavägen 163, 25860 Björkboda"},
+    websiteUrl:"https://www.storfinnhova.com/",sourceUrl:"https://ksg.fi/fi/foretag/storfinnhova-gard/",
+    image:"https://ksg.fi/wp-content/uploads/2026/01/080925-Kemio-tilakuvat-web-103-1024x683.jpg",imageCredit:"Storfinnhova Gård / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/storfinnhova-gard/",tags:["huvilat","puumajoitus","savusauna","catering"],contact:{phone:"+358 40 552 8344",address:"Finnhovavägen 163, 25860 Björkboda"}
+  },
+  {
+    id:"ragnar-antonin-lomakyla",categories:["majoitus","aktiviteetit","luonto"],
+    name:{fi:"Ragnar Antonin Lomakylä",en:"Ragnar Anton's Holiday Village",es:"Complejo vacacional Ragnar Anton"},
+    description:{
+      fi:"Merenrantamökkejä ja mukavuuksilla varustettuja loma-asuntoja Kemiönsaaren luonnon keskellä. Lomakylän ympärillä on suojaisia merialueita kalastukseen, saaristoluontoa, kotieläimiä ja historiallisia nähtävyyksiä.",
+      en:"Seaside cottages and comfortable holiday homes surrounded by Kimitoön nature. Sheltered waters nearby offer fishing opportunities, while the area features archipelago nature, farm animals and historic sights.",
+      es:"Cabañas junto al mar y casas vacacionales equipadas en plena naturaleza de Kimitoön. Las aguas protegidas cercanas permiten pescar y la zona ofrece naturaleza del archipiélago, animales y lugares históricos."
+    },
+    location:{fi:"Elmdalsvägen 366, 25700 Kemiö",en:"Elmdalsvägen 366, 25700 Kimito",es:"Elmdalsvägen 366, 25700 Kimito"},
+    websiteUrl:"https://www.ragnaranton.fi/",sourceUrl:"https://ksg.fi/fi/foretag/ragnar-antons-semesterby/",
+    image:"https://ksg.fi/wp-content/uploads/2026/01/IMG_20260528_172332-1-1024x460.jpg",imageCredit:"Ragnar Antonin Lomakylä / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/ragnar-antons-semesterby/",tags:["merenrantamökit","kalastus","saaristoluonto"],contact:{phone:"050 524 5348 / 044 511 69 00",address:"Elmdalsvägen 366, 25700 Kemiö"}
+  },
+  {
+    id:"bjarkas-golf",categories:["aktiviteetit","majoitus","ruoka","tapahtumapaikat"],
+    name:{fi:"Bjärkas Golf",en:"Bjärkas Golf",es:"Bjärkas Golf"},
+    description:{
+      fi:"Västanfjärdin historiallisella tilalla sijaitseva kaikille avoin 18-reikäinen par 57 -golfkenttä. Tilan toimintaan yhdistyvät golf, majoitus ja ruokailujen järjestäminen suuremmillekin ryhmille. Ilmoitettu tavanomainen pelikausi on huhtikuusta marraskuuhun.",
+      en:"An open-to-all 18-hole par-57 golf course on a historic estate in Västanfjärd. The estate combines golf, accommodation and dining for larger groups. Its listed normal golf season runs from April to November.",
+      es:"Campo de golf de 18 hoyos par 57 abierto a todos, situado en una finca histórica de Västanfjärd. La finca combina golf, alojamiento y comidas para grupos. La temporada habitual indicada va de abril a noviembre."
+    },
+    location:{fi:"Västanfjärdsvägen 655, 25840 Nivelax",en:"Västanfjärdsvägen 655, 25840 Nivelax",es:"Västanfjärdsvägen 655, 25840 Nivelax"},
+    websiteUrl:"https://bjarkasgolf.com/",sourceUrl:"https://ksg.fi/fi/foretag/bjarkas-golf-2/",
+    imageCredit:"Bjärkas Golf / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/bjarkas-golf-2/",tags:["golf","majoitus","ryhmäruokailu"],contact:{phone:"044 0184 653",address:"Västanfjärdsvägen 655, 25840 Nivelax"}
+  },
+  {
+    id:"rosala-viking-centre",categories:["aktiviteetit","kulttuuri","tapahtumapaikat"],
+    name:{fi:"Rosalan Viikinkikeskus",en:"Rosala Viking Centre",es:"Centro Vikingo de Rosala"},
+    description:{
+      fi:"Rosalan viikinkikylä on elävöittävä vierailukeskus, jossa tutustutaan rautakauden loppuun ja viikinkiaikaan. Pääsylippuun sisältyy lyhyt opastus ja kartta lähes 30 kohteeseen. Ryhmille voi varata opastuksia, ohjelmaa, juhlia ja kokouksia; Rodeborgin päällikön halli toimii juhlatilana.",
+      en:"Rosala's Viking village is an immersive visitor centre exploring the late Iron Age and Viking era. Admission includes a short guided introduction and a map of nearly 30 points of interest. Groups can book tours, activities, celebrations and meetings; the Rodeborg chieftain's hall serves as an event venue.",
+      es:"La aldea vikinga de Rosala es un centro de visitas inmersivo dedicado al final de la Edad del Hierro y la época vikinga. La entrada incluye una breve visita guiada y un mapa con casi 30 puntos de interés. Los grupos pueden reservar visitas, actividades, celebraciones y reuniones; la sala Rodeborg sirve como espacio para eventos."
+    },
+    location:{fi:"Reimarsvägen 5, 25950 Rosala",en:"Reimarsvägen 5, 25950 Rosala",es:"Reimarsvägen 5, 25950 Rosala"},
+    websiteUrl:"https://rosala.fi/",sourceUrl:"https://ksg.fi/fi/foretag/rosala-bengtskar-bokningsbyra/",
+    imageCredit:"Rosalan Viikinkikeskus / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/rosala-bengtskar-bokningsbyra/",tags:["viikinkikylä","opastus","ryhmät","juhlatilat"],contact:{phone:"040 218 2960",address:"Reimarsvägen 5, 25950 Rosala"}
+  },
+  {
+    id:"oro-linnakesaari-provider",categories:["aktiviteetit","saaristo","luonto","kulttuuri","majoitus","ruoka","hyvinvointi","ostokset","tapahtumapaikat"],
+    name:{fi:"Örön linnakesaari",en:"Örö Fortress Island",es:"Isla fortificada de Örö"},
+    description:{
+      fi:"Saaristomeren kansallispuistossa sijaitseva historiallinen linnakesaari. Saarella on kasarmialueita, Obuhov-tykkejä ja puolustusasemia sekä luontoarvoja. KSG:n palvelukuvauksen mukaan saarella on vierasvenesatama, kaksi ravintolaa, kesäpuoti, kolme saunaa, kokoustiloja ja majoitusta jopa 150 hengelle. Merimatka Kasnäsistä kestää noin 30–60 minuuttia; tarkista yhteydet ja palvelujen kausi suoraan Öröltä.",
+      en:"A historic fortress island in the Archipelago Sea National Park, with barracks, Obukhov guns, defence structures and important natural habitats. The KSG service listing describes a guest harbour, two restaurants, a summer shop, three saunas, meeting facilities and accommodation for up to 150 people. The sea journey from Kasnäs takes about 30–60 minutes; confirm connections and seasonal services directly with Örö.",
+      es:"Isla fortificada histórica en el Parque Nacional del Mar del Archipiélago, con antiguos cuarteles, cañones Obujov, fortificaciones y hábitats naturales importantes. La ficha de servicios de KSG menciona puerto deportivo, dos restaurantes, tienda de verano, tres saunas, salas de reuniones y alojamiento para hasta 150 personas. El trayecto marítimo desde Kasnäs dura unos 30–60 minutos; confirma conexiones y servicios de temporada con Örö."
+    },
+    location:{fi:"Örön linnakesaari, lähtö Kasnäsistä",en:"Örö Fortress Island, departures from Kasnäs",es:"Isla fortificada de Örö, salidas desde Kasnäs"},
+    websiteUrl:"https://www.visitoro.fi/",sourceUrl:"https://ksg.fi/fi/foretag/oro-kustfort/",
+    image:"https://ksg.fi/wp-content/uploads/2026/01/109806881_2536080173161910_1059034139197076780_n-1024x768.webp",imageCredit:"Örö / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/oro-kustfort/",tags:["kansallispuisto","historia","vierasvenesatama","majoitus","saunat"],contact:{phone:"401 447 773",address:"Kerhontie 1, 25930 Kasnäs"}
+  },
+  {
+    id:"hitis-rodd-kanotklubb",categories:["aktiviteetit","saaristo","luonto"],
+    name:{fi:"Hitis Rodd- och Kanotklubb",en:"Hitis Rowing and Canoeing Club",es:"Club de remo y piragüismo de Hitis"},
+    description:{
+      fi:"Hiittisten alueen soutu- ja melontayhdistys, joka kuuluu Kemiönsaaren palveluoppaan aktiviteettitoimijoihin. Tarkista yhdistyksen omista kanavista mahdolliset tapahtumat, toiminta ja vierailijoille tarjolla olevat palvelut.",
+      en:"A rowing and canoeing club in the Hiittinen area, listed among Kimitoön's activity providers. Check the club's own channels for events, activities and any visitor services.",
+      es:"Club de remo y piragüismo de la zona de Hiittinen, incluido entre los proveedores de actividades de Kimitoön. Consulta sus canales para conocer eventos, actividades y servicios para visitantes."
+    },
+    location:{fi:"25940 Hiittinen",en:"25940 Hiittinen",es:"25940 Hiittinen"},
+    websiteUrl:"https://www.hitisroddklubb.fi/ny/",sourceUrl:"https://ksg.fi/fi/foretag/hitis-rodd-och-kanotklubb-r-f/",
+    imageCredit:"Hitis Rodd- och Kanotklubb / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/hitis-rodd-och-kanotklubb-r-f/",tags:["soutu","melonta","yhdistys"],contact:{phone:"0400 638 323",address:"25940 Hiittinen"}
+  },
+  {
+    id:"arkipelag-workshop",categories:["aktiviteetit","kulttuuri","tapahtumapaikat"],
+    name:{fi:"Arkipelag Workshop / Ateljé Tjuda Pedagogi",en:"Arkipelag Workshop / Ateljé Tjuda Pedagogi",es:"Arkipelag Workshop / Ateljé Tjuda Pedagogi"},
+    description:{
+      fi:"Taidegrafiikan työpaja Kemiössä. Tarjolla on taidekursseja lapsille ja aikuisille sekä työskentelytilaa ammattilaisille ja harrastajille päivä- tai viikkovuokralla.",
+      en:"An art-printmaking workshop in Kimito. It offers art courses for children and adults, plus workspace for professionals and hobbyists by the day or week.",
+      es:"Taller de grabado artístico en Kimito. Ofrece cursos de arte para niños y adultos, además de espacios de trabajo para profesionales y aficionados por días o semanas."
+    },
+    location:{fi:"Pedagogivägen 9, 25700 Kemiö",en:"Pedagogivägen 9, 25700 Kimito",es:"Pedagogivägen 9, 25700 Kimito"},
+    websiteUrl:"https://ksg.fi/fi/foretag/arkipelag-workshop-rf/",sourceUrl:"https://ksg.fi/fi/foretag/arkipelag-workshop-rf/",
+    imageCredit:"Arkipelag Workshop / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/arkipelag-workshop-rf/",tags:["taidegrafiikka","kurssit","työpaja"],contact:{phone:"040 540 1223",address:"Pedagogivägen 9, 25700 Kemiö"}
+  },
+  {
+    id:"festival-norpas",categories:["tapahtumat","kulttuuri"],
+    name:{fi:"Festival Norpas",en:"Festival Norpas",es:"Festival Norpas"},
+    description:{
+      fi:"Taalintehtaan kulttuuri- ja taidefestivaali. Ajankohtainen ohjelma, esiintyjät, liput ja tapahtumapaikat julkaistaan festivaalin omissa kanavissa.",
+      en:"A culture and arts festival in Dalsbruk. The current programme, performers, tickets and venues are published through the festival's own channels.",
+      es:"Festival de cultura y arte en Dalsbruk. El programa, los artistas, las entradas y los espacios se publican en los canales oficiales del festival."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://www.norpas.fi/",sourceUrl:"https://ksg.fi/fi/foretag/norpas-ry/",
+    imageCredit:"Festival Norpas / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/norpas-ry/",tags:["festivaali","taide","kulttuuri"],contact:{phone:"044 907 2891",address:"Taalintehdas, Kemiönsaari"}
+  },
+  {
+    id:"finlandia-sailing",categories:["aktiviteetit","saaristo","kuljetukset"],
+    name:{fi:"Finlandia Sailing",en:"Finlandia Sailing",es:"Finlandia Sailing"},
+    description:{
+      fi:"Kasnäsissä toimiva venevuokraus- ja charter-palvelu. Kemiönsaaren palveluoppaan mukaan vuokraveneitä on tarjolla Suomen lisäksi Tukholman saaristossa, Välimerellä sekä Karibialla. Tarkista venevalikoima, alueet ja ehdot suoraan toimijalta.",
+      en:"A boat rental and charter operator based in Kasnäs. The Kimitoön business guide lists rental boats in Finland, the Stockholm archipelago, the Mediterranean and the Caribbean. Confirm the fleet, areas and terms directly with the operator.",
+      es:"Servicio de alquiler de barcos y chárter con base en Kasnäs. La guía empresarial de Kimitoön menciona embarcaciones en Finlandia, el archipiélago de Estocolmo, el Mediterráneo y el Caribe. Confirma la flota, las zonas y las condiciones directamente con el operador."
+    },
+    location:{fi:"Kasnäsvägen 1294, 25930 Kasnäs",en:"Kasnäsvägen 1294, 25930 Kasnäs",es:"Kasnäsvägen 1294, 25930 Kasnäs"},
+    websiteUrl:"https://www.facebook.com/finlandiasailing",sourceUrl:"https://ksg.fi/fi/foretag/finlandia-sailing-ab-oy-kasnas/",
+    image:"https://ksg.fi/wp-content/uploads/2026/01/Santtu-yrittaa-loytaa-tuulen-henkea-1024x576.jpg",imageCredit:"Finlandia Sailing / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/finlandia-sailing-ab-oy-kasnas/",tags:["venevuokraus","charter","saaristo"],contact:{phone:"+358 400 421 050",address:"Kasnäsvägen 1294, 25930 Kasnäs"}
+  },
+  {
+    id:"kalkholmen-marina",categories:["saaristo","kuljetukset","ruoka","aktiviteetit","hyvinvointi"],
+    name:{fi:"Kalkholmen Marina",en:"Kalkholmen Marina",es:"Kalkholmen Marina"},
+    description:{
+      fi:"Västanfjärdin vierasvenesatama ja merellinen palvelukeskus. KSG:n mukaan alueella voi ruokailla, saunoa, pelata padelia ja tankata; satamassa on myös vuokrattavia sesonkipaikkoja. Tarkista venepaikat ja palvelujen kausi suoraan marinasta.",
+      en:"A guest harbour and seaside service hub in Västanfjärd. KSG lists dining, sauna, padel and fuel services, as well as seasonal berths for rent. Check berth availability and seasonal services directly with the marina.",
+      es:"Puerto deportivo y centro de servicios junto al mar en Västanfjärd. KSG menciona restaurante, sauna, pádel y combustible, además de amarres de temporada en alquiler. Consulta disponibilidad y servicios directamente con el puerto."
+    },
+    location:{fi:"Kalkholmsvägen 43, 25830 Västanfjärd",en:"Kalkholmsvägen 43, 25830 Västanfjärd",es:"Kalkholmsvägen 43, 25830 Västanfjärd"},
+    websiteUrl:"https://www.kalkholmenmarina.fi/",sourceUrl:"https://ksg.fi/fi/foretag/kalkholmen-marina/",
+    image:"https://ksg.fi/wp-content/uploads/2026/04/Nayttokuva-2026-04-14-130951.png",imageCredit:"Kalkholmen Marina / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kalkholmen-marina/",tags:["vierasvenesatama","padel","sauna","tankkaus"],contact:{phone:"040 529 1258",address:"Kalkholmsvägen 43, 25830 Västanfjärd"}
+  },
+  {
+    id:"kasnas-badhus",categories:["hyvinvointi","aktiviteetit"],
+    name:{fi:"Kasnäsin Kylpylä",en:"Kasnäs Spa",es:"Spa de Kasnäs"},
+    description:{
+      fi:"Kasnäsin kylpyläpalvelut osana merellistä lomakeskusta. Kemiönsaaren palveluoppaan mukaan palvelu liittyy myös hierontaan, kehonhoitoon ja liikuntaan. Tarkista allasosaston, saunojen ja muiden palvelujen ajantasaiset tiedot Kasnäsistä.",
+      en:"Spa services within the seaside resort of Kasnäs. The Kimitoön business guide also categorises the service under massage, body care and fitness. Confirm current pool, sauna and other service details with Kasnäs.",
+      es:"Servicios de spa dentro del complejo costero de Kasnäs. La guía empresarial de Kimitoön también lo clasifica en masaje, cuidado corporal y actividad física. Confirma los servicios actuales de piscina, sauna y otros tratamientos con Kasnäs."
+    },
+    location:{fi:"Kasnäsvägen 1294, 25930 Kasnäs",en:"Kasnäsvägen 1294, 25930 Kasnäs",es:"Kasnäsvägen 1294, 25930 Kasnäs"},
+    websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://ksg.fi/fi/foretag/kasnas-badhus-1/",
+    imageCredit:"Kasnäs / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kasnas-badhus-1/",tags:["kylpylä","sauna","hyvinvointi"],contact:{phone:"02 5210 100",address:"Kasnäsvägen 1294, 25930 Kasnäs"}
+  },
+  {
+    id:"kimitoon-guides",categories:["aktiviteetit","kulttuuri","muut-palvelut"],
+    name:{fi:"Kemiönsaaren oppaat ry",en:"Kimitoön Guides Association",es:"Asociación de guías de Kimitoön"},
+    description:{
+      fi:"Paikallisten oppaiden yhdistys, joka kuuluu Kemiönsaaren palveluoppaan opastus- ja matkailupalveluihin. Kysy opastettuja kierroksia, kielivaihtoehtoja ja ryhmille sopivia ohjelmia suoraan yhdistykseltä.",
+      en:"An association of local guides listed among Kimitoön's guiding and visitor services. Ask the association about guided tours, available languages and programmes for groups.",
+      es:"Asociación de guías locales incluida entre los servicios turísticos de Kimitoön. Consulta visitas guiadas, idiomas disponibles y programas para grupos directamente con la asociación."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/foretag/kimitoons-guider/",sourceUrl:"https://ksg.fi/fi/foretag/kimitoons-guider/",
+    imageCredit:"Kemiönsaaren oppaat / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kimitoons-guider/",tags:["opastus","paikallishistoria","ryhmät"]
+  },
+  {
+    id:"lemonlake-snooker",categories:["aktiviteetit"],
+    name:{fi:"Lemonlake Snooker",en:"Lemonlake Snooker",es:"Lemonlake Snooker"},
+    description:{
+      fi:"Sisäaktiviteetti Kemiönsaaren palveluoppaan vapaa-ajan tarjonnassa. Tarkista pelimahdollisuudet, varaus ja aukiolo suoraan toimijalta.",
+      en:"An indoor leisure activity listed in the Kimitoön business guide. Confirm playing opportunities, booking and opening times directly with the operator.",
+      es:"Actividad de ocio en interior incluida en la guía empresarial de Kimitoön. Consulta las posibilidades de juego, la reserva y los horarios directamente con el operador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/foretag/lemonlake-snooker/",sourceUrl:"https://ksg.fi/fi/foretag/lemonlake-snooker/",
+    imageCredit:"Lemonlake Snooker / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/lemonlake-snooker/",tags:["snooker","sisäaktiviteetti"]
+  },
+  {
+    id:"made-in-hitis",categories:["ostokset","kulttuuri"],
+    name:{fi:"Made in Hitis",en:"Made in Hitis",es:"Made in Hitis"},
+    description:{
+      fi:"Hiittisten paikalliseen käsityöhön ja tuotteisiin liittyvä toimija Kemiönsaaren palveluoppaassa. Tarkista ajankohtainen tuotevalikoima, myyntipaikat ja vierailumahdollisuudet suoraan toimijalta.",
+      en:"A local crafts and products business in Hiittinen, listed in the Kimitoön business guide. Confirm the current product range, sales locations and visiting opportunities directly with the operator.",
+      es:"Proyecto local de artesanía y productos de Hiittinen incluido en la guía empresarial de Kimitoön. Consulta la selección actual, los puntos de venta y las visitas directamente con el operador."
+    },
+    location:{fi:"Hiittinen, Kemiönsaari",en:"Hiittinen, Kimitoön",es:"Hiittinen, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/foretag/made-in-hitis-hitis-roddklubb/",sourceUrl:"https://ksg.fi/fi/foretag/made-in-hitis-hitis-roddklubb/",
+    imageCredit:"Made in Hitis / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/made-in-hitis-hitis-roddklubb/",tags:["paikallistuotteet","käsityö","hiittinen"]
+  },
+  {
+    id:"uppgards-fotisgolf",categories:["aktiviteetit","tapahtumapaikat"],
+    name:{fi:"Uppgårds Fotisgolf",en:"Uppgårds Footgolf",es:"Footgolf Uppgårds"},
+    description:{
+      fi:"Jalkapallogolfiin perustuva ulkoaktiviteetti Kemiönsaaren palveluoppaan vapaa-ajan tarjonnassa. Tarkista kentän aukiolo, ryhmävaraukset ja mahdolliset tapahtumat suoraan toimijalta.",
+      en:"An outdoor footgolf activity listed in the Kimitoön business guide. Check course opening, group bookings and possible events directly with the operator.",
+      es:"Actividad al aire libre de footgolf incluida en la guía empresarial de Kimitoön. Consulta la apertura del campo, las reservas de grupos y los eventos directamente con el operador."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/foretag/uppgards-fotisgolf-ob/",sourceUrl:"https://ksg.fi/fi/foretag/uppgards-fotisgolf-ob/",
+    imageCredit:"Uppgårds Fotisgolf / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/uppgards-fotisgolf-ob/",tags:["jalkapallogolf","ulkoilu","ryhmät"]
+  },
+  {
+    id:"utetop",categories:["aktiviteetit","luonto"],
+    name:{fi:"UteTop Oy",en:"UteTop Oy",es:"UteTop Oy"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaan urheilu- ja vapaa-ajan toimija. Tarkista ajankohtaiset ulkoilu- ja aktiviteettipalvelut suoraan yritykseltä ennen vierailua.",
+      en:"A sports and leisure operator listed in the Kimitoön business guide. Confirm current outdoor and activity services directly with the company before visiting.",
+      es:"Proveedor de actividades deportivas y de ocio incluido en la guía empresarial de Kimitoön. Confirma los servicios actuales directamente con la empresa antes de visitarla."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/foretag/utetop-oy/",sourceUrl:"https://ksg.fi/fi/foretag/utetop-oy/",
+    imageCredit:"UteTop Oy / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/utetop-oy/",tags:["ulkoilu","aktiviteetit"]
+  },
+  // Food and drink businesses listed in the Kemiönsaari Business Guide.
+  {
+    id:"cafe-dacapo",categories:["ruoka","tapahtumapaikat"],
+    name:{fi:"Café DaCapo",en:"Café DaCapo",es:"Café DaCapo"},
+    description:{
+      fi:"Kemiön keskustan kahvila, josta voi tilata täyte- ja voileipäkakkuja. Palveluopas mainitsee myös pitopalvelun, joten yritys sopii sekä kahvila- että juhlapalveluhakuun.",
+      en:"A café in central Kimito offering made-to-order celebration cakes and savoury sandwich cakes. The business guide also lists catering, making it relevant for both café and event-service searches.",
+      es:"Cafetería en el centro de Kimito que prepara tartas para celebraciones y pasteles salados por encargo. La guía empresarial también menciona catering, por lo que es útil para búsquedas de cafeterías y eventos."
+    },
+    location:{fi:"Gästgivargränd 2–4, 25700 Kemiö",en:"Gästgivargränd 2–4, 25700 Kimito",es:"Gästgivargränd 2–4, 25700 Kimito"},
+    websiteUrl:"https://ksg.fi/fi/foretag/cafe-dacapo-2/",sourceUrl:"https://ksg.fi/fi/foretag/cafe-dacapo-2/",
+    image:"https://ksg.fi/wp-content/uploads/2026/02/485413175_1156888506222939_8730533031590318541_n-772x1024.jpg",imageCredit:"Café DaCapo / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/cafe-dacapo-2/",tags:["kahvila","kakut","pitopalvelu"],contact:{phone:"0400 608 818",address:"Gästgivargränd 2–4, 25700 Kemiö"}
+  },
+  {
+    id:"backom-cafe-pub",categories:["ruoka"],
+    name:{fi:"Backom Café & Pub",en:"Backom Café & Pub",es:"Backom Café & Pub"},
+    description:{
+      fi:"Hiittisten kesäkahvila ja pubi Hitisvägenin varrella. Tarkista kauden aukiolo, tarjoilu ja tapahtumat suoraan toimijalta.",
+      en:"A summer café and pub in Hiittinen on Hitisvägen. Confirm seasonal opening, food and drink service and events directly with the operator.",
+      es:"Cafetería y pub de verano en Hiittinen, junto a Hitisvägen. Consulta la apertura de temporada, la oferta y los eventos directamente con el establecimiento."
+    },
+    location:{fi:"Hitisvägen 19, 25940 Hitis",en:"Hitisvägen 19, 25940 Hitis",es:"Hitisvägen 19, 25940 Hitis"},
+    websiteUrl:"https://ksg.fi/fi/foretag/backom-cafe-pub/",sourceUrl:"https://ksg.fi/fi/foretag/backom-cafe-pub/",
+    imageCredit:"Backom Café & Pub / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/backom-cafe-pub/",tags:["kesäkahvila","pub"],contact:{phone:"040 759 5290",address:"Hitisvägen 19, 25940 Hitis"}
+  },
+  {
+    id:"cafe-kompass",categories:["ruoka"],
+    name:{fi:"Cafe Kompass",en:"Cafe Kompass",es:"Cafe Kompass"},
+    description:{
+      fi:"Kemiön keskustan kahvila Engelsbyntiellä. Tarkista kahvilan tämänhetkinen valikoima, aukiolo ja mahdolliset tilaukset suoraan kahvilalta.",
+      en:"A café in central Kimito on Engelsbyntie. Check the current café selection, opening times and any special orders directly with the café.",
+      es:"Cafetería en el centro de Kimito, en Engelsbyntie. Consulta la oferta actual, los horarios y los encargos directamente con la cafetería."
+    },
+    location:{fi:"Engelsbyntie 9, 25700 Kemiö",en:"Engelsbyntie 9, 25700 Kimito",es:"Engelsbyntie 9, 25700 Kimito"},
+    websiteUrl:"https://ksg.fi/fi/foretag/cafe-kompass/",sourceUrl:"https://ksg.fi/fi/foretag/cafe-kompass/",
+    imageCredit:"Cafe Kompass / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/cafe-kompass/",tags:["kahvila"],contact:{phone:"041 310 3055 / 041 504 9309",address:"Engelsbyntie 9, 25700 Kemiö"}
+  },
+  {
+    id:"bistro-marita",categories:["ruoka"],
+    name:{fi:"Bistro Marita",en:"Bistro Marita",es:"Bistro Marita"},
+    description:{
+      fi:"Rosalan kylässä toimiva bistro, jossa palveluoppaan mukaan on bistroruokaa, kahvilatuotteita, viinejä ja olutvalikoima. Tarkista aukiolo ja tarjonta ennen saaristomatkaa.",
+      en:"A bistro in the village of Rosala. The business guide lists bistro food, café products, wines and a beer selection. Check opening times and the current offering before travelling to the islands.",
+      es:"Bistró en el pueblo de Rosala. La guía empresarial menciona comida de bistró, productos de cafetería, vinos y cervezas. Consulta los horarios y la oferta actual antes de viajar al archipiélago."
+    },
+    location:{fi:"Rosalan kylätie 34, 25950 Rosala",en:"Rosalan kylätie 34, 25950 Rosala",es:"Rosalan kylätie 34, 25950 Rosala"},
+    websiteUrl:"https://ksg.fi/fi/foretag/bistro-marita/",sourceUrl:"https://ksg.fi/fi/foretag/bistro-marita/",
+    imageCredit:"Bistro Marita / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/bistro-marita/",tags:["bistro","kahvila","viinit"],contact:{phone:"045 230 7087",address:"Rosalan kylätie 34, 25950 Rosala"}
+  },
+  {
+    id:"bistro-bar-road-cafe-yttis",categories:["ruoka"],
+    name:{fi:"Bistro & Bar Road Cafe Yttis",en:"Bistro & Bar Road Cafe Yttis",es:"Bistro & Bar Road Cafe Yttis"},
+    description:{
+      fi:"Kärran kylässä toimiva ruokapaikka, jonka listalla palveluoppaan mukaan on pizzoja, hampurilaisia, bistroannoksia sekä tunnettu lohikeitto saaristolaisleivän kanssa. Tarkista ajantasainen menu ja aukiolo toimijalta.",
+      en:"A village restaurant in Kärra. The business guide lists pizzas, burgers, bistro dishes and a well-known salmon soup served with archipelago bread. Confirm the current menu and opening times with the operator.",
+      es:"Restaurante en el pueblo de Kärra. La guía empresarial menciona pizzas, hamburguesas, platos de bistró y una conocida sopa de salmón con pan del archipiélago. Consulta el menú y los horarios actuales."
+    },
+    location:{fi:"Ytterkullavägen 1, 25870 Dragsfjärd",en:"Ytterkullavägen 1, 25870 Dragsfjärd",es:"Ytterkullavägen 1, 25870 Dragsfjärd"},
+    websiteUrl:"https://ksg.fi/fi/foretag/bistro-bar-road-cafe-yttis/",sourceUrl:"https://ksg.fi/fi/foretag/bistro-bar-road-cafe-yttis/",
+    imageCredit:"Bistro & Bar Road Cafe Yttis / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/bistro-bar-road-cafe-yttis/",tags:["bistro","pizza","hampurilaiset","lohikeitto"],contact:{phone:"040 054 0835",address:"Ytterkullavägen 1, 25870 Dragsfjärd"}
+  },
+  {
+    id:"kasnas-paviljong",categories:["ruoka","tapahtumapaikat"],
+    name:{fi:"Kasnäs Paviljong",en:"Kasnäs Paviljong",es:"Kasnäs Paviljong"},
+    description:{
+      fi:"Kasnäsin satama-alueen grillin, pizzan ja kahvilan yhdistelmä. Kemiönsaaren palveluopas listaa paikan ravintola- ja lounaspalveluihin. Tarkista kauden ruokalista ja aukiolo Kasnäsistä.",
+      en:"A grill, pizza and café venue in the Kasnäs harbour area. The Kimitoön business guide lists it among restaurants and lunch venues. Check seasonal menus and opening times with Kasnäs.",
+      es:"Establecimiento de parrilla, pizza y cafetería en la zona del puerto de Kasnäs. La guía empresarial de Kimitoön lo incluye entre restaurantes y lugares de almuerzo. Consulta el menú de temporada y los horarios."
+    },
+    location:{fi:"Kasnäsvägen 1294, 25930 Kasnäs",en:"Kasnäsvägen 1294, 25930 Kasnäs",es:"Kasnäsvägen 1294, 25930 Kasnäs"},
+    websiteUrl:"https://www.kasnas.com/",sourceUrl:"https://ksg.fi/fi/foretag/kasnas-paviljong/",
+    imageCredit:"Kasnäs Paviljong / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kasnas-paviljong/",tags:["grilli","pizza","kahvila"],contact:{phone:"02 5210 115",address:"Kasnäsvägen 1294, 25930 Kasnäs"}
+  },
+  {
+    id:"laituri-grilli",categories:["ruoka"],
+    name:{fi:"Laituri Grilli",en:"Laituri Grilli",es:"Laituri Grilli"},
+    description:{
+      fi:"Taalintehtaan sataman vieressä Tehtaan portilla sijaitseva ravintola. Palveluoppaan mukaan tarjolla on aamiaista, lounasta ja illallista, ja paikalla on myös drive-in-mahdollisuus. Tarkista aukiolo ja päivän tarjonta suoraan ravintolalta.",
+      en:"A restaurant by Dalsbruk harbour at Tehtaan portti. The business guide lists breakfast, lunch and dinner, as well as a drive-in option. Confirm opening times and the day's offering directly with the restaurant.",
+      es:"Restaurante junto al puerto de Dalsbruk, en Tehtaan portti. La guía empresarial menciona desayuno, almuerzo, cena y servicio drive-in. Consulta los horarios y la oferta del día directamente con el restaurante."
+    },
+    location:{fi:"Dalsbruksvägen 691, 25900 Taalintehdas",en:"Dalsbruksvägen 691, 25900 Dalsbruk",es:"Dalsbruksvägen 691, 25900 Dalsbruk"},
+    websiteUrl:"https://ksg.fi/fi/foretag/grillkajen/",sourceUrl:"https://ksg.fi/fi/foretag/grillkajen/",
+    imageCredit:"Laituri Grilli / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/grillkajen/",tags:["aamiainen","lounas","drive-in"],contact:{phone:"040 577 2111",address:"Dalsbruksvägen 691, 25900 Taalintehdas"}
+  },
+  {
+    id:"restaurang-portside",categories:["ruoka","tapahtumapaikat"],
+    name:{fi:"Ravintola Portside",en:"Restaurant Portside",es:"Restaurante Portside"},
+    description:{
+      fi:"Taalintehtaan merellinen terassi ja rantamakasiini. Palveluoppaan mukaan ravintola palvelee toukokuusta elokuuhun; tarkista kauden aukiolo, ruokalista ja tapahtumat suoraan Portsidesta.",
+      en:"A seaside terrace and waterfront warehouse restaurant in Dalsbruk. The business guide lists a May–August season; confirm current seasonal opening, menu and events directly with Portside.",
+      es:"Terraza junto al mar y restaurante en un antiguo almacén portuario de Dalsbruk. La guía empresarial indica temporada de mayo a agosto; confirma horarios, menú y eventos directamente con Portside."
+    },
+    location:{fi:"Stallsbacksvägen 8, 25900 Taalintehdas",en:"Stallsbacksvägen 8, 25900 Dalsbruk",es:"Stallsbacksvägen 8, 25900 Dalsbruk"},
+    websiteUrl:"https://www.portside.fi/",sourceUrl:"https://ksg.fi/fi/foretag/restaurang-portside/",
+    image:"https://ksg.fi/wp-content/uploads/2026/01/7605a92b-bd92-41bf-9d41-022caca417d4.jpg",imageCredit:"Restaurant Portside / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/restaurang-portside/",tags:["terassi","rantamakasiini","kesäravintola"],contact:{phone:"02 466 1745",address:"Stallsbacksvägen 8, 25900 Taalintehdas"}
+  },
+  {
+    id:"rigges-thai",categories:["ruoka"],
+    name:{fi:"Rigges Thai",en:"Rigges Thai",es:"Rigges Thai"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaan catering- ja ruokatuotantotoimija. Tarkista nykyinen ruoka- ja tilauspalveluvalikoima sekä mahdolliset tapahtumatarjoilut suoraan yritykseltä.",
+      en:"A catering and food-production business listed in the Kimitoön business guide. Confirm its current food and ordering services and any event catering directly with the company.",
+      es:"Empresa de catering y producción alimentaria incluida en la guía empresarial de Kimitoön. Consulta directamente sus servicios actuales de comida, pedidos y catering para eventos."
+    },
+    location:{fi:"Norrlångviksvägen 259A, 25700 Kemiö",en:"Norrlångviksvägen 259A, 25700 Kimito",es:"Norrlångviksvägen 259A, 25700 Kimito"},
+    websiteUrl:"https://www.uggeldal.com/",sourceUrl:"https://ksg.fi/fi/foretag/rigges-thai/",
+    imageCredit:"Rigges Thai / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/rigges-thai/",tags:["catering","ruokatuotanto"],contact:{phone:"0400 946 950",address:"Norrlångviksvägen 259A, 25700 Kemiö"}
+  },
+  {
+    id:"mac-daniels-grill",categories:["ruoka","tapahtumapaikat","majoitus"],
+    name:{fi:"Mac Daniel's Grill ja Ravintola Galaxy",en:"Mac Daniel's Grill and Restaurant Galaxy",es:"Mac Daniel's Grill y Restaurante Galaxy"},
+    description:{
+      fi:"Kemiön keskustassa toimiva kahvila-, ravintola- ja pubikokonaisuus. Palveluoppaan mukaan tiloihin kuuluu ruokasali, kokouskabinetti ja juhlapalvelu. Ravintola Galaxy soveltuu suurempiin tilaisuuksiin, tanssi-iltoihin ja kokouksiin; oppaassa mainitaan myös hotellipalvelu.",
+      en:"A café, restaurant and pub venue in central Kimito. The business guide lists a dining room, meeting room and event catering. Restaurant Galaxy is suited to larger functions, dance evenings and meetings; the guide also lists hotel services.",
+      es:"Complejo de cafetería, restaurante y pub en el centro de Kimito. La guía empresarial menciona comedor, sala de reuniones y catering. El restaurante Galaxy sirve para eventos grandes, noches de baile y reuniones; la guía también incluye servicios hoteleros."
+    },
+    location:{fi:"Arkadiavägen 11, 25700 Kemiö",en:"Arkadiavägen 11, 25700 Kimito",es:"Arkadiavägen 11, 25700 Kimito"},
+    websiteUrl:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",sourceUrl:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",
+    imageCredit:"Mac Daniel's Grill / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/mac-daniels-grill-oy-ab-2/",tags:["kahvila","ravintola","pub","juhlatilat","kokoukset"],contact:{phone:"02 420 6312",address:"Arkadiavägen 11, 25700 Kemiö"}
+  }
+
 ];
 
 export function getKimitoonProviders(category?: KimitoonCategory) {
