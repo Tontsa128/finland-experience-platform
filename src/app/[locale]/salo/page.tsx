@@ -7,7 +7,7 @@ import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
-import { getSaloProviderCategories, saloProviders, type SaloProviderCategory } from "@/lib/salo";
+import { getSaloProviderCategories, getSaloProviderImage, saloProviders, type SaloProviderCategory } from "@/lib/salo";
 
 const copy = {
   fi: {
@@ -224,7 +224,7 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
               { slug: "matkailuinfo", category: "tourism", icon: Info, title: { fi: "Matkailuinfo ja oppaat", en: "Tourism information and guides", es: "Información turística y guías" }, description: { fi: "Viralliset oppaat ja paikallinen matkailutieto.", en: "Official guides and local visitor information.", es: "Guías oficiales e información local para visitantes." } },
             ].map((item) => {
               const Icon = item.icon;
-              const image = saloProviders.find((provider) => getSaloProviderCategories(provider).includes(item.category as SaloProviderCategory) && provider.image)?.image || photoLibrary.saloVeturitalli;
+              const image = saloProviders.find((provider) => getSaloProviderCategories(provider).includes(item.category as SaloProviderCategory) && getSaloProviderImage(provider)) ? getSaloProviderImage(saloProviders.find((provider) => getSaloProviderCategories(provider).includes(item.category as SaloProviderCategory) && getSaloProviderImage(provider))!) || photoLibrary.saloVeturitalli : photoLibrary.saloVeturitalli;
               return (
                 <Link key={item.slug} href={`/${locale}/salo/${item.slug}`} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
                   <div className="relative aspect-[16/9] overflow-hidden bg-brand-100">
