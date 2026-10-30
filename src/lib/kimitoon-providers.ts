@@ -412,7 +412,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
     websiteUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",sourceUrl:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2026/04/Visitkimito_NLux_cJaskaPoikonen-1472-1162x657.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/",tags:["baari","ravintola"]
+    image:"https://ksg.fi/wp-content/uploads/2026/01/492375680_122225859446051009_8172683598906080449_n.jpg",imageCredit:"Rumpan Bar / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["baari","ravintola"]
   },
 
   {
@@ -437,7 +437,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Örön linnakesaari, Kemiönsaari",en:"Örö Fortress Island, Kimitoön",es:"Isla fortificada de Örö, Kimitoön"},
     websiteUrl:"https://www.oro.fi/",sourceUrl:"https://www.visitkimitoon.fi/fi/kohteet/",
-    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/8ead5540-d2f8-11ed-8ed8-859d0a6307f5.jpeg-374x211.jpeg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["ravintola","saari","retkikohde"]
+    image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/a0a60070-c025-11ed-8fb6-cd05a147400e.jpeg-374x211.jpeg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["ravintola","saari","retkikohde"]
   },
   // Activities, outdoor, culture, events and local services.
   {
@@ -805,7 +805,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kalkholmsvägen 43, 25830 Västanfjärd",en:"Kalkholmsvägen 43, 25830 Västanfjärd",es:"Kalkholmsvägen 43, 25830 Västanfjärd"},
     websiteUrl:"https://www.kalkholmenmarina.fi/",sourceUrl:"https://ksg.fi/fi/foretag/kalkholmen-marina/",
-    image:"https://ksg.fi/wp-content/uploads/2026/04/Nayttokuva-2026-04-14-130951.png",imageCredit:"Kalkholmen Marina / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kalkholmen-marina/",tags:["vierasvenesatama","padel","sauna","tankkaus"],contact:{phone:"040 529 1258",address:"Kalkholmsvägen 43, 25830 Västanfjärd"}
+    imageCredit:"Kalkholmen Marina / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kalkholmen-marina/",tags:["vierasvenesatama","padel","sauna","tankkaus"],contact:{phone:"040 529 1258",address:"Kalkholmsvägen 43, 25830 Västanfjärd"}
   },
 
   {
