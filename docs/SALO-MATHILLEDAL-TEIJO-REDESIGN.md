@@ -13,9 +13,9 @@ Tämä dokumentti erottaa nykyisestä repositoriosta varmennetut tekniset havain
 - Salon alueopas on reitillä `/[locale]/salo`. Se sisältää jo aluekuvauksen, reitti-ideoita ja palvelukortit.
 - Mathildedalin vanha reitti `/[locale]/mathildedal` tekee pysyvän uudelleenohjauksen reitille `/[locale]/destinations/salo-mathildedal`. Tämä ei vielä ole erillinen, täysin uudistettu Mathildedal-alueopas.
 - Teijon ruukkikylällä on oma reitti `/[locale]/destinations/teijon-ruukkikyla`, joka käyttää yhteistä `RuukkikylaGuide`-komponenttia.
-- Salon nykyinen `saloProviders`-luettelo sisältää 47 tietuetta: 27 majoitusta, 9 elämystä, 6 ruoka- ja ravintolakohdetta, 3 luontokohdetta ja 2 matkailuinfoa.
-- Viideltä nykyiseltä tietueelta puuttuu korttikuva: Chill Out Fishing, Villa Viktoria, Teijon Kammari, Kruuvan mökit ja Meri-Veikko.
-- Nykyinen Salon korttimalli tuntee vain viisi pääluokkaa: matkailuinfo, majoitus, elämykset, luonto sekä ruoka. Ostokset, kulttuuri, hyvinvointi, tapahtumat ja kyläpalvelut eivät ole erillisiä luokkia.
+- Uudistushaaran `saloProviders`-luettelo sisältää nyt 59 tietuetta: 27 majoitusta, 10 elämystä, 7 ruoka- ja ravintolakohdetta, 6 ostos- ja käsityökohdetta, 4 luontokohdetta, 2 kulttuurikohdetta, 1 hyvinvointikohde ja 2 matkailuinfoa.
+- Kahdelta nykyiseltä tietueelta puuttuu edelleen korttikuva: Chill Out Fishing ja Villa Viktoria. Teijon Kammari, Villa Kruuva ja Meri-Veikko saivat virallisista lähteistä löytyneet kuvat ja lähdemerkinnät.
+- Salon korttimalli tuntee nyt kahdeksan pääluokkaa: matkailuinfo, majoitus, elämykset, luonto, ruoka, ostokset, kulttuuri ja hyvinvointi. Tapahtumat, meri/saaristo, kylät ja muut paikalliset palvelut tarvitsevat vielä oman kattavan luokittelunsa.
 - Nykyiset Salon palvelutiedot ovat pääosin koodissa tiedostossa `src/lib/salo.ts`. Palvelukortin oma sivu rakentuu yleisestä provider-reitistä, mutta Salon tietomallissa ei ole vastaavaa rakenteista kuvagalleriaa ja lähde-/tarkistustietoa kuin Kemiönsaaren uudistetussa mallissa.
 - Yläpalkin nykyinen `site_navigation`-malli palauttaa litteän listan (tunniste, kieli, nimi, URL ja järjestys). Siinä ei ole valmista vanhempi–lapsi- tai ryhmä-rakennetta Ruukkikylät-alavalikolle.
 
