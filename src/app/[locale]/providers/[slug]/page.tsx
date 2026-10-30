@@ -21,6 +21,7 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "matilda-villas": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
   "matri-house": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
   "majoitus-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "kattohuone-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
   "ravintola-terho": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
   "mathildedal-brewery": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
   "teijon-masuuni": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
@@ -31,6 +32,8 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "teijo-tentsile": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
   "teijon-kammari": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
   "saaristomokit-sarkisalo": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "aava-adventures": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "finnholm-strandbo": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
   "forby-marina": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
   "cafe-vinssi": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
   "saaristoravintola-nixor": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
@@ -45,7 +48,7 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "alaspaan-maatila": { fi: "Perniö · Salo", en: "Perniö · Salo", es: "Perniö · Salo" },
   "topilan-tupa": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
   "salon-oppaat": { fi: "Salo", en: "Salo", es: "Salo" },
-  "vuohensaaren-leirintaalue": { fi: "Salo", en: "Salo", es: "Salo" },
+  "vuohensaari-camping": { fi: "Salo", en: "Salo", es: "Salo" },
 };
 
 function resolveProvider(slug: string, locale: Locale) {
