@@ -82,3 +82,45 @@ Each provider should have an individual card with:
 - [ ] Deployment verified before declaring the work complete
 
 Apply this standard to Mathildedal first, then reuse it for every subsequent destination guide.
+
+## 10. Mandatory provider-page journey and content standard
+
+This section applies to every destination and provider across the entire FINNEXPRIENCE project, not only the first pilot areas.
+
+### Required navigation hierarchy
+
+1. Homepage → destination/area landing page.
+2. Destination/area page → relevant service category.
+3. Category page → provider card/listing.
+4. Provider card image and title → that provider's own localized detail page.
+5. Provider detail page → the provider's own official website or booking/contact channel.
+
+A category listing is not a substitute for the provider's detail page. Do not send a visitor directly from a discovery card to an unrelated external page when a provider detail page is required. Keep the provider's external booking or website link clearly visible on the detail page. Provide a working return path to the category and destination.
+
+### Required provider detail page
+
+Every accommodation, restaurant, café, sauna, cottage, activity and other listed provider must have its own canonical detail page with equivalent Finnish, English and Spanish content. The page must use the provider's real identity and verified information, not a generic copied description.
+
+Include where applicable:
+- Provider name, category, destination and verified location/contact information.
+- A concise, attractive introduction and a useful fuller description of the actual service.
+- A gallery of multiple distinct images that genuinely show that provider and the relevant service.
+- Visible image credits and documented commercial/web reuse permission.
+- A clear external provider website, booking, reservation or contact CTA.
+- Relevant practical details and accessibility information when verified.
+- Category-specific information: accommodation room types/facilities and booking terms; restaurant menu or a clear notice when no current menu is published, plus verified opening hours; sauna facilities and booking channel; cottage capacity/facilities and rental terms; activity content, season and operator.
+- Localized metadata, meaningful image alt text, canonical/hreflang and internal links.
+
+The provider card's image must also match the provider and category. An image of a restaurant must never be used to represent accommodation rooms. If suitable, approved images are unavailable, do not substitute another service's image, a stock image or an unlicensed third-party image. Keep the page truthful, show only verified material and request an approved image set from the provider before treating the profile as complete.
+
+### Editorial and data integrity
+
+- Verify content against the provider's own current website or written confirmation; use the official destination site for area context.
+- Do not invent menu items, opening hours, prices, availability, review scores, contact details, amenities, awards or accessibility claims.
+- If current details cannot be verified, state that the visitor should confirm them directly with the provider; do not present stale information as current.
+- Keep review platform, score, review count, scope and checked date distinct. Never present a whole-property rating as a restaurant-only rating.
+- Keep the same provider identity and canonical URL across FI/EN/ES; translated pages must not point to a different provider.
+- Manage provider content through the existing Supabase CMS and existing authorization model wherever the current schema supports it. Do not create a parallel CMS or bypass security/RLS. Any missing structured CMS capability must be documented and implemented as a reviewed schema/API change, not hidden in hard-coded page components.
+- A provider page is complete only when its content, links, photos/rights, language versions, mobile layout, accessibility, metadata and route behavior have all been checked.
+
+Apply this standard to existing pages during repairs as well as all new destination and provider work.
