@@ -13,7 +13,7 @@ const labels = {
 export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: "mathildedal" }) {
   const l = labels[locale];
   const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
-  const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery"]);
+  const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery", "ravintola-terho"]);
   const areaProviders = area === "mathildedal" ? saloProviders.filter((provider) => mathildedalIds.has(provider.id)) : saloProviders;
   const providers = category ? areaProviders.filter((provider) => provider.category === category) : areaProviders;
   return (
