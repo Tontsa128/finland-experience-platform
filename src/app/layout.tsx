@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 
@@ -20,9 +21,13 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Resolve the active route locale on the server so the document language is
+  // correct before the page is rendered (including crawlers and assistive tech).
+  const locale = await getLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>{children}</body>
     </html>
   );

@@ -8,21 +8,40 @@ import {
   getPublishedBlogPosts,
 } from "@/lib/public-content";
 import { supabaseAdmin } from "@/lib/supabase";
+import { saloProviders } from "@/lib/salo";
+import { luxuryDirectory } from "@/lib/luxury-directory";
+import { kimitoonProviders } from "@/lib/kimitoon-providers";
 
 export const revalidate = 3600;
 
 const basePaths = [
   "",
   "destinations",
+  "destinations/kemionsaari",
+  "destinations/kemionsaari/majoitus",
+  "destinations/kemionsaari/ruoka",
+  "destinations/kemionsaari/aktiviteetit",
+  "destinations/kemionsaari/hyvinvointi",
+  "destinations/kemionsaari/kuljetukset",
+  "destinations/kemionsaari/ostokset",
+  "destinations/kemionsaari/talviaktiviteetit",
+  "destinations/kemionsaari/tapahtumapaikat",
+  "destinations/kemionsaari/muut-palvelut",
+  "destinations/kemionsaari/luonto",
+  "destinations/kemionsaari/kulttuuri",
+  "destinations/kemionsaari/saaristo",
+  "destinations/kemionsaari/tapahtumat",
+  "destinations/kemionsaari/kohde/taalintehdas",
+  "destinations/kemionsaari/kohde/kasnas",
+  "destinations/kemionsaari/kohde/soderlangvik",
+  "destinations/kemionsaari/kohde/sagalund",
+  "destinations/kemionsaari/kohde/oro",
+  "destinations/kemionsaari/kohde/kansakoulu",
+  "destinations/kemionsaari/kohde/kansakoulu-ravintola",
+  "destinations/rosala",
+  "destinations/bengtskar",
+  "destinations/teijon-ruukkikyla",
   "salo",
-  "mathildedal",
-  "mathildedal/suunnittele",
-  "mathildedal/majoitus",
-  "mathildedal/ruoka",
-  "mathildedal/tekemista",
-  "mathildedal/kulttuuri",
-  "mathildedal/ostokset",
-  "mathildedal/tapahtumat",
   "turku",
   "naantali",
   "hanko",
@@ -50,11 +69,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries = locales.flatMap((locale) =>
     basePaths.map((path) => ({
       url: siteUrl + "/" + locale + (path ? "/" + path : ""),
-      lastModified: new Date(),
       changeFrequency: path === "" ? "daily" as const : "weekly" as const,
       priority: path === "" ? 1 : 0.8,
     })),
   );
+
+  const providerEntries: MetadataRoute.Sitemap = [
+    ...saloProviders.flatMap((provider) =>
+      locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/providers/salo-" + provider.id,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
+    ),
+    ...kimitoonProviders.flatMap((provider) =>
+      locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/providers/kimitoon-" + provider.id,
+        changeFrequency: "monthly" as const,
+        priority: 0.65,
+      })),
+    ),
+    ...luxuryDirectory.flatMap((provider) =>
+      locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/providers/directory-" + provider.id,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
+    ),
+  ];
 
   try {
     const [destinations, properties, experiences, blogPosts, pagesResult] = await Promise.all([
@@ -66,14 +108,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .from("site_pages")
         .select("slug,locale,updated_at")
         .eq("published", true)
-        .eq("noindex", false),
+        .eq("noindex", false)
+        .in("locale", locales),
     ]);
 
     const dynamicEntries: MetadataRoute.Sitemap = [
       ...destinations.flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/destinations/" + canonicalDestinationSlug(item.slug),
-          lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
         })),
@@ -81,7 +123,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...properties.flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/accommodations/" + item.slug,
-          lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
         })),
@@ -89,31 +130,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...experiences.flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/experiences/" + item.slug,
-          lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
         })),
       ),
+
       ...blogPosts.flatMap((post) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/blog/" + post.slug,
-          lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
           changeFrequency: "monthly" as const,
           priority: 0.6,
         })),
       ),
       ...((pagesResult.data ?? []).map((page) => ({
         url: siteUrl + "/" + page.locale + "/pages/" + page.slug,
-        lastModified: page.updated_at ? new Date(page.updated_at) : new Date(),
+        ...(page.updated_at && Number.isFinite(Date.parse(page.updated_at))
+          ? { lastModified: new Date(page.updated_at) }
+          : {}),
         changeFrequency: "monthly" as const,
         priority: 0.5,
       }))),
     ];
 
-    return [...staticEntries, ...dynamicEntries].filter(
+    return [...staticEntries, ...providerEntries, ...dynamicEntries].filter(
       (entry, index, entries) => entries.findIndex((candidate) => candidate.url === entry.url) === index,
     );
   } catch {
-    return staticEntries;
+    return [...staticEntries, ...providerEntries];
   }
 }

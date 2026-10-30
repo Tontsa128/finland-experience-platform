@@ -135,6 +135,20 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Majoitus Mathildedal — official provider website",
   },
   {
+    id: "teijon-masuuni",
+    category: "experience",
+    name: "Teijon Masuuni",
+    nameByLocale: { fi: "Teijon Masuuni", en: "Teijo Masuuni", es: "Teijo Masuuni" },
+    description: {
+      fi: "Vuonna 1686 perustetun Teijon ruukin historiallisessa miljöössä toimiva taiteen ja kädentaitojen keskus: vaihtuvia näyttelyitä, kahvila, taide- ja käsityöputiikki sekä tapahtumia.",
+      en: "An arts and crafts centre in the historic Teijo ironworks, founded in 1686, with changing exhibitions, a café, an art and craft shop and events.",
+      es: "Centro de arte y artesanía en el histórico recinto siderúrgico de Teijo, fundado en 1686, con exposiciones temporales, cafetería, tienda de arte y artesanía y eventos."
+    },
+    url: "https://www.teijonmasuuni.fi/",
+    image: "https://www.teijonmasuuni.fi/wp-content/uploads/2020/01/kahvila_masuuni-1-839x1024.jpg",
+    imageCredit: "Teijon Masuuni — official website",
+  },
+  {
     id: "teijo-action-park",
     category: "experience",
     name: "Teijo Ski & Action Park",
@@ -186,8 +200,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Lakes, forests, rocks and trails year-round. Basic access to the national park is free; rental services are charged separately.",
     },
     url: "https://www.luontoon.fi/teijo",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Punassuo2.jpg",
+    imageCredit: "Vnnen · CC BY-SA 4.0 / Wikimedia Commons",
   },
   {
     id: "meri-teijo-golf",
@@ -199,8 +213,22 @@ export const saloProviders: SaloProvider[] = [
       en: "Golf in the coastal landscape of Teijo. Check the current green fee directly with the club.",
     },
     url: "https://meriteijogolf.com",
-    image: providerImages.actionPark,
-    imageCredit: "Visit Salo / Salon Kohteet",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golf_aktiviteetit.jpg?itok=lpvm1Tl0",
+    imageCredit: "Visit Mathildedal — Meri-Teijo Golf course listing; reuse permission to confirm",
+  },
+  {
+    id: "ravintola-terho",
+    category: "food",
+    name: "Ravintola Terho",
+    nameByLocale: { fi: "Ravintola Terho", en: "Restaurant Terho", es: "Restaurante Terho" },
+    description: {
+      fi: "Mathildedalin kyläravintola tunnetaan kiviarinauunissa paistetuista pizzoista, oman paahtimon kahvista, paikallisista juomista ja takapihan keikoista.",
+      en: "A village restaurant in Mathildedal known for stone-deck oven pizzas, coffee from its own roastery, local drinks and live music in the backyard.",
+      es: "Restaurante local en Mathildedal, conocido por sus pizzas al horno de piedra, el café de su propio tostador, las bebidas locales y la música en directo en el patio."
+    },
+    url: "https://www.ravintolaterho.fi/",
+    image: "https://static.wixstatic.com/media/5e5929_9e5a4f06a1794080a2b8d42c24e055d2~mv2.jpg/v1/crop/x_0%2Cy_461%2Cw_1365%2Ch_948/fill/w_829%2Ch_542%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/terho-web-85.jpg",
+    imageCredit: "Ravintola Terho — official website",
   },
   {
     id: "mathildedal-brewery",
