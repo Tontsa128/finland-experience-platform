@@ -169,7 +169,7 @@ Teijon ruukkikylä ja Teijon kansallispuisto linkitetään toisiinsa, mutta niit
 - Kaikki reitit, metatiedot, canonical/hreflang, saavutettavuus, mobiili, kuvat ja ulkoiset linkit tarkistetaan ennen julkaisua.
 - Muutokset tehdään ominaisuushaarassa, testataan CI:ssä ja julkaistaan vasta hyväksynnän jälkeen.
 
-## 7. Kirjakkala osana Ruukkikyliä
+## 6. Kirjakkala osana Ruukkikyliä
 
 Virallisen Visit Salo -kohdekuvauksen mukaan Teijon alueen kolme ruukkikylää ovat **Kirjakkala, Teijo ja Mathildedal**. Siksi Ruukkikylät-ryhmä ei saa rajoittua vain kahteen kylään.
 
@@ -179,7 +179,7 @@ Virallisen Visit Salo -kohdekuvauksen mukaan Teijon alueen kolme ruukkikylää o
 - Kirjakkalalle lisätään oma FI/EN/ES-kohdesivu, yksi kanoninen palveluntarjoajaprofiili sekä linkit Teijon ja Mathildedalin oppaisiin.
 - Kirjakkala pidetään omana kylänään eikä sitä yhdistetä Teijon ruukkikylän profiiliin, vaikka molemmat kuuluvat samaan laajempaan Teijon alueeseen.
 
-## 6. Toteutusjärjestys
+## 7. Toteutusjärjestys
 
 1. Viimeistele nykyisten Salo-tietueiden ja virallisten hakemistojen vertailu; tunnista duplikaatit ja puuttuvat kohteet.
 2. Määrittele kanoninen palveluntarjoaja- ja kategoriarakenne nykyisen Supabase CMS:n päälle.
