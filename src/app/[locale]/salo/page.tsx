@@ -6,7 +6,6 @@ import type { Locale } from "@/types";
 import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { destinations as fallbackDestinations } from "@/lib/data";
 
 const copy = {
@@ -190,7 +189,7 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
             { id: "suomusjarvi", title: { fi: "Suomusjärvi", en: "Suomusjärvi", es: "Suomusjärvi" }, text: { fi: "Huvilat ja lomamökit", en: "Villas and holiday cottages", es: "Villas y casas de vacaciones" } },
             { id: "salo", title: { fi: "Salo & lähialueet", en: "Salo & nearby areas", es: "Salo y alrededores" }, text: { fi: "Matkailuinfo, oppaat ja retkipalvelut", en: "Tourism information, guides and excursions", es: "Información turística, guías y excursiones" } },
           ].map((area) => (
-            <a key={area.id} href={`#area-${area.id}`} className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card">
+            <a key={area.id} href={`/${locale}/salo/${area.id}`} className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card">
               <h3 className="font-display text-xl font-bold text-brand-950 group-hover:text-brand-700">{area.title[locale]}</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">{area.text[locale]}</p>
               <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-brand-700">{locale === "fi" ? "Katso alueen kohteet" : locale === "es" ? "Ver los lugares" : "Explore places"}<ArrowRight className="h-3.5 w-3.5" /></span>
@@ -199,14 +198,7 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <SaloDirectory locale={locale} area="mathildedal" />
-      <SaloDirectory locale={locale} area="teijo" />
-      <SaloDirectory locale={locale} area="sarkisalo" />
-      <SaloDirectory locale={locale} area="pernio" />
-      <SaloDirectory locale={locale} area="halikko" />
-      <SaloDirectory locale={locale} area="vaskio" />
-      <SaloDirectory locale={locale} area="suomusjarvi" />
-      <SaloDirectory locale={locale} area="salo" />
+
 
       <section className="container-narrow py-16 sm:py-24">
         <div className="grid gap-6 md:grid-cols-2">
