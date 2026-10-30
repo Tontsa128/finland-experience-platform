@@ -13,6 +13,57 @@ import { getKimitoonProvider, getKimitoonProviders, type KimitoonCategory } from
 
 type Params = { locale: string; slug: string };
 
+const saloProviderLocations: Record<string, Record<Locale, string>> = {
+  "visit-salo": { fi: "Salo", en: "Salo", es: "Salo" },
+  "visit-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "hotel-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "mathildan-marina": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "matilda-villas": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "matri-house": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "majoitus-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "kattohuone-mathildedal": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "ravintola-terho": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "mathildedal-brewery": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "teijon-masuuni": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "teijo-action-park": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "teijo-national-park": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "meri-teijo-golf": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "matildanjarven-kampat": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "teijo-tentsile": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "saaristomokit-sarkisalo": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "aava-adventures": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "finnholm-strandbo": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "forby-marina": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "cafe-vinssi": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "saaristoravintola-nixor": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "villa-meri-sarkisalo": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "krailan-sabrina": { fi: "Särkisalo · Perniö · Salo", en: "Särkisalo · Perniö · Salo", es: "Särkisalo · Perniö · Salo" },
+  "tiiranta": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "niksaaren-sauna": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "sarkisalo-fishing": { fi: "Särkisalo · Salo", en: "Särkisalo · Salo", es: "Särkisalo · Salo" },
+  "forby-rantajooga": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "leipyolin-tila": { fi: "Perniö · Salo", en: "Perniö · Salo", es: "Perniö · Salo" },
+  "villa-nennebo": { fi: "Petun saari · Särkisalo · Salo", en: "Pettu Island · Särkisalo · Salo", es: "Isla de Pettu · Särkisalo · Salo" },
+  "alaspaan-maatila": { fi: "Perniö · Salo", en: "Perniö · Salo", es: "Perniö · Salo" },
+  "topilan-tupa": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "salon-oppaat": { fi: "Salo", en: "Salo", es: "Salo" },
+  "vuohensaari-camping": { fi: "Salo", en: "Salo", es: "Salo" },
+  "vuorovetten-jaatelo": { fi: "Strömma · Mathildedal · Särkisalo · Salo", en: "Strömma · Mathildedal · Särkisalo · Salo", es: "Strömma · Mathildedal · Särkisalo · Salo" },
+  "chill-out-fishing": { fi: "Salo · Saaristomeri", en: "Salo · Archipelago Sea", es: "Salo · Mar del Archipiélago" },
+  "villa-viktoria": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
+  "villa-frans": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
+  "villa-viola": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
+  "villa-laperla": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
+  "teijon-kammari": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "kruuvan-mokit": { fi: "Särkisalo · Perniö · Salo", en: "Särkisalo · Perniö · Salo", es: "Särkisalo · Perniö · Salo" },
+  "meri-veikko": { fi: "Petun saari · Särkisalo · Salo", en: "Pettu Island · Särkisalo · Salo", es: "Isla de Pettu · Särkisalo · Salo" },
+  "villa-signell": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "lonnviken": { fi: "Petun saari · Särkisalo · Salo", en: "Pettu Island · Särkisalo · Salo", es: "Isla de Pettu · Särkisalo · Salo" },
+  "katiskanmaeki": { fi: "Ylönkylä · Särkisalo · Salo", en: "Ylönkylä · Särkisalo · Salo", es: "Ylönkylä · Särkisalo · Salo" },
+  "onnenperan-mokki": { fi: "Vaskio · Salo", en: "Vaskio · Salo", es: "Vaskio · Salo" },
+  "meri-ruukin-lomakyla": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+};
+
 function resolveProvider(slug: string, locale: Locale) {
   if (slug.startsWith("salo-")) {
     const item = saloProviders.find((provider) => provider.id === slug.slice(5));
@@ -31,7 +82,8 @@ function resolveProvider(slug: string, locale: Locale) {
       category,
       image: item.image,
       imageCredit: item.imageCredit,
-      location: "Salo · Mathildedal · Teijo",
+      imageSource: item.imageSource,
+      location: saloProviderLocations[item.id]?.[locale] || (locale === "fi" ? "Salon seutu" : locale === "es" ? "Región de Salo" : "Salo region"),
       website: item.url,
       price: item.priceByLocale?.[locale] || (locale === "fi" ? item.price : undefined),
       tags: [] as string[],
@@ -114,6 +166,24 @@ const mathildedalAreaPhotos: LocalPhoto[] = [
 ];
 
 const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
+  "salo-teijon-kammari": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/thumbnail_IMG_3168-1.jpg", alt: { fi: "Teijon Kammarin mökki", en: "Teijon Kammari cottage", es: "Cabaña Teijon Kammari" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/thumbnail_IMG_3171.jpg", alt: { fi: "Teijon Kammarin merelle avautuva parveke", en: "Teijon Kammari balcony facing the sea", es: "Balcón de Teijon Kammari con vistas al mar" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/IMG_0927-1152x768.jpg", alt: { fi: "Teijon Kammarin puulämmitteinen sauna", en: "Wood-fired sauna at Teijon Kammari", es: "Sauna de leña de Teijon Kammari" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/sisalta-1152x768.jpg", alt: { fi: "Teijon Kammarin oleskelutila", en: "Teijon Kammari sitting room", es: "Sala de estar de Teijon Kammari" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/" },
+  ],
+  "salo-kruuvan-mokit": [
+    { src: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-45-1024x683.webp", alt: { fi: "Villa Kruuvan mökkimiljöö", en: "Villa Kruuva cottage setting", es: "Entorno de la casa rural Villa Kruuva" }, credit: "Kruuvan mökit", source: "https://www.kruuvanmokit.fi/" },
+    { src: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-olohuone-01-819x1024.webp", alt: { fi: "Villa Kruuvan olohuone", en: "Villa Kruuva living room", es: "Sala de estar de Villa Kruuva" }, credit: "Kruuvan mökit", source: "https://www.kruuvanmokit.fi/" },
+    { src: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-49-683x1024.webp", alt: { fi: "Villa Kruuvan sauna", en: "Villa Kruuva sauna", es: "Sauna de Villa Kruuva" }, credit: "Kruuvan mökit", source: "https://www.kruuvanmokit.fi/" },
+    { src: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-laituri-01-1024x683.webp", alt: { fi: "Villa Kruuvan oma ranta ja laituri", en: "Villa Kruuva private shore and pier", es: "Orilla privada y muelle de Villa Kruuva" }, credit: "Kruuvan mökit", source: "https://www.kruuvanmokit.fi/" },
+  ],
+  "salo-meri-veikko": [
+    { src: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c860e1402211607476_Clipboard01%20151236%20re1.jpg", alt: { fi: "Meri-Veikon majoituskohteen kuva", en: "Meri-Veikko accommodation photo", es: "Fotografía del alojamiento Meri-Veikko" }, credit: "Saaristotila Lönnviken", source: "https://www.lonnviken.com/fi/meri-veikko" },
+    { src: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c846690293640ca95c_8513_10x15%20re1.jpg", alt: { fi: "Meri-Veikon majoituskohteen kuva", en: "Meri-Veikko accommodation photo", es: "Fotografía del alojamiento Meri-Veikko" }, credit: "Saaristotila Lönnviken", source: "https://www.lonnviken.com/fi/meri-veikko" },
+    { src: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c821542327e367b1d4_20220826_145501%20resized%201.jpg", alt: { fi: "Meri-Veikon majoituskohteen kuva", en: "Meri-Veikko accommodation photo", es: "Fotografía del alojamiento Meri-Veikko" }, credit: "Saaristotila Lönnviken", source: "https://www.lonnviken.com/fi/meri-veikko" },
+    { src: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c89daa1781cc8f665c_20220825_202417%20re%205.jpg", alt: { fi: "Meri-Veikon majoituskohteen kuva", en: "Meri-Veikko accommodation photo", es: "Fotografía del alojamiento Meri-Veikko" }, credit: "Saaristotila Lönnviken", source: "https://www.lonnviken.com/fi/meri-veikko" },
+  ],
   "kimitoon-db-hostel": [
     { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_173606-1024x781.jpg", alt:{fi:"DB Hostellin kahden hengen huone",en:"DB Hostel twin room",es:"Habitación doble de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
     { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_174601-1024x768.jpg", alt:{fi:"DB Hostellin neljän hengen huone parvekkeella",en:"DB Hostel four-person room with balcony",es:"Habitación para cuatro personas con balcón de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
@@ -382,18 +452,28 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
           ) : null}
           {provider.tags.length > 0 ? <div className="mt-5 flex flex-wrap gap-2">{provider.tags.map((tag) => <span key={tag} className="rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800">{tag}</span>)}</div> : null}
           {(() => {
-            const guide = mathildedalGuides[slug]?.[locale] || teijoGuides[slug]?.[locale] || (slug.startsWith("kimitoon-") ? {
+            const isSaloProvider = slug.startsWith("salo-");
+            const guide = mathildedalGuides[slug]?.[locale] || teijoGuides[slug]?.[locale] || (isSaloProvider ? {
+              intro: provider.description,
+              highlightsTitle: locale === "fi" ? "Kohteen palvelut" : locale === "es" ? "Servicios del lugar" : "What the provider offers",
+              highlights: [] as string[],
+              planningTitle: locale === "fi" ? "Hyvä tietää ennen vierailua" : locale === "es" ? "Antes de la visita" : "Before your visit",
+              planning: locale === "fi" ? "Palvelusisältö, varustelu, aukioloajat, hinnat ja saatavuus voivat muuttua. Varmista ajantasaiset tiedot suoraan palveluntarjoajalta ennen vierailua tai varausta." : locale === "es" ? "Los servicios, las instalaciones, los horarios, los precios y la disponibilidad pueden cambiar. Confirma la información actual directamente con el proveedor antes de visitar o reservar." : "Services, facilities, opening times, prices and availability may change. Confirm current details directly with the provider before visiting or booking.",
+              nearbyTitle: locale === "fi" ? "Muita Salon seudun kohteita" : locale === "es" ? "Otros lugares de la región de Salo" : "More places in the Salo region",
+            } : (slug.startsWith("kimitoon-") ? {
               intro: provider.description,
               highlightsTitle: locale === "fi" ? "Kohteen palvelut ja ominaisuudet" : locale === "es" ? "Servicios y características" : "Services and features",
               highlights: provider.tags,
               planningTitle: locale === "fi" ? "Tarkista ennen vierailua tai varausta" : locale === "es" ? "Antes de visitar o reservar" : "Before visiting or booking",
               planning: locale === "fi" ? "Aukioloajat, kausittainen saatavuus, hinnat, palvelusisältö ja varausehdot voivat muuttua. Tarkista tiedot suoraan palveluntarjoajan omasta kanavasta ennen matkaa." : locale === "es" ? "Los horarios, la disponibilidad por temporada, los precios, los servicios y las condiciones pueden cambiar. Confirma los datos directamente con el proveedor antes de viajar." : "Opening hours, seasonal availability, prices, service details and booking terms can change. Confirm them directly with the provider before travelling.",
               nearbyTitle: locale === "fi" ? "Tutustu muihin Kemiönsaaren kohteisiin" : locale === "es" ? "Descubre otros lugares de Kimitoön" : "Explore more places on Kimitoön",
-            } : null);
+            } : null));
             if (!guide) return null;
-            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: ("imageSource" in provider && provider.imageSource) ? provider.imageSource : provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(slug.startsWith("salo-") && !teijoGuides[slug] ? mathildedalAreaPhotos : [])];
+            const showRelated = Boolean(mathildedalGuides[slug] || teijoGuides[slug] || slug.startsWith("kimitoon-"));
+            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: ("imageSource" in provider && provider.imageSource) ? provider.imageSource : provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(new Set(["salo-visit-mathildedal", "salo-hotel-mathildedal", "salo-mathildan-marina", "salo-matilda-villas", "salo-matri-house", "salo-majoitus-mathildedal", "salo-mathildedal-brewery", "salo-ravintola-terho"]).has(slug) ? mathildedalAreaPhotos : [])];
             return (
               <div className="mt-10 space-y-8">
+                {galleryPhotos.length > 0 ? (
                 <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {galleryPhotos.map((photo, index) => (
@@ -409,20 +489,24 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
                     ))}
                   </div>
                 </section>
+                ) : null}
                 <section className="rounded-3xl border border-brand-100 bg-brand-50 p-6 sm:p-8">
                   <h3 className="font-display text-2xl font-bold text-brand-950">{provider.name}</h3>
                   <p className="mt-4 text-base leading-8 text-slate-700">{guide.intro}</p>
                 </section>
+                {guide.highlights.length > 0 ? (
                 <section>
                   <h3 className="font-display text-2xl font-bold text-brand-950">{guide.highlightsTitle}</h3>
                   <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                     {guide.highlights.map((highlight) => <li key={highlight} className="rounded-2xl border border-slate-200 p-4 text-sm leading-7 text-slate-700"><span className="mr-2 font-bold text-brand-700">✓</span>{highlight}</li>)}
                   </ul>
                 </section>
+                ) : null}
                 <section className="rounded-3xl border border-slate-200 p-6 sm:p-8">
                   <h3 className="font-display text-xl font-bold text-brand-950">{guide.planningTitle}</h3>
                   <p className="mt-3 leading-7 text-slate-700">{guide.planning}</p>
                 </section>
+                {showRelated ? (
                 <section>
                   <h3 className="font-display text-2xl font-bold text-brand-950">{guide.nearbyTitle}</h3>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -431,6 +515,7 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
                       : (teijoGuides[slug] ? teijoRelated : mathildedalRelated).filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}
                   </div>
                 </section>
+                ) : null}
               </div>
             );
           })()}
