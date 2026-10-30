@@ -81,6 +81,7 @@ if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
 const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
 const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
 const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
+const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
 const providerArrayStart = saloDataSource.indexOf("export const saloProviders: SaloProvider[] = [");
 const providerArrayEnd = saloDataSource.indexOf("\n];", providerArrayStart);
 const providerIds = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
@@ -95,15 +96,22 @@ const duplicateAreaIds = assignedProviderIds.filter((id, index) => assignedProvi
 const missingAreaIds = providerIds.filter((id) => !assignedProviderIds.includes(id));
 const unknownAreaIds = assignedProviderIds.filter((id) => !providerIds.includes(id));
 const renderedAreas = [...areaMap.matchAll(/^\s+([a-z]+):\s*\[/gm)].map((match) => match[1]);
-const missingAreaSections = renderedAreas.filter((area) => !new RegExp(`<SaloDirectory\\s+locale=\\{locale\\}\\s+area=["']${area}["']`).test(saloPageSource));
-if (providerIds.length !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || missingAreaSections.length) {
+const areaRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}/.test(saloAreaPageSource);
+const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("Object.keys(areaProviderIds).map((area) => ({ area }))");
+const areaCardsLinkToRoutes = saloPageSource.includes('href={`/${locale}/salo/${area.id}`}');
+const sitemapIncludesAreaRoutes = (await readFile(path.resolve("src/app/sitemap.ts"), "utf8")).includes("...saloAreaPaths");
+if (providerIds.length !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || renderedAreas.length !== 8) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
     duplicateAreaIds,
     missingAreaIds,
     unknownAreaIds,
-    missingAreaSections,
+    renderedAreas,
+    areaRouteUsesDirectory,
+    areaRouteGeneratesAllSlugs,
+    areaCardsLinkToRoutes,
+    sitemapIncludesAreaRoutes,
   });
 }
 
