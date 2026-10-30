@@ -56,6 +56,7 @@ const nextConfig = {
       { protocol: "https", hostname: "www.kansakouluun.fi" },
       { protocol: "https", hostname: "www.visitkimitoon.fi" },
       { protocol: "https", hostname: "visitkimitoon.fi" },
+      { protocol: "https", hostname: "ksg.fi" },
       { protocol: "https", hostname: "launokorpi.com" },
       { protocol: "https", hostname: "golf-pass.brightspotcdn.com" },
       { protocol: "https", hostname: "meriteijobikepark.com" },
