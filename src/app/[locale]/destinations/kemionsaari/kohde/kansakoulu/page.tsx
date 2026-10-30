@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { KimitoonKansakouluDetail } from "@/components/salo/KimitoonKansakouluDetail";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { locales } from "@/lib/utils";
@@ -16,6 +17,6 @@ export async function generateMetadata({params}:{params:Promise<{locale:string}>
 }
 export default async function Page({params}:{params:Promise<{locale:string}>}){
  const {locale:raw}=await params;
- if(!locales.includes(raw as Locale)) return null;
+ if(!locales.includes(raw as Locale)) notFound();
  return <KimitoonKansakouluDetail locale={raw as Locale} kind="stay"/>;
 }
