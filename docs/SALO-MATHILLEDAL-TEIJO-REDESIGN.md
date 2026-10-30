@@ -14,7 +14,7 @@ Tämä dokumentti erottaa nykyisestä repositoriosta varmennetut tekniset havain
 - Mathildedalin vanha reitti `/[locale]/mathildedal` tekee pysyvän uudelleenohjauksen reitille `/[locale]/destinations/salo-mathildedal`. Tämä ei vielä ole erillinen, täysin uudistettu Mathildedal-alueopas.
 - Teijon ruukkikylällä on oma reitti `/[locale]/destinations/teijon-ruukkikyla`, joka käyttää yhteistä `RuukkikylaGuide`-komponenttia.
 - Uudistushaaran `saloProviders`-luettelo sisältää nyt 72 yksilöllistä tietuetta: 33 majoitusta, 12 elämystä, 8 ruoka- ja ravintolakohdetta, 7 ostos- ja käsityökohdetta, 4 luontokohdetta, 2 kulttuurikohdetta, 2 hyvinvointikohdetta, 2 tapahtuma-/juhlatilakohdetta ja 2 matkailuinfoa. Monipalveluyritykset voidaan lisäksi näyttää useassa kategoriassa saman kanonisen tietueen avulla.
-- Kahdelta nykyiseltä tietueelta puuttuu edelleen korttikuva: Chill Out Fishing ja Villa Viktoria. Teijon Kammari, Villa Kruuva ja Meri-Veikko saivat virallisista lähteistä löytyneet kuvat ja lähdemerkinnät.
+- Yhdeltä nykyiseltä tietueelta puuttuu edelleen korttikuva: Chill Out Fishing. Villa Viktorian palvelukuvaus tarkistettiin Lomalaperlan omalta kohdesivulta, ja sen korttiin lisättiin kyseisen sivun virallinen kuva sekä lähdemerkintä. Teijon Kammari, Villa Kruuva ja Meri-Veikko saivat virallisista lähteistä löytyneet kuvat ja lähdemerkinnät.
 - Salon korttimalli tuntee nyt kahdeksan pääluokkaa: matkailuinfo, majoitus, elämykset, luonto, ruoka, ostokset, kulttuuri ja hyvinvointi. Tapahtumat, meri/saaristo, kylät ja muut paikalliset palvelut tarvitsevat vielä oman kattavan luokittelunsa.
 - Nykyiset Salon palvelutiedot ovat pääosin koodissa tiedostossa `src/lib/salo.ts`. Palvelukortin oma sivu rakentuu yleisestä provider-reitistä, mutta Salon tietomallissa ei ole vastaavaa rakenteista kuvagalleriaa ja lähde-/tarkistustietoa kuin Kemiönsaaren uudistetussa mallissa.
 - Yläpalkin nykyinen `site_navigation`-malli palauttaa litteän listan (tunniste, kieli, nimi, URL ja järjestys). Siinä ei ole valmista vanhempi–lapsi- tai ryhmä-rakennetta Ruukkikylät-alavalikolle.
@@ -29,6 +29,7 @@ Tämä dokumentti erottaa nykyisestä repositoriosta varmennetut tekniset havain
 - Visit Salo – tapahtumat: https://visitsalo.fi/tapahtumat/
 - Visit Salo – ostokset ja lähiruoka: https://visitsalo.fi/ostokset/
 - Visit Salo – Mathildedalin ruukkikylä ja alueen kohteita: https://visitsalo.fi/mathildedalin-ruukkikyla/
+- Lomalaperla – Villa Viktoria (palvelun kuvaus ja kohdekuva): https://www.lomalaperla.com/moumlkki-3.html
 - Visit Salo – Pieni Rannikkoreitti: https://kohteet.visitsalo.fi/pieni-rannikkoreitti/
 
 ### Mathildedal
