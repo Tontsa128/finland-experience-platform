@@ -10,30 +10,35 @@ const labels = {
   en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", shopping: "Shopping & crafts", wellbeing: "Wellbeing & sauna", culture: "Culture & history", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
 } as const;
 
-export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: "mathildedal" | "teijo" }) {
+export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: "mathildedal" | "teijo" | "kirjakkala" }) {
   const l = labels[locale];
   const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
   const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery", "ravintola-terho", "kaarnalaiva", "matildan-kesakauppa", "piironki-dock-helsinki", "ruukin-kehraamo", "second-chance-mathildedal", "vinttipuoti", "mathildedal-keskuspuisto", "mathildedal-meriuimapaikka", "matildanjarven-sauna", "matildanjarven-kampat", "teijo-tentsile"]);
-  const teijoIds = new Set(["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf", "matildanjarven-sauna", "matildanjarven-kampat", "teijo-tentsile", "teijon-kammari", "teijon-kirkko"]);
+  const teijoIds = new Set(["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf", "matildanjarven-sauna", "matildanjarven-kampat", "teijo-tentsile", "teijon-kammari", "teijon-kirkko", "teijon-arkki"]);
+  const kirjakkalaIds = new Set(["kirjakkalan-ruukkikyla"]);
   const areaProviders = area === "mathildedal"
     ? saloProviders.filter((provider) => mathildedalIds.has(provider.id))
     : area === "teijo"
       ? saloProviders.filter((provider) => teijoIds.has(provider.id))
-      : saloProviders;
+      : area === "kirjakkala"
+        ? saloProviders.filter((provider) => kirjakkalaIds.has(provider.id))
+        : saloProviders;
   const providers = category ? areaProviders.filter((provider) => provider.category === category) : areaProviders;
   return (
     <section className="bg-brand-50 py-16 sm:py-24">
       <div className="container-narrow">
         <div className="mb-10 max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{area === "mathildedal" ? "Mathildedal · Salo" : area === "teijo" ? "Teijo · Salo" : "Salo · Mathildedal · Teijo"}</p>
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{area === "mathildedal" ? "Mathildedal · Salo" : area === "teijo" ? "Teijo · Salo" : area === "kirjakkala" ? "Kirjakkala · Teijo" : "Salo · Mathildedal · Teijo"}</p>
           <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">
-            {area === "mathildedal" ? (locale === "fi" ? "Mathildedalin paikat ja palvelut" : locale === "es" ? "Lugares y servicios de Mathildedal" : "Places and services in Mathildedal") : area === "teijo" ? (locale === "fi" ? "Teijon palvelut ja elämykset" : locale === "es" ? "Servicios y experiencias en Teijo" : "Services and experiences in Teijo") : (locale === "fi" ? "Löydä paikalliset palvelut" : locale === "es" ? "Descubre los proveedores locales" : "Discover local providers")}
+            {area === "mathildedal" ? (locale === "fi" ? "Mathildedalin paikat ja palvelut" : locale === "es" ? "Lugares y servicios de Mathildedal" : "Places and services in Mathildedal") : area === "teijo" ? (locale === "fi" ? "Teijon palvelut ja elämykset" : locale === "es" ? "Servicios y experiencias en Teijo" : "Services and experiences in Teijo") : area === "kirjakkala" ? (locale === "fi" ? "Kirjakkalan palvelut ja elämykset" : locale === "es" ? "Servicios y experiencias en Kirjakkala" : "Services and experiences in Kirjakkala") : (locale === "fi" ? "Löydä paikalliset palvelut" : locale === "es" ? "Descubre los proveedores locales" : "Discover local providers")}
           </h2>
           <p className="mt-4 text-lg leading-8 text-slate-600">
             {area === "mathildedal"
               ? (locale === "fi" ? "Tutustu majoitukseen, kylän palveluihin ja paikallisiin elämyksiin. Avaa jokaisen kohteen oma alasivu ja siirry sieltä suoraan palveluntarjoajan sivustolle." : locale === "es" ? "Descubre alojamientos, servicios del pueblo y experiencias locales. Abre la ficha de cada lugar y continúa directamente a la web del proveedor." : "Explore accommodation, village services and local experiences. Open each place’s own detail page and continue directly to the provider’s website.")
               : area === "teijo"
                 ? (locale === "fi" ? "Tutustu ruukkikylän kulttuuriin, luontoon ja paikallisiin palveluihin. Varaus, maksaminen ja palvelun sopiminen hoidetaan suoraan palveluntarjoajan kanssa." : locale === "es" ? "Descubre la cultura del pueblo siderúrgico, la naturaleza y los servicios locales. Las reservas, los pagos y los acuerdos se gestionan directamente con cada proveedor." : "Explore the ironworks village's culture, nature and local services. Bookings, payments and service agreements are handled directly with each provider.")
+                : area === "kirjakkala"
+                ? (locale === "fi" ? "Kirjakkalan ruukkikylän majoitus-, sauna- ja ulkoilupalvelut sijaitsevat Hamarinjärven rannalla kansallispuiston reittien yhteydessä. Tarkista palvelut suoraan järjestäjältä." : locale === "es" ? "Los servicios de alojamiento, sauna y actividades al aire libre del pueblo siderúrgico de Kirjakkala están junto al lago Hamarinjärvi y las rutas del parque nacional. Confirma los detalles con el proveedor." : "Kirjakkala's accommodation, sauna and outdoor services sit beside Lake Hamarinjärvi and the national park trails. Confirm details directly with the provider.")
                 : (locale === "fi" ? "Näe paikka ensin. Kun löydät kiinnostavan kohteen, siirryt suoraan palveluntarjoajan omalle sivulle. Emme ota varausta tai maksua vastaan täällä." : locale === "es" ? "Primero descubre el lugar. Cuando encuentres algo que te interese, continúa directamente al sitio del proveedor. No gestionamos la reserva ni el pago aquí." : "Discover the place first. When you find something you like, continue directly to the provider. We do not take the booking or payment here.")}
           </p>
         </div>
