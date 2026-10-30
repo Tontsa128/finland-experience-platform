@@ -43,10 +43,10 @@ const copy:Record<Locale,Record<Kind,Copy>> = {
    ],
    practicalTitle:"Matkailijan tiedot",
    practical:[{label:"Osoite",value:"Brännbodantie 71, 25830 Västanfjärd, Kemiönsaari"},{label:"Puhelin",value:"+358 44 977 6810"},{label:"Sähköposti",value:"info@kansakouluun.fi"},{label:"Majoitusmuoto",value:"Bed & Breakfast / majatalo"},{label:"WC ja suihku",value:"Yhteiset tilat käytävällä – tarkista huonekohtaiset tiedot"}],
-   galleryTitle:"Kuvia Kansakoulusta",reviewsTitle:"Vieraiden arviot",reviewsIntro:"Arviot ovat ulkopuolisten arvostelupalvelujen omia lukuja. Luvut tarkistettu 30.10.2026; pistemäärät ja arvostelumäärät voivat muuttua, joten tarkista aina alkuperäinen palvelu ennen varausta.",
+   galleryTitle:"Ravintola ja lähiruoka saman katon alla",reviewsTitle:"Vieraiden arviot",reviewsIntro:"Arviot ovat ulkopuolisten arvostelupalvelujen omia lukuja. Luvut tarkistettu 30.10.2026; pistemäärät ja arvostelumäärät voivat muuttua, joten tarkista aina alkuperäinen palvelu ennen varausta.",
    reviews:[
-    {source:"Google",score:"4,5 / 5",count:"424 arvostelua",detail:"Google Travelin kohdeprofiilissa näkyvä kokonaisarvio. Arvio koskee Kansakoulun majoitus- ja ravintolakohdetta.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
-    {source:"Booking.com",score:"8,7 / 10",count:"276 majoitusarviota",detail:"Majoittujien arviot Booking.comissa. Sivulla korostuvat muun muassa henkilökunnan ystävällisyys ja aamupala.",url:"https://www.booking.com/hotel/fi/kansakoulu.html"}
+    {source:"Google",score:"4,5 / 5",count:"423 arvostelua",detail:"Google Travelin kohdeprofiilissa näkyvä kokonaisarvio. Arvio koskee Kansakoulun majoitus- ja ravintolakohdetta.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
+    {source:"Booking.com",score:"8,6 / 10",count:"275 majoitusarviota",detail:"Majoittujien arviot Booking.comissa. Sivulla korostuvat muun muassa henkilökunnan ystävällisyys ja aamupala.",url:"https://www.booking.com/hotel/fi/kansakoulu.fi.html"}
    ],
    sourceTitle:"Sisältö ja kuvat: Kansakoulun oma verkkosivusto sekä erikseen nimetyt arvostelupalvelut",
    hoursTitle:"Aukiolo ja varaus",hoursText:"Majoituksen saatavuus, sisäänkirjautuminen, hinnat ja huonekohtaiset ehdot vaihtelevat. Kansakoulun vanha verkkosivusto ei tarjoa luotettavaa reaaliaikaista varaustilannetta. Tarkista vapaat huoneet ja ehdot suoraan varauspalvelusta.",
@@ -76,7 +76,7 @@ const copy:Record<Locale,Record<Kind,Copy>> = {
    practical:[{label:"Osoite",value:"Brännbodantie 71, 25830 Västanfjärd, Kemiönsaari"},{label:"Puhelin",value:"+358 44 977 6810"},{label:"Sähköposti",value:"info@kansakouluun.fi"},{label:"Ruokakonsepti",value:"Ravintola, lounas sesongin mukaan, juhla- ja ryhmäpalvelut"},{label:"Lähiruoka",value:"Kemiönsaaren lähituottajien raaka-aineita ja tuotteita"}],
    galleryTitle:"Ravintolan ja lähiruoan kuvia",reviewsTitle:"Asiakkaiden ravintola-arviot",reviewsIntro:"Arvostelupalvelujen arvosanat ovat ulkopuolisten palvelujen ilmoittamia. Luvut tarkistettu 30.10.2026. Arvostelut eivät ole FINNEXPRIENCEn kirjoittamia tai muokkaamia.",
    reviews:[
-    {source:"Google",score:"4,5 / 5",count:"424 arvostelua",detail:"Google Travelin kohdeprofiilin kokonaisarvio Kansakoulun kohteelle. Luku ei ole erillinen vain ravintolalle.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
+    {source:"Google",score:"4,5 / 5",count:"423 arvostelua",detail:"Google Travelin kohdeprofiilin kokonaisarvio Kansakoulun kohteelle. Luku ei ole erillinen vain ravintolalle.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
     {source:"Tripadvisor",score:"4,4 / 5",count:"33 ravintola-arviota",detail:"Tripadvisorin Ravintola Kansakoulu ja Majatalo -listaus. Tarkista alkuperäiset arviot palvelusta.",url:"https://www.tripadvisor.com/Restaurant_Review-g800217-d13203411-Reviews-Ravintola_Kansakoulu_ja_Majatalo-Vastanfjard_Kimito_Island_Southwest_Finland.html"}
    ],
    sourceTitle:"Sisältö ja kuvat: Kansakoulun viralliset ravintola- ja lähiruokasivut sekä arvostelupalvelut",
@@ -107,10 +107,10 @@ const copy:Record<Locale,Record<Kind,Copy>> = {
    ],
    practicalTitle:"Visitor information",
    practical:[{label:"Address",value:"Brännbodantie 71, 25830 Västanfjärd, Kimitoön"},{label:"Phone",value:"+358 44 977 6810"},{label:"Email",value:"info@kansakouluun.fi"},{label:"Accommodation",value:"Bed & Breakfast / guesthouse"},{label:"Bathroom",value:"Shared corridor facilities – confirm room details"}],
-   galleryTitle:"Discover Kansakoulu",reviewsTitle:"Guest ratings",reviewsIntro:"Ratings are published by independent review platforms. Figures checked on 30 October 2026; scores and review counts may change, so always check the original platform before booking.",
+   galleryTitle:"Restaurant and local food at the guesthouse",reviewsTitle:"Guest ratings",reviewsIntro:"Ratings are published by independent review platforms. Figures checked on 30 October 2026; scores and review counts may change, so always check the original platform before booking.",
    reviews:[
-    {source:"Google",score:"4.5 / 5",count:"424 reviews",detail:"Overall score shown on the Google Travel property profile. It refers to the combined Kansakoulu property, not accommodation alone.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
-    {source:"Booking.com",score:"8.7 / 10",count:"276 accommodation reviews",detail:"Guest ratings on Booking.com. The listing highlights friendly staff and breakfast among its positive features.",url:"https://www.booking.com/hotel/fi/kansakoulu.html"}
+    {source:"Google",score:"4.5 / 5",count:"423 reviews",detail:"Overall score shown on the Google Travel property profile. It refers to the combined Kansakoulu property, not accommodation alone.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
+    {source:"Booking.com",score:"8.6 / 10",count:"275 accommodation reviews",detail:"Guest ratings on Booking.com. The listing highlights friendly staff and breakfast among its positive features.",url:"https://www.booking.com/hotel/fi/kansakoulu.fi.html"}
    ],
    sourceTitle:"Content and photos: Kansakoulu's own website and the review platforms listed",
    hoursTitle:"Availability and booking",hoursText:"Room availability, check-in, rates and room-specific conditions may vary. The older official website does not provide live availability. Check current rooms and terms directly through the booking service.",
@@ -140,7 +140,7 @@ const copy:Record<Locale,Record<Kind,Copy>> = {
    practical:[{label:"Address",value:"Brännbodantie 71, 25830 Västanfjärd, Kimitoön"},{label:"Phone",value:"+358 44 977 6810"},{label:"Email",value:"info@kansakouluun.fi"},{label:"Dining",value:"Restaurant, seasonal lunch, private events and group services"},{label:"Local food",value:"Ingredients and products from producers on Kimitoön"}],
    galleryTitle:"Restaurant and local-food photographs",reviewsTitle:"Restaurant guest reviews",reviewsIntro:"Ratings are provided by independent review platforms. Figures checked on 30 October 2026. FINNEXPRIENCE does not write or alter customer reviews.",
    reviews:[
-    {source:"Google",score:"4.5 / 5",count:"424 reviews",detail:"Overall score on the Google Travel property profile. This is not a restaurant-only rating.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
+    {source:"Google",score:"4.5 / 5",count:"423 reviews",detail:"Overall score on the Google Travel property profile. This is not a restaurant-only rating.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
     {source:"Tripadvisor",score:"4.4 / 5",count:"33 restaurant reviews",detail:"Tripadvisor listing for Ravintola Kansakoulu ja Majatalo. Read the original guest reviews on the platform.",url:"https://www.tripadvisor.com/Restaurant_Review-g800217-d13203411-Reviews-Ravintola_Kansakoulu_ja_Majatalo-Vastanfjard_Kimito_Island_Southwest_Finland.html"}
    ],
    sourceTitle:"Content and photos: Kansakoulu's official restaurant and local-food pages, plus review platforms",
@@ -171,10 +171,10 @@ const copy:Record<Locale,Record<Kind,Copy>> = {
    ],
    practicalTitle:"Información para visitantes",
    practical:[{label:"Dirección",value:"Brännbodantie 71, 25830 Västanfjärd, Kimitoön"},{label:"Teléfono",value:"+358 44 977 6810"},{label:"Correo",value:"info@kansakouluun.fi"},{label:"Alojamiento",value:"Bed & Breakfast / casa de huéspedes"},{label:"Baños",value:"Instalaciones compartidas en el pasillo; confirma los detalles"}],
-   galleryTitle:"Descubre Kansakoulu",reviewsTitle:"Valoraciones de huéspedes",reviewsIntro:"Las puntuaciones proceden de plataformas de reseñas independientes. Datos comprobados el 30/10/2026; pueden cambiar, así que consulta siempre la fuente original antes de reservar.",
+   galleryTitle:"Restaurante y productos locales en el alojamiento",reviewsTitle:"Valoraciones de huéspedes",reviewsIntro:"Las puntuaciones proceden de plataformas de reseñas independientes. Datos comprobados el 30/10/2026; pueden cambiar, así que consulta siempre la fuente original antes de reservar.",
    reviews:[
-    {source:"Google",score:"4,5 / 5",count:"424 opiniones",detail:"Valoración general que aparece en el perfil de Google Travel. Se refiere al establecimiento Kansakoulu en conjunto, no solo al alojamiento.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
-    {source:"Booking.com",score:"8,7 / 10",count:"276 opiniones de alojamiento",detail:"Valoraciones de huéspedes en Booking.com. El perfil destaca, entre otros aspectos, la amabilidad del personal y el desayuno.",url:"https://www.booking.com/hotel/fi/kansakoulu.html"}
+    {source:"Google",score:"4,5 / 5",count:"423 opiniones",detail:"Valoración general que aparece en el perfil de Google Travel. Se refiere al establecimiento Kansakoulu en conjunto, no solo al alojamiento.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
+    {source:"Booking.com",score:"8,6 / 10",count:"275 opiniones de alojamiento",detail:"Valoraciones de huéspedes en Booking.com. El perfil destaca, entre otros aspectos, la amabilidad del personal y el desayuno.",url:"https://www.booking.com/hotel/fi/kansakoulu.fi.html"}
    ],
    sourceTitle:"Contenido e imágenes: web oficial de Kansakoulu y plataformas de reseñas indicadas",
    hoursTitle:"Disponibilidad y reservas",hoursText:"La disponibilidad, el registro de entrada, los precios y las condiciones dependen de la habitación. La antigua web oficial no muestra disponibilidad en tiempo real. Comprueba las habitaciones y condiciones en el servicio de reservas.",
@@ -204,7 +204,7 @@ const copy:Record<Locale,Record<Kind,Copy>> = {
    practical:[{label:"Dirección",value:"Brännbodantie 71, 25830 Västanfjärd, Kimitoön"},{label:"Teléfono",value:"+358 44 977 6810"},{label:"Correo",value:"info@kansakouluun.fi"},{label:"Servicios",value:"Restaurante, almuerzo de temporada, eventos y grupos"},{label:"Productos locales",value:"Ingredientes y productos de productores de Kimitoön"}],
    galleryTitle:"Imágenes del restaurante y productos locales",reviewsTitle:"Opiniones sobre el restaurante",reviewsIntro:"Las puntuaciones pertenecen a plataformas independientes. Datos comprobados el 30/10/2026. FINNEXPRIENCE no redacta ni modifica las opiniones de los clientes.",
    reviews:[
-    {source:"Google",score:"4,5 / 5",count:"424 opiniones",detail:"Valoración general del perfil de Google Travel. No es una puntuación exclusiva del restaurante.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
+    {source:"Google",score:"4,5 / 5",count:"423 opiniones",detail:"Valoración general del perfil de Google Travel. No es una puntuación exclusiva del restaurante.",url:"https://www.google.com/maps/search/?api=1&query=Ravintola+Kansakoulu+ja+Majatalo+V%C3%A4stanfj%C3%A4rd"},
     {source:"Tripadvisor",score:"4,4 / 5",count:"33 opiniones de restaurante",detail:"Ficha de Tripadvisor de Ravintola Kansakoulu ja Majatalo. Consulta las opiniones originales en la plataforma.",url:"https://www.tripadvisor.com/Restaurant_Review-g800217-d13203411-Reviews-Ravintola_Kansakoulu_ja_Majatalo-Vastanfjard_Kimito_Island_Southwest_Finland.html"}
    ],
    sourceTitle:"Contenido e imágenes: páginas oficiales de restaurante y productos locales de Kansakoulu, y plataformas de reseñas",
@@ -219,14 +219,14 @@ const copy:Record<Locale,Record<Kind,Copy>> = {
 export function KimitoonKansakouluDetail({locale,kind}:{locale:Locale;kind:Kind}) {
  const t=copy[locale][kind];
  const isStay=kind==="stay";
- const bookingUrl=isStay?"https://www.booking.com/hotel/fi/kansakoulu.html":"https://www.kansakouluun.fi/ravintolat/";
+ const bookingUrl=isStay?"https://www.booking.com/hotel/fi/kansakoulu.fi.html":"https://www.kansakouluun.fi/ravintolat/";
  const officialUrl=isStay?"https://www.kansakouluun.fi/majoitus/":"https://www.kansakouluun.fi/ravintolat/";
  const mapUrl="https://www.google.com/maps/search/?api=1&query=Br%C3%A4nnbodantie+71%2C+25830+V%C3%A4stanfj%C3%A4rd";
  const backPath=isStay?"majoitus":"ruoka";
- // Only show verified provider-owned images in the category they actually depict.
- // The currently verified official gallery contains restaurant and local-food photos,
- // not accommodation-room photography; never reuse those images as a stay-room hero.
- const galleryPhotos = isStay ? [] : photos.slice(0,2);
+ // The official site exposes verified restaurant and local-food photographs.
+ // Both provider pages show them only in a clearly labelled shared-venue section;
+ // they are not presented as guest-room photographs.
+ const galleryPhotos = photos.slice(0,2);
  return <main className="bg-white text-brand-950">
   <section className="relative isolate min-h-[58vh] overflow-hidden bg-brand-950 text-white sm:min-h-[68vh]">
    {!isStay && <Image src={photos[0].src} alt={photos[0].alt[locale]} fill priority sizes="100vw" className="object-cover"/>}
