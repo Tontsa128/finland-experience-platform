@@ -2059,7 +2059,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     location:{fi:"Kemiönsaari ja Salo",en:"Kimitoön and Salo",es:"Kimitoön y Salo"},
     websiteUrl:"https://ksg.fi/sv/foretag/salon-oppaat-ry-kemionsaari-salo-guider-kimitoon/",sourceUrl:"https://ksg.fi/sv/foretag/salon-oppaat-ry-kemionsaari-salo-guider-kimitoon/",
     imageCredit:"Salon Oppaat ry / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/salon-oppaat-ry-kemionsaari-salo-guider-kimitoon/",tags:["auktorisoidut oppaat","opastetut kierrokset","Salo","Kemiönsaari"]
-  }
+  },
 
   {
     id:"taxi-friberg",categories:["kuljetukset","muut-palvelut"],
