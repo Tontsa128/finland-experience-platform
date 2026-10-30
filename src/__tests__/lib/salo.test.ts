@@ -11,6 +11,8 @@ const allowedCategories: SaloProviderCategory[] = [
 test("Salo provider directory has unique canonical provider IDs", () => {
   const ids = saloProviders.map((provider) => provider.id);
   assert.equal(new Set(ids).size, ids.length, "Provider IDs must be unique");
+  const names = saloProviders.map((provider) => provider.name.normalize("NFKC").trim().toLocaleLowerCase());
+  assert.equal(new Set(names).size, names.length, "Canonical provider names must not be duplicated");
 });
 
 test("every Salo provider has complete FI, EN and ES descriptions and a safe official URL", () => {
