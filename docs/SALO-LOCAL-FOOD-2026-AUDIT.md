@@ -53,6 +53,12 @@ Provider-level verification sources used for the latest contact and offer checks
 | Vaski Cider & Distillery | `vaski-cider-distillery` | Added with Visit Salo photo, visitor-experience details and contact |
 | Hallonmäen tila | `hallonmaen-tila` | Added as a separate legal entity from Hallonmäen Siideripanimo, with official farm-shop photo |
 | Heinän Puutarha | `heinan-puutarha` | Added with Visit Salo chilli-product photo and source credit |
+| Puutarha Siimes | `puutarha-siimes` | Added with official farm description and contact details; no image until matching photo rights are confirmed |
+| Rannikon Puutarha | `rannikon-puutarha` | Added with current official contact details; its site terms reserve content rights, so do not reuse its images without explicit permission |
+| Vaanelan puutarha | `vaanelan-puutarha` | Added with current official shop hours, sales phone and order email; no image until matching photo rights are confirmed |
+| Veljesten kurkut | `veljesten-kurkut` | Added with official product and producer details; no image until matching photo rights are confirmed |
+| Ohrakasken tila | `ohrakasken-tila` | Added from Visit Salo's official provider information; no image until a matching asset is verified |
+| Rinteen luomutila | `rinteen-luomutila` | Added from Visit Salo's official provider information; no image until a matching asset is verified |
 
 | Hästön Maatila | `haston-maatila` | Added with Visit Salo field photo and current farm details |
 | Ilolan tila | `ilolan-tila` | Added with Visit Salo raspberry photo and by-appointment self-picking details |
