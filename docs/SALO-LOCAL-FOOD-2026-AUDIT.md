@@ -27,15 +27,15 @@ The following official map entries already have a corresponding code-backed prov
 
 ## Remaining official map entries
 
-The following entries do not yet have a dedicated local-food profile in the current Salo directory. They must be checked against their own current official channel before publication; the brochure is an inventory source, not proof that every sales point or seasonal shop is currently open.
+The following entries do not yet have a dedicated local-food profile in the current Salo directory. They must be checked against their own current official channel before publication; the brochure is an inventory source, not proof that every sales point or seasonal shop is currently open. The first five entries below have now been added with verified official descriptions, contact details and matching photos; the remaining 25 still need individual profile work.
 
 | No. | Name | Address / area | Contact or website in the 2026 brochure |
 |---:|---|---|---|
-| 4 | Ellun kanat ja munat | Ristisillantie 187 A, 25320 Salo | 040 718 0258 · https://ellunkanatjamunat.fi |
-| 5 | Kalliolan Tila | Kiskontie 2858, 25470 Kisko | 040 867 2261 · Facebook: Kalliolan Tila |
-| 6 | Kirakan kalkkuna | Kirakantie 178, 25610 Ylönkylä, Perniö | 044 078 5060 · https://savukalkkuna.fi |
-| 7 | Kosken kartano | Koskipolku 28, 25560 Koski as | 050 359 3830 · https://koskis.fi |
-| 9 | Mikkolan tila | Vanha Turuntie 738, 25240 Hajala | 040 900 2957 · https://mikkolantila.com |
+| 4 | Ellun kanat ja munat | Ristisillantie 187 A, 25320 Salo | 040 718 0258 · https://ellunkanatjamunat.fi — **profile added** |
+| 5 | Kalliolan Tila | Kiskontie 2858, 25470 Kisko | 040 867 2261 · https://www.kalliolantila.fi — **profile added** |
+| 6 | Kirakan kalkkuna | Kirakantie 178, 25610 Ylönkylä, Perniö | 044 078 5060 · https://savukalkkuna.fi — **profile added** |
+| 7 | Kosken kartano | Koskipolku 28, 25560 Koski as | 050 359 3830 · https://koskis.fi — **profile added** |
+| 9 | Mikkolan tila | Vanha Turuntie 738, 25240 Hajala | 040 900 2957 · https://mikkolantila.com — **profile added** |
 | 10 | Peltosaaren luomulammastila | Lehtiniityntie 52, 25560 Koski as | 050 550 7650 · https://peltosaaren-lammastila.webnode.fi |
 | 11 | Perniön Saunapalvi | Pernänmetsäntie 12, 25500 Perniö | 02 735 2188 · https://pernionsaunapalvi.fi |
 | 12 | Wanhantuvan Ankkala | Lähteenmäentie 5, 25260 Vaskio | 040 539 3420 · https://wanhantuvanankkala.fi |
@@ -79,7 +79,7 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 
 ## Publication and image rules
 
-- The distinct **Lähiruoka ja maatilapuodit** category is now implemented separately from restaurant/café cards. Ten existing provider profiles have been cross-listed there; the 30 remaining official map entries still require individual verification and addition.
+- The distinct **Lähiruoka ja maatilapuodit** category is now implemented separately from restaurant/café cards. Fifteen provider profiles are now cross-listed there; the 25 remaining official map entries still require individual verification and addition.
 - Do not copy seasonal opening hours or brochure prices into permanent descriptions without checking the provider’s current official channel.
 - Do not invent a provider photo or use an unrelated farm/food image. If an official matching image cannot be verified, publish the provider with no image until a suitable image and credit are available.
 - Preserve source URL and image credit for every published photo.
