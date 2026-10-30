@@ -4,7 +4,7 @@
 
 The 2026 Visit Salo brochure contains a local-food map with **42 map entries**: 39 farms, shops and local-food producers (numbered 4–42 in the brochure) plus three Vuorovetten ice-cream kiosks.
 
-The Salo directory currently contains 88 unique provider profiles overall. **26 canonical provider profiles are represented in the separate local-food category**: 25 of the 39 producers and one Vuorovetten operator profile for all three kiosk locations. Nine producer entries still need their own verified profile or a confirmed canonical-provider mapping.
+The redesign branch currently documents 93 unique provider profiles overall. The 2026 brochure inventory is a discovery source, not proof that every outlet is currently open. Four additional local-food profiles were added in this update (Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha and Veljesten kurkut). The remaining entries below still require verification or canonical mapping.
 
 Primary sources:
 - Visit Salo, *Salo matkailuesite 2026*, pages 40–43: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
@@ -49,19 +49,19 @@ Primary sources:
 
 ## Remaining official map entries
 
-These **14 entries** remain to be individually verified and added or mapped to a confirmed canonical profile. The brochure is an inventory source, not proof that every sales point or seasonal shop is currently open.
+These entries remain to be individually verified and added or mapped to a confirmed canonical profile. Four previously listed entries (Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha and Veljesten kurkut) now have dedicated profiles. Meritalo remains a canonical-mapping decision: its official site identifies Lepola Drinks as a brand managed within the Meritalo business, so the directory should avoid creating a duplicate provider until the legal/operator relationship is confirmed. The brochure is an inventory source, not proof that every sales point or seasonal shop is currently open.
 
 | No. | Name | Address / area | Contact or website in the 2026 brochure |
 |---:|---|---|---|
 | 31 | Meritalo | Kemiöntie 1008, 25610 Ylönkylä | 040 725 0233 · https://meritalo.com |
 | 32 | Ohrakasken tila | Kaitasuontie 93, Raatala, Salo | 040 836 8271 · Facebook: Ohrakasken tila |
-| 34 | Puutarha Siimes | Pataojantie 40, 25470 Kisko | 040 516 6583 · https://puutarhasiimes.fi |
-| 35 | Rannikon Puutarha | Vaskiontie 50, Halikko | 040 082 6360 · https://rannikonpuutarha.fi |
+
+
 | 36 | Rinteen luomutila | Kiviarontie 185, 25110 Salo | 040 519 5575 · Facebook: Rinteen luomutila |
-| 37 | Vaanelan puutarha | Päivärinteentie 30, 25520 Perniö | 040 046 7279 · https://vaanela.fi |
+
 | 39 | Liikenneasema Kivihovi — Herkku & Lahja | Bulevardi 10, 25410 Suomusjärvi | 041 732 1474 · liikenneasema@kivihovi.fi |
 | 41 | Meriniityn lihakauppa | Valimonkatu 4, 24100 Salo | 02 735 8817 · Instagram: Meriniitynliha |
-| 42 | Veljesten kurkut — Skotlanti Boden | Skotlannintie 1, 25610 Ylönkylä | 044 507 0764 · https://veljestenkurkut.fi |
+
 
 ## Three ice-cream kiosks — one operator profile
 
@@ -81,7 +81,7 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 
 ## Publication and image rules
 
-- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. Thirty-one provider profiles are currently cross-listed there; nine official map entries remain.
+- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. Four additional verified provider profiles were added in this update; exact category totals are enforced by the Salo directory tests.
 - Do not copy seasonal opening hours or brochure prices into permanent descriptions without checking the provider’s current official channel.
 - Do not invent a provider photo or use an unrelated farm/food image. If an official matching image cannot be verified, publish the provider with no image until a suitable image and credit are available.
 - Preserve source URL and image credit for every published photo.
