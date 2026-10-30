@@ -9,6 +9,7 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { photoLibrary } from "@/lib/photo-library";
+import { getKimitoonProvider, getKimitoonProviders } from "@/lib/kimitoon-providers";
 
 type Params = { locale: string; slug: string };
 
@@ -54,6 +55,35 @@ function resolveProvider(slug: string, locale: Locale) {
       location: item.locationByLocale?.[locale] || item.location,
       website: item.url,
       price: item.priceByLocale?.[locale] || (locale === "fi" ? item.price : undefined),
+      tags: item.tags,
+    };
+  }
+  if (slug.startsWith("kimitoon-")) {
+    const item = getKimitoonProvider(slug.slice("kimitoon-".length));
+    if (!item) return null;
+    const category = {
+      majoitus: { fi: "Majoitus", en: "Accommodation", es: "Alojamiento" },
+      ruoka: { fi: "Ruoka ja juoma", en: "Food and drink", es: "Gastronomía" },
+      aktiviteetit: { fi: "Aktiviteetit ja elämykset", en: "Activities and experiences", es: "Actividades y experiencias" },
+      saaristo: { fi: "Saaristo ja satamat", en: "Archipelago and harbours", es: "Archipiélago y puertos" },
+      luonto: { fi: "Luonto ja ulkoilu", en: "Nature and outdoors", es: "Naturaleza y aire libre" },
+      kulttuuri: { fi: "Kulttuuri ja nähtävyydet", en: "Culture and sights", es: "Cultura y lugares de interés" },
+      hyvinvointi: { fi: "Hyvinvointi", en: "Wellbeing", es: "Bienestar" },
+      kuljetukset: { fi: "Kuljetukset", en: "Transport", es: "Transporte" },
+      ostokset: { fi: "Ostokset", en: "Shopping", es: "Compras" },
+      talviaktiviteetit: { fi: "Talviaktiviteetit", en: "Winter activities", es: "Actividades de invierno" },
+      tapahtumapaikat: { fi: "Tapahtumapaikat", en: "Event venues", es: "Espacios para eventos" },
+      muut-palvelut: { fi: "Matkailupalvelut", en: "Visitor services", es: "Servicios para visitantes" },
+      tapahtumat: { fi: "Tapahtumat", en: "Events", es: "Eventos" },
+    }[item.category][locale];
+    return {
+      name: item.name[locale],
+      description: item.description[locale],
+      category,
+      image: item.image,
+      imageCredit: item.imageCredit,
+      location: item.location[locale],
+      website: item.websiteUrl,
       tags: item.tags,
     };
   }
@@ -243,9 +273,16 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
           ) : null}
           {provider.tags.length > 0 ? <div className="mt-5 flex flex-wrap gap-2">{provider.tags.map((tag) => <span key={tag} className="rounded-full bg-brand-50 px-3 py-1.5 text-xs font-semibold text-brand-800">{tag}</span>)}</div> : null}
           {(() => {
-            const guide = mathildedalGuides[slug]?.[locale] || teijoGuides[slug]?.[locale];
+            const guide = mathildedalGuides[slug]?.[locale] || teijoGuides[slug]?.[locale] || (slug.startsWith("kimitoon-") ? {
+              intro: provider.description,
+              highlightsTitle: locale === "fi" ? "Kohteen palvelut ja ominaisuudet" : locale === "es" ? "Servicios y características" : "Services and features",
+              highlights: provider.tags,
+              planningTitle: locale === "fi" ? "Tarkista ennen vierailua tai varausta" : locale === "es" ? "Antes de visitar o reservar" : "Before visiting or booking",
+              planning: locale === "fi" ? "Aukioloajat, kausittainen saatavuus, hinnat, palvelusisältö ja varausehdot voivat muuttua. Tarkista tiedot suoraan palveluntarjoajan omasta kanavasta ennen matkaa." : locale === "es" ? "Los horarios, la disponibilidad por temporada, los precios, los servicios y las condiciones pueden cambiar. Confirma los datos directamente con el proveedor antes de viajar." : "Opening hours, seasonal availability, prices, service details and booking terms can change. Confirm them directly with the provider before travelling.",
+              nearbyTitle: locale === "fi" ? "Tutustu muihin Kemiönsaaren kohteisiin" : locale === "es" ? "Descubre otros lugares de Kimitoön" : "Explore more places on Kimitoön",
+            } : null);
             if (!guide) return null;
-            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(teijoGuides[slug] ? [] : mathildedalAreaPhotos)];
+            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(slug.startsWith("salo-") && !teijoGuides[slug] ? mathildedalAreaPhotos : [])];
             return (
               <div className="mt-10 space-y-8">
                 <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
@@ -280,7 +317,9 @@ export default async function ProviderDetailPage({ params }: { params: Promise<P
                 <section>
                   <h3 className="font-display text-2xl font-bold text-brand-950">{guide.nearbyTitle}</h3>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    {(teijoGuides[slug] ? teijoRelated : mathildedalRelated).filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}
+                    {{slug.startsWith("kimitoon-")
+                      ? getKimitoonProviders().filter((place) => place.id !== slug.slice("kimitoon-".length)).slice(0, 4).map((place) => <Link key={place.id} href={`/${locale}/providers/kimitoon-${place.id}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)
+                      : (teijoGuides[slug] ? teijoRelated : mathildedalRelated).filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}}
                   </div>
                 </section>
               </div>
