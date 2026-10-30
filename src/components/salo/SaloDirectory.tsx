@@ -5,15 +5,15 @@ import type { Locale } from "@/types";
 import { saloProviders, type SaloProvider } from "@/lib/salo";
 
 const labels = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", shopping: "Ostokset ja käsityö", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", shopping: "Compras y artesanía", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", shopping: "Shopping & crafts", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
 } as const;
 
 export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: "mathildedal" | "teijo" }) {
   const l = labels[locale];
   const photoCreditLabel = locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:";
-  const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery", "ravintola-terho"]);
+  const mathildedalIds = new Set(["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "mathildedal-brewery", "ravintola-terho", "kaarnalaiva", "matildan-kesakauppa", "piironki-dock-helsinki", "ruukin-kehraamo", "second-chance-mathildedal", "vinttipuoti"]);
   const teijoIds = new Set(["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf"]);
   const areaProviders = area === "mathildedal"
     ? saloProviders.filter((provider) => mathildedalIds.has(provider.id))
