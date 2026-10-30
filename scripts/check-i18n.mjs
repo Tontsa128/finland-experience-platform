@@ -40,5 +40,15 @@ for (const locale of locales) {
   }
 }
 
+// Regression guard: the server-rendered document language must follow
+// next-intl's active locale instead of being hardcoded to one language.
+const rootLayout = await readFile(path.resolve("src/app/layout.tsx"), "utf8");
+const hasServerLocale = /import\s*\{\s*getLocale\s*\}\s*from\s*["']next-intl\/server["']/.test(rootLayout);
+const hasDynamicHtmlLanguage = /<html\s+lang=\{locale\}/.test(rootLayout);
+if (!hasServerLocale || !hasDynamicHtmlLanguage) {
+  failed = true;
+  console.error("Document language check failed: src/app/layout.tsx must set <html lang={locale}> using getLocale() from next-intl/server.");
+}
+
 if (failed) process.exit(1);
-console.log(`i18n check passed: ${locales.join(", ")} have identical key sets.`);
+console.log(`i18n check passed: ${locales.join(", ")} have identical key sets and document language is locale-aware.`);
