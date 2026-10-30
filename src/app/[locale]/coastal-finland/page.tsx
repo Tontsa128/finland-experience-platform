@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight, BedDouble, Bike, Coffee, Leaf, MapPin, Waves,
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { saloProviders, type SaloProvider } from "@/lib/salo";
+import { getSaloProviderImage, saloProviders, type SaloProvider } from "@/lib/salo";
 import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 
 type Localized = Record<Locale, string>;
@@ -472,9 +472,9 @@ export default async function CoastalFinlandPage({ params }: { params: Promise<{
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {sarkisaloProviders.slice(0, 8).map((provider) => (
               <a key={provider.id} href={provider.url} target="_blank" rel="noopener noreferrer" className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
-                {provider.image ? (
+                {getSaloProviderImage(provider) ? (
                   <div className="relative -mx-5 -mt-5 mb-4 aspect-[16/10] overflow-hidden rounded-t-3xl">
-                    <Image src={provider.image} alt={provider.nameByLocale?.[locale] || provider.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                    <Image src={getSaloProviderImage(provider)!} alt={provider.nameByLocale?.[locale] || provider.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
                   </div>
                 ) : null}
                 <p className="text-[10px] font-bold uppercase tracking-[.16em] text-brand-600">{providerCategoryLabels[locale][provider.category]}</p>
