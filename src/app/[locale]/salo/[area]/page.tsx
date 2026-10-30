@@ -6,7 +6,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { areaCopy, areaProviderIds, SaloDirectory, type SaloArea } from "@/components/salo/SaloDirectory";
+import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
 const supportedLocales: Locale[] = ["fi", "en", "es"];
 const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];
