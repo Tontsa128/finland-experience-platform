@@ -442,6 +442,7 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
             <div className="mb-5 rounded-2xl border border-brand-100 bg-white p-4">
               <h2 className="text-xs font-bold uppercase tracking-wider text-brand-700">{locale === "fi" ? "Yhteystiedot" : locale === "es" ? "Contacto" : "Contact"}</h2>
               {provider.contact.phone ? <p className="mt-3 text-sm"><span className="font-semibold">{locale === "fi" ? "Puhelin" : locale === "es" ? "Teléfono" : "Phone"}:</span> <a href={`tel:${provider.contact.phone.replace(/[^+0-9]/g, "")}`} className="underline underline-offset-2">{provider.contact.phone}</a></p> : null}
+              {provider.contact.email ? <p className="mt-2 break-all text-sm"><span className="font-semibold">{locale === "fi" ? "Sähköposti" : locale === "es" ? "Correo electrónico" : "Email"}:</span> <a href={`mailto:${provider.contact.email}`} className="underline underline-offset-2">{provider.contact.email}</a></p> : null}
               {provider.contact.address ? <p className="mt-2 text-sm leading-6"><span className="font-semibold">{locale === "fi" ? "Osoite" : locale === "es" ? "Dirección" : "Address"}:</span> {provider.contact.address}</p> : null}
             </div>
           ) : null}
