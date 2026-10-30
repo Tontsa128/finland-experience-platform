@@ -105,7 +105,6 @@ const places = [
 
 export function KimitoonGuide({ locale, category }: { locale: Locale; category?: Category }) {
   const t = copy[locale];
-  const visibleCategories = category ? categories.filter((item) => item.id === category) : categories;
   const detail = category ? t.category[category] : null;
   return (
     <div className="bg-white">
