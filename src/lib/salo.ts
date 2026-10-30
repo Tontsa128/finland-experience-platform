@@ -11,6 +11,8 @@ export type SaloProvider = {
   nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
   url: string;
+  location?: string;
+  contact?: { phone?: string; email?: string; address?: string };
   price?: string;
   priceByLocale?: Partial<Record<Locale, string>>;
   image?: string;
@@ -75,7 +77,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "hotel-mathildedal",
-    category: "stay",
+null    category: "stay",
     name: "Hotel Mathildedal",
     description: {
       fi: "13 huoneen boutique-hotelli historiallisessa ruukkikylässä Teijon kansallispuiston vieressä.",
@@ -88,7 +90,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "mathildan-marina",
-    directoryCategories: ["food", "archipelago"],
+null    directoryCategories: ["food", "archipelago"],
     category: "stay",
     name: "Mathildan Marina",
     description: {
@@ -144,7 +146,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "teijon-masuuni",
-    category: "culture",
+null    category: "culture",
     name: "Teijon Masuuni",
     nameByLocale: { fi: "Teijon Masuuni", en: "Teijo Masuuni", es: "Teijo Masuuni" },
     description: {
@@ -419,7 +421,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "vuohensaari-camping",
-    directoryCategories: ["food","experience","events","archipelago","wellbeing"],
+null    directoryCategories: ["food","experience","events","archipelago","wellbeing"],
     category: "stay",
     name: "Vuohensaaren leirintäalue",
     nameByLocale: { fi: "Vuohensaaren leirintäalue", en: "Vuohensaari Camping", es: "Camping Vuohensaari" },
@@ -501,7 +503,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "katiskanmaeki",
-    directoryCategories: ["food","events","wellbeing","experience","shopping"],
+null    directoryCategories: ["food","events","wellbeing","experience","shopping"],
     category: "stay",
     name: "Katiskanmäki",
     description: {
@@ -528,7 +530,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "meri-ruukin-lomakyla",
-    directoryCategories: ["wellbeing","archipelago","experience"],
+null    directoryCategories: ["wellbeing","archipelago","experience"],
     category: "stay",
     name: "Meri-Ruukin lomakylä",
     description: {
@@ -831,7 +833,7 @@ export const saloProviders: SaloProvider[] = [
 
   {
     id: "teijon-arkki",
-    category: "food",
+null    category: "food",
     name: "Ravintola Teijon Arkki & Teijo Cafe & Bakery",
     nameByLocale: { fi: "Ravintola Teijon Arkki & Teijo Cafe & Bakery", en: "Teijon Arkki Restaurant & Teijo Cafe & Bakery", es: "Restaurante Teijon Arkki y Teijo Cafe & Bakery" },
     description: {
@@ -1014,7 +1016,7 @@ export const saloProviders: SaloProvider[] = [
 
   {
     id: "lepola-drinks",
-    category: "food",
+null    category: "food",
     directoryCategories: ["shopping"],
     name: "Lepola Drinks",
     nameByLocale: { fi: "Lepola Drinks", en: "Lepola Drinks", es: "Lepola Drinks" },
@@ -1029,7 +1031,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "pohjolan-tila",
-    category: "food",
+null    category: "food",
     directoryCategories: ["shopping", "events", "experience"],
     name: "Pohjolan tila",
     nameByLocale: { fi: "Pohjolan tila", en: "Pohjola Farm", es: "Granja Pohjola" },
@@ -1044,7 +1046,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "kylatalo-punaportti",
-    category: "events",
+null    category: "events",
     directoryCategories: ["wellbeing", "archipelago"],
     name: "Kylätalo Punaportti",
     nameByLocale: { fi: "Kylätalo Punaportti", en: "Punaportti Village Hall", es: "Centro comunitario Punaportti" },
