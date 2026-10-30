@@ -6,9 +6,9 @@ import { saloProviders, type SaloProvider } from "@/lib/salo";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
 const labels = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page" },
+  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu", photoSource: "Kuvan lähde" },
+  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar", photoSource: "Fuente de la foto" },
+  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page", photoSource: "Photo source" },
 } as const;
 
 export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: SaloArea }) {
@@ -57,7 +57,19 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
                     {(provider.url.includes("visitsalo.fi") || provider.url.includes("visitmathildedal.fi") || provider.url.includes("luontoon.fi")) ? l.guide : l.visit}<ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>
-                {provider.imageCredit ? <p className="mt-4 text-[11px] text-slate-400">{photoCreditLabel} {provider.imageCredit}</p> : null}
+                {provider.imageCredit ? (
+                  <p className="mt-4 text-[11px] text-slate-400">
+                    {photoCreditLabel} {provider.imageCredit}
+                    {provider.imageSource && /^https?:\\/\\//i.test(provider.imageSource) ? (
+                      <>
+                        {" · "}
+                        <a href={provider.imageSource} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 transition hover:text-brand-800">
+                          {l.photoSource}
+                        </a>
+                      </>
+                    ) : null}
+                  </p>
+                ) : null}
               </div>
             </article>
           ))}
