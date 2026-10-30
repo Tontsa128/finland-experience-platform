@@ -27,6 +27,7 @@ function resolveProvider(slug: string, locale: Locale) {
       wellbeing: { fi: "Hyvinvointi ja sauna", en: "Wellbeing and sauna", es: "Bienestar y sauna" },
       culture: { fi: "Kulttuuri ja historia", en: "Culture and history", es: "Cultura e historia" },
       events: { fi: "Tapahtumat ja juhlatilat", en: "Events and venues", es: "Eventos y espacios para celebraciones" },
+      archipelago: { fi: "Meri ja saaristo", en: "Sea and archipelago", es: "Mar y archipiélago" },
     }[item.category][locale];
     return {
       kind: "provider" as const,
