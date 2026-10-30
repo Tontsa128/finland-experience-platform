@@ -1054,6 +1054,8 @@ export const saloProviders: SaloProvider[] = [
       es: "Centro comunitario junto al mar entre Teijo y Mathildedal, disponible para eventos privados y de empresas. Cuenta con sauna de leña, terraza y un muelle para bañarse en el mar. Los turnos de sauna pública son estacionales; consulta los horarios y las condiciones de alquiler con Teijo Ironworks Villages.",
     },
     url: "https://www.teijo.fi/punaportti/",
+    image: "https://static.wixstatic.com/media/684b51_4e92d50193d24fbaa2f2d9e58a572fdc~mv2.jpeg/v1/fill/w_325%2Ch_217%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/684b51_4e92d50193d24fbaa2f2d9e58a572fdc~mv2.jpeg",
+    imageCredit: "Visit Teijo — Kylätalo Punaportti",
   },
 
 ];
