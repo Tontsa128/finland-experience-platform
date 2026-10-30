@@ -9,6 +9,12 @@ import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import type { SaloProvider } from "@/lib/salo";
 
 const categories = {
+  "meri-ja-saaristo": {
+    category: "archipelago",
+    fi: { title: "Meri ja saaristo Mathildedalissa", description: "Venesatama, saaristoretket ja merelliset elämykset Mathildedalin lähialueella." },
+    en: { title: "Sea and archipelago in Mathildedal", description: "Guest harbour, island trips and coastal experiences around Mathildedal." },
+    es: { title: "Mar y archipiélago en Mathildedal", description: "Puerto deportivo, excursiones a islas y experiencias marítimas en Mathildedal." },
+  },
   majoitus: {
     category: "stay",
     fi: { title: "Majoitus Mathildedalissa", description: "Boutique-hotellit, huoneistot, mökit ja lähialueen luontomajoitus." },
