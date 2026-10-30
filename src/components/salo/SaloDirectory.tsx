@@ -60,7 +60,7 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
                 {provider.imageCredit ? (
                   <p className="mt-4 text-[11px] text-slate-400">
                     {photoCreditLabel} {provider.imageCredit}
-                    {provider.imageSource && /^https?:\\/\\//i.test(provider.imageSource) ? (
+                    {provider.imageSource && /^https?:\/\//i.test(provider.imageSource) ? (
                       <>
                         {" · "}
                         <a href={provider.imageSource} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 transition hover:text-brand-800">
