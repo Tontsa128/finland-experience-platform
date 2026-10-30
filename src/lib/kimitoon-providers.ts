@@ -245,7 +245,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("0aa27440-17f1-11ee-aef2-f342e71dcccc.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/villa-valo-9-2/",tags:["villa","merikruunu"]
   },
   {
-    id:"spa-hotel-kasnas",categories:["majoitus"],
+    id:"spa-hotel-kasnas",categories:["majoitus","ruoka","hyvinvointi","saaristo","tapahtumapaikat"],
     name:{fi:"Spa Hotel Kasnäs",en:"Spa Hotel Kasnäs",es:"Spa Hotel Kasnäs"},
     description:{
       fi:"Kasnäsin merellinen hotelli- ja lomakeskus. Virallinen matkailusivusto nostaa esiin hotellin, kylpylän, ravintolan, vierasvenesataman ja caravan-alueen.",
@@ -257,7 +257,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("87370420-2504-11ed-9a1b-ed91d10f897f.jpeg-760x430.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/hotel-kasnas-2/",tags:["hotelli","kylpylä","ravintola","satama"]
   },
   {
-    id:"soderlangvik-glamping",categories:["majoitus"],
+    id:"soderlangvik-glamping",categories:["majoitus","luonto"],
     name:{fi:"Söderlångvik Glamping",en:"Söderlångvik Glamping",es:"Söderlångvik Glamping"},
     description:{
       fi:"Glamping-majoitus Söderlångvikin kartanon alueella. Tarkista kauden ajankohta, majoituksen sisältö ja saatavuus suoraan palveluntarjoajalta.",
@@ -269,7 +269,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("d9b5e0e0-ff40-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://soderlangvik.fi/fi/glamping/",tags:["glamping","kartano","luonto"]
   },
   {
-    id:"bengtskar-lighthouse-stay",categories:["majoitus"],
+    id:"bengtskar-lighthouse-stay",categories:["majoitus","kulttuuri","aktiviteetit","saaristo","luonto"],
     name:{fi:"Yö Bengtskärin majakassa",en:"Stay overnight at Bengtskär Lighthouse",es:"Alojamiento en el faro de Bengtskär"},
     description:{
       fi:"Yöpymismahdollisuus avomeren majakkasaarella. Merikuljetus, kausi, huoneet ja vierailun ehdot on tarkistettava suoraan majakan ylläpitäjältä.",
@@ -305,7 +305,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("f4b44880-659d-11ed-9d9c-2ddc96e1236d.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["tentsile","telttamajoitus","saaristo"]
   },
   {
-    id:"merikruunu-hotel",categories:["majoitus"],
+    id:"merikruunu-hotel",categories:["majoitus","ruoka","tapahtumapaikat"],
     name:{fi:"Hotelli & Ravintola Merikruunu",en:"Hotel & Restaurant Merikruunu",es:"Hotel y Restaurante Merikruunu"},
     description:{
       fi:"Historiallinen saaristohotelli Dragsfjärdissä. Virallinen kohdesivu esittelee hotellin ja ravintolan; tarkista huoneet, palvelut, hinnat ja aukiolo suoraan hotellilta.",
@@ -341,7 +341,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("50f5e9e0-ac50-11f0-a598-07e1de96cda5.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["bed-and-breakfast","taalintehdas"]
   },
   {
-    id:"ekniemi-holiday-village",categories:["majoitus"],
+    id:"ekniemi-holiday-village",categories:["majoitus","ruoka","hyvinvointi","tapahtumapaikat"],
     name:{fi:"Ekniemen lomakylä",en:"Ekniemi Holiday Village",es:"Complejo vacacional Ekniemi"},
     description:{
       fi:"Meren äärellä sijaitseva lomakylä, jonka virallinen esittely nostaa esiin luonnonrauhan, majoituksen ja elämykset. Tarkista mökkivalikoima ja saatavuus suoraan toimijalta.",
@@ -354,7 +354,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
   },
   // Food, cafés and local producers.
   {
-    id:"holmbergs-four-c",categories:["ruoka"],
+    id:"holmbergs-four-c",categories:["ruoka","majoitus","ostokset"],
     name:{fi:"Holmbergs Fisk & Café Four C",en:"Holmbergs Fisk & Café Four C",es:"Holmbergs Fisk & Café Four C"},
     description:{
       fi:"Taalintehtaan vanhassa postitalossa toimiva kalakaupan ja kahvilan yhdistelmä. Tarkista päivän kalavalikoima, kahvilatuotteet ja aukiolo suoraan yritykseltä.",
@@ -571,7 +571,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("e3ec5b50-f7f9-11ef-82bd-bd0293da0d2e.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["taide","galleria","näyttely"]
   },
   {
-    id:"kubu-kulturhus",categories:["kulttuuri"],
+    id:"kubu-kulturhus",categories:["kulttuuri","tapahtumat","tapahtumapaikat","ostokset"],
     name:{fi:"Kulturhus Björkboda (KUBU)",en:"Kulturhus Björkboda (KUBU)",es:"Kulturhus Björkboda (KUBU)"},
     description:{
       fi:"Björkbodan kulttuuritila, jossa järjestetään näyttelyitä ja ohjelmaa. Tarkista ajankohtainen näyttelykalenteri ja tapahtumien tiedot KUBUn omista kanavista.",
@@ -583,7 +583,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("a65ac7f0-5f13-11f0-ae44-c12d0d4b9580.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["kulttuuri","näyttely","tapahtuma"]
   },
   {
-    id:"soderlangvik-museum",categories:["kulttuuri"],
+    id:"soderlangvik-museum",categories:["kulttuuri","luonto","tapahtumat"],
     name:{fi:"Söderlångvikin museo",en:"Söderlångvik Museum",es:"Museo Söderlångvik"},
     description:{
       fi:"Söderlångvikin kartanon päärakennuksessa toimiva museo ja taidekohde. Yhdistä vierailuun kartanon puisto, omenatarhat, ravintola ja luontopolut; tarkista aukiolo viralliselta sivulta.",
@@ -595,7 +595,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:image("05e15580-ff43-11ef-a36c-890430c1f0f9.jpeg-374x211.jpeg"),imageCredit:"Visit Kemiönsaari / Söderlångvik",imageSource:"https://www.visitkimitoon.fi/fi/kohteet/",tags:["museo","taide","kartano"]
   },
   {
-    id:"glassgaraget",categories:["ostokset"],
+    id:"glassgaraget",categories:["ostokset","kulttuuri"],
     name:{fi:"Glassgaraget – tilapuoti ja kahvila",en:"Glassgaraget – farm shop and café",es:"Glassgaraget – tienda de granja y cafetería"},
     description:{
       fi:"Tilapuodin ja kahvilan yhdistelmä Kemiönsaaren virallisessa kohdehakemistossa. Tarkista myymälän valikoima, kahvilapalvelut ja aukiolo suoraan toimijalta.",
@@ -668,7 +668,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2023/05/sagalund30-760x507.jpg",imageCredit:"Visit Kemiönsaari / Sagalund",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["museo","kulttuuri","historia"]
   },
   {
-    id:"soderlangvik-manor",categories:["kulttuuri"],
+    id:"soderlangvik-manor",categories:["kulttuuri","majoitus","ruoka","luonto","ostokset","tapahtumat","tapahtumapaikat"],
     name:{fi:"Söderlångvikin kartano",en:"Söderlångvik Manor",es:"Mansión Söderlångvik"},
     description:{
       fi:"Kartanoalue yhdistää museon, taiteen, omenatarhat, ravintolan, tapahtumat ja luontopolut. Tarkista kausittaiset palvelut ja vierailutiedot kartanon omilta sivuilta.",
@@ -692,7 +692,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     image:"https://www.visitkimitoon.fi/wp-content/uploads/sites/2/2024/07/dalsbruk-gasthamn1-1-760x507.jpg",imageCredit:"Visit Kemiönsaari",imageSource:"https://www.visitkimitoon.fi/fi/nae-ja-koe/vierailukohteet/",tags:["historia","ruukki","kävely"]
   },
   {
-    id:"bengtskar-lighthouse-visit",categories:["kulttuuri"],
+    id:"bengtskar-lighthouse-visit",categories:["kulttuuri","aktiviteetit","saaristo","luonto"],
     name:{fi:"Bengtskärin majakka ja museo",en:"Bengtskär Lighthouse and Museum",es:"Faro y museo de Bengtskär"},
     description:{
       fi:"Avomeren majakka ja historiallinen vierailukohde. Merikuljetus, aukiolo, näyttelyt ja mahdollinen majoitus on varmistettava suoraan kohteen ylläpitäjältä.",
@@ -1031,8 +1031,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Cafetería y restaurante de almuerzos en el centro de Kimito, también con servicio de catering. KSG menciona opciones vegetarianas y comida para llevar. El local se puede alquilar para celebraciones, reuniones y actos conmemorativos."
     },
     location:{fi:"Museovägen 7, 25700 Kemiö",en:"Museovägen 7, 25700 Kimito",es:"Museovägen 7, 25700 Kimito"},
-    websiteUrl:"https://www.sagalund.fi/cafe-adele/",sourceUrl:"https://ksg.fi/sv/foretag/cafe-adele/",
-    imageCredit:"Café Adéle / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/cafe-adele/",tags:["kahvila","lounas","catering","juhlatila"],contact:{phone:"040 849 8770",address:"Museovägen 7, 25700 Kemiö"}
+    websiteUrl:"https://ksg.fi/sv/foretag/cafe-adele/",sourceUrl:"https://ksg.fi/sv/foretag/cafe-adele/",
+    imageCredit:"Café Adéle / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/sv/foretag/cafe-adele/",tags:["kahvila","lounas","catering","juhlatila"]
   },
   {
     id:"konditori-mazarin",categories:["ruoka","ostokset"],
@@ -1044,7 +1044,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Engelsbyvägen 3, 25700 Kemiö",en:"Engelsbyvägen 3, 25700 Kimito",es:"Engelsbyvägen 3, 25700 Kimito"},
     websiteUrl:"https://ksg.fi/fi/foretag/konditori-mazarin/",sourceUrl:"https://ksg.fi/fi/foretag/konditori-mazarin/",
-    imageCredit:"Konditori Mazarin / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/konditori-mazarin/",tags:["konditoria","leipomo","kahvila"],contact:{phone:"02 421 910",address:"Engelsbyvägen 3, 25700 Kemiö"}
+    imageCredit:"Konditori Mazarin / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/konditori-mazarin/",tags:["konditoria","leipomo","kahvila"]
   },
   {
     id:"ren-lyx-saaristorapu",categories:["ruoka","tapahtumapaikat"],
@@ -1068,7 +1068,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kärravägen 203, 25870 Dragsfjärd",en:"Kärravägen 203, 25870 Dragsfjärd",es:"Kärravägen 203, 25870 Dragsfjärd"},
     websiteUrl:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",sourceUrl:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",
-    imageCredit:"Tmi Kerstin Forsbom / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",tags:["lounas","kotiruoka","pitopalvelu","kotiinkuljetus"],contact:{phone:"0400 590 822",address:"Kärravägen 203, 25870 Dragsfjärd"}
+    imageCredit:"Tmi Kerstin Forsbom / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/fma-kerstin-forsbom/",tags:["lounas","kotiruoka","pitopalvelu","kotiinkuljetus"]
   },
   {
     id:"catering-thomas-ahlberg",categories:["ruoka","tapahtumapaikat"],
@@ -1092,7 +1092,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kalkholmsvägen 43, 25830 Västanfjärd",en:"Kalkholmsvägen 43, 25830 Västanfjärd",es:"Kalkholmsvägen 43, 25830 Västanfjärd"},
     websiteUrl:"https://www.kalkholmenmarina.fi/",sourceUrl:"https://ksg.fi/fi/foretag/terrassn-restaurant/",
-    imageCredit:"Terrassn Restaurant / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/terrassn-restaurant/",tags:["kesäravintola","paikallinen ruoka","satama"],contact:{phone:"02 42 7575",address:"Kalkholmsvägen 43, 25830 Västanfjärd"}
+    imageCredit:"Terrassn Restaurant / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/terrassn-restaurant/",tags:["kesäravintola","paikallinen ruoka","satama"]
   },
   {
     id:"holmstroms-lanthandel",categories:["ostokset","ruoka","saaristo"],
@@ -1104,7 +1104,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Hitisvägen 20, 25940 Hitis",en:"Hitisvägen 20, 25940 Hitis",es:"Hitisvägen 20, 25940 Hitis"},
     websiteUrl:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",sourceUrl:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",
-    imageCredit:"Holmströms Lanthandel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",tags:["saaristokauppa","päivittäistavarat","kahvila","lounas"],contact:{phone:"02 466 6760",address:"Hitisvägen 20, 25940 Hitis"}
+    imageCredit:"Holmströms Lanthandel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/holmstroms-lanthandel-kb/",tags:["saaristokauppa","päivittäistavarat","kahvila","lounas"]
   },
   {
     id:"kasnas-handel",categories:["ostokset","ruoka"],
@@ -1116,7 +1116,7 @@ export const kimitoonProviders: KimitoonProvider[] = [
     },
     location:{fi:"Kasnäsvägen 1294, 25930 Kasnäs",en:"Kasnäsvägen 1294, 25930 Kasnäs",es:"Kasnäsvägen 1294, 25930 Kasnäs"},
     websiteUrl:"https://www.kasnas.com/sv/",sourceUrl:"https://ksg.fi/fi/foretag/kasnas-handel/",
-    imageCredit:"Kasnäs Handel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kasnas-handel/",tags:["päivittäistavarat","kauppa","ympäri vuoden"],contact:{phone:"040 511 6732",address:"Kasnäsvägen 1294, 25930 Kasnäs"}
+    imageCredit:"Kasnäs Handel / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kasnas-handel/",tags:["päivittäistavarat","kauppa","ympäri vuoden"]
   },
   {
     id:"anttis-taxi",categories:["kuljetukset","muut-palvelut"],
