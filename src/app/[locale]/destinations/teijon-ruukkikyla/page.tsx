@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { BedDouble, CalendarDays, Compass, Flame, Landmark, TreePine, Utensils } from "lucide-react";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { RuukkikylaGuide } from "@/components/salo/RuukkikylaGuide";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import { saloProviders } from "@/lib/salo";
+import { photoLibrary } from "@/lib/photo-library";
 
 const copy: Record<Locale, { title: string; lead: string; historyTitle: string; history: string; landscapeTitle: string; landscape: string; notice: string; mathildedal: string; source: string }> = {
   fi: {
@@ -82,6 +86,42 @@ export default async function TeijoIronworksVillagePage({ params }: { params: Pr
           <p className="mt-4 rounded-2xl bg-amber-50 p-4 text-sm leading-6 text-amber-950">{t.notice}</p>
           <p className="mt-4 text-xs text-slate-500">{t.source}: <a className="underline" href="https://www.teijo.fi/tervetuloakyliin/teijo/" target="_blank" rel="noreferrer">teijo.fi</a> · <a className="underline" href="https://visitsalo.fi/mathildedalin-ruukkikyla/" target="_blank" rel="noreferrer">visitsalo.fi</a></p>
         </article>
+      </section>
+      <section className="bg-stone-50 py-14 sm:py-20">
+        <div className="container-narrow">
+          <div className="mb-8 max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-700">{locale === "fi" ? "Suunnittele vierailu" : locale === "es" ? "Planifica tu visita" : "Plan your visit"}</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{locale === "fi" ? "Teijon palvelut ja elämykset" : locale === "es" ? "Servicios y experiencias de Teijo" : "Teijo services and experiences"}</h2>
+            <p className="mt-4 max-w-3xl leading-7 text-slate-600">{locale === "fi" ? "Valitse kiinnostava teema. Ruukkikylän palvelut ja kansallispuiston retkeilypalvelut on erotettu toisistaan, vaikka ne täydentävät samaa vierailua." : locale === "es" ? "Elige un tema. Los servicios del pueblo siderúrgico y los del parque nacional se presentan por separado, aunque pueden combinarse en una misma visita." : "Choose a theme. Village services and national park services are presented separately, even though they can be combined in one visit."}</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { href: "#salo-category-stay", id: "matildanjarven-kampat", icon: BedDouble, title: { fi: "Majoitus", en: "Accommodation", es: "Alojamiento" }, text: { fi: "Vuokrakämpät ja luontomajoitus.", en: "Rental cabins and nature stays.", es: "Cabañas y alojamientos en la naturaleza." } },
+              { href: "#teijo-places", id: "teijon-masuuni", icon: Utensils, title: { fi: "Ruoka ja kahvilat", en: "Food and cafés", es: "Gastronomía y cafeterías" }, text: { fi: "Kylän kahvila-, leipomo- ja lounaspalvelut.", en: "Village cafés, bakery and lunch services.", es: "Cafeterías, panadería y almuerzos del pueblo." } },
+              { href: "#salo-category-experience", id: "teijo-action-park", icon: Compass, title: { fi: "Aktiviteetit", en: "Activities", es: "Actividades" }, text: { fi: "Pyöräily, golf ja ympärivuotiset elämykset.", en: "Cycling, golf and year-round experiences.", es: "Ciclismo, golf y experiencias todo el año." } },
+              { href: "#salo-category-nature", id: "teijo-national-park", icon: TreePine, title: { fi: "Kansallispuisto ja retkeily", en: "National park and hiking", es: "Parque nacional y senderismo" }, text: { fi: "Järvet, metsät, reitit ja luontokeskus.", en: "Lakes, forests, trails and the visitor centre.", es: "Lagos, bosques, senderos y centro de visitantes." } },
+              { href: "#salo-category-wellbeing", id: "matildanjarven-sauna", icon: Flame, title: { fi: "Sauna ja hyvinvointi", en: "Sauna and wellbeing", es: "Sauna y bienestar" }, text: { fi: "Matildanjärven rantasauna ja uimapaikka.", en: "The Matildanjärvi lakeside sauna and swimming area.", es: "Sauna junto al lago Matildanjärvi y zona de baño." } },
+              { href: "#salo-category-culture", id: "teijon-kirkko", icon: Landmark, title: { fi: "Kulttuuri ja historia", en: "Culture and history", es: "Cultura e historia" }, text: { fi: "Ruukkiperintö, kirkko, taide ja käsityö.", en: "Ironworks heritage, church, art and crafts.", es: "Patrimonio industrial, iglesia, arte y artesanía." } },
+              { href: "#teijo-events", id: "teijon-masuuni", icon: CalendarDays, title: { fi: "Tapahtumat", en: "Events", es: "Eventos" }, text: { fi: "Kylän tapahtumat ja sesonkiohjelma.", en: "Village events and seasonal programme.", es: "Eventos del pueblo y programa de temporada." } },
+            ].map((item) => {
+              const Icon = item.icon;
+              const image = saloProviders.find((provider) => provider.id === item.id)?.image || photoLibrary.teijoNationalPark;
+              return (
+                <a key={item.href} href={item.href} className="group overflow-hidden rounded-[1.5rem] border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-card">
+                  <div className="relative aspect-[16/9] overflow-hidden bg-brand-100">
+                    <Image src={image} alt={item.title[locale]} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
+                    <Icon className="absolute bottom-4 left-4 h-7 w-7 text-white drop-shadow" />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display text-xl font-bold text-brand-950">{item.title[locale]}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">{item.text[locale]}</p>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
       </section>
       <SaloDirectory locale={locale} area="teijo" />
       <RuukkikylaGuide village="teijo" locale={locale} />
