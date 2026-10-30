@@ -4,7 +4,7 @@
 
 The 2026 Visit Salo brochure contains a local-food map with **42 map entries**: 39 farms, shops and local-food producers (numbered 4–42 in the brochure) plus three Vuorovetten ice-cream kiosks.
 
-The redesign branch currently documents 93 unique provider profiles overall. The 2026 brochure inventory is a discovery source, not proof that every outlet is currently open. Four additional local-food profiles were added in this update (Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha and Veljesten kurkut). The remaining entries below still require verification or canonical mapping.
+The redesign branch currently documents 93 unique provider profiles overall. The 2026 brochure inventory is a discovery source, not proof that every outlet is currently open. Seven additional local-food profiles have now been added across the two updates: Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa. The remaining entries below still require verification or canonical mapping.
 
 Primary sources:
 - Visit Salo, *Salo matkailuesite 2026*, pages 40–43: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
@@ -46,21 +46,24 @@ Primary sources:
 | Kurjen maatila | `kurjen-maatila` | Added with Visit Salo strawberry photo and two sales locations |
 | Maneliuksen mansikkatila | `maneliuksen-mansikkatila` | Added with Visit Salo strawberry-harvest photo and seasonal sales details |
 | Meisalan Marja | `meisalan-marja` | Added with Visit Salo berry-farm photo and current provider contact |
+| Ohrakasken tila | `ohrakasken-tila` | Added from Visit Salo's official profile; seasonal blueberry picking and asparagus, no image until a matching asset is verified |
+| Rinteen luomutila | `rinteen-luomutila` | Added from Visit Salo's official profile; organic greenhouse and outdoor produce, no image until a matching asset is verified |
+| Meriniityn Lihakauppa | `meriniityn-lihakauppa` | Added from Visit Salo and Perniön 1930 official information; factory shop profile, no image until a matching asset is verified |
 
 ## Remaining official map entries
 
-These entries remain to be individually verified and added or mapped to a confirmed canonical profile. Four previously listed entries (Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha and Veljesten kurkut) now have dedicated profiles. Meritalo remains a canonical-mapping decision: its official site identifies Lepola Drinks as a brand managed within the Meritalo business, so the directory should avoid creating a duplicate provider until the legal/operator relationship is confirmed. The brochure is an inventory source, not proof that every sales point or seasonal shop is currently open.
+These entries remain to be individually verified and added or mapped to a confirmed canonical profile. Seven previously listed entries (Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa) now have dedicated profiles. Meritalo remains a canonical-mapping decision: its official site identifies Lepola Drinks as a brand managed within the Meritalo business, so the directory should avoid creating a duplicate provider until the legal/operator relationship is confirmed. The brochure is an inventory source, not proof that every sales point or seasonal shop is currently open.
 
 | No. | Name | Address / area | Contact or website in the 2026 brochure |
 |---:|---|---|---|
 | 31 | Meritalo | Kemiöntie 1008, 25610 Ylönkylä | 040 725 0233 · https://meritalo.com |
-| 32 | Ohrakasken tila | Kaitasuontie 93, Raatala, Salo | 040 836 8271 · Facebook: Ohrakasken tila |
+| 32 | Ohrakasken tila | Kaitasuontie 93, Raatala, Salo | 040 836 8271 · Facebook: Ohrakasken tila | **Added**
 
 
-| 36 | Rinteen luomutila | Kiviarontie 185, 25110 Salo | 040 519 5575 · Facebook: Rinteen luomutila |
+| 36 | Rinteen luomutila | Kiviarontie 185, 25110 Salo | 040 519 5575 · Facebook: Rinteen luomutila | **Added**
 
 | 39 | Liikenneasema Kivihovi — Herkku & Lahja | Bulevardi 10, 25410 Suomusjärvi | 041 732 1474 · liikenneasema@kivihovi.fi |
-| 41 | Meriniityn lihakauppa | Valimonkatu 4, 24100 Salo | 02 735 8817 · Instagram: Meriniitynliha |
+| 41 | Meriniityn lihakauppa | Valimonkatu 4, 24100 Salo | 02 735 8817 · Instagram: Meriniitynliha | **Added**
 
 
 ## Three ice-cream kiosks — one operator profile
