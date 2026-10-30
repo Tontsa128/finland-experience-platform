@@ -200,8 +200,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Lakes, forests, rocks and trails year-round. Basic access to the national park is free; rental services are charged separately.",
     },
     url: "https://www.luontoon.fi/teijo",
-    image: providerImages.cabins,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
+    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Punassuo2.jpg",
+    imageCredit: "Vnnen · CC BY-SA 4.0 / Wikimedia Commons",
   },
   {
     id: "meri-teijo-golf",
