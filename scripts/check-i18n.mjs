@@ -101,8 +101,12 @@ const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs 
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
 const areaCardsLinkToRoutes = saloPageSource.includes('href={`/${locale}/salo/${area.id}`}');
 const sitemapIncludesAreaRoutes = (await readFile(path.resolve("src/app/sitemap.ts"), "utf8")).includes("...saloAreaPaths");
-const photoSourceLinkIsSafe = /provider\\.imageSource && \/\\^https\?:\\\\\/\\\\\/i\\.test\\(provider\\.imageSource\\)/.test(saloDirectorySource);
-const photoSourceLabelIsLocalized = ["photoSource: \\"Kuvan lähde\\"", "photoSource: \\"Fuente de la foto\\"", "photoSource: \\"Photo source\\""].every((label) => saloDirectorySource.includes(label));
+const photoSourceLinkIsSafe = saloDirectorySource.includes(String.raw`provider.imageSource && /^https?:\/\//i.test(provider.imageSource)`);
+const photoSourceLabelIsLocalized = [
+  'photoSource: "Kuvan lähde"',
+  'photoSource: "Fuente de la foto"',
+  'photoSource: "Photo source"',
+].every((label) => saloDirectorySource.includes(label));
 if (providerIds.length !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
   failed = true;
   console.error("Salo area directory check failed:", {
@@ -115,6 +119,8 @@ if (providerIds.length !== 48 || duplicateAreaIds.length || missingAreaIds.lengt
     areaRouteGeneratesAllSlugs,
     areaCardsLinkToRoutes,
     sitemapIncludesAreaRoutes,
+    photoSourceLinkIsSafe,
+    photoSourceLabelIsLocalized,
   });
 }
 
