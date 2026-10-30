@@ -1269,9 +1269,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
       en:"The Kimitoön business guide lists the company for real-estate services and cottage rentals on Kimitoön, in the Turku archipelago and in western Uusimaa. Check available properties and terms directly with the company.",
       es:"La guía empresarial de Kimitoön incluye a la empresa en servicios inmobiliarios y alquiler de cabañas en Kimitoön, el archipiélago de Turku y el oeste de Uusimaa. Consulta propiedades y condiciones directamente con la empresa."
     },
-    location:{fi:"Kemiönsaari ja Turunmaa",en:"Kimitoön and the Turku archipelago",es:"Kimitoön y el archipiélago de Turku"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["mökkivuokraus","kiinteistönvälitys"]
+    location:{fi:"Redaktörsstigen 2, 25700 Kemiö",en:"Redaktörsstigen 2, 25700 Kimito",es:"Redaktörsstigen 2, 25700 Kimito"},
+    websiteUrl:"https://www.seasidelkv.fi/",sourceUrl:"https://ksg.fi/fi/foretag/ab-seaside-oy-lkv/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/ab-seaside-oy-lkv/",tags:["mökkivuokraus","kiinteistönvälitys"],contact:{phone:"044 306 7012",address:"Redaktörsstigen 2, 25700 Kemiö",email:"kristian.lindroos@seasidelkv.fi"}
   },
   {
     id:"luddes-taxi",categories:["kuljetukset","muut-palvelut"],
@@ -1341,9 +1341,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
       en:"A local boating service offering boat sales, brokerage, storage and maintenance. KSG also lists the company under berths and winter storage. Confirm services and available storage directly with the business.",
       es:"Servicio náutico local que ofrece venta, intermediación, almacenamiento y mantenimiento de embarcaciones. KSG también lo incluye en amarres y almacenamiento invernal. Consulta servicios y plazas disponibles directamente con la empresa."
     },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["venemyynti","venevälitys","venepaikat","talvisäilytys","huolto"]
+    location:{fi:"Tehtaantie 1, 25860 Björkboda",en:"Tehtaantie 1, 25860 Björkboda",es:"Tehtaantie 1, 25860 Björkboda"},
+    websiteUrl:"https://kemionsaarenvenekeskus.fi/",sourceUrl:"https://www.suvi-veneet.fi/jalleenmyyjat/",
+    imageCredit:"Kemiönsaaren Venekeskus Oy / Suvi-Veneet",imageSource:"https://www.suvi-veneet.fi/jalleenmyyjat/",tags:["venemyynti","venevälitys","venepaikat","talvisäilytys","huolto"],contact:{phone:"02 423 242",address:"Tehtaantie 1, 25860 Björkboda",email:"sales.k@venekeskus.com"}
   },
   {
     id:"kone-wuorio",categories:["ostokset","saaristo","muut-palvelut"],
