@@ -3,9 +3,9 @@ import type { Locale } from "@/types";
 import { getKimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
 
 const labels: Record<Locale, { title: string; open: string; source: string; empty: string }> = {
-  fi: { title: "Palveluntarjoajat ja kohteet", open: "Avaa kohteen oma sivu", source: "Kuva ja lähde", empty: "Tähän teemaan lisätään kohteita lähteiden varmistuessa." },
-  en: { title: "Providers and places", open: "Open the provider page", source: "Photo and source", empty: "Listings will be added as their sources are verified." },
-  es: { title: "Proveedores y destinos", open: "Abrir la página del proveedor", source: "Foto y fuente", empty: "Añadiremos fichas cuando se verifiquen sus fuentes." },
+  fi: { title: "Palveluntarjoajat ja kohteet", open: "Avaa kohdesivu", source: "Kuva ja lähde", empty: "Tähän teemaan lisätään kohteita lähteiden varmistuessa." },
+  en: { title: "Providers and places", open: "Open detail page", source: "Photo and source", empty: "Listings will be added as their sources are verified." },
+  es: { title: "Proveedores y destinos", open: "Abrir ficha", source: "Foto y fuente", empty: "Añadiremos fichas cuando se verifiquen sus fuentes." },
 };
 
 export function KimitoonProviderCards({ locale, category }: { locale: Locale; category: KimitoonCategory }) {
@@ -31,10 +31,10 @@ export function KimitoonProviderCards({ locale, category }: { locale: Locale; ca
         <h2 id={`kimitoon-providers-${category}`} className="mt-2 font-display text-3xl font-bold text-brand-950">{t.title}</h2>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
           {locale === "fi"
-            ? "Jokainen kortti avaa oman kohdesivun. Tarkista ajantasainen saatavuus, ehdot ja varaus suoraan palveluntarjoajalta."
+            ? "Kortit avaavat omat kohdesivut. Yrityspalvelut ja varaukset tarkistetaan suoraan palveluntarjoajalta; julkisten kohteiden kulku- ja kausitiedot tarkistetaan virallisesta kartasta."
             : locale === "es"
-              ? "Cada tarjeta abre su propia página. Consulta disponibilidad, condiciones y reservas directamente con el proveedor."
-              : "Each card opens its own detail page. Confirm current availability, terms and booking directly with the provider."}
+              ? "Cada tarjeta abre su propia ficha. Consulta los servicios y reservas con el proveedor; comprueba el acceso y la información de temporada de los lugares públicos en el mapa oficial."
+              : "Each card opens its own detail page. Confirm business services and bookings directly with providers; check access and seasonal information for public places on the official map."}
         </p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
