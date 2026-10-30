@@ -9,7 +9,7 @@ const img = {
   bike: "https://meriteijobikepark.com/media/alamakipyorailya_teijolla.jpg",
   action: "https://static.wixstatic.com/media/684b51_55ccf848793a4f8fa4f76feaa7f7f779~mv2.jpg",
   kullanpuu: "https://cdn-datahub.visitfinland.com/images/6ea6c060-f008-11ed-8225-2341bac177e9.jpeg?s=1280",
-  golf: "https://golf-pass.brightspotcdn.com/ea/6e/37dba4c66386c14950d0e3601306/81507.jpg",
+  golf: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golf_aktiviteetit.jpg?itok=lpvm1Tl0",
   wiurila: "https://launokorpi.com/sites/default/files/2026-03/Wiurilan-kartano-talousrakennus.-Kuva-Satu-Maaria-Makipuro-e1704382032903.jpg",
   fineDining: "https://cdn-datahub.visitfinland.com/images/803f78a0-e7a8-11ef-a1a5-c5de292a73ba.jpeg",
   sauna: "https://cdn-datahub.visitfinland.com/images/772bd980-c22e-11ed-8fb6-cd05a147400e.jpeg?s=1280",
