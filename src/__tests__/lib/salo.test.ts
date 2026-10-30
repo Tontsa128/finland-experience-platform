@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getSaloProviderCategories, getSaloProviderImage, saloProviders, type SaloProviderCategory } from "@/lib/salo";
+import { getSaloProviderCategories, getSaloProviderImage, hasVerifiedSaloImageRights, saloProviders, type SaloProviderCategory } from "@/lib/salo";
 import { firstValidHttpUrl } from "@/lib/utils";
 
 const allowedCategories: SaloProviderCategory[] = [
@@ -78,11 +78,11 @@ test("Salo catalogue inventory matches the audited production dataset", () => {
   const imageBacked = saloProviders.filter((provider) => Boolean(provider.image));
   assert.equal(imageBacked.length, 90, "Only source-backed provider photos may be counted as image-backed");
   const publiclyRenderableImages = saloProviders.filter((provider) => Boolean(getSaloProviderImage(provider)));
-  assert.equal(publiclyRenderableImages.length, 89, "Pending-rights images must be excluded from public rendering");
-  assert.deepEqual(
-    saloProviders.filter((provider) => provider.image && !getSaloProviderImage(provider)).map((provider) => provider.id),
-    ["meri-teijo-golf"],
-    "Only the specifically audited pending-rights asset may be withheld in this catalogue snapshot",
+  assert.equal(publiclyRenderableImages.length, 0, "Images without asset-level permission evidence must fail closed");
+  assert.equal(
+    saloProviders.filter((provider) => provider.image && !getSaloProviderImage(provider)).length,
+    90,
+    "Every image without complete verified rights evidence must be withheld from public rendering",
   );
   assert.equal(saloProviders.filter((provider) => getSaloProviderCategories(provider).includes("localFood")).length, 39, "Cross-listing must not duplicate canonical providers");
   assert.deepEqual(
@@ -105,9 +105,42 @@ test("Salo catalogue inventory matches the audited production dataset", () => {
 });
 
 
-test("provider images with pending rights are never exposed for public rendering", () => {
+test("Salo provider images fail closed unless complete asset-level rights evidence is recorded", () => {
   const golf = saloProviders.find((provider) => provider.id === "meri-teijo-golf");
   assert.ok(golf, "Meri-Teijo Golf profile must exist");
   assert.equal(golf.imageRightsStatus, "pending");
-  assert.equal(getSaloProviderImage(golf), undefined, "Image with unconfirmed reuse permission must not be rendered");
+  assert.equal(getSaloProviderImage(golf), undefined, "Image with pending permission must not be rendered");
+
+  const unverified = {
+    image: "https://images.example.test/provider.jpg",
+    imageRightsStatus: "verified" as const,
+  };
+  assert.equal(getSaloProviderImage(unverified), undefined, "A verified flag without evidence must not publish an image");
+
+  const verified = {
+    ...unverified,
+    imageRightsEvidence: {
+      rightsHolder: "Provider Ltd",
+      permissionReference: "https://provider.example.test/image-permission",
+      allowedUse: "Commercial listing and provider detail page",
+      attribution: "Provider Ltd",
+      modificationPermission: "No modifications permitted",
+      verifiedAt: "2026-10-30T12:00:00.000Z",
+      reviewedBy: "content-admin",
+    },
+  };
+  assert.equal(hasVerifiedSaloImageRights(verified), true);
+  assert.equal(getSaloProviderImage(verified), verified.image);
+
+  const incompleteEvidence = {
+    ...verified,
+    imageRightsEvidence: { ...verified.imageRightsEvidence, permissionReference: " " },
+  };
+  assert.equal(getSaloProviderImage(incompleteEvidence), undefined, "Incomplete evidence must fail closed");
+
+  const invalidDate = {
+    ...verified,
+    imageRightsEvidence: { ...verified.imageRightsEvidence, verifiedAt: "not-a-date" },
+  };
+  assert.equal(getSaloProviderImage(invalidDate), undefined, "Invalid review dates must fail closed");
 });
