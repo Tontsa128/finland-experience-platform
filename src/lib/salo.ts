@@ -3,7 +3,7 @@ import { photoLibrary } from "@/lib/photo-library";
 
 export type SaloProvider = {
   id: string;
-  category: "tourism" | "stay" | "experience" | "nature" | "food";
+  category: "tourism" | "stay" | "experience" | "nature" | "food" | "shopping";
   name: string;
   nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
@@ -666,6 +666,89 @@ export const saloProviders: SaloProvider[] = [
     url: "https://www.lonnviken.com/fi/meri-veikko",
     image: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c846690215630ca95d_20220826_150455%20re%203.jpg",
     imageCredit: "Saaristotila Lönnviken — official provider website",
+  },
+
+
+  {
+    id: "kaarnalaiva",
+    category: "shopping",
+    name: "Kaarnalaiva",
+    description: {
+      fi: "Mathildedalissa toimiva käsityöpuoti, jonka valikoimaan kuuluu luonnonmateriaaleista valmistettuja harjoja ja koreja. Yrityksen omien tietojen mukaan toimintaa on ollut vuodesta 1997.",
+      es: "Tienda de artesanía en Mathildedal especializada en cepillos y cestas de materiales naturales. Según la empresa, lleva trabajando desde 1997.",
+      en: "A Mathildedal craft shop specialising in brushes and baskets made from natural materials. The business says it has been operating since 1997.",
+    },
+    url: "https://www.kaarnalaiva.net",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/kaarnalaivanettisivuille-1-uai-1032x688.jpg?itok=KAsstQNx",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "matildan-kesakauppa",
+    category: "shopping",
+    name: "Matildan kesäkauppa",
+    nameByLocale: { fi: "Matildan kesäkauppa", en: "Matilda Summer Shop", es: "Tienda de verano Matilda" },
+    description: {
+      fi: "Sesonkiluonteinen yhteispuoti Mathildedalin vanhassa halkojenkuivausuunissa. Mukana on useita kotimaisia käsityö-, vaate- ja design-yrittäjiä. Varmista aukiolo ennen vierailua.",
+      es: "Tienda colectiva de temporada en un antiguo secadero de leña de Mathildedal, con varias marcas finlandesas de artesanía, moda y diseño. Comprueba el horario antes de visitarla.",
+      en: "A seasonal collective shop in a former wood-drying building in Mathildedal, bringing together Finnish craft, clothing and design makers. Check opening times before visiting.",
+    },
+    url: "https://www.visitmathildedal.fi/fi/ostokset",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/kesakauppa.png?itok=8IAi9w4T",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "piironki-dock-helsinki",
+    category: "shopping",
+    name: "PIIRONKI & DOCK HELSINKI",
+    nameByLocale: { fi: "PIIRONKI & DOCK HELSINKI", en: "PIIRONKI & DOCK HELSINKI", es: "PIIRONKI & DOCK HELSINKI" },
+    description: {
+      fi: "Mathildedalin kesäaitta, jonka valikoimassa on asusteita, sisustus- ja lahjatavaroita sekä lasten leluja ja pelejä. Toiminta on sesonkiluonteista.",
+      es: "Tienda de verano en Mathildedal con accesorios, decoración, regalos, juguetes y juegos infantiles. Actividad de temporada.",
+      en: "A seasonal summer shop in Mathildedal offering accessories, homeware, gifts, toys and games for children.",
+    },
+    url: "https://www.piironki.fi",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/Piironki%20062023-1-60_0.jpg?itok=LeUih5R3",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "ruukin-kehraamo",
+    category: "shopping",
+    name: "Ruukin Kehräämö ja puoti",
+    nameByLocale: { fi: "Ruukin Kehräämö ja puoti", en: "Ruukki Spinnery and Shop", es: "Hilandería y tienda Ruukki" },
+    description: {
+      fi: "Mathildedalin ruukkikylän kehräämö ja puoti, jonka valikoimassa on alpakanvillasta valmistettuja neuleita ja muita paikallisia käsityötuotteita.",
+      es: "Hilandería y tienda en el pueblo siderúrgico de Mathildedal, con prendas de punto de lana de alpaca y otros productos artesanales locales.",
+      en: "A spinnery and shop in Mathildedal's ironworks village, offering alpaca knitwear and other locally made craft products.",
+    },
+    url: "https://www.ruukinkehraamo.fi",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "second-chance-mathildedal",
+    category: "shopping",
+    name: "Second Chance",
+    description: {
+      fi: "Mathildedalissa toimiva vaate- ja lifestyleputiikki, jonka valikoimassa on kotimaisia vaatteita, asusteita, koruja ja luonnonkosmetiikkaa. Varmista ajantasainen valikoima ja aukiolo yritykseltä.",
+      es: "Boutique de moda y estilo de vida en Mathildedal con ropa finlandesa, accesorios, joyería y cosmética natural. Consulta la oferta y el horario actuales con la tienda.",
+      en: "A fashion and lifestyle boutique in Mathildedal offering Finnish clothing, accessories, jewellery and natural cosmetics. Confirm current products and opening times with the shop.",
+    },
+    url: "https://www.secondchance.fi",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/visit-matilda_31-uai-1032x688.jpg?itok=Qv4x8oPv",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "vinttipuoti",
+    category: "shopping",
+    name: "VinttiPuoti",
+    description: {
+      fi: "Mathildedalin Kankirautavaraston yläkerrassa toimiva puoti, jonka valikoimassa on paikallista käsityötä, taidetta ja lähiruokaa.",
+      es: "Tienda en la planta superior del antiguo almacén de hierro de Mathildedal, con artesanía local, arte y productos de proximidad.",
+      en: "A shop on the upper floor of Mathildedal's historic iron storehouse, offering local crafts, art and regional food.",
+    },
+    url: "https://www.visitmathildedal.fi/fi/ostokset",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/psx_20221106_095253_2.jpg?itok=PQZPi2SI",
+    imageCredit: "Visit Mathildedal — official destination listing",
   },
 
 ];
