@@ -1471,11 +1471,11 @@ export const saloProviders: SaloProvider[] = [
     category: "localFood",
     name: "Vaanelan puutarha",
     location: "Päivärinteentie 14, 25520 Perniö, Salo",
-    contact: { phone: "+358 400 720 800", email: "ismo@vaanela.fi", address: "Päivärinteentie 14, 25520 Perniö" },
+    contact: { phone: "+358 40 353 6239", email: "tilaukset@vaanela.fi", address: "Päivärinteentie 14, 25520 Perniö" },
     description: {
-      fi: "Perniöläinen puutarhayritys viljelee muun muassa salaatteja, mansikoita ja vadelmia. Tilapuodin aukiolo on kausiluonteinen: yrityksen sivu ilmoittaa sen olevan suljettu ja palvelevan jälleen seuraavana kesänä. Tilauksia voi tiedustella suoraan yritykseltä.",
-      en: "A garden business in Perniö growing lettuce, strawberries and raspberries. The farm shop is seasonal; the company currently states that it is closed and will reopen next summer. Contact the business directly about orders.",
-      es: "Empresa hortícola de Perniö que cultiva, entre otros productos, lechugas, fresas y frambuesas. La tienda de la finca es estacional; la empresa indica que está cerrada y volverá a abrir el próximo verano. Consulta directamente los pedidos."
+      fi: "Vaanelan puutarha on Perniössä toimiva perheyritys, joka viljelee salaatteja, mansikoita, vadelmia ja muita vihanneksia. Tilapuoti sijaitsee osoitteessa Päivärinteentie 14, ja yrityksen virallisilla sivuilla ilmoitetaan aukioloajaksi ma–la klo 10–17. Valikoima seuraa satokautta; tarkista poikkeusaukiolot ja tuotteiden saatavuus ennen vierailua.",
+      en: "Vaanela is a family-run grower in Perniö producing lettuce, strawberries, raspberries and other vegetables. The farm shop is at Päivärinteentie 14; the official website lists opening hours Monday–Saturday, 10:00–17:00. Product selection follows the growing season; check exceptions and availability before visiting.",
+      es: "Vaanela es una empresa familiar de Perniö que cultiva lechugas, fresas, frambuesas y otras verduras. La tienda de la granja está en Päivärinteentie 14; la web oficial indica un horario de lunes a sábado, de 10:00 a 17:00. La selección depende de la temporada de cultivo; consulta los cierres excepcionales y la disponibilidad antes de visitarla."
     },
     url: "https://vaanela.fi"
   },
