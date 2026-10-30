@@ -11,6 +11,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { kimitoonProviders } from "@/lib/kimitoon-providers";
+import { areaProviderIds } from "@/components/salo/SaloDirectory";
 
 export const revalidate = 3600;
 
@@ -66,8 +67,9 @@ const basePaths = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const saloAreaPaths = Object.keys(areaProviderIds).map((area) => `salo/${area}`);
   const staticEntries = locales.flatMap((locale) =>
-    basePaths.map((path) => ({
+    [...basePaths, ...saloAreaPaths].map((path) => ({
       url: siteUrl + "/" + locale + (path ? "/" + path : ""),
       changeFrequency: path === "" ? "daily" as const : "weekly" as const,
       priority: path === "" ? 1 : 0.8,
