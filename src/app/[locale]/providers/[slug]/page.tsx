@@ -108,27 +108,27 @@ const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
     { src:"https://static.wixstatic.com/media/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg/v1/fill/w_382%2Ch_509%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/53869d_6f42583e26fc4ffb920ac44e2fc25ec2~mv2.jpg", alt:{fi:"Hotel Merikruunun ravintolan tapasannos",en:"Tapas served at Hotel Merikruunu's restaurant",es:"Tapas del restaurante Hotel Merikruunu"}, credit:"Hotel Merikruunu", source:"https://www.merikruunu.fi/ravintola" }
   ],
   "kimitoon-labbnas-lomakoti": [
-    { src:"https://ksg.fi/wp-content/uploads/2026/01/1-1024x768.jpeg", alt:{fi:"Labbnäsin Lomakodin sisätilat",en:"Interior at Labbnäs Holiday Home",es:"Interior del alojamiento Labbnäs"}, credit:"Labbnäs", source:"https://ksg.fi/fi/foretag/labbnas-semesterhem/" },
-    { src:"https://ksg.fi/wp-content/uploads/2026/01/sommar-kalas-i-lidret--1024x683.jpg", alt:{fi:"Labbnäsin juhlatila kesäjuhliin",en:"Labbnäs barn venue for summer celebrations",es:"Espacio de celebraciones de verano en Labbnäs"}, credit:"Labbnäs", source:"https://ksg.fi/fi/foretag/labbnas-semesterhem/" }
+    { src:"https://ksg.fi/wp-content/uploads/2026/01/1-1024x768.jpeg", alt:{fi:"Labbnäsin Lomakodin kuva",en:"Labbnäs Holiday Home photo",es:"Imagen del alojamiento Labbnäs"}, credit:"Labbnäs", source:"https://ksg.fi/fi/foretag/labbnas-semesterhem/" },
+    { src:"https://ksg.fi/wp-content/uploads/2026/01/sommar-kalas-i-lidret--1024x683.jpg", alt:{fi:"Labbnäsin juhlatilan kuva",en:"Labbnäs event venue photo",es:"Imagen del espacio para eventos de Labbnäs"}, credit:"Labbnäs", source:"https://ksg.fi/fi/foretag/labbnas-semesterhem/" }
   ],
   "kimitoon-storfinnhova-gard": [
-    { src:"https://ksg.fi/wp-content/uploads/2026/01/080925-Kemio-tilakuvat-web-98-1024x683.jpg", alt:{fi:"Storfinnhova Gårdin tilat",en:"Facilities at Storfinnhova Gård",es:"Instalaciones de Storfinnhova Gård"}, credit:"Storfinnhova Gård", source:"https://ksg.fi/fi/foretag/storfinnhova-gard/" }
+    { src:"https://ksg.fi/wp-content/uploads/2026/01/080925-Kemio-tilakuvat-web-98-1024x683.jpg", alt:{fi:"Storfinnhova Gårdin kuva",en:"Storfinnhova Gård photo",es:"Imagen de Storfinnhova Gård"}, credit:"Storfinnhova Gård", source:"https://ksg.fi/fi/foretag/storfinnhova-gard/" }
   ],
   "kimitoon-ragnar-antonin-lomakyla": [
-    { src:"https://ksg.fi/wp-content/uploads/2026/01/FB_IMG_1777478656693.jpg", alt:{fi:"Ragnar Antonin Lomakylän majoituskohde",en:"Accommodation at Ragnar Anton's Holiday Village",es:"Alojamiento en el complejo Ragnar Anton"}, credit:"Ragnar Antonin Lomakylä", source:"https://ksg.fi/fi/foretag/ragnar-antons-semesterby/" },
-    { src:"https://ksg.fi/wp-content/uploads/2026/01/FB_IMG_1358697435524384743-576x1024.jpg", alt:{fi:"Ragnar Antonin Lomakylän saaristoympäristö",en:"Archipelago surroundings at Ragnar Anton's Holiday Village",es:"Entorno del archipiélago en Ragnar Anton"}, credit:"Ragnar Antonin Lomakylä", source:"https://ksg.fi/fi/foretag/ragnar-antons-semesterby/" }
+    { src:"https://ksg.fi/wp-content/uploads/2026/01/FB_IMG_1777478656693.jpg", alt:{fi:"Ragnar Antonin Lomakylän kuva",en:"Ragnar Anton's Holiday Village photo",es:"Imagen del complejo Ragnar Anton"}, credit:"Ragnar Antonin Lomakylä", source:"https://ksg.fi/fi/foretag/ragnar-antons-semesterby/" },
+    { src:"https://ksg.fi/wp-content/uploads/2026/01/FB_IMG_1358697435524384743-576x1024.jpg", alt:{fi:"Ragnar Antonin Lomakylän toinen kuva",en:"Another photo of Ragnar Anton's Holiday Village",es:"Otra imagen del complejo Ragnar Anton"}, credit:"Ragnar Antonin Lomakylä", source:"https://ksg.fi/fi/foretag/ragnar-antons-semesterby/" }
   ],
   "kimitoon-oro-linnakesaari-provider": [
-    { src:"https://ksg.fi/wp-content/uploads/2026/01/Skagen_vaaka2-1024x765.webp", alt:{fi:"Örön linnakesaaren maisema",en:"Landscape on Örö Fortress Island",es:"Paisaje de la isla fortificada de Örö"}, credit:"Örö", source:"https://ksg.fi/fi/foretag/oro-kustfort/" },
-    { src:"https://ksg.fi/wp-content/uploads/2026/01/482064530_947449190922927_922543115025975695_n-737x1024.jpg", alt:{fi:"Örön historialliset rakenteet",en:"Historic structures on Örö",es:"Estructuras históricas de Örö"}, credit:"Örö", source:"https://ksg.fi/fi/foretag/oro-kustfort/" }
+    { src:"https://ksg.fi/wp-content/uploads/2026/01/Skagen_vaaka2-1024x765.webp", alt:{fi:"Örön linnakesaaren kuva",en:"Örö Fortress Island photo",es:"Imagen de la isla fortificada de Örö"}, credit:"Örö", source:"https://ksg.fi/fi/foretag/oro-kustfort/" },
+    { src:"https://ksg.fi/wp-content/uploads/2026/01/482064530_947449190922927_922543115025975695_n-737x1024.jpg", alt:{fi:"Örön linnakesaaren toinen kuva",en:"Another photo of Örö Fortress Island",es:"Otra imagen de la isla fortificada de Örö"}, credit:"Örö", source:"https://ksg.fi/fi/foretag/oro-kustfort/" }
   ],
   "kimitoon-finlandia-sailing": [
     { src:"https://ksg.fi/wp-content/uploads/2026/01/Istuinkaukalo-kuva-1024x683.jpg", alt:{fi:"Finlandia Sailingin veneen istuinalue",en:"Seating area aboard a Finlandia Sailing boat",es:"Zona de asientos de una embarcación de Finlandia Sailing"}, credit:"Finlandia Sailing", source:"https://ksg.fi/fi/foretag/finlandia-sailing-ab-oy-kasnas/" },
     { src:"https://ksg.fi/wp-content/uploads/2026/01/Finlandia-Sailing-boat-place-numbers-1-11-and-outside-1024x768.jpg", alt:{fi:"Finlandia Sailingin veneen kansi ja paikat",en:"Deck and seating aboard a Finlandia Sailing boat",es:"Cubierta y plazas de una embarcación de Finlandia Sailing"}, credit:"Finlandia Sailing", source:"https://ksg.fi/fi/foretag/finlandia-sailing-ab-oy-kasnas/" }
   ],
   "kimitoon-cafe-dacapo": [
-    { src:"https://ksg.fi/wp-content/uploads/2026/02/485747364_1155400309705092_5304925938808327852_n-768x1024.jpg", alt:{fi:"Café DaCapon kahvilatuotteita",en:"Café DaCapo café products",es:"Productos de cafetería de Café DaCapo"}, credit:"Café DaCapo", source:"https://ksg.fi/fi/foretag/cafe-dacapo-2/" },
-    { src:"https://ksg.fi/wp-content/uploads/2026/02/52156733_791862431190548_4193037186511142912_n.jpg", alt:{fi:"Café DaCapon leivonnaisia",en:"Pastries at Café DaCapo",es:"Repostería de Café DaCapo"}, credit:"Café DaCapo", source:"https://ksg.fi/fi/foretag/cafe-dacapo-2/" }
+    { src:"https://ksg.fi/wp-content/uploads/2026/02/485747364_1155400309705092_5304925938808327852_n-768x1024.jpg", alt:{fi:"Café DaCapon kuva",en:"Café DaCapo photo",es:"Imagen de Café DaCapo"}, credit:"Café DaCapo", source:"https://ksg.fi/fi/foretag/cafe-dacapo-2/" },
+    { src:"https://ksg.fi/wp-content/uploads/2026/02/52156733_791862431190548_4193037186511142912_n.jpg", alt:{fi:"Café DaCapon toinen kuva",en:"Another Café DaCapo photo",es:"Otra imagen de Café DaCapo"}, credit:"Café DaCapo", source:"https://ksg.fi/fi/foretag/cafe-dacapo-2/" }
   ]
   "kimitoon-villa-mimosa-37": [
     { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/7bc353c0-7393-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Mimosa – oleskelutilat ja merellinen huvila", en: "Villa Mimosa – living spaces and seaside villa", es: "Villa Mimosa – espacios interiores y villa junto al mar" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-mimosa-37-2/" },
