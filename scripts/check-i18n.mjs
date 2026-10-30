@@ -91,8 +91,8 @@ const providerIds = providerArrayStart >= 0 && providerArrayEnd > providerArrayS
 const providerArraySource = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
   ? saloDataSource.slice(providerArrayStart, providerArrayEnd)
   : "";
-const providerImageCount = [...providerArraySource.matchAll(/^\\s+image:\\s*/gm)].length;
-const providerCreditCount = [...providerArraySource.matchAll(/^\\s+imageCredit:\\s*/gm)].length;
+const providerImageCount = [...providerArraySource.matchAll(/^\s+image:\s*/gm)].length;
+const providerCreditCount = [...providerArraySource.matchAll(/^\s+imageCredit:\s*/gm)].length;
 const areaMapStart = saloAreaDataSource.indexOf("export const areaProviderIds:");
 const areaMapEnd = saloAreaDataSource.indexOf("\n};", areaMapStart);
 const areaMap = areaMapStart >= 0 && areaMapEnd > areaMapStart ? saloAreaDataSource.slice(areaMapStart, areaMapEnd) : "";
