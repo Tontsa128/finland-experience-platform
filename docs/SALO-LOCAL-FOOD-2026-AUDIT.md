@@ -2,43 +2,40 @@
 
 ## Purpose and source
 
-The 2026 Visit Salo brochure contains a local-food map with **42 map entries**: 39 farms, shops and local-food producers (numbered 4–42 in the brochure) plus three Vuorovetten ice-cream kiosks. This is a separate source inventory from the existing 72 Salo provider profiles and must be reconciled before the Salo directory can be described as complete.
+The 2026 Visit Salo brochure contains a local-food map with **42 map entries**: 39 farms, shops and local-food producers (numbered 4–42 in the brochure) plus three Vuorovetten ice-cream kiosks.
 
-Primary source:
+The Salo directory currently contains 88 unique provider profiles overall. **26 canonical provider profiles are represented in the separate local-food category**: 25 of the 39 producers and one Vuorovetten operator profile for all three kiosk locations. Fourteen producer entries still need their own verified profile or a confirmed canonical-provider mapping.
+
+Primary sources:
 - Visit Salo, *Salo matkailuesite 2026*, pages 40–43: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
 - Official local-food map: https://salofood.fi/
 
 ## Current profile matching
 
-The following official map entries already have a corresponding code-backed provider profile. They still need category, operator and media reconciliation where noted.
-
-| Official map entry | Current profile | Required follow-up |
+| Official map entry | Canonical profile | Status / follow-up |
 |---|---|---|
-| Leipyölin tila | `leipyolin-tila` | Add the local-food category; confirm farm-shop offer and current image rights |
-| Lepola Drinks | `lepola-drinks` | Profile added from official Visit Salo source; reconcile the related Meritalo brand/operator |
-| Mathildedalin Kyläpanimo & Olutpuoti | `mathildedal-brewery` | Add local-food category; verify current official image |
-| Alaspään maatila | `alaspaan-maatila` | Add local-food category and verify farm-shop details |
-| Finnholm-tila | `finnholm-strandbo` | One operator profile should cover both accommodation and seasonal direct sales |
-| Matildankartano | `matildankartano` | Add local-food category if not already represented |
-| Pohjolan tila | `pohjolan-tila` | Profile added from official Visit Salo and provider sources |
+| Leipyölin tila | `leipyolin-tila` | Existing accommodation profile cross-listed in local food; verify farm-shop offer and photo rights |
+| Lepola Drinks | `lepola-drinks` | Cross-listed; confirm relationship with the Meritalo brand before adding another profile |
+| Mathildedalin Kyläpanimo & Olutpuoti | `mathildedal-brewery` | Cross-listed; verify current photo rights |
+| Alaspään maatila | `alaspaan-maatila` | Existing farm/accommodation profile cross-listed; confirm direct-sale details |
+| Finnholm-tila | `finnholm-strandbo` | Existing accommodation profile cross-listed; one operator profile should cover seasonal direct sales |
+| Matildankartano | `matildankartano` | Existing profile cross-listed |
+| Pohjolan tila | `pohjolan-tila` | Added with official Visit Salo and provider information and a matching photo |
 | Katiskanmäen lähiruokakioski Pikantti | `katiskanmaeki` | Included in the canonical Katiskanmäki profile |
-| Lähiruoka Puhti | `lahiruokapuoti-puhti` | Confirm current operator, official link and image |
-| Vuorovetten Jäätelö kiosks | `vuorovetten-jaatelo` | One canonical operator profile should list all three kiosk locations |
-
-| Ellun kanat ja munat | `ellun-kanat-ja-munat` | Added with official farm photo, description and contact details |
-| Kalliolan Tila | `kalliolan-tila` | Added with official pasture photo, description and contact details |
-| Kirakan kalkkuna | `kirakan-kalkkuna` | Added with official turkey-product photo and seasonal farm-shop details |
+| Lähiruoka Puhti | `lahiruokapuoti-puhti` | Existing profile cross-listed; confirm current operator and image |
+| Vuorovetten Jäätelö | `vuorovetten-jaatelo` | One canonical operator profile covers all three kiosks |
+| Ellun kanat ja munat | `ellun-kanat-ja-munat` | Added with official farm photo, translated descriptions and contact details |
+| Kalliolan Tila | `kalliolan-tila` | Added with official pasture photo, translated descriptions and contact details |
+| Kirakan kalkkuna / Kirakan Tila | `kirakan-kalkkuna` | Added with official turkey-product photo and seasonal shop details |
 | Kosken kartano | `kosken-kartano` | Added with Visit Salo photo, organic farm description and contact details |
-| Mikkolan tila | `mikkolan-tila` | Added with Visit Salo photo, lamb/wool profile and farm experience details |
-
+| Mikkolan tila | `mikkolan-tila` | Added with Visit Salo photo, lamb/wool profile and farm-experience details |
 | Peltosaaren luomulammastila | `peltosaaren-luomulammastila` | Added with Visit Salo sheep photo and farm-tourism details |
 | Perniön Saunapalvi | `pernion-saunapalvi` | Added with official smokehouse product photo and seasonal shop notice |
-| Wanhantuvan Ankkala | `wanhantuvan-ankkala` | Added from official farm source; image still needs a verified matching asset |
-| Wiberg's | `wibergs` | Added from current official farm site; image still needs a stable verified asset |
+| Wanhantuvan Ankkala | `wanhantuvan-ankkala` | Added from official farm source; a matching photo still needs verification |
+| Wiberg's | `wibergs` | Added from current official farm site; a stable matching photo still needs verification |
 | Ylivesän luomutila | `ylivesan-luomutila` | Added with Visit Salo cattle photo and source credit |
-
 | Öyrilän Isontalon lammastila | `oyrilan-isontalon-lammastila` | Added with Visit Salo sheep photo; also listed for the seasonal Mathildedal Vinttipuoti |
-| Hallonmäen Siideripanimo | `hallonmaen-siideripanimo` | Added as a separate legal entity from Hallonmäentila, with its own cider photo and contact |
+| Hallonmäen Siideripanimo | `hallonmaen-siideripanimo` | Added as a separate legal entity from Hallonmäen tila, with its own cider photo and contact |
 | Paulan puutarha | `paulan-puutarha` | Added with official apple-juice photo and orchard description |
 | Vaski Cider & Distillery | `vaski-cider-distillery` | Added with Visit Salo photo, visitor-experience details and contact |
 | Hallonmäen tila | `hallonmaen-tila` | Added as a separate legal entity from Hallonmäen Siideripanimo, with official farm-shop photo |
@@ -46,26 +43,10 @@ The following official map entries already have a corresponding code-backed prov
 
 ## Remaining official map entries
 
-The following entries do not yet have a dedicated local-food profile in the current Salo directory. They must be checked against their own current official channel before publication; the brochure is an inventory source, not proof that every sales point or seasonal shop is currently open. The first five entries below have now been added with verified official descriptions, contact details and matching photos; the remaining 25 still need individual profile work.
+These **14 entries** remain to be individually verified and added or mapped to a confirmed canonical profile. The brochure is an inventory source, not proof that every sales point or seasonal shop is currently open.
 
 | No. | Name | Address / area | Contact or website in the 2026 brochure |
 |---:|---|---|---|
-| 4 | Ellun kanat ja munat | Ristisillantie 187 A, 25320 Salo | 040 718 0258 · https://ellunkanatjamunat.fi — **profile added** |
-| 5 | Kalliolan Tila | Kiskontie 2858, 25470 Kisko | 040 867 2261 · https://www.kalliolantila.fi — **profile added** |
-| 6 | Kirakan kalkkuna | Kirakantie 178, 25610 Ylönkylä, Perniö | 044 078 5060 · https://savukalkkuna.fi — **profile added** |
-| 7 | Kosken kartano | Koskipolku 28, 25560 Koski as | 050 359 3830 · https://koskis.fi — **profile added** |
-| 9 | Mikkolan tila | Vanha Turuntie 738, 25240 Hajala | 040 900 2957 · https://mikkolantila.com — **profile added** |
-| 10 | Peltosaaren luomulammastila | Lehtiniityntie 52, 25560 Koski as | 050 550 7650 · https://peltosaaren-lammastila.webnode.fi |
-| 11 | Perniön Saunapalvi | Pernänmetsäntie 12, 25500 Perniö | 02 735 2188 · https://pernionsaunapalvi.fi |
-| 12 | Wanhantuvan Ankkala | Lähteenmäentie 5, 25260 Vaskio | 040 539 3420 · https://wanhantuvanankkala.fi |
-| 13 | Wiberg’s — laidunkanan munia | Ylikulmantie 467, 25330 Kuusjoki | 045 783 500 92 · https://wibergs.fi |
-| 14 | Ylivesän luomutila | Vilikkalantie 1410, 25110 Kruusila | 040 528 2408 · https://ylivesa.fi |
-| 15 | Öyrilän Isontalon lammastila | Isontalontie 42, 25540 Knaapila | 050 469 6966 · https://irmelinurminen.com |
-| 16 | Hallonmäen Siideripanimo | Kuljuntie 79, Salo / Perniö | 044 760 5832 · https://hallonmaki.fi |
-| 19 | Paulan puutarha | Nuottamäentie 80, 25230 Angelniemi | 044 584 0579 · https://paulanpuutarha.fi |
-| 20 | Vaski Cider & Distillery | Vaskiontie 418, 24800 Halikko | 041 311 6360 · https://vaskicider.fi |
-| 23 | Hallonmäen tila | Kuljuntie 79, Salo / Perniö | 044 760 5832 · https://hallonmaki.fi |
-| 24 | Heinän Puutarha | Hakamäentie 155, 24130 Salo | 040 836 3127 · https://heinanpuutarha.fi |
 | 25 | Hästön maatila | Hästöntie 910, 25500 Perniö | 050 042 8902 · https://hastonmaatila.fi |
 | 26 | Ilolan tila | Järvintie 136, Muurla | 040 531 5845 · Facebook: Ilolan tila |
 | 27 | Kurjen mansikkatila | Romsilantie 608, Salo | 041 319 1068 · https://kurjenmaatila.fi |
@@ -91,14 +72,15 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 
 ## Canonical-provider decisions to verify
 
-- **Hallonmäen tila / Hallonmäen Siideripanimo:** same address, phone and domain in the 2026 brochure. Verify whether these should be one canonical Hallonmäki profile with multiple offerings.
-- **Lepola Drinks / Meritalo:** same Ylönkylä address and phone in the brochure; the provider websites connect the shop and berry products. Confirm the legal/operator relationship and represent the brands without duplicate provider records.
+- **Hallonmäen tila / Hallonmäen Siideripanimo:** the brochure lists the same address and family, but the two businesses have separate legal identities and contacts. They are therefore kept as separate canonical profiles.
+- **Lepola Drinks / Meritalo:** the brochure lists the same Ylönkylä address and phone. Confirm the legal/operator relationship before adding a separate Meritalo profile; do not create a duplicate by assumption.
 - **Alaspään maatila, Finnholm and Leipyölin tila:** existing accommodation profiles may represent operators that also sell local produce. Cross-list the existing canonical profile rather than adding a second profile for the same operator.
 - **Vuorovetten Jäätelö:** one operator, three kiosk locations.
+- **Öyrilän Isontalon lammastila:** the farm is in Perniö, but its products are also sold seasonally at Mathildedal Vinttipuoti; its canonical profile is included in the Mathildedal area directory for that reason.
 
 ## Publication and image rules
 
-- The distinct **Lähiruoka ja maatilapuodit** category is now implemented separately from restaurant/café cards. Twenty-six provider profiles are now cross-listed there; the 14 remaining official map entries still require individual verification and addition.
+- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. Twenty-six provider profiles are currently cross-listed there; fourteen official map entries remain.
 - Do not copy seasonal opening hours or brochure prices into permanent descriptions without checking the provider’s current official channel.
 - Do not invent a provider photo or use an unrelated farm/food image. If an official matching image cannot be verified, publish the provider with no image until a suitable image and credit are available.
 - Preserve source URL and image credit for every published photo.
