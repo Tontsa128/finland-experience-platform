@@ -1,6 +1,6 @@
 # Kimitoön provider inventory and implementation audit
 
-Audit date: 30 October 2026  
+Audit date: 30 October 2026 (updated after targeted link audit)  
 Scope: Kemiö, Kimitoön, Rosala, Bengtskär, Kasnäs, Västanfjärd, Dalsbruk and the surrounding archipelago.  
 Implementation branch: `feat/kansakoulu-featured-kimitoon`  
 Status: expanded source-based directory; further source/image verification remains in progress.
@@ -98,10 +98,10 @@ The project owner has confirmed general permission to use business information a
 The 175-profile count describes the directory inventory, not a claim that every profile is publication-complete. A code audit of the current branch found:
 
 - 175 unique IDs; no duplicate profile IDs.
-- 60 profiles have a primary card image; 115 currently use the truthful no-photo state.
+- 45 profiles have a primary card image in the current provider source file; 130 currently use the truthful no-photo state. This count excludes the separate provider-detail gallery map and must not be conflated with gallery coverage.
 - 14 profiles have an additional provider-specific photo gallery (30 gallery assets in the detail-page gallery map). The remaining providers need source-by-source image discovery; never fill gaps with unrelated or generated provider photos.
 - 41 profiles currently have structured phone/address contact fields; 134 do not yet have structured contact details. This is a data-completeness backlog, not proof that the provider has no public contact information.
-- 21 profiles currently point to the general KSG homepage rather than a direct provider listing or official booking/contact page. Replace these with the exact official listing/channel when verified.
+- 19 profiles still point to a generic directory homepage rather than a provider-specific listing or official booking/contact page. Four generic links were corrected in the latest audit pass: DB Bistro Runda Munken, K-Supermarket Kompass, Café Våffelstugan and Catering Thomas Åhlberg. The remaining 19 records are listed in the current source audit and should be replaced only when their exact official destination is verified.
 - All 175 profiles have FI/EN/ES names and descriptions, and the IDs are unique. This does not replace a human language and factual review.
 
 Priority completion order:
