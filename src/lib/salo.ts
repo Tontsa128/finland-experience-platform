@@ -886,6 +886,62 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Visit Salo / Salon Kohteet — Vicksbäckinlahden varauskota",
   },
 
+
+  {
+    id: "matildankartano",
+    category: "food",
+    name: "Matildankartanon leipomokahvila",
+    nameByLocale: { fi: "Matildankartanon leipomokahvila", en: "Matildankartano Bakery Café", es: "Panadería y cafetería Matildankartano" },
+    description: {
+      fi: "Mathildedalin vanhassa ruukkikartanossa toimiva artesaanileipomo ja kesäkahvila. Tarjolla on hapanjuurileipää ja -pullaa, sesongin lähiruokalounasta, kahvia, leipomon makeita tuotteita ja itse tehtyä kesäjäätelöä. Myymälästä voi ostaa leipomotuotteita ja paikallisia juomia.",
+      es: "Panadería artesanal y cafetería de verano en la antigua casa solariega de Mathildedal. Ofrece pan y bollería de masa madre, almuerzos de temporada con productos locales, café, dulces y helado artesanal de verano. En la tienda se venden productos de panadería y bebidas locales.",
+      en: "An artisan bakery and summer café in Mathildedal's historic manor house. It serves sourdough bread and buns, seasonal local lunches, coffee, bakery treats and homemade summer ice cream. The shop also sells baked goods and regional drinks.",
+    },
+    url: "https://www.matildankartano.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/06/191308660_472307220497520_6643995748019464127_n-576x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Matildankartanon leipomokahvila",
+  },
+  {
+    id: "lahiruokapuoti-puhti",
+    category: "shopping",
+    name: "Lähiruokapuoti Puhti",
+    description: {
+      fi: "Mathildedalin Ruukinrannantiellä toimiva lähiruokapuoti, joka kokoaa yhteen paikallisten lähi- ja pientuottajien ruokia ja juomia. Puoti avattiin toukokuussa 2025; tarkista ajantasainen aukiolo ja valikoima myymälän omista kanavista.",
+      es: "Tienda de productos locales en Ruukinrannantie, Mathildedal, que reúne alimentos y bebidas de pequeños productores de la zona. Abrió en mayo de 2025; consulta horarios y surtido actuales en sus canales.",
+      en: "A local food shop on Ruukinrannantie in Mathildedal, bringing together food and drink from nearby small producers. It opened in May 2025; check current opening times and stock through the shop's own channels.",
+    },
+    url: "https://kohteet.visitsalo.fi/lahiruokapuoti-puhti/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/04/20250524_140326-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Lähiruokapuoti Puhti",
+  },
+  {
+    id: "matilda-talo",
+    category: "events",
+    name: "Matilda-talo",
+    nameByLocale: { fi: "Matilda-talo", en: "Matilda House Event Venue", es: "Espacio para eventos Matilda-talo" },
+    description: {
+      fi: "Matildanjärven rannalla Teijon kansallispuiston kupeessa sijaitseva juhla- ja kokoustalo. Juhlasaliin mahtuu 120 vierasta; tiloissa on lisäksi näyttämö, ravintolatilat ja keittiö. Talo soveltuu häihin, perhejuhliin, kokouksiin ja ulkoilmatapahtumiin.",
+      es: "Espacio para celebraciones y reuniones junto al lago Matildanjärvi, cerca del Parque Nacional de Teijo. El salón principal tiene capacidad para 120 invitados y el edificio cuenta con escenario, espacios de restauración y cocina. Adecuado para bodas, celebraciones familiares, reuniones y eventos al aire libre.",
+      en: "An event and meeting venue beside Lake Matildanjärvi near Teijo National Park. The main hall accommodates 120 guests, with a stage, catering spaces and kitchen. Suitable for weddings, family celebrations, meetings and outdoor events.",
+    },
+    url: "https://matildatalo.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/01/matilda-talo-kesa.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Matilda-talo",
+  },
+  {
+    id: "valla-outdoors",
+    category: "experience",
+    name: "Valla Outdoors",
+    description: {
+      fi: "Perniön ja Teijon alueella toimiva ulkoilupalvelujen järjestäjä. Ohjelmiin kuuluu muun muassa melontaa, retkeilyä ja ryhmille suunnattuja erätaitoja sekä puukon- ja puulusikanveistoa. Aktiviteetin sisältö, ryhmäkoko ja kesto sovitaan palveluntarjoajan kanssa.",
+      es: "Proveedor de actividades al aire libre en la zona de Perniö y Teijo. Sus programas incluyen piragüismo, senderismo y habilidades de naturaleza para grupos, como tallado de madera. El contenido, tamaño del grupo y duración se acuerdan directamente con el proveedor.",
+      en: "An outdoor activity provider in the Perniö and Teijo area. Programmes include canoeing, hiking and outdoor skills for groups, such as wood carving. Activity content, group size and duration are agreed directly with the provider.",
+    },
+    url: "https://vallaoutdoors.johku.com/en_US/outdoor-life/outdoor-skills",
+    image: "https://cdn-datahub.visitfinland.com/images/b51b1950-c69a-11ef-b4f3-d183349518f6.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub / Valla Outdoors",
+  },
+
 ];
 
 export const saloEvents: SaloEvent[] = [
