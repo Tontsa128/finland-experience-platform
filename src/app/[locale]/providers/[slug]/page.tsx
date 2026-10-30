@@ -75,7 +75,7 @@ function resolveProvider(slug: string, locale: Locale) {
       tapahtumapaikat: { fi: "Tapahtumapaikat", en: "Event venues", es: "Espacios para eventos" },
       "muut-palvelut": { fi: "Matkailupalvelut", en: "Visitor services", es: "Servicios para visitantes" },
       tapahtumat: { fi: "Tapahtumat", en: "Events", es: "Eventos" },
-    }[item.category][locale];
+    }[item.categories[0]][locale];
     return {
       name: item.name[locale],
       description: item.description[locale],
