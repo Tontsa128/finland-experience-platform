@@ -1011,6 +1011,51 @@ export const saloProviders: SaloProvider[] = [
   },
 
 
+
+  {
+    id: "lepola-drinks",
+    category: "food",
+    directoryCategories: ["shopping"],
+    name: "Lepola Drinks",
+    nameByLocale: { fi: "Lepola Drinks", en: "Lepola Drinks", es: "Lepola Drinks" },
+    description: {
+      fi: "Ylönkylässä toimiva Lepola Drinks valmistaa käsityöläissiideriä paikallisista omenoista. Lepola Shopin yhteydessä on myymälä ja kesäterassi; kahvilassa tarjoillaan juomien lisäksi paikallisista raaka-aineista valmistettuja suolaisia tarjottavia. Aukiolo vaihtelee sesongin mukaan, joten tarkista ajantasaiset tiedot palveluntarjoajalta.",
+      en: "Lepola Drinks makes handcrafted cider from locally grown apples in Ylönkylä. The Lepola Shop has a store and summer terrace, while its café serves drinks and savoury items made with local ingredients. Opening times vary by season, so check current details with the provider.",
+      es: "Lepola Drinks elabora sidra artesanal con manzanas locales en Ylönkylä. La tienda Lepola Shop cuenta con terraza de verano y cafetería, donde también se sirven opciones saladas preparadas con ingredientes locales. Los horarios varían según la temporada; consulta la información actual con el proveedor.",
+    },
+    url: "https://lepoladrinks.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/02/Lepola-Drinks_7207-1366x768.jpg",
+    imageCredit: "Salon Kohteet — Lepola Drinks",
+  },
+  {
+    id: "pohjolan-tila",
+    category: "food",
+    directoryCategories: ["shopping", "events", "experience"],
+    name: "Pohjolan tila",
+    nameByLocale: { fi: "Pohjolan tila", en: "Pohjola Farm", es: "Granja Pohjola" },
+    description: {
+      fi: "Kiskossa sijaitseva marjatila ja maatilakohde. Tilapuodissa myydään tilan omia marjoja sekä niistä valmistettuja hilloja ja mehuja. Kesäkaudella tilalla toimii kahvila ja second hand -puoti, ja vuoden mittaan järjestetään tapahtumia sekä joulupuoti sesongin mukaan. Tarkista aukiolot ennen vierailua.",
+      en: "A berry farm and visitor destination in Kisko. The farm shop sells berries grown on the farm as well as homemade jams and juices. In summer, visitors can also enjoy a café and second-hand shop; events and a Christmas shop take place at selected times of the year. Check opening times before visiting.",
+      es: "Granja de frutos rojos y destino rural en Kisko. En la tienda se venden bayas cultivadas en la finca, además de mermeladas y zumos caseros. En verano también hay cafetería y tienda de segunda mano; se organizan eventos y una tienda navideña en fechas concretas. Consulta los horarios antes de la visita.",
+    },
+    url: "https://pohjolanmaatila.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Pohjola2-1029x768.png",
+    imageCredit: "Salon Kohteet — Pohjolan tila",
+  },
+  {
+    id: "kylatalo-punaportti",
+    category: "events",
+    directoryCategories: ["wellbeing", "archipelago"],
+    name: "Kylätalo Punaportti",
+    nameByLocale: { fi: "Kylätalo Punaportti", en: "Punaportti Village Hall", es: "Centro comunitario Punaportti" },
+    description: {
+      fi: "Teijon ja Mathildedalin välissä meren rannalla sijaitseva kylätalo, jota voi vuokrata yksityisiin ja yritysten tilaisuuksiin. Alueella on puulämmitteinen sauna, terassi ja laituri meressä uimiseen. Yleiset saunavuorot ovat kausiluonteisia; tarkista ajantasaiset vuorot ja vuokrausohjeet Teijon Ruukkikyliltä.",
+      en: "A village hall by the sea between Teijo and Mathildedal, available for private and corporate events. The grounds include a wood-fired sauna, terrace and a jetty for swimming in the sea. Public sauna sessions are seasonal; check current times and rental information with Teijo Ironworks Villages.",
+      es: "Centro comunitario junto al mar entre Teijo y Mathildedal, disponible para eventos privados y de empresas. Cuenta con sauna de leña, terraza y un muelle para bañarse en el mar. Los turnos de sauna pública son estacionales; consulta los horarios y las condiciones de alquiler con Teijo Ironworks Villages.",
+    },
+    url: "https://www.teijo.fi/punaportti/",
+  },
+
 ];
 
 export const saloEvents: SaloEvent[] = [
