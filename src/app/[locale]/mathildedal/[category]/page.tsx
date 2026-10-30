@@ -15,6 +15,12 @@ const categories = {
     en: { title: "Sea and archipelago in Mathildedal", description: "Guest harbour, island trips and coastal experiences around Mathildedal." },
     es: { title: "Mar y archipiélago en Mathildedal", description: "Puerto deportivo, excursiones a islas y experiencias marítimas en Mathildedal." },
   },
+  lahiruoka: {
+    category: "localFood",
+    fi: { title: "Lähiruoka ja tilapuodit Mathildedalissa", description: "Tutustu Mathildedalin ja lähialueen paikallisiin tuottajiin, tilapuoteihin ja kylän omiin ruokatuotteisiin." },
+    en: { title: "Local food and farm shops in Mathildedal", description: "Discover local producers, farm shops and village-made food products in and around Mathildedal." },
+    es: { title: "Productos locales y tiendas de granja en Mathildedal", description: "Descubre productores locales, tiendas de granja y productos gastronómicos del pueblo y sus alrededores." },
+  },
   majoitus: {
     category: "stay",
     fi: { title: "Majoitus Mathildedalissa", description: "Boutique-hotellit, huoneistot, mökit ja lähialueen luontomajoitus." },

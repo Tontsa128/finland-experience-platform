@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BedDouble, Compass, Flame, ShoppingBag, TreePine, Utensils, CalendarDays, Waves } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, Compass, Flame, ShoppingBag, TreePine, Utensils, CalendarDays, Sprout, Waves } from "lucide-react";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -62,6 +62,7 @@ const copy: Record<Locale, {
 const categories = [
   { slug: "majoitus", category: "stay", icon: BedDouble, title: { fi: "Majoitus", en: "Accommodation", es: "Alojamiento" }, description: { fi: "Boutique-hotellit, huoneistot, mökit ja satamamajoitus.", en: "Boutique hotels, apartments, cottages and harbour stays.", es: "Hoteles boutique, apartamentos, cabañas y alojamientos en el puerto." } },
   { slug: "ruoka", category: "food", icon: Utensils, title: { fi: "Ruoka ja kahvilat", en: "Food and cafés", es: "Gastronomía y cafeterías" }, description: { fi: "Ravintolat, kahvilat, leipomo ja paikalliset juomat.", en: "Restaurants, cafés, bakery and local drinks.", es: "Restaurantes, cafeterías, panadería y bebidas locales." } },
+  { slug: "lahiruoka", category: "localFood", icon: Sprout, title: { fi: "Lähiruoka ja tilapuodit", en: "Local food and farm shops", es: "Productos locales y tiendas de granja" }, description: { fi: "Paikalliset tuottajat, tilapuodit ja kylän omat herkut.", en: "Local producers, farm shops and village-made specialities.", es: "Productores locales, tiendas de granja y especialidades del pueblo." } },
   { slug: "ostokset", category: "shopping", icon: ShoppingBag, title: { fi: "Ostokset ja käsityö", en: "Shopping and crafts", es: "Compras y artesanía" }, description: { fi: "Puodit, design, käsityö ja paikalliset tuotteet.", en: "Independent shops, design, crafts and local products.", es: "Tiendas independientes, diseño, artesanía y productos locales." } },
   { slug: "aktiviteetit", category: "experience", icon: Compass, title: { fi: "Aktiviteetit", en: "Activities", es: "Actividades" }, description: { fi: "Veneilyä, opastuksia, pyöräilyä ja muita elämyksiä.", en: "Boating, guided activities, cycling and experiences.", es: "Navegación, actividades guiadas, ciclismo y experiencias." } },
   { slug: "luonto", category: "nature", icon: TreePine, title: { fi: "Meri ja luonto", en: "Sea and nature", es: "Mar y naturaleza" }, description: { fi: "Rantamaisemat, uimapaikat ja lähiluonto.", en: "Coastal scenery, swimming spots and nearby nature.", es: "Paisajes costeros, zonas de baño y naturaleza cercana." } },
@@ -124,7 +125,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((item) => {
               const Icon = item.icon;
-              const preferredProviderId = { stay: "hotel-mathildedal", food: "matildankartano", shopping: "kaarnalaiva", experience: "mathildedal-keskuspuisto", nature: "mathildedal-meriuimapaikka", wellbeing: "matildanjarven-sauna", archipelago: "mathildan-marina" };
+              const preferredProviderId = { stay: "hotel-mathildedal", food: "matildankartano", shopping: "kaarnalaiva", experience: "mathildedal-keskuspuisto", nature: "mathildedal-meriuimapaikka", wellbeing: "matildanjarven-sauna", archipelago: "mathildan-marina", localFood: "matildankartano" };
               const image = item.category ? saloProviders.find((provider) => provider.id === preferredProviderId[item.category])?.image : photoLibrary.mathildedalHarbour;
               const href = item.slug === "tapahtumat" ? "#salo-category-events" : `/${locale}/mathildedal/${item.slug}`;
               return (
