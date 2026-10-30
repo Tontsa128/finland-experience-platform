@@ -67,7 +67,7 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-700">{t.intro}</p>
         </div>
 
-        <div className="mt-10">
+        <div id={`${village}-gallery`} className="mt-10">
           <h3 className="mb-5 font-display text-2xl font-bold text-brand-950">{t.gallery}</h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {photos.map((photo) => (
@@ -85,7 +85,7 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           </div>
         </div>
 
-        <div className="mt-14">
+        <div id={`${village}-places`} className="mt-14">
           <h3 className="mb-5 font-display text-2xl font-bold text-brand-950">{t.places}</h3>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {places[village].map((place) => (
@@ -102,7 +102,7 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           </div>
         </div>
 
-        <div className="mt-14">
+        <div id={`${village}-events`} className="mt-14">
           <h3 className="mb-5 font-display text-2xl font-bold text-brand-950">{t.events}</h3>
           <div className="grid gap-5 lg:grid-cols-3">
             {events[village].map((event) => (
@@ -119,7 +119,7 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           </div>
         </div>
         <div className="mt-12 border-t border-stone-200 pt-8">
-          <Link href={village === "mathildedal" ? "/" + locale + "/destinations/teijon-ruukkikyla" : "/" + locale + "/destinations/salo-mathildedal"} className="inline-flex rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-brand-950 transition hover:bg-stone-100">
+          <Link href={village === "mathildedal" ? "/" + locale + "/destinations/teijon-ruukkikyla" : "/" + locale + "/mathildedal"} className="inline-flex rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-brand-950 transition hover:bg-stone-100">
             {village === "mathildedal" ? t.otherVillage : (locale === "fi" ? "Tutustu myös Mathildedalin ruukkikylään" : locale === "es" ? "Descubre también Mathildedal" : "Explore Mathildedal Ironworks Village too")} →
           </Link>
         </div>

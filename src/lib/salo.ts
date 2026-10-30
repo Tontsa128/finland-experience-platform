@@ -1,19 +1,33 @@
 import type { Locale } from "@/types";
 import { photoLibrary } from "@/lib/photo-library";
 
+export type SaloProviderCategory = "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture" | "events" | "archipelago" | "localFood";
+
 export type SaloProvider = {
   id: string;
-  category: "tourism" | "stay" | "experience" | "nature" | "food";
+  category: SaloProviderCategory;
+  directoryCategories?: SaloProviderCategory[];
   name: string;
   nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
   url: string;
+  location?: string;
+  contact?: { phone?: string; email?: string; address?: string };
   price?: string;
   priceByLocale?: Partial<Record<Locale, string>>;
   image?: string;
   imageCredit?: string;
+  imageRightsStatus?: "pending" | "verified";
   officialGuide?: boolean;
 };
+
+export function getSaloProviderCategories(provider: Pick<SaloProvider, "category" | "directoryCategories">): SaloProviderCategory[] {
+  return Array.from(new Set([provider.category, ...(provider.directoryCategories || [])]));
+}
+
+export function getSaloProviderImage(provider: Pick<SaloProvider, "image" | "imageRightsStatus">): string | undefined {
+  return provider.imageRightsStatus === "pending" ? undefined : provider.image;
+}
 
 export type SaloEvent = {
   id: string;
@@ -68,6 +82,8 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "hotel-mathildedal",
+    location: "Mathildedal, Salo",
+    contact: { phone: "+358 50 354 2487", email: "info@mathildedal.fi", address: "Ruukinrannantie 6, 25660 Mathildedal" },
     category: "stay",
     name: "Hotel Mathildedal",
     description: {
@@ -81,6 +97,9 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "mathildan-marina",
+    location: "Mathildedal, Salo",
+    contact: { phone: "+358 2 250 2432", email: "info@mathildanmarina.fi", address: "Ruukinrannantie 4, 25660 Mathildedal" },
+    directoryCategories: ["food", "archipelago"],
     category: "stay",
     name: "Mathildan Marina",
     description: {
@@ -136,7 +155,8 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "teijon-masuuni",
-    category: "experience",
+    location: "Teijo, Salo",
+    contact: { phone: "+358 40 482 2224", email: "galleria@teijonmasuuni.fi", address: "Telakkatie 17, 25570 Teijo" },    category: "culture",
     name: "Teijon Masuuni",
     nameByLocale: { fi: "Teijon Masuuni", en: "Teijo Masuuni", es: "Teijo Masuuni" },
     description: {
@@ -165,14 +185,17 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "chill-out-fishing",
+    location: "Karuna, Sauvo; retkien lähtöpaikkoja muun muassa Mathildedal, Kokkila ja Förby",
+    contact: { phone: "+358 45 350 6304", email: "hendrywahlsten@gmail.com", address: "Ahventie 6, 21590 Karuna" },
+    directoryCategories: ["archipelago"],
     category: "experience",
     name: "Chill Out Fishing",
     description: {
-      fi: "Ohjattuja kalastus-, vene- ja saariretkiä Saaristomerellä. Hinnat ja saatavuus verkkokaupassa tai tarjouspyynnöllä.",
-      es: "Pesca guiada, excursiones en barco y visitas a islas en el Mar del Archipiélago.",
-      en: "Guided fishing, boat and island trips in the Archipelago Sea.",
+      fi: "Ohjattuja kalastusretkiä 1–4 hengelle sekä vene- ja saariretkiä 1–6 hengelle Saaristomerellä. Lähtösatamia ovat Kokkila, Mathildedal, Förby, Skata, Västanfjärd, Taalintehdas ja Kasnäs. Retkien reitti ja toteutus suunnitellaan sään ja ryhmän mukaan; tarkista ajantasaiset vaihtoehdot suoraan oppaalta.",
+      es: "Excursiones de pesca guiadas para 1–4 personas y paseos en barco o visitas a islas para 1–6 personas en el Mar del Archipiélago. Los puertos de salida incluyen Kokkila, Mathildedal, Förby, Skata, Västanfjärd, Taalintehdas y Kasnäs. Las rutas dependen del tiempo y del grupo; confirma las opciones actuales directamente con el guía.",
+      en: "Guided fishing trips for 1–4 people and boat or island trips for 1–6 people in the Archipelago Sea. Departure harbours include Kokkila, Mathildedal, Förby, Skata, Västanfjärd, Taalintehdas and Kasnäs. Routes and arrangements depend on weather and group needs; confirm current options directly with the guide.",
     },
-    url: "https://chilloutolmos.fi/",
+    url: "https://chilloutfishing.fi/",
     price: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta",
     priceByLocale: { fi: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta", en: "Price depends on the trip and group size — check with the provider", es: "El precio depende de la excursión y del tamaño del grupo; consúltalo con el proveedor" },
   },
@@ -205,6 +228,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "meri-teijo-golf",
+    directoryCategories: ["food"],
     category: "experience",
     name: "Meri-Teijo Golf",
     description: {
@@ -215,6 +239,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://meriteijogolf.com",
     image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golf_aktiviteetit.jpg?itok=lpvm1Tl0",
     imageCredit: "Visit Mathildedal — Meri-Teijo Golf course listing; reuse permission to confirm",
+    imageRightsStatus: "pending",
   },
   {
     id: "ravintola-terho",
@@ -232,6 +257,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "mathildedal-brewery",
+    directoryCategories: ["localFood"],
     category: "food",
     name: "Mathildedalin Kyläpanimo",
     nameByLocale: { fi: "Mathildedalin Kyläpanimo", en: "Mathildedal Village Brewery", es: "Cervecería del pueblo de Mathildedal" },
@@ -354,6 +380,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "vuorovetten-jaatelo",
+    directoryCategories: ["localFood"],
     category: "food",
     name: "Vuorovetten Jäätelö",
     description: {
@@ -404,18 +431,20 @@ export const saloProviders: SaloProvider[] = [
       en: "Gentle beach yoga in the calm coastal setting of Förby, surrounded by the sounds of water and nature.",
     },
     url: "https://hoitolakukkuvilla.fi/kesan-joogatunnit/",
-    image: photoLibrary.hankoRegattaBeach,
-    imageCredit: "Wikimedia Commons, CC BY-SA 4.0",
+    image: "https://hoitolakukkuvilla.fi/wp-content/uploads/2024/04/Hoitola-Kukkuvilla_lempearantajooga_5-e1714139739383.jpg",
+    imageCredit: "Hoitola Kukkuvilla / Katja Toivonen — official provider website",
   },
   {
     id: "vuohensaari-camping",
+    location: "Vuohensaari, Salo",
+    contact: { phone: "+358 50 353 8141", email: "info@visitvuohensaari.fi", address: "Satamakatu 102, 24100 Salo" },    directoryCategories: ["food","experience","events","archipelago","wellbeing"],
     category: "stay",
     name: "Vuohensaaren leirintäalue",
     nameByLocale: { fi: "Vuohensaaren leirintäalue", en: "Vuohensaari Camping", es: "Camping Vuohensaari" },
     description: {
-      fi: "Meren ympäröimä majoituskohde lähellä Salon keskustaa. Leirintämökkejä ja -huoneita, sauna, uimaranta sekä kesäkauden ravintola ja aktiviteetteja.",
-      es: "Alojamiento junto al mar cerca del centro de Salo, con cabañas y habitaciones, sauna, playa y actividades de verano.",
-      en: "Seaside accommodation close to Salo centre, with camping cabins and rooms, sauna, beach and summer activities.",
+      fi: "Pieni suojaisa saari reilun neljän kilometrin päässä Salon keskustasta. Majoitusvaihtoehtoihin kuuluvat matkailuauto- ja vaunupaikat, telttapaikat, leirintämökit ja huoneet. Saarella on huoltorakennus, tilauksesta lämpiävä puusauna, uimaranta, luontopolku, leikkipaikka, minigolf, SUP- ja kanoottimahdollisuuksia sekä kesäteatteria ja tansseja.",
+      es: "Pequeña isla protegida a poco más de cuatro kilómetros del centro de Salo. Ofrece parcelas para autocaravanas, caravanas y tiendas, además de cabañas y habitaciones. Cuenta con edificio de servicios, sauna de leña bajo reserva, playa, sendero natural, parque infantil, minigolf, actividades SUP y piragüismo, además de teatro y bailes de verano.",
+      en: "A small sheltered island just over four kilometres from central Salo. Accommodation includes motorhome, caravan and tent pitches, camping cabins and rooms. Facilities include a service building, wood-fired sauna on request, beach, nature trail, playground, mini golf, SUP and canoeing, plus summer theatre and dances.",
     },
     url: "https://www.visitvuohensaari.fi",
     image: "https://cdn-datahub.visitfinland.com/images/0eed73e0-0120-11f1-ad78-29bd5b45e175.jpeg?s=1280",
@@ -464,6 +493,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "finnholm-strandbo",
+    directoryCategories: ["localFood"],
     category: "stay",
     name: "Finnholm – Strandbo",
     description: {
@@ -490,14 +520,16 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "katiskanmaeki",
+    location: "Ylönkylä, Salo",
+    contact: { phone: "+358 50 517 7759", email: "sumppu@ebaana.net", address: "Särkisalontie 2, 25610 Ylönkylä" },    directoryCategories: ["food","events","wellbeing","experience","shopping", "localFood"],
     category: "stay",
     name: "Katiskanmäki",
     description: {
-      fi: "Rauhallisia rantamökkejä järven ja pienen metsälammen äärellä, lisäksi aittamajoitusta, leirintää ja savusauna.",
-      es: "Cabañas junto al agua, alojamiento en granero, camping y sauna de humo en un entorno rural de Särkisalo.",
-      en: "Waterfront cottages, barn accommodation, camping and a smoke sauna in a quiet rural setting near Särkisalo.",
+      fi: "Salon Ylönkylässä sijaitseva matkailukohde kokoaa yhteen rantamökit, aittamajoituksen, caravan- ja leirintäalueen, savusaunan, juhlatila Firapelin sekä ympäri vuorokauden avoinna olevan itsepalveluperiaatteella toimivan lähiruokakioski Pikantin.",
+      es: "Destino rural en Ylönkylä, Salo, con cabañas junto al agua, alojamiento en granero, zona para caravanas y camping, sauna de humo, el espacio para eventos Firapeli y el quiosco de productos locales Pikantti, abierto las 24 horas en autoservicio.",
+      en: "A rural destination in Ylönkylä, Salo, bringing together waterfront cottages, barn accommodation, a caravan and camping area, smoke sauna, Firapeli event venue and the Pikantti local-food kiosk, open 24 hours with self-service.",
     },
-    url: "https://www.katiskanmaki.com",
+    url: "https://katiskanmaki.fi/",
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/07/IMG_2490-1024x768.jpg",
     imageCredit: "Salon Kohteet — Katiskanmäen caravan-alue",
   },
@@ -516,6 +548,8 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "meri-ruukin-lomakyla",
+    location: "Mathildedal, Salo",
+    contact: { phone: "+358 400 872 172", email: "info@meri-ruukki.fi", address: "Kiikunmäentie 28, 25660 Mathildedal" },    directoryCategories: ["wellbeing","archipelago","experience"],
     category: "stay",
     name: "Meri-Ruukin lomakylä",
     description: {
@@ -555,6 +589,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "leipyolin-tila",
+    directoryCategories: ["localFood"],
     category: "stay",
     name: "Leipyölin tila",
     description: {
@@ -581,6 +616,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "alaspaan-maatila",
+    directoryCategories: ["localFood"],
     category: "stay",
     name: "Alaspään maatila – Muonamiehen mökki",
     description: {
@@ -623,11 +659,13 @@ export const saloProviders: SaloProvider[] = [
     category: "stay",
     name: "Villa Viktoria",
     description: {
-      fi: "Luksushuvilatasoinen kesämökki Suomusjärvellä. Sähkösauna, takka, hyvin varusteltu keittiö ja terassi porealtaalla.",
-      es: "Villa de verano de nivel lujo en Suomusjärvi, con sauna eléctrica, chimenea, cocina equipada y terraza con jacuzzi.",
-      en: "Luxury villa-style summer cottage in Suomusjärvi with electric sauna, fireplace, equipped kitchen and hot-tub terrace.",
+      fi: "Villa Viktoria on Suomusjärvellä sijaitseva vuokramökki, jossa on kaksi erillistä makuuhuonetta ja vuodepaikat enintään kahdeksalle. Mökissä on sähkösauna, suihku, sisä-wc ja ulkoporeallas. Etelään avautuvalla terassilla on kaasugrilli ja ruokailuryhmä.",
+      es: "Villa Viktoria es una casa de vacaciones en Suomusjärvi con dos dormitorios y capacidad máxima para ocho personas. Dispone de sauna eléctrica, ducha, aseo interior y jacuzzi exterior. La terraza orientada al sur cuenta con parrilla de gas y zona de comedor.",
+      en: "Villa Viktoria is a holiday cottage in Suomusjärvi with two separate bedrooms and a maximum capacity of eight guests. It has an electric sauna, shower, indoor toilet and outdoor hot tub. The south-facing terrace includes a gas grill and dining area.",
     },
-    url: "https://www.lomalaperla.com",
+    url: "https://www.lomalaperla.com/moumlkki-3.html",
+    image: "https://www.lomalaperla.com/uploads/1/0/3/7/103702596/gpjpucpjqtqjss1wxug8dw_1_orig.jpg",
+    imageCredit: "Lomalaperla — Villa Viktoria (official provider website)",
   },
   {
     id: "teijon-kammari",
@@ -639,6 +677,8 @@ export const saloProviders: SaloProvider[] = [
       en: "A small seaside cottage in Teijo with a wood-fired sauna, kitchenette and balcony facing the sea.",
     },
     url: "https://kohteet.visitsalo.fi/teijon-kammari/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/panorama-1152x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Teijon Kammari",
   },
   {
     id: "kruuvan-mokit",
@@ -651,9 +691,12 @@ export const saloProviders: SaloProvider[] = [
       en: "Villa Kruuva for eight by a sea bay, equipped for year-round stays and sauna relaxation.",
     },
     url: "https://www.kruuvanmokit.fi",
+    image: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-maisema-01-3-819x1024.webp",
+    imageCredit: "Villa Kruuva — official provider website",
   },
   {
     id: "meri-veikko",
+    directoryCategories: ["archipelago"],
     category: "stay",
     name: "Meri-Veikko",
     description: {
@@ -662,8 +705,861 @@ export const saloProviders: SaloProvider[] = [
       en: "Small 1–2 person seaside cottage on Pettu island, with indoor sauna, fireplace and rowing boat.",
     },
     url: "https://www.lonnviken.com/fi/meri-veikko",
+    image: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c846690215630ca95d_20220826_150455%20re%203.jpg",
+    imageCredit: "Saaristotila Lönnviken — official provider website",
   },
 
+
+  {
+    id: "kaarnalaiva",
+    category: "shopping",
+    name: "Kaarnalaiva",
+    description: {
+      fi: "Mathildedalissa toimiva käsityöpuoti, jonka valikoimaan kuuluu luonnonmateriaaleista valmistettuja harjoja ja koreja. Yrityksen omien tietojen mukaan toimintaa on ollut vuodesta 1997.",
+      es: "Tienda de artesanía en Mathildedal especializada en cepillos y cestas de materiales naturales. Según la empresa, lleva trabajando desde 1997.",
+      en: "A Mathildedal craft shop specialising in brushes and baskets made from natural materials. The business says it has been operating since 1997.",
+    },
+    url: "https://www.kaarnalaiva.net",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/kaarnalaivanettisivuille-1-uai-1032x688.jpg?itok=KAsstQNx",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "matildan-kesakauppa",
+    category: "shopping",
+    name: "Matildan kesäkauppa",
+    nameByLocale: { fi: "Matildan kesäkauppa", en: "Matilda Summer Shop", es: "Tienda de verano Matilda" },
+    description: {
+      fi: "Sesonkiluonteinen yhteispuoti Mathildedalin vanhassa halkojenkuivausuunissa. Mukana on useita kotimaisia käsityö-, vaate- ja design-yrittäjiä. Varmista aukiolo ennen vierailua.",
+      es: "Tienda colectiva de temporada en un antiguo secadero de leña de Mathildedal, con varias marcas finlandesas de artesanía, moda y diseño. Comprueba el horario antes de visitarla.",
+      en: "A seasonal collective shop in a former wood-drying building in Mathildedal, bringing together Finnish craft, clothing and design makers. Check opening times before visiting.",
+    },
+    url: "https://www.visitmathildedal.fi/fi/ostokset",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/kesakauppa.png?itok=8IAi9w4T",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "piironki-dock-helsinki",
+    category: "shopping",
+    name: "PIIRONKI & DOCK HELSINKI",
+    nameByLocale: { fi: "PIIRONKI & DOCK HELSINKI", en: "PIIRONKI & DOCK HELSINKI", es: "PIIRONKI & DOCK HELSINKI" },
+    description: {
+      fi: "Mathildedalin kesäaitta, jonka valikoimassa on asusteita, sisustus- ja lahjatavaroita sekä lasten leluja ja pelejä. Toiminta on sesonkiluonteista.",
+      es: "Tienda de verano en Mathildedal con accesorios, decoración, regalos, juguetes y juegos infantiles. Actividad de temporada.",
+      en: "A seasonal summer shop in Mathildedal offering accessories, homeware, gifts, toys and games for children.",
+    },
+    url: "https://www.piironki.fi",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/Piironki%20062023-1-60_0.jpg?itok=LeUih5R3",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "ruukin-kehraamo",
+    category: "shopping",
+    name: "Ruukin Kehräämö ja puoti",
+    nameByLocale: { fi: "Ruukin Kehräämö ja puoti", en: "Ruukki Spinnery and Shop", es: "Hilandería y tienda Ruukki" },
+    description: {
+      fi: "Mathildedalin ruukkikylän kehräämö ja puoti, jonka valikoimassa on alpakanvillasta valmistettuja neuleita ja muita paikallisia käsityötuotteita.",
+      es: "Hilandería y tienda en el pueblo siderúrgico de Mathildedal, con prendas de punto de lana de alpaca y otros productos artesanales locales.",
+      en: "A spinnery and shop in Mathildedal's ironworks village, offering alpaca knitwear and other locally made craft products.",
+    },
+    url: "https://www.ruukinkehraamo.fi",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/alpakkaneule10-lowres.jpg?itok=rVgS1bDJ",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "second-chance-mathildedal",
+    category: "shopping",
+    name: "Second Chance",
+    description: {
+      fi: "Mathildedalissa toimiva vaate- ja lifestyleputiikki, jonka valikoimassa on kotimaisia vaatteita, asusteita, koruja ja luonnonkosmetiikkaa. Varmista ajantasainen valikoima ja aukiolo yritykseltä.",
+      es: "Boutique de moda y estilo de vida en Mathildedal con ropa finlandesa, accesorios, joyería y cosmética natural. Consulta la oferta y el horario actuales con la tienda.",
+      en: "A fashion and lifestyle boutique in Mathildedal offering Finnish clothing, accessories, jewellery and natural cosmetics. Confirm current products and opening times with the shop.",
+    },
+    url: "https://www.secondchance.fi",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/visit-matilda_31-uai-1032x688.jpg?itok=Qv4x8oPv",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+  {
+    id: "vinttipuoti",
+    category: "shopping",
+    name: "VinttiPuoti",
+    description: {
+      fi: "Mathildedalin Kankirautavaraston yläkerrassa toimiva puoti, jonka valikoimassa on paikallista käsityötä, taidetta ja lähiruokaa.",
+      es: "Tienda en la planta superior del antiguo almacén de hierro de Mathildedal, con artesanía local, arte y productos de proximidad.",
+      en: "A shop on the upper floor of Mathildedal's historic iron storehouse, offering local crafts, art and regional food.",
+    },
+    url: "https://www.visitmathildedal.fi/fi/ostokset",
+    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/psx_20221106_095253_2.jpg?itok=PQZPi2SI",
+    imageCredit: "Visit Mathildedal — official destination listing",
+  },
+
+
+  {
+    id: "mathildedal-keskuspuisto",
+    category: "experience",
+    name: "Mathildedalin Keskuspuisto",
+    description: {
+      fi: "Koko perheen vapaa-ajanviettopaikka Mathildedalin ruukkikylässä. Alueella on Adventure-minigolf, tennis- ja padelkentät sekä kesäkauden kahvila ja vaihtuva Street Food -auto. Tarkista ajantasaiset aukiolot ja varaukset yritykseltä.",
+      es: "Espacio de ocio para toda la familia en el pueblo siderúrgico de Mathildedal. Cuenta con minigolf Adventure, pistas de tenis y pádel, cafetería de verano y puesto de comida itinerante. Consulta horarios y reservas actuales con el establecimiento.",
+      en: "A family leisure destination in Mathildedal ironworks village, with Adventure mini golf, tennis and padel courts, a summer café and rotating street-food van. Confirm current opening times and bookings with the venue.",
+    },
+    url: "https://www.mathildedalinkeskuspuisto.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/kokoalue-2-1025x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Mathildedalin Keskuspuisto",
+  },
+  {
+    id: "mathildedal-meriuimapaikka",
+    category: "nature",
+    name: "Mathildedalin meriuimapaikka",
+    nameByLocale: { fi: "Mathildedalin meriuimapaikka", en: "Mathildedal Seaside Swimming Beach", es: "Playa de baño de Mathildedal" },
+    description: {
+      fi: "Loivasti syvenevä hiekkaranta Mathildedalissa. Rannalla on kaksi pukusuojaa ja käymälä; uimavalvontaa ei ole. Tarkista vedenlaatu Salon kaupungin tiedoista.",
+      es: "Playa de arena de poca profundidad en Mathildedal. Hay dos vestuarios y aseo; no hay servicio de socorrismo. Consulta la calidad del agua en la información municipal.",
+      en: "A gently shelving sandy beach in Mathildedal, with two changing rooms and a toilet. There is no lifeguard service. Check water-quality information from the city.",
+    },
+    url: "https://kohteet.visitsalo.fi/mathildedalin-meriuimapaikka/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/03/Mathildedal-uimaranta-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Mathildedal swimming beach",
+  },
+  {
+    id: "matildanjarven-sauna",
+    category: "wellbeing",
+    name: "Matildanjärven sauna",
+    nameByLocale: { fi: "Matildanjärven sauna", en: "Matildanjärvi Lakeside Sauna", es: "Sauna junto al lago Matildanjärvi" },
+    description: {
+      fi: "Natura Vivan itsepalvelusauna sijaitsee Matildanjärven rannalla Teijon kansallispuistossa. Hirsisaunassa on pukuhuone ja terassi järvinäköalalla; vieressä on yleinen hiekkapohjainen uimapaikka. Vahvista vuorot ja ajantasaiset ehdot varauskalenterista.",
+      es: "Sauna de autoservicio de Natura Viva junto al lago Matildanjärvi, en el Parque Nacional de Teijo. Cuenta con vestuario y terraza con vistas al lago; al lado hay una zona pública de baño con fondo de arena. Comprueba turnos y condiciones en el calendario de reservas.",
+      en: "A self-service Natura Viva sauna on the shore of Lake Matildanjärvi in Teijo National Park. The log-built sauna has a changing room and a terrace overlooking the lake, with a public sandy swimming area nearby. Check current slots and terms in the booking calendar.",
+    },
+    url: "https://naturaviva.fi/fi_FI/matildanjarven-rantasauna/sauna-teijon-kansallispuisto",
+    image: "https://cdn-datahub.visitfinland.com/images/a2446f90-7cba-11ef-a1fa-c33120773bf0.png?s=1280",
+    imageCredit: "Visit Finland DataHub / Natura Viva",
+  },
+
+
+  {
+    id: "teijon-kirkko",
+    category: "culture",
+    name: "Teijon kirkko",
+    nameByLocale: { fi: "Teijon kirkko", en: "Teijo Church", es: "Iglesia de Teijo" },
+    description: {
+      fi: "Teijon ruukkikylän historiallinen kivikirkko rakennettiin vuonna 1829. Kirkko tunnetaan Suomen pienimpänä kivikirkkona ja sen arkkitehtuuri jäljittelee kiinalaista pagodia. Vierailuajat ja mahdolliset opastukset tarkistetaan Salon seurakunnalta.",
+      es: "Iglesia histórica de piedra del pueblo siderúrgico de Teijo, construida en 1829. Se considera la iglesia de piedra más pequeña de Finlandia y su arquitectura recuerda a una pagoda china. Consulta horarios y visitas guiadas con la parroquia de Salo.",
+      en: "The historic stone church in Teijo ironworks village was built in 1829. It is known as Finland's smallest stone church, with architecture inspired by a Chinese pagoda. Check visitor access and guided visits with Salo Parish.",
+    },
+    url: "https://www.salonseurakunta.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Teijonkirkko-edest%C3%A4-web-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Teijo Church",
+  },
+
+
+  {
+    id: "teijon-arkki",
+    location: "Teijo, Salo",
+    contact: { phone: "+358 45 239 6414", address: "Telakkatie 25, 25570 Teijo" },    category: "food",
+    name: "Ravintola Teijon Arkki & Teijo Cafe & Bakery",
+    nameByLocale: { fi: "Ravintola Teijon Arkki & Teijo Cafe & Bakery", en: "Teijon Arkki Restaurant & Teijo Cafe & Bakery", es: "Restaurante Teijon Arkki y Teijo Cafe & Bakery" },
+    description: {
+      fi: "Teijon vierasvenesataman vieressä toimiva 70-paikkainen lounasravintola. Kesäkaudella tarjolla on myös à la carte -ruokailua; tiloissa toimii lisäksi pieni leipomomyymälä. Juhla- ja pitopalvelut varataan suoraan ravintolasta.",
+      es: "Restaurante de 70 plazas junto al puerto deportivo de Teijo, con almuerzo durante todo el año y servicio a la carta en verano. En el mismo local hay una pequeña tienda-panadería. Consulta directamente con el restaurante los servicios para celebraciones y catering.",
+      en: "A 70-seat restaurant beside Teijo guest harbour, serving lunch year-round and à la carte meals in summer. A small bakery shop operates on the same premises. Contact the restaurant directly for private events and catering.",
+    },
+    url: "https://www.ravintolateijonarkki.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/ravintola-1150x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Ravintola Teijon Arkki",
+  },
+  {
+    id: "kirjakkalan-ruukkikyla",
+    directoryCategories: ["stay", "wellbeing"],
+    category: "experience",
+    name: "Kirjakkalan Ruukkikylä / Extreme Fun",
+    nameByLocale: { fi: "Kirjakkalan Ruukkikylä / Extreme Fun", en: "Kirjakkala Ironworks Village / Extreme Fun", es: "Pueblo siderúrgico de Kirjakkala / Extreme Fun" },
+    description: {
+      fi: "Historiallinen ruukkikylä Hamarinjärven rannalla Teijon kansallispuiston retkeilyreittien yhteydessä. Palveluihin kuuluvat majoitus-, kokous- ja saunapalvelut sekä outdoor- ja melontakeskus. Tarkista majoitustilojen saatavuus ja aktiviteetit suoraan palveluntarjoajalta.",
+      es: "Pueblo siderúrgico histórico a orillas del lago Hamarinjärvi, junto a las rutas del Parque Nacional de Teijo. Ofrece alojamiento, salas de reuniones, sauna y un centro de actividades al aire libre y piragüismo. Consulta disponibilidad y actividades directamente con el proveedor.",
+      en: "A historic ironworks village on Lake Hamarinjärvi beside the trails of Teijo National Park. Services include accommodation, meeting and sauna facilities, plus an outdoor and canoeing centre. Confirm availability and activities directly with the provider.",
+    },
+    url: "https://www.ruukkikyla.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kirjakkala-rakennus-web-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Kirjakkalan Ruukkikylä",
+  },
+
+
+  {
+    id: "teijon-juhlatila",
+    category: "events",
+    name: "Teijon Juhlatila",
+    nameByLocale: { fi: "Teijon Juhlatila", en: "Teijo Event Venue", es: "Espacio para eventos de Teijo" },
+    description: {
+      fi: "Rustiikkinen juhla- ja kokoustila Teijon ruukin sydämessä, lähellä merta ja Teijon kirkkoa. Juhlasaliin mahtuu noin 80 illallistajaa ja loungeen noin 40 henkilöä. Tarjoilut voi sopia naapurissa toimivan Teijo Cafe & Bakeryn kanssa.",
+      es: "Espacio rústico para celebraciones y reuniones en el corazón de la ferrería de Teijo, cerca del mar y de la iglesia. El salón tiene capacidad aproximada para 80 comensales y la zona lounge para 40 personas. Consulta el catering con Teijo Cafe & Bakery.",
+      en: "A rustic event and meeting venue in the heart of Teijo ironworks village, close to the sea and Teijo Church. The dining hall accommodates around 80 guests and the lounge around 40. Catering can be arranged with neighbouring Teijo Cafe & Bakery.",
+    },
+    url: "https://www.ravintolaterho.fi/teijon-juhlatila",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/teijonjuhlatila-web-52-1152x768.jpg",
+    imageCredit: "Riikka Lilja Photography / Visit Salo",
+  },
+  {
+    id: "teijon-kylasauna",
+    category: "wellbeing",
+    name: "Teijon Kyläsauna",
+    nameByLocale: { fi: "Teijon Kyläsauna", en: "Teijo Village Sauna", es: "Sauna comunitaria de Teijo" },
+    description: {
+      fi: "Yli 220 vuotta vanha kiviseinäinen sauna Teijon ruukkisataman lähellä. Saunassa on löylyhuone, pesuhuone, takkatupa ja pukuhuoneet; saunan edessä on pieni virtaava uintipaikka. Yleiset vuorot ja yksityisvaraukset tarkistetaan Teijon Alueen Kyläyhdistykseltä.",
+      es: "Sauna histórica de paredes de piedra, de más de 220 años, cerca del puerto siderúrgico de Teijo. Dispone de sala de sauna, duchas, sala con chimenea y vestuarios; delante hay una pequeña zona de baño con agua corriente. Consulta los turnos y reservas privadas con la asociación local.",
+      en: "A historic stone-walled sauna, more than 220 years old, near Teijo ironworks harbour. Facilities include a sauna room, washroom, fireplace room and changing rooms, with a small flowing-water swimming spot outside. Check public sessions and private bookings with the local village association.",
+    },
+    url: "https://www.teijo.fi/palveluja/kylasauna/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Py%C3%B6r%C3%A4t-sauna-1024x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Teijo Village Sauna",
+  },
+  {
+    id: "vicksbackinlahden-kota",
+    directoryCategories: ["nature"],
+    category: "experience",
+    name: "Vicksbäckinlahden varauskota",
+    nameByLocale: { fi: "Vicksbäckinlahden varauskota", en: "Vicksbäckinlahti Rental Wilderness Hut", es: "Refugio reservable de Vicksbäckinlahti" },
+    description: {
+      fi: "Natura Vivan vuokrattava hirsikota Matildanjärven pohjoisrannalla Teijon kansallispuistossa. Kodassa on istumatilaa jopa 50 hengelle ja siellä voi yöpyä kuusi henkilöä. Lähellä kulkee Matildanjärven kierros; kajakit, kanootit, SUP-laudat ja pyörät vuokrataan Natura Vivan kautta.",
+      es: "Cabaña de troncos de alquiler de Natura Viva en la orilla norte del lago Matildanjärvi, en el Parque Nacional de Teijo. Tiene capacidad para hasta 50 personas sentadas y permite pernoctar a seis. Cerca pasa la ruta circular de Matildanjärvi; los kayaks, canoas, tablas SUP y bicicletas se alquilan a través de Natura Viva.",
+      en: "A rentable log hut operated by Natura Viva on the north shore of Lake Matildanjärvi in Teijo National Park. It seats up to 50 people and can accommodate six overnight guests. The Matildanjärvi loop trail passes nearby; kayaks, canoes, SUP boards and bikes are available through Natura Viva.",
+    },
+    url: "https://naturaviva.fi/fi_FI/varauskota-teijon-kansallispuistossa/hirsikota-matildanjarvella",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Vickba%CC%88ckinlahden-kota-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Vicksbäckinlahden varauskota",
+  },
+
+
+  {
+    id: "matildankartano",
+    directoryCategories: ["shopping", "localFood"],
+    category: "food",
+    name: "Matildankartanon leipomokahvila",
+    nameByLocale: { fi: "Matildankartanon leipomokahvila", en: "Matildankartano Bakery Café", es: "Panadería y cafetería Matildankartano" },
+    description: {
+      fi: "Mathildedalin vanhassa ruukkikartanossa toimiva artesaanileipomo ja kesäkahvila. Tarjolla on hapanjuurileipää ja -pullaa, sesongin lähiruokalounasta, kahvia, leipomon makeita tuotteita ja itse tehtyä kesäjäätelöä. Myymälästä voi ostaa leipomotuotteita ja paikallisia juomia.",
+      es: "Panadería artesanal y cafetería de verano en la antigua casa solariega de Mathildedal. Ofrece pan y bollería de masa madre, almuerzos de temporada con productos locales, café, dulces y helado artesanal de verano. En la tienda se venden productos de panadería y bebidas locales.",
+      en: "An artisan bakery and summer café in Mathildedal's historic manor house. It serves sourdough bread and buns, seasonal local lunches, coffee, bakery treats and homemade summer ice cream. The shop also sells baked goods and regional drinks.",
+    },
+    url: "https://www.matildankartano.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/06/191308660_472307220497520_6643995748019464127_n-576x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Matildankartanon leipomokahvila",
+  },
+  {
+    id: "lahiruokapuoti-puhti",
+    directoryCategories: ["food", "localFood"],
+    category: "shopping",
+    name: "Lähiruokapuoti Puhti",
+    description: {
+      fi: "Mathildedalin Ruukinrannantiellä toimiva lähiruokapuoti, joka kokoaa yhteen paikallisten lähi- ja pientuottajien ruokia ja juomia. Puoti avattiin toukokuussa 2025; tarkista ajantasainen aukiolo ja valikoima myymälän omista kanavista.",
+      es: "Tienda de productos locales en Ruukinrannantie, Mathildedal, que reúne alimentos y bebidas de pequeños productores de la zona. Abrió en mayo de 2025; consulta horarios y surtido actuales en sus canales.",
+      en: "A local food shop on Ruukinrannantie in Mathildedal, bringing together food and drink from nearby small producers. It opened in May 2025; check current opening times and stock through the shop's own channels.",
+    },
+    url: "https://kohteet.visitsalo.fi/lahiruokapuoti-puhti/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/04/20250524_140326-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Lähiruokapuoti Puhti",
+  },
+  {
+    id: "matilda-talo",
+    category: "events",
+    name: "Matilda-talo",
+    nameByLocale: { fi: "Matilda-talo", en: "Matilda House Event Venue", es: "Espacio para eventos Matilda-talo" },
+    description: {
+      fi: "Matildanjärven rannalla Teijon kansallispuiston kupeessa sijaitseva juhla- ja kokoustalo. Juhlasaliin mahtuu 120 vierasta; tiloissa on lisäksi näyttämö, ravintolatilat ja keittiö. Talo soveltuu häihin, perhejuhliin, kokouksiin ja ulkoilmatapahtumiin.",
+      es: "Espacio para celebraciones y reuniones junto al lago Matildanjärvi, cerca del Parque Nacional de Teijo. El salón principal tiene capacidad para 120 invitados y el edificio cuenta con escenario, espacios de restauración y cocina. Adecuado para bodas, celebraciones familiares, reuniones y eventos al aire libre.",
+      en: "An event and meeting venue beside Lake Matildanjärvi near Teijo National Park. The main hall accommodates 120 guests, with a stage, catering spaces and kitchen. Suitable for weddings, family celebrations, meetings and outdoor events.",
+    },
+    url: "https://matildatalo.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/01/matilda-talo-kesa.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Matilda-talo",
+  },
+  {
+    id: "valla-outdoors",
+    category: "experience",
+    name: "Valla Outdoors",
+    description: {
+      fi: "Perniön ja Teijon alueella toimiva ulkoilupalvelujen järjestäjä. Ohjelmiin kuuluu muun muassa melontaa, retkeilyä ja ryhmille suunnattuja erätaitoja sekä puukon- ja puulusikanveistoa. Aktiviteetin sisältö, ryhmäkoko ja kesto sovitaan palveluntarjoajan kanssa.",
+      es: "Proveedor de actividades al aire libre en la zona de Perniö y Teijo. Sus programas incluyen piragüismo, senderismo y habilidades de naturaleza para grupos, como tallado de madera. El contenido, tamaño del grupo y duración se acuerdan directamente con el proveedor.",
+      en: "An outdoor activity provider in the Perniö and Teijo area. Programmes include canoeing, hiking and outdoor skills for groups, such as wood carving. Activity content, group size and duration are agreed directly with the provider.",
+    },
+    url: "https://vallaoutdoors.johku.com/en_US/outdoor-life/outdoor-skills",
+    image: "https://cdn-datahub.visitfinland.com/images/b51b1950-c69a-11ef-b4f3-d183349518f6.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub / Valla Outdoors",
+  },
+
+
+
+  {
+    id: "hotel-fjalar",
+    category: "stay",
+    directoryCategories: ["wellbeing", "culture"],
+    name: "Hotel Fjalar",
+    description: {
+      fi: "Yksityinen 19 huoneen hotelli Salon keskustan tuntumassa. Hotellissa on sauna- ja sisäuima-allasosasto sekä aamiainen. Rakennus on Saloran perustajan entinen koti, ja hotellissa voi tutustua Salon ja Nokian paikallishistoriaan.",
+      es: "Hotel privado de 19 habitaciones cerca del centro de Salo. Dispone de sauna, piscina cubierta y desayuno. El edificio fue la antigua casa del fundador de Salora y permite conocer parte de la historia industrial local.",
+      en: "A privately owned 19-room hotel close to central Salo, with a sauna, indoor swimming pool and breakfast. The building was once the home of Salora's founder and offers a glimpse into local Salora and Nokia history.",
+    },
+    url: "https://www.fjalar.fi",
+    image: "https://cdn-datahub.visitfinland.com/images/ebfc1ff0-6b41-11ef-95af-1d4477f6ffc7.jpeg?s=1280",
+    imageCredit: "Visit Finland DataHub / Hotel Fjalar",
+  },
+
+  {
+    id: "ystavyyden-majatalo",
+    category: "stay",
+    directoryCategories: ["events", "wellbeing", "experience"],
+    name: "Ystävyyden Majatalo",
+    nameByLocale: { fi: "Ystävyyden Majatalo", en: "Ystävyyden Majatalo Guesthouse", es: "Casa de huéspedes Ystävyyden Majatalo" },
+    description: {
+      fi: "Kodikas majatalo Kruusilassa Turun ja Helsingin välissä. Majoituksen lisäksi talo järjestää kursseja, lomia, juhlia, koulutuksia ja retriittejä. Ryhmätilat soveltuvat Visit Salon kohdekuvauksen mukaan noin 12–50 hengelle.",
+      es: "Casa de huéspedes acogedora en Kruusila, entre Turku y Helsinki. Además del alojamiento, organiza cursos, vacaciones, celebraciones, formación y retiros. Según la ficha de Visit Salo, sus espacios sirven para grupos de aproximadamente 12 a 50 personas.",
+      en: "A welcoming guesthouse in Kruusila between Turku and Helsinki. Alongside accommodation, it hosts courses, holidays, celebrations, training and retreats. Visit Salo's listing describes group facilities for approximately 12–50 people.",
+    },
+    url: "https://ystavyydenmajatalo.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Yst%C3%A4vyyden-Majatalo.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Ystävyyden Majatalo",
+  },
+  {
+    id: "ylostalon-matkailutila",
+    category: "stay",
+    directoryCategories: ["archipelago", "food", "events", "wellbeing", "experience"],
+    name: "Ylöstalon Matkailutila",
+    nameByLocale: { fi: "Ylöstalon Matkailutila", en: "Ylöstalo Holiday Farm", es: "Alojamiento rural Ylöstalo" },
+    description: {
+      fi: "Särkisalon saaristossa toimiva matkailutila, jonka palveluihin kuuluvat mökkimajoitus, merellinen Villa Meri -juhlatila, Restaurant Nixor sekä sauna- ja ryhmäpalvelut. Tarkista eri palvelujen sesonkiaikaiset aukiolot ja saatavuus suoraan Ylöstalolta.",
+      es: "Alojamiento rural en el archipiélago de Särkisalo, con cabañas, el espacio para eventos junto al mar Villa Meri, el restaurante Nixor y servicios de sauna y grupos. Consulta directamente con Ylöstalo los horarios de temporada y la disponibilidad.",
+      en: "A holiday farm in the Särkisalo archipelago offering cottage accommodation, the seaside Villa Meri event venue, Restaurant Nixor and sauna and group services. Confirm seasonal opening times and availability directly with Ylöstalo.",
+    },
+    url: "https://www.ylostalo.fi",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Yl%C3%B6stalon-matkailutila-%E2%80%93-8.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Ylöstalon Matkailutila",
+  },
+
+
+
+  {
+    id: "lepola-drinks",
+    location: "Ylönkylä, Salo",
+    contact: { phone: "+358 40 725 0233", email: "emmi@lepoladrinks.fi", address: "Kemiöntie 1008, 25610 Ylönkylä" },    category: "food",
+    directoryCategories: ["shopping", "localFood"],
+    name: "Lepola Drinks",
+    nameByLocale: { fi: "Lepola Drinks", en: "Lepola Drinks", es: "Lepola Drinks" },
+    description: {
+      fi: "Ylönkylässä toimiva Lepola Drinks on Marjajaloste Meritalo Oy:n juomabrändi. Lepola Shopin tilamyymälä myy käsityöläissiiderien lisäksi Meritalon hilloja ja mehuja; kesäkaudella myymälän yhteydessä toimii terassi. Talvikaudella palvellaan sopimuksen mukaan, joten sovi vierailusta etukäteen.",
+      en: "Lepola Drinks is the beverage brand of Marjajaloste Meritalo Oy in Ylönkylä. The Lepola Shop farm store sells handcrafted cider as well as Meritalo jams and juices; a terrace operates during the summer season. Winter visits are by appointment, so arrange your visit in advance.",
+      es: "Lepola Drinks es la marca de bebidas de Marjajaloste Meritalo Oy, en Ylönkylä. La tienda Lepola Shop vende sidras artesanales, además de mermeladas y zumos de Meritalo; en verano dispone de una terraza. Durante el invierno, las visitas se atienden con cita previa.",
+    },
+    url: "https://meritalo.com/tilamyymala",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/02/Lepola-Drinks_7207-1366x768.jpg",
+    imageCredit: "Salon Kohteet — Lepola Drinks",
+  },
+  {
+    id: "pohjolan-tila",
+    location: "Kisko, Salo",
+    contact: { phone: "+358 40 701 7963", email: "minnapohjola1@gmail.com", address: "Tieksmäentie 459, 25460 Kisko" },    category: "food",
+    directoryCategories: ["shopping", "events", "experience", "localFood"],
+    name: "Pohjolan tila",
+    nameByLocale: { fi: "Pohjolan tila", en: "Pohjola Farm", es: "Granja Pohjola" },
+    description: {
+      fi: "Kiskossa sijaitseva marjatila ja maatilakohde. Tilapuodissa myydään tilan omia marjoja sekä niistä valmistettuja hilloja ja mehuja. Kesäkaudella tilalla toimii kahvila ja second hand -puoti, ja vuoden mittaan järjestetään tapahtumia sekä joulupuoti sesongin mukaan. Tarkista aukiolot ennen vierailua.",
+      en: "A berry farm and visitor destination in Kisko. The farm shop sells berries grown on the farm as well as homemade jams and juices. In summer, visitors can also enjoy a café and second-hand shop; events and a Christmas shop take place at selected times of the year. Check opening times before visiting.",
+      es: "Granja de frutos rojos y destino rural en Kisko. En la tienda se venden bayas cultivadas en la finca, además de mermeladas y zumos caseros. En verano también hay cafetería y tienda de segunda mano; se organizan eventos y una tienda navideña en fechas concretas. Consulta los horarios antes de la visita.",
+    },
+    url: "https://pohjolanmaatila.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Pohjola2-1029x768.png",
+    imageCredit: "Salon Kohteet — Pohjolan tila",
+  },
+  {
+    id: "kylatalo-punaportti",
+    location: "Teijo / Mathildedal, Salo",
+    contact: { phone: "+358 50 405 8384", email: "punaportti@teijo.fi", address: "Punaportintie 163, 25570 Teijo" },    category: "events",
+    directoryCategories: ["wellbeing", "archipelago"],
+    name: "Kylätalo Punaportti",
+    nameByLocale: { fi: "Kylätalo Punaportti", en: "Punaportti Village Hall", es: "Centro comunitario Punaportti" },
+    description: {
+      fi: "Teijon ja Mathildedalin välissä meren rannalla sijaitseva kylätalo, jota voi vuokrata yksityisiin ja yritysten tilaisuuksiin. Alueella on puulämmitteinen sauna, terassi ja laituri meressä uimiseen. Yleiset saunavuorot ovat kausiluonteisia; tarkista ajantasaiset vuorot ja vuokrausohjeet Teijon Ruukkikyliltä.",
+      en: "A village hall by the sea between Teijo and Mathildedal, available for private and corporate events. The grounds include a wood-fired sauna, terrace and a jetty for swimming in the sea. Public sauna sessions are seasonal; check current times and rental information with Teijo Ironworks Villages.",
+      es: "Centro comunitario junto al mar entre Teijo y Mathildedal, disponible para eventos privados y de empresas. Cuenta con sauna de leña, terraza y un muelle para bañarse en el mar. Los turnos de sauna pública son estacionales; consulta los horarios y las condiciones de alquiler con Teijo Ironworks Villages.",
+    },
+    url: "https://www.teijo.fi/punaportti/",
+    image: "https://static.wixstatic.com/media/684b51_4e92d50193d24fbaa2f2d9e58a572fdc~mv2.jpeg/v1/fill/w_325%2Ch_217%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/684b51_4e92d50193d24fbaa2f2d9e58a572fdc~mv2.jpeg",
+    imageCredit: "Visit Teijo — Kylätalo Punaportti",
+  },
+
+
+  {
+    id: "ellun-kanat-ja-munat",
+    category: "localFood",
+    directoryCategories: ["shopping", "experience"],
+    name: "Ellun kanat ja munat",
+    nameByLocale: { fi: "Ellun kanat ja munat", en: "Ellu's Heritage Hens & Eggs", es: "Gallinas y huevos de Ellu" },
+    location: "Raatala, Salo",
+    contact: { phone: "+358 40 718 0258", email: "ellu@ellunkanatjamunat.fi", address: "Ristisillantie 187, 25320 Raatala, Salo" },
+    description: {
+      fi: "Ellun kanat ja munat on Raatalassa toimiva sukutila, jossa kasvatetaan suomalaisia Piikkiönkannan maatiaiskanoja. Tilalta saa olkipedeissä munittuja ja käsin kerättyjä maatiaiskananmunia, kukkopaistia sekä paikallisia tuotteita. Tilapuodissa on myös kanojen rehuja ja tarvikkeita, ja tilalla järjestetään pienkanalakursseja.",
+      en: "A family farm in Raatala raising Finnish Piikkiö heritage hens. The farm sells hand-collected eggs laid in straw nests, cockerel meat and selected local products. Its farm shop also stocks feed and equipment for keeping hens, and the farm runs small-scale poultry courses.",
+      es: "Granja familiar en Raatala que cría gallinas autóctonas finlandesas de la variedad Piikkiö. Vende huevos recogidos a mano, carne de gallo y productos locales seleccionados. La tienda también ofrece pienso y accesorios para gallinas, y la granja organiza cursos de avicultura a pequeña escala.",
+    },
+    url: "https://www.ellunkanatjamunat.fi/",
+    image: "https://static.wixstatic.com/media/684b51_5d8b1485479e4b429ad35196df01f73e~mv2_d_2500_1406_s_2.jpg/v1/fill/w_980%2Ch_551%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/684b51_5d8b1485479e4b429ad35196df01f73e~mv2_d_2500_1406_s_2.jpg",
+    imageCredit: "Ellun kanat ja munat — official website",
+  },
+  {
+    id: "kalliolan-tila",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Kalliolan Tila",
+    nameByLocale: { fi: "Kalliolan Tila", en: "Kalliola Farm", es: "Granja Kalliola" },
+    location: "Kisko, Salo",
+    contact: { phone: "+358 40 867 2261", email: "kalliolan.tila@gmail.com", address: "Kiskontie 2858, 25470 Kisko" },
+    description: {
+      fi: "Kalliolan Tila on vanha sukutila Kiskossa, jossa kasvatetaan suomenlampaita sekä muutamia suomalaisia alkuperäisrotuja. Lammaspuodissa myydään tilan omia karitsanlihatuotteita, makkaroita, villaa, lankoja ja taljoja. Tuotteiden saatavuus vaihtelee sesongin mukaan.",
+      en: "Kalliola is a historic family farm in Kisko, raising Finnish sheep and other native Finnish breeds. Its farm shop sells lamb products, sausages, wool, yarn and sheepskins produced on the farm. Product availability varies by season.",
+      es: "Kalliola es una antigua granja familiar en Kisko que cría ovejas finlandesas y otras razas autóctonas. En su tienda se venden productos de cordero, embutidos, lana, hilo y pieles de oveja de producción propia. La disponibilidad varía según la temporada.",
+    },
+    url: "https://www.kalliolantila.fi/",
+    image: "https://static.wixstatic.com/media/88ea43_b6333dcb0d0246c298119c2685ca6984~mv2.jpeg/v1/fill/w_605%2Ch_340%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/IMG_8986.jpeg",
+    imageCredit: "Kalliolan Tila — official website",
+  },
+  {
+    id: "kirakan-kalkkuna",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Kirakan Tila",
+    nameByLocale: { fi: "Kirakan Tila", en: "Kirakka Farm", es: "Granja Kirakka" },
+    location: "Ylönkylä, Perniö, Salo",
+    contact: { phone: "+358 44 078 5060", email: "kirakka@savukalkkuna.fi", address: "Kirakantie 178, 25610 Ylönkylä, Perniö" },
+    description: {
+      fi: "Kirakan Tila on perhetila Ylönkylässä, jossa kalkkunoita on kasvatettu vuodesta 1992. Tilapuodin valikoimaan kuuluvat aidossa leppäsavussa savustettu kalkkuna, kalkkunamakkarat, nakit ja leikkeleet. Puoti palvelee sesonkien aikaan ja muulloin sopimuksen mukaan.",
+      en: "Kirakka is a family farm in Ylönkylä that has raised turkeys since 1992. Its farm shop offers turkey smoked over alder wood, turkey sausages, frankfurters and cold cuts. The shop is open during selected seasonal periods and by arrangement at other times.",
+      es: "Kirakka es una granja familiar en Ylönkylä que cría pavos desde 1992. Su tienda ofrece pavo ahumado con madera de aliso, salchichas de pavo y fiambres. La tienda abre en determinadas temporadas y, en otras fechas, con cita previa.",
+    },
+    url: "https://savukalkkuna.fi/",
+    image: "https://savukalkkuna.fi/wp-content/uploads/2025/10/tuotteet-01_2.webp",
+    imageCredit: "Kirakan Tila — official website",
+  },
+  {
+    id: "kosken-kartano",
+    category: "localFood",
+    directoryCategories: ["experience", "events"],
+    name: "Kosken kartano",
+    nameByLocale: { fi: "Kosken kartano", en: "Kosken Kartano Farm", es: "Granja Kosken Kartano" },
+    location: "Koski as, Salo",
+    contact: { phone: "+358 50 359 3830", email: "koskis@koskis.fi", address: "Koskipolku 28, 25560 Koski as" },
+    description: {
+      fi: "Kosken kartano on sukutila, joka tuottaa luomusertifioitua Hereford- ja lampaanlihaa omalla tilallaan kasvatetuista eläimistä. Lihaa saa tilan omasta verkkokaupasta, maatilan lihakaupasta ja REKO-jakelun kautta. Kartanolla järjestetään myös opastettuja tilakierroksia sekä kokouksia ja maaseutuelämyksiä.",
+      en: "Kosken Kartano is a family farm producing certified organic Hereford beef and lamb from animals raised on the estate. Meat is available through the farm's online shop, farm butcher shop and REKO local-food networks. The estate also hosts guided farm visits, meetings and rural experiences.",
+      es: "Kosken Kartano es una granja familiar que produce carne ecológica certificada de vacuno Hereford y cordero de animales criados en la propia finca. La carne se vende en la tienda en línea, la carnicería de la granja y redes locales REKO. También se organizan visitas guiadas, reuniones y experiencias rurales.",
+    },
+    url: "https://www.koskis.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/12/Koskis2.avif",
+    imageCredit: "Visit Salo / Salon Kohteet — Kosken kartano",
+  },
+  {
+    id: "mikkolan-tila",
+    category: "localFood",
+    directoryCategories: ["stay", "experience", "events"],
+    name: "Mikkolan tila",
+    nameByLocale: { fi: "Mikkolan tila", en: "Mikkola Farm", es: "Granja Mikkola" },
+    location: "Hajala, Salo",
+    contact: { phone: "+358 40 900 2957", email: "peppi@mikkolantila.fi", address: "Vanha Turuntie 738, 25240 Hajala" },
+    description: {
+      fi: "Mikkolan lammastila Hajalassa tuottaa karitsanlihaa, villaa, taljoja ja viljaa. Tilalta voi tilata karitsanlihaa sekä tilan omista lampaista valmistettuja makkaroita ja muita lihatuotteita. Tilalla järjestetään paimennuskilpailuja, ja historiallisessa päärakennuksessa on juhla-, kokous- ja lomanviettomahdollisuuksia.",
+      en: "Mikkola Sheep Farm in Hajala produces lamb, wool, sheepskins and grain. Lamb and meat products made from the farm's own sheep can be ordered directly. The farm also hosts sheepdog trials and offers celebration, meeting and holiday facilities in its historic main building.",
+      es: "La granja ovina Mikkola, en Hajala, produce cordero, lana, pieles y cereales. Se pueden encargar cordero y productos cárnicos elaborados con las ovejas de la finca. También organiza pruebas de perros pastores y ofrece espacios para celebraciones, reuniones y estancias en su histórico edificio principal.",
+    },
+    url: "https://www.mikkolantila.com/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/12/Mikkola5.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Mikkolan tila",
+  },
+
+
+  {
+    id: "peltosaaren-luomulammastila",
+    category: "localFood",
+    directoryCategories: ["stay", "experience"],
+    name: "Peltosaaren luomulammastila",
+    nameByLocale: { fi: "Peltosaaren luomulammastila", en: "Peltosaari Organic Sheep Farm", es: "Granja ovina ecológica Peltosaari" },
+    location: "Koski as, Salo",
+    contact: { phone: "+358 50 550 7650", email: "peltosaarentila@gmail.com", address: "Lehtiniityntie 52, 25560 Koski as" },
+    description: {
+      fi: "Peltosaaren perhetilalla kasvatetaan suomalaisia alkuperäisrotuisia lampaita luonnonmukaisesti. Tilalta saa luomukaritsanlihaa, lampaantaljoja, raakavillaa ja oman pihapiirin mehiläisten hunajaa. Tila tarjoaa myös maatilamatkailua ja lammaspaimenviikkoja.",
+      en: "Peltosaari is a family-run organic sheep farm raising native Finnish breeds. The farm sells organic lamb, sheepskins, raw wool and honey from its own bees. Farm tourism and sheep-herding weeks are also available.",
+      es: "Peltosaari es una granja familiar ecológica que cría razas ovinas autóctonas finlandesas. Vende cordero ecológico, pieles de oveja, lana sin tratar y miel de sus propias abejas. También ofrece turismo rural y semanas de pastoreo con ovejas.",
+    },
+    url: "https://peltosaarenluomulammastila.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/lampaat-1160x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Peltosaaren luomulammastila",
+  },
+  {
+    id: "pernion-saunapalvi",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Perniön Saunapalvi",
+    nameByLocale: { fi: "Perniön Saunapalvi", en: "Perniö Smokehouse", es: "Ahumados Perniö" },
+    location: "Perniö, Salo",
+    contact: { phone: "+358 2 735 2188", email: "info@pernionsaunapalvi.fi", address: "Pernänmetsäntie 12, 25500 Perniö" },
+    description: {
+      fi: "Perniön Saunapalvi on perheyritys, joka valmistaa kotimaisia lihatuotteita perinteisessä leppäpuulla lämmitettävässä savusaunassa. Valikoimaan kuuluvat saunapalvi, palvipossu, tuoreet ja marinoidut lihat, makkarat sekä sesongin juhlapöydän tuotteet. Myymälän kausittaiset aukiolot ja tilaukset kannattaa tarkistaa suoraan yritykseltä.",
+      en: "Perniö Smokehouse is a family business producing Finnish meat products in a traditional alder-wood smoke sauna. Its range includes smoked ham, whole smoked pork, fresh and marinated cuts, sausages and seasonal celebration foods. Check seasonal shop opening times and orders directly with the company.",
+      es: "Perniö Saunapalvi es una empresa familiar que elabora productos cárnicos finlandeses en una sauna tradicional de humo calentada con madera de aliso. Su oferta incluye jamón ahumado, cerdo entero ahumado, carnes frescas y marinadas, embutidos y productos de temporada. Consulta directamente los horarios y pedidos.",
+    },
+    url: "https://pernionsaunapalvi.fi/",
+    image: "https://pernionsaunapalvi.fi/wp-content/uploads/2025/04/palvipossu-800.jpg",
+    imageCredit: "Perniön Saunapalvi — official website",
+  },
+  {
+    id: "wanhantuvan-ankkala",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Wanhantuvan Ankkala",
+    nameByLocale: { fi: "Wanhantuvan Ankkala", en: "Wanhantupa Duck Farm", es: "Granja de patos Wanhantupa" },
+    location: "Vaskio, Salo",
+    contact: { phone: "+358 40 539 3420", email: "info@wanhantuvanankkala.fi", address: "Lähteenmäentie 5, 25260 Vaskio" },
+    description: {
+      fi: "Wanhantuvan Ankkala on yli 400 vuotta vanhalla sukutilalla Vaskiossa toimiva perheyritys. Tilan päätuotanto on ankankasvatus, ja valikoimassa on ankanlihaa sekä pienimuotoisesti myös kanin- ja viiriäisenlihaa ja viiriäisenmunia. Tilapuotiin kannattaa sopia käynti etukäteen.",
+      en: "Wanhantupa Duck Farm is a family business on a farm with more than 400 years of family history in Vaskio. Its main production is duck, with smaller-scale rabbit and quail products and quail eggs also available. Contact the farm in advance to arrange a shop visit.",
+      es: "Wanhantuvan Ankkala es una empresa familiar en una finca de Vaskio con más de 400 años de historia. Su actividad principal es la cría de patos; también ofrece en pequeña escala carne de conejo y codorniz, además de huevos de codorniz. Contacta con la granja antes de visitar la tienda.",
+    },
+    url: "https://www.wanhantuvanankkala.fi/",
+  },
+  {
+    id: "wibergs",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Wiberg's",
+    nameByLocale: { fi: "Wiberg's", en: "Wiberg's", es: "Wiberg's" },
+    location: "Kuusjoki, Salo",
+    contact: { phone: "+358 45 783 23739", email: "hello@wibergs.fi", address: "Ylikulmantie 459, 25330 Kuusjoki" },
+    description: {
+      fi: "Wiberg's on Kuusjoella toimiva uudistava maatila, jonka ensimmäinen myyntituote ovat laidunkanojen munat. Kananmunia myydään suoraan tilalta, noutopisteistä ja lähiruokarenkaiden kautta. Myynti ja saatavuus vaihtelevat laidunkauden mukaan; tarkista ajantasaiset noutopaikat ja saatavuus tilan omilta sivuilta.",
+      en: "Wiberg's is a regenerative farm in Kuusjoki whose first product is eggs from pasture-raised hens. Eggs are sold directly from the farm, through collection points and local-food networks. Sales and availability follow the grazing season; check current collection points and availability on the farm's own website.",
+      es: "Wiberg's es una granja regenerativa en Kuusjoki cuyo primer producto son huevos de gallinas criadas en pastoreo. Se venden directamente en la granja, en puntos de recogida y mediante redes locales de alimentos. La disponibilidad depende de la temporada de pastoreo; consulta los puntos de recogida actuales en la web de la granja.",
+    },
+    url: "https://wibergs.fi/fi",
+  },
+  {
+    id: "ylivesan-luomutila",
+    category: "localFood",
+    directoryCategories: ["shopping", "experience"],
+    name: "Ylivesän luomutila",
+    nameByLocale: { fi: "Ylivesän luomutila", en: "Ylivesä Organic Farm", es: "Granja ecológica Ylivesä" },
+    location: "Kruusila, Salo",
+    contact: { phone: "+358 44 538 6205", email: "ylivesa@ylivesa.fi", address: "Vilikkalantie 1410, 25110 Kruusila" },
+    description: {
+      fi: "Ylivesän luomutila Kruusilassa kasvattaa Hereford-nautoja ja myy luomulaatuista naudanlihaa suoraan tilalta. Eläimet laiduntavat kesäkaudella ja niiden ruokinta perustuu tilan omiin ja lähialueen nurmirehuihin. Tilalla voi tutustua eläimiin ja hankkia tilan lihatuotteita.",
+      en: "Ylivesä Organic Farm in Kruusila raises Hereford cattle and sells organic beef directly from the farm. The cattle graze during the summer and are fed grass fodder produced on the farm and in the local area. Visitors can learn about the animals and buy the farm's beef products.",
+      es: "La granja ecológica Ylivesä, en Kruusila, cría ganado Hereford y vende carne ecológica directamente desde la finca. El ganado pasta durante el verano y se alimenta con forraje producido en la propia granja y en la zona. Los visitantes pueden conocer los animales y comprar productos cárnicos de la finca.",
+    },
+    url: "https://www.ylivesa.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06887-1-1151x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Ylivesä Organic Farm (photo: Minna Heinonen Photography)",
+  },
+
+
+  {
+    id: "oyrilan-isontalon-lammastila",
+    category: "localFood",
+    directoryCategories: ["shopping", "experience"],
+    name: "Öyrilän Isontalon lammastila",
+    nameByLocale: { fi: "Öyrilän Isontalon lammastila", en: "Öyrilä Isotalo Sheep Farm", es: "Granja ovina Öyrilä Isotalo" },
+    location: "Perniö, Salo",
+    contact: { phone: "+358 50 469 6966", email: "irmeli.nurminen@gmail.com", address: "Isontalontie 42, 25540 Knaapila" },
+    description: {
+      fi: "Öyrilän Isontalon lammastila on Perniössä toimiva pieni sukutila, jossa kasvatetaan suomenlampaita ja tuotetaan lammastuotteita langasta lihaan. Pienestä vinttipuodista saa karitsanlihaa, lammasmakkaraa, säilykkeitä, hunajaa, taljoja ja villalankaa. Puoti palvelee sopimuksen mukaan; kesäkaudella tuotteita löytyy myös Mathildedalin Vinttipuodista.",
+      en: "Öyrilä Isotalo is a small family sheep farm in Perniö, producing everything from wool yarn to lamb meat. Its attic shop offers lamb, lamb sausages and preserves, honey, sheepskins and wool yarn by arrangement. During the summer season, products are also sold at the Vinttipuoti shop in Mathildedal.",
+      es: "Öyrilä Isotalo es una pequeña granja familiar de ovejas en Perniö, donde se producen artículos que van desde lana hasta carne de cordero. La tienda del ático ofrece cordero, embutidos y conservas de cordero, miel, pieles y lana con cita previa. En verano también se venden productos en la tienda Vinttipuoti de Mathildedal.",
+    },
+    url: "https://www.irmelinurminen.com/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Oyrila2-1024x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Öyrilän Isontalon lammastila",
+  },
+  {
+    id: "hallonmaen-siideripanimo",
+    category: "localFood",
+    directoryCategories: ["experience", "events"],
+    name: "Hallonmäen Siideripanimo",
+    nameByLocale: { fi: "Hallonmäen Siideripanimo", en: "Hallonmäki Cidery", es: "Sidrería Hallonmäki" },
+    location: "Perniö, Salo",
+    contact: { phone: "+358 40 027 9923", email: "panimo@hallonmaki.fi", address: "Kuljuntie 79, 25520 Perniö" },
+    description: {
+      fi: "Hallonmäen Siideripanimo valmistaa käsityönä aitoa suomalaista siideriä lähiseudun tuorepuristetuista omenoista. Panimon yhteydessä voi tutustua siiderin valmistukseen ja sopia ryhmille opastetuista vierailuista tai maisteluista. Siideripanimo ja Hallonmäentila ovat samalla tilalla mutta erillisiä yrityksiä.",
+      en: "Hallonmäki Cidery makes traditional Finnish craft cider from freshly pressed apples grown in the surrounding area. Visitors can learn about cider-making, and guided visits or tastings can be arranged for groups. The cidery and Hallonmäki Farm share the same site but are separate companies.",
+      es: "La sidrería Hallonmäki elabora sidra artesanal finlandesa con manzanas recién prensadas de la zona. Los visitantes pueden conocer el proceso de elaboración y reservar visitas guiadas o degustaciones para grupos. La sidrería y la granja Hallonmäki comparten ubicación, pero son empresas distintas.",
+    },
+    url: "https://www.hallonmaki.fi/hallonmaen-siideripanimo",
+    image: "https://images.squarespace-cdn.com/content/v1/68511e9b7c5f147691de5b2f/f42b04d6-3645-4d40-b619-e931970dca82/hallonmaen-siideripanimo-aito-suomalainen-siideri.jpg",
+    imageCredit: "Hallonmäki — photo by Riikka Lilja",
+  },
+  {
+    id: "paulan-puutarha",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Paulan puutarha",
+    nameByLocale: { fi: "Paulan puutarha", en: "Paula's Orchard", es: "Huerto de Paula" },
+    location: "Angelniemi, Salo",
+    contact: { phone: "+358 40 803 4994", email: "paula@paulanpuutarha.fi", address: "Nuottamäentie 80, 25230 Angelniemi" },
+    description: {
+      fi: "Paulan puutarha on Angelniemessä sijaitseva omenatarha. Tilalla myydään omenoita satokaudella ja valmistetaan käsin puristettua 100-prosenttista omenamehua ilman säilöntä- tai lisäaineita. Puutarhassa viljellään myös raparperia, ja pieni siideripuoti palvelee sopimuksen mukaan.",
+      en: "Paula's Orchard is an apple farm in Angelniemi. Apples are sold directly during the harvest season, and the farm makes 100% apple juice using a traditional press without preservatives or additives. Rhubarb is also grown, and the small cider shop welcomes visitors by arrangement.",
+      es: "Paula's Orchard es un huerto de manzanos en Angelniemi. Vende manzanas directamente durante la cosecha y elabora zumo 100 % de manzana mediante prensado tradicional, sin conservantes ni aditivos. También cultiva ruibarbo y su pequeña tienda de sidra recibe visitas con cita previa.",
+    },
+    url: "https://www.paulanpuutarha.fi/",
+    image: "https://www.paulanpuutarha.fi/wp-content/uploads/2015/03/mehu1.png",
+    imageCredit: "Paulan puutarha — official website",
+  },
+  {
+    id: "vaski-cider-distillery",
+    category: "localFood",
+    directoryCategories: ["experience", "events", "shopping"],
+    name: "Vaski Cider & Distillery",
+    nameByLocale: { fi: "Vaski Cider & Distillery", en: "Vaski Cider & Distillery", es: "Vaski Cider & Distillery" },
+    location: "Halikko, Salo",
+    contact: { phone: "+358 41 311 6360", email: "vaski@vaskicider.fi", address: "Vaskiontie 418, 24800 Halikko" },
+    description: {
+      fi: "Vaski Cider & Distillery on Halikossa Design Hillin yhteydessä toimiva elämyksellinen siideritalo. Vierailulla voi tutustua siiderinäyttelyyn, nähdä valmistuksen toimintaa sekä varata ryhmälle opastetun kierroksen tai tastingin. Siideritalossa järjestetään myös taidenäyttelyitä ja tapahtumia; myymälä palvelee Design Hillin aukioloaikojen mukaan.",
+      en: "Vaski Cider & Distillery is an experiential cider house beside Design Hill in Halikko. Visitors can explore the cider exhibition, see production when it is running, and book guided tours or tastings for groups. The venue also hosts art exhibitions and events; the shop follows Design Hill's opening hours.",
+      es: "Vaski Cider & Distillery es una sidrería experiencial junto a Design Hill, en Halikko. Los visitantes pueden conocer la exposición sobre la sidra, ver la producción cuando está en marcha y reservar visitas guiadas o degustaciones para grupos. También acoge exposiciones de arte y eventos; la tienda sigue el horario de Design Hill.",
+    },
+    url: "https://www.vaskicider.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/10/Vaski-Cider_2-1366x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Vaski Cider & Distillery",
+  },
+  {
+    id: "hallonmaen-tila",
+    category: "localFood",
+    directoryCategories: ["shopping", "experience"],
+    name: "Hallonmäen tila",
+    nameByLocale: { fi: "Hallonmäen tila", en: "Hallonmäki Farm", es: "Granja Hallonmäki" },
+    location: "Perniö, Salo",
+    contact: { phone: "+358 44 760 5832", email: "vesterinen.jarno@gmail.com", address: "Kuljuntie 79, 25520 Perniö" },
+    description: {
+      fi: "Hallonmäen tila Perniössä viljelee marjoja, kasviksia ja yrttejä. Tilapuodista saa satokauden tuoretuotteita, lähitilojen herkkuja sekä Hallonmäen Siideripanimon tuotteita. Puodissa voi tutustua myös kasvihuoneisiin; aukioloajat vaihtelevat sesongin mukaan ja noudosta voi sopia erikseen.",
+      en: "Hallonmäki Farm in Perniö grows berries, vegetables and herbs. Its farm shop sells seasonal fresh produce, treats from nearby farms and products from Hallonmäki Cidery. Visitors can also take a look at the greenhouses; opening times vary by season and collection can be arranged directly.",
+      es: "La granja Hallonmäki, en Perniö, cultiva bayas, verduras y hierbas. Su tienda vende productos frescos de temporada, especialidades de granjas cercanas y productos de la sidrería Hallonmäki. También se pueden visitar los invernaderos; los horarios varían según la temporada y la recogida se puede acordar directamente.",
+    },
+    url: "https://www.hallonmaki.fi/tilapuoti",
+    image: "https://images.squarespace-cdn.com/content/v1/68511e9b7c5f147691de5b2f/d0e2201e-d668-4cb6-a2ba-3cb829d4dac8/hallonmaentila-tilapuoti.jpg",
+    imageCredit: "Hallonmäki — photo by Riikka Lilja",
+  },
+  {
+    id: "heinan-puutarha",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Heinän Puutarha",
+    nameByLocale: { fi: "Heinän Puutarha", en: "Heinä's Garden", es: "Huerto Heinän" },
+    location: "Salo",
+    contact: { phone: "+358 40 836 3127", email: "heinanpuutarha@gmail.com", address: "Hakamäentie 155, 24130 Salo" },
+    description: {
+      fi: "Heinän Puutarha on Salossa toimiva perheyritys ja kasvihuonevihannesten tuottaja, jonka erikoisuutena ovat eri chililajikkeet ja itse kehitetyt chilituotteet. Puutarhalta voi tilata tuoreita chilejä, paprikoita, säilykkeitä ja hilloja verkkokaupasta tai sopia noudon suoraan puutarhalta.",
+      en: "Heinä's Garden is a family-run greenhouse vegetable producer in Salo, specialising in different chilli varieties and its own chilli products. Fresh chillies, peppers, preserves and jams can be ordered online or collected directly from the garden.",
+      es: "Heinän Puutarha es una empresa familiar de Salo especializada en verduras de invernadero, especialmente variedades de chile y productos propios de chile. Se pueden pedir chiles frescos, pimientos, conservas y mermeladas en línea o acordar la recogida directamente en el huerto.",
+    },
+    url: "https://heinanpuutarha.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Heina2.jpeg",
+    imageCredit: "Visit Salo / Salon Kohteet — Heinän Puutarha",
+  },
+
+
+  {
+    id: "haston-maatila",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Hästön Maatila",
+    nameByLocale: { fi: "Hästön Maatila", en: "Hästö Farm", es: "Granja Hästö" },
+    location: "Särkisalo / Perniö, Salo",
+    contact: { phone: "+358 500 428 902", email: "janne.eriksson@hastonmaatila.fi", address: "Hästöntie 910, 25500 Perniö" },
+    description: {
+      fi: "Hästön Maatila on vanha sukutila Särkisalossa, jossa kasvatetaan sesongin marjoja, vihanneksia ja yrttejä. Tuotevalikoimaan kuuluvat muun muassa mansikka, vadelma, pensasmustikka, hunajamarja, herne, pensaspapu, tilli ja persilja. Tuotteet toimitetaan nopeasti poiminnan jälkeen, ja saatavuus vaihtelee satokauden mukaan.",
+      en: "Hästö Farm is a historic family farm in Särkisalo growing seasonal berries, vegetables and herbs. Its products include strawberries, raspberries, blueberries, honeyberries, peas, green beans, dill and parsley. Produce is cooled quickly after picking, and availability varies with the growing season.",
+      es: "Hästö es una antigua granja familiar en Särkisalo que cultiva bayas, verduras y hierbas de temporada. Entre sus productos hay fresas, frambuesas, arándanos, bayas de miel, guisantes, judías verdes, eneldo y perejil. Los productos se enfrían rápidamente tras la cosecha y la disponibilidad varía según la temporada.",
+    },
+    url: "https://hastonmaatila.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Hasto2-1152x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Hästön Maatila",
+  },
+  {
+    id: "ilolan-tila",
+    category: "localFood",
+    directoryCategories: ["shopping", "experience"],
+    name: "Ilolan tila",
+    nameByLocale: { fi: "Ilolan tila", en: "Ilola Farm", es: "Granja Ilola" },
+    location: "Muurla, Salo",
+    contact: { phone: "+358 40 531 5845", address: "Järvintie 136, 25130 Muurla" },
+    description: {
+      fi: "Ilolan tila on Muurlassa sijaitseva pieni toisen polven perhetila. Tilalla kasvatetaan avomaan vadelmaa, jota saa itse poimien tai pieninä erinä valmiiksi poimittuna. Tilan mehiläiset pölyttävät vadelmapensaat, ja myynnissä on myös omaa lähihunajaa. Poiminta ja tilaukset sovitaan etukäteen.",
+      en: "Ilola is a small second-generation family farm in Muurla. It grows outdoor raspberries, available for self-picking or in small quantities ready-picked. The farm's own bees pollinate the raspberry bushes, and local honey is also sold. Picking and orders are arranged in advance.",
+      es: "Ilola es una pequeña granja familiar de segunda generación en Muurla. Cultiva frambuesas al aire libre, disponibles para recoger por cuenta propia o ya recolectadas en pequeñas cantidades. Las abejas de la granja polinizan los arbustos y también se vende miel local. La recogida y los pedidos se acuerdan con antelación.",
+    },
+    url: "https://www.facebook.com/Ilolantila/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/ilola8-1366x768.jpeg",
+    imageCredit: "Visit Salo / Salon Kohteet — Ilolan tila",
+  },
+  {
+    id: "kurjen-maatila",
+    category: "localFood",
+    directoryCategories: ["shopping", "experience"],
+    name: "Kurjen maatila",
+    nameByLocale: { fi: "Kurjen maatila", en: "Kurki Farm", es: "Granja Kurki" },
+    location: "Pertteli and Romsila, Salo",
+    contact: { phone: "+358 41 319 1068", address: "Inkereentie 638, 25180 Pertteli; Romsilantie 608, 25180 Salo" },
+    description: {
+      fi: "Kurjen maatila keskittyy mansikan viljelyyn Perttelissä ja Romsilassa. Mansikkaa kasvatetaan sekä avomaalla että kasvutunneleissa, ja sitä myydään suoraan tilalta kuluttajille, jälleenmyyjille ja tukkuostajille. Satokaudella tilalla voi myös poimia omat mansikat. Päivän saatavuus ja myyntipisteiden aukiolo tarkistetaan tilan omilta sivuilta.",
+      en: "Kurki Farm specialises in strawberries at its Pertteli and Romsila locations. Strawberries are grown outdoors and in polytunnels and sold directly to consumers, retailers and wholesalers. During the harvest season, visitors can also pick their own. Check daily availability and sales-point opening times on the farm's website.",
+      es: "La granja Kurki se especializa en fresas en sus ubicaciones de Pertteli y Romsila. Cultiva fresas al aire libre y en túneles, y las vende directamente a consumidores, comercios y mayoristas. Durante la cosecha también se pueden recoger fresas. Consulta la disponibilidad diaria y los horarios en la web de la granja.",
+    },
+    url: "https://kurjenmaatila.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/12/kurjen-tila-1160x768.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Kurjen maatila",
+  },
+  {
+    id: "maneliuksen-mansikkatila",
+    category: "localFood",
+    directoryCategories: ["shopping", "experience"],
+    name: "Maneliuksen mansikkatila",
+    nameByLocale: { fi: "Maneliuksen mansikkatila", en: "Manelius Strawberry Farm", es: "Finca de fresas Manelius" },
+    location: "Salo",
+    contact: { phone: "+358 44 336 8386", address: "Merikulmantie 684, 24130 Salo" },
+    description: {
+      fi: "Maneliuksen mansikkatilalla mansikkaa on viljelty Merikulmantiellä jo 1980-luvulta lähtien. Mansikoita voi ostaa tilalta tilauksesta ja Salon seudun myyntipisteiltä, ja satokaudella niitä voi myös poimia itse. Saatavuus vaihtelee sadon, sään ja päivän poimintamäärien mukaan.",
+      en: "Manelius Strawberry Farm has grown strawberries on Merikulmantie since the 1980s. Strawberries can be ordered directly from the farm and bought at sales points around Salo; during the season, visitors can also pick their own. Availability varies with the crop, weather and daily picking volumes.",
+      es: "La finca de fresas Manelius cultiva fresas en Merikulmantie desde la década de 1980. Se pueden encargar directamente en la granja y comprar en puntos de venta de la zona de Salo; durante la temporada también se pueden recoger. La disponibilidad depende de la cosecha, el clima y la recolección diaria.",
+    },
+    url: "https://www.facebook.com/profile.php?id=100057228948592",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Manelius2-1.jpeg",
+    imageCredit: "Visit Salo / Salon Kohteet — Maneliuksen mansikkatila",
+  },
+  {
+    id: "meisalan-marja",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Meisalan Marja",
+    nameByLocale: { fi: "Meisalan Marja", en: "Meisala Berry Farm", es: "Granja de bayas Meisala" },
+    location: "Vartsala / Meisala, Salo",
+    contact: { phone: "+358 500 324 211", email: "janne.saario@meisalanmarja.fi", address: "Koivuniementie 42, 25210 Vartsala" },
+    description: {
+      fi: "Meisalan Marja viljelee Vartsalan ja Meisalan kylissä marjoja ja vihanneksia omilla pelloillaan ja kasvihuoneissaan. Tuotantoon kuuluu muun muassa mansikkaa, vadelmaa, juureksia sekä vilja-, öljy- ja palkokasveja. Tuoretuotteita saa tilan kotikioskista ja kauden myyntipisteiltä; lajikkeet ja saatavuus vaihtelevat satokauden mukaan.",
+      en: "Meisala Berry Farm grows berries and vegetables on its own fields and in greenhouses in the Vartsala and Meisala villages. Its production includes strawberries, raspberries, root vegetables, grains, oil crops and legumes. Fresh produce is available from the farm kiosk and seasonal sales points; varieties and availability change through the growing season.",
+      es: "Meisalan Marja cultiva bayas y verduras en sus propios campos e invernaderos en los pueblos de Vartsala y Meisala. Su producción incluye fresas, frambuesas, raíces, cereales, cultivos oleaginosos y legumbres. Los productos frescos se venden en el quiosco de la granja y en puntos de venta de temporada; la variedad y disponibilidad cambian durante la campaña.",
+    },
+    url: "https://www.meisalanmarja.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/01/meisala.jpg",
+    imageCredit: "Visit Salo / Salon Kohteet — Meisalan Marja",
+  },
+
+  {
+    id: "puutarha-siimes",
+    category: "localFood",
+    name: "Puutarha Siimes",
+    location: "Pataojantie 40, 25470 Kisko, Salo",
+    contact: { phone: "+358 40 516 6583", email: "puutarha@puutarhasiimes.fi", address: "Pataojantie 40, 25470 Kisko" },
+    description: {
+      fi: "Kiskolainen perheyritys kasvattaa kirsikkatomaatteja, yrttejä ja muita vihanneksia. Tilamyymälä toimii itsepalveluperiaatteella, ja tuotteita toimitetaan myös REKO-jakeluihin sekä sopimusasiakkaille.",
+      en: "A family-run grower in Kisko producing cherry tomatoes, herbs and other vegetables. The farm shop operates on a self-service basis, with products also supplied through REKO groups and to contract customers.",
+      es: "Empresa familiar de Kisko que cultiva tomates cherry, hierbas y otras verduras. La tienda de la finca funciona en autoservicio y también suministra productos a grupos REKO y clientes con acuerdos."
+    },
+    url: "https://www.puutarhasiimes.fi"
+  },
+  {
+    id: "rannikon-puutarha",
+    category: "localFood",
+    name: "Rannikon Puutarha",
+    location: "Häntälänkoskentie 86, 24910 Halikko, Salo",
+    contact: { phone: "+358 400 826 360", address: "Häntälänkoskentie 86, 24910 Halikko" },
+    description: {
+      fi: "Halikkolainen puutarha kasvattaa avomaan ja kasvihuoneiden marjoja sekä vihanneksia. Omia tuotteita myydään sesongin mukaan puutarhan myyntipisteissä ja tilamyymälässä; ajantasaiset myyntipaikat ja satotilanne kannattaa tarkistaa suoraan yritykseltä.",
+      en: "A Halikko-based grower producing berries and vegetables outdoors and in greenhouses. Its produce is sold seasonally at the company’s outlets and farm shop; check current sales points and harvest availability directly with the business.",
+      es: "Productor de Halikko que cultiva frutas y verduras al aire libre y en invernaderos. Sus productos se venden por temporada en sus puntos de venta y tienda agrícola; consulta directamente los puntos de venta y la cosecha disponible."
+    },
+    url: "https://rannikonpuutarha.fi"
+  },
+  {
+    id: "vaanelan-puutarha",
+    category: "localFood",
+    name: "Vaanelan puutarha",
+    location: "Päivärinteentie 14, 25520 Perniö, Salo",
+    contact: { phone: "+358 40 353 6239", email: "tilaukset@vaanela.fi", address: "Päivärinteentie 14, 25520 Perniö" },
+    description: {
+      fi: "Vaanelan puutarha on Perniössä toimiva perheyritys, joka viljelee salaatteja, mansikoita, vadelmia ja muita vihanneksia. Tilapuoti sijaitsee osoitteessa Päivärinteentie 14, ja yrityksen virallisilla sivuilla ilmoitetaan aukioloajaksi ma–la klo 10–17. Valikoima seuraa satokautta; tarkista poikkeusaukiolot ja tuotteiden saatavuus ennen vierailua.",
+      en: "Vaanela is a family-run grower in Perniö producing lettuce, strawberries, raspberries and other vegetables. The farm shop is at Päivärinteentie 14; the official website lists opening hours Monday–Saturday, 10:00–17:00. Product selection follows the growing season; check exceptions and availability before visiting.",
+      es: "Vaanela es una empresa familiar de Perniö que cultiva lechugas, fresas, frambuesas y otras verduras. La tienda de la granja está en Päivärinteentie 14; la web oficial indica un horario de lunes a sábado, de 10:00 a 17:00. La selección depende de la temporada de cultivo; consulta los cierres excepcionales y la disponibilidad antes de visitarla."
+    },
+    url: "https://vaanela.fi"
+  },
+  {
+    id: "veljesten-kurkut",
+    category: "localFood",
+    name: "Veljesten kurkut",
+    location: "Skotlannintie 43, 25610 Ylönkylä, Salo",
+    contact: { phone: "+358 44 507 0764", email: "info@veljestenkurkut.fi", address: "Skotlannintie 43, 25610 Ylönkylä" },
+    description: {
+      fi: "Perniössä viljellyt ja valmistetut Veljesten suolakurkut tehdään Vainion perhetilalla perinteisellä maitohappokäymisellä. Tuotteita toimitetaan suoraan tilalta kauppoihin; kuluttajamyynnin ajantasaiset paikat kannattaa tarkistaa valmistajalta.",
+      en: "Veljesten pickled cucumbers are grown and made on the Vainio family farm in Perniö using traditional lactic fermentation. Products are delivered directly from the farm to retailers; check current consumer sales points with the producer.",
+      es: "Los pepinillos fermentados de Veljesten se cultivan y elaboran en la granja familiar Vainio, en Perniö, mediante fermentación láctica tradicional. Se distribuyen directamente a comercios; consulta al productor los puntos de venta actuales."
+    },
+    url: "https://veljestenkurkut.fi"
+  },
+  {
+    id: "ohrakasken-tila",
+    category: "localFood",
+    name: "Ohrakasken tila",
+    location: "Raatala / Kuusjoki, Salo",
+    contact: { phone: "+358 40 836 8271", email: "katri.paakki@gmail.com", address: "Kaitasuontie 93, 25320 Salo" },
+    description: {
+      fi: "Ohrakasken tila on Raatalassa toimiva lähitila, jonka päätuote on pensasmustikka. Mustikoita myydään satokaudella itse poimien tai valmiiksi poimittuna tilapuodista tilauksesta. Tilalla kasvatetaan myös pieniä määriä tankoparsaa kausittain. Poiminnan ja saatavuuden ajankohta kannattaa varmistaa suoraan tilalta.",
+      en: "Ohrakasken is a local farm in Raatala, specialising in highbush blueberries. During the season, berries are available for self-picking or pre-picked by order from the farm shop. Small quantities of asparagus are also grown seasonally. Check picking conditions and availability directly with the farm.",
+      es: "Ohrakasken es una granja local en Raatala especializada en arándanos de arbusto. Durante la temporada se pueden recoger los frutos o pedirlos ya recolectados en la tienda de la granja. También cultiva pequeñas cantidades de espárragos de temporada. Consulta directamente con la granja la disponibilidad y la recogida."
+    },
+    url: "https://kohteet.visitsalo.fi/ohrakasken-tila/"
+  },
+  {
+    id: "rinteen-luomutila",
+    category: "localFood",
+    name: "Rinteen luomutila",
+    location: "Kruusila, Salo",
+    contact: { phone: "+358 40 519 5575", email: "laura.loimusto@gmail.com", address: "Kiviarontie 185, 25110 Kruusila" },
+    description: {
+      fi: "Rinteen luomutila on Kruusilassa toimiva perhetila, joka kasvattaa luomuvihanneksia ja -taimia kasvihuoneissa sekä avomaalla. Tuotantoon kuuluu muun muassa tomaatteja, kurkkuja, yrttejä, juureksia ja vihannesten taimia. Tilalla myydään myös kesäkukkia ja amppeleita; myynti tapahtuu tilalta tai torimyynnissä sesongin mukaan.",
+      en: "Rinteen Organic Farm is a family-run farm in Kruusila growing organic vegetables and seedlings in greenhouses and outdoors. Its produce includes tomatoes, cucumbers, herbs, root vegetables and vegetable seedlings. Summer flowers and hanging baskets are also sold directly from the farm or at market stalls, depending on the season.",
+      es: "Rinteen es una granja familiar ecológica en Kruusila que cultiva verduras y plantones en invernaderos y al aire libre. Produce tomates, pepinos, hierbas, raíces y plantones de hortalizas. También vende flores de verano y cestas colgantes directamente en la granja o en mercados, según la temporada."
+    },
+    url: "https://kohteet.visitsalo.fi/rinteen-luomutila/"
+  },
+  {
+    id: "meriniityn-lihakauppa",
+    category: "localFood",
+    name: "Meriniityn Lihakauppa",
+    location: "Salo",
+    contact: { phone: "+358 2 735 880", email: "info@meriniitynlihakauppa.fi", address: "Valimonkatu 4, 24100 Salo" },
+    description: {
+      fi: "Meriniityn Lihakauppa on Perniön 1930 -makkaratehtaan yhteydessä toimiva tehtaanmyymälä Salossa. Valikoimaan kuuluu tehtaan lihatuotteita, erikoismakkaroita ja muita paikallisia herkkuja. Tuotevalikoima ja myymälän aukiolo kannattaa tarkistaa ennen vierailua suoraan tehtaanmyymälästä.",
+      en: "Meriniityn Butcher Shop is the factory shop of Perniön 1930 sausage maker in Salo. Its range includes the producer's meat products, speciality sausages and other local delicacies. Check the current product range and shop hours directly with the factory shop before visiting.",
+      es: "Meriniityn Lihakauppa es la tienda de fábrica del productor de embutidos Perniön 1930, en Salo. Su selección incluye productos cárnicos del fabricante, salchichas especiales y otras especialidades locales. Consulta directamente con la tienda la selección actual y el horario antes de visitarla."
+    },
+    url: "https://kohteet.visitsalo.fi/meriniityn-lihakauppa/"
+  },
+  {
+    id: "kivihovi-herkku-lahja",
+    category: "localFood",
+    directoryCategories: ["shopping"],
+    name: "Liikenneasema Kivihovi — Herkku & Lahja",
+    nameByLocale: {
+      fi: "Kivihovi — Herkku & Lahja",
+      en: "Kivihovi — Herkku & Lahja",
+      es: "Kivihovi — Herkku & Lahja",
+    },
+    location: "Bulevardi 10, 25410 Suomusjärvi, Salo",
+    contact: {
+      phone: "+358 41 732 1474",
+      email: "liikenneasema@kivihovi.fi",
+      address: "Bulevardi 10, 25410 Suomusjärvi",
+    },
+    description: {
+      fi: "Kivihovin Herkku & Lahja -puodissa on lähialueen tuottajien tuotteita, paikallisia herkkuja ja lahjaideoita. Puoti toimii Suomusjärven liikenneaseman yhteydessä. Tarkista ajantasainen valikoima suoraan Kivihovista.",
+      en: "Kivihovi's Herkku & Lahja shop offers products from nearby producers, local food and gift ideas at the service station in Suomusjärvi. Check the current selection directly with Kivihovi.",
+      es: "La tienda Herkku & Lahja de Kivihovi ofrece productos de productores cercanos, especialidades locales e ideas de regalo en la estación de servicio de Suomusjärvi. Consulta la selección actual directamente con Kivihovi.",
+    },
+    url: "https://kivihovi.fi/palvelut",
+  },
 ];
 
 export const saloEvents: SaloEvent[] = [

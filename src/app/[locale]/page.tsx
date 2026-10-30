@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Hero } from "@/components/home/Hero";
 import { KansakouluSpotlight } from "@/components/home/KansakouluSpotlight";
 import { VisitorCounter } from "@/components/home/VisitorCounter";
-import { photoLibrary } from "@/lib/photo-library";
+import { photoLibrary, photoCredits } from "@/lib/photo-library";
 import { DestinationCard } from "@/components/ui/DestinationCard";
 import { CabinCard } from "@/components/ui/CabinCard";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
@@ -90,10 +90,45 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     featuredCabins[0]?.images?.[0] || fallbackSummerImage,
   ];
 
-  const coastalHighlights = ["salo-mathildedal", "naantali", "turku", "hanko", "aland"]
-    .map((slug) => catalogDestinations.find((item) => item.slug === slug))
+  const rosalaDestination = catalogDestinations.find((item) => item.slug === "rosala") ?? destinations.find((item) => item.slug === "rosala");
+  const kimitoonDestination = rosalaDestination
+    ? {
+        ...rosalaDestination,
+        id: "kemionsaari",
+        slug: "kemionsaari",
+        name: { fi: "Kemiönsaari", es: "Kimitoön", en: "Kimitoön" },
+        shortDescription: {
+          fi: "Saaristoa, historiallisia kyliä ja merellisiä elämyksiä Kemiönsaarella",
+          es: "Archipiélago, pueblos históricos y experiencias junto al mar en Kimitoön",
+          en: "Archipelago, historic villages and coastal experiences on Kimitoön",
+        },
+        region: "Kemiönsaari · Southwest Finland",
+        images: [photoLibrary.rosalaVikingCentre, photoLibrary.rosalaVikingHall],
+      }
+    : null;
+  const coastalCardImages: Record<string, string> = {
+    "salo-mathildedal": photoLibrary.sarkisalo,
+    kemionsaari: photoLibrary.rosalaVikingCentre,
+    hanko: photoLibrary.hankoRegattaBeach,
+    naantali: photoLibrary.naantaliOldTown,
+    turku: photoLibrary.turkuAura,
+    aland: photoLibrary.aland,
+  };
+  const coastalHighlights = ["salo-mathildedal", "kemionsaari", "hanko", "naantali", "turku", "aland"]
+    .map((slug) => {
+      const destination = slug === "kemionsaari"
+        ? kimitoonDestination
+        : catalogDestinations.find((item) => item.slug === slug) ?? destinations.find((item) => item.slug === slug);
+      return destination
+        ? {
+            ...destination,
+            ...(slug === "salo-mathildedal" ? { region: "Salo · Varsinais-Suomi" } : {}),
+            images: [coastalCardImages[slug] || destination.images[0], ...destination.images.slice(1)],
+          }
+        : null;
+    })
     .filter(Boolean)
-    .slice(0, 5) as typeof destinations;
+    .slice(0, 6) as typeof destinations;
 
   return (
     <>
@@ -138,55 +173,46 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </Link>
           </div>
 
-          <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {coastalHighlights.map((destination) => (
-              <Link
-                key={destination.id}
-                href={destination.slug === "salo-mathildedal" ? `/${locale}/destinations/salo-mathildedal` : `/${locale}/coastal-finland#${destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
-                className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
-              >
-                <Image
-                  src={destinations.find((item) => item.slug === destination.slug)?.images?.[0] || destination.images?.[0] || fallbackSummerImage}
-                  alt={destination.name[locale as keyof typeof destination.name] || destination.name.en}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
-                  <h3 className="mt-2 font-display text-2xl font-bold">
-                    {destination.name[locale as keyof typeof destination.name] || destination.name.en}
-                  </h3>
-                  <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
-                    {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </Link>
-            ))}
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {coastalHighlights.map((destination) => {
+              const imageUrl = destination.images?.[0] || fallbackSummerImage;
+              const photoCredit = photoCredits.find((entry) => entry.url === imageUrl);
+              return (
+                <article key={destination.id} className="overflow-hidden rounded-[1.75rem] bg-white ring-1 ring-slate-200">
+                  <Link
+                    href={destination.slug === "salo-mathildedal" ? `/${locale}/salo` : `/${locale}/destinations/${destination.slug}`}
+                    className="group relative block min-h-[320px] overflow-hidden bg-brand-900"
+                  >
+                    <Image
+                      src={imageUrl}
+                      alt={destination.slug === "salo-mathildedal" ? "Salo" : destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                      <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
+                      <h3 className="mt-2 font-display text-2xl font-bold">
+                        {destination.slug === "salo-mathildedal" ? "Salo" : destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                      </h3>
+                      <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
+                        {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                  {photoCredit ? (
+                    <p className="px-4 py-2.5 text-xs text-slate-500">
+                      {locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:"} {photoCredit.credit} · <a href={photoCredit.sourcePage} target="_blank" rel="noreferrer" className="underline underline-offset-2">{locale === "fi" ? "lähde" : locale === "es" ? "fuente" : "source"}</a>
+                    </p>
+                  ) : null}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="bg-stone-50 py-16 sm:py-20">
-        <div className="container-narrow">
-          <div className="grid overflow-hidden rounded-[2rem] bg-brand-950 text-white shadow-card lg:grid-cols-[1.05fr_.95fr]">
-            <div className="relative min-h-[320px] sm:min-h-[420px]">
-              <Image src={photoLibrary.rosalaVikingCentre} alt={locale === "fi" ? "Rosalan saaristoelämys Kemiönsaaressa" : locale === "es" ? "Experiencia del archipiélago en Rosala, Kimitoön" : "Archipelago experience in Rosala, Kimitoön"} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <span className="absolute bottom-5 left-5 rounded-full bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-brand-950">{locale === "fi" ? "Uusi kohdealue" : locale === "es" ? "Nuevo destino" : "New destination"}</span>
-            </div>
-            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
-              <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{locale === "fi" ? "Saariston portti · Varsinais-Suomi" : locale === "es" ? "Puerta al archipiélago · Finlandia suroccidental" : "Gateway to the archipelago · Southwest Finland"}</p>
-              <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">{locale === "fi" ? "Kemiö ja Kemiönsaari" : locale === "es" ? "Kimitoön y el archipiélago" : "Kimitoön and the Archipelago"}</h2>
-              <p className="mt-5 text-base leading-7 text-white/75">{locale === "fi" ? "Satamia, saaristokyliä, paikallisia makuja, historiaa ja merellisiä retkiä. Löydä saariston oma rytmi ja suunnittele matka suoraan paikallisten palveluntarjoajien avulla." : locale === "es" ? "Puertos, pueblos isleños, sabores locales, historia y excursiones marítimas. Descubre el ritmo del archipiélago y planifica tu viaje con proveedores locales." : "Harbours, island villages, local flavours, history and sea adventures. Discover the archipelago at your own pace and plan your trip with local providers."}</p>
-              <Link href={"/" + locale + "/destinations/kemionsaari"} className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-gold-100">
-                {locale === "fi" ? "Tutustu Kemiönsaareen" : locale === "es" ? "Descubre Kimitoön" : "Explore Kimitoön"} <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
       <SeasonalHighlights locale={locale as "fi" | "es" | "en"} />
       <LocalIcons locale={locale as "fi" | "es" | "en"} />
 

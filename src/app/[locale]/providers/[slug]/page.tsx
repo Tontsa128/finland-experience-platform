@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { saloProviders } from "@/lib/salo";
+import { getSaloProviderImage, saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { photoLibrary } from "@/lib/photo-library";
 import { getKimitoonProvider, getKimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
@@ -23,15 +23,22 @@ function resolveProvider(slug: string, locale: Locale) {
       experience: { fi: "Elämys", en: "Experience", es: "Experiencia" },
       nature: { fi: "Luonto", en: "Nature", es: "Naturaleza" },
       food: { fi: "Ruoka ja juoma", en: "Food and drink", es: "Gastronomía" },
+      shopping: { fi: "Ostokset ja käsityö", en: "Shopping and crafts", es: "Compras y artesanía" },
+      wellbeing: { fi: "Hyvinvointi ja sauna", en: "Wellbeing and sauna", es: "Bienestar y sauna" },
+      culture: { fi: "Kulttuuri ja historia", en: "Culture and history", es: "Cultura e historia" },
+      events: { fi: "Tapahtumat ja juhlatilat", en: "Events and venues", es: "Eventos y espacios para celebraciones" },
+      archipelago: { fi: "Meri ja saaristo", en: "Sea and archipelago", es: "Mar y archipiélago" },
+      localFood: { fi: "Lähiruoka ja maatilapuodit", en: "Local food and farm shops", es: "Productos locales y tiendas de granja" },
     }[item.category][locale];
     return {
       kind: "provider" as const,
       name: item.nameByLocale?.[locale] || item.name,
       description: item.description[locale],
       category,
-      image: item.image,
+      image: getSaloProviderImage(item),
       imageCredit: item.imageCredit,
-      location: "Salo · Mathildedal · Teijo",
+      location: item.location || "Salo, Varsinais-Suomi",
+      contact: item.contact,
       website: item.url,
       price: item.priceByLocale?.[locale] || (locale === "fi" ? item.price : undefined),
       tags: [] as string[],
@@ -52,7 +59,7 @@ function resolveProvider(slug: string, locale: Locale) {
       name: item.nameByLocale?.[locale] || item.name,
       description: item.description[locale],
       category,
-      image: item.image,
+      image: getSaloProviderImage(item),
       imageCredit: item.imageCredit,
       location: item.locationByLocale?.[locale] || item.location,
       website: item.url,
@@ -84,7 +91,7 @@ function resolveProvider(slug: string, locale: Locale) {
       name: item.name[locale],
       description: item.description[locale],
       category,
-      image: item.image,
+      image: getSaloProviderImage(item),
       imageCredit: item.imageCredit,
       imageSource: item.imageSource,
       contact: item.contact,
