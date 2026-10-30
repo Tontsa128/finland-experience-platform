@@ -43,10 +43,10 @@ Each provider should have an individual card with:
 
 ## 5. Image and rights policy
 - Match the image to the actual provider/category. Do not use an unrelated image of a village, harbour, forest, or another business as if it showed the provider.
-- Prefer official provider or destination image assets for which usage permission is confirmed.
-- Record the image URL/source, rights or permission status, and any required photographer/owner credit.
-- Display required credits in the UI; storing a credit in data is not enough.
-- Do not publish an image until the right to use it on FINNEXPRIENCE has been confirmed.
+- The project owner has explicitly confirmed that FINNEXPRIENCE has permission to use images and business information for businesses throughout the Salo area and Kemiö/Kimitoön. Treat this as the project-wide authorization scope for those areas; do not block work by requesting the same permission from every provider again.
+- Use the authorized businesses' own relevant images and information where available. Confirm that each asset actually depicts the provider/service being presented; permission does not make an unrelated image accurate.
+- Record image/source URLs and any known photographer/owner credit or attribution requirement. Preserve required credits in the UI.
+- If a specific asset has a conflicting rights notice, a third-party restriction, or an unclear origin outside the confirmed authorization scope, flag that asset for review rather than assuming the blanket permission covers it.
 - Use bright, sharp, authentic, high-quality photography; avoid dark, blurry, unrelated, animated, or misleading visuals.
 
 ## 6. Design and accessibility
@@ -81,7 +81,7 @@ Each provider should have an individual card with:
 - [ ] CI/build checks pass
 - [ ] Deployment verified before declaring the work complete
 
-Apply this standard to Mathildedal first, then reuse it for every subsequent destination guide.
+Apply this standard across every destination guide in FINNEXPRIENCE. The active repair sequence starts with Kemiö and Kimitoön, then continues to the other areas.
 
 ## 10. Mandatory provider-page journey and content standard
 
@@ -105,13 +105,13 @@ Include where applicable:
 - Provider name, category, destination and verified location/contact information.
 - A concise, attractive introduction and a useful fuller description of the actual service.
 - A gallery of multiple distinct images that genuinely show that provider and the relevant service.
-- Visible image credits and documented commercial/web reuse permission.
+- Visible image credits where required; image use is covered by the project owner's confirmed authorization for Salo-area and Kemiö/Kimitoön businesses, subject to any specific third-party restrictions.
 - A clear external provider website, booking, reservation or contact CTA.
 - Relevant practical details and accessibility information when verified.
 - Category-specific information: accommodation room types/facilities and booking terms; restaurant menu or a clear notice when no current menu is published, plus verified opening hours; sauna facilities and booking channel; cottage capacity/facilities and rental terms; activity content, season and operator.
 - Localized metadata, meaningful image alt text, canonical/hreflang and internal links.
 
-The provider card's image must also match the provider and category. An image of a restaurant must never be used to represent accommodation rooms. If suitable, approved images are unavailable, do not substitute another service's image, a stock image or an unlicensed third-party image. Keep the page truthful, show only verified material and request an approved image set from the provider before treating the profile as complete.
+The provider card's image must also match the provider and category. An image of a restaurant must never be used to represent accommodation rooms. If a suitable image cannot be found among the authorized material, do not substitute another service's image or misleading stock imagery. Keep the page truthful and flag the missing asset for targeted sourcing; do not repeatedly request blanket permission already confirmed by the project owner.
 
 ### Editorial and data integrity
 
