@@ -1,9 +1,12 @@
 import type { Locale } from "@/types";
 import { photoLibrary } from "@/lib/photo-library";
 
+export type SaloProviderCategory = "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture" | "events" | "archipelago";
+
 export type SaloProvider = {
   id: string;
-  category: "tourism" | "stay" | "experience" | "nature" | "food" | "shopping" | "wellbeing" | "culture" | "events";
+  category: SaloProviderCategory;
+  directoryCategories?: SaloProviderCategory[];
   name: string;
   nameByLocale?: Partial<Record<Locale, string>>;
   description: Record<Locale, string>;
@@ -14,6 +17,10 @@ export type SaloProvider = {
   imageCredit?: string;
   officialGuide?: boolean;
 };
+
+export function getSaloProviderCategories(provider: Pick<SaloProvider, "category" | "directoryCategories">): SaloProviderCategory[] {
+  return Array.from(new Set([provider.category, ...(provider.directoryCategories || [])]));
+}
 
 export type SaloEvent = {
   id: string;
@@ -81,6 +88,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "mathildan-marina",
+    directoryCategories: ["food", "archipelago"],
     category: "stay",
     name: "Mathildan Marina",
     description: {
@@ -165,12 +173,13 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "chill-out-fishing",
+    directoryCategories: ["archipelago"],
     category: "experience",
     name: "Chill Out Fishing",
     description: {
-      fi: "Ohjattuja kalastus-, vene- ja saariretkiä Saaristomerellä. Hinnat ja saatavuus verkkokaupassa tai tarjouspyynnöllä.",
-      es: "Pesca guiada, excursiones en barco y visitas a islas en el Mar del Archipiélago.",
-      en: "Guided fishing, boat and island trips in the Archipelago Sea.",
+      fi: "Ohjattuja kalastus-, vene- ja saariretkiä Saaristomerellä. Lähtösatamia ovat muun muassa Kokkila, Mathildedal, Förby ja Kasnäs. Retket räätälöidään sään, reitin ja ryhmän mukaan; ajantasaiset vaihtoehdot ja hinnat löytyvät palveluntarjoajan verkkokaupasta.",
+      es: "Pesca guiada, excursiones en barco y visitas a islas en el Mar del Archipiélago. Las salidas pueden organizarse desde puertos como Mathildedal, Förby y Kasnäs; consulta opciones y precios actuales con el proveedor.",
+      en: "Guided fishing, boat and island trips in the Archipelago Sea, with departure harbours including Mathildedal, Förby and Kasnäs. Routes and options depend on weather and group needs; check current offers with the provider.",
     },
     url: "https://chilloutolmos.fi/",
     price: "Hinta retken ja ryhmän mukaan – tarkista palveluntarjoajalta",
@@ -205,6 +214,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "meri-teijo-golf",
+    directoryCategories: ["food"],
     category: "experience",
     name: "Meri-Teijo Golf",
     description: {
@@ -658,6 +668,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "meri-veikko",
+    directoryCategories: ["archipelago"],
     category: "stay",
     name: "Meri-Veikko",
     description: {
@@ -829,6 +840,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "kirjakkalan-ruukkikyla",
+    directoryCategories: ["stay", "wellbeing"],
     category: "experience",
     name: "Kirjakkalan Ruukkikylä / Extreme Fun",
     nameByLocale: { fi: "Kirjakkalan Ruukkikylä / Extreme Fun", en: "Kirjakkala Ironworks Village / Extreme Fun", es: "Pueblo siderúrgico de Kirjakkala / Extreme Fun" },
@@ -873,6 +885,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "vicksbackinlahden-kota",
+    directoryCategories: ["nature"],
     category: "experience",
     name: "Vicksbäckinlahden varauskota",
     nameByLocale: { fi: "Vicksbäckinlahden varauskota", en: "Vicksbäckinlahti Rental Wilderness Hut", es: "Refugio reservable de Vicksbäckinlahti" },
@@ -889,6 +902,7 @@ export const saloProviders: SaloProvider[] = [
 
   {
     id: "matildankartano",
+    directoryCategories: ["shopping"],
     category: "food",
     name: "Matildankartanon leipomokahvila",
     nameByLocale: { fi: "Matildankartanon leipomokahvila", en: "Matildankartano Bakery Café", es: "Panadería y cafetería Matildankartano" },
@@ -903,6 +917,7 @@ export const saloProviders: SaloProvider[] = [
   },
   {
     id: "lahiruokapuoti-puhti",
+    directoryCategories: ["food"],
     category: "shopping",
     name: "Lähiruokapuoti Puhti",
     description: {
