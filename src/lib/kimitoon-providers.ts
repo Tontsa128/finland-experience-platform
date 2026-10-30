@@ -1353,9 +1353,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
       en:"A specialist shop for boating and fishing equipment in Dalsbruk. The Kimitoön business guide lists the company among specialist boating retailers.",
       es:"Tienda especializada en artículos de navegación y pesca en Dalsbruk. La guía empresarial de Kimitoön la incluye entre los comercios náuticos especializados."
     },
-    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["veneily","kalastustarvikkeet","erikoisliike"]
+    location:{fi:"Strandvägen 1, 25900 Taalintehdas",en:"Strandvägen 1, 25900 Dalsbruk",es:"Strandvägen 1, 25900 Dalsbruk"},
+    websiteUrl:"https://www.konewuorio.fi/",sourceUrl:"https://ksg.fi/fi/foretag/kone-wuorio-maskin-oy-ab-dalsbruk/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/kone-wuorio-maskin-oy-ab-dalsbruk/",tags:["veneily","kalastustarvikkeet","erikoisliike"],contact:{phone:"0400 821 606",address:"Strandvägen 1, 25900 Taalintehdas (konttori: Arkadiavägen 13, Kemiö)"}
   },
   {
     id:"k-knallis",categories:["ostokset","ruoka"],
@@ -1378,9 +1378,9 @@ export const kimitoonProviders: KimitoonProvider[] = [
       en:"K-Market Kompis is listed in the Kimitoön business guide as a local grocery serving the archipelago. Check current opening hours and services with the shop.",
       es:"K-Market Kompis aparece en la guía empresarial de Kimitoön como tienda de alimentación local para el archipiélago. Consulta horarios y servicios actuales en la tienda."
     },
-    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["ruokakauppa","päivittäistavarat"]
+    location:{fi:"Hertsbölevägen 1, 25900 Taalintehdas",en:"Hertsbölevägen 1, 25900 Dalsbruk",es:"Hertsbölevägen 1, 25900 Dalsbruk"},
+    websiteUrl:"https://www.k-ruoka.fi/kauppa/k-market-kompis",sourceUrl:"https://www.k-ruoka.fi/kauppa/k-market-kompis/yhteystiedot",
+    imageCredit:"K-Ruoka / Kesko",imageSource:"https://www.k-ruoka.fi/kauppa/k-market-kompis",tags:["ruokakauppa","päivittäistavarat"],contact:{phone:"040 358 1409",address:"Hertsbölevägen 1, 25900 Taalintehdas"}
   },
   {
     id:"k-supermarket-kompass",categories:["ostokset","ruoka"],
