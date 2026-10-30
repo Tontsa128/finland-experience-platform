@@ -50,3 +50,47 @@ test("cross-listed providers appear in every relevant category without duplicate
     for (const category of categories) assert.ok(allowedCategories.includes(category));
   }
 });
+
+test("Salo catalogue inventory matches the audited production dataset", () => {
+  assert.equal(saloProviders.length, 100, "The canonical Salo catalogue must contain 100 unique provider profiles");
+
+  const expectedPrimaryCounts: Record<SaloProviderCategory, number> = {
+    tourism: 2,
+    stay: 30,
+    experience: 12,
+    nature: 4,
+    food: 10,
+    shopping: 7,
+    wellbeing: 2,
+    culture: 2,
+    events: 3,
+    archipelago: 0,
+    localFood: 28,
+  };
+  for (const [category, expected] of Object.entries(expectedPrimaryCounts)) {
+    assert.equal(
+      saloProviders.filter((provider) => provider.category === category).length,
+      expected,
+      `Unexpected primary category count for ${category}`,
+    );
+  }
+
+  const imageBacked = saloProviders.filter((provider) => Boolean(provider.image));
+  assert.equal(imageBacked.length, 90, "Only source-backed provider photos may be counted as image-backed");
+  assert.deepEqual(
+    saloProviders.filter((provider) => !provider.image).map((provider) => provider.id).sort(),
+    [
+      "chill-out-fishing",
+      "meriniityn-lihakauppa",
+      "ohrakasken-tila",
+      "puutarha-siimes",
+      "rannikon-puutarha",
+      "rinteen-luomutila",
+      "vaanelan-puutarha",
+      "veljesten-kurkut",
+      "wanhantuvan-ankkala",
+      "wibergs",
+    ].sort(),
+    "Providers without a verified matching image must remain image-free",
+  );
+});
