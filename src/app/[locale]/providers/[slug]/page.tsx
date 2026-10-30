@@ -86,8 +86,10 @@ function resolveProvider(slug: string, locale: Locale) {
       contact: item.contact,
       location: item.location[locale],
       website: item.websiteUrl,
-      websiteLabel: item.websiteUrl.includes("ksg.fi")
-        ? (locale === "fi" ? "Avaa palveluntarjoajan tiedot palveluoppaassa" : locale === "es" ? "Abrir ficha del proveedor" : "Open provider listing")
+      websiteLabel: item.websiteUrl === "https://ksg.fi/fi/"
+        ? (locale === "fi" ? "Avaa Kemiönsaaren yrityshakemisto" : locale === "es" ? "Abrir el directorio empresarial local" : "Open the local business directory")
+        : item.websiteUrl.includes("ksg.fi")
+          ? (locale === "fi" ? "Avaa palveluntarjoajan tiedot palveluoppaassa" : locale === "es" ? "Abrir ficha del proveedor" : "Open provider listing")
         : item.websiteUrl.includes("visitkimitoon.fi")
           ? (locale === "fi" ? "Avaa virallinen kohdekortti" : locale === "es" ? "Abrir ficha oficial del destino" : "Open official destination listing")
           : (locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit the provider"),
