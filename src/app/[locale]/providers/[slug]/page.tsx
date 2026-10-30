@@ -48,6 +48,7 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "topilan-tupa": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
   "salon-oppaat": { fi: "Salo", en: "Salo", es: "Salo" },
   "vuohensaari-camping": { fi: "Salo", en: "Salo", es: "Salo" },
+  "vuorovetten-jaatelo": { fi: "Strömma · Mathildedal · Särkisalo · Salo", en: "Strömma · Mathildedal · Särkisalo · Salo", es: "Strömma · Mathildedal · Särkisalo · Salo" },
   "chill-out-fishing": { fi: "Salo · Saaristomeri", en: "Salo · Archipelago Sea", es: "Salo · Mar del Archipiélago" },
   "villa-viktoria": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
   "villa-frans": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
