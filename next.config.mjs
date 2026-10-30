@@ -29,6 +29,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "images.pexels.com" },
+      { protocol: "https", hostname: "mathildedal.fi" },
       { protocol: "https", hostname: "www.uwasa.fi" },
       { protocol: "https", hostname: "www.rantapallo.fi" },
       { protocol: "https", hostname: "visitaland.wntr.io" },
