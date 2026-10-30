@@ -23,7 +23,7 @@ function resolveProvider(slug: string, locale: Locale) {
       experience: { fi: "Elämys", en: "Experience", es: "Experiencia" },
       nature: { fi: "Luonto", en: "Nature", es: "Naturaleza" },
       food: { fi: "Ruoka ja juoma", en: "Food and drink", es: "Gastronomía" },
-    }[item.category][locale];
+    }[item.categories[0]][locale];
     return {
       name: item.nameByLocale?.[locale] || item.name,
       description: item.description[locale],
@@ -83,11 +83,14 @@ function resolveProvider(slug: string, locale: Locale) {
       image: item.image,
       imageCredit: item.imageCredit,
       imageSource: item.imageSource,
+      contact: item.contact,
       location: item.location[locale],
       website: item.websiteUrl,
-      websiteLabel: item.websiteUrl.includes("visitkimitoon.fi")
-        ? (locale === "fi" ? "Avaa virallinen kohdekortti" : locale === "es" ? "Abrir ficha oficial del destino" : "Open official destination listing")
-        : (locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit the provider"),
+      websiteLabel: item.websiteUrl.includes("ksg.fi")
+        ? (locale === "fi" ? "Avaa palveluntarjoajan tiedot palveluoppaassa" : locale === "es" ? "Abrir ficha del proveedor" : "Open provider listing")
+        : item.websiteUrl.includes("visitkimitoon.fi")
+          ? (locale === "fi" ? "Avaa virallinen kohdekortti" : locale === "es" ? "Abrir ficha oficial del destino" : "Open official destination listing")
+          : (locale === "fi" ? "Siirry palveluntarjoajalle" : locale === "es" ? "Ir al proveedor" : "Visit the provider"),
       tags: item.tags,
     };
   }
