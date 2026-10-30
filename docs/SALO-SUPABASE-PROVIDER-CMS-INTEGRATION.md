@@ -79,6 +79,6 @@ Do not infer live schema state from repository files alone.
 
 - Supabase connection unavailable in the current tool session; target project and live migration state are not verified.
 - The 101 Salo catalogue profiles have not yet been reconciled against the live provider table.
-- Image rights are a production blocker: 90 image assets have source credits, but 89 are not explicitly rights-verified in the source data. The current pending-only guard is not sufficient for commercial publication; see `docs/SALO-IMAGE-RIGHTS-AUDIT.md`. FI/EN/ES editorial checks also remain in progress.
+- Image rights are a production blocker: 90 image assets have source credits, but none currently has complete verified evidence. The source-data gate now fails closed and withholds all 90; see `docs/SALO-IMAGE-RIGHTS-AUDIT.md`. FI/EN/ES editorial checks also remain in progress.
 - Latest rights-control code commits need a fresh CI run; the previously verified CI run belongs to baseline `56402b0`, not the latest head.
 - Do not merge or deploy production until these gates are closed.
