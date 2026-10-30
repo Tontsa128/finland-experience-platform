@@ -13,8 +13,8 @@ Tämä dokumentti erottaa nykyisestä repositoriosta varmennetut tekniset havain
 - Salon alueopas on reitillä `/[locale]/salo`. Se sisältää jo aluekuvauksen, reitti-ideoita ja palvelukortit.
 - Mathildedalin vanha reitti `/[locale]/mathildedal` tekee pysyvän uudelleenohjauksen reitille `/[locale]/destinations/salo-mathildedal`. Tämä ei vielä ole erillinen, täysin uudistettu Mathildedal-alueopas.
 - Teijon ruukkikylällä on oma reitti `/[locale]/destinations/teijon-ruukkikyla`, joka käyttää yhteistä `RuukkikylaGuide`-komponenttia.
-- Uudistushaaran `saloProviders`-luettelo sisältää nyt 69 yksilöllistä tietuetta: 30 majoitusta, 12 elämystä, 8 ruoka- ja ravintolakohdetta, 7 ostos- ja käsityökohdetta, 4 luontokohdetta, 2 kulttuurikohdetta, 2 hyvinvointikohdetta, 2 tapahtuma-/juhlatilakohdetta ja 2 matkailuinfoa. Monipalveluyritykset voidaan lisäksi näyttää useassa kategoriassa saman kanonisen tietueen avulla.
-- Kolme päällekkäistä tietuetta yhdistettiin kanonisiksi profiileiksi: Vuohensaari Camping, Katiskanmäki ja Meri-Ruukin lomakylä. Hakemistossa on nyt 69 yksilöllistä tietuetta, joista 68:lla on kuva ja lähdemerkintä. Yhdeltä tietueelta puuttuu edelleen korttikuva: Chill Out Fishing. Villa Viktorian palvelukuvaus tarkistettiin Lomalaperlan omalta kohdesivulta, ja sen korttiin lisättiin kyseisen sivun virallinen kuva sekä lähdemerkintä. Teijon Kammari, Villa Kruuva ja Meri-Veikko saivat virallisista lähteistä löytyneet kuvat ja lähdemerkinnät.
+- Uudistushaaran `saloProviders`-luettelo sisältää nyt 72 yksilöllistä tietuetta: 30 majoitusta, 12 elämystä, 10 ruoka- ja ravintolakohdetta, 7 ostos- ja käsityökohdetta, 4 luontokohdetta, 2 kulttuurikohdetta, 2 hyvinvointikohdetta, 3 tapahtuma-/juhlatilakohdetta ja 2 matkailuinfoa. Monipalveluyritykset voidaan lisäksi näyttää useassa kategoriassa saman kanonisen tietueen avulla.
+- Kolme päällekkäistä tietuetta yhdistettiin kanonisiksi profiileiksi: Vuohensaari Camping, Katiskanmäki ja Meri-Ruukin lomakylä. Uusimmasta vuoden 2026 Visit Salo -aineistosta lisättiin Lepola Drinks, Pohjolan tila ja Kylätalo Punaportti. Hakemistossa on nyt 72 yksilöllistä tietuetta, joista 70:llä on kuva ja lähdemerkintä. Kahdelle kuvatietueelle ei ole vielä hyväksyttyä kuvaa: Chill Out Fishing ja Kylätalo Punaportti. Villa Viktorian palvelukuvaus tarkistettiin Lomalaperlan omalta kohdesivulta, ja sen korttiin lisättiin kyseisen sivun virallinen kuva sekä lähdemerkintä. Teijon Kammari, Villa Kruuva ja Meri-Veikko saivat virallisista lähteistä löytyneet kuvat ja lähdemerkinnät.
 - Salon korttimalli tuntee nyt kahdeksan pääluokkaa: matkailuinfo, majoitus, elämykset, luonto, ruoka, ostokset, kulttuuri ja hyvinvointi. Tapahtumat, meri/saaristo, kylät ja muut paikalliset palvelut tarvitsevat vielä oman kattavan luokittelunsa.
 - Nykyiset Salon palvelutiedot ovat pääosin koodissa tiedostossa `src/lib/salo.ts`. Palvelukortin oma sivu rakentuu yleisestä provider-reitistä, mutta Salon tietomallissa ei ole vastaavaa rakenteista kuvagalleriaa ja lähde-/tarkistustietoa kuin Kemiönsaaren uudistetussa mallissa.
 - Yläpalkin nykyinen `site_navigation`-malli palauttaa litteän listan (tunniste, kieli, nimi, URL ja järjestys). Siinä ei ole valmista vanhempi–lapsi- tai ryhmä-rakennetta Ruukkikylät-alavalikolle.
@@ -30,6 +30,10 @@ Tämä dokumentti erottaa nykyisestä repositoriosta varmennetut tekniset havain
 - Visit Salo – ostokset ja lähiruoka: https://visitsalo.fi/ostokset/
 - Visit Salo – Mathildedalin ruukkikylä ja alueen kohteita: https://visitsalo.fi/mathildedalin-ruukkikyla/
 - Lomalaperla – Villa Viktoria (palvelun kuvaus ja kohdekuva): https://www.lomalaperla.com/moumlkki-3.html
+- Visit Salo – Lepola Drinks: https://kohteet.visitsalo.fi/lepola-drinks-shop-bar-cafe/
+- Visit Salo – Pohjolan tila: https://kohteet.visitsalo.fi/pohjolan-tila/
+- Teijon Ruukkikylät – Kylätalo Punaportti: https://www.teijo.fi/punaportti/
+- Visit Salo – vuoden 2026 matkailuesite: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
 - Visit Salo – Pieni Rannikkoreitti: https://kohteet.visitsalo.fi/pieni-rannikkoreitti/
 
 ### Mathildedal
