@@ -39,6 +39,12 @@ const categoryConfig = {
     en: { title: "Shopping and crafts in Salo", description: "Local shops, design, crafts, clothing and regional products." },
     es: { title: "Compras y artesanía en Salo", description: "Tiendas locales, diseño, artesanía, ropa y productos regionales." },
   },
+  kulttuuri: {
+    category: "culture",
+    fi: { title: "Kulttuuri ja historia Salossa", description: "Historialliset kohteet, ruukkiperintö, museot, kirkot ja paikallinen kulttuuri." },
+    en: { title: "Culture and history in Salo", description: "Historic places, ironworks heritage, museums, churches and local culture." },
+    es: { title: "Cultura e historia en Salo", description: "Lugares históricos, patrimonio industrial, museos, iglesias y cultura local." },
+  },
   hyvinvointi: {
     category: "wellbeing",
     fi: { title: "Hyvinvointi ja sauna Salossa", description: "Saunat, palautumisen palvelut ja luonnon äärellä virkistäytyminen." },
