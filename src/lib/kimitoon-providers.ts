@@ -1366,8 +1366,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Tienda de alimentación local incluida en la guía empresarial de Kimitoön. También ofrece punto postal, Veikkaus y botiquín de medicamentos. Consulta la selección y los horarios actuales en la tienda."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["ruokakauppa","posti","päivittäistavarat"],
+    websiteUrl:"https://ksg.fi/fi/foretag/k-knallis/",sourceUrl:"https://ksg.fi/fi/foretag/k-knallis/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/k-knallis/",tags:["ruokakauppa","posti","päivittäistavarat"],
     contact:{phone:"040 561 2662",address:"Lammalavägen 98, 25830 Västanfjärd"}
   },
   {
@@ -1403,8 +1403,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Librería de segunda mano y papelería. La guía empresarial de Kimitoön también menciona regalos y artesanía local, juguetes y juegos."
     },
     location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["antikvariaatti","paperipuoti","lahjat","käsityö"]
+    websiteUrl:"https://ksg.fi/fi/foretag/antikvariat-kojan/",sourceUrl:"https://ksg.fi/fi/foretag/antikvariat-kojan/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/antikvariat-kojan/",tags:["antikvariaatti","paperipuoti","lahjat","käsityö"],contact:{phone:"040 730 7433",address:"Stallsbacksvägen 4, 25900 Dalsbruk"}
   },
   {
     id:"aanmaa",categories:["ostokset","kulttuuri"],
@@ -1415,8 +1415,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Negocio local especializado en artesanía finlandesa. KSG también incluye Aanmaa en ropa, calzado y textiles."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["suomalainen käsityö","lahjat","tekstiilit"]
+    websiteUrl:"https://aanmaa.fi/",sourceUrl:"https://ksg.fi/fi/foretag/aanmaa/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/aanmaa/",tags:["suomalainen käsityö","lahjat","tekstiilit"],contact:{phone:"0400 696 617",address:"Lemobrovägen 1, 25900 Taalintehdas"}
   },
   {
     id:"atelje-rosenblad",categories:["ostokset","kulttuuri"],
@@ -1427,8 +1427,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Atelier local de confección propia de ropa infantil con estilo romántico rural. La guía empresarial de Kimitoön lo incluye en artesanía y textiles."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["lastenvaatteet","käsityö","tekstiilit"]
+    websiteUrl:"https://ksg.fi/fi/foretag/atelje-rosenblad/",sourceUrl:"https://ksg.fi/fi/foretag/atelje-rosenblad/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/atelje-rosenblad/",tags:["lastenvaatteet","käsityö","tekstiilit"],contact:{phone:"050 592 0808",address:"Snickarssvängen 6, 25840 Nivelax"}
   },
   {
     id:"ons-parlor",categories:["ostokset","ruoka","saaristo"],
@@ -1439,8 +1439,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Productor del archipiélago que ofrece pescado ahumado local. La guía empresarial de Kimitoön lo incluye en alimentación, artesanía y servicios relacionados con puertos deportivos."
     },
     location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["savustettu kala","paikallistuotteet","saaristo"]
+    websiteUrl:"https://ksg.fi/fi/foretag/ons-parlor-yrsa-brunstrom/",sourceUrl:"https://ksg.fi/fi/foretag/ons-parlor-yrsa-brunstrom/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/ons-parlor-yrsa-brunstrom/",tags:["savustettu kala","paikallistuotteet","saaristo"]
   },
   {
     id:"kj-koru",categories:["ostokset","kulttuuri"],
@@ -1451,8 +1451,8 @@ export const kimitoonProviders: KimitoonProvider[] = [
       es:"Comercio especializado incluido en la guía empresarial de Kimitoön que vende joyería de plata Classic."
     },
     location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
-    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
-    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["hopeakorut","erikoisliike"]
+    websiteUrl:"https://www.classicsilver.fi/",sourceUrl:"https://ksg.fi/fi/foretag/k-j-koru-oy/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/k-j-koru-oy/",tags:["hopeakorut","erikoisliike"],contact:{phone:"0400 526 005",address:"Guldsmedsvägen 3, 25930 Kasnäs"}
   },
   {
     id:"cafe-vaffelstugan",categories:["ruoka"],
