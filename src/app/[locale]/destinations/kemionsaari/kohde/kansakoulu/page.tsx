@@ -13,7 +13,7 @@ export async function generateMetadata({params}:{params:Promise<{locale:string}>
   en:{title:"Kansakoulu guesthouse in Västanfjärd",description:"Discover the characterful guesthouse in the former Brännboda village school, with room details and guest ratings."},
   es:{title:"Alojamiento Kansakoulu en Västanfjärd",description:"Descubre el alojamiento con personalidad de la antigua escuela de Brännboda, sus habitaciones y opiniones de huéspedes."}
  }[locale];
- return buildLocalizedMetadata({locale,...meta,path:"destinations/kemionsaari/kohde/kansakoulu",image:"https://www.kansakouluun.fi/wp-content/uploads/2017/05/ravintola.jpg"});
+ return buildLocalizedMetadata({locale,...meta,path:"destinations/kemionsaari/kohde/kansakoulu"});
 }
 export default async function Page({params}:{params:Promise<{locale:string}>}){
  const {locale:raw}=await params;
