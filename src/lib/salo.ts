@@ -1439,7 +1439,60 @@ export const saloProviders: SaloProvider[] = [
     image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/01/meisala.jpg",
     imageCredit: "Visit Salo / Salon Kohteet — Meisalan Marja",
   },
+,
 
+  {
+    id: "puutarha-siimes",
+    category: "localFood",
+    name: "Puutarha Siimes",
+    location: "Pataojantie 40, 25470 Kisko, Salo",
+    contact: { phone: "+358 40 516 6583", email: "puutarha@puutarhasiimes.fi", address: "Pataojantie 40, 25470 Kisko" },
+    description: {
+      fi: "Kiskolainen perheyritys kasvattaa kirsikkatomaatteja, yrttejä ja muita vihanneksia. Tilamyymälä toimii itsepalveluperiaatteella, ja tuotteita toimitetaan myös REKO-jakeluihin sekä sopimusasiakkaille.",
+      en: "A family-run grower in Kisko producing cherry tomatoes, herbs and other vegetables. The farm shop operates on a self-service basis, with products also supplied through REKO groups and to contract customers.",
+      es: "Empresa familiar de Kisko que cultiva tomates cherry, hierbas y otras verduras. La tienda de la finca funciona en autoservicio y también suministra productos a grupos REKO y clientes con acuerdos."
+    },
+    url: "https://www.puutarhasiimes.fi"
+  },
+  {
+    id: "rannikon-puutarha",
+    category: "localFood",
+    name: "Rannikon Puutarha",
+    location: "Häntälänkoskentie 86, 24910 Halikko, Salo",
+    contact: { phone: "+358 400 826 360", address: "Häntälänkoskentie 86, 24910 Halikko" },
+    description: {
+      fi: "Halikkolainen puutarha kasvattaa avomaan ja kasvihuoneiden marjoja sekä vihanneksia. Omia tuotteita myydään sesongin mukaan puutarhan myyntipisteissä ja tilamyymälässä; ajantasaiset myyntipaikat ja satotilanne kannattaa tarkistaa suoraan yritykseltä.",
+      en: "A Halikko-based grower producing berries and vegetables outdoors and in greenhouses. Its produce is sold seasonally at the company’s outlets and farm shop; check current sales points and harvest availability directly with the business.",
+      es: "Productor de Halikko que cultiva frutas y verduras al aire libre y en invernaderos. Sus productos se venden por temporada en sus puntos de venta y tienda agrícola; consulta directamente los puntos de venta y la cosecha disponible."
+    },
+    url: "https://rannikonpuutarha.fi"
+  },
+  {
+    id: "vaanelan-puutarha",
+    category: "localFood",
+    name: "Vaanelan puutarha",
+    location: "Päivärinteentie 30, 25520 Perniö, Salo",
+    contact: { phone: "+358 400 720 800", email: "ismo@vaanela.fi", address: "Päivärinteentie 30, 25520 Perniö" },
+    description: {
+      fi: "Perniöläinen puutarhayritys viljelee muun muassa salaatteja, mansikoita ja vadelmia. Tilapuodin aukiolo on kausiluonteinen: yrityksen sivu ilmoittaa sen olevan suljettu ja palvelevan jälleen seuraavana kesänä. Tilauksia voi tiedustella suoraan yritykseltä.",
+      en: "A garden business in Perniö growing lettuce, strawberries and raspberries. The farm shop is seasonal; the company currently states that it is closed and will reopen next summer. Contact the business directly about orders.",
+      es: "Empresa hortícola de Perniö que cultiva, entre otros productos, lechugas, fresas y frambuesas. La tienda de la finca es estacional; la empresa indica que está cerrada y volverá a abrir el próximo verano. Consulta directamente los pedidos."
+    },
+    url: "https://vaanela.fi"
+  },
+  {
+    id: "veljesten-kurkut",
+    category: "localFood",
+    name: "Veljesten kurkut",
+    location: "Skotlannintie 43, 25610 Ylönkylä, Salo",
+    contact: { phone: "+358 44 507 0764", email: "info@veljestenkurkut.fi", address: "Skotlannintie 43, 25610 Ylönkylä" },
+    description: {
+      fi: "Perniössä viljellyt ja valmistetut Veljesten suolakurkut tehdään Vainion perhetilalla perinteisellä maitohappokäymisellä. Tuotteita toimitetaan suoraan tilalta kauppoihin; kuluttajamyynnin ajantasaiset paikat kannattaa tarkistaa valmistajalta.",
+      en: "Veljesten pickled cucumbers are grown and made on the Vainio family farm in Perniö using traditional lactic fermentation. Products are delivered directly from the farm to retailers; check current consumer sales points with the producer.",
+      es: "Los pepinillos fermentados de Veljesten se cultivan y elaboran en la granja familiar Vainio, en Perniö, mediante fermentación láctica tradicional. Se distribuyen directamente a comercios; consulta al productor los puntos de venta actuales."
+    },
+    url: "https://veljestenkurkut.fi"
+  },
 ];
 
 export const saloEvents: SaloEvent[] = [
