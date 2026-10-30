@@ -135,6 +135,20 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Majoitus Mathildedal — official provider website",
   },
   {
+    id: "teijon-masuuni",
+    category: "experience",
+    name: "Teijon Masuuni",
+    nameByLocale: { fi: "Teijon Masuuni", en: "Teijo Masuuni", es: "Teijo Masuuni" },
+    description: {
+      fi: "Vuonna 1686 perustetun Teijon ruukin historiallisessa miljöössä toimiva taiteen ja kädentaitojen keskus: vaihtuvia näyttelyitä, kahvila, taide- ja käsityöputiikki sekä tapahtumia.",
+      en: "An arts and crafts centre in the historic Teijo ironworks, founded in 1686, with changing exhibitions, a café, an art and craft shop and events.",
+      es: "Centro de arte y artesanía en el histórico recinto siderúrgico de Teijo, fundado en 1686, con exposiciones temporales, cafetería, tienda de arte y artesanía y eventos."
+    },
+    url: "https://www.teijonmasuuni.fi/",
+    image: "https://www.teijonmasuuni.fi/wp-content/uploads/2020/01/kahvila_masuuni-1-839x1024.jpg",
+    imageCredit: "Teijon Masuuni — official website",
+  },
+  {
     id: "teijo-action-park",
     category: "experience",
     name: "Teijo Ski & Action Park",
