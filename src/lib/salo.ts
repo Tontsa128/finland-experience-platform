@@ -627,7 +627,9 @@ export const saloProviders: SaloProvider[] = [
       es: "Villa de verano de nivel lujo en Suomusjärvi, con sauna eléctrica, chimenea, cocina equipada y terraza con jacuzzi.",
       en: "Luxury villa-style summer cottage in Suomusjärvi with electric sauna, fireplace, equipped kitchen and hot-tub terrace.",
     },
-    url: "https://www.lomalaperla.com",
+    url: "https://www.lomalaperla.com/moumlkki-3.html",
+    image: "https://www.lomalaperla.com/uploads/1/0/3/7/103702596/gpjpucpjqtqjss1wxug8dw_1_orig.jpg",
+    imageCredit: "Lomalaperla — Villa Viktoria official website",
   },
   {
     id: "teijon-kammari",
@@ -638,7 +640,9 @@ export const saloProviders: SaloProvider[] = [
       es: "Pequeña cabaña junto al mar en Teijo, con sauna de leña, minikocina y balcón frente al mar.",
       en: "A small seaside cottage in Teijo with a wood-fired sauna, kitchenette and balcony facing the sea.",
     },
-    url: "https://kohteet.visitsalo.fi/teijon-kammari/",
+    url: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/panorama-1152x768.jpg",
+    imageCredit: "Salon Kohteet / Visit Salo — Teijon Kammari official listing",
   },
   {
     id: "kruuvan-mokit",
@@ -651,6 +655,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Villa Kruuva for eight by a sea bay, equipped for year-round stays and sauna relaxation.",
     },
     url: "https://www.kruuvanmokit.fi",
+    image: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-maisema-01-3-819x1024.webp",
+    imageCredit: "Kruuvan mökit — official provider website",
   },
   {
     id: "meri-veikko",
@@ -662,6 +668,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Small 1–2 person seaside cottage on Pettu island, with indoor sauna, fireplace and rowing boat.",
     },
     url: "https://www.lonnviken.com/fi/meri-veikko",
+    image: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c846690215630ca95d_20220826_150455%20re%203.jpg",
+    imageCredit: "Saaristotila Lönnviken — Meri-Veikko official website",
   },
 
 ];
