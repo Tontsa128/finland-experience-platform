@@ -94,7 +94,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/85 sm:text-xl">{t.lead}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="#mathildedal-categories" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">{t.discover} <ArrowRight className="h-4 w-4" /></Link>
-              <Link href="/fi/salo" className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-black/15 px-6 py-3.5 text-sm font-bold text-white">{locale === "fi" ? "Salon alueopas" : locale === "es" ? "Guía de Salo" : "Salo regional guide"} <ArrowUpRight className="h-4 w-4" /></Link>
+              <Link href={`/${locale}/salo`} className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-black/15 px-6 py-3.5 text-sm font-bold text-white">{locale === "fi" ? "Salon alueopas" : locale === "es" ? "Guía de Salo" : "Salo regional guide"} <ArrowUpRight className="h-4 w-4" /></Link>
             </div>
           </div>
         </div>
