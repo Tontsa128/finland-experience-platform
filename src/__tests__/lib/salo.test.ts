@@ -33,7 +33,7 @@ test("provider images always include a source or credit", () => {
 });
 
 test("cross-listed providers appear in every relevant category without duplicate records", () => {
-  for (const providerId of ["leipyolin-tila", "lepola-drinks", "mathildedal-brewery", "alaspaan-maatila", "finnholm-strandbo", "matildankartano", "pohjolan-tila", "katiskanmaeki", "lahiruokapuoti-puhti", "vuorovetten-jaatelo", "ellun-kanat-ja-munat", "kalliolan-tila", "kirakan-kalkkuna", "kosken-kartano", "mikkolan-tila", "peltosaaren-luomulammastila", "pernion-saunapalvi", "wanhantuvan-ankkala", "wibergs", "ylivesan-luomutila", "oyrilan-isontalon-lammastila", "hallonmaen-siideripanimo", "paulan-puutarha", "vaski-cider-distillery", "hallonmaen-tila", "heinan-puutarha", "haston-maatila", "ilolan-tila", "kurjen-maatila", "maneliuksen-mansikkatila", "meisalan-marja", "ohrakasken-tila", "rinteen-luomutila", "meriniityn-lihakauppa"]) {
+  for (const providerId of ["leipyolin-tila", "lepola-drinks", "mathildedal-brewery", "alaspaan-maatila", "finnholm-strandbo", "matildankartano", "pohjolan-tila", "katiskanmaeki", "lahiruokapuoti-puhti", "vuorovetten-jaatelo", "ellun-kanat-ja-munat", "kalliolan-tila", "kirakan-kalkkuna", "kosken-kartano", "mikkolan-tila", "peltosaaren-luomulammastila", "pernion-saunapalvi", "wanhantuvan-ankkala", "wibergs", "ylivesan-luomutila", "oyrilan-isontalon-lammastila", "hallonmaen-siideripanimo", "paulan-puutarha", "vaski-cider-distillery", "hallonmaen-tila", "heinan-puutarha", "haston-maatila", "ilolan-tila", "kurjen-maatila", "maneliuksen-mansikkatila", "meisalan-marja", "ohrakasken-tila", "rinteen-luomutila", "meriniityn-lihakauppa", "kivihovi-herkku-lahja"]) {
     const provider = saloProviders.find((item) => item.id === providerId);
     assert.ok(provider, `Missing local-food provider ${providerId}`);
     assert.ok(getSaloProviderCategories(provider).includes("localFood"), `${providerId} must be listed in the local-food category`);
@@ -52,7 +52,7 @@ test("cross-listed providers appear in every relevant category without duplicate
 });
 
 test("Salo catalogue inventory matches the audited production dataset", () => {
-  assert.equal(saloProviders.length, 100, "The canonical Salo catalogue must contain 100 unique provider profiles");
+  assert.equal(saloProviders.length, 101, "The canonical Salo catalogue must contain 101 unique provider profiles");
 
   const expectedPrimaryCounts: Record<SaloProviderCategory, number> = {
     tourism: 2,
@@ -65,7 +65,7 @@ test("Salo catalogue inventory matches the audited production dataset", () => {
     culture: 2,
     events: 3,
     archipelago: 0,
-    localFood: 28,
+    localFood: 29,
   };
   for (const [category, expected] of Object.entries(expectedPrimaryCounts)) {
     assert.equal(
@@ -77,11 +77,13 @@ test("Salo catalogue inventory matches the audited production dataset", () => {
 
   const imageBacked = saloProviders.filter((provider) => Boolean(provider.image));
   assert.equal(imageBacked.length, 90, "Only source-backed provider photos may be counted as image-backed");
+  assert.equal(saloProviders.filter((provider) => getSaloProviderCategories(provider).includes("localFood")).length, 38, "Cross-listing must not duplicate canonical providers");
   assert.deepEqual(
     saloProviders.filter((provider) => !provider.image).map((provider) => provider.id).sort(),
     [
       "chill-out-fishing",
       "meriniityn-lihakauppa",
+      "kivihovi-herkku-lahja",
       "ohrakasken-tila",
       "puutarha-siimes",
       "rannikon-puutarha",
