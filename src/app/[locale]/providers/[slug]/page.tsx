@@ -49,6 +49,19 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "topilan-tupa": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
   "salon-oppaat": { fi: "Salo", en: "Salo", es: "Salo" },
   "vuohensaari-camping": { fi: "Salo", en: "Salo", es: "Salo" },
+  "chill-out-fishing": { fi: "Salo · Saaristomeri", en: "Salo · Archipelago Sea", es: "Salo · Mar del Archipiélago" },
+  "villa-viktoria": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
+  "villa-viola": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
+  "villa-laperla": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
+  "teijon-kammari": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "kruuvan-mokit": { fi: "Särkisalo · Perniö · Salo", en: "Särkisalo · Perniö · Salo", es: "Särkisalo · Perniö · Salo" },
+  "meri-veikko": { fi: "Petun saari · Särkisalo · Salo", en: "Pettu Island · Särkisalo · Salo", es: "Isla de Pettu · Särkisalo · Salo" },
+  "villa-nennebo": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "villa-signell": { fi: "Förby · Särkisalo · Salo", en: "Förby · Särkisalo · Salo", es: "Förby · Särkisalo · Salo" },
+  "lonnviken": { fi: "Petun saari · Särkisalo · Salo", en: "Pettu Island · Särkisalo · Salo", es: "Isla de Pettu · Särkisalo · Salo" },
+  "katiskanmaeki": { fi: "Ylönkylä · Särkisalo · Salo", en: "Ylönkylä · Särkisalo · Salo", es: "Ylönkylä · Särkisalo · Salo" },
+  "onnenperan-mokki": { fi: "Vaskio · Salo", en: "Vaskio · Salo", es: "Vaskio · Salo" },
+  "meri-ruukin-lomakyla": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
 };
 
 function resolveProvider(slug: string, locale: Locale) {
