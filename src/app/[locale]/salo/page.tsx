@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BedDouble, Building2, Camera, Compass, Flame, Info, Map, Mountain, ShoppingBag, TreePine, Utensils, Waves } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, Building2, CalendarDays, Camera, Compass, Flame, Info, Map, Mountain, ShoppingBag, TreePine, Utensils, Waves } from "lucide-react";
 import type { Locale } from "@/types";
 import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -180,6 +180,7 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
               { slug: "ostokset", category: "shopping", icon: ShoppingBag, title: { fi: "Ostokset ja käsityö", en: "Shopping and crafts", es: "Compras y artesanía" }, description: { fi: "Paikalliset puodit, design ja käsityö.", en: "Local shops, design and handmade goods.", es: "Tiendas locales, diseño y productos artesanales." } },
               { slug: "hyvinvointi", category: "wellbeing", icon: Flame, title: { fi: "Hyvinvointi ja sauna", en: "Wellbeing and sauna", es: "Bienestar y sauna" }, description: { fi: "Saunoja ja palautumista luonnon äärellä.", en: "Saunas and relaxation close to nature.", es: "Saunas y descanso en plena naturaleza." } },
               { slug: "kulttuuri", category: "culture", icon: Camera, title: { fi: "Kulttuuri ja historia", en: "Culture and history", es: "Cultura e historia" }, description: { fi: "Museot, ruukkiperintö ja historialliset kohteet.", en: "Museums, ironworks heritage and historic places.", es: "Museos, patrimonio industrial y lugares históricos." } },
+              { slug: "tapahtumat", category: "events", icon: CalendarDays, title: { fi: "Tapahtumat ja juhlatilat", en: "Events and venues", es: "Eventos y espacios" }, description: { fi: "Tapahtumapaikat, juhlatilat ja ajankohtaiset tapahtumat.", en: "Event venues, celebration spaces and current events.", es: "Espacios para eventos, celebraciones y eventos actuales." } },
               { slug: "matkailuinfo", category: "tourism", icon: Info, title: { fi: "Matkailuinfo ja oppaat", en: "Tourism information and guides", es: "Información turística y guías" }, description: { fi: "Viralliset oppaat ja paikallinen matkailutieto.", en: "Official guides and local visitor information.", es: "Guías oficiales e información local para visitantes." } },
             ].map((item) => {
               const Icon = item.icon;
@@ -202,7 +203,7 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
           </div>
           <div className="mt-7 flex flex-wrap gap-5 border-t border-slate-200 pt-6 text-sm font-semibold">
             <Link href={`/${locale}/salo/kulttuuri`} className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">{locale === "fi" ? "Kulttuuri ja nähtävyydet" : locale === "es" ? "Cultura y lugares de interés" : "Culture and sights"} <ArrowUpRight className="h-4 w-4" /></Link>
-            <a href="https://visitsalo.fi/tapahtumat/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">{locale === "fi" ? "Tapahtumat" : locale === "es" ? "Eventos" : "Events"} <ArrowUpRight className="h-4 w-4" /></a>
+            <Link href={`/${locale}/salo/tapahtumat`} className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">{locale === "fi" ? "Tapahtumat" : locale === "es" ? "Eventos" : "Events"} <ArrowUpRight className="h-4 w-4" /></Link>
             <Link href={`/${locale}/destinations/teijon-ruukkikyla`} className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">{locale === "fi" ? "Ruukkikylät: Teijo" : locale === "es" ? "Pueblos siderúrgicos: Teijo" : "Ironworks villages: Teijo"} <ArrowUpRight className="h-4 w-4" /></Link>
             <Link href={`/${locale}/mathildedal`} className="inline-flex items-center gap-2 text-brand-800 underline underline-offset-4">Mathildedal <ArrowUpRight className="h-4 w-4" /></Link>
           </div>
