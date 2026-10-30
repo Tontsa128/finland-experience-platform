@@ -25,6 +25,7 @@ function resolveProvider(slug: string, locale: Locale) {
       food: { fi: "Ruoka ja juoma", en: "Food and drink", es: "Gastronomía" },
     }[item.category][locale];
     return {
+      kind: "provider" as const,
       name: item.nameByLocale?.[locale] || item.name,
       description: item.description[locale],
       category,
@@ -47,6 +48,7 @@ function resolveProvider(slug: string, locale: Locale) {
       experience: { fi: "Elämys", en: "Experience", es: "Experiencia" },
     }[item.category][locale];
     return {
+      kind: "provider" as const,
       name: item.nameByLocale?.[locale] || item.name,
       description: item.description[locale],
       category,
@@ -78,6 +80,7 @@ function resolveProvider(slug: string, locale: Locale) {
       tapahtumat: { fi: "Tapahtumat", en: "Events", es: "Eventos" },
     }[categoryKey][locale];
     return {
+      kind: item.kind ?? "provider",
       name: item.name[locale],
       description: item.description[locale],
       category,
@@ -317,7 +320,7 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
     <main className="min-w-0 overflow-hidden bg-white text-brand-950">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": provider.kind === "resource" ? "WebPage" : provider.kind === "place" ? "TouristAttraction" : "LocalBusiness",
         name: provider.name,
         description: provider.description,
         url: provider.website,
