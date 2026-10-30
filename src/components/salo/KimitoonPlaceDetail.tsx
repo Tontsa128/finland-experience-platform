@@ -250,7 +250,11 @@ export function KimitoonPlaceDetail({ locale, place }: { locale: Locale; place: 
         <div className="container-narrow flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-brand-700">{t.source}</p>
-            <p className="mt-1 text-slate-700">{t.sourceText}</p>
+            <p className="mt-1 text-slate-700">
+              {place === "rosala"
+                ? locale === "fi" ? "Pääkuva: Rosala & Bengtskär Booking Office / Rosalan Viikinkikeskus" : locale === "es" ? "Imagen principal: Rosala & Bengtskär Booking Office / Centro Vikingo de Rosala" : "Hero photo: Rosala & Bengtskär Booking Office / Rosala Viking Centre"
+                : locale === "fi" ? "Pääkuva: Bengtskärin majakka" : locale === "es" ? "Imagen principal: Faro de Bengtskär" : "Hero photo: Bengtskär Lighthouse"}
+            </p>
           </div>
           <div className="flex flex-wrap gap-4">
             <Link href={`/${locale}/destinations/kemionsaari`} className="font-semibold text-brand-800 underline underline-offset-4">{common.back}</Link>
