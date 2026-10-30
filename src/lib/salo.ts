@@ -404,8 +404,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Gentle beach yoga in the calm coastal setting of Förby, surrounded by the sounds of water and nature.",
     },
     url: "https://hoitolakukkuvilla.fi/kesan-joogatunnit/",
-    image: photoLibrary.hankoRegattaBeach,
-    imageCredit: "Wikimedia Commons, CC BY-SA 4.0",
+    image: "https://hoitolakukkuvilla.fi/wp-content/uploads/2024/04/Hoitola-Kukkuvilla_lempearantajooga_5-e1714139739383.jpg",
+    imageCredit: "Hoitola Kukkuvilla / Katja Toivonen — official provider website",
   },
   {
     id: "vuohensaari-camping",
@@ -651,6 +651,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Villa Kruuva for eight by a sea bay, equipped for year-round stays and sauna relaxation.",
     },
     url: "https://www.kruuvanmokit.fi",
+    image: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-maisema-01-3-819x1024.webp",
+    imageCredit: "Villa Kruuva — official provider website",
   },
   {
     id: "meri-veikko",
@@ -662,6 +664,8 @@ export const saloProviders: SaloProvider[] = [
       en: "Small 1–2 person seaside cottage on Pettu island, with indoor sauna, fireplace and rowing boat.",
     },
     url: "https://www.lonnviken.com/fi/meri-veikko",
+    image: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c846690215630ca95d_20220826_150455%20re%203.jpg",
+    imageCredit: "Saaristotila Lönnviken — official provider website",
   },
 
 ];
