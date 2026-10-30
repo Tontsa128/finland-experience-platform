@@ -66,6 +66,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
+  const providerEntries: MetadataRoute.Sitemap = [
+    ...saloProviders.flatMap((provider) =>
+      locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/providers/salo-" + provider.id,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
+    ),
+    ...luxuryDirectory.flatMap((provider) =>
+      locales.map((locale) => ({
+        url: siteUrl + "/" + locale + "/providers/directory-" + provider.id,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
+    ),
+  ];
+
   try {
     const [destinations, properties, experiences, blogPosts, pagesResult] = await Promise.all([
       getPublishedDestinations(),
@@ -102,20 +119,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           priority: 0.7,
         })),
       ),
-      ...saloProviders.flatMap((provider) =>
-        locales.map((locale) => ({
-          url: siteUrl + "/" + locale + "/providers/salo-" + provider.id,
-          changeFrequency: "monthly" as const,
-          priority: 0.6,
-        })),
-      ),
-      ...luxuryDirectory.flatMap((provider) =>
-        locales.map((locale) => ({
-          url: siteUrl + "/" + locale + "/providers/directory-" + provider.id,
-          changeFrequency: "monthly" as const,
-          priority: 0.6,
-        })),
-      ),
+
       ...blogPosts.flatMap((post) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/blog/" + post.slug,
@@ -133,10 +137,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }))),
     ];
 
-    return [...staticEntries, ...dynamicEntries].filter(
+    return [...staticEntries, ...providerEntries, ...dynamicEntries].filter(
       (entry, index, entries) => entries.findIndex((candidate) => candidate.url === entry.url) === index,
     );
   } catch {
-    return staticEntries;
+    return [...staticEntries, ...providerEntries];
   }
 }
