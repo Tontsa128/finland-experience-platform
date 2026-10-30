@@ -31,14 +31,6 @@ const basePaths = [
   "destinations/rosala",
   "destinations/bengtskar",
   "salo",
-  "mathildedal",
-  "mathildedal/suunnittele",
-  "mathildedal/majoitus",
-  "mathildedal/ruoka",
-  "mathildedal/tekemista",
-  "mathildedal/kulttuuri",
-  "mathildedal/ostokset",
-  "mathildedal/tapahtumat",
   "turku",
   "naantali",
   "hanko",
@@ -95,7 +87,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...properties.flatMap((item) =>
         locales.map((locale) => ({
           url: siteUrl + "/" + locale + "/accommodations/" + item.slug,
-          lastModified: new Date(),
           changeFrequency: "weekly" as const,
           priority: 0.7,
         })),
@@ -117,7 +108,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ),
       ...((pagesResult.data ?? []).map((page) => ({
         url: siteUrl + "/" + page.locale + "/pages/" + page.slug,
-        lastModified: page.updated_at ? new Date(page.updated_at) : new Date(),
+        ...(page.updated_at && Number.isFinite(Date.parse(page.updated_at))
+          ? { lastModified: new Date(page.updated_at) }
+          : {}),
         changeFrequency: "monthly" as const,
         priority: 0.5,
       }))),
