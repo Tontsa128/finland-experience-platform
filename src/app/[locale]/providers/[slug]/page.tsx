@@ -131,7 +131,7 @@ const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
   "kimitoon-cafe-dacapo": [
     { src:"https://ksg.fi/wp-content/uploads/2026/02/485747364_1155400309705092_5304925938808327852_n-768x1024.jpg", alt:{fi:"Café DaCapon kuva",en:"Café DaCapo photo",es:"Imagen de Café DaCapo"}, credit:"Café DaCapo", source:"https://ksg.fi/fi/foretag/cafe-dacapo-2/" },
     { src:"https://ksg.fi/wp-content/uploads/2026/02/52156733_791862431190548_4193037186511142912_n.jpg", alt:{fi:"Café DaCapon toinen kuva",en:"Another Café DaCapo photo",es:"Otra imagen de Café DaCapo"}, credit:"Café DaCapo", source:"https://ksg.fi/fi/foretag/cafe-dacapo-2/" }
-  ]
+  ],
   "kimitoon-villa-mimosa-37": [
     { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/7bc353c0-7393-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Mimosa – oleskelutilat ja merellinen huvila", en: "Villa Mimosa – living spaces and seaside villa", es: "Villa Mimosa – espacios interiores y villa junto al mar" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-mimosa-37-2/" },
     { src: "https://www.visitkimitoon.fi/wp-content/uploads/sites/2/kemionsaari-datahub/7bc32cb0-7393-11ef-acbd-2156ce35ca31.jpeg-760x507.jpeg", alt: { fi: "Villa Mimosa – huvilan sisätilat", en: "Villa Mimosa – villa interior", es: "Villa Mimosa – interior de la villa" }, credit: "Visit Kemiönsaari / Merikruunu", source: "https://www.visitkimitoon.fi/fi/kohteet/villa-mimosa-37-2/" },
