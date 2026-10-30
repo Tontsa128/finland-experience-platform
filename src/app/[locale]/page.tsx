@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Hero } from "@/components/home/Hero";
 import { KansakouluSpotlight } from "@/components/home/KansakouluSpotlight";
 import { VisitorCounter } from "@/components/home/VisitorCounter";
-import { photoLibrary } from "@/lib/photo-library";
+import { photoLibrary, photoCredits } from "@/lib/photo-library";
 import { DestinationCard } from "@/components/ui/DestinationCard";
 import { CabinCard } from "@/components/ui/CabinCard";
 import { ExperienceCard } from "@/components/ui/ExperienceCard";
@@ -174,31 +174,41 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           <div className="mt-9 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {coastalHighlights.map((destination) => (
-              <Link
-                key={destination.id}
-                href={destination.slug === "salo-mathildedal" ? `/${locale}/salo` : `/${locale}/destinations/${destination.slug}`}
-                className="group relative min-h-[320px] overflow-hidden rounded-[1.75rem] bg-brand-900 ring-1 ring-white/10"
-              >
-                <Image
-                  src={destination.images?.[0] || fallbackSummerImage}
-                  alt={destination.slug === "salo-mathildedal" ? "Salo" : destination.name[locale as keyof typeof destination.name] || destination.name.en}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
-                  <h3 className="mt-2 font-display text-2xl font-bold">
-                    {destination.slug === "salo-mathildedal" ? "Salo" : destination.name[locale as keyof typeof destination.name] || destination.name.en}
-                  </h3>
-                  <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
-                    {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </Link>
-            ))}
+            {coastalHighlights.map((destination) => {
+              const imageUrl = destination.images?.[0] || fallbackSummerImage;
+              const photoCredit = photoCredits.find((entry) => entry.url === imageUrl);
+              return (
+                <article key={destination.id} className="overflow-hidden rounded-[1.75rem] bg-white ring-1 ring-slate-200">
+                  <Link
+                    href={destination.slug === "salo-mathildedal" ? `/${locale}/salo` : `/${locale}/destinations/${destination.slug}`}
+                    className="group relative block min-h-[320px] overflow-hidden bg-brand-900"
+                  >
+                    <Image
+                      src={imageUrl}
+                      alt={destination.slug === "salo-mathildedal" ? "Salo" : destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                      <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
+                      <h3 className="mt-2 font-display text-2xl font-bold">
+                        {destination.slug === "salo-mathildedal" ? "Salo" : destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                      </h3>
+                      <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
+                        {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                  {photoCredit ? (
+                    <p className="px-4 py-2.5 text-xs text-slate-500">
+                      {locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:"} {photoCredit.credit} · <a href={photoCredit.sourcePage} target="_blank" rel="noreferrer" className="underline underline-offset-2">{locale === "fi" ? "lähde" : locale === "es" ? "fuente" : "source"}</a>
+                    </p>
+                  ) : null}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
