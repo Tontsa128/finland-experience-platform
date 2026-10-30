@@ -39,6 +39,12 @@ const categoryConfig = {
     en: { title: "Shopping and crafts in Salo", description: "Local shops, design, crafts, clothing and regional products." },
     es: { title: "Compras y artesanía en Salo", description: "Tiendas locales, diseño, artesanía, ropa y productos regionales." },
   },
+  hyvinvointi: {
+    category: "wellbeing",
+    fi: { title: "Hyvinvointi ja sauna Salossa", description: "Saunat, palautumisen palvelut ja luonnon äärellä virkistäytyminen." },
+    en: { title: "Wellbeing and sauna in Salo", description: "Saunas, relaxation services and ways to recharge in nature." },
+    es: { title: "Bienestar y sauna en Salo", description: "Saunas, servicios de relajación y formas de descansar en la naturaleza." },
+  },
   matkailuinfo: {
     category: "tourism",
     fi: { title: "Matkailuinfo ja alueoppaat", description: "Viralliset matkailuoppaat ja paikalliset tietolähteet Salon alueelle." },
