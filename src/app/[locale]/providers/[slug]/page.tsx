@@ -83,6 +83,7 @@ function resolveProvider(slug: string, locale: Locale) {
       category,
       image: item.image,
       imageCredit: item.imageCredit,
+      imageSource: item.imageSource,
       location: saloProviderLocations[item.id]?.[locale] || (locale === "fi" ? "Salon seutu" : locale === "es" ? "Región de Salo" : "Salo region"),
       website: item.url,
       price: item.priceByLocale?.[locale] || (locale === "fi" ? item.price : undefined),
