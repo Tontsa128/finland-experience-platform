@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import type { Locale } from "@/types";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { getSaloProviderImage, saloProviders } from "@/lib/salo";
+import { getSaloProviderImage, hasVerifiedSaloImageRights, saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { photoLibrary } from "@/lib/photo-library";
 import { getKimitoonProvider, getKimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
@@ -114,7 +114,7 @@ function resolveProvider(slug: string, locale: Locale) {
   return null;
 }
 
-type LocalPhoto = { src: string; alt: Record<Locale, string>; credit: string; source: string };
+type LocalPhoto = { src: string; alt: Record<Locale, string>; credit: string; source: string; imageRightsStatus?: "pending" | "verified"; imageRightsEvidence?: { rightsHolder?: string; permissionReference?: string; allowedUse?: string; attribution?: string; modificationPermission?: string; verifiedAt?: string; reviewedBy?: string } };
 const mathildedalAreaPhotos: LocalPhoto[] = [
   { src: photoLibrary.mathildedalHarbour, alt: { fi: "Mathildedalin satama auringonlaskussa", en: "Mathildedal harbour at sunset", es: "Puerto de Mathildedal al atardecer" }, credit: "Kotivalo", source: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg" },
   { src: photoLibrary.mathildedalVillage, alt: { fi: "Mathildedalin historialliset työväenasunnot", en: "Historic workers’ houses in Mathildedal", es: "Antiguas viviendas de trabajadores en Mathildedal" }, credit: "Kotivalo", source: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
@@ -398,7 +398,19 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
               nearbyTitle: locale === "fi" ? "Tutustu muihin Kemiönsaaren kohteisiin" : locale === "es" ? "Descubre otros lugares de Kimitoön" : "Explore more places on Kimitoön",
             } : null);
             if (!guide) return null;
-            const galleryPhotos: LocalPhoto[] = [...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: ("imageSource" in provider && provider.imageSource) ? provider.imageSource : provider.website }] : []), ...(providerPhotoGalleries[slug] || []), ...(slug === "salo-teijon-masuuni" ? teijoMasuuniPhotos : []), ...(slug.startsWith("salo-") && !teijoGuides[slug] ? mathildedalAreaPhotos : [])];
+            const rawProviderPhotos = providerPhotoGalleries[slug] || [];
+            // Salo provider photos are commercially published only when asset-level permission evidence is complete.
+            const approvedProviderPhotos = slug.startsWith("salo-")
+              ? rawProviderPhotos.filter((photo) => hasVerifiedSaloImageRights(photo))
+              : rawProviderPhotos;
+            const approvedTeijoPhotos = slug === "salo-teijon-masuuni"
+              ? teijoMasuuniPhotos.filter((photo) => hasVerifiedSaloImageRights(photo))
+              : [];
+            const galleryPhotos: LocalPhoto[] = [
+              ...(provider.image ? [{ src: provider.image, alt: { fi: provider.name, en: provider.name, es: provider.name }, credit: provider.imageCredit || provider.name, source: ("imageSource" in provider && provider.imageSource) ? provider.imageSource : provider.website }] : []),
+              ...approvedProviderPhotos,
+              ...approvedTeijoPhotos,
+            ];
             return (
               <div className="mt-10 space-y-8">
                 <section aria-label={locale === "fi" ? "Kuvagalleria" : locale === "es" ? "Galería de imágenes" : "Photo gallery"}>
