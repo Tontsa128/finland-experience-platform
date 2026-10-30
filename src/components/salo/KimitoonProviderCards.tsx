@@ -30,8 +30,16 @@ export function KimitoonProviderCards({ locale, category }: { locale: Locale; ca
         {items.map((item) => (
           <article key={item.id} className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
             <Link href={`/${locale}/providers/kimitoon-${item.id}`} className="block">
-              <div className="relative h-56 overflow-hidden bg-stone-100">
-                <img src={item.image} alt={item.name[locale]} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div className="relative flex h-56 items-center justify-center overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800">
+                {item.image ? (
+                  <img src={item.image} alt={item.name[locale]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                ) : (
+                  <div className="px-6 text-center text-white">
+                    <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{locale === "fi" ? "Palveluntarjoaja" : locale === "es" ? "Proveedor" : "Provider"}</p>
+                    <p className="mt-3 font-display text-2xl font-semibold">{item.name[locale]}</p>
+                    <p className="mt-2 text-xs text-white/70">{locale === "fi" ? "Kohdekuvaa ei ole vielä varmennettu" : locale === "es" ? "Foto pendiente de verificación" : "Provider photo not yet verified"}</p>
+                  </div>
+                )}
               </div>
               <div className="p-5 pb-2">
                 <p className="text-xs font-semibold uppercase tracking-[.16em] text-brand-700">{item.location[locale]}</p>
