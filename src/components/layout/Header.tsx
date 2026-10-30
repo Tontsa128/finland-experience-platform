@@ -113,6 +113,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                 <div className="absolute left-0 top-full z-50 mt-3 min-w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl">
                   <Link href={`/${locale}/mathildedal`} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900" onClick={() => setOpen(false)}>Mathildedal</Link>
                   <Link href={`/${locale}/destinations/teijon-ruukkikyla`} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900" onClick={() => setOpen(false)}>Teijo</Link>
+                  <Link href={`/${locale}/destinations/kirjakkalan-ruukkikyla`} className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-900" onClick={() => setOpen(false)}>Kirjakkala</Link>
                 </div>
               </details>
             ) : (
@@ -137,6 +138,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                 <div className="mt-1 grid grid-cols-2 gap-2">
                   <Link onClick={() => setOpen(false)} href={`/${locale}/destinations/salo-mathildedal`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Mathildedal</Link>
                   <Link onClick={() => setOpen(false)} href={`/${locale}/destinations/teijon-ruukkikyla`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Teijo</Link>
+                  <Link onClick={() => setOpen(false)} href={`/${locale}/destinations/kirjakkalan-ruukkikyla`} className="rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-white">Kirjakkala</Link>
                 </div>
               </div>
             ) : (
