@@ -115,10 +115,7 @@ function resolveProvider(slug: string, locale: Locale) {
 }
 
 type LocalPhoto = { src: string; alt: Record<Locale, string>; credit: string; source: string; imageRightsStatus?: "pending" | "verified"; imageRightsEvidence?: { rightsHolder?: string; permissionReference?: string; allowedUse?: string; attribution?: string; modificationPermission?: string; verifiedAt?: string; reviewedBy?: string } };
-const mathildedalAreaPhotos: LocalPhoto[] = [
-  { src: photoLibrary.mathildedalHarbour, alt: { fi: "Mathildedalin satama auringonlaskussa", en: "Mathildedal harbour at sunset", es: "Puerto de Mathildedal al atardecer" }, credit: "Kotivalo", source: "https://commons.wikimedia.org/wiki/File:Mathildedal_harbour_sunset.jpg" },
-  { src: photoLibrary.mathildedalVillage, alt: { fi: "Mathildedalin historialliset työväenasunnot", en: "Historic workers’ houses in Mathildedal", es: "Antiguas viviendas de trabajadores en Mathildedal" }, credit: "Kotivalo", source: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
-];
+
 
 const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
   "kimitoon-db-hostel": [
