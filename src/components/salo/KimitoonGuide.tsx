@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "@/types";
 import { photoLibrary } from "@/lib/photo-library";
 import { KansakouluSpotlight } from "@/components/home/KansakouluSpotlight";
+import { KimitoonKansakouluCategoryCard } from "@/components/salo/KimitoonKansakouluCategoryCard";
 
 type Category = "majoitus" | "ruoka" | "luonto" | "kulttuuri" | "saaristo" | "tapahtumat";
 
@@ -161,7 +162,7 @@ export function KimitoonGuide({ locale, category }: { locale: Locale; category?:
       <section className="container-narrow py-14 sm:py-20">
         {!category ? <div className="mb-8"><p className="text-xs font-bold uppercase tracking-[.2em] text-brand-700">{t.explore}</p><h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{t.categories}</h2></div> : null}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleCategories.map((item) => (
+          {category === "majoitus" || category === "ruoka" ? <KimitoonKansakouluCategoryCard locale={locale} category={category} /> : visibleCategories.map((item) => (
             <article key={item.id} className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
               <Link href={`/${locale}/destinations/kemionsaari/${item.id}`} className="block">
                 <div className="relative h-56 overflow-hidden bg-stone-100"><img src={item.image} alt={item.title[locale]} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /></div>
