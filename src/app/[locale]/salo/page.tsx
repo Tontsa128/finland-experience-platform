@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BedDouble, Building2, CalendarDays, Camera, Compass, Flame, Info, Map, Mountain, ShoppingBag, TreePine, Utensils, Waves } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, Building2, CalendarDays, Camera, Compass, Flame, Info, Map, Mountain, ShoppingBag, Sprout, TreePine, Utensils, Waves } from "lucide-react";
 import type { Locale } from "@/types";
 import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 import { buildLocalizedMetadata } from "@/lib/seo";
