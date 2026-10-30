@@ -50,6 +50,21 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
   console.error("Document language check failed: src/app/layout.tsx must set <html lang={locale}> using getLocale() from next-intl/server.");
 }
 
+// Kansakoulu placement regression guard: keep the editorial spotlight on the
+// homepage only. The Kimitoön guide must retain category-specific provider
+// cards without rendering the homepage spotlight a second time.
+const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
+const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
+const homepageHasSpotlight = homepageSource.includes('import { KansakouluSpotlight } from "@/components/home/KansakouluSpotlight";')
+  && /<KansakouluSpotlight\\s+locale=/.test(homepageSource);
+const guideHasDuplicateSpotlight = kimitoonGuideSource.includes("KansakouluSpotlight");
+const guideKeepsCategoryCards = kimitoonGuideSource.includes("KimitoonKansakouluCategoryCard")
+  && /<KimitoonKansakouluCategoryCard\\s+locale=/.test(kimitoonGuideSource);
+if (!homepageHasSpotlight || guideHasDuplicateSpotlight || !guideKeepsCategoryCards) {
+  failed = true;
+  console.error("Kansakoulu placement check failed: keep one spotlight on the homepage and retain the accommodation/food category cards on the Kimitoön guide.");
+}
+
 // Sitemap regression guards: do not advertise redirected Mathildedal
 // aliases as indexable pages or fabricate last-modified timestamps.
 const sitemapSource = await readFile(path.resolve("src/app/sitemap.ts"), "utf8");
