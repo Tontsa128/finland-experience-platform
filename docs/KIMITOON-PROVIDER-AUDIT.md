@@ -1,77 +1,91 @@
 # Kimitoön provider inventory and implementation audit
 
 Audit date: 30 October 2026  
-Scope: Kemiö, Kimitoön, Rosala and the surrounding archipelago  
-Status: initial official-directory inventory; **not a complete provider audit**
+Scope: Kemiö, Kimitoön, Rosala, Bengtskär, Kasnäs, Västanfjärd, Dalsbruk and the surrounding archipelago.  
+Implementation branch: `feat/kansakoulu-featured-kimitoon`  
+Status: expanded source-based directory; further source/image verification remains in progress.
 
-## Purpose
+## Required visitor journey
 
-This file tracks the gap between the official destination directory and the FINNEXPRIENCE provider journey. It prevents a small number of featured cards from being presented as a complete regional directory.
+Homepage → Kimitoön destination → theme/category → provider card → provider's own localized FI/EN/ES detail page → provider's official website, booking or contact channel.
 
-Required visitor journey:
+Every provider has one canonical detail route. A provider can appear in several relevant themes without creating duplicate provider profiles. Where a provider offers separate visitor services, category-specific card photography can be used while retaining the same provider detail page.
 
-Homepage → Kimitoön destination → category → provider card → provider's own FI/EN/ES detail page → provider's official booking/contact channel.
+## Official sources used
 
-A provider is not complete merely because an external link exists. Its own localized detail page, matching gallery, verified content, credits, responsive layout and metadata must be checked.
+- Visit Kemiönsaari destination catalogue: https://www.visitkimitoon.fi/fi/kohteet/
+- Visit Kemiönsaari accommodation: https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/
+- Visit Kemiönsaari restaurants and cafés: https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/
+- Kemiönsaaren palveluopas / Kimitoöns Serviceguide: https://ksg.fi/fi/
 
-## Official destination directory sources
+The KSG directory organises local providers into business sectors including experiences, culture and leisure; crafts and art; shops; transport; accommodation; food and drink; health and beauty; venues; and boat/archipelago services. Its homepage currently indicates 27 accommodation listings, 24 food-and-drink listings and 29 transport/vehicle listings. Those counts include some non-tourism services and should not be treated as the number of providers published on FINNEXPRIENCE.
 
-- Accommodation: https://www.visitkimitoon.fi/fi/syo_ja_majoitu/majoitu/
-- Restaurants and cafés: https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/
-- General destination catalogue: https://www.visitkimitoon.fi/fi/kohteet/
+The accommodation model remains direct-to-provider. FINNEXPRIENCE does not take bookings, payments or responsibility for provider contracts.
 
-The municipality's accommodation page explicitly directs visitors to the provider's own website for booking. FINNEXPRIENCE should preserve that model: no platform-side booking, payment or service contract.
+## Implemented provider directory
 
-## Accommodation — identified providers
+The current source-backed directory contains **118 unique provider/service profiles** in `src/lib/kimitoon-providers.ts`. One provider may appear under multiple themes; category totals below are therefore not additive.
 
-The current official accommodation landing page highlights the following providers. These are an initial inventory, not an exhaustive list.
+| Theme | Provider cards |
+|---|---:|
+| Accommodation | 45 |
+| Restaurants, cafés and food | 40 |
+| Activities and experiences | 27 |
+| Archipelago and harbours | 15 |
+| Culture and sights | 18 |
+| Nature and outdoors | 9 |
+| Wellbeing and health | 7 |
+| Event and celebration venues | 21 |
+| Shopping and local products | 19 |
+| Events and festivals | 5 |
+| Transport and connections | 10 |
+| Other visitor services | 11 |
+| Winter escapes | 1 |
 
-| Provider | Official source / booking channel | FINNEXPRIENCE status |
-|---|---|---|
-| Spa Hotel Kasnäs | https://www.kasnas.com/ and https://book.kasnas.com/fi/accommodation/list | Detail page and official image gallery require implementation and verification |
-| Söderlångvik Glamping | https://soderlangvik.fi/fi/glamping/ | Detail page and official gallery require implementation; official page currently publishes 2026 season, amenities and prices |
-| Bengtskär Lighthouse accommodation | https://bengtskar.fi/ | Separate accommodation-specific provider detail and current season/booking verification required |
-| Sebbholmen EcoCamp | https://sebbholmen.fi/ and https://rosala.johku.com/en_US/sebbholmen-ecocamp | Detail page and gallery require implementation; official contact/booking details are available |
-| Hotel & Restaurant Merikruunu | https://www.merikruunu.fi/hotelli | Detail page and room gallery require implementation; official page describes 13 rooms and hotel facilities |
+The directory includes provider and service entries sourced from Visit Kemiönsaari and KSG, including accommodation operators, restaurants and cafés, local shops, guides, activity operators, marinas, taxi providers, boat services, event venues, museums and cultural destinations.
 
-Additional provider candidates are visible in the official destination catalogue and current regional material, including Villa Ekbladh, Dals Inn, Ullman's Villa, Strandhotellet, Labbnäs Lomakoti and other cottage/glamping operators. Each must be checked against the current official catalogue and its own source before publication.
+Examples of additional providers included in the expanded KSG-backed inventory:
+- Labbnäsin Lomakoti, Storfinnhova Gård, Ragnar Antonin Lomakylä, Bjärkas Golf, Ullman's Villa, Strandhotellet, Björkbodan Ruukinkartano, Hotel Galaxy, Saariloma.net, DB Hostel and other cottage/hostel listings.
+- Café DaCapo, Backom Café & Pub, Cafe Kompass, Bistro Marita, Bistro & Bar Road Cafe Yttis, Kasnäs Paviljong, Laituri Grilli, Restaurant Portside, Rigges Thai, Mac Daniel's Grill, Café Adéle, Konditori Mazarin, Terrassn Restaurant and other food providers.
+- Rosala Viking Centre, Örö Fortress Island, Hitis Rodd- och Kanotklubb, Arkipelag Workshop, Festival Norpas, Finlandia Sailing, Kalkholmen Marina, Kimitoön Guides, Uppgårds Fotisgolf and other activity providers.
+- Anttis Taxi, Luddes Taxi, Taxi Suominen Kjell, Nickes Taxi, Thomas Sjöblom Taxi, Taksiasema Kemiönsaari and group transport providers.
+- Holmströms Lanthandel, Kasnäs Handel, K-Knallis, K-Market Kompis, K-Supermarket Kompass, Antikvariat Kojan, Aanmaa, Ateljé Rosenblad, Öns Pärlor and other local shops.
 
-## Restaurants and cafés — identified providers
+## Page and card implementation
 
-The current official restaurants-and-cafés landing page highlights:
+- The Kimitoön guide now presents 13 themes: accommodation; food; activities; archipelago; nature; culture; wellbeing; transport; shopping; winter activities; events; event venues; and other visitor services.
+- Each theme links to its own category route.
+- Internal destination cards have clickable images and titles.
+- Provider cards link to their own canonical localized provider detail route: `/[locale]/providers/kimitoon-[provider-id]`.
+- Providers with several services can appear in several themes without duplicate profile records.
+- Category-specific imagery is supported where one provider has different verified photos for different services.
+- The provider detail page displays available contact information and distinguishes a direct provider site from a KSG directory listing.
+- Provider routes and all Kimitoön theme routes are included in the sitemap.
+- The existing Kansakoulu accommodation and restaurant pages remain separate service pages and continue to use their verified localized content.
 
-| Provider | Official source | FINNEXPRIENCE status |
-|---|---|---|
-| Holmbergs Fisk & Café Four C | https://www.visitkimitoon.fi/fi/syo_ja_majoitu/ravintolat_ja_kahvilat/ | Dedicated provider source, image set and current opening details to verify |
-| Restaurant Amos Krog | https://soderlangvik.fi/ | Dedicated provider detail and current menu/season to verify |
-| Stall's Bar & Food | Official provider URL to verify from its listing | Do not publish guessed menu/hours |
-| Farmors Café | Official provider URL to verify from its listing | Dedicated provider detail and seasonal hours to verify |
-| Rumpan Bar | Official provider URL to verify from its listing | Dedicated provider detail and seasonal hours to verify |
-| Hotel & Restaurant Merikruunu | https://www.merikruunu.fi/ | Restaurant and accommodation must have clearly separated service details |
-| Kansakoulu Restaurant | https://www.kansakouluun.fi/ravintolat/ | Localized detail page exists in this PR; menu and current hours are not verified |
+## Image and source policy
 
-The official list may contain further providers beyond its featured entries. Continue pagination/catalogue review before describing the directory as complete.
+The project owner has confirmed general permission to use business information and images for businesses in the Salo area and Kemiö/Kimitoön. This does not remove the need to match each image to the correct provider and service.
 
-## Current FINNEXPRIENCE implementation gaps
+- Use provider-owned or official destination-directory images where available.
+- Do not reuse restaurant photos as accommodation-room photos or unrelated provider images as a substitute.
+- Preserve source/photographer credits where required.
+- Where a provider-specific image has not been verified, show a clearly labelled no-photo state rather than a stock image, a guessed image or a fake gallery.
+- Some KSG-only records currently link to the official local business directory because a direct provider website or booking URL was not confirmed. The detail page labels that destination as the local directory; these entries are not marked as direct-booking integrations.
+- Do not publish unverified prices, opening hours, menus, seasonal dates, availability or amenities as current.
 
-- The Kimitoön accommodation category currently highlights Kansakoulu only, while the official destination page highlights multiple other accommodation providers.
-- The Kimitoön food category currently highlights Kansakoulu only, while the official destination page highlights several restaurants and cafés.
-- The Rosala, Bengtskär and general attraction pages are destination/place guides; they do not automatically replace the individual provider pages required for accommodation operators, restaurants, cafés and activity operators.
-- The Kansakoulu accommodation page correctly avoids presenting restaurant photos as room photos, but currently has no accommodation gallery. Add a gallery only from suitable, authorized images that actually show the rooms/accommodation.
-- Provider card image and title navigation is being corrected so internal destination cards open their detail route.
+## Remaining verification work
+
+1. Complete the remaining pages of the Visit Kemiönsaari destination catalogue and compare them with the KSG business sectors so that no relevant tourism provider is missed.
+2. Verify direct provider websites, booking channels, phone numbers and email addresses for entries that currently link to the general KSG directory.
+3. Add more provider-specific image galleries where the official provider source has additional suitable images.
+4. Check current opening hours, seasonal operation, menu/price details and accessibility directly with providers before publishing those details.
+5. Run the full CI/build on the latest PR head and verify the Cloudflare preview routes before merging.
 
 ## Publication rules
 
-1. Use provider-owned official pages and assets where available; the project owner has confirmed the general image and business-information authorization for Salo and Kemiö/Kimitoön businesses.
-2. Match every image to the exact provider and service. The authorization does not make an unrelated image accurate or cover a specific third-party restriction.
-3. Keep restaurant, accommodation, activity and venue imagery separated where it could mislead visitors.
-4. Do not copy old prices, opening hours, menus, room details or seasonal dates as current without a current official source.
-5. If a provider's current information is unavailable, state that visitors should confirm it directly rather than inventing details.
-6. Every provider detail page must have FI/EN/ES content, its own relevant gallery, visible source credits where required, a direct official CTA, a return path, and localized SEO metadata.
-7. Continue using the existing Supabase CMS and authorization model. Do not introduce mock providers or a parallel CMS.
-
-## Source notes
-
-- Official accommodation directory and English equivalent were checked on 30 October 2026.
-- Official restaurant directory was checked on 30 October 2026.
-- Provider-specific details must be verified again at implementation time; this inventory does not certify current opening, availability or pricing.
+1. Use the existing Supabase CMS and current provider architecture; do not introduce a parallel CMS.
+2. Do not create demo or mock providers, photos, ratings, prices, menus, hours or booking availability.
+3. Keep every provider's FI/EN/ES content distinct and fact-based.
+4. External provider channels handle booking, payment and service contracts.
+5. Every provider page must have a working return path, localized metadata, source references and responsive accessible layout.
