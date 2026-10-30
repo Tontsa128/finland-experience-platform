@@ -1,0 +1,19 @@
+import Link from "next/link";
+import type { Locale } from "@/types";
+
+export function KimitoonKansakouluCategoryCard({locale,category}:{locale:Locale;category:"majoitus"|"ruoka"}) {
+ const stay=category==="majoitus";
+ const title=stay
+  ? {fi:"Kansakoulu – majatalo vanhassa koulussa",en:"Kansakoulu – guesthouse in a former school",es:"Kansakoulu – alojamiento en una antigua escuela"}[locale]
+  : {fi:"Kansakoulun ravintola – saariston makuja",en:"Kansakoulu Restaurant – flavours of the archipelago",es:"Restaurante Kansakoulu – sabores del archipiélago"}[locale];
+ const description=stay
+  ? {fi:"Persoonalliset huoneet, vanhan kansakoulun tunnelma ja rauhallinen tukikohta saaristomatkalle. Tutustu huoneisiin, yhteisiin pesutiloihin ja vierasarvioihin.",en:"Individual rooms, historic schoolhouse character and a peaceful base for exploring the islands. Discover room details, shared facilities and guest ratings.",es:"Habitaciones con personalidad, ambiente histórico y una base tranquila para descubrir el archipiélago. Conoce las habitaciones, los baños compartidos y las opiniones de huéspedes."}[locale]
+  : {fi:"Tutustu ravintolaan, lähiruokaan, juhlasaliin, kahvilaan ja terasseihin. Tarkista päivän ruokalista ja aukiolo suoraan ravintolalta.",en:"Explore the restaurant, local food, function hall, café and terraces. Check today's menu and opening hours directly with the restaurant.",es:"Descubre el restaurante, los productos locales, el salón de celebraciones, la cafetería y las terrazas. Consulta directamente el menú y los horarios."}[locale];
+ const href="/"+locale+"/destinations/kemionsaari/kohde/"+(stay?"kansakoulu":"kansakoulu-ravintola");
+ return <article className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+  <Link href={href} className="block">
+   <div className="relative h-64 overflow-hidden bg-stone-100"><img src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/ravintola.jpg" alt={title} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105"/></div>
+   <div className="p-6"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-700">Västanfjärd · Kemiönsaari</p><h2 className="mt-2 font-display text-2xl font-bold text-brand-950">{title}</h2><p className="mt-3 leading-7 text-slate-600">{description}</p><span className="mt-5 inline-flex text-sm font-bold text-brand-800">{locale==="fi"?"Tutustu palveluntarjoajaan":locale==="es"?"Descubrir el establecimiento":"Explore this provider"} →</span></div>
+  </Link>
+ </article>;
+}
