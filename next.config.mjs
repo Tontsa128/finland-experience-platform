@@ -38,6 +38,8 @@ const nextConfig = {
       { protocol: "https", hostname: "kohteet.visitsalo.fi" },
       { protocol: "https", hostname: "savukalkkuna.fi" },
       { protocol: "https", hostname: "pernionsaunapalvi.fi" },
+      { protocol: "https", hostname: "www.paulanpuutarha.fi" },
+      { protocol: "https", hostname: "images.squarespace-cdn.com" },
       { protocol: "https", hostname: "matrihouse.fi" },
       { protocol: "https", hostname: "visitnaantali.com" },
       { protocol: "https", hostname: "static.wixstatic.com" },
