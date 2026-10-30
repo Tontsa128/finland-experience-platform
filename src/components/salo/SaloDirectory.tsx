@@ -23,7 +23,7 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
       : area === "kirjakkala"
         ? saloProviders.filter((provider) => kirjakkalaIds.has(provider.id))
         : saloProviders;
-  const providers = category ? areaProviders.filter((provider) => provider.category === category) : areaProviders;
+  const providers = category ? areaProviders.filter((provider) => getSaloProviderCategories(provider).includes(category)) : areaProviders;
   return (
     <section className="bg-brand-50 py-16 sm:py-24">
       <div className="container-narrow">
@@ -71,7 +71,7 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
                         </div>
                       )}
                       <div className="p-6">
-                        <div className="text-xs font-bold uppercase tracking-[.16em] text-brand-600">{l[provider.category]}</div>
+                        <div className="text-xs font-bold uppercase tracking-[.16em] text-brand-600">{l[group.category]}</div>
                         <h3 className="mt-2 font-display text-2xl font-bold text-brand-950">{provider.nameByLocale?.[locale] || provider.name}</h3>
                         <p className="mt-3 leading-7 text-slate-600">{provider.description[locale]}</p>
                         {(provider.priceByLocale?.[locale] || (locale === "fi" ? provider.price : undefined)) ? (
