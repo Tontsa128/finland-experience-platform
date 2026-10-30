@@ -61,7 +61,7 @@ export function SaloDirectory({ locale, category, area }: { locale: Locale; cate
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {group.items.map((provider) => (
                     <article key={provider.id} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
-                      {provider.image ? (
+                      {provider.image && provider.imageRightsStatus !== "pending" ? (
                         <Link href={`/${locale}/providers/salo-${provider.id}`} aria-label={`${provider.nameByLocale?.[locale] || provider.name} — ${l.details}`} className="relative block aspect-[16/10] overflow-hidden bg-brand-100">
                           <Image src={provider.image} alt={provider.nameByLocale?.[locale] || provider.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
                         </Link>
