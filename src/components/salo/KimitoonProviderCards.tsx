@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import type { Locale } from "@/types";
 import { getKimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
