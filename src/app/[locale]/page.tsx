@@ -90,8 +90,26 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     featuredCabins[0]?.images?.[0] || fallbackSummerImage,
   ];
 
+  const rosalaDestination = catalogDestinations.find((item) => item.slug === "rosala") ?? destinations.find((item) => item.slug === "rosala");
+  const kimitoonDestination = rosalaDestination
+    ? {
+        ...rosalaDestination,
+        id: "kemionsaari",
+        slug: "kemionsaari",
+        name: { fi: "Kemiönsaari", es: "Kimitoön", en: "Kimitoön" },
+        shortDescription: {
+          fi: "Saaristoa, historiallisia kyliä ja merellisiä elämyksiä Kemiönsaarella",
+          es: "Archipiélago, pueblos históricos y experiencias junto al mar en Kimitoön",
+          en: "Archipelago, historic villages and coastal experiences on Kimitoön",
+        },
+        region: "Kemiönsaari · Southwest Finland",
+        images: [photoLibrary.rosalaVikingCentre, photoLibrary.rosalaVikingHall],
+      }
+    : null;
   const coastalHighlights = ["salo-mathildedal", "kemionsaari", "hanko", "naantali", "turku", "aland"]
-    .map((slug) => catalogDestinations.find((item) => item.slug === slug) ?? destinations.find((item) => item.slug === slug))
+    .map((slug) => slug === "kemionsaari"
+      ? kimitoonDestination
+      : catalogDestinations.find((item) => item.slug === slug) ?? destinations.find((item) => item.slug === slug))
     .filter(Boolean)
     .slice(0, 6) as typeof destinations;
 
@@ -147,7 +165,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               >
                 <Image
                   src={destination.slug === "kemionsaari" ? photoLibrary.rosalaVikingCentre : destinations.find((item) => item.slug === destination.slug)?.images?.[0] || destination.images?.[0] || fallbackSummerImage}
-                  alt={destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                  alt={destination.slug === "salo-mathildedal" ? "Salo" : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
@@ -156,7 +174,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold">
-                    {destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                    {destination.slug === "salo-mathildedal" ? "Salo" : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   </h3>
                   <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
                     {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
