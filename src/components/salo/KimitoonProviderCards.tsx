@@ -11,7 +11,18 @@ const labels: Record<Locale, { title: string; open: string; source: string; empt
 export function KimitoonProviderCards({ locale, category }: { locale: Locale; category: KimitoonCategory }) {
   const items = getKimitoonProviders(category);
   const t = labels[locale];
-  if (!items.length) return null;
+  if (!items.length) return (
+    <section className="container-narrow py-12 sm:py-16">
+      <div className="rounded-3xl border border-dashed border-stone-300 bg-stone-50 p-6 sm:p-8">
+        <h2 className="font-display text-2xl font-bold text-brand-950">{locale === "fi" ? "Ei vielä vahvistettuja palveluntarjoajakortteja" : locale === "es" ? "Todavía no hay fichas verificadas" : "No verified provider listings yet"}</h2>
+        <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">{locale === "fi" ? "Tähän teemaan ei löytynyt vielä julkaisuvalmiita yrityskohtaisia tietoja ja kuvia tarkistetuista lähteistä. Emme lisää arvattuja yrityksiä, kuvia tai palvelulupauksia. Tarkista alueen ajantasaiset palvelut virallisesta matkailuoppaasta ja yritysrekisteristä." : locale === "es" ? "Todavía no se han verificado datos e imágenes suficientes para publicar fichas individuales en este tema. No inventamos empresas, fotos ni servicios. Consulta la información actual en las guías oficiales." : "We have not yet verified enough provider-specific details and images to publish individual listings in this theme. We do not invent businesses, photos or service claims. Check current information in the official local guides."}</p>
+        <div className="mt-5 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
+          <a href="https://www.visitkimitoon.fi/fi/" target="_blank" rel="noreferrer" className="underline underline-offset-4">Visit Kemiönsaari ↗</a>
+          <a href="https://ksg.fi/fi/" target="_blank" rel="noreferrer" className="underline underline-offset-4">Kemiönsaaren palveluopas ↗</a>
+        </div>
+      </div>
+    </section>
+  );
 
   return (
     <section className="container-narrow py-12 sm:py-16" aria-labelledby={`kimitoon-providers-${category}`}>
