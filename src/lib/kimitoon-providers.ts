@@ -14,6 +14,7 @@ export type KimitoonProvider = {
   websiteUrl: string;
   sourceUrl: string;
   image?: string;
+  categoryImages?: Partial<Record<KimitoonCategory, string>>;
   imageCredit: string;
   imageSource: string;
   tags: string[];
