@@ -4,7 +4,7 @@
 
 The 2026 Visit Salo brochure contains a local-food map with **42 map entries**: 39 farms, shops and local-food producers (numbered 4–42 in the brochure) plus three Vuorovetten ice-cream kiosks.
 
-The current branch contains 100 unique Salo provider profiles: 30 accommodation, 12 experiences, 10 food and café, 28 primary local-food, 7 shopping and crafts, 4 nature, 2 culture, 2 wellbeing, 3 events and 2 tourism-information profiles. Cross-listing adds nine existing canonical profiles to the local-food category, so 37 profiles appear there without duplicating provider records. The 2026 brochure is a discovery source, not proof that every outlet is currently open. Seven additional local-food profiles have been added across the two updates: Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa. The current catalogue has 90 image-backed profiles; ten remain deliberately image-free until a matching, rights-cleared asset is verified.
+The current branch contains 101 unique Salo provider profiles: 30 accommodation, 12 experiences, 10 food and café, 29 primary local-food, 7 shopping and crafts, 4 nature, 2 culture, 2 wellbeing, 3 events and 2 tourism-information profiles. Cross-listing adds nine existing canonical profiles to the local-food category, so 38 profiles appear there without duplicating provider records. The 2026 brochure is a discovery source, not proof that every outlet is currently open. Seven additional local-food profiles have been added across the two updates: Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa; Kivihovi's Herkku & Lahja shop is also now included. The current catalogue has 90 image-backed profiles; eleven remain deliberately image-free until a matching, rights-cleared asset is verified.
 
 Primary sources:
 - Visit Salo, *Salo matkailuesite 2026*, pages 40–43: https://visitsalo.fi/wp-content/uploads/sites/2/2026/01/Salo_matkailuesite_2026_FI_LR.pdf
@@ -49,17 +49,18 @@ Primary sources:
 | Ohrakasken tila | `ohrakasken-tila` | Added from Visit Salo's official profile; seasonal blueberry picking and asparagus, no image until a matching asset is verified |
 | Rinteen luomutila | `rinteen-luomutila` | Added from Visit Salo's official profile; organic greenhouse and outdoor produce, no image until a matching asset is verified |
 | Meriniityn Lihakauppa | `meriniityn-lihakauppa` | Added from Visit Salo and Perniön 1930 official information; factory shop profile, no image until a matching asset is verified |
+| Liikenneasema Kivihovi — Herkku & Lahja | `kivihovi-herkku-lahja` | Added from Kivihovi's official service page with current contact details; no image until a matching, rights-cleared asset is verified |
 
-## Remaining official-map verification
+## Official-map reconciliation
 
-The seven previously outstanding profiles (Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa) are now present in the catalogue. Two source-verification items remain: confirm whether Meritalo should remain represented through the existing Lepola Drinks canonical profile, and verify the current operator, offer and contact details for Liikenneasema Kivihovi — Herkku & Lahja before adding it. Do not create a separate Meritalo record without confirming the legal/operator relationship. The brochure is an inventory source, not proof that every sales point or seasonal shop is currently open.
+The seven previously outstanding profiles (Puutarha Siimes, Rannikon Puutarha, Vaanelan puutarha, Veljesten kurkut, Ohrakasken tila, Rinteen luomutila and Meriniityn Lihakauppa) are now present in the catalogue. Liikenneasema Kivihovi — Herkku & Lahja has also been added using its current official service page. Meritalo is not a separate provider record: its official site identifies the Lepola Shop as the shared farm shop for Lepola and Meritalo, and identifies Lepola Drinks as the beverage brand within Marjajaloste Meritalo Oy. The catalogue therefore keeps one canonical Lepola Drinks profile and uses the verified shared shop address. The brochure is an inventory source, not proof that every sales point or seasonal shop is currently open.
 
 | No. | Name | Address / area | Contact or website in the 2026 brochure |
 |---:|---|---|---|
-| 31 | Meritalo | Kemiöntie 1008, 25610 Ylönkylä | 040 725 0233 · https://meritalo.com |
+| 31 | Meritalo | Kemiöntie 1008, 25610 Ylönkylä | 0400 955 118 · https://meritalo.com |
 | 32 | Ohrakasken tila | Kaitasuontie 93, Raatala, Salo | 040 836 8271 · Facebook: Ohrakasken tila | **Added** |
 | 36 | Rinteen luomutila | Kiviarontie 185, 25110 Salo | 040 519 5575 · Facebook: Rinteen luomutila | **Added** |
-| 39 | Liikenneasema Kivihovi — Herkku & Lahja | Bulevardi 10, 25410 Suomusjärvi | 041 732 1474 · liikenneasema@kivihovi.fi |
+| 39 | Liikenneasema Kivihovi — Herkku & Lahja | Bulevardi 10, 25410 Suomusjärvi | 041 732 1474 · liikenneasema@kivihovi.fi | **Added** |
 | 41 | Meriniityn lihakauppa | Valimonkatu 4, 24100 Salo | 02 735 8817 · Instagram: Meriniitynliha | **Added** |
 
 ## Three ice-cream kiosks — one operator profile
@@ -73,15 +74,15 @@ The 2026 brochure lists these locations under Vuorovetten Jäätelö. Keep one c
 ## Canonical-provider decisions to verify
 
 - **Hallonmäen tila / Hallonmäen Siideripanimo:** the brochure lists the same address and family, but the two businesses have separate legal identities and contacts. They are therefore kept as separate canonical profiles.
-- **Lepola Drinks / Meritalo:** the brochure lists the same Ylönkylä address and phone. Confirm the legal/operator relationship before adding a separate Meritalo profile; do not create a duplicate by assumption.
+- **Lepola Drinks / Meritalo:** the official Meritalo site identifies Lepola Drinks as its beverage brand and the Lepola Shop as the shared farm shop. Keep one canonical profile; the verified shop address is Kemiöntie 1008, 25610 Ylönkylä.
 - **Alaspään maatila, Finnholm and Leipyölin tila:** existing accommodation profiles may represent operators that also sell local produce. Cross-list the existing canonical profile rather than adding a second profile for the same operator.
 - **Vuorovetten Jäätelö:** one operator, three kiosk locations.
 - **Öyrilän Isontalon lammastila:** the farm is in Perniö, but its products are also sold seasonally at Mathildedal Vinttipuoti; its canonical profile is included in the Mathildedal area directory for that reason.
 
 ## Publication and image rules
 
-- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. The current code contains 28 primary local-food profiles and 37 local-food category appearances after cross-listing; automated tests lock the canonical inventory and expected image coverage.
+- The distinct **Lähiruoka ja maatilapuodit** category is implemented separately from restaurant/café cards. The current code contains 29 primary local-food profiles and 38 local-food category appearances after cross-listing; automated tests lock the canonical inventory and expected image coverage.
 - Do not copy seasonal opening hours or brochure prices into permanent descriptions without checking the provider’s current official channel.
 - Do not invent a provider photo or use an unrelated farm/food image. If an official matching image cannot be verified, publish the provider with no image until a suitable image and credit are available.
-- Preserve the source URL and image credit for every published photo. Current image coverage is 90/100; the ten providers without verified matching imagery must remain image-free rather than receiving substitute photos.
+- Preserve the source URL and image credit for every published photo. Current image coverage is 90/101; the eleven providers without verified matching imagery must remain image-free rather than receiving substitute photos.
 - Every published provider profile must have FI / EN / ES copy and a direct link to the provider. Booking, payment and agreements remain with the provider.
