@@ -162,14 +162,34 @@ export function KimitoonGuide({ locale, category }: { locale: Locale; category?:
       <section className="container-narrow py-14 sm:py-20">
         {!category ? <div className="mb-8"><p className="text-xs font-bold uppercase tracking-[.2em] text-brand-700">{t.explore}</p><h2 className="mt-3 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{t.categories}</h2></div> : null}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {category === "majoitus" || category === "ruoka" ? <KimitoonKansakouluCategoryCard locale={locale} category={category} /> : visibleCategories.map((item) => (
+          {!category ? categories.map((item) => (
             <article key={item.id} className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
               <Link href={`/${locale}/destinations/kemionsaari/${item.id}`} className="block">
                 <div className="relative h-56 overflow-hidden bg-stone-100"><img src={item.image} alt={item.title[locale]} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /></div>
                 <div className="p-5"><h3 className="font-display text-xl font-bold text-brand-950">{item.title[locale]}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{t.category[item.id][1]}</p><span className="mt-4 inline-flex text-sm font-bold text-brand-800">{locale === "fi" ? "Tutustu" : locale === "es" ? "Descubrir" : "Explore"} →</span></div>
               </Link>
             </article>
-          ))}
+          )) : category === "majoitus" || category === "ruoka" ? (
+            <KimitoonKansakouluCategoryCard locale={locale} category={category} />
+          ) : category === "tapahtumat" ? (
+            <article className="rounded-3xl border border-stone-200 bg-stone-50 p-7 sm:col-span-2 lg:col-span-3">
+              <h2 className="font-display text-2xl font-bold text-brand-950">{locale === "fi" ? "Ajankohtaiset tapahtumat" : locale === "es" ? "Eventos actuales" : "Upcoming events"}</h2>
+              <p className="mt-3 max-w-2xl leading-7 text-slate-700">{t.eventsText}</p>
+              <a href="https://www.visitkimitoon.fi/fi/nae-ja-koe/tapahtumat/tapahtumakalenteri/" target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full bg-brand-950 px-5 py-3 font-bold text-white">{locale === "fi" ? "Avaa virallinen tapahtumakalenteri" : locale === "es" ? "Abrir calendario oficial" : "Open official event calendar"} ↗</a>
+            </article>
+          ) : (
+            (category === "saaristo"
+              ? places.filter((place) => ["Taalintehdas", "Kasnäs", "Rosala", "Bengtskär", "Örön linnakesaari"].includes(place.title))
+              : category === "luonto"
+                ? places.filter((place) => ["Örön linnakesaari", "Söderlångvikin kartano"].includes(place.title))
+                : places.filter((place) => ["Taalintehdas", "Söderlångvikin kartano", "Sagalund"].includes(place.title))
+            ).map((place) => (
+              <article key={place.title} className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                <div className="relative h-56 overflow-hidden bg-stone-100"><img src={place.image} alt={place.title} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /></div>
+                <div className="p-5"><h3 className="font-display text-xl font-bold text-brand-950">{place.title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{place.sub[locale]}</p>{place.url.startsWith("/") ? <Link href={`/${locale}${place.url}`} className="mt-4 inline-flex text-sm font-bold text-brand-800 underline">{locale === "fi" ? "Tutustu kohteeseen" : locale === "es" ? "Descubrir el destino" : "Explore destination"} →</Link> : <a href={place.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex text-sm font-bold text-brand-800 underline">{locale === "fi" ? "Tutustu kohteeseen" : locale === "es" ? "Descubrir el destino" : "Explore destination"} ↗</a>}</div>
+              </article>
+            ))
+          )}
         </div>
       </section>
       {!category ? <>
