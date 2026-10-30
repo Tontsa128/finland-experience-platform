@@ -1492,6 +1492,45 @@ export const saloProviders: SaloProvider[] = [
     },
     url: "https://veljestenkurkut.fi"
   },
+  {
+    id: "ohrakasken-tila",
+    category: "localFood",
+    name: "Ohrakasken tila",
+    location: "Raatala / Kuusjoki, Salo",
+    contact: { phone: "+358 40 836 8271", email: "katri.paakki@gmail.com", address: "Kaitasuontie 93, 25320 Salo" },
+    description: {
+      fi: "Ohrakasken tila on Raatalassa toimiva lähitila, jonka päätuote on pensasmustikka. Mustikoita myydään satokaudella itse poimien tai valmiiksi poimittuna tilapuodista tilauksesta. Tilalla kasvatetaan myös pieniä määriä tankoparsaa kausittain. Poiminnan ja saatavuuden ajankohta kannattaa varmistaa suoraan tilalta.",
+      en: "Ohrakasken is a local farm in Raatala, specialising in highbush blueberries. During the season, berries are available for self-picking or pre-picked by order from the farm shop. Small quantities of asparagus are also grown seasonally. Check picking conditions and availability directly with the farm.",
+      es: "Ohrakasken es una granja local en Raatala especializada en arándanos de arbusto. Durante la temporada se pueden recoger los frutos o pedirlos ya recolectados en la tienda de la granja. También cultiva pequeñas cantidades de espárragos de temporada. Consulta directamente con la granja la disponibilidad y la recogida."
+    },
+    url: "https://kohteet.visitsalo.fi/ohrakasken-tila/"
+  },
+  {
+    id: "rinteen-luomutila",
+    category: "localFood",
+    name: "Rinteen luomutila",
+    location: "Kruusila, Salo",
+    contact: { phone: "+358 40 519 5575", email: "laura.loimusto@gmail.com", address: "Kiviarontie 185, 25110 Kruusila" },
+    description: {
+      fi: "Rinteen luomutila on Kruusilassa toimiva perhetila, joka kasvattaa luomuvihanneksia ja -taimia kasvihuoneissa sekä avomaalla. Tuotantoon kuuluu muun muassa tomaatteja, kurkkuja, yrttejä, juureksia ja vihannesten taimia. Tilalla myydään myös kesäkukkia ja amppeleita; myynti tapahtuu tilalta tai torimyynnissä sesongin mukaan.",
+      en: "Rinteen Organic Farm is a family-run farm in Kruusila growing organic vegetables and seedlings in greenhouses and outdoors. Its produce includes tomatoes, cucumbers, herbs, root vegetables and vegetable seedlings. Summer flowers and hanging baskets are also sold directly from the farm or at market stalls, depending on the season.",
+      es: "Rinteen es una granja familiar ecológica en Kruusila que cultiva verduras y plantones en invernaderos y al aire libre. Produce tomates, pepinos, hierbas, raíces y plantones de hortalizas. También vende flores de verano y cestas colgantes directamente en la granja o en mercados, según la temporada."
+    },
+    url: "https://kohteet.visitsalo.fi/rinteen-luomutila/"
+  },
+  {
+    id: "meriniityn-lihakauppa",
+    category: "localFood",
+    name: "Meriniityn Lihakauppa",
+    location: "Salo",
+    contact: { phone: "+358 2 735 8817", email: "info@meriniitynlihakauppa.fi", address: "Valimonkatu 4, 24100 Salo" },
+    description: {
+      fi: "Meriniityn Lihakauppa on Perniön 1930 -makkaratehtaan yhteydessä toimiva tehtaanmyymälä Salossa. Valikoimaan kuuluu tehtaan lihatuotteita, erikoismakkaroita ja muita paikallisia herkkuja. Tuotevalikoima ja myymälän aukiolo kannattaa tarkistaa ennen vierailua suoraan tehtaanmyymälästä.",
+      en: "Meriniityn Butcher Shop is the factory shop of Perniön 1930 sausage maker in Salo. Its range includes the producer's meat products, speciality sausages and other local delicacies. Check the current product range and shop hours directly with the factory shop before visiting.",
+      es: "Meriniityn Lihakauppa es la tienda de fábrica del productor de embutidos Perniön 1930, en Salo. Su selección incluye productos cárnicos del fabricante, salchichas especiales y otras especialidades locales. Consulta directamente con la tienda la selección actual y el horario antes de visitarla."
+    },
+    url: "https://pernion1930.fi/yhteystiedot/"
+  },
 ];
 
 export const saloEvents: SaloEvent[] = [
