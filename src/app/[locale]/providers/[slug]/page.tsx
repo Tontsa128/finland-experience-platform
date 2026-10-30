@@ -152,6 +152,24 @@ const mathildedalAreaPhotos: LocalPhoto[] = [
 ];
 
 const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
+  "salo-teijon-kammari": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/thumbnail_IMG_3168-1.jpg", alt: { fi: "Teijon Kammarin mökki", en: "Teijon Kammari cottage", es: "Cabaña Teijon Kammari" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/thumbnail_IMG_3171.jpg", alt: { fi: "Teijon Kammarin merelle avautuva parveke", en: "Teijon Kammari balcony facing the sea", es: "Balcón de Teijon Kammari con vistas al mar" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/IMG_0927-1152x768.jpg", alt: { fi: "Teijon Kammarin puulämmitteinen sauna", en: "Wood-fired sauna at Teijon Kammari", es: "Sauna de leña de Teijon Kammari" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/sisalta-1152x768.jpg", alt: { fi: "Teijon Kammarin oleskelutila", en: "Teijon Kammari sitting room", es: "Sala de estar de Teijon Kammari" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/teijon-kammari-rental-cottage/" },
+  ],
+  "salo-kruuvan-mokit": [
+    { src: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-45-1024x683.webp", alt: { fi: "Villa Kruuvan mökkimiljöö", en: "Villa Kruuva cottage setting", es: "Entorno de la casa rural Villa Kruuva" }, credit: "Kruuvan mökit", source: "https://www.kruuvanmokit.fi/" },
+    { src: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-olohuone-01-819x1024.webp", alt: { fi: "Villa Kruuvan olohuone", en: "Villa Kruuva living room", es: "Sala de estar de Villa Kruuva" }, credit: "Kruuvan mökit", source: "https://www.kruuvanmokit.fi/" },
+    { src: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-49-683x1024.webp", alt: { fi: "Villa Kruuvan sauna", en: "Villa Kruuva sauna", es: "Sauna de Villa Kruuva" }, credit: "Kruuvan mökit", source: "https://www.kruuvanmokit.fi/" },
+    { src: "https://www.kruuvanmokit.fi/wp-content/uploads/2022/08/Villa_Kruuva-laituri-01-1024x683.webp", alt: { fi: "Villa Kruuvan oma ranta ja laituri", en: "Villa Kruuva private shore and pier", es: "Orilla privada y muelle de Villa Kruuva" }, credit: "Kruuvan mökit", source: "https://www.kruuvanmokit.fi/" },
+  ],
+  "salo-meri-veikko": [
+    { src: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c860e1402211607476_Clipboard01%20151236%20re1.jpg", alt: { fi: "Meri-Veikon majoituskohteen kuva", en: "Meri-Veikko accommodation photo", es: "Fotografía del alojamiento Meri-Veikko" }, credit: "Saaristotila Lönnviken", source: "https://www.lonnviken.com/fi/meri-veikko" },
+    { src: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c846690293640ca95c_8513_10x15%20re1.jpg", alt: { fi: "Meri-Veikon majoituskohteen kuva", en: "Meri-Veikko accommodation photo", es: "Fotografía del alojamiento Meri-Veikko" }, credit: "Saaristotila Lönnviken", source: "https://www.lonnviken.com/fi/meri-veikko" },
+    { src: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c821542327e367b1d4_20220826_145501%20resized%201.jpg", alt: { fi: "Meri-Veikon majoituskohteen kuva", en: "Meri-Veikko accommodation photo", es: "Fotografía del alojamiento Meri-Veikko" }, credit: "Saaristotila Lönnviken", source: "https://www.lonnviken.com/fi/meri-veikko" },
+    { src: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c89daa1781cc8f665c_20220825_202417%20re%205.jpg", alt: { fi: "Meri-Veikon majoituskohteen kuva", en: "Meri-Veikko accommodation photo", es: "Fotografía del alojamiento Meri-Veikko" }, credit: "Saaristotila Lönnviken", source: "https://www.lonnviken.com/fi/meri-veikko" },
+  ],
   "kimitoon-db-hostel": [
     { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_173606-1024x781.jpg", alt:{fi:"DB Hostellin kahden hengen huone",en:"DB Hostel twin room",es:"Habitación doble de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
     { src:"https://www.dbhostel.fi/wp-content/uploads/2025/05/20250524_174601-1024x768.jpg", alt:{fi:"DB Hostellin neljän hengen huone parvekkeella",en:"DB Hostel four-person room with balcony",es:"Habitación para cuatro personas con balcón de DB Hostel"}, credit:"DB Hostel", source:"https://www.dbhostel.fi/" },
