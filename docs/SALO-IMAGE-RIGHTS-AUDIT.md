@@ -54,10 +54,12 @@ Sources:
 
 ## Current application behaviour and gap
 
-- `getSaloProviderImage()` currently hides the Meri-Teijo Golf image because its `imageRightsStatus` is `pending`.
-- The other image entries have credit strings, but no explicit `imageRightsStatus: "verified"` evidence in `src/lib/salo.ts`.
-- Therefore the current count of 89 images eligible under the code's narrow pending-only guard must not be described as 89 rights-cleared images.
-- Before commercial production release, the CMS must require a verified rights state backed by evidence (licence URL/file or permission record, rights holder, scope, expiry/review date, attribution, modification permission). Unknown and pending assets must fail closed.
+- `getSaloProviderImage()` now returns an image only when `imageRightsStatus` is `verified` **and** the asset has complete evidence: rights holder, permission/licence reference, allowed use, attribution, modification permission, verification date and reviewer.
+- None of the 90 Salo source-data image assets currently contains that complete evidence, so all 90 are withheld from public provider-card and provider-detail hero rendering by the shared helper. This is intentional fail-closed behaviour, not a statement that the images are unusable or infringing.
+- Salo provider-detail galleries apply the same evidence check to additional provider photos. Generic Mathildedal area photos are no longer appended to individual provider galleries.
+- The code-level guard does not grant rights or replace written permission. A rights reviewer must inspect the exact asset and record evidence before an image can be marked verified.
+- Non-Salo provider galleries are outside this Salo-specific code change and require their own rights review.
+- The existing Supabase media library should become the long-term source of truth for asset-level rights evidence. Its live schema and server-side publication integration still require verification before migration or release.
 
 ## Required work before production release
 
