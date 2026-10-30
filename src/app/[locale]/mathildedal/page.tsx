@@ -125,7 +125,7 @@ export default async function MathildedalPage({ params }: { params: Promise<{ lo
               const Icon = item.icon;
               const preferredProviderId = { stay: "hotel-mathildedal", food: "ravintola-terho", shopping: "kaarnalaiva", experience: "mathildedal-keskuspuisto", nature: "mathildedal-meriuimapaikka", wellbeing: "matildanjarven-sauna" };
               const image = item.category ? saloProviders.find((provider) => provider.id === preferredProviderId[item.category])?.image : photoLibrary.mathildedalHarbour;
-              const href = item.slug === "tapahtumat" ? "#mathildedal-events" : `/${locale}/mathildedal/${item.slug}`;
+              const href = item.slug === "tapahtumat" ? "#salo-category-events" : `/${locale}/mathildedal/${item.slug}`;
               return (
                 <Link key={item.slug} href={href} className="group overflow-hidden rounded-[1.5rem] border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-card">
                   <div className="relative aspect-[16/9] overflow-hidden bg-brand-100">
