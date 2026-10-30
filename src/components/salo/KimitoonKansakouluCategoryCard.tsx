@@ -20,8 +20,9 @@ export function KimitoonKansakouluCategoryCard({locale,category}:{locale:Locale;
      <span className="font-display text-2xl font-semibold">Kansakoulu</span>
     </div>
    ) : (
-    <div className="relative h-64 overflow-hidden bg-stone-100">
-     <img src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/ravintola.jpg" alt={locale==="fi"?"Kansakoulun ravintolan historiallinen miljöö":locale==="es"?"Ambiente histórico del restaurante Kansakoulu":"The historic restaurant setting at Kansakoulu"} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105"/>
+    <div className="grid h-64 grid-cols-2 overflow-hidden bg-stone-100">
+     <img src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/ravintola.jpg" alt={locale==="fi"?"Kansakoulun ravintolan historiallinen miljöö":locale==="es"?"Ambiente histórico del restaurante Kansakoulu":"The historic restaurant setting at Kansakoulu"} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"/>
+     <img src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/lahiruoka.jpg" alt={locale==="fi"?"Kansakoulun lähiruokatuotteita":locale==="es"?"Productos locales de Kansakoulu":"Local food products at Kansakoulu"} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"/>
     </div>
    )}
    <div className="p-6"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-700">Västanfjärd · Kemiönsaari</p><h2 className="mt-2 font-display text-2xl font-bold text-brand-950">{title}</h2><p className="mt-3 leading-7 text-slate-600">{description}</p><span className="mt-5 inline-flex text-sm font-bold text-brand-800">{locale==="fi"?"Tutustu palveluntarjoajaan":locale==="es"?"Descubrir el establecimiento":"Explore this provider"} →</span>
