@@ -78,7 +78,8 @@ export const saloProviders: SaloProvider[] = [
   {
     id: "hotel-mathildedal",
     location: "Mathildedal, Salo",
-    contact: { phone: "+358 50 354 2487", email: "info@mathildedal.fi", address: "Ruukinrannantie 6, 25660 Mathildedal" },    category: "stay",
+    contact: { phone: "+358 50 354 2487", email: "info@mathildedal.fi", address: "Ruukinrannantie 6, 25660 Mathildedal" },
+    category: "stay",
     name: "Hotel Mathildedal",
     description: {
       fi: "13 huoneen boutique-hotelli historiallisessa ruukkikylässä Teijon kansallispuiston vieressä.",
@@ -92,7 +93,8 @@ export const saloProviders: SaloProvider[] = [
   {
     id: "mathildan-marina",
     location: "Mathildedal, Salo",
-    contact: { phone: "+358 2 250 2432", email: "info@mathildanmarina.fi", address: "Ruukinrannantie 4, 25660 Mathildedal" },    directoryCategories: ["food", "archipelago"],
+    contact: { phone: "+358 2 250 2432", email: "info@mathildanmarina.fi", address: "Ruukinrannantie 4, 25660 Mathildedal" },
+    directoryCategories: ["food", "archipelago"],
     category: "stay",
     name: "Mathildan Marina",
     description: {

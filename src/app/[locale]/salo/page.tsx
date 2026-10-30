@@ -8,7 +8,6 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 import { getSaloProviderCategories, saloProviders, type SaloProviderCategory } from "@/lib/salo";
-import { destinations as fallbackDestinations } from "@/lib/data";
 
 const copy = {
   fi: {
@@ -101,7 +100,46 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
   const cmsPage = await getPageOverride(locale, "salo");
   if (cmsPage) return <PageOverride page={cmsPage} locale={locale} />;
   const c = copy[locale] || copy.en;
-  const featured = fallbackDestinations.filter((d) => ["salo-mathildedal", "rosala"].includes(d.slug));
+  const mathildedalProvider = saloProviders.find((provider) => provider.id === "mathildan-marina");
+  const kirjakkalaProvider = saloProviders.find((provider) => provider.id === "kirjakkalan-ruukkikyla");
+  const ironworksVillages = [
+    {
+      href: `/${locale}/mathildedal`,
+      title: { fi: "Mathildedal", en: "Mathildedal", es: "Mathildedal" },
+      description: {
+        fi: "Historiallinen ruukkikylä, satama, pienet putiikit, ravintolat ja merelliset elämykset.",
+        en: "A historic ironworks village with a harbour, independent shops, restaurants and coastal experiences.",
+        es: "Pueblo siderúrgico histórico con puerto, pequeñas tiendas, restaurantes y experiencias junto al mar.",
+      },
+      alt: { fi: "Mathildedalin satama ja merellinen ruukkikylä", en: "Mathildedal harbour and coastal ironworks village", es: "Puerto y pueblo siderúrgico costero de Mathildedal" },
+      image: mathildedalProvider?.image || photoLibrary.mathildedalVillage,
+      credit: mathildedalProvider?.imageCredit || "Visit Salo / Visit Finland DataHub",
+    },
+    {
+      href: `/${locale}/destinations/teijon-ruukkikyla`,
+      title: { fi: "Teijo", en: "Teijo", es: "Teijo" },
+      description: {
+        fi: "Ruukkihistoriaa, Teijon Masuuni ja kyläpalveluita. Kansallispuisto esitellään omana luontokohteenaan.",
+        en: "Ironworks heritage, Teijo Masuuni and village services. The national park is presented as a separate nature destination.",
+        es: "Patrimonio siderúrgico, Teijo Masuuni y servicios del pueblo. El parque nacional se presenta como un destino natural independiente.",
+      },
+      alt: { fi: "Teijon Masuunin historiallinen rakennus ja terassi", en: "Historic Teijo Masuuni building and terrace", es: "Edificio histórico y terraza de Teijo Masuuni" },
+      image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/masuuni_terassi1-%E2%80%93-kopio-1156x768.jpg",
+      credit: "Visit Salo / Salon Kohteet",
+    },
+    {
+      href: `/${locale}/destinations/kirjakkalan-ruukkikyla`,
+      title: { fi: "Kirjakkala", en: "Kirjakkala", es: "Kirjakkala" },
+      description: {
+        fi: "Hamarijärven rannalla sijaitseva historiallinen ruukkikylä, jossa on majoitus-, sauna- ja ulkoilupalveluita.",
+        en: "A historic ironworks village beside Lake Hamarijärvi, with accommodation, sauna and outdoor services.",
+        es: "Pueblo siderúrgico histórico junto al lago Hamarijärvi, con alojamiento, sauna y actividades al aire libre.",
+      },
+      alt: { fi: "Kirjakkalan ruukkikylän rakennus", en: "Building in Kirjakkala Ironworks Village", es: "Edificio del pueblo siderúrgico de Kirjakkala" },
+      image: kirjakkalaProvider?.image || photoLibrary.teijoNationalPark,
+      credit: kirjakkalaProvider?.imageCredit || "Visit Salo / Salon Kohteet",
+    },
+  ];
 
   return (
     <main className="bg-white">
@@ -212,6 +250,33 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      <section className="bg-stone-50 py-16 sm:py-24">
+        <div className="container-narrow">
+          <div className="mb-9 max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-700">{locale === "fi" ? "Ruukkikylät" : locale === "es" ? "Pueblos siderúrgicos" : "Ironworks villages"}</p>
+            <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Salon kolme historiallista ruukkikylää" : locale === "es" ? "Tres pueblos siderúrgicos históricos de Salo" : "Salo's three historic ironworks villages"}</h2>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
+              {locale === "fi" ? "Mathildedal, Teijo ja Kirjakkala ovat omaleimaisia kyliä omine historioineen ja palveluineen. Tutustu jokaiseen erikseen ja siirry suoraan paikallisten palveluntarjoajien sivuille." : locale === "es" ? "Mathildedal, Teijo y Kirjakkala son pueblos singulares, cada uno con su propia historia y servicios. Descubre cada uno por separado y continúa directamente a las webs de los proveedores locales." : "Mathildedal, Teijo and Kirjakkala are distinctive villages, each with its own history and services. Explore them separately and continue directly to local providers."}
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {ironworksVillages.map((village) => (
+              <Link key={village.href} href={village.href} className="group overflow-hidden rounded-[1.75rem] border border-stone-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
+                <div className="relative aspect-[16/10] overflow-hidden bg-stone-200">
+                  <Image src={village.image} alt={village.alt[locale]} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-2xl font-bold text-brand-950">{village.title[locale]}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{village.description[locale]}</p>
+                  <p className="mt-4 text-xs text-slate-500">{locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:"} {village.credit}</p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Tutustu ruukkikylään" : locale === "es" ? "Descubre el pueblo" : "Explore the village"} <ArrowRight className="h-4 w-4" /></span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-brand-950 py-16 text-white sm:py-24">
         <div className="container-narrow">
           <div className="max-w-3xl">
@@ -223,12 +288,6 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
       </section>
 
       <SaloDirectory locale={locale} />
-
-      <section className="container-narrow py-16 sm:py-24">
-        <div className="grid gap-6 md:grid-cols-2">
-          {featured.map((d) => <Link key={d.slug} href={`/${locale}/destinations/${d.slug}`} className="group rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft"><h2 className="font-display text-2xl font-bold text-brand-950">{d.name[locale]}</h2><p className="mt-3 leading-7 text-slate-600">{d.shortDescription[locale]}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{locale === "fi" ? "Avaa kohde" : locale === "es" ? "Abrir destino" : "Open destination"}<ArrowRight className="h-4 w-4" /></span></Link>)}
-        </div>
-      </section>
 
       <section className="bg-brand-50 py-16 text-center">
         <div className="container-narrow">
