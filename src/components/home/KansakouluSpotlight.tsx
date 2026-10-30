@@ -65,7 +65,7 @@ export function KansakouluSpotlight({ locale }: { locale: Locale }) {
               {locale === "fi" ? "Vanha kansakoulu on saanut uuden elämän persoonallisena majoitus- ja ravintolakohteena. Tarkista palvelut, aukiolo ja varausmahdollisuudet suoraan kohteelta." : locale === "es" ? "La antigua escuela ha renacido como un alojamiento y restaurante con personalidad. Consulta directamente los servicios, horarios y reservas." : "The former school has found a new life as a characterful guesthouse and restaurant. Check services, opening times and booking options directly with the venue."}
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-4">
-              <Link href={"/" + locale + "/destinations/kemionsaari/ruoka"} className="inline-flex items-center gap-2 rounded-full bg-brand-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-800">{t.cta}<ArrowRight className="h-4 w-4" /></Link>
+              <Link href={"/" + locale + "/destinations/kemionsaari/kohde/kansakoulu"} className="inline-flex items-center gap-2 rounded-full bg-brand-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-800">{t.cta}<ArrowRight className="h-4 w-4" /></Link>
               <a href="https://www.kansakouluun.fi/" target="_blank" rel="noreferrer" className="text-sm font-bold text-brand-900 underline underline-offset-4">{t.direct} ↗</a>
             </div>
             <div className="mt-7 flex items-center justify-between gap-3">
