@@ -86,7 +86,7 @@ export default async function TeijoIronworksVillagePage({ params }: { params: Pr
       <SaloDirectory locale={locale} area="teijo" />
       <RuukkikylaGuide village="teijo" locale={locale} />
       <section className="container-narrow py-12">
-        <Link href={`/${locale}/destinations/salo-mathildedal`} className="inline-flex rounded-full border border-stone-300 px-5 py-3 text-sm font-bold text-brand-950 hover:bg-stone-50">{t.mathildedal} →</Link>
+        <Link href={`/${locale}/mathildedal`} className="inline-flex rounded-full border border-stone-300 px-5 py-3 text-sm font-bold text-brand-950 hover:bg-stone-50">{t.mathildedal} →</Link>
       </section>
     </main>
   );
