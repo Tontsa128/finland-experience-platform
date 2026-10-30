@@ -1300,6 +1300,199 @@ export const kimitoonProviders: KimitoonProvider[] = [
     imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["mökkivuokraus","kiinteistönvälitys"]
   }
 
+  {
+    id:"luddes-taxi",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Luddes Taxi",en:"Luddes Taxi",es:"Luddes Taxi"},
+    description:{
+      fi:"Taksi- ja henkilökuljetuspalvelu Västanfjärdissä. Tarkista auton koko, esteettömyys ja matkan saatavuus suoraan kuljettajalta.",
+      en:"Taxi and passenger transport service in Västanfjärd. Confirm vehicle capacity, accessibility and journey availability directly with the driver.",
+      es:"Servicio de taxi y transporte de pasajeros en Västanfjärd. Consulta directamente la capacidad del vehículo, la accesibilidad y la disponibilidad."
+    },
+    location:{fi:"Lammalavägen 116, 25830 Västanfjärd",en:"Lammalavägen 116, 25830 Västanfjärd",es:"Lammalavägen 116, 25830 Västanfjärd"},
+    websiteUrl:"https://ksg.fi/fi/foretag/luddes-taxi/",sourceUrl:"https://ksg.fi/fi/foretag/luddes-taxi/",
+    imageCredit:"Luddes Taxi / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/luddes-taxi/",tags:["taksi","henkilökuljetus"],contact:{phone:"050 562 1260",address:"Lammalavägen 116, 25830 Västanfjärd"}
+  },
+  {
+    id:"taxi-suominen-kjell",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Taksi Suominen Kjell",en:"Taxi Suominen Kjell",es:"Taxi Suominen Kjell"},
+    description:{
+      fi:"Taksipalvelu Dalsbrukissa. KSG:n mukaan käytössä on 1+4- ja 1+8-paikkaiset autot sekä pyörätuolivarustus. Tarkista esteettömyyden ja kuljetustarpeen sopivuus suoraan kuljettajalta.",
+      en:"Taxi service in Dalsbruk. KSG lists 1+4 and 1+8-seat vehicles and wheelchair equipment. Confirm that the vehicle suits your accessibility and transport needs directly with the driver.",
+      es:"Servicio de taxi en Dalsbruk. KSG indica vehículos de 1+4 y 1+8 plazas y equipamiento para sillas de ruedas. Confirma directamente con el conductor que el vehículo se adapta a tus necesidades."
+    },
+    location:{fi:"25900 Taalintehdas",en:"25900 Dalsbruk",es:"25900 Dalsbruk"},
+    websiteUrl:"https://ksg.fi/fi/foretag/taxi-suominen-kjell/",sourceUrl:"https://ksg.fi/fi/foretag/taxi-suominen-kjell/",
+    imageCredit:"Taxi Suominen Kjell / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/taxi-suominen-kjell/",tags:["taksi","pyörätuolikuljetus"],contact:{phone:"0400 399 555",address:"25900 Taalintehdas"}
+  },
+  {
+    id:"nickes-taxi",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Nickes Taxi / Taxi Niklas Johansson",en:"Nickes Taxi / Taxi Niklas Johansson",es:"Nickes Taxi / Taxi Niklas Johansson"},
+    description:{
+      fi:"Kemiönsaaren taksi- ja henkilökuljetuspalvelu, jonka KSG mainitsee myös Kela- ja vammaispalvelukuljetuksiin. Varmista kuljetusmuoto, esteettömyys ja aikataulu suoraan kuljettajalta.",
+      en:"Taxi and passenger transport on Kimitoön. KSG also lists Kela and disability transport services. Confirm vehicle type, accessibility and timing directly with the driver.",
+      es:"Servicio de taxi y transporte de pasajeros en Kimitoön. KSG también menciona traslados Kela y para personas con discapacidad. Confirma vehículo, accesibilidad y horario directamente con el conductor."
+    },
+    location:{fi:"Solbackasvängen 14, 25840 Nivelax",en:"Solbackasvängen 14, 25840 Nivelax",es:"Solbackasvängen 14, 25840 Nivelax"},
+    websiteUrl:"https://ksg.fi/fi/foretag/nickes-taxi-taxi-niklas-johansson/",sourceUrl:"https://ksg.fi/fi/foretag/nickes-taxi-taxi-niklas-johansson/",
+    imageCredit:"Nickes Taxi / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/foretag/nickes-taxi-taxi-niklas-johansson/",tags:["taksi","Kela-kuljetukset","esteetön kuljetus"],contact:{phone:"0400 122 859",address:"Solbackasvängen 14, 25840 Nivelax"}
+  },
+  {
+    id:"thomas-sjoblom-taxi",categories:["kuljetukset","muut-palvelut"],
+    name:{fi:"Thomas Sjöblom taksi",en:"Thomas Sjöblom Taxi",es:"Taxi Thomas Sjöblom"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaassa taksi- ja henkilökuljetuksiin listattu paikallinen kuljettaja. Varaa matka ja varmista kuljetuksen yksityiskohdat suoraan kuljettajalta.",
+      en:"A local driver listed in the Kimitoön business guide for taxi and passenger transport. Book your journey and confirm the details directly with the driver.",
+      es:"Conductor local incluido en la guía empresarial de Kimitoön para taxi y transporte de pasajeros. Reserva el trayecto y confirma los detalles directamente con el conductor."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/foretag/thomas-sjoblom-taksi/",sourceUrl:"https://ksg.fi/foretag/thomas-sjoblom-taksi/",
+    imageCredit:"Thomas Sjöblom Taxi / Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/foretag/thomas-sjoblom-taksi/",tags:["taksi","henkilökuljetus"],contact:{phone:"040 731 4045"}
+  },
+  {
+    id:"j-m-launokorpi-charter",categories:["kuljetukset","muut-palvelut","aktiviteetit"],
+    name:{fi:"J & M Launokorpi Oy – tilausajot",en:"J & M Launokorpi Oy – charter buses",es:"J & M Launokorpi Oy – autobuses privados"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaan mukaan yritys järjestää tilausajoja 20–56-paikkaisilla linja-autoilla. Soveltuu ryhmien kuljetuksiin ja retkien järjestelyihin; varmista reitti, kalusto ja tarjous suoraan yritykseltä.",
+      en:"The Kimitoön business guide lists charter transport with 20–56-seat coaches. Suitable for group transfers and excursions; confirm route, vehicle and quotation directly with the company.",
+      es:"La guía empresarial de Kimitoön indica servicios de autobús privado con vehículos de 20 a 56 plazas. Para traslados de grupos y excursiones, consulta rutas, vehículos y presupuesto directamente con la empresa."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["tilausajo","linja-auto","ryhmäkuljetus"]
+  },
+  {
+    id:"kemionsaaren-venekeskus",categories:["saaristo","ostokset","muut-palvelut"],
+    name:{fi:"Kemiönsaaren Venekeskus Oy",en:"Kimitoön Boat Centre",es:"Centro Náutico de Kimitoön"},
+    description:{
+      fi:"Veneiden myyntiä, välitystä, säilytystä ja huoltoa tarjoava paikallinen venepalvelu. KSG listaa yrityksen myös venepaikkojen ja talvisäilytyksen yhteydessä. Tarkista palvelut ja vapaat säilytyspaikat suoraan yritykseltä.",
+      en:"A local boating service offering boat sales, brokerage, storage and maintenance. KSG also lists the company under berths and winter storage. Confirm services and available storage directly with the business.",
+      es:"Servicio náutico local que ofrece venta, intermediación, almacenamiento y mantenimiento de embarcaciones. KSG también lo incluye en amarres y almacenamiento invernal. Consulta servicios y plazas disponibles directamente con la empresa."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["venemyynti","venevälitys","venepaikat","talvisäilytys","huolto"]
+  },
+  {
+    id:"kone-wuorio",categories:["ostokset","saaristo","muut-palvelut"],
+    name:{fi:"Kone Wuorio Maskin Oy Ab – Taalintehdas",en:"Kone Wuorio Maskin Oy Ab – Dalsbruk",es:"Kone Wuorio Maskin Oy Ab – Dalsbruk"},
+    description:{
+      fi:"Taalintehtaan vene- ja kalastustarvikkeiden erikoisliike. Kemiönsaaren palveluopas listaa yrityksen veneilyyn liittyvien erikoiskauppojen joukkoon.",
+      en:"A specialist shop for boating and fishing equipment in Dalsbruk. The Kimitoön business guide lists the company among specialist boating retailers.",
+      es:"Tienda especializada en artículos de navegación y pesca en Dalsbruk. La guía empresarial de Kimitoön la incluye entre los comercios náuticos especializados."
+    },
+    location:{fi:"Taalintehdas, Kemiönsaari",en:"Dalsbruk, Kimitoön",es:"Dalsbruk, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["veneily","kalastustarvikkeet","erikoisliike"]
+  },
+  {
+    id:"k-knallis",categories:["ostokset","ruoka"],
+    name:{fi:"K-Knallis",en:"K-Knallis",es:"K-Knallis"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaassa elintarvikekaupaksi listattu paikallinen kauppa. Palveluihin kuuluvat myös asiamiesposti, Veikkaus ja lääkekaappi. Tarkista ajantasainen valikoima ja aukiolo kaupasta.",
+      en:"A local grocery store listed in the Kimitoön business guide. Services also include a postal agency, Veikkaus and a medicine cabinet. Check current selection and opening times with the shop.",
+      es:"Tienda de alimentación local incluida en la guía empresarial de Kimitoön. También ofrece punto postal, Veikkaus y botiquín de medicamentos. Consulta la selección y los horarios actuales en la tienda."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["ruokakauppa","posti","päivittäistavarat"]
+  },
+  {
+    id:"k-market-kompis",categories:["ostokset","ruoka"],
+    name:{fi:"K-Market Kompis",en:"K-Market Kompis",es:"K-Market Kompis"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaan mukaan K-Market Kompis tarjoaa saariston paikallista kauppapalvelua. Tarkista ajantasaiset aukioloajat ja palvelut kaupasta.",
+      en:"K-Market Kompis is listed in the Kimitoön business guide as a local grocery serving the archipelago. Check current opening hours and services with the shop.",
+      es:"K-Market Kompis aparece en la guía empresarial de Kimitoön como tienda de alimentación local para el archipiélago. Consulta horarios y servicios actuales en la tienda."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["ruokakauppa","päivittäistavarat"]
+  },
+  {
+    id:"k-supermarket-kompass",categories:["ostokset","ruoka"],
+    name:{fi:"K-Supermarket Kompass",en:"K-Supermarket Kompass",es:"K-Supermarket Kompass"},
+    description:{
+      fi:"Kemiön keskustan ruokakauppa palvelutiskillä. Kemiönsaaren palveluopas listaa sen elintarvike- ja päivittäistavarakauppojen joukkoon.",
+      en:"A grocery store with a service counter in central Kimito. The Kimitoön business guide lists it among local food and grocery retailers.",
+      es:"Supermercado con mostrador de atención en el centro de Kimito. La guía empresarial de Kimitoön lo incluye entre los comercios de alimentación."
+    },
+    location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["ruokakauppa","palvelutiski"]
+  },
+  {
+    id:"antikvariat-kojan",categories:["ostokset","kulttuuri"],
+    name:{fi:"Antikvariat Kojan",en:"Antikvariat Kojan",es:"Antikvariat Kojan"},
+    description:{
+      fi:"Antikvariaatti ja paperipuoti, josta Kemiönsaaren palveluoppaan mukaan löytyy myös paikallisia lahja- ja käsityötuotteita, leluja ja pelejä.",
+      en:"A second-hand bookshop and stationery shop. The Kimitoön business guide also lists local gifts and crafts, toys and games.",
+      es:"Librería de segunda mano y papelería. La guía empresarial de Kimitoön también menciona regalos y artesanía local, juguetes y juegos."
+    },
+    location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["antikvariaatti","paperipuoti","lahjat","käsityö"]
+  },
+  {
+    id:"aanmaa",categories:["ostokset","kulttuuri"],
+    name:{fi:"Aanmaa",en:"Aanmaa",es:"Aanmaa"},
+    description:{
+      fi:"Suomalaiseen käsityöhön erikoistunut paikallinen toimija. KSG listaa Aanmaan myös vaatteiden, kenkien ja tekstiilien tarjontaan.",
+      en:"A local business specialising in Finnish handicrafts. KSG also lists Aanmaa under clothing, shoes and textiles.",
+      es:"Negocio local especializado en artesanía finlandesa. KSG también incluye Aanmaa en ropa, calzado y textiles."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["suomalainen käsityö","lahjat","tekstiilit"]
+  },
+  {
+    id:"atelje-rosenblad",categories:["ostokset","kulttuuri"],
+    name:{fi:"Ateljé Rosenblad",en:"Ateljé Rosenblad",es:"Ateljé Rosenblad"},
+    description:{
+      fi:"Lastenvaatteiden omaa valmistusta ja maalaisromanttista tyyliä. Kemiönsaaren palveluopas listaa ateljeen käsityö- ja tekstiilialan toimijaksi.",
+      en:"A local atelier producing children's clothing in a rural-romantic style. The Kimitoön business guide lists it under crafts and textiles.",
+      es:"Atelier local de confección propia de ropa infantil con estilo romántico rural. La guía empresarial de Kimitoön lo incluye en artesanía y textiles."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["lastenvaatteet","käsityö","tekstiilit"]
+  },
+  {
+    id:"ons-parlor",categories:["ostokset","ruoka","saaristo"],
+    name:{fi:"Öns Pärlor – Yrsa Brunström",en:"Öns Pärlor – Yrsa Brunström",es:"Öns Pärlor – Yrsa Brunström"},
+    description:{
+      fi:"Paikallista savustettua kalaa tarjoava saaristotoimija. Kemiönsaaren palveluopas listaa sen elintarvikkeisiin, käsityöhön ja vierasvenesatamien palveluihin liittyvissä hauissa.",
+      en:"An archipelago producer offering locally smoked fish. The Kimitoön business guide lists it under food, crafts and guest-harbour-related services.",
+      es:"Productor del archipiélago que ofrece pescado ahumado local. La guía empresarial de Kimitoön lo incluye en alimentación, artesanía y servicios relacionados con puertos deportivos."
+    },
+    location:{fi:"Kemiönsaari",en:"Kimitoön",es:"Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["savustettu kala","paikallistuotteet","saaristo"]
+  },
+  {
+    id:"kj-koru",categories:["ostokset","kulttuuri"],
+    name:{fi:"K.J. Koru Oy",en:"K.J. Koru Oy",es:"K.J. Koru Oy"},
+    description:{
+      fi:"Kemiönsaaren palveluoppaassa erikoisliikkeeksi listattu Classic-hopeakorujen myyjä.",
+      en:"A specialist retailer listed in the Kimitoön business guide for Classic silver jewellery.",
+      es:"Comercio especializado incluido en la guía empresarial de Kimitoön que vende joyería de plata Classic."
+    },
+    location:{fi:"Kemiö, Kemiönsaari",en:"Kimito, Kimitoön",es:"Kimito, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["hopeakorut","erikoisliike"]
+  },
+  {
+    id:"cafe-vaffelstugan",categories:["ruoka"],
+    name:{fi:"Café Våffelstugan",en:"Café Våffelstugan",es:"Café Våffelstugan"},
+    description:{
+      fi:"Kasnäsin alueen kahvilapalvelu, joka on listattu Kemiönsaaren palveluoppaan kahviloihin ja leipomoihin. Tarkista kauden aukiolo, vohvelivalikoima ja muut tarjoilut suoraan kahvilalta.",
+      en:"A café in the Kasnäs area, listed in the Kimitoön business guide under cafés and bakeries. Confirm seasonal opening, waffle selection and other offerings directly with the café.",
+      es:"Cafetería de la zona de Kasnäs, incluida en la guía empresarial de Kimitoön en cafeterías y panaderías. Consulta horarios de temporada, selección de gofres y oferta directamente con el establecimiento."
+    },
+    location:{fi:"Kasnäs, Kemiönsaari",en:"Kasnäs, Kimitoön",es:"Kasnäs, Kimitoön"},
+    websiteUrl:"https://ksg.fi/fi/",sourceUrl:"https://ksg.fi/fi/",
+    imageCredit:"Kemiönsaaren palveluopas",imageSource:"https://ksg.fi/fi/",tags:["kahvila","vohvelit"]
+  }
+
 ];
 
 export function getKimitoonProviders(category?: KimitoonCategory) {
