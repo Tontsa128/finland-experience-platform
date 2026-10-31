@@ -61,19 +61,31 @@ function handleLocalizedRequest(req: NextRequest) {
 }
 
 async function getAdminRole(req: NextRequest) {
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !(process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)) {
+  const hasSupabaseConfig =
+    !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    !!(process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+
+  if (!hasSupabaseConfig) {
     return { role: null, response: null as NextResponse | null, configured: false };
   }
 
   try {
     const { response, user, supabase } = await updateSupabaseSession(req);
-    if (!user) return { role: null, response, configured: true };
 
-    const { data: profile } = await supabase
+    if (!user) {
+      return { role: null, response, configured: true };
+    }
+
+    const { data: profile, error } = await supabase
       .from("profiles")
       .select("role")
       .eq("id", user.id)
       .maybeSingle();
+
+    if (error) {
+      console.error("Admin role lookup failed", error);
+      return { role: null, response, configured: true };
+    }
 
     return { role: profile?.role ?? null, response, configured: true };
   } catch {
@@ -90,12 +102,14 @@ export async function middleware(req: NextRequest) {
     }
 
     const auth = await getAdminRole(req);
+
     if (!auth.configured) {
       const loginUrl = new URL("/admin/login", req.url);
       loginUrl.searchParams.set("redirect", pathname);
       loginUrl.searchParams.set("reason", "supabase-not-configured");
       return NextResponse.redirect(loginUrl);
     }
+
     if (!auth.role || !ADMIN_READ_ROLES.has(auth.role)) {
       const loginUrl = new URL("/admin/login", req.url);
       loginUrl.searchParams.set("redirect", pathname);
@@ -108,12 +122,15 @@ export async function middleware(req: NextRequest) {
 
   if (pathname.startsWith("/api/admin")) {
     const auth = await getAdminRole(req);
+
     if (!auth.configured || !auth.role || !ADMIN_READ_ROLES.has(auth.role)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
     if (ADMIN_WRITE_METHODS.includes(req.method) && !ADMIN_WRITE_ROLES.has(auth.role)) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
+
     return auth.response ?? NextResponse.next();
   }
 
@@ -133,22 +150,27 @@ export async function middleware(req: NextRequest) {
   const legacyRoute = ["/destinos", "/experiencias", "/privacy", "/terms"].find(
     (route) => pathname === route || pathname.startsWith(route + "/"),
   );
+
   if (legacyRoute) {
     const savedLocale = req.cookies.get("NEXT_LOCALE")?.value;
     const preferredLocale =
       savedLocale && locales.includes(savedLocale as (typeof locales)[number])
         ? (savedLocale as (typeof locales)[number])
         : null;
+
     const locale =
       preferredLocale ??
       getLocaleFromCountry(req.headers.get("x-vercel-ip-country")) ??
       getLocaleFromBrowser(req) ??
       defaultLocale;
-    const targetBase = legacyRoute === "/destinos"
-      ? "/destinations"
-      : legacyRoute === "/experiencias"
-        ? "/experiences"
-        : legacyRoute;
+
+    const targetBase =
+      legacyRoute === "/destinos"
+        ? "/destinations"
+        : legacyRoute === "/experiencias"
+          ? "/experiences"
+          : legacyRoute;
+
     const suffix = pathname.slice(legacyRoute.length);
     const redirectUrl = req.nextUrl.clone();
     redirectUrl.pathname = `/${locale}${targetBase}${suffix}`;

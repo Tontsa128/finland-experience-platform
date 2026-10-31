@@ -6,6 +6,14 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Compass, Github, LockKeyhole, Mail, ShieldAlert } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
 
+const ADMIN_ROLES = new Set([
+  "SUPER_ADMIN",
+  "ADMIN",
+  "CONTENT_MANAGER",
+  "BOOKING_MANAGER",
+  "EDITOR",
+]);
+
 function safeRedirect(value: string | null) {
   if (!value || value.startsWith("//") || !(value === "/admin" || value.startsWith("/admin/"))) return "/admin";
   return value;
@@ -34,6 +42,30 @@ function AdminLoginContent() {
 
       if (signInError) {
         setError("Kirjautuminen epäonnistui. Tarkista sähköposti ja salasana.");
+        return;
+      }
+
+      const { data: userData } = await supabase.auth.getUser();
+
+      if (!userData.user) {
+        setError("Kirjautuminen onnistui, mutta käyttäjätietoja ei voitu vahvistaa.");
+        return;
+      }
+
+      const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", userData.user.id)
+        .maybeSingle();
+
+      if (profileError) {
+        setError("Käyttäjäroolia ei voitu tarkistaa. Yritä uudelleen.");
+        return;
+      }
+
+      if (!profile?.role || !ADMIN_ROLES.has(profile.role)) {
+        await supabase.auth.signOut();
+        setError("Tällä käyttäjätilillä ei ole oikeutta hallintaan.");
         return;
       }
 
