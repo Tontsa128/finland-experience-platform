@@ -125,8 +125,24 @@ export async function middleware(req: NextRequest) {
       getLocaleFromCountry(req.headers.get("x-vercel-ip-country")) ??
       getLocaleFromBrowser(req) ??
       defaultLocale) as (typeof locales)[number];
+    const legacyPath = localizedMathildedal
+      ? pathname.replace(/^\/(fi|es|en)/, "")
+      : pathname;
+    const legacyCategory = legacyPath.match(/^\/mathildedal\/([^/]+)/)?.[1];
+    const categoryMap: Record<string, string> = {
+      accommodation: "majoitus",
+      stay: "majoitus",
+      majoitus: "majoitus",
+      food: "ruoka",
+      ruoka: "ruoka",
+      activities: "tekemista",
+      experiences: "tekemista",
+      tekemista: "tekemista",
+      elamykset: "tekemista",
+    };
+    const category = legacyCategory ? categoryMap[legacyCategory] : undefined;
     const redirectUrl = req.nextUrl.clone();
-    redirectUrl.pathname = `/${locale}/destinations/salo-mathildedal`;
+    redirectUrl.pathname = `/${locale}/salo/mathildedal${category ? `/${category}` : ""}`;
     return setLocaleCookie(NextResponse.redirect(redirectUrl, 308), locale);
   }
 
