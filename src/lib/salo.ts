@@ -194,6 +194,7 @@ export const saloProviders: SaloProvider[] = [
     priceByLocale: { fi: "Rinneautoilu: 2 kierrosta 16 €, 4 kierrosta 26 €, 5 kierrosta 32 €/hlö", en: "Mountain carting: 2 rides €16, 4 rides €26, 5 rides €32 per person", es: "Kart de montaña: 2 vueltas 16 €, 4 vueltas 26 €, 5 vueltas 32 € por persona" },
     image: providerImages.actionPark,
     imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/teijo-ski-action-park/",
   },
   {
     id: "chill-out-fishing",
@@ -278,6 +279,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://kylapanimo.fi",
     image: providerImages.brewery,
     imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/mathildedalin-kylapanimo/",
   },
   {
     id: "saaristomokit-sarkisalo",
