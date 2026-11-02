@@ -53,7 +53,7 @@ export function SaloAreaCards({ locale }: { locale: Locale }) {
                 <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
                   {photo ? <Image src={photo.src} alt={copy.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" /> : <div className="flex h-full items-center justify-center bg-brand-950 px-6 text-center text-gold-300"><span className="font-display text-2xl font-bold">{copy.eyebrow}</span></div>}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-transparent" />
-                  <span className="absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-brand-950">{areaProviderIds[area].length} {locale === "fi" ? "palvelukohdetta" : locale === "es" ? "proveedores" : "local listings"}</span>
+                  <span className="absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-brand-950">{areaProviderIds[area].length > 0 ? `${areaProviderIds[area].length} ${locale === "fi" ? "palvelukohdetta" : locale === "es" ? "proveedores" : "local listings"}` : locale === "fi" ? "Palveluja lisätään" : locale === "es" ? "Servicios en preparación" : "Listings in progress"}</span>
                 </div>
                 <div className="p-6 pb-3">
                   <h3 className="font-display text-2xl font-bold text-brand-950">{copy.title}</h3>
