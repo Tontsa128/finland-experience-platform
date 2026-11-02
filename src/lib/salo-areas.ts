@@ -4,7 +4,7 @@ export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halik
 
 export const areaProviderIds: Record<SaloArea, string[]> = {
   mathildedal: ["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "ravintola-terho", "mathildedal-brewery", "kattohuone-mathildedal", "meri-ruukin-lomakyla", "vuorovetten-jaatelo"],
-  teijo: ["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf", "matildanjarven-kampat", "teijo-tentsile", "teijon-kammari"],
+  teijo: ["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf", "matildanjarven-kampat", "teijo-tentsile", "teijon-kammari", "mutainen-lohenrengas"],
   sarkisalo: ["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "villa-meri-sarkisalo", "tiiranta", "niksaaren-sauna", "sarkisalo-fishing", "forby-rantajooga", "villa-signell", "finnholm-strandbo", "aava-adventures", "katiskanmaeki", "lonnviken", "villa-nennebo", "meri-veikko", "kruuvan-mokit"],
   pernio: ["krailan-sabrina", "leipyolin-tila", "alaspaan-maatila"],
   halikko: ["topilan-tupa"],
@@ -20,7 +20,7 @@ export const areaProviderIds: Record<SaloArea, string[]> = {
   hajala: ["hajala-myllytyry", "hajala-tromperin-kestikievari"],
   angelniemi: ["angelniemi-paula-achrenin-puutarha", "angelniemi-kokkila-beach", "angelniemi-church"],
   kirjakkala: ["kirjakkalan-ruukkikyla"],
-  mutainen: ["mutainen-lohenrengas", "mutainen-galleria-tuulitunneli"],
+  mutainen: ["mutainen-kylayhdistys", "mutainen-galleria-tuulitunneli"],
 };
 
 export const areaOfficialSources: Record<SaloArea, { url: string; label: string }> = {
