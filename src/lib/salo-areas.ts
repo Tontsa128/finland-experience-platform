@@ -17,8 +17,8 @@ export const areaProviderIds: Record<SaloArea, string[]> = {
   pertteli: [],
   muurla: [],
   marynummi: [],
-  hajala: ["hajala-myllytyry"],
-  angelniemi: [],
+  hajala: ["hajala-myllytyry", "hajala-tromperin-kestikievari"],
+  angelniemi: ["angelniemi-paula-achrenin-puutarha", "angelniemi-kokkila-beach", "angelniemi-church"],
   kirjakkala: ["kirjakkalan-ruukkikyla"],
 };
 
