@@ -83,6 +83,9 @@ const saloAreaDataSource = await readFile(path.resolve("src/lib/salo-areas.ts"),
 const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
 const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
 const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
+const saloAreaCategoryPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/[category]/page.tsx"), "utf8");
+const saloAreaCardsSource = await readFile(path.resolve("src/components/salo/SaloAreaCards.tsx"), "utf8");
+const saloCategoryGridSource = await readFile(path.resolve("src/components/salo/SaloAreaCategoryGrid.tsx"), "utf8");
 const providerArrayStart = saloDataSource.indexOf("export const saloProviders: SaloProvider[] = [");
 const providerArrayEnd = saloDataSource.indexOf("\n];", providerArrayStart);
 const providerIds = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
@@ -102,10 +105,13 @@ const duplicateAreaIds = assignedProviderIds.filter((id, index) => assignedProvi
 const missingAreaIds = providerIds.filter((id) => !assignedProviderIds.includes(id));
 const unknownAreaIds = assignedProviderIds.filter((id) => !providerIds.includes(id));
 const renderedAreas = [...areaMap.matchAll(/^\s+([a-z]+):\s*\[/gm)].map((match) => match[1]);
-const areaRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}/.test(saloAreaPageSource);
+const areaRouteUsesDirectory = /<SaloAreaCategoryGrid\s+locale=\{locale\}\s+area=\{area\}/.test(saloAreaPageSource);
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
-const areaCardsLinkToRoutes = saloPageSource.includes('href={`/${locale}/salo/${area.id}`}');
+const areaCardsLinkToRoutes = saloAreaCardsSource.includes('href={`/${locale}/salo/${area}`}');
+const categoryRouteListsProviders = saloAreaCategoryPageSource.includes("<SaloDirectory locale={locale} area={rawArea} category={rawCategory} />");
+const categoryCardsLinkToRoutes = saloCategoryGridSource.includes('href={`/${locale}/salo/${area}/${category}`}');
+const sitemapIncludesCategoryRoutes = (await readFile(path.resolve("src/app/sitemap.ts"), "utf8")).includes("...saloCategoryPaths");
 const sitemapIncludesAreaRoutes = (await readFile(path.resolve("src/app/sitemap.ts"), "utf8")).includes("...saloAreaPaths");
 const photoSourceLinkIsSafe = saloDirectorySource.includes(String.raw`provider.imageSource && /^https?:\/\//i.test(provider.imageSource)`);
 const photoSourceLabelIsLocalized = [
@@ -113,7 +119,7 @@ const photoSourceLabelIsLocalized = [
   'photoSource: "Fuente de la foto"',
   'photoSource: "Photo source"',
 ].every((label) => saloDirectorySource.includes(label));
-if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
+if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !categoryRouteListsProviders || !categoryCardsLinkToRoutes || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
@@ -127,10 +133,13 @@ if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCoun
     areaRouteGeneratesAllSlugs,
     areaCardsLinkToRoutes,
     sitemapIncludesAreaRoutes,
+    categoryRouteListsProviders,
+    categoryCardsLinkToRoutes,
+    sitemapIncludesCategoryRoutes,
     photoSourceLinkIsSafe,
     photoSourceLabelIsLocalized,
   });
 }
 
 if (failed) process.exit(1);
-console.log(`i18n/SEO/Salo checks passed: ${locales.join(", ")} have identical key sets, locale-aware document language, safe sitemap routes and complete area directories.`);
+console.log(`i18n/SEO/Salo checks passed: ${locales.join(", ")} have identical key sets, locale-aware document language, safe sitemap routes and complete area/category directories.`);
