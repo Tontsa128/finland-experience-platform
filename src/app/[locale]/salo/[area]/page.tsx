@@ -7,7 +7,7 @@ import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoCredits, photoLibrary } from "@/lib/photo-library";
 import { saloProviders } from "@/lib/salo";
-import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import { SaloAreaCategoryGrid } from "@/components/salo/SaloAreaCategoryGrid";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
 const supportedLocales: Locale[] = ["fi", "en", "es"];
@@ -42,9 +42,25 @@ function getAreaImage(area: SaloArea): { src: string; credit: string; source: st
       ? photoLibrary.teijoNationalPark
       : area === "sarkisalo"
         ? photoLibrary.sarkisalo
-        : area === "salo"
-          ? photoLibrary.saloVeturitalli
-          : null;
+        : area === "kisko"
+          ? photoLibrary.kiskoChurch
+          : area === "kuusjoki"
+            ? photoLibrary.kuusjokiHistoricChurch
+            : area === "pertteli"
+              ? photoLibrary.pertteliChurch
+              : area === "muurla"
+                ? photoLibrary.muurlaChurch
+                : area === "kiikala"
+                  ? photoLibrary.kiikalaLammenjarvi
+                  : area === "hajala"
+                ? photoLibrary.hajalaVillage
+                : area === "angelniemi"
+                  ? photoLibrary.angelniemiChurch
+                  : area === "kirjakkala"
+                    ? photoLibrary.kirjakkalaVillage
+                    : area === "salo"
+                    ? photoLibrary.saloVeturitalli
+                : null;
   if (!src) return null;
   const attribution = photoCredits.find((photo) => photo.url === src);
   return attribution
@@ -130,7 +146,7 @@ export default async function SaloAreaPage({
         </div>
       </section>
 
-      <SaloDirectory locale={locale} area={area} />
+      <SaloAreaCategoryGrid locale={locale} area={area} />
 
       <section className="bg-brand-50 py-14 sm:py-20">
         <div className="container-narrow flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">

@@ -124,3 +124,52 @@ The provider card's image must also match the provider and category. An image of
 - A provider page is complete only when its content, links, photos/rights, language versions, mobile layout, accessibility, metadata and route behavior have all been checked.
 
 Apply this standard to existing pages during repairs as well as all new destination and provider work.
+
+## 11. Mandatory city, region and village hierarchy
+
+This hierarchy is the reusable enterprise standard for every new city, region, village and destination added to FINNEXPRIENCE. It applies to the Salo rebuild and all future expansions.
+
+1. **Homepage → city/region landing page.** A city or region card must lead to its own regional landing page, never directly to one village or provider.
+2. **Regional landing page → village/place cards.** Present the main city and each relevant village or destination as a separate image card with a concise, locally grounded introduction. Include image attribution/source where required. Research area descriptions from the official destination organisation, municipality and local village association.
+3. **Village/place landing page → category cards.** Each village/place has its own canonical page and a consistent set of relevant category cards: food and cafés, services/visitor information, accommodation, things to do and activities, and nature/outdoors. Categories with no verified providers must still explain the gap clearly and link to an official area source; never fill them with invented or unrelated listings. Add further categories only when reliable local information supports them.
+4. **Category page → provider cards.** Each category has its own localized page. Provider cards must be filtered by both destination and category, not mixed into one long, unstructured village page.
+5. **Provider card → provider detail page → official provider channel.** Each provider keeps one canonical FI/EN/ES detail page with accurate imagery, localized content and a clearly visible link to the provider's own website, booking or contact channel.
+
+### Implementation requirements
+- Use stable localized routes and one canonical destination route. Legacy URLs must redirect to the canonical page while preserving the locale; never maintain competing destination pages with different content.
+- Keep one canonical provider record even when a provider belongs to multiple categories or serves multiple nearby villages. Cross-list by stable ID; do not duplicate provider profiles.
+- Keep all provider, source, photo-credit and rights metadata in the existing structured content/CMS model. Do not create a parallel CMS or hide provider catalogues in page components.
+- Use actual village/place photographs and verified descriptions. Do not reuse a nearby village photo as if it depicts a different place, and never substitute unrelated provider imagery.
+- Every layer must be complete in Finnish, English and Spanish, including labels, headings, descriptions, alt text, metadata, breadcrumbs and internal links.
+- Preserve the same hierarchy, card system, navigation, image quality, accessibility, responsive behaviour and external-provider booking model across all new regions.
+
+### Required journey
+Homepage → region/city → village/place → category → provider card → provider detail → provider's official website or booking/contact channel.
+
+A region or village expansion is not complete until every route in this journey has been checked in FI/EN/ES on mobile and desktop, with working images, source attribution, internal navigation, provider links, metadata, sitemap coverage, tests and production build.
+
+### Salo regional coverage and source register
+
+The Salo regional landing page now has 18 localized area guides: Salo, Mathildedal, Teijo, Mutainen, Kirjakkala, Särkisalo, Perniö, Halikko, Vaskio, Suomusjärvi, Kisko, Kuusjoki, Kiikala, Pertteli, Muurla, Märynummi, Hajala and Angelniemi. The current implementation contains 81 mapped provider/place listings. This is a coverage baseline, not a claim that every category is complete in every village. Continue the area-by-area provider audit using official sources below; do not publish unsupported details or reuse an unrelated village image.
+
+Primary research sources:
+- Mutainen and the four Teijo Ironworks Villages: https://www.teijo.fi/tervetuloakyliin/mutainen/ and https://www.teijo.fi/palveluja/erikoisliikkeita-ja-palveluita/
+- Kiikala verified listings: https://kohteet.visitsalo.fi/ilolan-arboretum-ja-taimisto/, https://kohteet.visitsalo.fi/rinteen-luomutila/, https://kohteet.visitsalo.fi/kangin-tila/, https://kohteet.visitsalo.fi/hyyppara-kultalahde-luontopolku/ and https://kohteet.visitsalo.fi/opastetut-kierrokset-salossa-juurevasti-juurista/
+- Pertteli verified listings: https://kohteet.visitsalo.fi/kurjen-maatila/, https://kohteet.visitsalo.fi/keramiikkastudio-korpiaho-design/, https://kohteet.visitsalo.fi/perttelin-kirkko/ and https://kohteet.visitsalo.fi/koirametsa-rymy/
+- Muurla verified listings: https://kohteet.visitsalo.fi/muurlan-opisto/, https://kohteet.visitsalo.fi/muurla/ and https://kohteet.visitsalo.fi/ilolan-tila/
+- Märynummi verified listings: https://kohteet.visitsalo.fi/marynummen-uimaranta/, https://kohteet.visitsalo.fi/marynummen-frisbeegolfrata/ and https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/
+- Visit Salo regional material: https://visitsalo.fi/
+- Salo municipality village and area guides: https://salo.fi/muuttajalle/kylat-ja-alueet/
+- Official village guides: https://salo.fi/muuttajalle/kylat-ja-alueet/kisko/, https://salo.fi/muuttajalle/kylat-ja-alueet/kuusjoki/ and https://salo.fi/muuttajalle/kylat-ja-alueet/marynummi/
+- Visit Salo village tour: https://kohteet.visitsalo.fi/en/salos-idyllic-villages-car-tour/
+- Hajala official city and village-association sources: https://salo.fi/muuttajalle/kylat-ja-alueet/hajala/, https://www.hajala.fi/ and https://www.hajala.fi/myllytyry/
+- Angelniemi village-association award and local context: https://www.vskylat.fi/maakunnan-kylat/vuoden-kyla/; local provider: https://lossiranta.com/home/
+- Kirjakkala official city, Visit Salo and provider sources: https://salo.fi/muuttajalle/kylat-ja-alueet/teijon-ruukkikylat/, https://kohteet.visitsalo.fi/kirjakkalan-ruukkikyla-melontakeskus/ and https://www.ruukkikyla.fi/
+- New reusable village images: Hajala and Angelniemi Commons file pages; Myllytyry and Kirjakkala Visit Salo destination image pages (covered by the project owner's confirmed Salo-area image authorization).
+- Local village association material: https://www.halikko.com/marynummi.html, https://www.halikko.com/hajala.html and https://www.halikko.com/angelniemi.html
+- Verified Commons photo records: https://commons.wikimedia.org/wiki/File:Kisko.jpg, https://commons.wikimedia.org/wiki/File:Kuusjoen_kirkko_1890.jpg, https://commons.wikimedia.org/wiki/File:Pertteli_church_04.jpg, https://commons.wikimedia.org/wiki/File:Muurlan_kirkko.jpg and https://commons.wikimedia.org/wiki/File:Lammenjärvi_01.JPG
+- Varsinais-Suomen Kylät association directory: https://www.vskylat.fi/maakunnan-kylat/
+
+Kansakoulu photo rule: the official public website currently exposes restaurant and local-food photographs, but no guest-room photographs. These images may only appear in the clearly labelled shared-venue/food gallery and must never be presented as room photos. If room-specific imagery is needed, obtain it directly from the accommodation provider with permission.
+
+For each additional village, use the municipality's own village guide and the relevant village association as the starting point, then verify each business against its own official website. Do not create an image card until a matching village photograph and its source/usage terms have been identified. Do not use one generic Salo image to represent multiple villages.

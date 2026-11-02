@@ -23,10 +23,11 @@ function normalizeHomepageHref(href: string): string {
   if (
     withoutLocale === "/mathildedal" ||
     withoutLocale.startsWith("/mathildedal/") ||
-    withoutLocale === "/coastal-finland" ||
-    lower.includes("mathildedal")
+    withoutLocale === "/destinations/salo-mathildedal" ||
+    withoutLocale === "/destinations/mathildedal" ||
+    lower.includes("/salo-mathildedal")
   ) {
-    return "/destinations/salo-mathildedal";
+    return "/salo/mathildedal";
   }
   return value;
 }

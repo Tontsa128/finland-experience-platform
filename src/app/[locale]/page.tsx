@@ -140,7 +140,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {coastalHighlights.map((destination) => (
               <Link
                 key={destination.id}
-                href={destination.slug === "salo-mathildedal" ? `/${locale}/destinations/salo-mathildedal` : `/${locale}/coastal-finland#${destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
+                href={destination.slug === "salo-mathildedal" || destination.slug === "salo" ? `/${locale}/salo` : `/${locale}/coastal-finland#${destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
                 className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
               >
                 <Image
