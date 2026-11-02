@@ -66,7 +66,6 @@ if (homepageHasKansakouluCard || !guideKeepsCategoryCards) {
 
 // Sitemap regression guards: do not advertise redirected Mathildedal
 // aliases as indexable pages or fabricate last-modified timestamps.
-const sitemapSource = await readFile(path.resolve("src/app/sitemap.ts"), "utf8");
 if (/lastModified:\s*new Date\(\)/.test(sitemapSource)) {
   failed = true;
   console.error("Sitemap check failed: lastModified must come from real content timestamps, never the current build/request time.");
