@@ -42,12 +42,11 @@ const categoryIcons = {
 export function SaloAreaCategoryGrid({ locale, area }: { locale: Locale; area: SaloArea }) {
   const areaIds = areaProviderIds[area];
   const areaProviders = saloProviders.filter((provider) => areaIds.includes(provider.id));
-  const cards = categoryOrder.flatMap((category) => {
+  const cards = categoryOrder.map((category) => {
     const providers = areaProviders.filter((provider) => provider.category === category);
-    if (!providers.length) return [];
     const item = categoryCopy[locale][category];
     const featuredImage = providers.find((provider) => provider.image);
-    return [{ category, providers, item, image: featuredImage?.image, imageCredit: featuredImage?.imageCredit, imageSource: featuredImage?.imageSource || featuredImage?.url }];
+    return { category, providers, item, image: featuredImage?.image, imageCredit: featuredImage?.imageCredit, imageSource: featuredImage?.imageSource || featuredImage?.url };
   });
 
   return (
