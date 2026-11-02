@@ -2,6 +2,9 @@ import type { Locale } from "@/types";
 
 export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo";
 
+// These providers explicitly serve more than one Salo area.
+export const multiLocationProviderIds: string[] = ["vuorovetten-jaatelo"];
+
 export const areaProviderIds: Record<SaloArea, string[]> = {
   mathildedal: ["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "ravintola-terho", "mathildedal-brewery", "kattohuone-mathildedal", "meri-ruukin-lomakyla", "vuorovetten-jaatelo"],
   teijo: ["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf", "matildanjarven-kampat", "teijo-tentsile", "teijon-kammari"],
