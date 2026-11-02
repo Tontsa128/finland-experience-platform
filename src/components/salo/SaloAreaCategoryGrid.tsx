@@ -46,7 +46,8 @@ export function SaloAreaCategoryGrid({ locale, area }: { locale: Locale; area: S
     const providers = areaProviders.filter((provider) => provider.category === category);
     if (!providers.length) return [];
     const item = categoryCopy[locale][category];
-    return [{ category, providers, item, image: providers.find((provider) => provider.image)?.image }];
+    const featuredImage = providers.find((provider) => provider.image);
+    return [{ category, providers, item, image: featuredImage?.image, imageCredit: featuredImage?.imageCredit, imageSource: featuredImage?.imageSource || featuredImage?.url }];
   });
 
   return (
@@ -65,7 +66,7 @@ export function SaloAreaCategoryGrid({ locale, area }: { locale: Locale; area: S
         </div>
         {cards.length ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {cards.map(({ category, providers, item, image }) => {
+            {cards.map(({ category, providers, item, image, imageCredit, imageSource }) => {
               const Icon = categoryIcons[category];
               return (
                 <Link key={category} href={`/${locale}/salo/${area}/${category}`} className="group overflow-hidden rounded-[1.75rem] border border-brand-100 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
@@ -82,6 +83,7 @@ export function SaloAreaCategoryGrid({ locale, area }: { locale: Locale; area: S
                       <h3 className="font-display text-2xl font-bold text-brand-950">{item.title}</h3>
                     </div>
                     <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+                    {imageCredit && imageSource ? <p className="mt-3 text-[11px] text-slate-400">{locale === "fi" ? "Kuvan lähde:" : locale === "es" ? "Fuente de imagen:" : "Image source:"} <a href={imageSource} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-brand-800">{imageCredit}</a></p> : null}
                     <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
                       {locale === "fi" ? "Katso palvelut" : locale === "es" ? "Ver los servicios" : "View listings"}
                       <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
