@@ -78,6 +78,19 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "katiskanmaeki": { fi: "Ylönkylä · Särkisalo · Salo", en: "Ylönkylä · Särkisalo · Salo", es: "Ylönkylä · Särkisalo · Salo" },
   "onnenperan-mokki": { fi: "Vaskio · Salo", en: "Vaskio · Salo", es: "Vaskio · Salo" },
   "meri-ruukin-lomakyla": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "kiikala-ilolan-arboretum": { fi: "Kiikala · Salo", en: "Kiikala · Salo", es: "Kiikala · Salo" },
+  "kiikala-rinteen-luomutila": { fi: "Kruusila · Kiikala · Salo", en: "Kruusila · Kiikala · Salo", es: "Kruusila · Kiikala · Salo" },
+  "kiikala-kangin-tila": { fi: "Kruusila · Kiikala · Salo", en: "Kruusila · Kiikala · Salo", es: "Kruusila · Kiikala · Salo" },
+  "kiikala-hyyppara-kultalahde": { fi: "Kiikala · Salo", en: "Kiikala · Salo", es: "Kiikala · Salo" },
+  "pertteli-kurjen-maatila": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "pertteli-korpiaho-design": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "pertteli-church": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "muurla-muurlan-opisto": { fi: "Muurla · Salo", en: "Muurla · Salo", es: "Muurla · Salo" },
+  "muurla-design": { fi: "Muurla · Salo", en: "Muurla · Salo", es: "Muurla · Salo" },
+  "marynummi-uimaranta": { fi: "Märynummi · Salo", en: "Märynummi · Salo", es: "Märynummi · Salo" },
+  "marynummi-frisbeegolf": { fi: "Märynummi · Salo", en: "Märynummi · Salo", es: "Märynummi · Salo" },
+  "mutainen-lohenrengas": { fi: "Mutainen · Teijon Ruukkikylät · Salo", en: "Mutainen · Teijo Ironworks Villages · Salo", es: "Mutainen · Aldeas históricas de Teijo · Salo" },
+  "mutainen-galleria-tuulitunneli": { fi: "Mutainen · Teijon Ruukkikylät · Salo", en: "Mutainen · Teijo Ironworks Villages · Salo", es: "Mutainen · Aldeas históricas de Teijo · Salo" },
 };
 
 function resolveProvider(slug: string, locale: Locale) {
