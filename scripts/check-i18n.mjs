@@ -76,8 +76,8 @@ if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
   console.error("Sitemap check failed: legacy Mathildedal aliases redirect to the canonical destination and must not be listed.");
 }
 
-// Salo regional directory regression guard: every provider must belong to
-// exactly one dedicated area guide, and every guide is generated and indexed.
+// Salo regional guide regression guard: providers belong to one area unless
+// they explicitly serve multiple locations; category routes must be generated and indexed.
 const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
 const saloAreaDataSource = await readFile(path.resolve("src/lib/salo-areas.ts"), "utf8");
 const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
