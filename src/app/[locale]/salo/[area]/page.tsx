@@ -48,7 +48,11 @@ function getAreaImage(area: SaloArea): { src: string; credit: string; source: st
             ? photoLibrary.kuusjokiHistoricChurch
             : area === "pertteli"
               ? photoLibrary.pertteliChurch
-              : area === "salo"
+              : area === "muurla"
+                ? photoLibrary.muurlaChurch
+                : area === "kiikala"
+                  ? photoLibrary.kiikalaLammenjarvi
+                  : area === "salo"
                 ? photoLibrary.saloVeturitalli
                 : null;
   if (!src) return null;
