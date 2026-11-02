@@ -142,7 +142,7 @@ export async function middleware(req: NextRequest) {
     };
     const category = legacyCategory ? categoryMap[legacyCategory] : undefined;
     const redirectUrl = req.nextUrl.clone();
-    redirectUrl.pathname = `/${locale}/salo/mathildedal${category ? `/${category}` : ""}`;
+    redirectUrl.pathname = `/${locale}/destinations/salo-mathildedal`;
     return setLocaleCookie(NextResponse.redirect(redirectUrl, 308), locale);
   }
 
