@@ -96,6 +96,19 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "pertteli-koirametsa-rymy": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
   "muurla-ilolan-vadelmatila": { fi: "Muurla · Salo", en: "Muurla · Salo", es: "Muurla · Salo" },
   "marynummi-kuntorata": { fi: "Märynummi · Salo", en: "Märynummi · Salo", es: "Märynummi · Salo" },
+  "halikko-wiurila-kartano": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "halikko-wiurila-gasthaus": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "halikko-wiurila-sigrid": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "halikko-vaski-cider": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "vaskio-wanhantuvan-ankkala": { fi: "Vaskio · Salo", en: "Vaskio · Salo", es: "Vaskio · Salo" },
+  "vaskio-bed": { fi: "Vaskio · Salo", en: "Vaskio · Salo", es: "Vaskio · Salo" },
+  "kiikala-ylivesan-luomutila": { fi: "Kruusila · Kiikala · Salo", en: "Kruusila · Kiikala · Salo", es: "Kruusila · Kiikala · Salo" },
+  "pertteli-kalevala-retriitti": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "pertteli-villen-viinitarha": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "salo-taidelainaamo": { fi: "Salo · keskusta", en: "Salo · city centre", es: "Salo · centro" },
+  "salo-vuohensaari-luontopolku": { fi: "Vuohensaari · Salo", en: "Vuohensaari · Salo", es: "Vuohensaari · Salo" },
+  "salo-vuohensaari-minigolf": { fi: "Vuohensaari · Salo", en: "Vuohensaari · Salo", es: "Vuohensaari · Salo" },
+  "salo-ravintola-rikala": { fi: "Salo · keskusta", en: "Salo · city centre", es: "Salo · centro" },
 };
 
 function resolveProvider(slug: string, locale: Locale) {
