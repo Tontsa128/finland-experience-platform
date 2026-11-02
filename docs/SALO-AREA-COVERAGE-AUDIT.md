@@ -5,7 +5,7 @@ Working branch: `feat/salo-village-category-hierarchy`
 
 ## Current coverage baseline
 
-The Salo directory contains 18 localized area guides and 82 provider/place listings mapped to those areas. Overall category distribution: 3 tourism information resources, 30 accommodation listings, 21 experiences, 9 nature/outdoor listings and 19 food listings. The count is a verified implementation baseline, not a claim that every category is complete in every village.
+The Salo directory contains 18 localized area guides and 95 provider/place listings mapped to those areas. Overall category distribution: 3 tourism information resources, 33 accommodation listings, 26 experiences, 10 nature/outdoor listings and 23 food listings. The count is a verified implementation baseline, not a claim that every category is complete in every village.
 
 | Area | Total | Tourism | Stay | Experience | Nature | Food | Categories still missing |
 |---|---:|---:|---:|---:|---:|---:|---|
@@ -13,14 +13,14 @@ The Salo directory contains 18 localized area guides and 82 provider/place listi
 | Teijo | 8 | 0 | 3 | 4 | 1 | 0 | Tourism, food |
 | Särkisalo | 17 | 0 | 9 | 3 | 2 | 3 | Tourism |
 | Perniö | 3 | 0 | 2 | 1 | 0 | 0 | Tourism, nature, food |
-| Halikko | 1 | 0 | 1 | 0 | 0 | 0 | Tourism, experience, nature, food |
-| Vaskio | 1 | 0 | 1 | 0 | 0 | 0 | Tourism, experience, nature, food |
+| Halikko | 5 | 0 | 2 | 2 | 0 | 1 | Tourism, nature |
+| Vaskio | 3 | 0 | 2 | 0 | 0 | 1 | Tourism, experience, nature |
 | Suomusjärvi | 4 | 0 | 4 | 0 | 0 | 0 | Tourism, experience, nature, food |
-| Salo | 4 | 1 | 1 | 2 | 0 | 0 | Nature, food |
+| Salo | 8 | 1 | 1 | 4 | 1 | 1 | — |
 | Kisko | 6 | 0 | 0 | 2 | 0 | 4 | Tourism, stay, nature |
 | Kuusjoki | 4 | 0 | 0 | 1 | 0 | 3 | Tourism, stay, nature |
-| Kiikala | 5 | 0 | 0 | 1 | 2 | 2 | Tourism, stay |
-| Pertteli | 4 | 0 | 0 | 2 | 1 | 1 | Tourism, stay |
+| Kiikala | 6 | 0 | 0 | 1 | 2 | 3 | Tourism, stay |
+| Pertteli | 6 | 0 | 1 | 3 | 1 | 1 | Tourism |
 | Muurla | 3 | 0 | 1 | 0 | 0 | 2 | Tourism, experience, nature |
 | Märynummi | 3 | 0 | 0 | 1 | 2 | 0 | Tourism, stay, food |
 | Hajala | 2 | 0 | 0 | 2 | 0 | 0 | Tourism, stay, nature, food |
@@ -30,10 +30,13 @@ The Salo directory contains 18 localized area guides and 82 provider/place listi
 
 ## Added in this work
 
-- Kiikala: Ilolan Arboretum, Rinteen luomutila, Kängin tila, Hyyppärä-Kultalähde trail and Juurevasti juurista guided tours.
-- Pertteli: Kurjen maatila, Korpiaho Design, Pertteli Church and Koirametsä Rymy.
+- Kiikala: Ilolan Arboretum, Rinteen luomutila, Kängin tila, Hyyppärä-Kultalähde trail, Juurevasti juurista guided tours and Ylivesän luomutila.
+- Pertteli: Kurjen maatila, Korpiaho Design, Pertteli Church, Koirametsä Rymy, Kalevala-retriitti and Villen Viinitarha.
 - Muurla: Muurlan Opisto, Muurla store/café-restaurant and Ilolan raspberry farm.
 - Märynummi: swimming beach, disc golf course and fitness/outdoor area.
+- Halikko: Wiurila Manor, Wiurila Gasthaus, Restaurant Wiurilan Sigrid and Vaski Cider & Distillery.
+- Vaskio: Wanhantuvan Ankkala and Vaskio-Bed.
+- Salo: Salon taidelainaamo, Vuohensaari nature trail and minigolf, and Restaurant Rikala.
 - Mutainen: its own localized village guide and Galleria Tuulitunneli. Lohenrengas is mapped to Teijo, following the official service directory's location grouping.
 - Official Visit Salo/provider images have source attribution and translated alt text where a matching image was published.
 - Provider details link to the provider's own website or official destination record; the platform does not take bookings or payments.
