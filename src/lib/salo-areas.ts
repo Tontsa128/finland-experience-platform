@@ -1,6 +1,6 @@
 import type { Locale } from "@/types";
 
-export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli";
+export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli" | "muurla" | "marynummi";
 
 export const areaProviderIds: Record<SaloArea, string[]> = {
   mathildedal: ["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "ravintola-terho", "mathildedal-brewery", "kattohuone-mathildedal", "meri-ruukin-lomakyla", "vuorovetten-jaatelo"],
@@ -15,6 +15,8 @@ export const areaProviderIds: Record<SaloArea, string[]> = {
   kuusjoki: [],
   kiikala: [],
   pertteli: [],
+  muurla: [],
+  marynummi: [],
 };
 
 export const areaOfficialSources: Record<SaloArea, { url: string; label: string }> = {
@@ -30,6 +32,8 @@ export const areaOfficialSources: Record<SaloArea, { url: string; label: string 
   kuusjoki: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/kuusjoki/", label: "Salon kaupunki – Kuusjoki" },
   kiikala: { url: "https://visitsalo.fi/", label: "Visit Salo" },
   pertteli: { url: "https://visitsalo.fi/", label: "Visit Salo" },
+  muurla: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/", label: "Salon kaupunki" },
+  marynummi: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/marynummi/", label: "Salon kaupunki – Märynummi" },
 };
 
 export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title: string; intro: string }>> = {
