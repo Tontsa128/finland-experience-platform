@@ -91,6 +91,10 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "marynummi-frisbeegolf": { fi: "Märynummi · Salo", en: "Märynummi · Salo", es: "Märynummi · Salo" },
   "mutainen-lohenrengas": { fi: "Mutainen · Teijon Ruukkikylät · Salo", en: "Mutainen · Teijo Ironworks Villages · Salo", es: "Mutainen · Aldeas históricas de Teijo · Salo" },
   "mutainen-galleria-tuulitunneli": { fi: "Mutainen · Teijon Ruukkikylät · Salo", en: "Mutainen · Teijo Ironworks Villages · Salo", es: "Mutainen · Aldeas históricas de Teijo · Salo" },
+  "kiikala-juurevasti-juurista": { fi: "Kiikala ja Salon seutu", en: "Kiikala and the Salo region", es: "Kiikala y la región de Salo" },
+  "pertteli-koirametsa-rymy": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "muurla-ilolan-vadelmatila": { fi: "Muurla · Salo", en: "Muurla · Salo", es: "Muurla · Salo" },
+  "marynummi-kuntorata": { fi: "Märynummi · Salo", en: "Märynummi · Salo", es: "Märynummi · Salo" },
 };
 
 function resolveProvider(slug: string, locale: Locale) {
