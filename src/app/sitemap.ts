@@ -68,8 +68,12 @@ const basePaths = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const saloAreaPaths = Object.keys(areaProviderIds).map((area) => `salo/${area}`);
+  const saloCategoryPaths = Object.entries(areaProviderIds).flatMap(([area, providerIds]) =>
+    [...new Set(saloProviders.filter((provider) => providerIds.includes(provider.id)).map((provider) => provider.category))]
+      .map((category) => `salo/${area}/${category}`),
+  );
   const staticEntries = locales.flatMap((locale) =>
-    [...basePaths, ...saloAreaPaths].map((path) => ({
+    [...basePaths, ...saloAreaPaths, ...saloCategoryPaths].map((path) => ({
       url: siteUrl + "/" + locale + (path ? "/" + path : ""),
       changeFrequency: path === "" ? "daily" as const : "weekly" as const,
       priority: path === "" ? 1 : 0.8,
