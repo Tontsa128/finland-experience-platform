@@ -6,7 +6,7 @@ import { saloProviders } from "@/lib/salo";
 import { photoCredits, photoLibrary } from "@/lib/photo-library";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
-const cardOrder: SaloArea[] = ["salo", "mathildedal", "teijo", "sarkisalo", "pernio", "halikko", "vaskio", "suomusjarvi", "kisko", "kuusjoki", "kiikala", "pertteli"];
+const cardOrder: SaloArea[] = ["salo", "mathildedal", "teijo", "sarkisalo", "pernio", "halikko", "vaskio", "suomusjarvi", "kisko", "kuusjoki", "kiikala", "pertteli", "muurla", "marynummi"];
 const providerImageIds: Partial<Record<SaloArea, string>> = {
   pernio: "leipyolin-tila",
   halikko: "topilan-tupa",
