@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -65,6 +65,9 @@ export async function generateMetadata({
   if (!isSaloArea(rawArea) || !supportedLocales.includes(rawLocale as Locale)) {
     return {};
   }
+  if (rawArea === "mathildedal") {
+    return buildLocalizedMetadata({ locale: rawLocale as Locale, title: "Mathildedal", description: "Mathildedal destination guide", path: "destinations/salo-mathildedal" });
+  }
 
   const locale = rawLocale as Locale;
   const copy = areaCopy[rawArea][locale];
@@ -88,6 +91,9 @@ export default async function SaloAreaPage({
   }
 
   const locale = rawLocale as Locale;
+  if (rawArea === "mathildedal") {
+    redirect(`/${locale}/destinations/salo-mathildedal`);
+  }
   const area = rawArea;
   const copy = areaCopy[area][locale];
   const image = getAreaImage(area);
