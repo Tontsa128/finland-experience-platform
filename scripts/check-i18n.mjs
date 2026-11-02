@@ -66,6 +66,7 @@ if (homepageHasKansakouluCard || !guideKeepsCategoryCards) {
 
 // Sitemap regression guards: do not advertise redirected Mathildedal
 // aliases as indexable pages or fabricate last-modified timestamps.
+const sitemapSource = await readFile(path.resolve("src/app/sitemap.ts"), "utf8");
 if (/lastModified:\s*new Date\(\)/.test(sitemapSource)) {
   failed = true;
   console.error("Sitemap check failed: lastModified must come from real content timestamps, never the current build/request time.");
@@ -116,7 +117,6 @@ const categoryRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
 const areaCardsLinkToRoutes = saloPageSource.includes('href={`/${locale}/salo/${area.id}`}');
-const sitemapSource = await readFile(path.resolve("src/app/sitemap.ts"), "utf8");
 const sitemapIncludesAreaRoutes = sitemapSource.includes("...saloAreaPaths");
 const sitemapIncludesCategoryRoutes = sitemapSource.includes("...saloCategoryPaths")
   && sitemapSource.includes("getSaloAreaCategories(area");
