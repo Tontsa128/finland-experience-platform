@@ -43,7 +43,6 @@ const basePaths = [
   "destinations/rosala",
   "destinations/bengtskar",
   "destinations/teijon-ruukkikyla",
-  "salo",
   "salo/kylat",
   "turku",
   "naantali",
@@ -69,7 +68,8 @@ const basePaths = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const saloAreas = Object.keys(areaProviderIds);
+  // The Mathildedal area alias redirects to the canonical destination page.
+  const saloAreas = Object.keys(areaProviderIds).filter((area) => area !== "mathildedal");
   const saloAreaPaths = saloAreas.map((area) => `salo/${area}`);
   const saloCategoryPaths = saloAreas.flatMap((area) =>
     getSaloAreaCategories(area as keyof typeof areaProviderIds).map(

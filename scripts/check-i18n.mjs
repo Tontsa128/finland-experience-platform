@@ -118,10 +118,10 @@ const areaPageHasCategoryLinks = saloAreaPageSource.includes("getSaloAreaCategor
 const categoryRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}\s+category=\{category\}/.test(saloCategoryPageSource);
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
-const saloLandingLinksToVillageIndex = saloPageSource.includes('href={`/${locale}/salo/kylat`}');
+const saloLandingLinksToVillageIndex = saloPageSource.includes("redirect(`/${locale}/salo/kylat`)");
 const villageIndexUsesAreaGrid = saloVillageIndexSource.includes("<SaloAreaGrid locale={locale} />");
 const saloLandingDoesNotRenderVillageGrid = !saloPageSource.includes("<SaloAreaGrid");
-const areaCardsLinkToRoutes = saloAreaGridSource.includes('href={`/${locale}/salo/${area}`}');
+const areaCardsLinkToRoutes = saloAreaGridSource.includes("destinations/salo-mathildedal") && saloAreaGridSource.includes("/salo/${area}");
 const areaCardsIncludeImages = saloAreaGridSource.includes("<Image src={image.src");
 const sitemapIncludesAreaRoutes = sitemapSource.includes("...saloAreaPaths");
 const sitemapIncludesVillageIndex = sitemapSource.includes('"salo/kylat"');

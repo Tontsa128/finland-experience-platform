@@ -12,17 +12,17 @@ const copy: Record<Locale, { title: string; description: string; back: string }>
   fi: {
     title: "Salon kylät ja alueet",
     description: "Valitse kylä tutustuaksesi sen palveluihin, paikallisiin makuihin, luontoon ja elämyksiin.",
-    back: "Takaisin Salon esittelyyn",
+    back: "Etusivulle",
   },
   es: {
     title: "Pueblos y zonas de Salo",
     description: "Elige un pueblo para descubrir sus servicios, sabores locales, naturaleza y experiencias.",
-    back: "Volver a la presentación de Salo",
+    back: "Volver al inicio",
   },
   en: {
     title: "Villages and areas of Salo",
     description: "Choose a village to explore its services, local flavours, nature and experiences.",
-    back: "Back to the Salo introduction",
+    back: "Back to homepage",
   },
 };
 
@@ -56,7 +56,7 @@ export default async function SaloVillagesPage({
       <section className="bg-brand-950 text-white">
         <div className="container-narrow py-10 sm:py-14">
           <Link
-            href={`/${locale}/salo`}
+            href={`/${locale}`}
             className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />

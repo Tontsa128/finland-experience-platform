@@ -77,7 +77,7 @@ export function SaloAreaGrid({ locale }: { locale: Locale }) {
             const image = getAreaImage(area);
             return (
               <article key={area} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
-                <Link href={`/${locale}/salo/${area}`} className="block">
+                <Link href={area === "mathildedal" ? `/${locale}/destinations/salo-mathildedal` : `/${locale}/salo/${area}`} className="block">
                   <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
                     {image ? (
                       <>
