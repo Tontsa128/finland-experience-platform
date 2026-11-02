@@ -150,13 +150,17 @@ A region or village expansion is not complete until every route in this journey 
 
 ### Salo regional coverage and source register
 
-The current Salo regional landing page includes 14 localized area guides: Salo, Mathildedal, Teijo, Särkisalo, Perniö, Halikko, Vaskio, Suomusjärvi, Kisko, Kuusjoki, Kiikala, Pertteli, Muurla and Märynummi. The official Visit Salo and municipal sources identify a wider expansion scope, including Kirjakkala, Hajala, Angelniemi and other village communities. Continue expanding this catalogue using the official sources below; do not publish unsupported details or reuse an unrelated village image.
+The current Salo regional landing page includes 17 localized area guides: Salo, Mathildedal, Teijo, Särkisalo, Perniö, Halikko, Vaskio, Suomusjärvi, Kisko, Kuusjoki, Kiikala, Pertteli, Muurla and Märynummi. The official Visit Salo and municipal sources identify a wider expansion scope, including Kirjakkala, Hajala, Angelniemi and other village communities. Continue expanding this catalogue using the official sources below; do not publish unsupported details or reuse an unrelated village image.
 
 Primary research sources:
 - Visit Salo regional material: https://visitsalo.fi/
 - Salo municipality village and area guides: https://salo.fi/muuttajalle/kylat-ja-alueet/
 - Official village guides: https://salo.fi/muuttajalle/kylat-ja-alueet/kisko/, https://salo.fi/muuttajalle/kylat-ja-alueet/kuusjoki/ and https://salo.fi/muuttajalle/kylat-ja-alueet/marynummi/
 - Visit Salo village tour: https://kohteet.visitsalo.fi/en/salos-idyllic-villages-car-tour/
+- Hajala official city and village-association sources: https://salo.fi/muuttajalle/kylat-ja-alueet/hajala/, https://www.hajala.fi/ and https://www.hajala.fi/myllytyry/
+- Angelniemi village-association award and local context: https://www.vskylat.fi/maakunnan-kylat/vuoden-kyla/; local provider: https://lossiranta.com/home/
+- Kirjakkala official city, Visit Salo and provider sources: https://salo.fi/muuttajalle/kylat-ja-alueet/teijon-ruukkikylat/, https://kohteet.visitsalo.fi/kirjakkalan-ruukkikyla-melontakeskus/ and https://www.ruukkikyla.fi/
+- New reusable village images: Hajala and Angelniemi Commons file pages; Myllytyry and Kirjakkala Visit Salo destination image pages (covered by the project owner's confirmed Salo-area image authorization).
 - Local village association material: https://www.halikko.com/marynummi.html, https://www.halikko.com/hajala.html and https://www.halikko.com/angelniemi.html
 - Verified Commons photo records: https://commons.wikimedia.org/wiki/File:Kisko.jpg, https://commons.wikimedia.org/wiki/File:Kuusjoen_kirkko_1890.jpg, https://commons.wikimedia.org/wiki/File:Pertteli_church_04.jpg, https://commons.wikimedia.org/wiki/File:Muurlan_kirkko.jpg and https://commons.wikimedia.org/wiki/File:Lammenjärvi_01.JPG
 - Varsinais-Suomen Kylät association directory: https://www.vskylat.fi/maakunnan-kylat/
