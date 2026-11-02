@@ -1,6 +1,6 @@
 import type { Locale } from "@/types";
 
-export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli" | "muurla" | "marynummi";
+export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli" | "muurla" | "marynummi" | "hajala" | "angelniemi";
 
 export const areaProviderIds: Record<SaloArea, string[]> = {
   mathildedal: ["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "ravintola-terho", "mathildedal-brewery", "kattohuone-mathildedal", "meri-ruukin-lomakyla", "vuorovetten-jaatelo"],
@@ -17,6 +17,8 @@ export const areaProviderIds: Record<SaloArea, string[]> = {
   pertteli: [],
   muurla: [],
   marynummi: [],
+  hajala: [],
+  angelniemi: [],
 };
 
 export const areaOfficialSources: Record<SaloArea, { url: string; label: string }> = {
@@ -34,6 +36,8 @@ export const areaOfficialSources: Record<SaloArea, { url: string; label: string 
   pertteli: { url: "https://visitsalo.fi/", label: "Visit Salo" },
   muurla: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/", label: "Salon kaupunki" },
   marynummi: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/marynummi/", label: "Salon kaupunki – Märynummi" },
+  hajala: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/hajala/", label: "Salon kaupunki – Hajala" },
+  angelniemi: { url: "https://www.vskylat.fi/maakunnan-kylat/vuoden-kyla/", label: "Varsinais-Suomen Kylät – Angelniemi" },
 };
 
 export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title: string; intro: string }>> = {
@@ -101,6 +105,16 @@ export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title:
     fi: { eyebrow: "Märynummi · Salo", title: "Märynummi – luontoa ja aktiivista kyläelämää", intro: "Märynummi sijaitsee hiekkaharjulla lähellä moottoritietä. Alueella on luontopolkuja, frisbeegolfia, uimala saunoineen sekä kylän yhteisiä harrastus- ja kokoontumistiloja." },
     en: { eyebrow: "Märynummi · Salo", title: "Märynummi – nature and active village life", intro: "Märynummi sits on a sandy ridge close to the motorway. The area offers nature trails, disc golf, a swimming area with saunas and shared facilities for local activities." },
     es: { eyebrow: "Märynummi · Salo", title: "Märynummi, naturaleza y vida local activa", intro: "Märynummi se encuentra sobre una loma arenosa cerca de la autopista. La zona ofrece senderos, disc golf, una zona de baño con saunas y espacios comunitarios para actividades." },
+  },
+  hajala: {
+    fi: { eyebrow: "Hajala · Halikko · Salo", title: "Hajala – kyläyhteisöä ja Myllytyryn luontoa", intro: "Hajala on maaseutumainen kylä Vanhan Kuninkaantien varrella. Kylän kohtaamispaikkoihin kuuluvat Myllytyryn metsälampi ja sauna sekä historiallinen Trömperin kestikievari. Kyläyhdistys ja paikalliset toimijat järjestävät yhteistä toimintaa ympäri vuoden." },
+    en: { eyebrow: "Hajala · Halikko · Salo", title: "Hajala – village community and Myllytyry nature", intro: "Hajala is a rural village along the historic King's Road. Local meeting places include the forest lake and sauna at Myllytyry and the historic Trömperi roadside inn. The village association and local groups organise community activities throughout the year." },
+    es: { eyebrow: "Hajala · Halikko · Salo", title: "Hajala, comunidad rural y naturaleza en Myllytyry", intro: "Hajala es un pueblo rural situado junto a la histórica Ruta del Rey. Entre sus lugares de encuentro destacan el lago forestal y la sauna de Myllytyry y la antigua posada de Trömperi. La asociación local y otros grupos organizan actividades comunitarias durante todo el año." },
+  },
+  angelniemi: {
+    fi: { eyebrow: "Angelniemi · Salo", title: "Angelniemi – merellistä kyläelämää ja historiaa", intro: "Angelniemi on Halikonlahden ja Kemiönsaaren suunnan tuntumassa sijaitseva merellinen kylä. Kylän yhteisöllisyyttä ylläpitävät aktiiviset yhdistykset ja Seurojentalo. Kokkilan ranta, Lossiranta ja historiallinen kirkko tuovat alueelle saariston tunnelmaa." },
+    en: { eyebrow: "Angelniemi · Salo", title: "Angelniemi – coastal village life and heritage", intro: "Angelniemi is a coastal village near Halikko Bay and the route towards Kimitoön. Active associations and the village hall are at the heart of its community life. Kokkila beach, Lossiranta and the historic church give the area its maritime character." },
+    es: { eyebrow: "Angelniemi · Salo", title: "Angelniemi, vida de pueblo costero y patrimonio", intro: "Angelniemi es un pueblo costero cerca de la bahía de Halikko y de la ruta hacia Kimitoön. Las asociaciones activas y el centro comunitario mantienen viva la vida local. La playa de Kokkila, Lossiranta y la iglesia histórica aportan el carácter marítimo de la zona." },
   },
   salo: {
     fi: { eyebrow: "Salo · keskusta ja lähialueet", title: "Salon kaupungin palvelut ja retket", intro: "Matkailuinfo, oppaat, leirintä ja saaristoon suuntautuvat retkipalvelut." },
