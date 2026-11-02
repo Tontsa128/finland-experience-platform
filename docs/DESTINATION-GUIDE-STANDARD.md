@@ -147,3 +147,15 @@ This hierarchy is the reusable enterprise standard for every new city, region, v
 Homepage → region/city → village/place → category → provider card → provider detail → provider's official website or booking/contact channel.
 
 A region or village expansion is not complete until every route in this journey has been checked in FI/EN/ES on mobile and desktop, with working images, source attribution, internal navigation, provider links, metadata, sitemap coverage, tests and production build.
+
+### Salo regional coverage and source register
+
+The Salo regional landing page must be expanded from the initial area set to cover the places identified by the official Visit Salo material and local village associations. The 2024 Visit Salo guide identifies Kuusjoki, Pertteli, Kiikala, Halikko, the Salo centre, Muurla, Suomusjärvi, Kirjakkala, Teijo, Mathildedal, Perniö, Kisko and Särkisalo. The municipality's village pages and local associations also identify places such as Hajala, Märynummi, Angelniemi and Vaskio. Treat these as a research scope, not as permission to publish unsupported details.
+
+Primary research sources:
+- Visit Salo regional material: https://visitsalo.fi/
+- Salo municipality village and area guides: https://salo.fi/muuttajalle/kylat-ja-alueet/
+- Example official village guides: https://salo.fi/muuttajalle/kylat-ja-alueet/kisko/ and https://salo.fi/muuttajalle/kylat-ja-alueet/kuusjoki/
+- Varsinais-Suomen Kylät association directory: https://www.vskylat.fi/maakunnan-kylat/
+
+For each additional village, use the municipality's own village guide and the relevant village association as the starting point, then verify each business against its own official website. Do not create an image card until a matching village photograph and its source/usage terms have been identified. Do not use one generic Salo image to represent multiple villages.
