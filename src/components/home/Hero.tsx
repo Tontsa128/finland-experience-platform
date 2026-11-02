@@ -10,8 +10,8 @@ import { photoLibrary } from "@/lib/photo-library";
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
 function normalizeHomepageHref(href: string): string {
-  // CMS and built-in slides can retain links to retired Mathildedal routes.
-  // Do not rewrite external provider URLs.
+  // Keep CMS and built-in homepage links on the canonical public routes.
+  // External provider URLs must never be rewritten.
   const value = href.trim();
   const lower = value.toLowerCase();
   if (!value || lower.startsWith("http://") || lower.startsWith("https://") || value.startsWith("//")) return value;
@@ -20,13 +20,17 @@ function normalizeHomepageHref(href: string): string {
   const withoutLocale = path.startsWith("/fi/") || path.startsWith("/es/") || path.startsWith("/en/")
     ? path.slice(3)
     : path;
+
+  if (withoutLocale === "/salo" || withoutLocale === "/salo/kylat") {
+    return "/salo/kylat";
+  }
   if (
+    withoutLocale === "/salo/mathildedal" ||
+    withoutLocale.startsWith("/salo/mathildedal/") ||
     withoutLocale === "/mathildedal" ||
-    withoutLocale.startsWith("/mathildedal/") ||
-    withoutLocale === "/coastal-finland" ||
-    lower.includes("mathildedal")
+    withoutLocale.startsWith("/mathildedal/")
   ) {
-    return "/salo/mathildedal";
+    return "/destinations/salo-mathildedal";
   }
   return value;
 }
@@ -96,7 +100,7 @@ const slides: Slide[] = [
     image: photoLibrary.mathildedalVillage,
     credit: "Kotivalo / Wikimedia Commons (CC BY-SA 3.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
-    href: "/salo/mathildedal",
+    href: "/destinations/salo-mathildedal",
   },
   {
     key: "aland",
