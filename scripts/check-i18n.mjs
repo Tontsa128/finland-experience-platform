@@ -105,6 +105,8 @@ const duplicateAreaIds = assignedProviderIds.filter((id, index) => assignedProvi
 const missingAreaIds = providerIds.filter((id) => !assignedProviderIds.includes(id));
 const unknownAreaIds = assignedProviderIds.filter((id) => !providerIds.includes(id));
 const renderedAreas = [...areaMap.matchAll(/^\s+([a-z]+):\s*\[/gm)].map((match) => match[1]);
+const cardOrderMatch = saloAreaCardsSource.match(/const cardOrder: SaloArea\[\] = \[([^\]]+)\]/);
+const cardAreaCount = cardOrderMatch ? [...cardOrderMatch[1].matchAll(/"([a-z]+)"/g)].length : 0;
 const areaRouteUsesDirectory = /<SaloAreaCategoryGrid\s+locale=\{locale\}\s+area=\{area\}/.test(saloAreaPageSource);
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
@@ -119,7 +121,7 @@ const photoSourceLabelIsLocalized = [
   'photoSource: "Fuente de la foto"',
   'photoSource: "Photo source"',
 ].every((label) => saloDirectorySource.includes(label));
-if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !categoryRouteListsProviders || !categoryCardsLinkToRoutes || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 14) {
+if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !categoryRouteListsProviders || !categoryCardsLinkToRoutes || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || !cardAreaCount || renderedAreas.length !== cardAreaCount) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
@@ -129,6 +131,7 @@ if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCoun
     missingAreaIds,
     unknownAreaIds,
     renderedAreas,
+    cardAreaCount,
     areaRouteUsesDirectory,
     areaRouteGeneratesAllSlugs,
     areaCardsLinkToRoutes,
