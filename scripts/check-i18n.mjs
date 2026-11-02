@@ -76,6 +76,28 @@ if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
   console.error("Sitemap check failed: legacy Mathildedal aliases redirect to the canonical destination and must not be listed.");
 }
 
+// Navigation regression guard: public Salo links skip the retired intro page,
+// and all legacy Mathildedal URLs resolve directly to the canonical destination.
+const coastalGuideSource = await readFile(path.resolve("src/app/[locale]/coastal-finland/page.tsx"), "utf8");
+const mathildedalLegacySource = await readFile(path.resolve("src/app/[locale]/mathildedal/page.tsx"), "utf8");
+const mathildedalCategoryLegacySource = await readFile(path.resolve("src/app/[locale]/mathildedal/[category]/page.tsx"), "utf8");
+const mathildedalMiddlewareSource = await readFile(path.resolve("middleware.ts"), "utf8");
+const ruukkikylaGuideSource = await readFile(path.resolve("src/components/salo/RuukkikylaGuide.tsx"), "utf8");
+const teijoDestinationSource = await readFile(path.resolve("src/app/[locale]/destinations/teijon-ruukkikyla/page.tsx"), "utf8");
+const saloGuideLinksDirectly = coastalGuideSource.includes('href={\u0060/\u0024{locale}/salo/kylat\u0060}');
+const legacyMathildedalLinksDirectly = [mathildedalLegacySource, mathildedalCategoryLegacySource, mathildedalMiddlewareSource]
+  .every((source) => source.includes('/destinations/salo-mathildedal') && !source.includes('/salo/mathildedal'));
+const relatedMathildedalLinksDirectly = ruukkikylaGuideSource.includes('/destinations/salo-mathildedal')
+  && teijoDestinationSource.includes('/destinations/salo-mathildedal');
+if (!saloGuideLinksDirectly || !legacyMathildedalLinksDirectly || !relatedMathildedalLinksDirectly) {
+  failed = true;
+  console.error("Direct destination navigation check failed:", {
+    saloGuideLinksDirectly,
+    legacyMathildedalLinksDirectly,
+    relatedMathildedalLinksDirectly,
+  });
+}
+
 // Salo regional guide regression guard: providers belong to one area unless
 // they explicitly serve multiple locations; category routes must be generated and indexed.
 const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
