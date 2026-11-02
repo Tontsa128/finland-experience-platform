@@ -412,6 +412,47 @@ const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
     { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/M%C3%A4ryn_ulkoilualue-opastaulu-1366x768.jpg", alt: { fi: "Märynummen ulkoilualueen opastaulu", en: "Information board for the Märynummi outdoor area", es: "Panel informativo de la zona recreativa de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/" }
   ],
 
+
+  "salo-halikko-wiurila-kartano": [
+    { src: "https://wiurila.fi/wp-content/uploads/2026/06/wiurila-ja-syreeni-scaled.jpg", alt: { fi: "Wiurilan kartanon päärakennus ja alkukesän kukkaloisto", en: "Wiurila Manor's main building and early-summer flowers", es: "Edificio principal de la finca Wiurila y flores de comienzos del verano" }, credit: "Wiurila", source: "https://wiurila.fi/kartano/" }
+  ],
+  "salo-halikko-wiurila-gasthaus": [
+    { src: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8382-scaled-1.jpeg", alt: { fi: "Wiurila Gasthausin huone", en: "A room at Wiurila Gasthaus", es: "Habitación de Wiurila Gasthaus" }, credit: "Wiurila", source: "https://wiurila.fi/majoitus/" },
+    { src: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8386-scaled-1.jpeg", alt: { fi: "Wiurila Gasthausin majoitustila", en: "Accommodation interior at Wiurila Gasthaus", es: "Interior del alojamiento Wiurila Gasthaus" }, credit: "Wiurila", source: "https://wiurila.fi/majoitus/" },
+    { src: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8374-scaled-2-1.jpeg", alt: { fi: "Wiurila Gasthausin huoneen yksityiskohtia", en: "Details in a Wiurila Gasthaus room", es: "Detalles de una habitación de Wiurila Gasthaus" }, credit: "Wiurila", source: "https://wiurila.fi/majoitus/" },
+    { src: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8450-scaled-1.jpeg", alt: { fi: "Wiurila Gasthausin yhteinen oleskelutila", en: "Shared lounge at Wiurila Gasthaus", es: "Sala de estar compartida de Wiurila Gasthaus" }, credit: "Wiurila", source: "https://wiurila.fi/majoitus/" }
+  ],
+  "salo-halikko-vaski-cider": [
+    { src: "https://cdn-datahub.visitfinland.com/images/2ca26490-caca-11f0-af1d-279dee19c89a.jpeg?s=1280", alt: { fi: "Siiderintekijä vastaanottaa vieraat Vaski Ciderillä", en: "Guests welcomed at Vaski Cider", es: "Recepción de visitantes en Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset-ja-tastingit/" },
+    { src: "https://cdn-datahub.visitfinland.com/images/aaa24090-caca-11f0-af1d-279dee19c89a.jpeg?s=1280", alt: { fi: "Siiderin ja suklaan tasting Vaski Ciderillä", en: "Cider and chocolate tasting at Vaski Cider", es: "Cata de sidra y chocolate en Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset-ja-tastingit/" },
+    { src: "https://cdn-datahub.visitfinland.com/images/1014ab80-caca-11f0-af1d-279dee19c89a.jpeg?s=1280", alt: { fi: "Vaski Ciderin taidepullo", en: "An art bottle from Vaski Cider", es: "Botella artística de Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset-ja-tastingit/" },
+    { src: "https://cdn-datahub.visitfinland.com/images/04eef8a0-caca-11f0-af1d-279dee19c89a.jpeg?s=1280", alt: { fi: "Tunnelmaa Vaski Ciderin siideritalossa", en: "Atmosphere inside the Vaski Cider house", es: "Ambiente en la sidrería Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset/" },
+    { src: "https://cdn-datahub.visitfinland.com/images/0fda3c00-b182-11ef-b5a0-3d8c42928efa.jpeg?s=1280", alt: { fi: "Taide osana Vaski Ciderin vierailukokemusta", en: "Art as part of the Vaski Cider visitor experience", es: "El arte como parte de la experiencia en Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset/" }
+  ],
+  "salo-vaskio-bed": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/08/Vaskio-Bed-2-1-1024x768.jpg", alt: { fi: "Vaskio-Bedin makuuhuone", en: "Bedroom at Vaskio-Bed", es: "Dormitorio de Vaskio-Bed" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/vaskio-bed/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/08/Vaskio-Bed-3-1-576x768.jpg", alt: { fi: "Vaskio-Bedin patio", en: "Patio at Vaskio-Bed", es: "Patio de Vaskio-Bed" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/vaskio-bed/" }
+  ],
+  "salo-kiikala-ylivesan-luomutila": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06844-2-1151x768.jpg", alt: { fi: "Ylivesän luomutilan naudan sisäfilettä", en: "Beef tenderloin from Ylivesä Organic Farm", es: "Solomillo de ternera de la granja ecológica Ylivesä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ylivesan-luomutila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06734-4-1151x768.jpg", alt: { fi: "Ylivesän luomutilan entrecôte grillattuna", en: "Grilled entrecôte from Ylivesä Organic Farm", es: "Entrecot a la parrilla de la granja ecológica Ylivesä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ylivesan-luomutila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06822-1151x768.jpg", alt: { fi: "Ylivesän luomutilan luomujauhelihaa", en: "Organic minced beef from Ylivesä Organic Farm", es: "Carne picada ecológica de la granja Ylivesä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ylivesan-luomutila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06909-1151x768.jpg", alt: { fi: "Ylivesän luomutilan vasikoita ja emolehmiä", en: "Calves and mother cows at Ylivesä Organic Farm", es: "Terneros y vacas madres en la granja ecológica Ylivesä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ylivesan-luomutila/" }
+  ],
+  "salo-pertteli-villen-viinitarha": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/06/IMG_20210809_220144_661-768x768.jpg", alt: { fi: "Villen Viinitarhan viinirypäleitä", en: "Grapes at Villen Viinitarha vineyard", es: "Uvas en el viñedo Villen Viinitarha" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/villen-viinitarha/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/06/IMG_20190831_123632_934-844x768.jpg", alt: { fi: "Viinirypäleitä Villen Viinitarhassa", en: "Grapes growing at Villen Viinitarha", es: "Uvas creciendo en Villen Viinitarha" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/villen-viinitarha/" }
+  ],
+  "salo-salo-vuohensaari-luontopolku": [
+    { src: "https://cdn-datahub.visitfinland.com/images/a82eb0b0-58e5-11ec-9ba4-0dc52985e5d5-Vuohensaaren%20auringonlasku.jpg?s=1280", alt: { fi: "Auringonlasku Vuohensaaren rannalla", en: "Sunset on the shore of Vuohensaari", es: "Atardecer en la costa de Vuohensaari" }, credit: "Visit Finland / Visit Salo", source: "https://kohteet.visitsalo.fi/vuohensaari/" }
+  ],
+  "salo-salo-vuohensaari-minigolf": [
+    { src: "https://cdn-datahub.visitfinland.com/images/a83196e0-58e5-11ec-9ba4-0dc52985e5d5-vuohensaari%20minigolf.jpg?s=1280", alt: { fi: "Vuohensaaren minigolfrata merimaisemassa", en: "Vuohensaari minigolf course by the sea", es: "Campo de minigolf de Vuohensaari junto al mar" }, credit: "Visit Finland / Visit Salo", source: "https://kohteet.visitsalo.fi/vuohensaari/" }
+  ],
+  "salo-salo-ravintola-rikala": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/11/Rikala-0023-1150x768.jpg", alt: { fi: "Ravintola Rikalan ruokailutila", en: "Dining area at Restaurant Rikala", es: "Comedor del restaurante Rikala" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/restaurant-rikala/" }
+  ]
+
 };
 const teijoMasuuniPhotos: LocalPhoto[] = [
   { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/Paviljonki-1024x779.jpg", alt: { fi: "Teijon Masuunin paviljonki historiallisessa ruukkimiljöössä", en: "Teijo Masuuni pavilion in the historic ironworks setting", es: "Pabellón de Teijo Masuuni en el entorno histórico de la ferrería" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" },
