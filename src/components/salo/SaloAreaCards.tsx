@@ -49,7 +49,7 @@ export function SaloAreaCards({ locale }: { locale: Locale }) {
             <article key={area} className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
               <Link href={`/${locale}/salo/${area}`} className="group block">
                 <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                  {photo ? <Image src={photo.src} alt={copy.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  {photo ? <Image src={photo.src} alt={copy.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" /> : <div className="flex h-full items-center justify-center bg-brand-950 px-6 text-center text-gold-300"><span className="font-display text-2xl font-bold">{copy.eyebrow}</span></div>}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-transparent" />
                   <span className="absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-brand-950">{areaProviderIds[area].length} {locale === "fi" ? "palvelukohdetta" : locale === "es" ? "proveedores" : "local listings"}</span>
                 </div>
@@ -60,8 +60,8 @@ export function SaloAreaCards({ locale }: { locale: Locale }) {
                 </div>
               </Link>
               <p className="px-6 pb-5 text-[11px] text-slate-400">
-                {locale === "fi" ? "Kuvan lähde:" : locale === "es" ? "Fuente de imagen:" : "Image source:"}{" "}
-                <a href={photo.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-brand-800">{photo.credit}</a>
+                {photo ? <>{locale === "fi" ? "Kuvan lähde:" : locale === "es" ? "Fuente de imagen:" : "Image source:"}{" "}
+                <a href={photo.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-brand-800">{photo.credit}</a></> : null}
               </p>
             </article>
           );
