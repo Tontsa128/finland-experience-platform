@@ -21,6 +21,10 @@ for (const [index, block] of providerBlocks.entries()) {
     assert.match(block, new RegExp("\\b" + locale + ":\\s*\\""), `provider ${id} must have a ${locale} description`);
   }
   assert.match(block, /url:\s*"https?:\/\//, `provider ${id} must link to an official provider or source page`);
+  if (/image:\s*(?:providerImages\\.|"https?:\/\/)/.test(block)) {
+    assert.match(block, /imageCredit:\s*"/, `provider ${id} image must include a credit`);
+    assert.match(block, /imageSource:\s*"/, `provider ${id} image must include its source URL`);
+  }
 }
 
 const areaMatch = areasSource.match(/export const areaProviderIds: Record<SaloArea, string\[\]> = \{([\s\S]*?)\n\};/);
