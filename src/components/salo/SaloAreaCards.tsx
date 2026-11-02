@@ -6,12 +6,14 @@ import { saloProviders } from "@/lib/salo";
 import { photoCredits, photoLibrary } from "@/lib/photo-library";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
-const cardOrder: SaloArea[] = ["salo", "mathildedal", "teijo", "sarkisalo", "pernio", "halikko", "vaskio", "suomusjarvi", "kisko", "kuusjoki", "kiikala", "pertteli", "muurla", "marynummi", "hajala", "angelniemi", "kirjakkala"];
+const cardOrder: SaloArea[] = ["salo", "mathildedal", "teijo", "mutainen", "kirjakkala", "sarkisalo", "pernio", "halikko", "vaskio", "suomusjarvi", "kisko", "kuusjoki", "kiikala", "pertteli", "muurla", "marynummi", "hajala", "angelniemi"];
 const providerImageIds: Partial<Record<SaloArea, string>> = {
   pernio: "leipyolin-tila",
   halikko: "topilan-tupa",
   vaskio: "onnenperan-mokki",
   suomusjarvi: "villa-frans",
+  marynummi: "marynummi-uimaranta",
+  mutainen: "mutainen-lohenrengas",
 };
 
 function getAreaPhoto(area: SaloArea) {
