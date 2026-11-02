@@ -60,6 +60,8 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "kuusjoki-ohrakasken-tila": { fi: "Kuusjoki · Salo", en: "Kuusjoki · Salo", es: "Kuusjoki · Salo" },
   "kuusjoki-ellun-kanat": { fi: "Kuusjoki · Salo", en: "Kuusjoki · Salo", es: "Kuusjoki · Salo" },
   "kuusjoki-church": { fi: "Kuusjoki · Salo", en: "Kuusjoki · Salo", es: "Kuusjoki · Salo" },
+  "hajala-myllytyry": { fi: "Hajala · Halikko · Salo", en: "Hajala · Halikko · Salo", es: "Hajala · Halikko · Salo" },
+  "kirjakkalan-ruukkikyla": { fi: "Kirjakkala · Teijo · Salo", en: "Kirjakkala · Teijo · Salo", es: "Kirjakkala · Teijo · Salo" },
   "villa-viktoria": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
   "villa-frans": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
   "villa-viola": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
