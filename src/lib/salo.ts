@@ -842,7 +842,6 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Htm / Wikimedia Commons — CC BY 4.0",
     imageSource: "https://commons.wikimedia.org/wiki/File:Kuusjoki_church_2.jpg",
   },
-,
 
   {
     id: "hajala-myllytyry",
