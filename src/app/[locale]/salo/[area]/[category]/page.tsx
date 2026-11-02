@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -31,6 +31,7 @@ export default async function SaloCategoryPage({ params }: { params: Promise<{ l
   const { locale: rawLocale, area: rawArea, category: rawCategory } = await params;
   if (!areaSlugs.includes(rawArea as SaloArea) || !supportedLocales.includes(rawLocale as Locale)) notFound();
   const locale = rawLocale as Locale;
+  if (rawArea === "mathildedal") redirect(`/${locale}/destinations/salo-mathildedal`);
   const area = rawArea as SaloArea;
   const category = getSaloCategoryFromSlug(rawCategory);
   if (!category || !getSaloAreaCategories(area).includes(category)) notFound();
