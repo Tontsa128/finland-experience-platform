@@ -52,8 +52,12 @@ function getAreaImage(area: SaloArea): { src: string; credit: string; source: st
                 ? photoLibrary.muurlaChurch
                 : area === "kiikala"
                   ? photoLibrary.kiikalaLammenjarvi
+                  : area === "hajala"
+                ? photoLibrary.hajalaVillage
+                : area === "angelniemi"
+                  ? photoLibrary.angelniemiChurch
                   : area === "salo"
-                ? photoLibrary.saloVeturitalli
+                    ? photoLibrary.saloVeturitalli
                 : null;
   if (!src) return null;
   const attribution = photoCredits.find((photo) => photo.url === src);
