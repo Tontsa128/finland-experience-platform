@@ -842,6 +842,36 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Htm / Wikimedia Commons — CC BY 4.0",
     imageSource: "https://commons.wikimedia.org/wiki/File:Kuusjoki_church_2.jpg",
   },
+,
+
+  {
+    id: "hajala-myllytyry",
+    category: "experience",
+    name: "Myllytyryn uimapaikka ja sauna",
+    description: {
+      fi: "Hajalan Myllytyry on lähdepohjainen metsälampi, jonka rannalla on kaksi hiekkarantaa, laituri, grillikatos ja puulämmitteinen sauna. Kyläyhdistykseltä voi tiedustella saunan yksityisvuokrausta. Uimapaikka on vapaasti käytettävissä; saunan käyttö ja varaukset tarkistetaan aina Hajalan kyläyhdistykseltä.",
+      en: "Myllytyry in Hajala is a spring-fed forest lake with two sandy beaches, a jetty, barbecue shelter and a wood-heated sauna. The village association handles enquiries about private sauna hire. The swimming area is freely accessible; check sauna access and bookings directly with the Hajala village association.",
+      es: "Myllytyry, en Hajala, es un lago forestal alimentado por manantiales con dos playas de arena, un muelle, una zona de barbacoa y una sauna de leña. La asociación local gestiona las consultas sobre el alquiler privado de la sauna. El baño es de acceso libre; confirma el uso y las reservas de la sauna directamente con la asociación.",
+    },
+    url: "https://www.hajala.fi/myllytyry/",
+    image: photoLibrary.hajalaMyllytyry,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/myllytyryn-uimapaikka/",
+  },
+  {
+    id: "kirjakkalan-ruukkikyla",
+    category: "stay",
+    name: "Kirjakkalan Ruukkikylä / Extreme Fun",
+    description: {
+      fi: "Kirjakkalan historiallisessa ruukkimiljöössä Hamarijärven rannalla toimii majoitus-, kokous- ja saunapalveluja sekä ulkoilu- ja melontakeskus. Ruukkikylän historia ulottuu vuoteen 1686, ja vanhat rakennukset sijaitsevat Teijon kansallispuiston retkeilyreittien äärellä. Tarkista huonevaihtoehdot, palvelut ja varausehdot suoraan yrittäjältä.",
+      en: "In the historic ironworks setting of Kirjakkala by Lake Hamarijärvi, the operator offers accommodation, meeting and sauna facilities, as well as an outdoor and paddling centre. The ironworks history dates back to 1686, and the restored buildings stand beside the trails of Teijo National Park. Check room options, services and booking terms directly with the operator.",
+      es: "En el entorno histórico de la ferrería de Kirjakkala, junto al lago Hamarijärvi, se ofrecen alojamiento, espacios para reuniones y sauna, además de un centro de actividades al aire libre y piragüismo. La historia de la ferrería se remonta a 1686 y los edificios restaurados están junto a los senderos del Parque Nacional de Teijo. Consulta directamente con el operador las habitaciones, los servicios y las condiciones de reserva.",
+    },
+    url: "https://www.ruukkikyla.fi/",
+    image: photoLibrary.kirjakkalaVillage,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/kirjakkalan-ruukkikyla-melontakeskus/",
+  },
 
 ];
 
