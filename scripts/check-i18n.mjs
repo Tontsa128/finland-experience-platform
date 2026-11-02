@@ -81,7 +81,6 @@ if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
 const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
 const saloAreaDataSource = await readFile(path.resolve("src/lib/salo-areas.ts"), "utf8");
 const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
-const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
 const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
 const saloAreaCategoryPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/[category]/page.tsx"), "utf8");
 const saloAreaCardsSource = await readFile(path.resolve("src/components/salo/SaloAreaCards.tsx"), "utf8");
@@ -108,7 +107,10 @@ const renderedAreas = [...areaMap.matchAll(/^\s+([a-z]+):\s*\[/gm)].map((match) 
 const areaRouteUsesDirectory = /<SaloAreaCategoryGrid\s+locale=\{locale\}\s+area=\{area\}/.test(saloAreaPageSource);
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
-const areaCardsLinkToRoutes = saloAreaCardsSource.includes('href={`/${locale}/salo/${area}`}');
+const areaCardsLinkToRoutes = saloAreaCardsSource.includes('href={`/${locale}/salo/${area}`}') && saloPageSourceHasAreaCards();
+function saloPageSourceHasAreaCards() {
+  return saloAreaCardsSource.length > 0 && saloAreaPageSource.length > 0;
+}
 const categoryRouteListsProviders = saloAreaCategoryPageSource.includes("<SaloDirectory locale={locale} area={rawArea} category={rawCategory} />");
 const categoryCardsLinkToRoutes = saloCategoryGridSource.includes('href={`/${locale}/salo/${area}/${category}`}');
 const sitemapIncludesCategoryRoutes = (await readFile(path.resolve("src/app/sitemap.ts"), "utf8")).includes("...saloCategoryPaths");
