@@ -9,8 +9,8 @@ import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 const cardOrder: SaloArea[] = ["salo", "mathildedal", "teijo", "mutainen", "kirjakkala", "sarkisalo", "pernio", "halikko", "vaskio", "suomusjarvi", "kisko", "kuusjoki", "kiikala", "pertteli", "muurla", "marynummi", "hajala", "angelniemi"];
 const providerImageIds: Partial<Record<SaloArea, string>> = {
   pernio: "leipyolin-tila",
-  halikko: "topilan-tupa",
-  vaskio: "onnenperan-mokki",
+  halikko: "halikko-wiurila-kartano",
+  vaskio: "vaskio-bed",
   suomusjarvi: "villa-frans",
   marynummi: "marynummi-uimaranta",
 };
