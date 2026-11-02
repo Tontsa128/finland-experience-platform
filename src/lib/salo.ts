@@ -872,6 +872,63 @@ export const saloProviders: SaloProvider[] = [
     imageSource: "https://kohteet.visitsalo.fi/kirjakkalan-ruukkikyla-melontakeskus/",
   },
 
+  {
+    id: "hajala-tromperin-kestikievari",
+    category: "experience",
+    name: "Trömperin kestikievari",
+    description: {
+      fi: "Hajalan historiallinen kestikievari on suojeltu rakennusperintökohde, jonka vanhin osa on 1700-luvulta. Tunnelmallisessa pihapiirissä toimii museokohde ja kesäkaudella kahvila. Aukioloajat ja opastukset kannattaa tarkistaa Salon historialliselta museolta ennen vierailua.",
+      en: "This historic roadside inn in Hajala is a protected heritage building, with its oldest section dating from the 18th century. The atmospheric courtyard houses a museum, with a café operating during the summer season. Check opening times and guided visits with Salo's historical museum before visiting.",
+      es: "Esta antigua posada de Hajala es un edificio protegido del patrimonio histórico; su parte más antigua data del siglo XVIII. En el acogedor patio hay un museo y, durante la temporada de verano, una cafetería. Consulta los horarios y las visitas guiadas con el museo histórico de Salo antes de ir.",
+    },
+    url: "https://salomus.fi/nae-ja-koe/tromperin-kestikievari/",
+    image: photoLibrary.hajalaTromperi,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/tromperin-kestikievari/",
+  },
+  {
+    id: "angelniemi-paula-achrenin-puutarha",
+    category: "food",
+    name: "Paula Achrénin Puutarha",
+    description: {
+      fi: "Angelniemellä sijaitseva puutarhatila kasvattaa omenoita, raparperia ja pensasmustikoita sekä jalostaa omenoita mehuksi ja siideriksi. Tilalta saa pastöroitua omenamehua ympäri vuoden, ja syksyisin mehuasemalla voi mehustaa omia omenoita ajanvarauksella. Siideripuodissa käynnistä sovitaan etukäteen yrittäjän kanssa.",
+      en: "This garden farm in Angelniemi grows apples, rhubarb and blueberries, and processes apples into juice and cider. Pasteurised apple juice is available year-round, while the autumn juice press can process visitors' own apples by appointment. Arrange a visit to the cider shop directly with the operator.",
+      es: "Esta finca-jardín de Angelniemi cultiva manzanas, ruibarbo y arándanos, y transforma las manzanas en zumo y sidra. Hay zumo de manzana pasteurizado durante todo el año y, en otoño, la prensa permite procesar manzanas propias con cita previa. Acuerda la visita a la tienda de sidra directamente con la productora.",
+    },
+    url: "https://www.paulanpuutarha.fi/",
+    image: photoLibrary.angelniemiPaulaGarden,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/paula-achrenin-puutarha/",
+  },
+  {
+    id: "angelniemi-kokkila-beach",
+    category: "nature",
+    name: "Kokkilan uimaranta",
+    description: {
+      fi: "Kokkilan esteetön hiekkaranta sijaitsee Halikonlahden rannalla lossin vieressä. Ranta-alueella on loivasti syvenevä uimapaikka, grillikota, beach volley -kenttiä ja lasten leikkipaikka. Rannalla ei ole uinninvalvontaa. Tarkista saunan ja muiden palvelujen ajantasainen käyttötilanne Salon liikuntapalveluilta.",
+      en: "Kokkila is an accessible sandy beach on Halikko Bay, next to the ferry. The area has a gently shelving swimming beach, a barbecue shelter, beach-volleyball courts and a children's play area. There is no lifeguard service. Check the current status of the sauna and other facilities with Salo Sports Services.",
+      es: "Kokkila es una playa de arena accesible situada en la bahía de Halikko, junto al transbordador. La zona cuenta con una playa de poca profundidad, una caseta de barbacoa, pistas de vóley-playa y un parque infantil. No hay servicio de socorrismo. Consulta con los servicios deportivos de Salo el estado actual de la sauna y otras instalaciones.",
+    },
+    url: "https://kohteet.visitsalo.fi/kokkilan-uimaranta/",
+    image: photoLibrary.angelniemiKokkilaBeach,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/kokkilan-uimaranta/",
+  },
+  {
+    id: "angelniemi-church",
+    category: "experience",
+    name: "Angelniemen kirkko",
+    description: {
+      fi: "Angelniemen puukirkko valmistui vuonna 1772 Kemiönsaaren pohjoispään kauniille niemelle. Kirkossa järjestetään jumalanpalveluksia muutaman kerran kesässä ja suurina kirkollisina juhlapyhinä. Kirkko on avoinna vierailuille vain tilauksesta; sovi käynnistä Salon seurakunnan kanssa.",
+      en: "Angelniemi's wooden church was completed in 1772 on a scenic peninsula at the northern end of Kimitoön. Services are held a few times each summer and on major church holidays. The church is open to visitors by arrangement only; contact Salo Parish to plan a visit.",
+      es: "La iglesia de madera de Angelniemi se terminó en 1772 en una pintoresca península del extremo norte de Kimitoön. Se celebran servicios algunas veces durante el verano y en las principales festividades religiosas. La iglesia solo abre a visitantes con cita previa; contacta con la parroquia de Salo para organizar la visita.",
+    },
+    url: "https://www.salonseurakunta.fi/",
+    image: photoLibrary.angelniemiChurchVisit,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/angelniemen-kirkko/",
+  },
+
 ];
 
 export const saloEvents: SaloEvent[] = [
