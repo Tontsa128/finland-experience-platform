@@ -8,5 +8,5 @@ export default async function MathildedalLegacyPage({
 }) {
   const { locale: rawLocale } = await params;
   const locale = (rawLocale === "fi" || rawLocale === "es" || rawLocale === "en" ? rawLocale : "fi") as Locale;
-  permanentRedirect(`/${locale}/salo/mathildedal`);
+  permanentRedirect(`/${locale}/destinations/salo-mathildedal`);
 }
