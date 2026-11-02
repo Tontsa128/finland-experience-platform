@@ -7,26 +7,26 @@ Working branch: `feat/salo-village-category-hierarchy`
 
 The Salo directory contains 18 localized area guides and 82 provider/place listings mapped to those areas. Overall category distribution: 3 tourism information resources, 30 accommodation listings, 21 experiences, 9 nature/outdoor listings and 19 food listings. The count is a verified implementation baseline, not a claim that every category is complete in every village.
 
-| Area | Mapped listings | Current focus |
-|---|---:|---|
-| Salo | 4 | Tourism information, guides, camping and fishing |
-| Mathildedal | 11 | Accommodation, food, marina, experiences |
-| Teijo | 8 | Ironworks, nature, golf, activities and accommodation |
-| Mutainen | 2 | Recreational fishing and local art |
-| Kirjakkala | 1 | Ironworks village and paddling |
-| Särkisalo | 17 | Archipelago stays, marinas, food and fishing |
-| Perniö | 3 | Farm and local experiences |
-| Halikko | 1 | Local accommodation |
-| Vaskio | 1 | Local accommodation |
-| Suomusjärvi | 4 | Villa accommodation |
-| Kisko | 6 | Farms, local food and heritage |
-| Kuusjoki | 4 | Farms, food and heritage |
-| Kiikala | 5 | Arboretum, farms, nature trail and guided tours |
-| Pertteli | 4 | Farm, ceramics, church and dog forest |
-| Muurla | 3 | Accommodation, store/restaurant and raspberry farm |
-| Märynummi | 3 | Swimming, disc golf and outdoor trails |
-| Hajala | 2 | Village heritage and local services |
-| Angelniemi | 3 | Garden, beach and church |
+| Area | Total | Tourism | Stay | Experience | Nature | Food | Categories still missing |
+|---|---:|---:|---:|---:|---:|---:|---|
+| Mathildedal | 11 | 1 | 7 | 0 | 0 | 3 | Experience, nature |
+| Teijo | 8 | 0 | 3 | 4 | 1 | 0 | Tourism, food |
+| Särkisalo | 17 | 0 | 9 | 3 | 2 | 3 | Tourism |
+| Perniö | 3 | 0 | 2 | 1 | 0 | 0 | Tourism, nature, food |
+| Halikko | 1 | 0 | 1 | 0 | 0 | 0 | Tourism, experience, nature, food |
+| Vaskio | 1 | 0 | 1 | 0 | 0 | 0 | Tourism, experience, nature, food |
+| Suomusjärvi | 4 | 0 | 4 | 0 | 0 | 0 | Tourism, experience, nature, food |
+| Salo | 4 | 1 | 1 | 2 | 0 | 0 | Nature, food |
+| Kisko | 6 | 0 | 0 | 2 | 0 | 4 | Tourism, stay, nature |
+| Kuusjoki | 4 | 0 | 0 | 1 | 0 | 3 | Tourism, stay, nature |
+| Kiikala | 5 | 0 | 0 | 1 | 2 | 2 | Tourism, stay |
+| Pertteli | 4 | 0 | 0 | 2 | 1 | 1 | Tourism, stay |
+| Muurla | 3 | 0 | 1 | 0 | 0 | 2 | Tourism, experience, nature |
+| Märynummi | 3 | 0 | 0 | 1 | 2 | 0 | Tourism, stay, food |
+| Hajala | 2 | 0 | 0 | 2 | 0 | 0 | Tourism, stay, nature, food |
+| Angelniemi | 3 | 0 | 0 | 1 | 1 | 1 | Tourism, stay |
+| Kirjakkala | 1 | 0 | 1 | 0 | 0 | 0 | Tourism, experience, nature, food |
+| Mutainen | 2 | 1 | 0 | 1 | 0 | 0 | Stay, nature, food |
 
 ## Added in this work
 
