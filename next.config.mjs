@@ -36,6 +36,8 @@ const nextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "cdn-datahub.visitfinland.com" },
       { protocol: "https", hostname: "www.visitfinland.com" },
+      { protocol: "https", hostname: "wiurila.fi" },
+      { protocol: "https", hostname: "lohenrengas.wordpress.com" },
       { protocol: "https", hostname: "kohteet.visitsalo.fi" },
       { protocol: "https", hostname: "matrihouse.fi" },
       { protocol: "https", hostname: "visitnaantali.com" },
