@@ -1,6 +1,6 @@
 import type { Locale } from "@/types";
 
-export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli" | "muurla" | "marynummi" | "hajala" | "angelniemi" | "kirjakkala";
+export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli" | "muurla" | "marynummi" | "hajala" | "angelniemi" | "kirjakkala" | "mutainen";
 
 export const areaProviderIds: Record<SaloArea, string[]> = {
   mathildedal: ["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "ravintola-terho", "mathildedal-brewery", "kattohuone-mathildedal", "meri-ruukin-lomakyla", "vuorovetten-jaatelo"],
@@ -13,13 +13,14 @@ export const areaProviderIds: Record<SaloArea, string[]> = {
   salo: ["visit-salo", "salon-oppaat", "vuohensaari-camping", "chill-out-fishing"],
   kisko: ["kisko-pohjolan-tila", "kisko-metsaketun-kievari", "kisko-puutarha-siimes", "kisko-kalliolan-tila", "kisko-purolan-tila", "kisko-church"],
   kuusjoki: ["kuusjoki-kivisaaren-piapojauhoi", "kuusjoki-ohrakasken-tila", "kuusjoki-ellun-kanat", "kuusjoki-church"],
-  kiikala: [],
-  pertteli: [],
-  muurla: [],
-  marynummi: [],
+  kiikala: ["kiikala-ilolan-arboretum", "kiikala-rinteen-luomutila", "kiikala-kangin-tila", "kiikala-hyyppara-kultalahde"],
+  pertteli: ["pertteli-kurjen-maatila", "pertteli-korpiaho-design", "pertteli-church"],
+  muurla: ["muurla-muurlan-opisto", "muurla-design"],
+  marynummi: ["marynummi-uimaranta", "marynummi-frisbeegolf"],
   hajala: ["hajala-myllytyry", "hajala-tromperin-kestikievari"],
   angelniemi: ["angelniemi-paula-achrenin-puutarha", "angelniemi-kokkila-beach", "angelniemi-church"],
   kirjakkala: ["kirjakkalan-ruukkikyla"],
+  mutainen: ["mutainen-lohenrengas", "mutainen-galleria-tuulitunneli"],
 };
 
 export const areaOfficialSources: Record<SaloArea, { url: string; label: string }> = {
@@ -40,6 +41,7 @@ export const areaOfficialSources: Record<SaloArea, { url: string; label: string 
   hajala: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/hajala/", label: "Salon kaupunki – Hajala" },
   angelniemi: { url: "https://www.vskylat.fi/maakunnan-kylat/vuoden-kyla/", label: "Varsinais-Suomen Kylät – Angelniemi" },
   kirjakkala: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/teijon-ruukkikylat/", label: "Salon kaupunki – Teijon Ruukkikylät" },
+  mutainen: { url: "https://www.teijo.fi/tervetuloakyliin/mutainen/", label: "Teijon Ruukkikylät – Mutainen" },
 };
 
 export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title: string; intro: string }>> = {
@@ -122,6 +124,11 @@ export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title:
     fi: { eyebrow: "Kirjakkala · Teijo · Salo", title: "Kirjakkala – historiallinen ruukkikylä Hamarijärven rannalla", intro: "Kirjakkalan ruukin historia alkaa vuodesta 1686. Teijon kansallispuiston reittien äärellä sijaitseva kylä tunnetaan vanhoista ruukkirakennuksista, lehtomaisesta pihapiiristä, Hamarijärvestä sekä majoitus-, sauna- ja melontapalveluista." },
     en: { eyebrow: "Kirjakkala · Teijo · Salo", title: "Kirjakkala – historic ironworks village by Lake Hamarijärvi", intro: "Kirjakkala's ironworks history dates back to 1686. Beside the trails of Teijo National Park, the village is known for its historic ironworks buildings, leafy grounds, Lake Hamarijärvi and its accommodation, sauna and paddling services." },
     es: { eyebrow: "Kirjakkala · Teijo · Salo", title: "Kirjakkala, pueblo histórico de ferrería junto al lago Hamarijärvi", intro: "La historia de la ferrería de Kirjakkala se remonta a 1686. Junto a los senderos del Parque Nacional de Teijo, el pueblo destaca por sus edificios históricos, su entorno arbolado, el lago Hamarijärvi y sus servicios de alojamiento, sauna y piragüismo." },
+  },
+  mutainen: {
+    fi: { eyebrow: "Mutainen · Teijon Ruukkikylät · Salo", title: "Mutainen – merellinen kylä Teijon Ruukkikylissä", intro: "Halikonlahden rannalla sijaitseva Mutainen on Teijon Ruukkikylien pohjoisin kylä. Alueen historia ulottuu esihistorialliseen asutukseen, ja maisemissa vuorottelevat merenranta, metsät ja pellot. Salo–Strömmä-pyöräilyreitti kulkee kylän kautta." },
+    en: { eyebrow: "Mutainen · Teijo Ironworks Villages · Salo", title: "Mutainen – a coastal village in the Teijo Ironworks Villages", intro: "Located on the shore of Halikonlahti Bay, Mutainen is the northernmost of the Teijo Ironworks Villages. Its history reaches back to prehistoric settlement, while the landscape combines coastline, forests and fields. The Salo–Strömmä cycling route passes through the village." },
+    es: { eyebrow: "Mutainen · Aldeas históricas de Teijo · Salo", title: "Mutainen – pueblo costero de las aldeas históricas de Teijo", intro: "Situado a orillas de la bahía de Halikonlahti, Mutainen es el pueblo más septentrional de las aldeas históricas de Teijo. Su historia se remonta a asentamientos prehistóricos y el paisaje combina costa, bosques y campos. La ruta ciclista Salo–Strömmä atraviesa el pueblo." },
   },
   salo: {
     fi: { eyebrow: "Salo · keskusta ja lähialueet", title: "Salon kaupungin palvelut ja retket", intro: "Matkailuinfo, oppaat, leirintä ja saaristoon suuntautuvat retkipalvelut." },
