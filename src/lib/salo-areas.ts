@@ -92,6 +92,16 @@ export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title:
     en: { eyebrow: "Pertteli · Salo", title: "Pertteli – villages and rural heritage", intro: "Pertteli's village landscapes combine a historic stone church, traditional rural courtyards, local routes and small village communities." },
     es: { eyebrow: "Pertteli · Salo", title: "Pertteli, pueblos y patrimonio rural", intro: "Los paisajes de Pertteli combinan una histórica iglesia de piedra, antiguas casas rurales, rutas locales y pequeñas comunidades." },
   },
+  muurla: {
+    fi: { eyebrow: "Muurla · Salo", title: "Muurla – kylä järvien ja vanhan kirkkomiljöön äärellä", intro: "Muurlan kylämaisemaa leimaavat järvet, maaseudun rauha ja vuonna 1835 valmistunut puukirkko. Alue toimii myös luontevana pysähdyspaikkana Salon ja Turun välisellä reitillä." },
+    en: { eyebrow: "Muurla · Salo", title: "Muurla – a village of lakes and heritage", intro: "Muurla is shaped by its lakes, peaceful countryside and wooden church completed in 1835. The village also makes a natural stop on the route between Salo and Turku." },
+    es: { eyebrow: "Muurla · Salo", title: "Muurla, un pueblo de lagos y patrimonio", intro: "Muurla destaca por sus lagos, su tranquilo entorno rural y su iglesia de madera, terminada en 1835. El pueblo también es una parada natural entre Salo y Turku." },
+  },
+  marynummi: {
+    fi: { eyebrow: "Märynummi · Salo", title: "Märynummi – luontoa ja aktiivista kyläelämää", intro: "Märynummi sijaitsee hiekkaharjulla lähellä moottoritietä. Alueella on luontopolkuja, frisbeegolfia, uimala saunoineen sekä kylän yhteisiä harrastus- ja kokoontumistiloja." },
+    en: { eyebrow: "Märynummi · Salo", title: "Märynummi – nature and active village life", intro: "Märynummi sits on a sandy ridge close to the motorway. The area offers nature trails, disc golf, a swimming area with saunas and shared facilities for local activities." },
+    es: { eyebrow: "Märynummi · Salo", title: "Märynummi, naturaleza y vida local activa", intro: "Märynummi se encuentra sobre una loma arenosa cerca de la autopista. La zona ofrece senderos, disc golf, una zona de baño con saunas y espacios comunitarios para actividades." },
+  },
   salo: {
     fi: { eyebrow: "Salo · keskusta ja lähialueet", title: "Salon kaupungin palvelut ja retket", intro: "Matkailuinfo, oppaat, leirintä ja saaristoon suuntautuvat retkipalvelut." },
     en: { eyebrow: "Salo · town centre and nearby areas", title: "Salo town services and excursions", intro: "Tourism information, guides, camping and excursions towards the archipelago." },
