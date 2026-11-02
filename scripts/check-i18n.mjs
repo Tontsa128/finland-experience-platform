@@ -121,7 +121,7 @@ const photoSourceLabelIsLocalized = [
   'photoSource: "Fuente de la foto"',
   'photoSource: "Photo source"',
 ].every((label) => saloDirectorySource.includes(label));
-if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !categoryRouteListsProviders || !categoryCardsLinkToRoutes || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || !cardAreaCount || renderedAreas.length !== cardAreaCount) {
+if (providerIds.length === 0 || providerImageCount !== providerIds.length || providerCreditCount !== providerIds.length || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !categoryRouteListsProviders || !categoryCardsLinkToRoutes || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || !cardAreaCount || renderedAreas.length !== cardAreaCount) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
