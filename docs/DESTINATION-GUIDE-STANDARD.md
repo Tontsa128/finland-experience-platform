@@ -150,12 +150,15 @@ A region or village expansion is not complete until every route in this journey 
 
 ### Salo regional coverage and source register
 
-The Salo regional landing page must be expanded from the initial area set to cover the places identified by the official Visit Salo material and local village associations. The 2024 Visit Salo guide identifies Kuusjoki, Pertteli, Kiikala, Halikko, the Salo centre, Muurla, Suomusjärvi, Kirjakkala, Teijo, Mathildedal, Perniö, Kisko and Särkisalo. The municipality's village pages and local associations also identify places such as Hajala, Märynummi, Angelniemi and Vaskio. Treat these as a research scope, not as permission to publish unsupported details.
+The current Salo regional landing page includes 14 localized area guides: Salo, Mathildedal, Teijo, Särkisalo, Perniö, Halikko, Vaskio, Suomusjärvi, Kisko, Kuusjoki, Kiikala, Pertteli, Muurla and Märynummi. The official Visit Salo and municipal sources identify a wider expansion scope, including Kirjakkala, Hajala, Angelniemi and other village communities. Continue expanding this catalogue using the official sources below; do not publish unsupported details or reuse an unrelated village image.
 
 Primary research sources:
 - Visit Salo regional material: https://visitsalo.fi/
 - Salo municipality village and area guides: https://salo.fi/muuttajalle/kylat-ja-alueet/
-- Example official village guides: https://salo.fi/muuttajalle/kylat-ja-alueet/kisko/ and https://salo.fi/muuttajalle/kylat-ja-alueet/kuusjoki/
+- Official village guides: https://salo.fi/muuttajalle/kylat-ja-alueet/kisko/, https://salo.fi/muuttajalle/kylat-ja-alueet/kuusjoki/ and https://salo.fi/muuttajalle/kylat-ja-alueet/marynummi/
+- Visit Salo village tour: https://kohteet.visitsalo.fi/en/salos-idyllic-villages-car-tour/
+- Local village association material: https://www.halikko.com/marynummi.html, https://www.halikko.com/hajala.html and https://www.halikko.com/angelniemi.html
+- Verified Commons photo records: https://commons.wikimedia.org/wiki/File:Kisko.jpg, https://commons.wikimedia.org/wiki/File:Kuusjoen_kirkko_1890.jpg, https://commons.wikimedia.org/wiki/File:Pertteli_church_04.jpg, https://commons.wikimedia.org/wiki/File:Muurlan_kirkko.jpg and https://commons.wikimedia.org/wiki/File:Lammenjärvi_01.JPG
 - Varsinais-Suomen Kylät association directory: https://www.vskylat.fi/maakunnan-kylat/
 
 For each additional village, use the municipality's own village guide and the relevant village association as the starting point, then verify each business against its own official website. Do not create an image card until a matching village photograph and its source/usage terms have been identified. Do not use one generic Salo image to represent multiple villages.
