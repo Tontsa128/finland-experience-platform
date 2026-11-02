@@ -384,6 +384,20 @@ const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
     { src: "https://lohenrengas.wordpress.com/wp-content/uploads/2016/04/laituri_uusijarvi.jpg", alt: { fi: "Lohenrenkaan järven laituri", en: "Jetty at a Lohenrengas lake", es: "Embarcadero en un lago de Lohenrengas" }, credit: "Lohenrengas", source: "https://lohenrengas.wordpress.com/galleria/" }
   ]
 
+
+  "salo-pertteli-koirametsa-rymy": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/10/Koirametsa-Rymy-Salo-siisti-maasto-1366x768.jpeg", alt: { fi: "Koirametsä Rymyn siisti mäntymetsä", en: "Clean pine woodland at Koirametsä Rymy", es: "Bosque de pinos cuidado en Koirametsä Rymy" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/koirametsa-rymy/" }
+  ],
+  "salo-muurla-ilolan-vadelmatila": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/ilola6.jpeg", alt: { fi: "Ilolan tilan lähihunajaa vadelmapellon laidalta", en: "Local honey from the edge of Ilola's raspberry field", es: "Miel local junto al campo de frambuesas de Ilola" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ilolan-tila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/ilola8-1366x768.jpeg", alt: { fi: "Tuoreita vadelmia Ilolan tilalta", en: "Fresh raspberries from Ilola Farm", es: "Frambuesas frescas de la granja Ilola" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ilolan-tila/" }
+  ],
+  "salo-marynummi-kuntorata": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/IMG_1404-1024x768.jpg", alt: { fi: "Märynummen kuntoradan näkymä lammelle", en: "View of the pond from the Märynummi fitness trail", es: "Vista del estanque desde el sendero de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/IMG_1408-1024x768.jpg", alt: { fi: "Märynummen kuntoradan metsämaisemaa", en: "Woodland scenery on the Märynummi fitness trail", es: "Paisaje forestal del sendero de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/M%C3%A4ryn_ulkoilualue-opastaulu-1366x768.jpg", alt: { fi: "Märynummen ulkoilualueen opastaulu", en: "Information board for the Märynummi outdoor area", es: "Panel informativo de la zona recreativa de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/" }
+  ],
+
 };
 const teijoMasuuniPhotos: LocalPhoto[] = [
   { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/Paviljonki-1024x779.jpg", alt: { fi: "Teijon Masuunin paviljonki historiallisessa ruukkimiljöössä", en: "Teijo Masuuni pavilion in the historic ironworks setting", es: "Pabellón de Teijo Masuuni en el entorno histórico de la ferrería" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" },
