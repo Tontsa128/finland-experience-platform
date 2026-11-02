@@ -150,9 +150,14 @@ A region or village expansion is not complete until every route in this journey 
 
 ### Salo regional coverage and source register
 
-The current Salo regional landing page includes 17 localized area guides: Salo, Mathildedal, Teijo, Särkisalo, Perniö, Halikko, Vaskio, Suomusjärvi, Kisko, Kuusjoki, Kiikala, Pertteli, Muurla and Märynummi. The official Visit Salo and municipal sources identify a wider expansion scope, including Kirjakkala, Hajala, Angelniemi and other village communities. Continue expanding this catalogue using the official sources below; do not publish unsupported details or reuse an unrelated village image.
+The Salo regional landing page now has 18 localized area guides: Salo, Mathildedal, Teijo, Mutainen, Kirjakkala, Särkisalo, Perniö, Halikko, Vaskio, Suomusjärvi, Kisko, Kuusjoki, Kiikala, Pertteli, Muurla, Märynummi, Hajala and Angelniemi. The current implementation contains 81 mapped provider/place listings. This is a coverage baseline, not a claim that every category is complete in every village. Continue the area-by-area provider audit using official sources below; do not publish unsupported details or reuse an unrelated village image.
 
 Primary research sources:
+- Mutainen and the four Teijo Ironworks Villages: https://www.teijo.fi/tervetuloakyliin/mutainen/ and https://www.teijo.fi/palveluja/erikoisliikkeita-ja-palveluita/
+- Kiikala verified listings: https://kohteet.visitsalo.fi/ilolan-arboretum-ja-taimisto/, https://kohteet.visitsalo.fi/rinteen-luomutila/, https://kohteet.visitsalo.fi/kangin-tila/, https://kohteet.visitsalo.fi/hyyppara-kultalahde-luontopolku/ and https://kohteet.visitsalo.fi/opastetut-kierrokset-salossa-juurevasti-juurista/
+- Pertteli verified listings: https://kohteet.visitsalo.fi/kurjen-maatila/, https://kohteet.visitsalo.fi/keramiikkastudio-korpiaho-design/, https://kohteet.visitsalo.fi/perttelin-kirkko/ and https://kohteet.visitsalo.fi/koirametsa-rymy/
+- Muurla verified listings: https://kohteet.visitsalo.fi/muurlan-opisto/, https://kohteet.visitsalo.fi/muurla/ and https://kohteet.visitsalo.fi/ilolan-tila/
+- Märynummi verified listings: https://kohteet.visitsalo.fi/marynummen-uimaranta/, https://kohteet.visitsalo.fi/marynummen-frisbeegolfrata/ and https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/
 - Visit Salo regional material: https://visitsalo.fi/
 - Salo municipality village and area guides: https://salo.fi/muuttajalle/kylat-ja-alueet/
 - Official village guides: https://salo.fi/muuttajalle/kylat-ja-alueet/kisko/, https://salo.fi/muuttajalle/kylat-ja-alueet/kuusjoki/ and https://salo.fi/muuttajalle/kylat-ja-alueet/marynummi/
@@ -164,5 +169,7 @@ Primary research sources:
 - Local village association material: https://www.halikko.com/marynummi.html, https://www.halikko.com/hajala.html and https://www.halikko.com/angelniemi.html
 - Verified Commons photo records: https://commons.wikimedia.org/wiki/File:Kisko.jpg, https://commons.wikimedia.org/wiki/File:Kuusjoen_kirkko_1890.jpg, https://commons.wikimedia.org/wiki/File:Pertteli_church_04.jpg, https://commons.wikimedia.org/wiki/File:Muurlan_kirkko.jpg and https://commons.wikimedia.org/wiki/File:Lammenjärvi_01.JPG
 - Varsinais-Suomen Kylät association directory: https://www.vskylat.fi/maakunnan-kylat/
+
+Kansakoulu photo rule: the official public website currently exposes restaurant and local-food photographs, but no guest-room photographs. These images may only appear in the clearly labelled shared-venue/food gallery and must never be presented as room photos. If room-specific imagery is needed, obtain it directly from the accommodation provider with permission.
 
 For each additional village, use the municipality's own village guide and the relevant village association as the starting point, then verify each business against its own official website. Do not create an image card until a matching village photograph and its source/usage terms have been identified. Do not use one generic Salo image to represent multiple villages.
