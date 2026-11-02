@@ -6,7 +6,7 @@ import { saloProviders } from "@/lib/salo";
 import { photoCredits, photoLibrary } from "@/lib/photo-library";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
-const cardOrder: SaloArea[] = ["salo", "mathildedal", "teijo", "sarkisalo", "pernio", "halikko", "vaskio", "suomusjarvi"];
+const cardOrder: SaloArea[] = ["salo", "mathildedal", "teijo", "sarkisalo", "pernio", "halikko", "vaskio", "suomusjarvi", "kisko", "kuusjoki", "kiikala", "pertteli"];
 const providerImageIds: Partial<Record<SaloArea, string>> = {
   pernio: "leipyolin-tila",
   halikko: "topilan-tupa",
@@ -23,7 +23,12 @@ function getAreaPhoto(area: SaloArea) {
   const src = area === "mathildedal" ? photoLibrary.mathildedalVillage
     : area === "teijo" ? photoLibrary.teijoNationalPark
     : area === "sarkisalo" ? photoLibrary.sarkisalo
-    : photoLibrary.saloVeturitalli;
+    : area === "kisko" ? photoLibrary.kiskoChurch
+    : area === "kuusjoki" ? photoLibrary.kuusjokiHistoricChurch
+    : area === "pertteli" ? photoLibrary.pertteliChurch
+    : area === "salo" ? photoLibrary.saloVeturitalli
+    : null;
+  if (!src) return null;
   const attribution = photoCredits.find((photo) => photo.url === src);
   return { src, credit: attribution ? `${attribution.credit} · ${attribution.license}` : "Visit Salo", source: attribution?.sourcePage || "https://visitsalo.fi/" };
 }
@@ -44,7 +49,7 @@ export function SaloAreaCards({ locale }: { locale: Locale }) {
             <article key={area} className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
               <Link href={`/${locale}/salo/${area}`} className="group block">
                 <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                  <Image src={photo.src} alt={copy.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
+                  {photo ? <Image src={photo.src} alt={copy.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-transparent" />
                   <span className="absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-brand-950">{areaProviderIds[area].length} {locale === "fi" ? "palvelukohdetta" : locale === "es" ? "proveedores" : "local listings"}</span>
                 </div>
