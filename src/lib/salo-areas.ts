@@ -1,6 +1,6 @@
 import type { Locale } from "@/types";
 
-export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo";
+export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli";
 
 export const areaProviderIds: Record<SaloArea, string[]> = {
   mathildedal: ["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "ravintola-terho", "mathildedal-brewery", "kattohuone-mathildedal", "meri-ruukin-lomakyla", "vuorovetten-jaatelo"],
@@ -11,6 +11,10 @@ export const areaProviderIds: Record<SaloArea, string[]> = {
   vaskio: ["onnenperan-mokki"],
   suomusjarvi: ["villa-viola", "villa-laperla", "villa-viktoria", "villa-frans"],
   salo: ["visit-salo", "salon-oppaat", "vuohensaari-camping", "chill-out-fishing"],
+  kisko: [],
+  kuusjoki: [],
+  kiikala: [],
+  pertteli: [],
 };
 
 export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title: string; intro: string }>> = {
@@ -48,6 +52,26 @@ export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title:
     fi: { eyebrow: "Suomusjärvi · Salo", title: "Suomusjärven huvilat ja lomamökit", intro: "Löydä Lomalaperlan erilliset huvila- ja lomamökkikohteet Suomusjärvellä." },
     en: { eyebrow: "Suomusjärvi · Salo", title: "Villas and holiday cottages in Suomusjärvi", intro: "Explore Lomalaperla's individual villa and holiday cottage properties in Suomusjärvi." },
     es: { eyebrow: "Suomusjärvi · Salo", title: "Villas y casas de vacaciones en Suomusjärvi", intro: "Descubre las distintas villas y casas vacacionales de Lomalaperla en Suomusjärvi." },
+  },
+  kisko: {
+    fi: { eyebrow: "Kisko · Salo", title: "Järvien Kisko", intro: "Kiskon järvimaisemat, Toijan palvelukeskus, historiallinen kirkonkylä ja vanha kaivos- ja ruukkihistoria kutsuvat tutustumaan Salon itäiseen pitäjään." },
+    en: { eyebrow: "Kisko · Salo", title: "Kisko – the village of lakes", intro: "Discover the lakes, local services in Toija, the historic church village and the area's mining and ironworks heritage in eastern Salo." },
+    es: { eyebrow: "Kisko · Salo", title: "Kisko, el pueblo de los lagos", intro: "Descubre los lagos, los servicios locales de Toija, el histórico núcleo parroquial y el patrimonio minero e industrial del este de Salo." },
+  },
+  kuusjoki: {
+    fi: { eyebrow: "Kuusjoki · Salo", title: "Kuusjoki – maaseudun helmi", intro: "Kuusjoen kylät levittäytyvät metsien, peltojen ja jokea seuraavien maisemien lomaan. Alueella on luontopolkuja, paikallisia tiloja, harrastusmahdollisuuksia ja kylätapahtumia." },
+    en: { eyebrow: "Kuusjoki · Salo", title: "Kuusjoki – a rural gem", intro: "The villages of Kuusjoki sit among forests, fields and river landscapes, with nature trails, local farms, outdoor activities and community events." },
+    es: { eyebrow: "Kuusjoki · Salo", title: "Kuusjoki, una joya rural", intro: "Los pueblos de Kuusjoki se extienden entre bosques, campos y paisajes fluviales, con senderos, granjas locales, actividades al aire libre y eventos comunitarios." },
+  },
+  kiikala: {
+    fi: { eyebrow: "Kiikala · Salo", title: "Kiikalan kylät ja järvimaisemat", intro: "Kiikalan alueella kohtaavat maaseudun kylät, järvet, suot ja vaihtelevat luontokohteet. Tutustu esimerkiksi Härjänvatsan ja Rekijoen seutuun." },
+    en: { eyebrow: "Kiikala · Salo", title: "Villages and lake landscapes of Kiikala", intro: "Kiikala brings together rural villages, lakes, mires and varied natural landscapes. Explore areas such as Härjänvatsa and Rekijoki." },
+    es: { eyebrow: "Kiikala · Salo", title: "Pueblos y paisajes lacustres de Kiikala", intro: "Kiikala reúne pueblos rurales, lagos, zonas pantanosas y paisajes naturales variados. Explora lugares como Härjänvatsa y Rekijoki." },
+  },
+  pertteli: {
+    fi: { eyebrow: "Pertteli · Salo", title: "Pertteli – kyliä ja maaseudun historiaa", intro: "Perttelin kylämaisemissa yhdistyvät historiallinen kivikirkko, maaseudun pihapiirit, paikalliset reitit ja pienet kyläyhteisöt." },
+    en: { eyebrow: "Pertteli · Salo", title: "Pertteli – villages and rural heritage", intro: "Pertteli's village landscapes combine a historic stone church, traditional rural courtyards, local routes and small village communities." },
+    es: { eyebrow: "Pertteli · Salo", title: "Pertteli, pueblos y patrimonio rural", intro: "Los paisajes de Pertteli combinan una histórica iglesia de piedra, antiguas casas rurales, rutas locales y pequeñas comunidades." },
   },
   salo: {
     fi: { eyebrow: "Salo · keskusta ja lähialueet", title: "Salon kaupungin palvelut ja retket", intro: "Matkailuinfo, oppaat, leirintä ja saaristoon suuntautuvat retkipalvelut." },
