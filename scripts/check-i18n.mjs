@@ -82,6 +82,7 @@ const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
 const saloAreaDataSource = await readFile(path.resolve("src/lib/salo-areas.ts"), "utf8");
 const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
 const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
+const saloVillageIndexSource = await readFile(path.resolve("src/app/[locale]/salo/kylat/page.tsx"), "utf8");
 const saloAreaGridSource = await readFile(path.resolve("src/components/salo/SaloAreaGrid.tsx"), "utf8");
 const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
 const saloCategoryPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/[category]/page.tsx"), "utf8");
@@ -117,10 +118,13 @@ const areaPageHasCategoryLinks = saloAreaPageSource.includes("getSaloAreaCategor
 const categoryRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}\s+category=\{category\}/.test(saloCategoryPageSource);
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
-const saloLandingUsesAreaGrid = saloPageSource.includes("<SaloAreaGrid locale={locale} />");
+const saloLandingLinksToVillageIndex = saloPageSource.includes('href={`/${locale}/salo/kylat`}');
+const villageIndexUsesAreaGrid = saloVillageIndexSource.includes("<SaloAreaGrid locale={locale} />");
+const saloLandingDoesNotRenderVillageGrid = !saloPageSource.includes("<SaloAreaGrid");
 const areaCardsLinkToRoutes = saloAreaGridSource.includes('href={`/${locale}/salo/${area}`}');
 const areaCardsIncludeImages = saloAreaGridSource.includes("<Image src={image.src");
 const sitemapIncludesAreaRoutes = sitemapSource.includes("...saloAreaPaths");
+const sitemapIncludesVillageIndex = sitemapSource.includes('"salo/kylat"');
 const sitemapIncludesCategoryRoutes = sitemapSource.includes("...saloCategoryPaths")
   && sitemapSource.includes("getSaloAreaCategories(area");
 const photoSourceLinkIsSafe = saloDirectorySource.includes(String.raw`provider.imageSource && /^https?:\/\//i.test(provider.imageSource)`);
@@ -129,7 +133,7 @@ const photoSourceLabelIsLocalized = [
   'photoSource: "Fuente de la foto"',
   'photoSource: "Photo source"',
 ].every((label) => saloDirectorySource.includes(label));
-if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || unapprovedDuplicateAreaIds.length || invalidMultiLocationIds.length || missingAreaIds.length || unknownAreaIds.length || !areaPageHasCategoryLinks || !categoryRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !saloLandingUsesAreaGrid || !areaCardsLinkToRoutes || !areaCardsIncludeImages || !sitemapIncludesAreaRoutes || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
+if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || unapprovedDuplicateAreaIds.length || invalidMultiLocationIds.length || missingAreaIds.length || unknownAreaIds.length || !areaPageHasCategoryLinks || !categoryRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !saloLandingLinksToVillageIndex || !villageIndexUsesAreaGrid || !saloLandingDoesNotRenderVillageGrid || !areaCardsLinkToRoutes || !areaCardsIncludeImages || !sitemapIncludesAreaRoutes || !sitemapIncludesVillageIndex || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
@@ -145,10 +149,13 @@ if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCoun
     areaPageHasCategoryLinks,
     categoryRouteUsesDirectory,
     areaRouteGeneratesAllSlugs,
-    saloLandingUsesAreaGrid,
+    saloLandingLinksToVillageIndex,
+    villageIndexUsesAreaGrid,
+    saloLandingDoesNotRenderVillageGrid,
     areaCardsLinkToRoutes,
     areaCardsIncludeImages,
     sitemapIncludesAreaRoutes,
+    sitemapIncludesVillageIndex,
     sitemapIncludesCategoryRoutes,
     photoSourceLinkIsSafe,
     photoSourceLabelIsLocalized,

@@ -6,7 +6,6 @@ import type { Locale } from "@/types";
 import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { SaloAreaGrid } from "@/components/salo/SaloAreaGrid";
 
 const copy = {
   fi: {
@@ -14,7 +13,7 @@ const copy = {
     desc: "Tutustu Salon kyliin, paikalliseen ruokaan, majoitukseen, luontoon ja elämyksiin.",
     eyebrow: "SALON SEUTU · LOUNAIS-SUOMI",
     intro: "Valitse kylä tai alue ja löydä sen omat palvelut, paikalliset maut ja elämykset.",
-    browse: "Tutustu kyliin",
+    browse: "Avaa Salon kylät",
     coastal: "Rannikon Suomi",
   },
   es: {
@@ -22,7 +21,7 @@ const copy = {
     desc: "Descubre los pueblos de Salo, su gastronomía, alojamiento, naturaleza y experiencias.",
     eyebrow: "REGIÓN DE SALO · SUROESTE DE FINLANDIA",
     intro: "Elige un pueblo o una zona para descubrir sus servicios, sabores y experiencias locales.",
-    browse: "Explorar los pueblos",
+    browse: "Ver los pueblos de Salo",
     coastal: "Finlandia costera",
   },
   en: {
@@ -30,7 +29,7 @@ const copy = {
     desc: "Explore Salo's villages, local food, accommodation, nature and experiences.",
     eyebrow: "SALO REGION · SOUTHWEST FINLAND",
     intro: "Choose a village or area to discover its local services, flavours and experiences.",
-    browse: "Explore the villages",
+    browse: "Browse Salo villages",
     coastal: "Coastal Finland",
   },
 } as const;
@@ -59,13 +58,13 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
           <h1 className="mt-5 max-w-5xl font-display text-5xl font-bold leading-[.95] sm:text-7xl lg:text-8xl">{c.title}</h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-white/80 sm:text-2xl sm:leading-9">{c.intro}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="#salo-areas" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">{c.browse}<ArrowRight className="h-4 w-4" /></Link>
+            <Link href={`/${locale}/salo/kylat`} className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">{c.browse}<ArrowRight className="h-4 w-4" /></Link>
             <Link href={`/${locale}/coastal-finland#sarkisalo`} className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-black/20 px-6 py-3.5 text-sm font-bold text-white">{c.coastal}<ArrowRight className="h-4 w-4" /></Link>
           </div>
         </div>
       </section>
 
-      <SaloAreaGrid locale={locale} />
+
 
     </main>
   );

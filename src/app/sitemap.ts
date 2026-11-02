@@ -44,6 +44,7 @@ const basePaths = [
   "destinations/bengtskar",
   "destinations/teijon-ruukkikyla",
   "salo",
+  "salo/kylat",
   "turku",
   "naantali",
   "hanko",
