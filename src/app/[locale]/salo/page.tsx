@@ -1,89 +1,39 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Building2, Camera, Compass, Flame, Map, Mountain, Waves } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Locale } from "@/types";
 import { getPageOverride, PageOverride } from "@/components/cms/PageOverride";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
+import { SaloAreaGrid } from "@/components/salo/SaloAreaGrid";
 
 const copy = {
   fi: {
-    title: "Salo – meri, metsä, ruukkikylät ja paikallinen elämä",
-    desc: "Salo-opas: Mathildedal, Teijo, Särkisalo, Perniö, Wiurila, keskusta, kulttuuri, reitit, majoitus, ruoka ja elämykset.",
+    title: "Salo – kyliä, merta ja elämyksiä",
+    desc: "Tutustu Salon kyliin, paikalliseen ruokaan, majoitukseen, luontoon ja elämyksiin.",
     eyebrow: "SALON SEUTU · LOUNAIS-SUOMI",
-    intro: "Salo on poikkeuksellisen laaja matkailualue: samaan kokonaisuuteen kuuluvat kaupunkikeskus, historialliset kylät, Teijon kansallispuisto, Mathildedal, merellinen Särkisalo ja Perniön maaseutumaisemat.",
-    market: "Salon tori ja keskusta",
-    marketText: "Kesäisin keskusta elää torin ympärillä. Tori toimii paikallisena olohuoneena, ja torstain iltamarkkinoilla yhdistyvät suomalainen kesämusiikki, myyntikojut, lettukahvilat, kirpputorit ja paikallinen elämä.",
-    culture: "Kulttuuri ja historia",
-    cultureText: "Salo tarjoaa museoita, taidetta, historiallisia miljöitä ja kulttuuritapahtumia ympäri vuoden. Veturitalli, Wiurilan kartano, Perniön museo ja Mathildedalin ruukkimuseo muodostavat jo yksin kiinnostavan kulttuuriverkoston.",
-    nature: "Teijo ja luonto",
-    natureText: "Teijon kansallispuisto yhdistää meri-, järvi- ja suomaisemia. Alueella voi patikoida, meloa, SUP-lautailla, pyöräillä ja kalastaa sekä yhdistää luontopäivän kylä- tai saunailtaan.",
-    sea: "Särkisalo ja meri",
-    seaText: "Särkisalossa merellinen elämä näkyy satamissa, kesäkahviloissa, saaristomökeissä, melonnassa, kalastuksessa ja rantasaunoissa. Förby on yksi alueen luontevimmista meren äärelle pysähtymisen paikoista.",
-    countryside: "Perniö, Halikko ja Wiurila",
-    countrysideText: "Salon maaseutu antaa matkalle toisen rytmin: kartanot, kylät, paikallishistoria, museot, lähiruoka ja pienet yritykset sopivat hyvin auto-, pyörä- ja päiväretkiin.",
-    routes: "Reitit – tee Salosta oma matkasi",
-    routesText: "Saloa voi rakentaa päiväretkestä usean yön lomaan. Valmiita reittien ideoita ovat rannikkoreitti, kulttuurireitti, ruukkikylien pyöräilyreitti, lähiruokakierros, melottava saaristokierros ja Salo–Lehmijärvi–Teijo-retkeilyreitti.",
-    providers: "Salon paikalliset palveluntarjoajat",
-    providersText: "Alta löydät majoituksia, elämyksiä, ruokapaikkoja ja luontokohteita. Lopullinen varaus ja sopimus tehdään aina suoraan palveluntarjoajan kanssa.",
-    browse: "Avaa Salo-kohteet",
+    intro: "Valitse kylä tai alue ja löydä sen omat palvelut, paikalliset maut ja elämykset.",
+    browse: "Tutustu kyliin",
     coastal: "Rannikon Suomi",
-    coastalText: "Salo toimii myös porttina rannikon viiteen pääkohteeseen.",
   },
   es: {
-    title: "Salo – mar, bosques, pueblos históricos y vida local",
-    desc: "Guía de Salo: Mathildedal, Teijo, Särkisalo, Perniö, Wiurila, centro, cultura, rutas, alojamiento, gastronomía y experiencias.",
+    title: "Salo – pueblos, mar y experiencias",
+    desc: "Descubre los pueblos de Salo, su gastronomía, alojamiento, naturaleza y experiencias.",
     eyebrow: "REGIÓN DE SALO · SUROESTE DE FINLANDIA",
-    intro: "Salo reúne una sorprendente variedad de paisajes y estilos de viaje: centro urbano, pueblos históricos, Parque Nacional de Teijo, Mathildedal, Särkisalo y el campo de Perniö.",
-    market: "El mercado y el centro de Salo",
-    marketText: "En verano el centro cobra vida alrededor del mercado. Es un auténtico punto de encuentro local, y los mercados nocturnos de los jueves combinan música, puestos, cafés de crepes, mercadillos y ambiente finlandés.",
-    culture: "Cultura e historia",
-    cultureText: "Salo ofrece museos, arte, patrimonio y eventos durante todo el año. El Museo de Arte Veturitalli, Wiurila Manor, el Museo de Perniö y el museo de la ferrería de Mathildedal forman una red cultural muy completa.",
-    nature: "Teijo y naturaleza",
-    natureText: "El Parque Nacional de Teijo reúne mar, lagos, bosques y zonas pantanosas. Puedes caminar, hacer kayak o SUP, montar en bicicleta y pescar, y combinar la naturaleza con un pueblo o una sauna.",
-    sea: "Särkisalo y el mar",
-    seaText: "En Särkisalo, la vida marítima se descubre en puertos, cafés de verano, cabañas, kayak, pesca y saunas junto al agua. Förby es uno de los lugares más naturales para detenerse junto al mar.",
-    countryside: "Perniö, Halikko y Wiurila",
-    countrysideText: "El paisaje rural de Salo ofrece otro ritmo: mansiones, pueblos, historia local, museos, productos locales y pequeñas empresas encajan perfectamente en excursiones en coche o bicicleta.",
-    routes: "Rutas – crea tu propio Salo",
-    routesText: "Puedes convertir Salo en una excursión de un día o en unas vacaciones de varios días. Hay rutas de costa, cultura, pueblos siderúrgicos en bicicleta, gastronomía local, kayak por el archipiélago y senderismo hacia Teijo.",
-    providers: "Proveedores locales de Salo",
-    providersText: "Aquí encontrarás alojamiento, experiencias, gastronomía y naturaleza. Las reservas y los contratos se realizan siempre directamente con cada proveedor.",
-    browse: "Explorar Salo",
+    intro: "Elige un pueblo o una zona para descubrir sus servicios, sabores y experiencias locales.",
+    browse: "Explorar los pueblos",
     coastal: "Finlandia costera",
-    coastalText: "Salo también es una puerta de entrada a los cinco destinos costeros principales.",
   },
   en: {
-    title: "Salo – sea, forests, ironworks villages and local life",
-    desc: "Salo guide: Mathildedal, Teijo, Särkisalo, Perniö, Wiurila, the town centre, culture, routes, stays, food and experiences.",
+    title: "Salo – villages, sea and experiences",
+    desc: "Explore Salo's villages, local food, accommodation, nature and experiences.",
     eyebrow: "SALO REGION · SOUTHWEST FINLAND",
-    intro: "Salo brings together an unusually broad range of landscapes and travel styles: a lively town centre, historic villages, Teijo National Park, Mathildedal, maritime Särkisalo and the countryside of Perniö.",
-    market: "Salo Market Square & centre",
-    marketText: "In summer, the town centre comes alive around the market square. It is a genuine local meeting place, and Thursday evening markets combine Finnish music, market stalls, crepe cafés, flea-market finds and everyday local life.",
-    culture: "Culture & history",
-    cultureText: "Salo offers museums, art, heritage sites and cultural events year-round. Veturitalli Art Museum, Wiurila Manor, Perniö Museum and the Mathildedal Ironworks Museum form a strong cultural network.",
-    nature: "Teijo & nature",
-    natureText: "Teijo National Park brings together sea, lakes, forests and wetlands. Walk, kayak, SUP, cycle or fish, then combine the outdoors with a village visit or sauna.",
-    sea: "Särkisalo & the sea",
-    seaText: "Särkisalo is all about maritime life: guest harbours, summer cafés, archipelago cottages, kayaking, fishing and seaside saunas. Förby is one of the area's most natural places to stop by the water.",
-    countryside: "Perniö, Halikko & Wiurila",
-    countrysideText: "Salo's countryside offers a different pace: manor houses, villages, local history, museums, local produce and small businesses are made for road trips and cycling days.",
-    routes: "Routes – make Salo your own",
-    routesText: "Salo works as a day trip or a multi-night stay. Ideas include the Coastal Route, Cultural Route, cycling between ironworks villages, a local-food tour, an archipelago kayaking tour and the hiking route towards Teijo.",
-    providers: "Local providers in Salo",
-    providersText: "Find accommodation, experiences, food and nature services below. Final bookings and contracts are always handled directly with the provider.",
-    browse: "Explore Salo",
+    intro: "Choose a village or area to discover its local services, flavours and experiences.",
+    browse: "Explore the villages",
     coastal: "Coastal Finland",
-    coastalText: "Salo is also a gateway to the five main coastal destinations.",
   },
 } as const;
-
-const routeIdeas = [
-  { icon: Waves, title: { fi: "Rannikkoreitti", es: "Ruta costera", en: "Coastal Route" }, text: { fi: "Keskustasta kohti ruukkikyliä ja meren saaristoa.", es: "Del centro hacia pueblos históricos y el archipiélago.", en: "From the town centre towards the ironworks villages and coast." }, url: "https://visitsalo.fi/reitit/" },
-  { icon: Camera, title: { fi: "Kulttuurireitti", es: "Ruta cultural", en: "Cultural Route" }, text: { fi: "Veturitalli, Wiurila, Rikalanmäki, Halikko ja Design Hill.", es: "Veturitalli, Wiurila, Rikalanmäki, Halikko y Design Hill.", en: "Veturitalli, Wiurila, Rikalanmäki, Halikko and Design Hill." }, url: "https://kohteet.visitsalo.fi/en/koe-salon-kulttuurin-helmia-kulttuurireitti/" },
-  { icon: Mountain, title: { fi: "Salo–Lehmijärvi–Teijo", es: "Salo–Lehmijärvi–Teijo", en: "Salo–Lehmijärvi–Teijo" }, text: { fi: "Retkeilyreitti keskustasta kansallispuiston maisemiin.", es: "Ruta de senderismo desde el centro hacia el parque nacional.", en: "A hiking route from the centre towards the national park." }, url: "https://visitsalo.fi/teijon-kansallispuisto/" },
-];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
@@ -115,97 +65,8 @@ export default async function SaloPage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <section className="container-narrow py-14 sm:py-20">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            { icon: Building2, title: c.market, text: c.marketText },
-            { icon: Camera, title: c.culture, text: c.cultureText },
-            { icon: Mountain, title: c.nature, text: c.natureText },
-            { icon: Waves, title: c.sea, text: c.seaText },
-          ].map(({ icon: Icon, title, text }) => (
-            <article key={title} className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-soft">
-              <Icon className="h-7 w-7 text-brand-700" />
-              <h2 className="mt-5 font-display text-2xl font-bold text-brand-950">{title}</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <SaloAreaGrid locale={locale} />
 
-      <section className="bg-brand-50 py-16 sm:py-24">
-        <div className="container-narrow grid gap-10 lg:grid-cols-[1fr_.9fr] lg:items-center">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{c.countryside}</p>
-            <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{c.countryside}</h2>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-700">{c.countrysideText}</p>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <Link href="https://visitsalo.fi/en/culture-and-attractions/" target="_blank" rel="noopener noreferrer" className="rounded-2xl bg-white p-5 shadow-soft"><Compass className="h-6 w-6 text-brand-700" /><h3 className="mt-4 font-semibold text-brand-950">Wiurila & culture</h3><p className="mt-2 text-sm leading-6 text-slate-600">{locale === "fi" ? "Kartano, museot ja kulttuurireitti." : locale === "es" ? "Mansión, museos y ruta cultural." : "Manor, museums and cultural route."}</p><ArrowUpRight className="mt-4 h-4 w-4 text-brand-700" /></Link>
-            <Link href="https://visitsalo.fi/reitit/" target="_blank" rel="noopener noreferrer" className="rounded-2xl bg-white p-5 shadow-soft"><Map className="h-6 w-6 text-brand-700" /><h3 className="mt-4 font-semibold text-brand-950">{c.routes}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{c.routesText}</p><ArrowUpRight className="mt-4 h-4 w-4 text-brand-700" /></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="container-narrow py-16 sm:py-24">
-        <div className="mb-10 max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{c.routes}</p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{c.routes}</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-700">{c.routesText}</p>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {routeIdeas.map((route) => {
-            const Icon = route.icon;
-            return <a key={route.title.en} href={route.url} target="_blank" rel="noopener noreferrer" className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card"><Icon className="h-7 w-7 text-brand-700" /><h3 className="mt-5 font-display text-2xl font-bold text-brand-950">{route.title[locale]}</h3><p className="mt-3 text-sm leading-7 text-slate-600">{route.text[locale]}</p><span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-brand-700">{locale === "fi" ? "Katso reitti" : locale === "es" ? "Ver la ruta" : "View route"}<ArrowUpRight className="h-3.5 w-3.5" /></span></a>;
-          })}
-        </div>
-      </section>
-
-      <section className="bg-brand-950 py-16 text-white sm:py-24">
-        <div className="container-narrow">
-          <div className="max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">{c.providers}</p>
-            <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">{c.providers}</h2>
-            <p className="mt-5 text-lg leading-8 text-white/70">{c.providersText}</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="salo-areas" className="container-narrow py-16 sm:py-20">
-        <div className="max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">{locale === "fi" ? "Tutustu alueittain" : locale === "es" ? "Explora por zonas" : "Explore by area"}</p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{locale === "fi" ? "Salon seudulla jokaisella alueella on oma luonteensa." : locale === "es" ? "Cada zona de Salo tiene su propio carácter." : "Every part of the Salo region has its own character."}</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-600">{locale === "fi" ? "Valitse kylä tai alue ja tutustu sen majoitukseen, ruokaan, luontoon ja paikallisiin palveluihin. Kohteiden tiedot ja yhteydet johtavat aina suoraan palveluntarjoajalle." : locale === "es" ? "Elige un pueblo o una zona y descubre su alojamiento, gastronomía, naturaleza y servicios locales. La información y los enlaces llevan directamente a cada proveedor." : "Choose a village or area to explore its accommodation, food, nature and local services. Provider profiles and links always lead directly to the service provider."}</p>
-        </div>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { id: "mathildedal", title: { fi: "Mathildedal", en: "Mathildedal", es: "Mathildedal" }, text: { fi: "Ruukkikylä, satama ja kyläpalvelut", en: "Ironworks village, harbour and local services", es: "Pueblo histórico, puerto y servicios locales" } },
-            { id: "teijo", title: { fi: "Teijo", en: "Teijo", es: "Teijo" }, text: { fi: "Kansallispuisto, kulttuuri ja ulkoilu", en: "National park, culture and outdoor life", es: "Parque nacional, cultura y actividades al aire libre" } },
-            { id: "sarkisalo", title: { fi: "Särkisalo & Förby", en: "Särkisalo & Förby", es: "Särkisalo y Förby" }, text: { fi: "Saaristo, satamat ja merelliset elämykset", en: "Islands, harbours and sea experiences", es: "Islas, puertos y experiencias marinas" } },
-            { id: "pernio", title: { fi: "Perniö", en: "Perniö", es: "Perniö" }, text: { fi: "Maaseutu, maatilat ja paikalliset retket", en: "Countryside, farms and local excursions", es: "Campo, granjas y excursiones locales" } },
-            { id: "halikko", title: { fi: "Halikko", en: "Halikko", es: "Halikko" }, text: { fi: "Kyläympäristö ja paikalliset palvelut", en: "Village surroundings and local services", es: "Entorno rural y servicios locales" } },
-            { id: "vaskio", title: { fi: "Vaskio", en: "Vaskio", es: "Vaskio" }, text: { fi: "Mökkimajoitusta maaseudulla", en: "Cottage stays in the countryside", es: "Casas rurales en el campo" } },
-            { id: "suomusjarvi", title: { fi: "Suomusjärvi", en: "Suomusjärvi", es: "Suomusjärvi" }, text: { fi: "Huvilat ja lomamökit", en: "Villas and holiday cottages", es: "Villas y casas de vacaciones" } },
-            { id: "salo", title: { fi: "Salo & lähialueet", en: "Salo & nearby areas", es: "Salo y alrededores" }, text: { fi: "Matkailuinfo, oppaat ja retkipalvelut", en: "Tourism information, guides and excursions", es: "Información turística, guías y excursiones" } },
-          ].map((area) => (
-            <a key={area.id} href={`/${locale}/salo/${area.id}`} className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card">
-              <h3 className="font-display text-xl font-bold text-brand-950 group-hover:text-brand-700">{area.title[locale]}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{area.text[locale]}</p>
-              <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-brand-700">{locale === "fi" ? "Katso alueen kohteet" : locale === "es" ? "Ver los lugares" : "Explore places"}<ArrowRight className="h-3.5 w-3.5" /></span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-
-
-      <section className="bg-brand-50 py-16 text-center">
-        <div className="container-narrow">
-          <Flame className="mx-auto h-7 w-7 text-amber-500" />
-          <h2 className="mt-4 font-display text-4xl font-bold text-brand-950">{locale === "fi" ? "Salo on enemmän kuin yksi päivä" : locale === "es" ? "Salo merece más de un día" : "Salo deserves more than a day trip"}</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-600">{locale === "fi" ? "Yhdistä kaupunki, ruukkikylä, kansallispuisto ja meri samaan omaehtoiseen lomaan – ja varaa mahdolliset palvelut suoraan paikalliselta toimijalta." : locale === "es" ? "Combina ciudad, pueblo histórico, parque nacional y mar en un viaje diseñado por ti; cuando quieras reservar, hazlo directamente con cada proveedor." : "Combine town, an ironworks village, a national park and the sea in one self-planned stay; when you book, do so directly with each local provider."}</p>
-          <Link href={`/${locale}/coastal-finland`} className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-950 px-6 py-3.5 text-sm font-bold text-white">{c.coastal}<ArrowRight className="h-4 w-4" /></Link>
-        </div>
-      </section>
     </main>
   );
 }
