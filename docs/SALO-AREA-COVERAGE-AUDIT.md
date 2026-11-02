@@ -5,13 +5,13 @@ Working branch: `feat/salo-village-category-hierarchy`
 
 ## Current coverage baseline
 
-The Salo directory contains 18 localized area guides and 81 provider/place listings mapped to those areas. The count is a verified implementation baseline, not a claim that every category is complete in every village.
+The Salo directory contains 18 localized area guides and 81 provider/place listings mapped to those areas. Overall category distribution: 2 tourism information resources, 30 accommodation listings, 21 experiences, 9 nature/outdoor listings and 19 food listings. The count is a verified implementation baseline, not a claim that every category is complete in every village.
 
 | Area | Mapped listings | Current focus |
 |---|---:|---|
 | Salo | 4 | Tourism information, guides, camping and fishing |
 | Mathildedal | 11 | Accommodation, food, marina, experiences |
-| Teijo | 7 | Ironworks, nature, golf, activities and accommodation |
+| Teijo | 8 | Ironworks, nature, golf, activities and accommodation |
 | Mutainen | 2 | Recreational fishing and local art |
 | Kirjakkala | 1 | Ironworks village and paddling |
 | Särkisalo | 17 | Archipelago stays, marinas, food and fishing |
@@ -34,7 +34,7 @@ The Salo directory contains 18 localized area guides and 81 provider/place listi
 - Pertteli: Kurjen maatila, Korpiaho Design, Pertteli Church and Koirametsä Rymy.
 - Muurla: Muurlan Opisto, Muurla store/café-restaurant and Ilolan raspberry farm.
 - Märynummi: swimming beach, disc golf course and fitness/outdoor area.
-- Mutainen: its own localized village guide, Lohenrengas fishing venue and Galleria Tuulitunneli.
+- Mutainen: its own localized village guide and Galleria Tuulitunneli. Lohenrengas is mapped to Teijo, following the official service directory's location grouping.
 - Official Visit Salo/provider images have source attribution and translated alt text where a matching image was published.
 - Provider details link to the provider's own website or official destination record; the platform does not take bookings or payments.
 
