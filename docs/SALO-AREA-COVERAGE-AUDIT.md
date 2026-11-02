@@ -5,7 +5,7 @@ Working branch: `feat/salo-village-category-hierarchy`
 
 ## Current coverage baseline
 
-The Salo directory contains 18 localized area guides and 81 provider/place listings mapped to those areas. Overall category distribution: 2 tourism information resources, 30 accommodation listings, 21 experiences, 9 nature/outdoor listings and 19 food listings. The count is a verified implementation baseline, not a claim that every category is complete in every village.
+The Salo directory contains 18 localized area guides and 82 provider/place listings mapped to those areas. Overall category distribution: 3 tourism information resources, 30 accommodation listings, 21 experiences, 9 nature/outdoor listings and 19 food listings. The count is a verified implementation baseline, not a claim that every category is complete in every village.
 
 | Area | Mapped listings | Current focus |
 |---|---:|---|
