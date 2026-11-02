@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { saloProviders, type SaloProvider } from "@/lib/salo";
-import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
+import { areaCopy, areaOfficialSources, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 
 const locales: Locale[] = ["fi", "en", "es"];
@@ -25,11 +25,7 @@ function isCategory(value: string): value is SaloProvider["category"] {
 }
 
 export function generateStaticParams() {
-  return Object.entries(areaProviderIds).flatMap(([area, providerIds]) =>
-    categories
-      .filter((category) => saloProviders.some((provider) => providerIds.includes(provider.id) && provider.category === category))
-      .map((category) => ({ area, category })),
-  );
+  return Object.keys(areaProviderIds).flatMap((area) => categories.map((category) => ({ area, category })));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; area: string; category: string }> }): Promise<Metadata> {
@@ -51,7 +47,6 @@ export default async function SaloAreaCategoryPage({ params }: { params: Promise
   if (!locales.includes(rawLocale as Locale) || !isArea(rawArea) || !isCategory(rawCategory)) notFound();
   const locale = rawLocale as Locale;
   const providers = saloProviders.filter((provider) => areaProviderIds[rawArea].includes(provider.id) && provider.category === rawCategory);
-  if (!providers.length) notFound();
   const areaTitle = areaCopy[rawArea][locale].title;
   const title = categoryTitles[locale][rawCategory];
 
@@ -70,7 +65,15 @@ export default async function SaloAreaCategoryPage({ params }: { params: Promise
           </p>
         </div>
       </section>
-      <SaloDirectory locale={locale} area={rawArea} category={rawCategory} />
+      {providers.length ? <SaloDirectory locale={locale} area={rawArea} category={rawCategory} /> : (
+        <section className="container-narrow py-14 sm:py-20">
+          <div className="max-w-2xl rounded-3xl border border-brand-100 bg-brand-50 p-7 sm:p-9">
+            <h2 className="font-display text-2xl font-bold text-brand-950">{locale === "fi" ? "Palveluntarjoajia lisätään tähän kategoriaan" : locale === "es" ? "Estamos incorporando proveedores a esta categoría" : "Providers are being added to this category"}</h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600">{locale === "fi" ? "Tarkistamme alueen yritys- ja yhdistystiedot ennen julkaisua. Sillä välin voit tutustua alueen viralliseen esittelyyn." : locale === "es" ? "Estamos verificando empresas y asociaciones locales antes de publicarlas. Mientras tanto, consulta la presentación oficial de la zona." : "We verify local businesses and associations before publishing them. In the meantime, visit the area's official guide."}</p>
+            <a href={areaOfficialSources[rawArea].url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center rounded-full bg-brand-950 px-5 py-3 text-sm font-bold text-white hover:bg-brand-800">{areaOfficialSources[rawArea].label}</a>
+          </div>
+        </section>
+      )}
     </main>
   );
 }
