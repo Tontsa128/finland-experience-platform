@@ -26,7 +26,7 @@ function normalizeHomepageHref(href: string): string {
     withoutLocale === "/coastal-finland" ||
     lower.includes("mathildedal")
   ) {
-    return "/destinations/salo-mathildedal";
+    return "/salo/mathildedal";
   }
   return value;
 }
@@ -96,7 +96,7 @@ const slides: Slide[] = [
     image: photoLibrary.mathildedalVillage,
     credit: "Kotivalo / Wikimedia Commons (CC BY-SA 3.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
-    href: "/destinations/salo-mathildedal",
+    href: "/salo/mathildedal",
   },
   {
     key: "aland",
