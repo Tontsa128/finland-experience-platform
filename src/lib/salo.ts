@@ -839,8 +839,8 @@ export const saloProviders: SaloProvider[] = [
     },
     url: "https://kohteet.visitsalo.fi/kuusjoen-kirkko/",
     image: photoLibrary.kuusjokiHistoricChurch,
-    imageCredit: "Christian Ganderup / Finnish Heritage Agency — CC BY 4.0",
-    imageSource: "https://commons.wikimedia.org/wiki/File:Kuusjoen_kirkko_1890.jpg",
+    imageCredit: "Htm / Wikimedia Commons — CC BY 4.0",
+    imageSource: "https://commons.wikimedia.org/wiki/File:Kuusjoki_church_2.jpg",
   },
 
 ];
