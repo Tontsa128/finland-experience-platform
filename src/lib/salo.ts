@@ -1391,7 +1391,7 @@ export const saloProviders: SaloProvider[] = [
     category: "food",
     description: {
       fi: "Salon keskustassa Asemakadulla toimiva Ravintola Rikala tarjoaa suomalaiseen ruokaan perustuvia annoksia rennossa mutta tyylikkäässä ympäristössä. Ravintola kertoo valmistavansa annokset omassa keittiössään laadukkaista raaka-aineista. Visit Salon esittelyssä lounas on ollut tarjolla arkisin; tarkista ajantasainen lounaslista, aukioloajat ja pöytävaraukset ravintolan omasta kanavasta.",
-      en: "Ravintola Rikala on located on Asemakatu in central Salo and serves Finnish-inspired dishes in a relaxed yet stylish setting. The restaurant says its meals are prepared in its own kitchen using quality ingredients. Visit Salo's listing has described weekday lunch service; check the current lunch menu, opening times and table reservations through the restaurant's own channel.",
+      en: "Ravintola Rikala is located on Asemakatu in central Salo and serves Finnish-inspired dishes in a relaxed yet stylish setting. The restaurant says its meals are prepared in its own kitchen using quality ingredients. Visit Salo's listing has described weekday lunch service; check the current lunch menu, opening times and table reservations through the restaurant's own channel.",
       es: "Ravintola Rikala, situado en Asemakatu en el centro de Salo, ofrece platos de inspiración finlandesa en un ambiente relajado y elegante. El restaurante indica que prepara sus platos en su propia cocina con ingredientes de calidad. La ficha de Visit Salo ha indicado servicio de almuerzo entre semana; consulta el menú, los horarios y las reservas actuales en el canal oficial del restaurante."
     },
     url: "https://www.raflaamo.fi/en/restaurant/salo/restaurant-rikala",
