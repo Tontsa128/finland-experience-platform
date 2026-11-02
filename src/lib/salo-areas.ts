@@ -1,6 +1,6 @@
 import type { Locale } from "@/types";
 
-export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli" | "muurla" | "marynummi" | "hajala" | "angelniemi";
+export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo" | "kisko" | "kuusjoki" | "kiikala" | "pertteli" | "muurla" | "marynummi" | "hajala" | "angelniemi" | "kirjakkala";
 
 export const areaProviderIds: Record<SaloArea, string[]> = {
   mathildedal: ["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "ravintola-terho", "mathildedal-brewery", "kattohuone-mathildedal", "meri-ruukin-lomakyla", "vuorovetten-jaatelo"],
@@ -17,8 +17,9 @@ export const areaProviderIds: Record<SaloArea, string[]> = {
   pertteli: [],
   muurla: [],
   marynummi: [],
-  hajala: [],
+  hajala: ["hajala-myllytyry"],
   angelniemi: [],
+  kirjakkala: ["kirjakkalan-ruukkikyla"],
 };
 
 export const areaOfficialSources: Record<SaloArea, { url: string; label: string }> = {
@@ -38,6 +39,7 @@ export const areaOfficialSources: Record<SaloArea, { url: string; label: string 
   marynummi: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/marynummi/", label: "Salon kaupunki – Märynummi" },
   hajala: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/hajala/", label: "Salon kaupunki – Hajala" },
   angelniemi: { url: "https://www.vskylat.fi/maakunnan-kylat/vuoden-kyla/", label: "Varsinais-Suomen Kylät – Angelniemi" },
+  kirjakkala: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/teijon-ruukkikylat/", label: "Salon kaupunki – Teijon Ruukkikylät" },
 };
 
 export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title: string; intro: string }>> = {
@@ -115,6 +117,11 @@ export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title:
     fi: { eyebrow: "Angelniemi · Salo", title: "Angelniemi – merellistä kyläelämää ja historiaa", intro: "Angelniemi on Halikonlahden ja Kemiönsaaren suunnan tuntumassa sijaitseva merellinen kylä. Kylän yhteisöllisyyttä ylläpitävät aktiiviset yhdistykset ja Seurojentalo. Kokkilan ranta, Lossiranta ja historiallinen kirkko tuovat alueelle saariston tunnelmaa." },
     en: { eyebrow: "Angelniemi · Salo", title: "Angelniemi – coastal village life and heritage", intro: "Angelniemi is a coastal village near Halikko Bay and the route towards Kimitoön. Active associations and the village hall are at the heart of its community life. Kokkila beach, Lossiranta and the historic church give the area its maritime character." },
     es: { eyebrow: "Angelniemi · Salo", title: "Angelniemi, vida de pueblo costero y patrimonio", intro: "Angelniemi es un pueblo costero cerca de la bahía de Halikko y de la ruta hacia Kimitoön. Las asociaciones activas y el centro comunitario mantienen viva la vida local. La playa de Kokkila, Lossiranta y la iglesia histórica aportan el carácter marítimo de la zona." },
+  },
+  kirjakkala: {
+    fi: { eyebrow: "Kirjakkala · Teijo · Salo", title: "Kirjakkala – historiallinen ruukkikylä Hamarijärven rannalla", intro: "Kirjakkalan ruukin historia alkaa vuodesta 1686. Teijon kansallispuiston reittien äärellä sijaitseva kylä tunnetaan vanhoista ruukkirakennuksista, lehtomaisesta pihapiiristä, Hamarijärvestä sekä majoitus-, sauna- ja melontapalveluista." },
+    en: { eyebrow: "Kirjakkala · Teijo · Salo", title: "Kirjakkala – historic ironworks village by Lake Hamarijärvi", intro: "Kirjakkala's ironworks history dates back to 1686. Beside the trails of Teijo National Park, the village is known for its historic ironworks buildings, leafy grounds, Lake Hamarijärvi and its accommodation, sauna and paddling services." },
+    es: { eyebrow: "Kirjakkala · Teijo · Salo", title: "Kirjakkala, pueblo histórico de ferrería junto al lago Hamarijärvi", intro: "La historia de la ferrería de Kirjakkala se remonta a 1686. Junto a los senderos del Parque Nacional de Teijo, el pueblo destaca por sus edificios históricos, su entorno arbolado, el lago Hamarijärvi y sus servicios de alojamiento, sauna y piragüismo." },
   },
   salo: {
     fi: { eyebrow: "Salo · keskusta ja lähialueet", title: "Salon kaupungin palvelut ja retket", intro: "Matkailuinfo, oppaat, leirintä ja saaristoon suuntautuvat retkipalvelut." },
