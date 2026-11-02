@@ -25,7 +25,11 @@ function isCategory(value: string): value is SaloProvider["category"] {
 }
 
 export function generateStaticParams() {
-  return Object.keys(areaProviderIds).flatMap((area) => categories.map((category) => ({ area, category })));
+  return Object.entries(areaProviderIds).flatMap(([area, providerIds]) =>
+    categories
+      .filter((category) => saloProviders.some((provider) => providerIds.includes(provider.id) && provider.category === category))
+      .map((category) => ({ area, category })),
+  );
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; area: string; category: string }> }): Promise<Metadata> {
