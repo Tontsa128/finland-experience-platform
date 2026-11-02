@@ -49,6 +49,10 @@ const providerImages = {
   muurlaStore: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Muurla-1-web.jpg",
   marynummiBeach: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/Uimaranta-M%C3%A4ry_-1366x768.jpg",
   mutainenFishing: "https://lohenrengas.wordpress.com/wp-content/uploads/2015/03/kivijc3a4rvi-e1426164908827.jpg",
+  juurevastiTours: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2026/01/VisitSaloon-JuurevastiJuurista-kohdekortti-1920-x-1080-px-3-1366x768.jpg",
+  rymyDogForest: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/10/Koirametsa-Rymy-Salo-luonnollinen-maasto-1366x768.jpg",
+  ilolanRaspberries: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/ilola7-1153x768.jpeg",
+  marynummiFitnessTrail: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/IMG_1397-1024x768.jpg",
 };
 
 export const saloProviders: SaloProvider[] = [
@@ -1076,9 +1080,9 @@ export const saloProviders: SaloProvider[] = [
     name: "Märynummen uimaranta ja uimala",
     category: "nature",
     description: {
-      fi: "Märylammella sijaitsevaa uimalaa kiertää loivasti syvenevä hiekkaranta. Alueella on pukuhuoneet, sauna- ja pesutilat sekä lähellä beach volley -kenttiä, tennistä, ulkokuntoilua, kuntorata ja frisbeegolfrata. Rannalla ei ole uinninvalvontaa. Uimaveden vieraslajihavainnosta ja kesäkauden aukioloista kannattaa lukea kaupungin ajantasaiset ohjeet.",
-      en: "The swimming area at Lake Märylampi has a gently shelving sandy beach. Facilities include changing rooms, sauna and washing facilities, with beach volleyball, tennis, outdoor fitness equipment, a fitness trail and disc golf nearby. There is no lifeguard on the beach. Check the city's current guidance on water conditions and seasonal opening times.",
-      es: "La zona de baño del lago Märylampi cuenta con una playa de arena de pendiente suave. Hay vestuarios, sauna y duchas, además de voleibol playa, tenis, equipos de ejercicio al aire libre, un circuito de entrenamiento y disc golf en las inmediaciones. La playa no tiene socorrista. Consulta la información municipal actualizada sobre el agua y los horarios de temporada."
+      fi: "Märylammella sijaitsevaa uimalaa kiertää loivasti syvenevä hiekkaranta. Alueella on pukuhuoneet, sauna- ja pesutilat sekä lähellä beach volley -kenttiä, tennistä, ulkokuntoilua, kuntorata ja frisbeegolfrata. Rannalla ei ole uinninvalvontaa. Märylammen vedessä on havaittu kiehkuravesiruttoa: se ei ole ihmiselle vaarallinen, mutta uima-asut ja vesilelut on puhdistettava, jotta vieraslaji ei leviä muihin vesistöihin. Tarkista kaupungin ajantasaiset uimavesiohjeet.",
+      en: "The swimming area at Lake Märylampi has a gently shelving sandy beach. Facilities include changing rooms, sauna and washing facilities, with beach volleyball, tennis, outdoor fitness equipment, a fitness trail and disc golf nearby. There is no lifeguard on the beach. The invasive aquatic plant Nuttall's waterweed has been observed in the lake; it is not dangerous to people, but swimwear and water toys should be cleaned to prevent spreading it to other waters. Check the city's current bathing-water guidance.",
+      es: "La zona de baño del lago Märylampi cuenta con una playa de arena de pendiente suave. Hay vestuarios, sauna y duchas, además de voleibol playa, tenis, equipos de ejercicio al aire libre, un circuito de entrenamiento y disc golf en las inmediaciones. La playa no tiene socorrista. Se ha detectado la planta acuática invasora Elodea nuttallii; no es peligrosa para las personas, pero se deben limpiar los bañadores y juguetes acuáticos para evitar que se propague a otras aguas. Consulta la información municipal actualizada sobre la calidad del agua."
     },
     url: "https://kohteet.visitsalo.fi/marynummen-uimaranta/",
     image: providerImages.marynummiBeach,
@@ -1124,6 +1128,66 @@ export const saloProviders: SaloProvider[] = [
     },
     url: "https://www.teijo.fi/palveluja/erikoisliikkeita-ja-palveluita/",
     imageSource: "https://www.teijo.fi/palveluja/erikoisliikkeita-ja-palveluita/",
+    officialGuide: true
+  },
+
+  {
+    id: "kiikala-juurevasti-juurista",
+    name: "Juurevasti juurista – opastetut kierrokset",
+    category: "experience",
+    description: {
+      fi: "Paikallisopas Sari Scimone järjestää tilauksesta teemallisia opastettuja kierroksia Salossa. Erityisteemoja ovat Ilolan Arboretum, puutarhat, kulttuuriympäristöt ja Salon historia. Ryhmille voidaan suunnitella omiin toiveisiin sopiva kierros ympäri vuoden; yleisöopastuksia järjestetään kausittain. Varaa opastus etukäteen.",
+      en: "Local guide Sari Scimone offers themed guided tours in Salo by arrangement. Special interests include Ilola Arboretum, gardens, cultural landscapes and local history. Tours for groups can be tailored throughout the year, while public tours are seasonal. Book in advance.",
+      es: "La guía local Sari Scimone ofrece visitas temáticas por Salo con reserva previa. Sus especialidades incluyen el arboreto de Ilola, jardines, paisajes culturales e historia local. Las visitas para grupos se pueden adaptar durante todo el año; las visitas abiertas al público son estacionales. Reserva con antelación."
+    },
+    url: "https://juurevastijuurista.johku.com",
+    image: providerImages.juurevastiTours,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/opastetut-kierrokset-salossa-juurevasti-juurista/",
+    officialGuide: true
+  },
+  {
+    id: "pertteli-koirametsa-rymy",
+    name: "Koirametsä Rymy",
+    category: "nature",
+    description: {
+      fi: "Koirametsä Rymy on noin 1,5 hehtaarin aidattu mäntymetsä, jonka voi vuokrata omaan käyttöön haluamakseen ajaksi. Koirat saavat liikkua vapaana turvallisesti rajatulla alueella. Kohde on avoinna ympäri vuoden, ja omassa teltassa yöpyminen on mahdollista palveluntarjoajan ehtojen mukaan. Tarkista varausajat ja säännöt suoraan Rymyltä.",
+      en: "Koirametsä Rymy is an enclosed 1.5-hectare pine forest that can be rented for private use for a chosen time. Dogs can roam freely within the fenced area. The venue is open year-round, and overnight stays in your own tent may be possible under the provider's conditions. Check booking times and rules directly with Rymy.",
+      es: "Koirametsä Rymy es un bosque de pinos vallado de aproximadamente 1,5 hectáreas que se puede alquilar para uso privado durante el tiempo elegido. Los perros pueden correr libremente dentro del recinto. El lugar abre todo el año y puede ser posible pasar la noche en una tienda propia según las condiciones del proveedor. Consulta directamente con Rymy los horarios y las normas."
+    },
+    url: "https://www.rymymetsa.fi/",
+    image: providerImages.rymyDogForest,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/koirametsa-rymy/"
+  },
+  {
+    id: "muurla-ilolan-vadelmatila",
+    name: "Ilolan vadelmatila",
+    category: "food",
+    description: {
+      fi: "Muurlassa toimiva toisen polven perhetila kasvattaa avomaan vadelmia, joita voi poimia itse tai tilata valmiiksi poimittuna. Tilalta saa myös lähihunajaa, jonka mehiläiset pölyttävät vadelmapensaat. Poiminta ja tilaukset sovitaan aina etukäteen, joten varmista saatavuus ja noutoajat suoraan tilalta.",
+      en: "A second-generation family farm in Muurla grows raspberries outdoors. Visitors can pick their own berries or order them ready-picked. The farm also sells local honey from bees that pollinate the raspberry bushes. Picking and orders are by arrangement, so confirm availability and collection times directly with the farm.",
+      es: "Granja familiar de segunda generación en Muurla que cultiva frambuesas al aire libre. Se pueden recoger las frutas personalmente o pedirlas ya recolectadas. La granja también vende miel local de abejas que polinizan los arbustos de frambuesa. La recolección y los pedidos se acuerdan previamente; confirma la disponibilidad y la recogida directamente con la granja."
+    },
+    url: "https://kohteet.visitsalo.fi/ilolan-tila/",
+    image: providerImages.ilolanRaspberries,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/ilolan-tila/",
+    officialGuide: true
+  },
+  {
+    id: "marynummi-kuntorata",
+    name: "Märynummen kuntorata ja ulkoilualue",
+    category: "nature",
+    description: {
+      fi: "Märynummen ulkoilualueella on 3,4 kilometrin valaistu kuntoratalenkki ja 0,8 kilometrin valaisematon lenkki. Talvikaudella reitillä on perinteisen ja luistelutyylin hiihtolatu sekä tykkilumilatu. Läheltä löytyvät 5,5 kilometrin retkeilyreitti, frisbeegolfrata, uimaranta, sauna ja tenniskenttä. Laavu on vapaassa käytössä, mutta omat polttopuut on tuotava mukana. Tarkista latu- ja reittitilanne ennen lähtöä.",
+      en: "The Märynummi outdoor area has a 3.4-kilometre illuminated fitness loop and a 0.8-kilometre unlit section. In winter, the route is prepared for both classic and skate skiing, with additional artificial-snow tracks. Nearby are a 5.5-kilometre hiking trail, disc golf course, swimming beach, sauna and tennis court. The lean-to shelter is freely available, but visitors must bring their own firewood. Check trail and ski conditions before setting out.",
+      es: "La zona recreativa de Märynummi cuenta con un circuito iluminado de 3,4 kilómetros y otro tramo sin iluminación de 0,8 kilómetros. En invierno se preparan pistas para esquí clásico y patinador, además de una pista de nieve artificial. Cerca hay un sendero de 5,5 kilómetros, campo de disc golf, playa, sauna y pista de tenis. El refugio está disponible gratuitamente, pero cada visitante debe llevar su propia leña. Consulta el estado de los senderos y las pistas antes de salir."
+    },
+    url: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/",
+    image: providerImages.marynummiFitnessTrail,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/",
     officialGuide: true
   },
 
