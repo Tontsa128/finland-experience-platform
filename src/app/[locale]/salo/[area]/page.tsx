@@ -7,7 +7,7 @@ import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoCredits, photoLibrary } from "@/lib/photo-library";
 import { saloProviders } from "@/lib/salo";
-import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import { SaloAreaCategoryGrid } from "@/components/salo/SaloAreaCategoryGrid";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
 const supportedLocales: Locale[] = ["fi", "en", "es"];
@@ -130,7 +130,7 @@ export default async function SaloAreaPage({
         </div>
       </section>
 
-      <SaloDirectory locale={locale} area={area} />
+      <SaloAreaCategoryGrid locale={locale} area={area} />
 
       <section className="bg-brand-50 py-14 sm:py-20">
         <div className="container-narrow flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
