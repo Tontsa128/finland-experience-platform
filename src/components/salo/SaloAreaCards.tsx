@@ -13,7 +13,6 @@ const providerImageIds: Partial<Record<SaloArea, string>> = {
   vaskio: "onnenperan-mokki",
   suomusjarvi: "villa-frans",
   marynummi: "marynummi-uimaranta",
-  mutainen: "mutainen-lohenrengas",
 };
 
 function getAreaPhoto(area: SaloArea) {
