@@ -73,7 +73,7 @@ export function SaloAreaCategoryGrid({ locale, area }: { locale: Locale; area: S
                     {image ? <Image src={image} alt={item.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" /> : <div className="flex h-full items-center justify-center bg-brand-950"><Icon className="h-12 w-12 text-gold-300" /></div>}
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-950/65 via-transparent to-transparent" />
                     <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-brand-950">
-                      {providers.length} {locale === "fi" ? "kohdetta" : locale === "es" ? "lugares" : "listings"}
+                      {providers.length > 0 ? `${providers.length} ${locale === "fi" ? "kohdetta" : locale === "es" ? "lugares" : "listings"}` : locale === "fi" ? "Lisätään" : locale === "es" ? "En preparación" : "Coming soon"}
                     </span>
                   </div>
                   <div className="p-6">
