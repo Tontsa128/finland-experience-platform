@@ -30,8 +30,6 @@ function getAreaPhoto(area: SaloArea) {
     : area === "kiikala" ? photoLibrary.kiikalaLammenjarvi
     : area === "hajala" ? photoLibrary.hajalaVillage
     : area === "angelniemi" ? photoLibrary.angelniemiChurch
-    : area === "hajala" ? photoLibrary.hajalaVillage
-    : area === "angelniemi" ? photoLibrary.angelniemiChurch
     : area === "kirjakkala" ? photoLibrary.kirjakkalaVillage
     : area === "salo" ? photoLibrary.saloVeturitalli
     : null;
