@@ -100,7 +100,7 @@ const areaMap = areaMapStart >= 0 && areaMapEnd > areaMapStart ? saloAreaDataSou
 const assignedProviderIds = [...areaMap.matchAll(/^\s+[a-z]+:\s*\[([^\]]*)\]/gm)]
   .flatMap((match) => [...match[1].matchAll(/"([^"]+)"/g)].map((idMatch) => idMatch[1]));
 const duplicateAreaIds = [...new Set(assignedProviderIds.filter((id, index) => assignedProviderIds.indexOf(id) !== index))];
-const multiLocationMatch = saloAreaDataSource.match(/export const multiLocationProviderIds:\\s*string\\[\\]\\s*=\\s*\\[([\\s\\S]*?)\\];/);
+const multiLocationMatch = saloAreaDataSource.match(/export const multiLocationProviderIds:\s*string\[\]\s*=\s*\[([\s\S]*?)\];/);
 const multiLocationProviderIds = multiLocationMatch
   ? [...multiLocationMatch[1].matchAll(/"([^"]+)"/g)].map((match) => match[1])
   : [];
@@ -111,7 +111,9 @@ const invalidMultiLocationIds = multiLocationProviderIds.filter((id) =>
 const missingAreaIds = providerIds.filter((id) => !assignedProviderIds.includes(id));
 const unknownAreaIds = assignedProviderIds.filter((id) => !providerIds.includes(id));
 const renderedAreas = [...areaMap.matchAll(/^\s+([a-z]+):\s*\[/gm)].map((match) => match[1]);
-const areaRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}/.test(saloAreaPageSource);
+const areaPageHasCategoryLinks = saloAreaPageSource.includes("getSaloAreaCategories(area)")
+  && saloAreaPageSource.includes("saloCategorySlugs[category]");
+const categoryRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}\s+category=\{category\}/.test(saloCategoryPageSource);
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
 const areaCardsLinkToRoutes = saloPageSource.includes('href={`/${locale}/salo/${area.id}`}');
