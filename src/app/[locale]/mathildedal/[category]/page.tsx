@@ -20,5 +20,5 @@ export default async function MathildedalLegacyCategoryPage({
     elamykset: "tekemista",
   };
   const category = categoryMap[rawCategory];
-  permanentRedirect(`/${locale}/salo/mathildedal${category ? `/${category}` : ""}`);
+  permanentRedirect(`/${locale}/destinations/salo-mathildedal`);
 }
