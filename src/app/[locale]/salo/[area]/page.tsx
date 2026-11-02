@@ -7,7 +7,7 @@ import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoCredits, photoLibrary } from "@/lib/photo-library";
 import { saloProviders } from "@/lib/salo";
-import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import { getSaloAreaCategories, saloCategoryCopy, saloCategorySlugs } from "@/lib/salo-categories";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
 const supportedLocales: Locale[] = ["fi", "en", "es"];
@@ -130,7 +130,37 @@ export default async function SaloAreaPage({
         </div>
       </section>
 
-      <SaloDirectory locale={locale} area={area} />
+      <section className="container-narrow py-14 sm:py-20">
+        <div className="mb-9 max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-brand-600">
+            {locale === "fi" ? "Palvelukategoriat" : locale === "es" ? "Categorías de servicios" : "Service categories"}
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">
+            {locale === "fi" ? "Tutustu alueeseen omien kiinnostusten mukaan" : locale === "es" ? "Explora la zona según tus intereses" : "Explore the area by interest"}
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-slate-600">
+            {locale === "fi" ? "Valitse kategoria nähdäksesi alueelle kuuluvat palvelut ja niiden omat esittelysivut." : locale === "es" ? "Elige una categoría para ver los servicios de la zona y sus páginas informativas." : "Choose a category to see the services in this area and their individual profiles."}
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {getSaloAreaCategories(area).map((category) => {
+            const copy = saloCategoryCopy[category][locale];
+            return (
+              <Link
+                key={category}
+                href={`/${locale}/salo/${area}/${saloCategorySlugs[category]}`}
+                className="group rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card"
+              >
+                <h3 className="font-display text-2xl font-bold text-brand-950 group-hover:text-brand-700">{copy.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{copy.intro}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-brand-700">
+                  {locale === "fi" ? "Avaa kategoria" : locale === "es" ? "Abrir categoría" : "Open category"}<ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
 
       <section className="bg-brand-50 py-14 sm:py-20">
         <div className="container-narrow flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
