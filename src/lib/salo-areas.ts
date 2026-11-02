@@ -17,6 +17,21 @@ export const areaProviderIds: Record<SaloArea, string[]> = {
   pertteli: [],
 };
 
+export const areaOfficialSources: Record<SaloArea, { url: string; label: string }> = {
+  mathildedal: { url: "https://visitmathildedal.fi/", label: "Visit Mathildedal" },
+  teijo: { url: "https://visitsalo.fi/", label: "Visit Salo" },
+  sarkisalo: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/", label: "Salon kaupunki" },
+  pernio: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/", label: "Salon kaupunki" },
+  halikko: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/", label: "Salon kaupunki" },
+  vaskio: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/", label: "Salon kaupunki" },
+  suomusjarvi: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/", label: "Salon kaupunki" },
+  salo: { url: "https://visitsalo.fi/", label: "Visit Salo" },
+  kisko: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/kisko/", label: "Salon kaupunki – Kisko" },
+  kuusjoki: { url: "https://salo.fi/muuttajalle/kylat-ja-alueet/kuusjoki/", label: "Salon kaupunki – Kuusjoki" },
+  kiikala: { url: "https://visitsalo.fi/", label: "Visit Salo" },
+  pertteli: { url: "https://visitsalo.fi/", label: "Visit Salo" },
+};
+
 export const areaCopy: Record<SaloArea, Record<Locale, { eyebrow: string; title: string; intro: string }>> = {
   mathildedal: {
     fi: { eyebrow: "Mathildedal · Salo", title: "Mathildedalin paikat ja palvelut", intro: "Ruukkikylän majoitus, ruoka, satama ja paikalliset elämykset." },
