@@ -2,11 +2,14 @@ import type { Locale } from "@/types";
 
 export type SaloArea = "mathildedal" | "teijo" | "sarkisalo" | "pernio" | "halikko" | "vaskio" | "suomusjarvi" | "salo";
 
+// These providers explicitly serve more than one Salo area.
+export const multiLocationProviderIds: string[] = ["vuorovetten-jaatelo"];
+
 export const areaProviderIds: Record<SaloArea, string[]> = {
   mathildedal: ["visit-mathildedal", "hotel-mathildedal", "mathildan-marina", "matilda-villas", "matri-house", "majoitus-mathildedal", "ravintola-terho", "mathildedal-brewery", "kattohuone-mathildedal", "meri-ruukin-lomakyla", "vuorovetten-jaatelo"],
   teijo: ["teijon-masuuni", "teijo-action-park", "teijo-national-park", "meri-teijo-golf", "matildanjarven-kampat", "teijo-tentsile", "teijon-kammari"],
-  sarkisalo: ["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "villa-meri-sarkisalo", "tiiranta", "niksaaren-sauna", "sarkisalo-fishing", "forby-rantajooga", "villa-signell", "finnholm-strandbo", "aava-adventures", "katiskanmaeki", "lonnviken", "villa-nennebo", "meri-veikko", "kruuvan-mokit"],
-  pernio: ["krailan-sabrina", "leipyolin-tila", "alaspaan-maatila"],
+  sarkisalo: ["saaristomokit-sarkisalo", "forby-marina", "cafe-vinssi", "saaristoravintola-nixor", "villa-meri-sarkisalo", "krailan-sabrina", "tiiranta", "vuorovetten-jaatelo", "niksaaren-sauna", "sarkisalo-fishing", "forby-rantajooga", "villa-signell", "finnholm-strandbo", "aava-adventures", "katiskanmaeki", "lonnviken", "villa-nennebo", "meri-veikko", "kruuvan-mokit"],
+  pernio: ["leipyolin-tila", "alaspaan-maatila"],
   halikko: ["topilan-tupa"],
   vaskio: ["onnenperan-mokki"],
   suomusjarvi: ["villa-viola", "villa-laperla", "villa-viktoria", "villa-frans"],

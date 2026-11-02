@@ -12,6 +12,7 @@ import { saloProviders } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { kimitoonProviders } from "@/lib/kimitoon-providers";
 import { areaProviderIds } from "@/lib/salo-areas";
+import { getSaloAreaCategories, saloCategorySlugs } from "@/lib/salo-categories";
 
 export const revalidate = 3600;
 
@@ -67,9 +68,15 @@ const basePaths = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const saloAreaPaths = Object.keys(areaProviderIds).map((area) => `salo/${area}`);
+  const saloAreas = Object.keys(areaProviderIds);
+  const saloAreaPaths = saloAreas.map((area) => `salo/${area}`);
+  const saloCategoryPaths = saloAreas.flatMap((area) =>
+    getSaloAreaCategories(area as keyof typeof areaProviderIds).map(
+      (category) => `salo/${area}/${saloCategorySlugs[category]}`,
+    ),
+  );
   const staticEntries = locales.flatMap((locale) =>
-    [...basePaths, ...saloAreaPaths].map((path) => ({
+    [...basePaths, ...saloAreaPaths, ...saloCategoryPaths].map((path) => ({
       url: siteUrl + "/" + locale + (path ? "/" + path : ""),
       changeFrequency: path === "" ? "daily" as const : "weekly" as const,
       priority: path === "" ? 1 : 0.8,

@@ -76,13 +76,14 @@ if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
   console.error("Sitemap check failed: legacy Mathildedal aliases redirect to the canonical destination and must not be listed.");
 }
 
-// Salo regional directory regression guard: every provider must belong to
-// exactly one dedicated area guide, and every guide is generated and indexed.
+// Salo regional guide regression guard: providers belong to one area unless
+// they explicitly serve multiple locations; category routes must be generated and indexed.
 const saloDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
 const saloAreaDataSource = await readFile(path.resolve("src/lib/salo-areas.ts"), "utf8");
 const saloDirectorySource = await readFile(path.resolve("src/components/salo/SaloDirectory.tsx"), "utf8");
 const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
 const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
+const saloCategoryPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/[category]/page.tsx"), "utf8");
 const providerArrayStart = saloDataSource.indexOf("export const saloProviders: SaloProvider[] = [");
 const providerArrayEnd = saloDataSource.indexOf("\n];", providerArrayStart);
 const providerIds = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
@@ -98,39 +99,56 @@ const areaMapEnd = saloAreaDataSource.indexOf("\n};", areaMapStart);
 const areaMap = areaMapStart >= 0 && areaMapEnd > areaMapStart ? saloAreaDataSource.slice(areaMapStart, areaMapEnd) : "";
 const assignedProviderIds = [...areaMap.matchAll(/^\s+[a-z]+:\s*\[([^\]]*)\]/gm)]
   .flatMap((match) => [...match[1].matchAll(/"([^"]+)"/g)].map((idMatch) => idMatch[1]));
-const duplicateAreaIds = assignedProviderIds.filter((id, index) => assignedProviderIds.indexOf(id) !== index);
+const duplicateAreaIds = [...new Set(assignedProviderIds.filter((id, index) => assignedProviderIds.indexOf(id) !== index))];
+const multiLocationMatch = saloAreaDataSource.match(/export const multiLocationProviderIds:\s*string\[\]\s*=\s*\[([\s\S]*?)\];/);
+const multiLocationProviderIds = multiLocationMatch
+  ? [...multiLocationMatch[1].matchAll(/"([^"]+)"/g)].map((match) => match[1])
+  : [];
+const unapprovedDuplicateAreaIds = duplicateAreaIds.filter((id) => !multiLocationProviderIds.includes(id));
+const invalidMultiLocationIds = multiLocationProviderIds.filter((id) =>
+  !providerIds.includes(id) || assignedProviderIds.filter((assignedId) => assignedId === id).length < 2,
+);
 const missingAreaIds = providerIds.filter((id) => !assignedProviderIds.includes(id));
 const unknownAreaIds = assignedProviderIds.filter((id) => !providerIds.includes(id));
 const renderedAreas = [...areaMap.matchAll(/^\s+([a-z]+):\s*\[/gm)].map((match) => match[1]);
-const areaRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}/.test(saloAreaPageSource);
+const areaPageHasCategoryLinks = saloAreaPageSource.includes("getSaloAreaCategories(area)")
+  && saloAreaPageSource.includes("saloCategorySlugs[category]");
+const categoryRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}\s+category=\{category\}/.test(saloCategoryPageSource);
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
 const areaCardsLinkToRoutes = saloPageSource.includes('href={`/${locale}/salo/${area.id}`}');
-const sitemapIncludesAreaRoutes = (await readFile(path.resolve("src/app/sitemap.ts"), "utf8")).includes("...saloAreaPaths");
+const sitemapIncludesAreaRoutes = sitemapSource.includes("...saloAreaPaths");
+const sitemapIncludesCategoryRoutes = sitemapSource.includes("...saloCategoryPaths")
+  && sitemapSource.includes("getSaloAreaCategories(area");
 const photoSourceLinkIsSafe = saloDirectorySource.includes(String.raw`provider.imageSource && /^https?:\/\//i.test(provider.imageSource)`);
 const photoSourceLabelIsLocalized = [
   'photoSource: "Kuvan lähde"',
   'photoSource: "Fuente de la foto"',
   'photoSource: "Photo source"',
 ].every((label) => saloDirectorySource.includes(label));
-if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || duplicateAreaIds.length || missingAreaIds.length || unknownAreaIds.length || !areaRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
+if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || unapprovedDuplicateAreaIds.length || invalidMultiLocationIds.length || missingAreaIds.length || unknownAreaIds.length || !areaPageHasCategoryLinks || !categoryRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !areaCardsLinkToRoutes || !sitemapIncludesAreaRoutes || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
     providerImageCount,
     providerCreditCount,
     duplicateAreaIds,
+    multiLocationProviderIds,
+    unapprovedDuplicateAreaIds,
+    invalidMultiLocationIds,
     missingAreaIds,
     unknownAreaIds,
     renderedAreas,
-    areaRouteUsesDirectory,
+    areaPageHasCategoryLinks,
+    categoryRouteUsesDirectory,
     areaRouteGeneratesAllSlugs,
     areaCardsLinkToRoutes,
     sitemapIncludesAreaRoutes,
+    sitemapIncludesCategoryRoutes,
     photoSourceLinkIsSafe,
     photoSourceLabelIsLocalized,
   });
 }
 
 if (failed) process.exit(1);
-console.log(`i18n/SEO/Salo checks passed: ${locales.join(", ")} have identical key sets, locale-aware document language, safe sitemap routes and complete area directories.`);
+console.log(`i18n/SEO/Salo checks passed: ${locales.join(", ")} have identical key sets, locale-aware document language, safe sitemap routes and complete village/category guides.`);
