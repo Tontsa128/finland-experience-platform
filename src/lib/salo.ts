@@ -53,6 +53,18 @@ const providerImages = {
   rymyDogForest: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/10/Koirametsa-Rymy-Salo-luonnollinen-maasto-1366x768.jpg",
   ilolanRaspberries: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/ilola7-1153x768.jpeg",
   marynummiFitnessTrail: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/IMG_1397-1024x768.jpg",
+  halikkoWiurila: "https://wiurila.fi/wp-content/uploads/2026/06/paarakennus_u_16.jpg",
+  wiurilaGasthaus: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8451-scaled-1-2.jpeg",
+  wiurilaRestaurant: "https://wiurila.fi/wp-content/uploads/2026/06/ravinteli.png",
+  vaskiCider: "https://cdn-datahub.visitfinland.com/images/fc6ca1d0-b181-11ef-b5a0-3d8c42928efa.jpeg?s=1280",
+  wanhantuvanAnkkala: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Ankkala.jpg",
+  vaskioBed: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/08/Vaskio-Bed-1-1-1024x768.jpg",
+  ylivesaFarm: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06887-1151x768.jpg",
+  villenVineyard: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/06/IMG_20200802_185343-1024x768.jpg",
+  salonArtLoan: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2022/10/311169416_415808624065753_1920076266043848120_n.jpg",
+  vuohensaariNature: "https://cdn-datahub.visitfinland.com/images/a8305e60-58e5-11ec-9ba4-0dc52985e5d5-Vuohensaari%20k%C3%A4velyll%C3%A4.jpg?s=1280",
+  vuohensaariMinigolf: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/vuohensaari-minigolf-1366x768.jpg",
+  rikalaRestaurant: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/11/Rikala-0009-1150x768.jpg",
 };
 
 export const saloProviders: SaloProvider[] = [
@@ -1202,6 +1214,190 @@ export const saloProviders: SaloProvider[] = [
     imageCredit: "Salon Kohteet / Visit Salo",
     imageSource: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/",
     officialGuide: true
+  },
+
+  {
+    id: "halikko-wiurila-kartano",
+    name: "Wiurilan kartano",
+    category: "experience",
+    description: {
+      fi: "Wiurila on Halikossa sijaitseva historiallinen kartanomiljöö, jonka Armfeltin suku on omistanut vuodesta 1787. Kartanon alueella voi tutustua koti- ja hevosvaunumuseoihin, opastettuihin museokierroksiin, taidenäyttelyihin ja historialliseen puistoon. Alueella toimivat myös Gasthaus, ravintola, golf, padel ja hevostalli. Päärakennuksen museotiloissa on portaita eikä kohde ole esteetön; tarkista kierrosten ajankohdat ja varaukset suoraan Wiurilasta.",
+      en: "Wiurila is a historic manor estate in Halikko, owned by the Armfelt family since 1787. Visitors can explore the home and horse-carriage museums, guided museum tours, art exhibitions and the historic park. The estate also has a guesthouse, restaurant, golf, padel and a stable. The main building's museum rooms involve stairs and are not accessible; check tour dates and bookings directly with Wiurila.",
+      es: "Wiurila es una histórica finca señorial de Halikko, propiedad de la familia Armfelt desde 1787. Se pueden visitar los museos de la casa y de carruajes, participar en visitas guiadas, ver exposiciones de arte y pasear por el parque histórico. La finca también cuenta con alojamiento, restaurante, golf, pádel y establos. Las salas del museo en el edificio principal tienen escaleras y no son accesibles; consulta directamente las fechas y reservas."
+    },
+    url: "https://wiurila.fi/kartano/",
+    image: providerImages.halikkoWiurila,
+    imageCredit: "Wiurila",
+    imageSource: "https://wiurila.fi/kartano/"
+  },
+  {
+    id: "halikko-wiurila-gasthaus",
+    name: "Wiurila Gasthaus",
+    category: "stay",
+    description: {
+      fi: "Wiurilan kartanon pihapiirissä sijaitseva pieni majatalo tarjoaa neljä kahden hengen huonetta, joissa jokaisessa on oma kylpyhuone. Majoittujien yhteisessä aulassa voi viettää aikaa, ja aamiaisen voi tilata erikseen. Huoneen tai koko majatalon voi varata suoraan Wiurilan omasta varauskanavasta, sähköpostilla tai puhelimitse. Varmista ajantasainen hinta ja saatavuus ennen matkaa.",
+      en: "A small guesthouse in the grounds of Wiurila Manor, with four double rooms, each with a private bathroom. Guests share a lounge, and breakfast can be ordered separately. Rooms or the entire guesthouse can be booked through Wiurila's own booking channel, by email or by phone. Confirm current rates and availability before travelling.",
+      es: "Pequeña casa de huéspedes en la finca de Wiurila, con cuatro habitaciones dobles y baño privado en cada una. Los huéspedes comparten una sala de estar y se puede pedir el desayuno por separado. Las habitaciones o toda la casa se pueden reservar directamente en el canal de reservas de Wiurila, por correo electrónico o por teléfono. Confirma los precios y la disponibilidad actuales antes de viajar."
+    },
+    url: "https://wiurila.fi/majoitus/",
+    image: providerImages.wiurilaGasthaus,
+    imageCredit: "Wiurila",
+    imageSource: "https://wiurila.fi/majoitus/"
+  },
+  {
+    id: "halikko-wiurila-sigrid",
+    name: "Ravintola Wiurilan Sigrid",
+    category: "food",
+    description: {
+      fi: "Wiurilan kartanon talousrakennuksessa toimiva ravintola yhdistää historiallisen miljöön ja rennon ruokailun. Tarjolla on lounasta sekä à la carte -annoksia; ruokalista ja palveluajat vaihtelevat kauden mukaan. Ravintolan yhteydessä on terasseja, joilta avautuu näkymä kartanon puistoon ja golfkentälle. Tarkista ajantasainen ruokalista ja aukioloajat ravintolan omalta sivulta.",
+      en: "A restaurant in the historic service building of Wiurila Manor, combining an estate setting with relaxed dining. It serves lunch and à la carte dishes; menus and service hours vary by season. The restaurant has terraces overlooking the manor park and golf course. Check the current menu and opening times on the restaurant's own page.",
+      es: "Restaurante situado en el histórico edificio de servicio de la finca Wiurila, que combina un entorno señorial con una experiencia gastronómica relajada. Ofrece almuerzos y platos a la carta; el menú y los horarios cambian según la temporada. Sus terrazas tienen vistas al parque y al campo de golf. Consulta el menú y los horarios actualizados en la página del restaurante."
+    },
+    url: "https://wiurila.fi/ravintola/",
+    image: providerImages.wiurilaRestaurant,
+    imageCredit: "Wiurila",
+    imageSource: "https://wiurila.fi/ravintola/"
+  },
+  {
+    id: "halikko-vaski-cider",
+    name: "Vaski Cider & Distillery",
+    category: "experience",
+    description: {
+      fi: "Vaski Cider on Halikossa toimiva käsityöläissiideritalo, jossa siideri yhdistyy taiteeseen ja makumatkailuun. Vierailuun voi sisällyttää opastetun kierroksen, siiderinäyttelyn ja teemallisen tastingin. Ohjelmia räätälöidään myös pienille ryhmille, ja tiloissa toimii lisäksi suklaastudio sekä lounaskahvila. Siideritalo ja näyttely palvelevat tuotannon ollessa paikalla tai ennakkoon sovitusti; varaa vierailu etukäteen.",
+      en: "Vaski Cider is a craft cidery in Halikko where cider meets art and culinary travel. A visit can include a guided tour, a small cider exhibition and a themed tasting. Tailored programmes are available for small groups, and the premises also host a chocolate studio and lunch café. The cidery and exhibition operate when production staff are present or by prior arrangement; book your visit in advance.",
+      es: "Vaski Cider es una sidrería artesanal en Halikko donde la sidra se une al arte y al turismo gastronómico. La visita puede incluir un recorrido guiado, una pequeña exposición sobre la sidra y una cata temática. También se organizan programas para grupos pequeños y en el recinto hay un estudio de chocolate y una cafetería de almuerzos. La sidrería y la exposición abren cuando el personal de producción está presente o con cita previa; reserva la visita con antelación."
+    },
+    url: "https://www.vaskicider.fi/",
+    image: providerImages.vaskiCider,
+    imageCredit: "Vaski Cider & Distillery / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset-ja-tastingit/",
+    officialGuide: true
+  },
+  {
+    id: "vaskio-wanhantuvan-ankkala",
+    name: "Wanhantuvan Ankkala",
+    category: "food",
+    description: {
+      fi: "Wanhantuvan Ankkala toimii yli 400 vuotta vanhalla sukutilalla Vaskion Toivilassa. Tilan päätuotantosuunta on ankan kasvatus, ja tuotteet myydään suoramyyntinä tilan omasta myymälästä. Valikoimaan kuuluu ankanlihatuotteita sekä ankan- ja viiriäisenmunia. Tarkista tuotteiden saatavuus ja myymälän palveluajat suoraan tilalta.",
+      en: "Wanhantuvan Ankkala is based on a family farm in Toivila, Vaskio, with a farming history of more than 400 years. The farm now specialises in raising ducks and sells its products directly from its own farm shop. The range includes duck meat products, duck eggs and quail eggs. Check product availability and shop hours directly with the farm.",
+      es: "Wanhantuvan Ankkala se encuentra en una finca familiar de Toivila, Vaskio, con más de 400 años de historia agrícola. Actualmente la granja se especializa en la cría de patos y vende sus productos directamente en la tienda de la finca. La oferta incluye carne de pato, huevos de pato y huevos de codorniz. Consulta directamente la disponibilidad y los horarios de la tienda."
+    },
+    url: "https://www.wanhantuvanankkala.fi/",
+    image: providerImages.wanhantuvanAnkkala,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/wanhantuvan-ankkala/"
+  },
+  {
+    id: "vaskio-bed",
+    name: "Vaskio-Bed",
+    category: "stay",
+    description: {
+      fi: "Vaskio-Bed tarjoaa kodinomaista majoitusta kolmessa huoneistossa. Jokaisessa on oma keittiö, wc ja suihku, ja jääkaapissa on perustarvikkeet aamiaisen valmistamiseen. Sauna on tilattavissa erikseen. Majoitus sopii omatoimiselle matkailijalle, joka arvostaa rauhallista kyläympäristöä. Tarkista huoneiden saatavuus ja varausehdot suoraan majoittajalta.",
+      en: "Vaskio-Bed offers homely accommodation in three apartments. Each has its own kitchen, toilet and shower, and the fridge contains basic breakfast supplies. A sauna can be booked separately. It suits independent travellers who appreciate a peaceful village setting. Check room availability and booking terms directly with the host.",
+      es: "Vaskio-Bed ofrece alojamiento acogedor en tres apartamentos. Cada uno dispone de cocina, aseo y ducha propios, y la nevera incluye productos básicos para preparar el desayuno. La sauna se puede reservar por separado. Es una opción para viajeros independientes que buscan tranquilidad en un entorno rural. Consulta directamente con el anfitrión la disponibilidad y las condiciones."
+    },
+    url: "https://vaskio-bed.fi/",
+    image: providerImages.vaskioBed,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/vaskio-bed/"
+  },
+  {
+    id: "kiikala-ylivesan-luomutila",
+    name: "Ylivesän luomutila",
+    category: "food",
+    description: {
+      fi: "Kruusilassa toimiva luomutila kasvattaa hereford-pihvikarjaa, joka laiduntaa kesäkaudella tilan laitumilla ja perinteisillä hakamailla. Tilalla tuotettu luomupihviliha myydään suoramyyntinä suoraan kuluttajille. Vierailusta ja ostoksista kannattaa sopia etukäteen, sillä kyseessä on toimiva maatila eikä jatkuvasti avoin matkailumyymälä.",
+      en: "An organic farm in Kruusila raising Hereford beef cattle, which graze on the farm's pastures and traditional wooded meadows during the summer season. The farm's organic beef is sold directly to consumers. Arrange visits and purchases in advance, as this is a working farm rather than a continuously open visitor shop.",
+      es: "Granja ecológica en Kruusila que cría ganado vacuno Hereford para carne y que pasta en los prados y pastizales tradicionales de la finca durante el verano. La carne ecológica se vende directamente al consumidor. Acuerda las visitas y compras con antelación, ya que se trata de una granja en funcionamiento y no de una tienda turística abierta continuamente."
+    },
+    url: "https://www.ylivesa.fi/",
+    image: providerImages.ylivesaFarm,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/ylivesan-luomutila/"
+  },
+  {
+    id: "pertteli-kalevala-retriitti",
+    name: "Kalevala-retriitti / InnerFree",
+    category: "stay",
+    description: {
+      fi: "Perttelin maaseudulla järjestettävä yksityinen retriitti on suunniteltu 1–2 henkilölle kerrallaan. Yhden yön vierailuun voi sisältyä sauna, jääkylpy, luontokävely, taidetuokio ja kalevalainen jäsenkorjaus. Majoitus on kodinomaisessa päärakennuksessa omalla sisäänkäynnillä, wc:llä ja keittiöllä. Iltapala ja aamiainen tarjoillaan huoneeseen. Palvelu suunnitellaan etukäteen; pyydä tarjous suoraan InnerFreeltä.",
+      en: "A private retreat in the countryside of Pertteli, designed for one or two guests at a time. An overnight stay can include a sauna, ice bath, nature walk, art session and traditional Kalevala bodywork. Accommodation is in a homely main building with a private entrance, toilet and kitchen. A light evening meal and breakfast are served in the room. The experience is arranged in advance; request an offer directly from InnerFree.",
+      es: "Retiro privado en el entorno rural de Pertteli, diseñado para una o dos personas. La estancia de una noche puede incluir sauna, baño de hielo, paseo por la naturaleza, actividad artística y terapia corporal tradicional Kalevala. El alojamiento se encuentra en la casa principal, con entrada privada, aseo y cocina. La cena ligera y el desayuno se sirven en la habitación. La experiencia se organiza con antelación; solicita una propuesta directamente a InnerFree."
+    },
+    url: "https://innerfree.fi/kalevalaretriitti/",
+    imageSource: "https://kohteet.visitsalo.fi/kalevala-retriitti/",
+    officialGuide: true
+  },
+  {
+    id: "pertteli-villen-viinitarha",
+    name: "Villen Viinitarha",
+    category: "experience",
+    description: {
+      fi: "Villen Viinitarha sijaitsee Uskelanjoen rinteillä Perttelissä. Tarhassa kasvatetaan noin 120 avomaan rypälelajiketta ja yhteensä noin 400 viiniköynnöstä. Yrittäjä järjestää viinitarhakierroksia ja opastaa pohjoisen viininviljelyn lajikevalinnoissa ja kasvatusmenetelmissä. Vierailut sovitaan etukäteen.",
+      en: "Villen Viinitarha is a vineyard on the slopes of the Uskelanjoki River in Pertteli. It grows around 120 outdoor grape varieties across approximately 400 vines. The owner arranges vineyard tours and explains grape varieties and growing methods suited to northern conditions. Visits are by prior arrangement.",
+      es: "Villen Viinitarha es un viñedo situado en las laderas del río Uskelanjoki, en Pertteli. Cultiva unas 120 variedades de uva al aire libre y aproximadamente 400 vides. El propietario organiza visitas guiadas y explica las variedades y técnicas de cultivo adecuadas para el clima nórdico. Las visitas se acuerdan previamente."
+    },
+    url: "https://villenviinitarha.com/",
+    image: providerImages.villenVineyard,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/villen-viinitarha/"
+  },
+  {
+    id: "salo-taidelainaamo",
+    name: "Salon taidelainaamo",
+    category: "experience",
+    description: {
+      fi: "Salon Taiteilijaseuran ylläpitämä taidelainaamo esittelee paikallisten ammattitaiteilijoiden teoksia ja vaihtuvia näyttelyitä. Taidetta voi lainata kotiin tai työpaikalle ja lunastaa myöhemmin omaksi; lainaushinta hyvitetään ostossa. Teosvalikoima uusiutuu säännöllisesti. Tarkista ajantasaiset aukioloajat ja näyttelyt taidelainaamon omalta sivulta.",
+      en: "Run by the Salo Artists' Association, this art-lending gallery presents works by local professional artists and changing exhibitions. Visitors can borrow artwork for their home or workplace and later purchase it, with rental payments credited towards the purchase price. The selection is regularly renewed. Check current opening times and exhibitions on the gallery's own page.",
+      es: "Esta galería de préstamo de arte, gestionada por la Asociación de Artistas de Salo, presenta obras de artistas profesionales locales y exposiciones temporales. Se pueden llevar obras prestadas a casa o al trabajo y comprarlas más adelante; las cuotas de préstamo se descuentan del precio de compra. La selección se renueva periódicamente. Consulta los horarios y exposiciones actuales en la página oficial."
+    },
+    url: "https://www.salontaiteilijaseura.fi/Lainaamo/",
+    image: providerImages.salonArtLoan,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/salon-taidelainaamo/"
+  },
+  {
+    id: "salo-vuohensaari-luontopolku",
+    name: "Vuohensaaren luontopolku",
+    category: "nature",
+    description: {
+      fi: "Vuohensaaren 1,2 kilometrin luontopolku kiertää Salonjoen suiston saarta vanhan metsän, rantojen, niittyjen ja teiden kautta. Reitin varrella on 17 luontorastia, jotka kertovat saaren historiasta, kasveista, linnuista ja eläimistä. Polku alkaa pysäköintialueelta ja päättyy uimarannalle. Vuohensaari on osittain esteetön lumettomaan aikaan; tarkista reitin kunto ja palvelut ennen vierailua.",
+      en: "The 1.2-kilometre nature trail on Vuohensaari loops around the island at the mouth of the River Salo through old woodland, shores, meadows and paths. Seventeen information points introduce the island's history, plants, birds and wildlife. The route starts at the car park and ends at the swimming beach. Vuohensaari is partly accessible in snow-free conditions; check trail conditions and services before visiting.",
+      es: "El sendero natural de 1,2 kilómetros de Vuohensaari recorre la isla situada en la desembocadura del río Salo, atravesando bosque antiguo, orillas, prados y caminos. Hay 17 paneles sobre la historia de la isla, sus plantas, aves y animales. El sendero comienza en el aparcamiento y termina en la playa. Vuohensaari es parcialmente accesible cuando no hay nieve; consulta el estado del recorrido y los servicios antes de visitarlo."
+    },
+    url: "https://kohteet.visitsalo.fi/vuohensaari/",
+    image: providerImages.vuohensaariNature,
+    imageCredit: "Visit Finland / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/vuohensaari/",
+    officialGuide: true
+  },
+  {
+    id: "salo-vuohensaari-minigolf",
+    name: "Vuohensaaren minigolf",
+    category: "experience",
+    description: {
+      fi: "Vuohensaaren saarella sijaitsee 18-reikäinen minigolfrata, jonka Visit Salon kohdesivu kertoo olevan kansainvälisen minigolfliiton hyväksymä. Rata kuuluu saaren kesäkauden aktiviteetteihin yhdessä uimarannan, luontopolun ja leirintäalueen kanssa. Varmista aukiolo ja pelivuorot suoraan Vuohensaaresta ennen vierailua.",
+      en: "Vuohensaari has an 18-hole minigolf course which Visit Salo describes as approved by the international minigolf federation. The course is one of the island's seasonal activities, alongside the beach, nature trail and camping area. Confirm opening times and play availability directly with Vuohensaari before visiting.",
+      es: "Vuohensaari cuenta con un campo de minigolf de 18 hoyos que Visit Salo describe como homologado por la federación internacional de minigolf. Es una de las actividades de temporada de la isla, junto con la playa, el sendero natural y el camping. Confirma directamente con Vuohensaari los horarios y la disponibilidad antes de la visita."
+    },
+    url: "https://www.visitvuohensaari.fi/",
+    image: providerImages.vuohensaariMinigolf,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/vuohensaaren-uimapaikka/"
+  },
+  {
+    id: "salo-ravintola-rikala",
+    name: "Ravintola Rikala",
+    category: "food",
+    description: {
+      fi: "Salon keskustassa Asemakadulla toimiva Ravintola Rikala tarjoaa suomalaiseen ruokaan perustuvia annoksia rennossa mutta tyylikkäässä ympäristössä. Ravintola kertoo valmistavansa annokset omassa keittiössään laadukkaista raaka-aineista. Visit Salon esittelyssä lounas on ollut tarjolla arkisin; tarkista ajantasainen lounaslista, aukioloajat ja pöytävaraukset ravintolan omasta kanavasta.",
+      en: "Ravintola Rikala on located on Asemakatu in central Salo and serves Finnish-inspired dishes in a relaxed yet stylish setting. The restaurant says its meals are prepared in its own kitchen using quality ingredients. Visit Salo's listing has described weekday lunch service; check the current lunch menu, opening times and table reservations through the restaurant's own channel.",
+      es: "Ravintola Rikala, situado en Asemakatu en el centro de Salo, ofrece platos de inspiración finlandesa en un ambiente relajado y elegante. El restaurante indica que prepara sus platos en su propia cocina con ingredientes de calidad. La ficha de Visit Salo ha indicado servicio de almuerzo entre semana; consulta el menú, los horarios y las reservas actuales en el canal oficial del restaurante."
+    },
+    url: "https://www.raflaamo.fi/en/restaurant/salo/restaurant-rikala",
+    image: providerImages.rikalaRestaurant,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/en/restaurant-rikala/"
   },
 
 ];
