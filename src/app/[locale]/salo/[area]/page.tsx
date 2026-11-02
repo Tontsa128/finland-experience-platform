@@ -56,7 +56,9 @@ function getAreaImage(area: SaloArea): { src: string; credit: string; source: st
                 ? photoLibrary.hajalaVillage
                 : area === "angelniemi"
                   ? photoLibrary.angelniemiChurch
-                  : area === "salo"
+                  : area === "kirjakkala"
+                    ? photoLibrary.kirjakkalaVillage
+                    : area === "salo"
                     ? photoLibrary.saloVeturitalli
                 : null;
   if (!src) return null;
