@@ -66,7 +66,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
         </div>
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {destinations.length ? destinations.map((destination, index) => (
-            <Link key={destination.id} href={`/${locale}/destinations/${canonicalDestinationSlug(destination.slug)}`} className={`group overflow-hidden rounded-[2rem] bg-brand-50 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-card ${index === 0 ? "lg:col-span-2" : ""}`}>
+            <Link key={destination.id} href={destination.slug === "salo-mathildedal" || destination.slug === "salo" ? `/${locale}/salo` : `/${locale}/destinations/${canonicalDestinationSlug(destination.slug)}`} className={`group overflow-hidden rounded-[2rem] bg-brand-50 shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-card ${index === 0 ? "lg:col-span-2" : ""}`}>
               <div className={`relative overflow-hidden ${index === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
                 {destination.images[0] ? <Image src={destination.images[0]} alt={getLocalized(destination.name, locale)} fill sizes={index===0 ? "(max-width:1024px) 100vw, 66vw" : "(max-width:1024px) 50vw, 33vw"} className="object-cover transition duration-700 group-hover:scale-105"/> : <div className="flex h-full items-center justify-center">{destination.region}</div>}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/10 to-transparent"/>
