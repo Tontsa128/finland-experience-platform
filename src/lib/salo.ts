@@ -1118,6 +1118,19 @@ export const saloProviders: SaloProvider[] = [
     imageSource: "https://lohenrengas.wordpress.com/galleria/"
   },
   {
+    id: "mutainen-kylayhdistys",
+    name: "Teijon Alueen Kyläyhdistys – Mutainen",
+    category: "tourism",
+    description: {
+      fi: "Teijon Alueen Kyläyhdistys kokoaa yhteen Mutaisen, Kirjakkalan, Teijon ja Mathildedalin kylät. Mutaisten omalla kyläsivulla esitellään Halikonlahden rannalla sijaitsevan kylän historiaa, maisemia, pyöräilyreittiä ja paikallista yhteisötoimintaa. Käytä sivua alueen taustatietojen ja kyläyhdistyksen ajankohtaisten tietojen lähteenä.",
+      en: "The Teijo Area Village Association brings together the villages of Mutainen, Kirjakkala, Teijo and Mathildedal. Its dedicated Mutainen page introduces the village on the shore of Halikonlahti Bay, including its history, landscapes, cycling route and community life. Use the page as the official source for local background and village-association updates.",
+      es: "La Asociación Vecinal de la Zona de Teijo reúne los pueblos de Mutainen, Kirjakkala, Teijo y Mathildedal. Su página dedicada a Mutainen presenta la historia, los paisajes, la ruta ciclista y la vida comunitaria del pueblo situado junto a la bahía de Halikonlahti. Utiliza esta página como fuente oficial de información local y novedades de la asociación."
+    },
+    url: "https://www.teijo.fi/tervetuloakyliin/mutainen/",
+    imageSource: "https://www.teijo.fi/tervetuloakyliin/mutainen/",
+    officialGuide: true
+  },
+  {
     id: "mutainen-galleria-tuulitunneli",
     name: "Galleria Tuulitunneli",
     category: "experience",
