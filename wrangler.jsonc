@@ -4,7 +4,7 @@
   "main": "custom-worker.ts",
   "compatibility_date": "2025-03-25",
   "previews": {},
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
