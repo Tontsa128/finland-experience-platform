@@ -350,7 +350,7 @@ const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
     { src: "https://static.wixstatic.com/media/684b51_8848b144df924991a269607232bb92ac~mv2.jpg/v1/fit/w_674%2Ch_450%2Cq_90%2Cenc_avif%2Cquality_auto/684b51_8848b144df924991a269607232bb92ac~mv2.jpg", alt: { fi: "Terhon takapihan terassi täynnä asiakkaita", en: "Terho's backyard terrace filled with guests", es: "Terraza del patio de Terho llena de clientes" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" },
     { src: "https://static.wixstatic.com/media/5e5929_c36ae105fdc743b998042f60cb1d4d69~mv2.jpg/v1/fill/w_702%2Ch_496%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/_DSC0416.jpg", alt: { fi: "Terhon oman paahtimon kahvi", en: "Coffee from Terho's own roastery", es: "Café del tostador propio de Terho" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" },
     { src: "https://static.wixstatic.com/media/43c9db_106f9b1e0bf94dc5ba9f699b8a55f4d6~mv2.jpg/v1/fill/w_871%2Ch_553%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/terho-web-71_edited.jpg", alt: { fi: "Terhon pizza ja paikallinen juoma", en: "Pizza and a local drink at Terho", es: "Pizza y bebida local en Terho" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" }
-  ]
+  ],
 
   "salo-kiikala-ilolan-arboretum": [
     { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/10/20220928_185218-1-1364x768.jpg", alt: { fi: "Ilolan Arboretumin syksyinen puistomaisema", en: "Autumn park landscape at Ilola Arboretum", es: "Paisaje otoñal del parque de Ilola" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ilolan-arboretum-ja-taimisto/" },
