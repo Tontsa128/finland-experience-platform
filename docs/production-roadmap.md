@@ -8,11 +8,11 @@ Visit Finlandin kansainvälistymiskriteerit on tarkoitettu kansainvälisille mar
 
 ## Nykytilanne GitHubissa
 
-- Päähaara: `1733b122` (3.11.2026).
-- Viimeisin tarkastettu GitHub Actions -ajo läpäisi lintin, typecheckin, unit-testit ja tuotantobuildin.
-- Vercelin projektissa on READY-tilassa oleva tuotantojulkaisu, jonka lähdecommit on sama kuin nykyinen main-päähaara (`1733b122`). Tämä vahvistaa, että Vercel julkaisee GitHubin main-haaraa.
-- Vercel käyttää Node 24:ää. Tämä työpaketti päivittää CI:n käyttämään samaa Node-versiota; muutos pitää vielä vahvistaa GitHub Actions -ajossa ennen yhdistämistä. Erillinen manuaalinen Next.js-parametrien korjausworkflow käyttää edelleen Node 20:tä ja arvioidaan myöhemmin erikseen.
-- Repositoriossa on myös Cloudflare Workers -konfiguraatio. Varmista, onko workers.dev-osoite yhä rinnakkainen tuotanto, vanha julkaisu vai tapahtumasyötteen tekninen Worker.
+- Päähaara tarkistettu 3.11.2026: `2096ae1f` (PR #67:n jälkeen).
+- PR:ien #66 ja #67 tarkastetut CI-ajot läpäisivät lintin, typecheckin, unit-testit ja tuotantobuildin.
+- Vercelissä on READY-tilassa oleva main-julkaisu ja tuotantodomain; se on vahvistettu julkisen sivuston ensisijaiseksi julkaisuksi. PR #67:n jälkeen nykyinen main on `2096ae1f`.
+- Vercel ja pääasiallinen CI käyttävät Node 24:ää. Erillinen manuaalinen Next.js-parametrien korjausworkflow käyttää edelleen Node 20:tä ja arvioidaan erikseen ennen kuin sitä käytetään.
+- Cloudflare-tilillä on aktiivinen `finland-experience-platform`-Worker, jossa on `fetch`- ja `scheduled`-käsittelijät sekä kuuden tunnin cron (`0 */6 * * *`). `workers.dev` on käytössä, mutta Workerillä ei ole custom domainia tai zone-reittiä. Tämä tukee apu-Workerin roolia tapahtumasyötteessä, mutta käyttöliittymän koodin vastaavuutta Vercelin mainiin ei ole vielä varmennettu.
 - Projektissa on Next.js 16 / React 19, Supabase/Auth, CMS-näkymiä, mediat, tapahtumahallinta, liidiominaisuuksia ja FI/EN/ES-reittejä.
 - Reititys- ja tietomallikoodia on sekä tietokannan/CMS:n yhteydessä että aluekohtaisissa lähdekoodikatalogeissa. Sisällön ensisijainen hallintapaikka pitää inventoida sisältötyypeittäin.
 - Salo- ja Kemiönsaari-sisältöjen luonnos-PR:t #60 ja #53 ovat keskeneräisiä. Niiden päällekkäisyydet ja sisältömäärät tarkistetaan nykyistä päähaaraa vasten ennen jatkoa.
@@ -21,7 +21,7 @@ Visit Finlandin kansainvälistymiskriteerit on tarkoitettu kansainvälisille mar
 
 Vercelin nykyinen main-julkaisu on vahvistettu, joten jäljellä oleva julkaisu- ja tietokantariskin tarkistus rajataan seuraaviin:
 
-1. Selvitä Cloudflare Workers -konfiguraation tarkoitus ja workers.dev-julkaisun suhde Vercelin tuotantoon. Päätetään, mikä URL on kanoninen käyttäjille ja millä alustalla ajastettu tapahtumien synkronointi suoritetaan.
+1. Vercel on kanoninen julkinen sivusto. Varmista Worker-lähdekoodista, ettei sen `fetch`-reitti tarjoa vanhaa tai erillistä verkkosivua; pidä kuuden tunnin tapahtumasynkronointi Cloudflare Workerissä, jos sen lähdekoodi ja lokit vahvistavat tehtävän.
 2. Tarkista tuotannon Supabase-migraatioiden tila ennen uusia skeemamuutoksia.
 3. Varmista OAuth-paluuosoitteet ja tuotannon ympäristömuuttujat kanoniselle domainille.
 4. Kirjaa julkaisu- ja palautusmenettely sekä tietokantamuutosten järjestys.
@@ -109,10 +109,10 @@ Lisää analytiikka yksityisyyttä kunnioittavasti ja tarkista suostumusten tarv
 
 ## Seuraavat konkreettiset työpaketit
 
-1. Julkaisun nykytilan ja Supabase-migraatioiden read-only inventointi.
-2. Sisältölähteiden kartta: Salo, Mathildedal ja Kemiönsaari – CMS vs. koodi vs. seed-data.
-3. PR #60 ja #53:n sisältövertailu nykyiseen päähaaraan ja yksi yhdistetty, deduplikoitu sisältöjono.
-4. Valitun aluepilotoinnin sisältö- ja linkkitarkistus FI/EN/ES.
+1. Supabase-migraatioiden toteutuneen tilan read-only inventointi.
+2. Sisältölähteiden kartta on tehty PR:ssä #67; seuraavaksi vertaa tietueet PR:ien #60/#53 sisältöön.
+3. PR #60:n ja #53:n sisältövertailu nykyiseen päähaaraan ja deduplikoitu sisältöjono.
+4. Salo-hierarkian selainkierros on vahvistettu FI:ssä tuotannossa; tee vastaava EN/ES sekä provider-linkkien sisältötarkistus.
 5. Ensimmäinen ylläpidettävä reitti CMS:n tai nykyisen sisältöarkkitehtuurin kautta.
 
 Lähtöoletuksia, kuten DataHub-API:n nykyistä saatavuutta, tuotantomigraatioiden tilaa, liikenteen määrää, markkinointibudjettia tai kumppanien maksuhalukkuutta, ei käsitellä faktoina ennen tarkistusta.
