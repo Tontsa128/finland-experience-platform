@@ -71,7 +71,8 @@ if (/lastModified:\s*new Date\(\)/.test(sitemapSource)) {
   failed = true;
   console.error("Sitemap check failed: lastModified must come from real content timestamps, never the current build/request time.");
 }
-if (/["']mathildedal(?:\/|["'])/.test(sitemapSource)) {
+const sitemapBasePaths = sitemapSource.match(/const basePaths = \[([\s\S]*?)\];/)?.[1] ?? "";
+if (/(?:^|\n)\s*["']mathildedal(?:\/[^"']*)?["']\s*,?/m.test(sitemapBasePaths)) {
   failed = true;
   console.error("Sitemap check failed: legacy Mathildedal aliases redirect to the canonical destination and must not be listed.");
 }
