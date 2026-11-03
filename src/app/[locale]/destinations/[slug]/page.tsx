@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     title: seo?.title || getLocalized(destination.name, locale),
     description: seo?.description || getLocalized(destination.shortDescription, locale),
-    path: "destinations/" + destination.slug,
+    path: slug === "mathildedal" || slug === "salo-mathildedal" ? "salo/mathildedal" : "destinations/" + destination.slug,
     image: destination.images[0],
   });
 }
@@ -37,6 +37,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function DestinationDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale: rawLocale, slug } = await params;
   const locale = rawLocale as Locale;
+  if ((slug === "mathildedal" || slug === "salo-mathildedal") && locales.includes(locale)) {
+    permanentRedirect(`/${locale}/salo/mathildedal`);
+  }
   if (slug === "kemionsaari" && locales.includes(locale)) {
     return <div className="bg-white"><KimitoonGuide locale={locale} /></div>;
   }

@@ -140,12 +140,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {coastalHighlights.map((destination) => (
               <Link
                 key={destination.id}
-                href={destination.slug === "salo-mathildedal" ? `/${locale}/destinations/salo-mathildedal` : `/${locale}/coastal-finland#${destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
+                href={destination.slug === "salo-mathildedal" ? `/${locale}/salo` : `/${locale}/coastal-finland#${destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
                 className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
               >
                 <Image
-                  src={destinations.find((item) => item.slug === destination.slug)?.images?.[0] || destination.images?.[0] || fallbackSummerImage}
-                  alt={destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                  src={destination.slug === "salo-mathildedal" ? photoLibrary.saloVeturitalli : destinations.find((item) => item.slug === destination.slug)?.images?.[0] || destination.images?.[0] || fallbackSummerImage}
+                  alt={destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Salo ja lähikylät" : locale === "es" ? "Salo y pueblos cercanos" : "Salo and nearby villages") : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
@@ -154,7 +154,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold">
-                    {destination.name[locale as keyof typeof destination.name] || destination.name.en}
+                    {destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Salo ja lähikylät" : locale === "es" ? "Salo y pueblos cercanos" : "Salo and nearby villages") : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   </h3>
                   <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-white/85">
                     {tc("learnMore")} <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
