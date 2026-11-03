@@ -61,8 +61,9 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur">
       <div className="container-narrow flex min-h-16 w-full items-center gap-2 py-2 sm:min-h-18 sm:gap-4 sm:py-3">
-        <Link href={href("")} className="min-w-0 flex-1 truncate font-display text-lg font-bold text-brand-900 sm:text-xl">
-          Finland <span className="text-brand-500">Experience</span>
+        <Link href={href("")} aria-label="Finland Experience – home" className="flex min-w-0 flex-1 items-center gap-2 font-display text-lg font-bold text-brand-900 sm:text-xl">
+          <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-900 text-sm font-bold text-white">F</span>
+          <span className="truncate"><span className="sm:hidden">Finland</span><span className="hidden sm:inline">Finland <span className="text-brand-500">Experience</span></span></span>
         </Link>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
@@ -87,7 +88,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
             href={`/${locale}/account/login`}
             aria-label={ui.account}
             title={ui.account}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm hover:border-brand-300"
+            className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm hover:border-brand-300 sm:flex"
           >
             <UserRound className="h-5 w-5" />
           </Link>
