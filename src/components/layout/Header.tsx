@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Globe, Menu, UserRound, X } from "lucide-react";
+import { Globe, Menu, Search, UserRound, X } from "lucide-react";
 import { useState } from "react";
 
 type NavigationItem = { id: string; label: string; href: string; sortOrder: number };
@@ -19,6 +19,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   const t = useTranslations("nav");
   const path = usePathname();
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const fallbackItems = [
     ["home", ""], ["destinations", "destinations"], ["accommodations", "accommodations"],
@@ -31,10 +32,20 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   const items = withSauna.some(([key]) => key === "ruralFinland") ? withSauna : [...withSauna, ["ruralFinland", "rural-finland"] as const];
   const labels = new Map(navigation.map((item) => [item.id, item.label]));
   const ui = locale === "fi"
-    ? { account: "Asiakastili", login: "Kirjaudu", close: "Sulje valikko", open: "Avaa valikko" }
+    ? { account: "Asiakastili", login: "Kirjaudu", close: "Sulje valikko", open: "Avaa valikko", search: "Hae kohteita ja palveluita", searchPlaceholder: "Hae kohdetta, majoitusta tai elämystä" }
     : locale === "es"
-      ? { account: "Cuenta", login: "Iniciar sesión", close: "Cerrar menú", open: "Abrir menú" }
-      : { account: "Account", login: "Log in", close: "Close menu", open: "Open menu" };
+      ? { account: "Cuenta", login: "Iniciar sesión", close: "Cerrar menú", open: "Abrir menú", search: "Buscar destinos y servicios", searchPlaceholder: "Buscar destino, alojamiento o experiencia" }
+      : { account: "Account", login: "Log in", close: "Close menu", open: "Open menu", search: "Search places and services", searchPlaceholder: "Search destinations, stays or experiences" };
+
+  const siteSearch = (className: string) => (
+    <form action={`/${locale}/search`} role="search" className={`flex min-w-0 items-center gap-2 rounded-full border border-slate-200 bg-slate-50 p-1 pl-4 focus-within:border-brand-500 focus-within:bg-white ${className}`}>
+      <label className="sr-only" htmlFor="site-search">{ui.search}</label>
+      <input id="site-search" type="search" name="q" required minLength={2} maxLength={100} placeholder={ui.searchPlaceholder} className="min-w-0 flex-1 bg-transparent py-2 text-sm text-brand-950 outline-none placeholder:text-slate-400" />
+      <button type="submit" aria-label={ui.search} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-900 text-white hover:bg-brand-800">
+        <Search className="h-4 w-4" aria-hidden="true" />
+      </button>
+    </form>
+  );
 
   const href = (value: string) => {
     if (/^https?:\/\//i.test(value)) return value;
@@ -65,6 +76,8 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
           Finland <span className="text-brand-500">Experience</span>
         </Link>
 
+        {siteSearch("hidden max-w-lg flex-1 md:flex")}
+
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <div className="flex shrink-0 items-center gap-0.5 rounded-full border border-slate-200 bg-slate-50 p-1 sm:gap-1" aria-label="Language selector">
             <Globe className="mx-1 hidden h-4 w-4 text-slate-500 sm:block" aria-hidden="true" />
@@ -92,11 +105,16 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
             <UserRound className="h-5 w-5" />
           </Link>
 
+          <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm md:hidden" onClick={() => setSearchOpen((value) => !value)} aria-label={ui.search} aria-expanded={searchOpen}>
+            <Search className="h-5 w-5" />
+          </button>
           <button type="button" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-900 shadow-sm lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open}>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
+
+      {searchOpen ? <div className="container-narrow px-4 pb-3 md:hidden">{siteSearch("w-full")}</div> : null}
 
       <div className="hidden border-t border-slate-100 lg:block">
         <div className="container-narrow overflow-x-auto">
