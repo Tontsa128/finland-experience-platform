@@ -71,7 +71,7 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           <h3 className="mb-5 font-display text-2xl font-bold text-brand-950">{t.gallery}</h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {photos.map((photo) => (
-              <figure key={photo.src} className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+              <figure key={photo.src} className="group flex h-full flex-col overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-xl">
                 <a href={photo.source} target="_blank" rel="noreferrer" aria-label={t.source}>
                   <img src={photo.src} alt={photo.alt[locale]} loading="lazy" className="h-56 w-full object-cover transition-transform duration-300 hover:scale-[1.02]" />
                 </a>
@@ -89,13 +89,13 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           <h3 className="mb-5 font-display text-2xl font-bold text-brand-950">{t.places}</h3>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {places[village].map((place) => (
-              <article key={place.name} className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-                {place.image ? <figure><img src={place.image} alt={place.name} loading="lazy" className="h-48 w-full object-cover" />{place.imageCredit && place.imageSource ? <figcaption className="px-5 pt-2 text-xs text-slate-500">{t.source}: {place.imageCredit} · <a href={place.imageSource} target="_blank" rel="noreferrer" className="underline underline-offset-2">{t.visit}</a></figcaption> : null}</figure> : null}
-                <div className="p-5">
+              <article key={place.name} className="group flex h-full flex-col overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-xl">
+                {place.image ? <figure><img src={place.image} alt={place.name} loading="lazy" className="h-56 w-full object-cover transition duration-700 group-hover:scale-[1.03]" />{place.imageCredit && place.imageSource ? <figcaption className="px-5 pt-2 text-xs text-slate-500">{t.source}: {place.imageCredit} · <a href={place.imageSource} target="_blank" rel="noreferrer" className="underline underline-offset-2">{t.visit}</a></figcaption> : null}</figure> : null}
+                <div className="flex flex-1 flex-col p-5">
                   <p className="text-xs font-bold uppercase tracking-wider text-brand-700">{place.type[locale]}</p>
                   <h4 className="mt-2 font-display text-xl font-bold text-brand-950">{place.name}</h4>
                   <p className="mt-3 text-sm leading-6 text-slate-600">{place.description[locale]}</p>
-                  <a href={place.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex text-sm font-bold text-brand-800 underline underline-offset-4">{t.visit} ↗</a>
+                  <a href={place.url} target="_blank" rel="noreferrer" className="mt-auto inline-flex pt-5 text-sm font-bold text-brand-800 underline underline-offset-4">{t.visit} ↗</a>
                 </div>
               </article>
             ))}
@@ -106,13 +106,13 @@ export function RuukkikylaGuide({ village, locale }: { village: Village; locale:
           <h3 className="mb-5 font-display text-2xl font-bold text-brand-950">{t.events}</h3>
           <div className="grid gap-5 lg:grid-cols-3">
             {events[village].map((event) => (
-              <article key={event.title} className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-                {event.image ? <figure><img src={event.image} alt={event.title} loading="lazy" className="h-48 w-full object-cover" />{event.imageCredit && event.imageSource ? <figcaption className="px-5 pt-2 text-xs text-slate-500">{t.source}: {event.imageCredit} · <a href={event.imageSource} target="_blank" rel="noreferrer" className="underline underline-offset-2">{t.visit}</a></figcaption> : null}</figure> : null}
-                <div className="p-5">
+              <article key={event.title} className="group flex h-full flex-col overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-xl">
+                {event.image ? <figure><img src={event.image} alt={event.title} loading="lazy" className="h-56 w-full object-cover transition duration-700 group-hover:scale-[1.03]" />{event.imageCredit && event.imageSource ? <figcaption className="px-5 pt-2 text-xs text-slate-500">{t.source}: {event.imageCredit} · <a href={event.imageSource} target="_blank" rel="noreferrer" className="underline underline-offset-2">{t.visit}</a></figcaption> : null}</figure> : null}
+                <div className="flex flex-1 flex-col p-5">
                   <p className="text-xs font-bold uppercase tracking-wider text-brand-700">{t.eventDate}: {event.date}</p>
                   <h4 className="mt-2 font-display text-xl font-bold text-brand-950">{event.title}</h4>
                   <p className="mt-3 text-sm leading-6 text-slate-600">{event.description[locale]}</p>
-                  <a href={event.url} target="_blank" rel="noreferrer" className="mt-4 inline-flex text-sm font-bold text-brand-800 underline underline-offset-4">{t.visit} ↗</a>
+                  <a href={event.url} target="_blank" rel="noreferrer" className="mt-auto inline-flex pt-5 text-sm font-bold text-brand-800 underline underline-offset-4">{t.visit} ↗</a>
                 </div>
               </article>
             ))}
