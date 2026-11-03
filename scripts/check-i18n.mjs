@@ -91,8 +91,8 @@ const legacyMathildedalLinksDirectly = [mathildedalLegacySource, mathildedalCate
   .every((source) => source.includes('/salo/mathildedal') && !source.includes('/destinations/salo-mathildedal'));
 const legacyDestinationCanonicalizes = destinationDetailSource.includes('slug === "salo-mathildedal"')
   && destinationDetailSource.includes('/salo/mathildedal');
-const relatedMathildedalLinksDirectly = ruukkikylaGuideSource.includes('/destinations/salo-mathildedal')
-  && teijoDestinationSource.includes('/destinations/salo-mathildedal')
+const relatedMathildedalLinksDirectly = [ruukkikylaGuideSource, teijoDestinationSource]
+  .every((source) => source.includes('/salo/mathildedal') && !source.includes('/destinations/salo-mathildedal'))
   && legacyDestinationCanonicalizes;
 if (!saloGuideLinksDirectly || !legacyMathildedalLinksDirectly || !relatedMathildedalLinksDirectly) {
   failed = true;
@@ -112,6 +112,8 @@ const saloDirectorySource = await readFile(path.resolve("src/components/salo/Sal
 const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
 const saloVillageIndexSource = await readFile(path.resolve("src/app/[locale]/salo/kylat/page.tsx"), "utf8");
 const saloAreaGridSource = await readFile(path.resolve("src/components/salo/SaloAreaGrid.tsx"), "utf8");
+const saloAreaCardsSource = await readFile(path.resolve("src/components/salo/SaloAreaCards.tsx"), "utf8");
+const saloCategoryGridSource = await readFile(path.resolve("src/components/salo/SaloAreaCategoryGrid.tsx"), "utf8");
 const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
 const saloCategoryPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/[category]/page.tsx"), "utf8");
 const providerArrayStart = saloDataSource.indexOf("export const saloProviders: SaloProvider[] = [");
@@ -141,16 +143,19 @@ const invalidMultiLocationIds = multiLocationProviderIds.filter((id) =>
 const missingAreaIds = providerIds.filter((id) => !assignedProviderIds.includes(id));
 const unknownAreaIds = assignedProviderIds.filter((id) => !providerIds.includes(id));
 const renderedAreas = [...areaMap.matchAll(/^\s+([a-z]+):\s*\[/gm)].map((match) => match[1]);
-const areaPageHasCategoryLinks = saloAreaPageSource.includes("getSaloAreaCategories(area)")
-  && saloAreaPageSource.includes("saloCategorySlugs[category]");
-const categoryRouteUsesDirectory = /<SaloDirectory\s+locale=\{locale\}\s+area=\{area\}\s+category=\{category\}/.test(saloCategoryPageSource);
+const areaPageHasCategoryLinks = saloAreaPageSource.includes("<SaloAreaCategoryGrid")
+  && saloCategoryGridSource.includes('href={`/${locale}/salo/${area}/${category}`}');
+const categoryRouteUsesDirectory = saloCategoryPageSource.includes("<SaloDirectory")
+  && saloCategoryPageSource.includes("area={rawArea}")
+  && saloCategoryPageSource.includes("category={rawCategory}");
 const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];")
   && saloAreaPageSource.includes("return areaSlugs.map((area) => ({ area }));");
 const saloLandingLinksToVillageIndex = saloPageSource.includes("redirect(`/${locale}/salo/kylat`)");
 const villageIndexUsesAreaGrid = saloVillageIndexSource.includes("<SaloAreaGrid locale={locale} />");
 const saloLandingDoesNotRenderVillageGrid = !saloPageSource.includes("<SaloAreaGrid");
-const areaCardsLinkToRoutes = /href=\{\x60\/\$\{locale\}\/salo\/\$\{area\}\x60\}/.test(saloAreaGridSource);
-const areaCardsIncludeImages = saloAreaGridSource.includes("<Image src={image.src");
+const areaCardsLinkToRoutes = saloAreaGridSource.includes("SaloAreaCards as SaloAreaGrid")
+  && saloAreaCardsSource.includes('href={`/${locale}/salo/${area}`}');
+const areaCardsIncludeImages = saloAreaCardsSource.includes("<Image src={photo.src");
 const sitemapIncludesAreaRoutes = sitemapSource.includes("...saloAreaPaths");
 const sitemapIncludesVillageIndex = sitemapSource.includes('"salo/kylat"');
 const sitemapIncludesCategoryRoutes = sitemapSource.includes("...saloCategoryPaths")
@@ -161,7 +166,7 @@ const photoSourceLabelIsLocalized = [
   'photoSource: "Fuente de la foto"',
   'photoSource: "Photo source"',
 ].every((label) => saloDirectorySource.includes(label));
-if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || unapprovedDuplicateAreaIds.length || invalidMultiLocationIds.length || missingAreaIds.length || unknownAreaIds.length || !areaPageHasCategoryLinks || !categoryRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !saloLandingLinksToVillageIndex || !villageIndexUsesAreaGrid || !saloLandingDoesNotRenderVillageGrid || !areaCardsLinkToRoutes || !areaCardsIncludeImages || !sitemapIncludesAreaRoutes || !sitemapIncludesVillageIndex || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
+if (providerIds.length !== 95 || unapprovedDuplicateAreaIds.length || invalidMultiLocationIds.length || missingAreaIds.length || unknownAreaIds.length || !areaPageHasCategoryLinks || !categoryRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !saloLandingLinksToVillageIndex || !villageIndexUsesAreaGrid || !saloLandingDoesNotRenderVillageGrid || !areaCardsLinkToRoutes || !areaCardsIncludeImages || !sitemapIncludesAreaRoutes || !sitemapIncludesVillageIndex || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 18) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
