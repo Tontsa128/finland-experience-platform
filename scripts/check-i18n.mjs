@@ -55,23 +55,21 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
 // restaurant cards on the Kimitoön destination guide instead.
 const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
 const homepageDestinationCardSource = await readFile(path.resolve("src/components/home/HomeDestinationFeatureCard.tsx"), "utf8");
+const homepageDestinationFeaturesSource = await readFile(path.resolve("src/lib/homepage-destination-features.ts"), "utf8");
 const homepageHasAllCoastalDestinations = [
   '"salo-mathildedal"',
   "naantali:",
   "turku:",
   "hanko:",
   "aland:",
-].every((slug) => homepageSource.includes(slug));
+].every((slug) => homepageDestinationFeaturesSource.includes(slug));
 const homepageUsesSharedFeatureCard = (homepageSource.match(/<HomeDestinationFeatureCard/g) || []).length >= 2
   && homepageDestinationCardSource.includes("<Image")
   && homepageDestinationCardSource.includes("imageCredit")
   && homepageDestinationCardSource.includes("imageSource")
   && homepageDestinationCardSource.includes("imageUsageNote");
 const homepageCityCopyIsLocalized = ["fi:", "en:", "es:"].every((localeKey) => {
-  const featureStart = homepageSource.indexOf("const homepageDestinationFeatures");
-  const featureEnd = homepageSource.indexOf("\nsatisfies Record", featureStart);
-  return featureStart >= 0 && featureEnd > featureStart
-    && homepageSource.slice(featureStart, featureEnd).includes(localeKey);
+  return homepageDestinationFeaturesSource.includes(localeKey);
 });
 if (!homepageHasAllCoastalDestinations || !homepageUsesSharedFeatureCard || !homepageCityCopyIsLocalized) {
   failed = true;
