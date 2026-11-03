@@ -169,7 +169,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               if (!feature) return null;
               const photo = getHomepagePhotoCredit(feature.image);
               if (!photo) return null;
-              const localizedName = destination.name[locale as HomeLocale] || destination.name.en;
+              const localizedName = destination.slug === "salo-mathildedal"
+                ? locale === "fi" ? "Salo ja lähiseutu" : locale === "es" ? "Salo y sus alrededores" : "Salo & Surroundings"
+                : destination.name[locale as HomeLocale] || destination.name.en;
               const imageUsageNote = getHomepagePhotoUsageNote(photo, locale as HomeLocale);
               return (
                 <div

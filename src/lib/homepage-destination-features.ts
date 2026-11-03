@@ -4,21 +4,21 @@ export type HomeLocale = "fi" | "en" | "es";
 
 export const homepageDestinationFeatures = {
   "salo-mathildedal": {
-    image: photoLibrary.mathildedalVillage,
+    image: photoLibrary.sarkisalo,
     eyebrow: {
-      fi: "Mathildedal · Teijo · Särkisalo",
-      en: "Mathildedal · Teijo · Särkisalo",
-      es: "Mathildedal · Teijo · Särkisalo",
+      fi: "Särkisalo · Teijo · Salon kylät",
+      en: "Särkisalo · Teijo · Salo villages",
+      es: "Särkisalo · Teijo · pueblos de Salo",
     },
     imageAlt: {
-      fi: "Mathildedalin historialliset ruukkikylän rakennukset",
-      en: "Historic ironworks village buildings in Mathildedal",
-      es: "Edificios históricos del antiguo pueblo siderúrgico de Mathildedal",
+      fi: "Ulkoluodon silta ja merellinen saaristomaisema Särkisalossa",
+      en: "Ulkoluoto Bridge and the coastal archipelago scenery in Särkisalo",
+      es: "El puente de Ulkoluoto y el paisaje del archipiélago en Särkisalo",
     },
     description: {
-      fi: "Tutustu Mathildedalin historialliseen ruukkimiljööseen, Teijon metsä- ja järvimaisemiin sekä Särkisalon merellisiin kyliin. Paikalliset kahvilat, ravintolat, saunat ja pienet elämykset kutsuvat viipymään.",
-      en: "Explore Mathildedal’s historic ironworks setting, the forests and lakes of Teijo, and the coastal villages of Särkisalo. Local cafés, restaurants, saunas and small-scale experiences invite you to slow down.",
-      es: "Descubre el histórico entorno siderúrgico de Mathildedal, los bosques y lagos de Teijo y los pueblos costeros de Särkisalo. Cafés, restaurantes, saunas y experiencias locales invitan a disfrutar sin prisas.",
+      fi: "Tutustu Salon monipuoliseen seutuun: saaristokyliin, metsäisiin luontopolkuihin, paikallisiin makuihin ja historiallisiin miljöihin. Löydä rauhallisia retkikohteita, merellisiä elämyksiä ja paikallista elämänmenoa.",
+      en: "Discover the wider Salo area, from coastal villages and forest trails to local flavours and historic settings. Find peaceful places to explore, seaside experiences and the character of local life.",
+      es: "Descubre los alrededores de Salo: pueblos costeros, senderos entre bosques, sabores locales y entornos históricos. Encuentra lugares tranquilos, experiencias junto al mar y la vida auténtica de la zona.",
     },
   },
   naantali: {
