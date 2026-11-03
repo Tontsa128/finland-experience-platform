@@ -155,9 +155,9 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
               <div>
                 <p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-slate-400">{locale==="fi"?"Teema":locale==="es"?"Tema":"Theme"}</p>
                 <div className="flex gap-2 overflow-x-auto pb-1">
-                  <button onClick={() => setCategory("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${category === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
+                  <button onClick={() => setCategory("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold ${category === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
                   {categories.map((value) => (
-                    <button key={value} onClick={() => setCategory(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${category === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
+                    <button key={value} onClick={() => setCategory(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold ${category === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
                       {categoryLabels[value]?.[locale] || value}
                     </button>
                   ))}
@@ -166,9 +166,9 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
               <div>
                 <p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-slate-400">{t.audience}</p>
                 <div className="flex gap-2 overflow-x-auto pb-1">
-                  <button onClick={() => setAudience("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${audience === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
+                  <button onClick={() => setAudience("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold ${audience === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
                   {Object.keys(audienceLabels).map((value) => (
-                    <button key={value} onClick={() => setAudience(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${audience === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
+                    <button key={value} onClick={() => setAudience(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold ${audience === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
                       {audienceLabels[value][locale]}
                     </button>
                   ))}
@@ -177,9 +177,9 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
               <div>
                 <p className="mb-2 text-xs font-bold uppercase tracking-[.16em] text-slate-400">{t.season}</p>
                 <div className="flex gap-2 overflow-x-auto pb-1">
-                  <button onClick={() => setSeason("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${season === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
+                  <button onClick={() => setSeason("all")} className={`whitespace-nowrap rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold ${season === "all" ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>{t.all}</button>
                   {Object.keys(seasonLabels).map((value) => (
-                    <button key={value} onClick={() => setSeason(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold ${season === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
+                    <button key={value} onClick={() => setSeason(value)} className={`whitespace-nowrap rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold ${season === value ? "bg-brand-900 text-white" : "bg-slate-100 text-slate-700"}`}>
                       {seasonLabels[value][locale]}
                     </button>
                   ))}
