@@ -19,10 +19,13 @@ import {
 } from "@/lib/public-content";
 import {
   ArrowRight,
+  BedDouble,
   Building2,
+  Compass,
   Sparkles,
-  Waves,
   TreePine,
+  Utensils,
+  Waves,
 } from "lucide-react";
 
 const fallbackSummerImage = photoLibrary.turkuArchipelago;

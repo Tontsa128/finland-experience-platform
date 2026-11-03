@@ -43,7 +43,7 @@ export async function POST(request: Request) {
   const budget = Number.isFinite(rawBudget)
     ? Math.min(Math.max(rawBudget, 0), 100000)
     : 0;
-  const interests = Array.isArray(body.interests)
+  const interests: string[] = Array.isArray(body.interests)
     ? body.interests
         .filter((item: unknown): item is string => typeof item === "string")
         .map((item: string) => item.trim().slice(0, 50))
