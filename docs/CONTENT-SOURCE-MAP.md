@@ -34,7 +34,7 @@ Tästä seuraa ylläpitoriski: julkisen profiilin muutos voi vaatia koodimuutoks
 ## Mitä tämä tarkoittaa jatkotyölle
 
 1. **Älä poista katalogeja tai tee massamigraatiota ennen tuplien ja reittien kartoitusta.** Nykyisillä staattisilla tietueilla on tärkeää sisältöä, kuten kielikohtaiset kuvaukset, kuvien lähteet, krediitit, aluelinkitykset ja usean kategorian luokitukset.
-2. **Yhdistä käsitteet ennen taulujen muuttamista.** `providers`-rekisteri, `properties` ja `experiences` ja paikalliset resurssi-/kohdekortit eivät ole automaattisesti sama tietotyyppi. Määritä, mikä on yritys, mikä sen varattava tuote ja mikä toimituksellinen nähtävyys.
+2. **Yhdistä käsitteet ennen taulujen muuttamista.** `providers`-rekisteri, `properties` ja `experiences` sekä paikalliset resurssi-/kohdekortit eivät ole automaattisesti sama tietotyyppi. Määritä, mikä on yritys, mikä sen varattava tuote ja mikä toimituksellinen nähtävyys.
 3. **Laajenna nykyistä CMS:ää, älä rakenna rinnakkaista.** Selvitä, voidaanko nykyiseen provider-malliin lisätä julkaistu lokalisoitu profiili, kuvat ja lähdetiedot sekä liittää samaan yritykseen useita tuotteita tai kategorioita.
 4. **Säilytä lähde- ja tarkistustiedot.** Jokaiselle tuodulle kentälle tarvitaan lähde, viimeisin tarkistus, tarkistaja tai tarkistustapa ja julkaisutila. Kuvalle tarvitaan erikseen lähde, krediitti ja varmistus siitä, että kuva vastaa esitettyä palvelua.
 5. **Siirrä vaiheittain ja vertaa ennen julkaisua.** Aloita pienestä Salo- ja Kemiönsaari-otannasta. Vertaa vanhaa ja uutta reittiä, kieliä, kuvia, provider-linkkejä sekä sitemapin tulosta. Vasta hyväksytyn vertailun jälkeen jatka koko katalogiin.
