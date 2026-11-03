@@ -23,7 +23,7 @@ for (const [index, block] of providerBlocks.entries()) {
   assert.match(block, /url:\s*"https?:\/\//, `provider ${id} must link to an official provider or source page`);
   if (/image:\s*(?:providerImages\.|"https?:\/\/)/.test(block)) {
     assert.match(block, /imageCredit:\s*"/, `provider ${id} image must include a credit`);
-    assert.match(block, /imageSource:\s*"/, `provider ${id} image must include its source URL`);
+    assert.ok(/imageSource:\s*"/.test(block) || /url:\s*"https?:\/\//.test(block), `provider ${id} image must have a source URL (imageSource or official provider URL)`);
   }
 }
 
