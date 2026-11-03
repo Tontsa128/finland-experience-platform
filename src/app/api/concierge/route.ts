@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     });
   }
   const body = await request.json().catch(() => ({}));
-  const language = languages.has(body.language) ? body.language : "fi";
+  const language: "fi" | "en" | "es" = languages.has(body.language) ? body.language as "fi" | "en" | "es" : "fi";
   const question =
     typeof body.question === "string" ? body.question.trim().slice(0, 1500) : "";
   const rawDays = Number(body.days);
@@ -162,11 +162,11 @@ export async function POST(request: Request) {
     ]);
     const normalize = (value: string) =>
       value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase();
-    const queryTerms = [...new Set(
+    const queryTerms = Array.from(new Set(
       normalize(question)
-        .split(/[^\p{L}\p{N}]+/u)
+        .split(/[^a-z0-9]+/)
         .filter((word) => word.length > 2 && !stopWords.has(word)),
-    )];
+    ));
 
     const score = (item: Candidate) => {
       const text = normalize(item.searchableText);
