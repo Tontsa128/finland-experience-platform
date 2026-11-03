@@ -221,8 +221,6 @@ export const saloProviders: SaloProvider[] = [
       en: "Golf in the coastal landscape of Teijo. Check the current green fee directly with the club.",
     },
     url: "https://meriteijogolf.com",
-    image: "https://www.visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/golf_aktiviteetit.jpg?itok=lpvm1Tl0",
-    imageCredit: "Visit Mathildedal — Meri-Teijo Golf course listing; reuse permission to confirm",
   },
   {
     id: "ravintola-terho",
