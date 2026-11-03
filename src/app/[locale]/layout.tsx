@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 import { CookieConsent } from "@/components/legal/CookieConsent";
@@ -49,10 +50,11 @@ export default async function LocaleLayout({
   const [messages, navigation] = await Promise.all([getMessages(), getPublishedNavigation(locale as "fi" | "es" | "en")]);
   return (
     <NextIntlClientProvider messages={messages}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
         <Header navigation={navigation} />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileBottomNav />
         <WhatsAppButton locale={locale} />
         <CookieConsent />
         <Toaster position="top-center" richColors />
