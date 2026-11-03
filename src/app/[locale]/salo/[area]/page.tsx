@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -91,9 +91,6 @@ export default async function SaloAreaPage({
   }
 
   const locale = rawLocale as Locale;
-  if (rawArea === "mathildedal") {
-    redirect(`/${locale}/destinations/salo-mathildedal`);
-  }
   const area = rawArea;
   const copy = areaCopy[area][locale];
   const image = getAreaImage(area);
