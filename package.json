@@ -9,12 +9,13 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "npm run test:i18n && node --import tsx --test --test-reporter=spec src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts",
+    "test": "npm run test:i18n && npm run test:salo && node --import tsx --test --test-reporter=spec src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts",
     "test:watch": "node --import tsx --test --watch src/__tests__/domain/availability.test.ts src/__tests__/lib/rate-limit.test.ts src/__tests__/lib/utils.test.ts",
     "db:push": "npx --yes supabase@1.226.4 db push",
     "db:reset": "npx --yes supabase@1.226.4 db reset",
     "test:i18n": "node scripts/check-i18n.mjs",
-    "build:cloudflare": "opennextjs-cloudflare build"
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "test:salo": "node scripts/check-salo-area-coverage.mjs"
   },
   "dependencies": {
     "next": "16.4.2",

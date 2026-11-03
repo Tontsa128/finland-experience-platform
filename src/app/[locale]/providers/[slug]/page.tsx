@@ -50,6 +50,22 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "vuohensaari-camping": { fi: "Salo", en: "Salo", es: "Salo" },
   "vuorovetten-jaatelo": { fi: "Strömma · Mathildedal · Särkisalo · Salo", en: "Strömma · Mathildedal · Särkisalo · Salo", es: "Strömma · Mathildedal · Särkisalo · Salo" },
   "chill-out-fishing": { fi: "Salo · Saaristomeri", en: "Salo · Archipelago Sea", es: "Salo · Mar del Archipiélago" },
+  "kisko-pohjolan-tila": { fi: "Kisko · Salo", en: "Kisko · Salo", es: "Kisko · Salo" },
+  "kisko-metsaketun-kievari": { fi: "Kisko · Salo", en: "Kisko · Salo", es: "Kisko · Salo" },
+  "kisko-puutarha-siimes": { fi: "Kisko · Salo", en: "Kisko · Salo", es: "Kisko · Salo" },
+  "kisko-kalliolan-tila": { fi: "Kisko · Salo", en: "Kisko · Salo", es: "Kisko · Salo" },
+  "kisko-purolan-tila": { fi: "Kisko · Salo", en: "Kisko · Salo", es: "Kisko · Salo" },
+  "kisko-church": { fi: "Kisko · Salo", en: "Kisko · Salo", es: "Kisko · Salo" },
+  "kuusjoki-kivisaaren-piapojauhoi": { fi: "Kuusjoki · Salo", en: "Kuusjoki · Salo", es: "Kuusjoki · Salo" },
+  "kuusjoki-ohrakasken-tila": { fi: "Kuusjoki · Salo", en: "Kuusjoki · Salo", es: "Kuusjoki · Salo" },
+  "kuusjoki-ellun-kanat": { fi: "Kuusjoki · Salo", en: "Kuusjoki · Salo", es: "Kuusjoki · Salo" },
+  "kuusjoki-church": { fi: "Kuusjoki · Salo", en: "Kuusjoki · Salo", es: "Kuusjoki · Salo" },
+  "hajala-myllytyry": { fi: "Hajala · Halikko · Salo", en: "Hajala · Halikko · Salo", es: "Hajala · Halikko · Salo" },
+  "kirjakkalan-ruukkikyla": { fi: "Kirjakkala · Teijo · Salo", en: "Kirjakkala · Teijo · Salo", es: "Kirjakkala · Teijo · Salo" },
+  "hajala-tromperin-kestikievari": { fi: "Hajala · Halikko · Salo", en: "Hajala · Halikko · Salo", es: "Hajala · Halikko · Salo" },
+  "angelniemi-paula-achrenin-puutarha": { fi: "Angelniemi · Salo", en: "Angelniemi · Salo", es: "Angelniemi · Salo" },
+  "angelniemi-kokkila-beach": { fi: "Kokkila · Angelniemi · Salo", en: "Kokkila · Angelniemi · Salo", es: "Kokkila · Angelniemi · Salo" },
+  "angelniemi-church": { fi: "Angelniemi · Salo", en: "Angelniemi · Salo", es: "Angelniemi · Salo" },
   "villa-viktoria": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
   "villa-frans": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
   "villa-viola": { fi: "Suomusjärvi · Salo", en: "Suomusjärvi · Salo", es: "Suomusjärvi · Salo" },
@@ -62,6 +78,37 @@ const saloProviderLocations: Record<string, Record<Locale, string>> = {
   "katiskanmaeki": { fi: "Ylönkylä · Särkisalo · Salo", en: "Ylönkylä · Särkisalo · Salo", es: "Ylönkylä · Särkisalo · Salo" },
   "onnenperan-mokki": { fi: "Vaskio · Salo", en: "Vaskio · Salo", es: "Vaskio · Salo" },
   "meri-ruukin-lomakyla": { fi: "Mathildedal · Salo", en: "Mathildedal · Salo", es: "Mathildedal · Salo" },
+  "kiikala-ilolan-arboretum": { fi: "Kiikala · Salo", en: "Kiikala · Salo", es: "Kiikala · Salo" },
+  "kiikala-rinteen-luomutila": { fi: "Kruusila · Kiikala · Salo", en: "Kruusila · Kiikala · Salo", es: "Kruusila · Kiikala · Salo" },
+  "kiikala-kangin-tila": { fi: "Kruusila · Kiikala · Salo", en: "Kruusila · Kiikala · Salo", es: "Kruusila · Kiikala · Salo" },
+  "kiikala-hyyppara-kultalahde": { fi: "Kiikala · Salo", en: "Kiikala · Salo", es: "Kiikala · Salo" },
+  "pertteli-kurjen-maatila": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "pertteli-korpiaho-design": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "pertteli-church": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "muurla-muurlan-opisto": { fi: "Muurla · Salo", en: "Muurla · Salo", es: "Muurla · Salo" },
+  "muurla-design": { fi: "Muurla · Salo", en: "Muurla · Salo", es: "Muurla · Salo" },
+  "marynummi-uimaranta": { fi: "Märynummi · Salo", en: "Märynummi · Salo", es: "Märynummi · Salo" },
+  "marynummi-frisbeegolf": { fi: "Märynummi · Salo", en: "Märynummi · Salo", es: "Märynummi · Salo" },
+  "mutainen-lohenrengas": { fi: "Teijo · Salo", en: "Teijo · Salo", es: "Teijo · Salo" },
+  "mutainen-kylayhdistys": { fi: "Mutainen · Teijon Ruukkikylät · Salo", en: "Mutainen · Teijo Ironworks Villages · Salo", es: "Mutainen · Aldeas históricas de Teijo · Salo" },
+  "mutainen-galleria-tuulitunneli": { fi: "Mutainen · Teijon Ruukkikylät · Salo", en: "Mutainen · Teijo Ironworks Villages · Salo", es: "Mutainen · Aldeas históricas de Teijo · Salo" },
+  "kiikala-juurevasti-juurista": { fi: "Kiikala ja Salon seutu", en: "Kiikala and the Salo region", es: "Kiikala y la región de Salo" },
+  "pertteli-koirametsa-rymy": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "muurla-ilolan-vadelmatila": { fi: "Muurla · Salo", en: "Muurla · Salo", es: "Muurla · Salo" },
+  "marynummi-kuntorata": { fi: "Märynummi · Salo", en: "Märynummi · Salo", es: "Märynummi · Salo" },
+  "halikko-wiurila-kartano": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "halikko-wiurila-gasthaus": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "halikko-wiurila-sigrid": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "halikko-vaski-cider": { fi: "Halikko · Salo", en: "Halikko · Salo", es: "Halikko · Salo" },
+  "vaskio-wanhantuvan-ankkala": { fi: "Vaskio · Salo", en: "Vaskio · Salo", es: "Vaskio · Salo" },
+  "vaskio-bed": { fi: "Vaskio · Salo", en: "Vaskio · Salo", es: "Vaskio · Salo" },
+  "kiikala-ylivesan-luomutila": { fi: "Kruusila · Kiikala · Salo", en: "Kruusila · Kiikala · Salo", es: "Kruusila · Kiikala · Salo" },
+  "pertteli-kalevala-retriitti": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "pertteli-villen-viinitarha": { fi: "Pertteli · Salo", en: "Pertteli · Salo", es: "Pertteli · Salo" },
+  "salo-taidelainaamo": { fi: "Salo · keskusta", en: "Salo · city centre", es: "Salo · centro" },
+  "salo-vuohensaari-luontopolku": { fi: "Vuohensaari · Salo", en: "Vuohensaari · Salo", es: "Vuohensaari · Salo" },
+  "salo-vuohensaari-minigolf": { fi: "Vuohensaari · Salo", en: "Vuohensaari · Salo", es: "Vuohensaari · Salo" },
+  "salo-ravintola-rikala": { fi: "Salo · keskusta", en: "Salo · city centre", es: "Salo · centro" },
 };
 
 function resolveProvider(slug: string, locale: Locale) {
@@ -303,7 +350,109 @@ const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
     { src: "https://static.wixstatic.com/media/684b51_8848b144df924991a269607232bb92ac~mv2.jpg/v1/fit/w_674%2Ch_450%2Cq_90%2Cenc_avif%2Cquality_auto/684b51_8848b144df924991a269607232bb92ac~mv2.jpg", alt: { fi: "Terhon takapihan terassi täynnä asiakkaita", en: "Terho's backyard terrace filled with guests", es: "Terraza del patio de Terho llena de clientes" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" },
     { src: "https://static.wixstatic.com/media/5e5929_c36ae105fdc743b998042f60cb1d4d69~mv2.jpg/v1/fill/w_702%2Ch_496%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/_DSC0416.jpg", alt: { fi: "Terhon oman paahtimon kahvi", en: "Coffee from Terho's own roastery", es: "Café del tostador propio de Terho" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" },
     { src: "https://static.wixstatic.com/media/43c9db_106f9b1e0bf94dc5ba9f699b8a55f4d6~mv2.jpg/v1/fill/w_871%2Ch_553%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/terho-web-71_edited.jpg", alt: { fi: "Terhon pizza ja paikallinen juoma", en: "Pizza and a local drink at Terho", es: "Pizza y bebida local en Terho" }, credit: "Ravintola Terho", source: "https://www.ravintolaterho.fi/" }
+  ],
+
+  "salo-kiikala-ilolan-arboretum": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/10/20220928_185218-1-1364x768.jpg", alt: { fi: "Ilolan Arboretumin syksyinen puistomaisema", en: "Autumn park landscape at Ilola Arboretum", es: "Paisaje otoñal del parque de Ilola" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ilolan-arboretum-ja-taimisto/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/Hyypp%C3%A4r%C3%A4n-maisema-768x768.jpg", alt: { fi: "Ilolan Arboretumin syksyinen maisema", en: "Autumn landscape at Ilola Arboretum", es: "Paisaje otoñal del arboreto de Ilola" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ilolan-arboretum-ja-taimisto/" }
+  ],
+  "salo-kiikala-kangin-tila": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/09/2018-06-03-006-1152x768.jpg", alt: { fi: "Kängin tilan eläimiä kesälaitumella", en: "Animals on summer pasture at Kängin Farm", es: "Animales en los pastos de verano de la granja Kängin" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/kangin-tila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/09/karitsa-2016-028-1152x768.jpg", alt: { fi: "Kängin tilan karitsa", en: "A lamb at Kängin Farm", es: "Un cordero en la granja Kängin" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/kangin-tila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/09/2017-08-05-Ragu-lavasta-012-1152x768.jpg", alt: { fi: "Kängin tilan lihasta valmistettu ruoka-annos", en: "A dish prepared with meat from Kängin Farm", es: "Plato preparado con carne de la granja Kängin" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/kangin-tila/" }
+  ],
+  "salo-kiikala-hyyppara-kultalahde": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/Kolme-poikaa-Hypp%C3%A4r%C3%A4n-kultal%C3%A4hteell%C3%A4-576x768.jpg", alt: { fi: "Vierailijoita Hyyppärän Kultalähteellä", en: "Visitors at the Kultalähde Spring in Hyyppärä", es: "Visitantes en el manantial Kultalähde de Hyyppärä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/hyyppara-kultalahde-luontopolku/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/Hyypp%C3%A4r%C3%A4n-polulla-retkeilij%C3%A4t-576x768.jpg", alt: { fi: "Retkeilijöitä Hyyppärän luontopolulla", en: "Hikers on the Hyyppärä nature trail", es: "Senderistas en el sendero natural de Hyyppärä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/hyyppara-kultalahde-luontopolku/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/Hyypp%C3%A4r%C3%A4n-hieno-puu-576x768.jpg", alt: { fi: "Vanha puu Hyyppärän luontopolun varrella", en: "An old tree beside the Hyyppärä nature trail", es: "Árbol antiguo junto al sendero de Hyyppärä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/hyyppara-kultalahde-luontopolku/" }
+  ],
+  "salo-pertteli-kurjen-maatila": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/12/Kurjen-maatilan-mansikat-1152x768.jpeg", alt: { fi: "Kurjen maatilan mansikoita myyntirasiassa", en: "Strawberries packed for sale at Kurjen Farm", es: "Fresas preparadas para la venta en la granja Kurjen" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/kurjen-maatila/" }
+  ],
+  "salo-pertteli-korpiaho-design": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2026/02/Keramiikkastudio-Anna-Korpiaho-Design-%E2%80%93-Salo-bannerikuva-logolla-1200x630_VisitSalo_kohteet-1.png", alt: { fi: "Korpiaho Designin keramiikkastudio maaseudulla", en: "Korpiaho Design ceramics studio in the countryside", es: "Estudio de cerámica Korpiaho Design en el campo" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/keramiikkastudio-korpiaho-design/" }
+  ],
+  "salo-pertteli-church": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Perttelin-kirkko-sis%C3%A4kuva-web.jpg", alt: { fi: "Perttelin kirkon sisätila", en: "Interior of Pertteli Church", es: "Interior de la iglesia de Pertteli" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/perttelin-kirkko/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Tervetuloa-Perttelin-kirkkoon-web.jpg", alt: { fi: "Perttelin kirkon avoin ovi", en: "Open door at Pertteli Church", es: "Puerta abierta de la iglesia de Pertteli" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/perttelin-kirkko/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Perttelin-kirkon-vanha-alttaritaulu-web-1366x768.jpg", alt: { fi: "Perttelin kirkon vanha alttaritaulu", en: "Historic altarpiece at Pertteli Church", es: "Retablo histórico de la iglesia de Pertteli" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/perttelin-kirkko/" }
+  ],
+  "salo-muurla-muurlan-opisto": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/visitsalo_opisto1-1366x768.jpg", alt: { fi: "Muurlan Opiston pihapiiri", en: "Grounds of Muurlan Opisto", es: "Entorno de Muurlan Opisto" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/muurlan-opisto/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/visitsalo_opisto3-1366x768.jpg", alt: { fi: "Muurlan Opiston majoitushuone", en: "Guest room at Muurlan Opisto", es: "Habitación de alojamiento en Muurlan Opisto" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/muurlan-opisto/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/visitsalo_opisto4-1366x768.jpg", alt: { fi: "Muurlan Opiston koulutus- ja juhlatila", en: "Training and event room at Muurlan Opisto", es: "Sala de formación y eventos de Muurlan Opisto" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/muurlan-opisto/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/visitsalo_opisto5-1366x768.jpg", alt: { fi: "Frisbeegolfia Muurlan Opiston pihapiirissä", en: "Disc golf at the grounds of Muurlan Opisto", es: "Disc golf en el recinto de Muurlan Opisto" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/muurlan-opisto/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/visitsalo_opisto6-1366x768.jpg", alt: { fi: "Tuoreita leivonnaisia Muurlan Opistolla", en: "Fresh pastries at Muurlan Opisto", es: "Repostería recién hecha en Muurlan Opisto" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/muurlan-opisto/" }
+  ],
+  "salo-muurla-design": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Muurla-2-web.jpg", alt: { fi: "Muurlan myymälän sisustus- ja kattaustuotteita", en: "Home and tableware products in the Muurla store", es: "Productos de decoración y mesa en la tienda Muurla" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/muurla/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Muurla-myym%C3%A4l%C3%A4-web.jpg", alt: { fi: "Muurlan myymälän esillepano", en: "Display in the Muurla store", es: "Exposición de productos en la tienda Muurla" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/muurla/" }
+  ],
+  "salo-marynummi-uimaranta": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/Uimaranta-M%C3%A4ry_-1366x768.jpg", alt: { fi: "Märynummen uimaranta ja uimala", en: "Märynummi swimming beach and bathing facility", es: "Playa y zona de baño de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/marynummen-uimaranta/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/Uiminen-M%C3%A4ry-1366x768.jpg", alt: { fi: "Märynummen uimarannalla uimassa", en: "Swimming at Märynummi beach", es: "Baño en la playa de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/marynummen-uimaranta/" }
+  ],
+  "salo-mutainen-lohenrengas": [
+    { src: "https://lohenrengas.wordpress.com/wp-content/uploads/2016/04/heijastus.jpg", alt: { fi: "Heijastus Lohenrenkaan järven pinnalla", en: "Reflections on the lake at Lohenrengas", es: "Reflejos en el lago de Lohenrengas" }, credit: "Lohenrengas", source: "https://lohenrengas.wordpress.com/galleria/" },
+    { src: "https://lohenrengas.wordpress.com/wp-content/uploads/2016/04/kirjolohi.jpg", alt: { fi: "Kirjolohi Lohenrenkaan kalastuspaikalla", en: "Rainbow trout at the Lohenrengas fishing venue", es: "Trucha arcoíris en el centro de pesca Lohenrengas" }, credit: "Lohenrengas", source: "https://lohenrengas.wordpress.com/galleria/" },
+    { src: "https://lohenrengas.wordpress.com/wp-content/uploads/2016/04/laituri_uusijarvi.jpg", alt: { fi: "Lohenrenkaan järven laituri", en: "Jetty at a Lohenrengas lake", es: "Embarcadero en un lago de Lohenrengas" }, credit: "Lohenrengas", source: "https://lohenrengas.wordpress.com/galleria/" }
+  ],
+
+
+  "salo-pertteli-koirametsa-rymy": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/10/Koirametsa-Rymy-Salo-siisti-maasto-1366x768.jpeg", alt: { fi: "Koirametsä Rymyn siisti mäntymetsä", en: "Clean pine woodland at Koirametsä Rymy", es: "Bosque de pinos cuidado en Koirametsä Rymy" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/koirametsa-rymy/" }
+  ],
+  "salo-muurla-ilolan-vadelmatila": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/ilola6.jpeg", alt: { fi: "Ilolan tilan lähihunajaa vadelmapellon laidalta", en: "Local honey from the edge of Ilola's raspberry field", es: "Miel local junto al campo de frambuesas de Ilola" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ilolan-tila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/ilola8-1366x768.jpeg", alt: { fi: "Tuoreita vadelmia Ilolan tilalta", en: "Fresh raspberries from Ilola Farm", es: "Frambuesas frescas de la granja Ilola" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ilolan-tila/" }
+  ],
+  "salo-marynummi-kuntorata": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/IMG_1404-1024x768.jpg", alt: { fi: "Märynummen kuntoradan näkymä lammelle", en: "View of the pond from the Märynummi fitness trail", es: "Vista del estanque desde el sendero de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/IMG_1408-1024x768.jpg", alt: { fi: "Märynummen kuntoradan metsämaisemaa", en: "Woodland scenery on the Märynummi fitness trail", es: "Paisaje forestal del sendero de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/M%C3%A4ryn_ulkoilualue-opastaulu-1366x768.jpg", alt: { fi: "Märynummen ulkoilualueen opastaulu", en: "Information board for the Märynummi outdoor area", es: "Panel informativo de la zona recreativa de Märynummi" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/" }
+  ],
+
+
+  "salo-halikko-wiurila-kartano": [
+    { src: "https://wiurila.fi/wp-content/uploads/2026/06/wiurila-ja-syreeni-scaled.jpg", alt: { fi: "Wiurilan kartanon päärakennus ja alkukesän kukkaloisto", en: "Wiurila Manor's main building and early-summer flowers", es: "Edificio principal de la finca Wiurila y flores de comienzos del verano" }, credit: "Wiurila", source: "https://wiurila.fi/kartano/" }
+  ],
+  "salo-halikko-wiurila-gasthaus": [
+    { src: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8382-scaled-1.jpeg", alt: { fi: "Wiurila Gasthausin huone", en: "A room at Wiurila Gasthaus", es: "Habitación de Wiurila Gasthaus" }, credit: "Wiurila", source: "https://wiurila.fi/majoitus/" },
+    { src: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8386-scaled-1.jpeg", alt: { fi: "Wiurila Gasthausin majoitustila", en: "Accommodation interior at Wiurila Gasthaus", es: "Interior del alojamiento Wiurila Gasthaus" }, credit: "Wiurila", source: "https://wiurila.fi/majoitus/" },
+    { src: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8374-scaled-2-1.jpeg", alt: { fi: "Wiurila Gasthausin huoneen yksityiskohtia", en: "Details in a Wiurila Gasthaus room", es: "Detalles de una habitación de Wiurila Gasthaus" }, credit: "Wiurila", source: "https://wiurila.fi/majoitus/" },
+    { src: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8450-scaled-1.jpeg", alt: { fi: "Wiurila Gasthausin yhteinen oleskelutila", en: "Shared lounge at Wiurila Gasthaus", es: "Sala de estar compartida de Wiurila Gasthaus" }, credit: "Wiurila", source: "https://wiurila.fi/majoitus/" }
+  ],
+  "salo-halikko-vaski-cider": [
+    { src: "https://cdn-datahub.visitfinland.com/images/2ca26490-caca-11f0-af1d-279dee19c89a.jpeg?s=1280", alt: { fi: "Siiderintekijä vastaanottaa vieraat Vaski Ciderillä", en: "Guests welcomed at Vaski Cider", es: "Recepción de visitantes en Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset-ja-tastingit/" },
+    { src: "https://cdn-datahub.visitfinland.com/images/aaa24090-caca-11f0-af1d-279dee19c89a.jpeg?s=1280", alt: { fi: "Siiderin ja suklaan tasting Vaski Ciderillä", en: "Cider and chocolate tasting at Vaski Cider", es: "Cata de sidra y chocolate en Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset-ja-tastingit/" },
+    { src: "https://cdn-datahub.visitfinland.com/images/1014ab80-caca-11f0-af1d-279dee19c89a.jpeg?s=1280", alt: { fi: "Vaski Ciderin taidepullo", en: "An art bottle from Vaski Cider", es: "Botella artística de Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset-ja-tastingit/" },
+    { src: "https://cdn-datahub.visitfinland.com/images/04eef8a0-caca-11f0-af1d-279dee19c89a.jpeg?s=1280", alt: { fi: "Tunnelmaa Vaski Ciderin siideritalossa", en: "Atmosphere inside the Vaski Cider house", es: "Ambiente en la sidrería Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset/" },
+    { src: "https://cdn-datahub.visitfinland.com/images/0fda3c00-b182-11ef-b5a0-3d8c42928efa.jpeg?s=1280", alt: { fi: "Taide osana Vaski Ciderin vierailukokemusta", en: "Art as part of the Vaski Cider visitor experience", es: "El arte como parte de la experiencia en Vaski Cider" }, credit: "Vaski Cider & Distillery / Visit Salo", source: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset/" }
+  ],
+  "salo-vaskio-bed": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/08/Vaskio-Bed-2-1-1024x768.jpg", alt: { fi: "Vaskio-Bedin makuuhuone", en: "Bedroom at Vaskio-Bed", es: "Dormitorio de Vaskio-Bed" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/vaskio-bed/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/08/Vaskio-Bed-3-1-576x768.jpg", alt: { fi: "Vaskio-Bedin patio", en: "Patio at Vaskio-Bed", es: "Patio de Vaskio-Bed" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/vaskio-bed/" }
+  ],
+  "salo-kiikala-ylivesan-luomutila": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06844-2-1151x768.jpg", alt: { fi: "Ylivesän luomutilan naudan sisäfilettä", en: "Beef tenderloin from Ylivesä Organic Farm", es: "Solomillo de ternera de la granja ecológica Ylivesä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ylivesan-luomutila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06734-4-1151x768.jpg", alt: { fi: "Ylivesän luomutilan entrecôte grillattuna", en: "Grilled entrecôte from Ylivesä Organic Farm", es: "Entrecot a la parrilla de la granja ecológica Ylivesä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ylivesan-luomutila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06822-1151x768.jpg", alt: { fi: "Ylivesän luomutilan luomujauhelihaa", en: "Organic minced beef from Ylivesä Organic Farm", es: "Carne picada ecológica de la granja Ylivesä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ylivesan-luomutila/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06909-1151x768.jpg", alt: { fi: "Ylivesän luomutilan vasikoita ja emolehmiä", en: "Calves and mother cows at Ylivesä Organic Farm", es: "Terneros y vacas madres en la granja ecológica Ylivesä" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/ylivesan-luomutila/" }
+  ],
+  "salo-pertteli-villen-viinitarha": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/06/IMG_20210809_220144_661-768x768.jpg", alt: { fi: "Villen Viinitarhan viinirypäleitä", en: "Grapes at Villen Viinitarha vineyard", es: "Uvas en el viñedo Villen Viinitarha" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/villen-viinitarha/" },
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/06/IMG_20190831_123632_934-844x768.jpg", alt: { fi: "Viinirypäleitä Villen Viinitarhassa", en: "Grapes growing at Villen Viinitarha", es: "Uvas creciendo en Villen Viinitarha" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/villen-viinitarha/" }
+  ],
+  "salo-salo-vuohensaari-luontopolku": [
+    { src: "https://cdn-datahub.visitfinland.com/images/a82eb0b0-58e5-11ec-9ba4-0dc52985e5d5-Vuohensaaren%20auringonlasku.jpg?s=1280", alt: { fi: "Auringonlasku Vuohensaaren rannalla", en: "Sunset on the shore of Vuohensaari", es: "Atardecer en la costa de Vuohensaari" }, credit: "Visit Finland / Visit Salo", source: "https://kohteet.visitsalo.fi/vuohensaari/" }
+  ],
+  "salo-salo-vuohensaari-minigolf": [
+    { src: "https://cdn-datahub.visitfinland.com/images/a83196e0-58e5-11ec-9ba4-0dc52985e5d5-vuohensaari%20minigolf.jpg?s=1280", alt: { fi: "Vuohensaaren minigolfrata merimaisemassa", en: "Vuohensaari minigolf course by the sea", es: "Campo de minigolf de Vuohensaari junto al mar" }, credit: "Visit Finland / Visit Salo", source: "https://kohteet.visitsalo.fi/vuohensaari/" }
+  ],
+  "salo-salo-ravintola-rikala": [
+    { src: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/11/Rikala-0023-1150x768.jpg", alt: { fi: "Ravintola Rikalan ruokailutila", en: "Dining area at Restaurant Rikala", es: "Comedor del restaurante Rikala" }, credit: "Salon Kohteet / Visit Salo", source: "https://kohteet.visitsalo.fi/en/restaurant-rikala/" }
   ]
+
 };
 const teijoMasuuniPhotos: LocalPhoto[] = [
   { src: "https://www.teijonmasuuni.fi/wp-content/uploads/2022/03/Paviljonki-1024x779.jpg", alt: { fi: "Teijon Masuunin paviljonki historiallisessa ruukkimiljöössä", en: "Teijo Masuuni pavilion in the historic ironworks setting", es: "Pabellón de Teijo Masuuni en el entorno histórico de la ferrería" }, credit: "Teijon Masuuni", source: "https://www.teijonmasuuni.fi/kahvila/" },

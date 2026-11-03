@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     });
   }
   const body = await request.json().catch(() => ({}));
-  const language = languages.has(body.language) ? body.language : "fi";
+  const language: "fi" | "en" | "es" = languages.has(body.language) ? body.language as "fi" | "en" | "es" : "fi";
   const question =
     typeof body.question === "string" ? body.question.trim().slice(0, 1500) : "";
   const rawDays = Number(body.days);
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
   const budget = Number.isFinite(rawBudget)
     ? Math.min(Math.max(rawBudget, 0), 100000)
     : 0;
-  const interests = Array.isArray(body.interests)
+  const interests: string[] = Array.isArray(body.interests)
     ? body.interests
         .filter((item: unknown): item is string => typeof item === "string")
         .map((item: string) => item.trim().slice(0, 50))
@@ -110,6 +110,116 @@ export async function POST(request: Request) {
     );
   }
 
+  const buildCatalogFallback = () => {
+    type Candidate = Recommendation & {
+      tags: string[];
+      searchableText: string;
+      nightlyPrice?: number;
+      position: number;
+    };
+    const candidates: Candidate[] = [
+      ...catalog.destinations.map((item, position) => ({
+        type: "destination" as const,
+        slug: item.slug,
+        reason: "",
+        tags: [...(item.tags || []), ...(item.activities || [])],
+        searchableText: [item.name[language], item.description[language], item.name.fi, item.description.fi].join(" "),
+        position,
+      })),
+      ...catalog.accommodations.map((item, position) => ({
+        type: "accommodation" as const,
+        slug: item.slug,
+        reason: "",
+        tags: ["accommodation", ...(item.features || [])],
+        searchableText: [item.name[language], item.description[language], item.location, ...(item.features || [])].join(" "),
+        nightlyPrice: Number(item.price) || 0,
+        position: catalog.destinations.length + position,
+      })),
+      ...catalog.experiences.map((item, position) => ({
+        type: "experience" as const,
+        slug: item.slug,
+        reason: "",
+        tags: item.tags || [],
+        searchableText: [item.name[language], item.description[language], item.region, ...(item.tags || [])].join(" "),
+        position: catalog.destinations.length + catalog.accommodations.length + position,
+      })),
+    ];
+    const interestTags: Record<string, string[]> = {
+      nature: ["nature", "outdoors", "luonto", "forest", "hiking", "metsä", "park", "järvi"],
+      sauna: ["sauna", "sauna-wellness", "löyly", "smoke sauna"],
+      sea: ["water", "sea", "archipelago", "meri", "saaristo", "coast", "beach"],
+      food: ["food", "food-farm", "gastronomy", "ruoka", "restaurant", "kahvila"],
+      romance: ["couples", "romance", "romanttinen", "pariskunta"],
+    };
+    const preferredTags = interests.flatMap((interest) => interestTags[interest] || []);
+    const stopWords = new Set([
+      "the", "and", "for", "with", "from", "that", "this", "want", "would", "like",
+      "our", "have", "are", "was", "were", "you", "your", "trip", "days", "very",
+      "että", "joka", "jotka", "olemme", "haluamme", "haluaisimme", "kanssa", "meille",
+      "matka", "matkan", "päivää", "päivän", "kiinnostaa", "toivomme", "voisi", "olisi",
+      "para", "con", "una", "unos", "unas", "que", "del", "por", "viaje", "queremos",
+      "nos", "gustaría", "días", "muy", "junto",
+    ]);
+    const normalize = (value: string) =>
+      value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase();
+    const queryTerms = Array.from(new Set(
+      normalize(question)
+        .split(/[^a-z0-9]+/)
+        .filter((word) => word.length > 2 && !stopWords.has(word)),
+    ));
+
+    const score = (item: Candidate) => {
+      const text = normalize(item.searchableText);
+      const tags = item.tags.map(normalize);
+      const textScore = queryTerms.reduce((total, term) => total + (text.includes(term) ? 2 : 0), 0);
+      const interestScore = preferredTags.reduce(
+        (total, preferred) => total + (tags.some((tag) => tag.includes(normalize(preferred))) || text.includes(normalize(preferred)) ? 3 : 0),
+        0,
+      );
+      const budgetScore =
+        item.nightlyPrice == null
+          ? 0
+          : item.nightlyPrice <= budget
+            ? 1
+            : -2;
+      return textScore + interestScore + budgetScore;
+    };
+    const ranked = [...candidates].sort((a, b) => score(b) - score(a) || a.position - b.position);
+    const selectedItems = ranked.slice(0, Math.min(days, 6, ranked.length));
+    const copy = {
+      fi: {
+        summary: "Tässä on matkan aloitusehdotus kiinnostustesi, kuvauksesi ja tarkistetun tarjonnan perusteella.",
+        day: "Päivä",
+        reason: "Valittu kiinnostustesi ja matkatoiveessasi kuvaamasi asioiden perusteella.",
+      },
+      es: {
+        summary: "Aquí tienes una idea inicial basada en tus intereses, tu descripción y la oferta verificada.",
+        day: "Día",
+        reason: "Seleccionado según tus intereses y lo que describes en tu solicitud.",
+      },
+      en: {
+        summary: "Here is a starting itinerary based on your interests, description and verified listings.",
+        day: "Day",
+        reason: "Selected to match your interests and the details in your request.",
+      },
+    }[language as "fi" | "es" | "en"];
+    return NextResponse.json({
+      summary: copy.summary,
+      days: selectedItems.map((item, index) => ({
+        day: index + 1,
+        title: copy.day + " " + (index + 1),
+        items: [{ type: item.type, slug: item.slug, reason: copy.reason }],
+      })),
+      recommendations: ranked.slice(0, 3).map((item) => ({
+        type: item.type,
+        slug: item.slug,
+        reason: copy.reason,
+      })),
+      verifiedOnly: true,
+      catalogFallback: true,
+    });
+  };
+
   const langName =
     language === "es" ? "European Spanish" : language === "en" ? "English" : "Finnish";
 
@@ -128,7 +238,7 @@ export async function POST(request: Request) {
 
   const key = process.env.OPENAI_API_KEY;
   if (!key) {
-    return NextResponse.json({ error: "AI concierge is not configured." }, { status: 503 });
+    return buildCatalogFallback();
   }
 
   let response: Response;
@@ -151,36 +261,24 @@ export async function POST(request: Request) {
       signal: AbortSignal.timeout(20000),
     });
   } catch {
-    return NextResponse.json(
-      { error: "AI concierge is temporarily unavailable." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   if (!response.ok) {
-    return NextResponse.json(
-      { error: "AI concierge is temporarily unavailable." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   const data = await response.json();
   const raw = typeof data.output_text === "string" ? data.output_text.trim() : "";
   if (!raw) {
-    return NextResponse.json(
-      { error: "AI concierge returned no answer." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   let parsed: ModelPlan;
   try {
     parsed = JSON.parse(raw) as ModelPlan;
   } catch {
-    return NextResponse.json(
-      { error: "AI concierge returned invalid plan." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   const valid = new Set<string>([
@@ -239,10 +337,7 @@ export async function POST(request: Request) {
     typeof parsed.summary === "string" ? parsed.summary.trim().slice(0, 1000) : "";
 
   if (!summary && !plan.length) {
-    return NextResponse.json(
-      { error: "AI concierge returned no usable plan." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   return NextResponse.json({

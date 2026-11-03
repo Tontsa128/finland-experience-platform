@@ -28,7 +28,7 @@ export function DestinationCard({ destination, index = 0 }: { destination: Desti
   const [imageSrc, setImageSrc] = useState(destination.images?.[0] || fallbackImage);
 
   return (
-    <Link href={`/${locale}/destinations/${canonicalDestinationSlug(destination.slug)}`} className="group relative block overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
+    <Link href={destination.slug === "salo-mathildedal" || destination.slug === "salo" ? `/${locale}/salo` : `/${locale}/destinations/${canonicalDestinationSlug(destination.slug)}`} className="group relative block overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={imageSrc}

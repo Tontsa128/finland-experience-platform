@@ -25,7 +25,9 @@ type Props = {
     experiences: Item[];
   };
   verifiedLabel: string;
-  togetherLabel: string;
+  dayLabel: string;
+  exploreLabel: string;
+  moreLabel: string;
 };
 
 export default function ConciergeItinerary({
@@ -34,7 +36,9 @@ export default function ConciergeItinerary({
   recommendations,
   catalog,
   verifiedLabel,
-  togetherLabel,
+  dayLabel,
+  exploreLabel,
+  moreLabel,
 }: Props) {
   const resolve = (recommendation: Rec) => {
     const list =
@@ -67,7 +71,7 @@ export default function ConciergeItinerary({
           <div className="grid lg:grid-cols-[92px_1fr]">
             <div className="bg-brand-950 p-5 text-white lg:p-6">
               <div className="text-xs font-bold uppercase tracking-[.16em] text-gold-300">
-                Day
+                {dayLabel}
               </div>
               <div className="mt-1 font-display text-4xl font-bold">{day.day}</div>
             </div>
@@ -106,7 +110,7 @@ export default function ConciergeItinerary({
                         </h3>
                         <p className="mt-2 text-sm leading-6 text-slate-600">{recommendation.reason}</p>
                         <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-brand-700">
-                          Tutustu <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                          {exploreLabel} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                         </span>
                       </div>
                     </Link>
@@ -120,7 +124,7 @@ export default function ConciergeItinerary({
 
       {recommendations.length > 0 && (
         <div className="pt-4">
-          <h2 className="font-display text-2xl font-bold text-brand-950">{togetherLabel}</h2>
+          <h2 className="font-display text-2xl font-bold text-brand-950">{moreLabel}</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {recommendations.map((recommendation, index) => {
               const item = resolve(recommendation);

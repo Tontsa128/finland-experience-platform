@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, ExternalLink, MapPin, Search, Sparkles } from "lucide-react";
 import type { Experience, Locale } from "@/types";
 import ExperienceMap from "@/components/experiences/ExperienceMap";
@@ -116,6 +116,13 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
     () => Array.from(new Set(experiences.map((item) => item.category))).filter(Boolean),
     [experiences],
   );
+
+  useEffect(() => {
+    const requestedCategory = new URLSearchParams(window.location.search).get("category");
+    if (requestedCategory && categories.includes(requestedCategory)) {
+      setCategory(requestedCategory);
+    }
+  }, [categories]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase();
