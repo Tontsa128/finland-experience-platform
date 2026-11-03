@@ -190,7 +190,7 @@ export default function ExperienceDirectory({ experiences, locale }: Props) {
         </div>
       </section>
 
-      <section className="container-narrow py-12 sm:py-16">
+      <section id="experience-map" className="container-narrow scroll-mt-24 py-12 sm:py-16">
         <div className="mb-7">
           <p className="text-sm font-semibold uppercase tracking-[.18em] text-brand-600">{t.mapEyebrow}</p>
           <h2 className="mt-2 font-display text-3xl font-bold text-brand-950 sm:text-4xl">{t.mapTitle}</h2>
