@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, CalendarDays } from "lucide-react";
@@ -10,11 +12,7 @@ const items = [
     key: "pumpkin",
     image: photoLibrary.pumpkinWeeks,
     href: "https://visitsalo.fi/kurpitsaviikot/",
-    title: {
-      fi: "Kurpitsaviikot Salossa",
-      es: "Kurpitsaviikot: otoño en Salo",
-      en: "Pumpkin Weeks in Salo",
-    },
+    title: { fi: "Kurpitsaviikot Salossa", es: "Kurpitsaviikot: otoño en Salo", en: "Pumpkin Weeks in Salo" },
     text: {
       fi: "Kurpitsapuisto uudella paikalla Vaskiontie 50:ssä, Halikko. Puisto on avoinna klo 10–22.",
       es: "El parque de calabazas se traslada a Vaskiontie 50, Halikko. Abierto de 10:00 a 22:00.",
@@ -27,11 +25,7 @@ const items = [
     key: "ghost",
     image: photoLibrary.mathildedalVillage,
     href: "https://mathildedal.fi/en/2026/09/21/ghosts-take-over-mathildedal-welcome-to-ghost-village/",
-    title: {
-      fi: "Kummitusmuseo Mathildedalissa",
-      es: "Ghost Village en Mathildedal",
-      en: "Ghost Village in Mathildedal",
-    },
+    title: { fi: "Kummitusmuseo Mathildedalissa", es: "Ghost Village en Mathildedal", en: "Ghost Village in Mathildedal" },
     text: {
       fi: "Ruukkikylän syksyyn kuuluvat kummitusmuseo, lasten kummitusmuseo ja Kurpitsaviikkojen tunnelma. Tarkista aukioloajat järjestäjän sivulta.",
       es: "Museo de fantasmas, versión infantil y ambiente de Halloween en el antiguo pueblo industrial. Comprueba los horarios en la web del organizador.",
@@ -44,11 +38,7 @@ const items = [
     key: "christmas",
     image: photoLibrary.mathildedalChristmas,
     href: "https://mathildedal.fi/2026/04/27/mathildedalin-joulumarkkinat-21-11-28-11-2026/",
-    title: {
-      fi: "Mathildedalin joulumarkkinat",
-      es: "Mercado de Navidad de Mathildedal",
-      en: "Mathildedal Christmas Market",
-    },
+    title: { fi: "Mathildedalin joulumarkkinat", es: "Mercado de Navidad de Mathildedal", en: "Mathildedal Christmas Market" },
     text: {
       fi: "Perinteiset joulumarkkinat ruukkitehtailla klo 12–18. Käsityöläisiä, lähiruokaa ja valaistu kylämiljöö.",
       es: "Mercado navideño en las antiguas fábricas de 12:00 a 18:00, con artesanía y productos locales.",
@@ -65,18 +55,10 @@ export default function SeasonalHighlights({ locale }: { locale: "fi" | "es" | "
 
   useEffect(() => {
     const now = new Date();
-    const localDate = [
-      now.getFullYear(),
-      String(now.getMonth() + 1).padStart(2, "0"),
-      String(now.getDate()).padStart(2, "0"),
-    ].join("-");
-    setToday(localDate);
+    setToday([now.getFullYear(), String(now.getMonth() + 1).padStart(2, "0"), String(now.getDate()).padStart(2, "0")].join("-"));
   }, []);
 
-  const upcomingItems = today
-    ? items.filter((item) => item.endDate >= today)
-    : [];
-
+  const upcomingItems = today ? items.filter((item) => item.endDate >= today) : [];
   if (!upcomingItems.length) return null;
 
   return (
@@ -92,7 +74,6 @@ export default function SeasonalHighlights({ locale }: { locale: "fi" | "es" | "
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
-
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {upcomingItems.map((item) => (
             <article key={item.key} className="overflow-hidden rounded-[1.6rem] border border-slate-200 bg-slate-50 shadow-soft">
