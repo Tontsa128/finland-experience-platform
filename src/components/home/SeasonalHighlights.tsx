@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, CalendarDays } from "lucide-react";
 import { photoLibrary } from "@/lib/photo-library";
@@ -5,6 +6,7 @@ import { photoLibrary } from "@/lib/photo-library";
 const items = [
   {
     date: "9.–18.10.2026",
+    endDate: "2026-10-18",
     key: "pumpkin",
     image: photoLibrary.pumpkinWeeks,
     href: "https://visitsalo.fi/kurpitsaviikot/",
@@ -21,6 +23,7 @@ const items = [
   },
   {
     date: "9.–25.10. & 31.10.–1.11.2026",
+    endDate: "2026-11-01",
     key: "ghost",
     image: photoLibrary.mathildedalVillage,
     href: "https://mathildedal.fi/en/2026/09/21/ghosts-take-over-mathildedal-welcome-to-ghost-village/",
@@ -37,6 +40,7 @@ const items = [
   },
   {
     date: "21. & 28.11.2026",
+    endDate: "2026-11-28",
     key: "christmas",
     image: photoLibrary.mathildedalChristmas,
     href: "https://mathildedal.fi/2026/04/27/mathildedalin-joulumarkkinat-21-11-28-11-2026/",
@@ -54,9 +58,26 @@ const items = [
 ] as const;
 
 export default function SeasonalHighlights({ locale }: { locale: "fi" | "es" | "en" }) {
+  const [today, setToday] = useState<string | null>(null);
   const eyebrow = locale === "fi" ? "Tämän kauden poiminnat" : locale === "es" ? "Lo más interesante de la temporada" : "Seasonal highlights";
   const title = locale === "fi" ? "Tapahtumia, joiden vuoksi kannattaa jäädä yöksi" : locale === "es" ? "Eventos que merecen una noche extra" : "Events worth staying an extra night for";
   const cta = locale === "fi" ? "Katso tapahtuma" : locale === "es" ? "Ver evento" : "See event";
+
+  useEffect(() => {
+    const now = new Date();
+    const localDate = [
+      now.getFullYear(),
+      String(now.getMonth() + 1).padStart(2, "0"),
+      String(now.getDate()).padStart(2, "0"),
+    ].join("-");
+    setToday(localDate);
+  }, []);
+
+  const upcomingItems = today
+    ? items.filter((item) => item.endDate >= today)
+    : [];
+
+  if (!upcomingItems.length) return null;
 
   return (
     <section className="bg-white py-20 sm:py-28">
@@ -73,7 +94,7 @@ export default function SeasonalHighlights({ locale }: { locale: "fi" | "es" | "
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {items.map((item) => (
+          {upcomingItems.map((item) => (
             <article key={item.key} className="overflow-hidden rounded-[1.6rem] border border-slate-200 bg-slate-50 shadow-soft">
               <div className="relative aspect-[16/10]">
                 <Image src={item.image} alt={item.title[locale]} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
