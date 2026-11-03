@@ -110,6 +110,75 @@ export async function POST(request: Request) {
     );
   }
 
+  const buildCatalogFallback = () => {
+    const candidates: Array<Recommendation & { tags: string[] }> = [
+      ...catalog.destinations.map((item) => ({
+        type: "destination" as const,
+        slug: item.slug,
+        reason: "",
+        tags: [...(item.tags || []), ...(item.activities || [])],
+      })),
+      ...catalog.accommodations.map((item) => ({
+        type: "accommodation" as const,
+        slug: item.slug,
+        reason: "",
+        tags: ["accommodation", ...(item.features || [])],
+      })),
+      ...catalog.experiences.map((item) => ({
+        type: "experience" as const,
+        slug: item.slug,
+        reason: "",
+        tags: item.tags || [],
+      })),
+    ];
+    const interestTags: Record<string, string[]> = {
+      nature: ["nature", "outdoors", "luonto"],
+      sauna: ["sauna", "sauna-wellness"],
+      sea: ["water", "sea", "archipelago"],
+      food: ["food", "food-farm", "gastronomy"],
+      romance: ["couples", "romance"],
+    };
+    const preferredTags = interests.flatMap((interest) => interestTags[interest] || []);
+    const ranked = [...candidates].sort((a, b) => {
+      const score = (item: typeof a) =>
+        item.tags.some((tag) => preferredTags.some((preferred) => tag.toLowerCase().includes(preferred))) ? 1 : 0;
+      return score(b) - score(a);
+    });
+    const selectedItems = ranked.slice(0, Math.min(days, 6, ranked.length));
+    const copy = {
+      fi: {
+        summary: "Tässä on matkan aloitusehdotus valituista kiinnostuksenkohteista ja tarkistetusta tarjonnasta.",
+        day: "Päivä",
+        reason: "Valittu kiinnostuksenkohteidesi ja tarkistettujen tietojen perusteella.",
+      },
+      es: {
+        summary: "Aquí tienes una idea inicial basada en tus intereses y en la oferta verificada.",
+        day: "Día",
+        reason: "Seleccionado según tus intereses y la información verificada.",
+      },
+      en: {
+        summary: "Here is a starting itinerary based on your interests and verified listings.",
+        day: "Day",
+        reason: "Selected to match your interests and verified information.",
+      },
+    }[language as "fi" | "es" | "en"];
+    return NextResponse.json({
+      summary: copy.summary,
+      days: selectedItems.map((item, index) => ({
+        day: index + 1,
+        title: copy.day + " " + (index + 1),
+        items: [{ type: item.type, slug: item.slug, reason: copy.reason }],
+      })),
+      recommendations: ranked.slice(0, 3).map((item) => ({
+        type: item.type,
+        slug: item.slug,
+        reason: copy.reason,
+      })),
+      verifiedOnly: true,
+      catalogFallback: true,
+    });
+  };
+
   const langName =
     language === "es" ? "European Spanish" : language === "en" ? "English" : "Finnish";
 
@@ -128,7 +197,7 @@ export async function POST(request: Request) {
 
   const key = process.env.OPENAI_API_KEY;
   if (!key) {
-    return NextResponse.json({ error: "AI concierge is not configured." }, { status: 503 });
+    return buildCatalogFallback();
   }
 
   let response: Response;
@@ -151,36 +220,24 @@ export async function POST(request: Request) {
       signal: AbortSignal.timeout(20000),
     });
   } catch {
-    return NextResponse.json(
-      { error: "AI concierge is temporarily unavailable." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   if (!response.ok) {
-    return NextResponse.json(
-      { error: "AI concierge is temporarily unavailable." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   const data = await response.json();
   const raw = typeof data.output_text === "string" ? data.output_text.trim() : "";
   if (!raw) {
-    return NextResponse.json(
-      { error: "AI concierge returned no answer." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   let parsed: ModelPlan;
   try {
     parsed = JSON.parse(raw) as ModelPlan;
   } catch {
-    return NextResponse.json(
-      { error: "AI concierge returned invalid plan." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   const valid = new Set<string>([
@@ -239,10 +296,7 @@ export async function POST(request: Request) {
     typeof parsed.summary === "string" ? parsed.summary.trim().slice(0, 1000) : "";
 
   if (!summary && !plan.length) {
-    return NextResponse.json(
-      { error: "AI concierge returned no usable plan." },
-      { status: 503 },
-    );
+    return buildCatalogFallback();
   }
 
   return NextResponse.json({

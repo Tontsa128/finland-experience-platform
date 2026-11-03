@@ -98,30 +98,95 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <VisitorCounter locale={locale as "fi" | "es" | "en"} />
       <Hero settings={homepage} />
-      <section className="border-y border-brand-100 bg-white py-7 sm:py-8">
+      
+      <section aria-labelledby="home-trip-planner-title" className="bg-white py-5 sm:py-7">
         <div className="container-narrow">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {[
-              [Building2, "featureStays", `/${locale}/accommodations`],
-              [Sparkles, "featureSauna", `/${locale}/experiences`],
-              [Waves, "featureFood", `/${locale}/experiences`],
-              [TreePine, "featureNature", `/${locale}/destinations`],
-              [Waves, "featureArchipelago", `/${locale}/destinations`],
-              [Sparkles, "featureSummer", "#find-your-finland"],
-            ].map(([Icon, key, href]) => {
-              const FeatureIcon = Icon as typeof Sparkles;
-              return (
-                <Link key={key as string} href={href as string} className="group flex items-center gap-3 rounded-2xl px-3 py-3 transition hover:bg-brand-50">
-                  <FeatureIcon className="h-7 w-7 shrink-0 text-brand-700" />
-                  <span className="text-xs font-bold uppercase leading-5 tracking-[.12em] text-brand-950 group-hover:text-brand-700">
-                    {sh(key as string)}
-                  </span>
-                </Link>
-              );
-            })}
+          <div className="flex flex-col gap-5 rounded-[1.75rem] bg-brand-950 p-6 text-white shadow-card sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <div className="flex items-start gap-4 sm:items-center">
+              <div aria-hidden="true" className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-gold-300 sm:flex">
+                <Compass className="h-7 w-7" />
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[.2em] text-gold-300">
+                  {locale === "fi" ? "Henkilökohtainen matkaehdotus" : locale === "es" ? "Una propuesta de viaje personal" : "A personal trip idea"}
+                </p>
+                <h2 id="home-trip-planner-title" className="mt-2 font-display text-2xl font-bold sm:text-3xl">
+                  {locale === "fi" ? "Suunnittele matkasi omien kiinnostustesi mukaan" : locale === "es" ? "Diseña tu viaje según tus intereses" : "Plan a trip around what you love"}
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-white/75 sm:text-base">
+                  {locale === "fi" ? "Valitse kiinnostuksen kohteesi ja kerro toiveistasi. Saat ehdotuksen tarkistetuista kohteista ja palveluista." : locale === "es" ? "Elige tus intereses y cuéntanos qué buscas. Recibirás una propuesta basada en lugares y servicios verificados." : "Choose your interests and tell us what you are looking for. Get an idea built from verified places and services."}
+                </p>
+              </div>
+            </div>
+            <Link href={"/" + locale + "/plan#trip-planner"} className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-gold-300 px-6 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-white">
+              {locale === "fi" ? "Suunnittele matkasi" : locale === "es" ? "Diseña tu viaje" : "Plan your trip"}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
+
+      <section id="find-your-finland" className="bg-snow py-12 sm:py-16">
+        <div className="container-narrow">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("findEyebrow")}</p>
+            <h2 className="mt-4 section-title">{sh("findTitle")}</h2>
+            <p className="mt-4 section-subtitle mx-auto">{sh("findText")}</p>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                Icon: BedDouble,
+                title: locale === "fi" ? "Majoitus" : locale === "es" ? "Alojamiento" : "Places to stay",
+                description: locale === "fi" ? "Mökit, majoitukset ja saariston yöpymispaikat." : locale === "es" ? "Cabañas, alojamientos y estancias en el archipiélago." : "Cabins, stays and places to sleep in the archipelago.",
+                href: "/" + locale + "/accommodations",
+              },
+              {
+                Icon: Compass,
+                title: locale === "fi" ? "Elämykset ja aktiviteetit" : locale === "es" ? "Experiencias y actividades" : "Experiences and activities",
+                description: locale === "fi" ? "Selaa kaikkia retkiä, tekemistä ja paikallisia elämyksiä." : locale === "es" ? "Explora excursiones, actividades y experiencias locales." : "Browse all outings, activities and local experiences.",
+                href: "/" + locale + "/experiences",
+              },
+              {
+                Icon: TreePine,
+                title: locale === "fi" ? "Luonto" : locale === "es" ? "Naturaleza" : "Nature",
+                description: locale === "fi" ? "Etsi luontokohteita, reittejä ja retkiä." : locale === "es" ? "Encuentra espacios naturales, rutas y excursiones." : "Find nature sites, trails and outings.",
+                href: "/" + locale + "/experiences?category=nature",
+              },
+              {
+                Icon: Sparkles,
+                title: locale === "fi" ? "Sauna ja hyvinvointi" : locale === "es" ? "Sauna y bienestar" : "Sauna and wellness",
+                description: locale === "fi" ? "Löydä saunat ja hyvinvointielämykset." : locale === "es" ? "Descubre saunas y experiencias de bienestar." : "Discover saunas and wellness experiences.",
+                href: "/" + locale + "/sauna",
+              },
+              {
+                Icon: Utensils,
+                title: locale === "fi" ? "Ruoka ja maatilat" : locale === "es" ? "Gastronomía y granjas" : "Food and farms",
+                description: locale === "fi" ? "Tutustu lähiruokaan, tiloihin ja paikallisiin makuihin." : locale === "es" ? "Conoce productos locales, granjas y sabores finlandeses." : "Explore local food, farms and Finnish flavours.",
+                href: "/" + locale + "/experiences?category=food-farm",
+              },
+              {
+                Icon: Waves,
+                title: locale === "fi" ? "Vesi ja saaristo" : locale === "es" ? "Agua y archipiélago" : "Water and archipelago",
+                description: locale === "fi" ? "Löydä merelliset retket, rannat ja saaristokohteet." : locale === "es" ? "Descubre excursiones marítimas, playas y destinos del archipiélago." : "Find sea trips, beaches and archipelago destinations.",
+                href: "/" + locale + "/experiences?category=water",
+              },
+            ].map(({ Icon, title, description, href }) => (
+              <Link key={title} href={href} className="group rounded-[1.5rem] border border-brand-100 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-brand-300 hover:shadow-card">
+                <Icon className="h-6 w-6 text-brand-700" />
+                <h3 className="mt-5 font-display text-xl font-bold text-brand-950">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-800">
+                  {locale === "fi" ? "Selaa kohteita" : locale === "es" ? "Ver opciones" : "Explore options"}
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
       <section className="bg-brand-950 py-16 text-white sm:py-20">
         <div className="container-narrow">
@@ -188,19 +253,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <SeasonalHighlights locale={locale as "fi" | "es" | "en"} />
       <LocalIcons locale={locale as "fi" | "es" | "en"} />
 
-      <section id="find-your-finland" className="bg-snow py-16 sm:py-24">
-        <div className="container-narrow">
-          <div className="mx-auto max-w-3xl text-center"><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("findEyebrow")}</p><h2 className="mt-4 section-title">{sh("findTitle")}</h2><p className="mt-4 section-subtitle mx-auto">{sh("findText")}</p></div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              ["archipelago", Waves, `/${locale}/destinations`],
-              ["sauna", Sparkles, `/${locale}/experiences`],
-              ["nature", TreePine, `/${locale}/destinations`],
-              ["food", Building2, `/${locale}/experiences`],
-            ].map(([key, Icon, href]) => { const I = Icon as typeof Sparkles; return <Link key={key as string} href={href as string} className="group rounded-[1.75rem] bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-card"><I className="h-7 w-7 text-brand-700" /><h3 className="mt-7 font-display text-2xl font-bold text-brand-950">{sh(key as string)}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{sh(`${key}Desc` as string)}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-800">{tc("learnMore")} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span></Link>; })}
-          </div>
-        </div>
-      </section>
+      
       <section className="relative overflow-hidden bg-brand-950 py-20 text-white sm:py-28">
         <div className="container-narrow grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{sh("whyEyebrow")}</p><h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-6xl">{sh("whyTitle")}</h2><p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">{sh("whyText")}</p></div><div className="overflow-hidden rounded-[2rem] shadow-2xl"><Image src={summerImages[2]} alt={sh("whyTitle")} width={1200} height={900} className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105" /></div></div>
       </section>

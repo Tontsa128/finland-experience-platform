@@ -44,7 +44,7 @@ export default async function PlanPage({
   const experienceSource = cmsExperiences.filter((item) => item.verified === true);
 
   return (
-    <main className="bg-snow py-12 sm:py-20">
+    <main id="trip-planner" className="bg-snow py-12 sm:py-20">
       <div className="container-narrow">
         <TripPlanner
           language={lang}
