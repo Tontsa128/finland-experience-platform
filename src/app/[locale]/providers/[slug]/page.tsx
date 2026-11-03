@@ -544,7 +544,49 @@ export default async function ProviderDetailPage({ params, searchParams }: { par
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     {slug.startsWith("kimitoon-")
                       ? relatedKimitoonProviders.map((place) => <Link key={place.id} href={`/${locale}/providers/kimitoon-${place.id}?from=${returnCategory || place.categories[0]}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)
-                      : (teijoGuides[slug] ? teijoRelated : mathildedalRelated).filter((place) => place.slug !== slug).map((place) => <Link key={place.slug} href={`/${locale}/providers/${place.slug}`} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 px-4 py-4 font-semibold text-brand-950 transition hover:border-brand-400 hover:bg-brand-50"><span>{place.name[locale]}</span><ArrowUpRight className="h-4 w-4 shrink-0" /></Link>)}
+                      : (teijoGuides[slug] ? teijoRelated : mathildedalRelated).filter((place) => place.slug !== slug).map((place) => {
+                        const relatedId = place.slug.startsWith("salo-") ? place.slug.slice("salo-".length) : "";
+                        const relatedProvider = saloProviders.find((candidate) => candidate.id === relatedId);
+                        return (
+                          <Link
+                            key={place.slug}
+                            href={`/${locale}/providers/${place.slug}`}
+                            className="group flex h-full flex-col overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-xl"
+                          >
+                            <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800">
+                              {relatedProvider?.image ? (
+                                <>
+                                  <Image
+                                    src={relatedProvider.image}
+                                    alt={place.name[locale]}
+                                    fill
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    className="object-cover transition duration-700 group-hover:scale-105"
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 via-transparent to-transparent" />
+                                </>
+                              ) : (
+                                <div className="absolute inset-0 flex items-center justify-center px-5 text-center text-xs font-bold uppercase tracking-[.18em] text-gold-300">
+                                  {locale === "fi" ? "Paikallinen kohde" : locale === "es" ? "Lugar local" : "Local place"}
+                                </div>
+                              )}
+                            </div>
+                            <div className="flex flex-1 flex-col p-4 sm:p-5">
+                              <h4 className="font-display text-lg font-bold leading-tight text-brand-950 transition group-hover:text-brand-700 sm:text-xl">{place.name[locale]}</h4>
+                              {relatedProvider?.description?.[locale] ? (
+                                <p className="mt-2 text-sm leading-6 text-slate-600">{relatedProvider.description[locale]}</p>
+                              ) : null}
+                              <span className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-bold text-brand-800">
+                                {locale === "fi" ? "Tutustu kohteeseen" : locale === "es" ? "Descubrir el lugar" : "Explore this place"}
+                                <ArrowUpRight className="h-4 w-4" />
+                              </span>
+                              {relatedProvider?.imageCredit ? (
+                                <span className="mt-3 text-[11px] text-slate-400">{locale === "fi" ? "Kuva:" : locale === "es" ? "Foto:" : "Photo:"} {relatedProvider.imageCredit}</span>
+                              ) : null}
+                            </div>
+                          </Link>
+                        );
+                      })}
                   </div>
                 </section>
                 ) : null}
