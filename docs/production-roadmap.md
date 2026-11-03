@@ -10,22 +10,24 @@ Visit Finlandin kansainvälistymiskriteerit on tarkoitettu kansainvälisille mar
 
 - Päähaara: `1733b122` (3.11.2026).
 - Viimeisin tarkastettu GitHub Actions -ajo läpäisi lintin, typecheckin, unit-testit ja tuotantobuildin.
-- CI validoi lähdekoodin. GitHubin CI-workflow ei itsessään julkaise tuotantoon.
+- Vercelin projektissa on READY-tilassa oleva tuotantojulkaisu, jonka lähdecommit on sama kuin nykyinen main-päähaara (`1733b122`). Tämä vahvistaa, että Vercel julkaisee GitHubin main-haaraa.
+- Vercel-projektin Node-versio on tällä hetkellä 24.x, mutta GitHub Actions käyttää Node 22:ta. Julkaisu toimii, mutta versioero pitää joko yhtenäistää tai kirjata tietoiseksi valinnaksi.
+- Repositoriossa on myös Cloudflare Workers -konfiguraatio. Varmista, onko workers.dev-osoite yhä rinnakkainen tuotanto, vanha julkaisu vai tapahtumasyötteen tekninen Worker.
 - Projektissa on Next.js 16 / React 19, Supabase/Auth, CMS-näkymiä, mediat, tapahtumahallinta, liidiominaisuuksia ja FI/EN/ES-reittejä.
 - Reititys- ja tietomallikoodia on sekä tietokannan/CMS:n yhteydessä että aluekohtaisissa lähdekoodikatalogeissa. Sisällön ensisijainen hallintapaikka pitää inventoida sisältötyypeittäin.
 - Salo- ja Kemiönsaari-sisältöjen luonnos-PR:t #60 ja #53 ovat keskeneräisiä. Niiden päällekkäisyydet ja sisältömäärät tarkistetaan nykyistä päähaaraa vasten ennen jatkoa.
 
-### Julkaisun tilan varmistus
+### Julkaisun seuraavat varmistukset
 
-Päähaaran olemassaolo ja onnistunut build eivät yksin kerro, mikä sovellusversio on käyttäjille tuotannossa. Projektissa on Cloudflare Workers -konfiguraatio, ja GitHubin repository-metadata sisältää Vercel-osoitteen. Varmista ennen tuotantomuutoksia:
+Vercelin nykyinen main-julkaisu on vahvistettu, joten jäljellä oleva julkaisu- ja tietokantariskin tarkistus rajataan seuraaviin:
 
-1. Mikä domain ja alusta ovat käyttäjien varsinainen tuotanto?
-2. Mikä GitHub-haara ja commit siihen julkaistaan?
-3. Onko nykyinen tuotantoversio sama kuin päähaaran commit?
-4. Ovatko tuotannon Supabase-migraatiot, OAuth-paluuosoitteet ja ympäristömuuttujat ajan tasalla?
-5. Miten julkaisu, palautus edelliseen versioon ja migraatioiden yhteensovitus tehdään?
+1. Selvitä Cloudflare Workers -konfiguraation tarkoitus ja workers.dev-julkaisun suhde Vercelin tuotantoon. Päätetään, mikä URL on kanoninen käyttäjille ja millä alustalla ajastettu tapahtumien synkronointi suoritetaan.
+2. Tarkista tuotannon Supabase-migraatioiden tila ennen uusia skeemamuutoksia.
+3. Varmista OAuth-paluuosoitteet ja tuotannon ympäristömuuttujat kanoniselle domainille.
+4. Kirjaa julkaisu- ja palautusmenettely sekä tietokantamuutosten järjestys.
 
-Älä aja tuotantotietokannan migraatioita tai julkaise tuotantoa pelkän CI-tuloksen perusteella. Muutokset toteutetaan tarkistettavana PR:nä ja julkaisu varmistetaan kohdeympäristössä.
+Älä aja tuotantotietokannan migraatioita pelkän CI-tuloksen perusteella. Muutokset tehdään tarkistettavana PR:nä ja julkaisu tarkistetaan siinä ympäristössä, joka on päätetty kanoniseksi.
+
 
 ## Toteutusjärjestys
 
