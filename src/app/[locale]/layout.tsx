@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { locales } from "@/lib/utils";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 import { CookieConsent } from "@/components/legal/CookieConsent";
@@ -21,16 +22,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!locales.includes(locale)) return {};
   const copy = {
     fi: {
-      title: "Suomen kesä, mökit ja saaristo | Finland Experience",
-      description: "Löydä suomalaiset mökkilomat, saaristo, sauna ja kesäelämykset.",
+      title: "Suomen rannikko, saaristo ja elämykset | Finland Experience",
+      description: "Löydä suomalaiset rannikkokohteet, mökit, saaristo, sauna, luonto ja paikalliset elämykset ympäri vuoden.",
     },
     es: {
-      title: "Cabañas en Finlandia | Verano, sauna y naturaleza",
-      description: "Descubre cabañas en Finlandia, el archipiélago, sauna y auténticas experiencias de verano.",
+      title: "Viajes a Finlandia | Costa, archipiélago y experiencias",
+      description: "Descubre la costa finlandesa, cabañas, archipiélago, saunas, naturaleza y experiencias locales durante todo el año.",
     },
     en: {
-      title: "Finland Travel | Cabins, Archipelago and Summer",
-      description: "Discover Finnish cabins, the archipelago, sauna and authentic summer experiences.",
+      title: "Finland Travel | Coast, Archipelago and Experiences",
+      description: "Discover Finland’s coast, cabins, archipelago, sauna, nature and authentic local experiences all year round.",
     },
   }[locale];
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description });
@@ -49,10 +50,11 @@ export default async function LocaleLayout({
   const [messages, navigation] = await Promise.all([getMessages(), getPublishedNavigation(locale as "fi" | "es" | "en")]);
   return (
     <NextIntlClientProvider messages={messages}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
         <Header navigation={navigation} />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileBottomNav />
         <WhatsAppButton locale={locale} />
         <CookieConsent />
         <Toaster position="top-center" richColors />

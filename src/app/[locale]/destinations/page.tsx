@@ -13,10 +13,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
   const copy = locale === "fi"
-    ? { title: "Kesäkohteet Suomessa | Finland Experience", description: "Löydä saaristo, Mathildedal, Teijo, Naantali, Turku ja muut aidot suomalaiset matkakohteet." }
+    ? { title: "Matkakohteet Suomessa ympäri vuoden | Finland Experience", description: "Löydä Suomen saaristo, rannikkokaupungit, luonto, kulttuuri ja paikalliset elämykset kaikkina vuodenaikoina." }
     : locale === "es"
-      ? { title: "Destinos de verano en Finlandia | Finland Experience", description: "Descubre el archipiélago, Mathildedal, Teijo, Naantali, Turku y otros destinos auténticos." }
-      : { title: "Summer Destinations in Finland | Finland Experience", description: "Discover the archipelago, Mathildedal, Teijo, Naantali, Turku and other authentic Finnish destinations." };
+      ? { title: "Destinos de Finlandia durante todo el año | Finland Experience", description: "Descubre el archipiélago, las ciudades costeras, la naturaleza, la cultura y experiencias locales en Finlandia durante todo el año." }
+      : { title: "Finland Destinations All Year Round | Finland Experience", description: "Discover Finland’s archipelago, coastal towns, nature, culture and local experiences in every season." };
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "destinations" });
 }
 
@@ -29,7 +29,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: locale === "fi" ? "Kesäkohteet Suomessa" : locale === "es" ? "Destinos de verano en Finlandia" : "Summer destinations in Finland",
+    name: locale === "fi" ? "Matkakohteet Suomessa ympäri vuoden" : locale === "es" ? "Destinos de Finlandia durante todo el año" : "Finland destinations all year round",
     itemListElement: destinations.map((destination, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -61,7 +61,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
 
       <section className="container-narrow py-14 sm:py-20">
         <div className="mb-10 flex items-end justify-between gap-5">
-          <div><p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">Finland · Summer</p><h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{copy.story}</h2></div>
+          <div><p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{locale === "fi" ? "Suomi · ympäri vuoden" : locale === "es" ? "Finlandia · todo el año" : "Finland · all year round"}</p><h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{copy.story}</h2></div>
           <Sparkles className="hidden h-8 w-8 text-gold-500 sm:block" />
         </div>
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
