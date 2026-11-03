@@ -27,7 +27,7 @@ export function SaloEditorialCard({
 }: SaloEditorialCardProps) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-xl">
-      <Link href={href} className="block">
+      <Link href={href} className="flex h-full flex-col">
         <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-brand-900 via-brand-800 to-brand-950">
           {image ? (
             <>
