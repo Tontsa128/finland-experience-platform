@@ -126,7 +126,7 @@ export async function middleware(req: NextRequest) {
       getLocaleFromBrowser(req) ??
       defaultLocale) as (typeof locales)[number];
     const redirectUrl = req.nextUrl.clone();
-    redirectUrl.pathname = `/${locale}/destinations/salo-mathildedal`;
+    redirectUrl.pathname = `/${locale}/salo/mathildedal`;
     return setLocaleCookie(NextResponse.redirect(redirectUrl, 308), locale);
   }
 
