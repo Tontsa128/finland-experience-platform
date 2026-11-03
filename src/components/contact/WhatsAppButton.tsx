@@ -28,10 +28,10 @@ export function WhatsAppButton({ locale = "es" }: { locale?: string }) {
       target="_blank"
       rel="noreferrer"
       aria-label={labels[locale as keyof typeof labels] || labels.en}
-      className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 font-semibold text-white shadow-xl transition hover:scale-105"
+      className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] right-3 z-40 flex min-h-12 items-center gap-2 rounded-full bg-[#25D366] px-3 py-3 text-xs font-semibold text-white shadow-xl transition hover:scale-105 sm:bottom-5 sm:right-5 sm:px-5 sm:text-sm"
     >
       <MessageCircle className="h-5 w-5" aria-hidden="true" />
-      WhatsApp
+      <span className="hidden sm:inline">WhatsApp</span>
     </a>
   );
 }
