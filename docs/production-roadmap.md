@@ -4,7 +4,7 @@ Päivitetty 3.11.2026 Visit Finlandin vuoden 2026 kansainvälistymiskriteerien j
 
 Finland Experience on paikallisia kohteita ja matkailupalveluja esittelevä markkinointi- ja ohjausalusta. Matkailija löytää palveluntarjoajan ja siirtyy tämän omaan varaus- tai yhteydenottokanavaan. Alusta ei tee pakettimatkoja eikä käsittele kuluttajan varausta tai maksua.
 
-Visit Finlandin kansainvälistymiskriteerit on tarkoitettu kansainvälisille markkinoille tähtäävän matkailuyrityksen suunnittelun tueksi. Niitä käytetään tässä kehitysrun kona, ei osoituksena Visit Finlandin hyväksynnästä tai sertifioinnista.
+Visit Finlandin kansainvälistymiskriteerit on tarkoitettu kansainvälisille markkinoille tähtäävän matkailuyrityksen suunnittelun tueksi. Niitä käytetään tässä kehitysrunkona, ei osoituksena Visit Finlandin hyväksynnästä tai sertifioinnista.
 
 ## Nykytilanne GitHubissa
 
