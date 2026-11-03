@@ -1,10 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import type { Locale } from "@/types";
 import { photoCredits, photoLibrary } from "@/lib/photo-library";
 import { saloProviders } from "@/lib/salo";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
+import type { Locale } from "@/types";
+import { SaloEditorialCard } from "@/components/salo/SaloEditorialCard";
 
 const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];
 
@@ -59,8 +57,7 @@ export function SaloAreaGrid({ locale }: { locale: Locale }) {
       : locale === "es"
         ? "Abre la guía del pueblo para descubrir alojamiento, gastronomía, naturaleza y experiencias locales."
         : "Open a village guide to find its accommodation, food, nature and local experiences.",
-    open: locale === "fi" ? "Tutustu kylään" : locale === "es" ? "Explorar el pueblo" : "Explore village",
-    photo: locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la foto" : "Photo source",
+    open: locale === "fi" ? "Tutustu alueeseen" : locale === "es" ? "Explorar la zona" : "Explore the area",
   };
 
   return (
@@ -71,37 +68,23 @@ export function SaloAreaGrid({ locale }: { locale: Locale }) {
           <h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{labels.title}</h2>
           <p className="mt-4 text-lg leading-8 text-slate-600">{labels.description}</p>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {areaSlugs.map((area) => {
             const title = areaNames[area][locale];
             const image = getAreaImage(area);
             return (
-              <article key={area} className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
-                <Link href={`/${locale}/salo/${area}`} className="block">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-brand-100">
-                    {image ? (
-                      <>
-                        <Image src={image.src} alt={title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-brand-950/45 via-transparent to-transparent" />
-                      </>
-                    ) : null}
-                  </div>
-                  <div className="p-5 sm:p-6">
-                    <h3 className="font-display text-2xl font-bold text-brand-950 group-hover:text-brand-700">{title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{areaCopy[area][locale].intro}</p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-brand-700">
-                      {labels.open}<ArrowRight className="h-3.5 w-3.5" />
-                    </span>
-                  </div>
-                </Link>
-                {image?.source ? (
-                  <div className="px-5 pb-4 sm:px-6">
-                    <a href={image.source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] text-slate-400 underline underline-offset-2 hover:text-brand-700">
-                      {labels.photo}: {image.credit}<ArrowUpRight className="h-3 w-3" />
-                    </a>
-                  </div>
-                ) : null}
-              </article>
+              <SaloEditorialCard
+                key={area}
+                href={`/${locale}/salo/${area}`}
+                image={image?.src}
+                imageAlt={title}
+                eyebrow={areaCopy[area][locale].eyebrow}
+                title={title}
+                description={areaCopy[area][locale].intro}
+                actionLabel={labels.open}
+                imageCredit={image ? `Kuvan lähde: ${image.credit}` : undefined}
+                imageSource={image?.source}
+              />
             );
           })}
         </div>
