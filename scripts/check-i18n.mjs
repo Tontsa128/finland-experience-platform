@@ -55,10 +55,12 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
 // restaurant cards on the Kimitoön destination guide instead.
 const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
 const homepageDestinationCardSource = await readFile(path.resolve("src/components/home/HomeDestinationFeatureCard.tsx"), "utf8");
-  assert(homepageDestinationFeaturesSource.includes("Salo ja lähiseutu"), "Salo homepage title should use the wider regional name");
-  assert(!homepageDestinationFeaturesSource.includes("Mathildedal"), "Salo homepage feature copy must not mention Mathildedal");
-
 const homepageDestinationFeaturesSource = await readFile(path.resolve("src/lib/homepage-destination-features.ts"), "utf8");
+const saloHomepageTitleIsLocalized = homepageSource.includes('"Salo ja lähiseutu"')
+  && homepageSource.includes('"Salo y sus alrededores"')
+  && homepageSource.includes('"Salo & Surroundings"');
+const saloHomepageCopyHasNoMathildedal = !homepageDestinationFeaturesSource.includes("Mathildedal");
+
 const homepageHasAllCoastalDestinations = [
   '"salo-mathildedal"',
   "naantali:",
@@ -74,12 +76,14 @@ const homepageUsesSharedFeatureCard = (homepageSource.match(/<HomeDestinationFea
 const homepageCityCopyIsLocalized = ["fi:", "en:", "es:"].every((localeKey) => {
   return homepageDestinationFeaturesSource.includes(localeKey);
 });
-if (!homepageHasAllCoastalDestinations || !homepageUsesSharedFeatureCard || !homepageCityCopyIsLocalized) {
+if (!homepageHasAllCoastalDestinations || !homepageUsesSharedFeatureCard || !homepageCityCopyIsLocalized || !saloHomepageTitleIsLocalized || !saloHomepageCopyHasNoMathildedal) {
   failed = true;
   console.error("Homepage destination card check failed:", {
     homepageHasAllCoastalDestinations,
     homepageUsesSharedFeatureCard,
     homepageCityCopyIsLocalized,
+    saloHomepageTitleIsLocalized,
+    saloHomepageCopyHasNoMathildedal,
   });
 }
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
