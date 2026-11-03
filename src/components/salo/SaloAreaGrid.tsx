@@ -61,6 +61,7 @@ export function SaloAreaGrid({ locale }: { locale: Locale }) {
         ? "Abre la guía del pueblo para descubrir alojamiento, gastronomía, naturaleza y experiencias locales."
         : "Open a village guide to find its accommodation, food, nature and local experiences.",
     open: locale === "fi" ? "Tutustu alueeseen" : locale === "es" ? "Explorar la zona" : "Explore the area",
+    photo: locale === "fi" ? "Kuvan lähde:" : locale === "es" ? "Fuente de la foto:" : "Photo source:",
   };
 
   return (
@@ -85,7 +86,7 @@ export function SaloAreaGrid({ locale }: { locale: Locale }) {
                 title={title}
                 description={areaCopy[area][locale].intro}
                 actionLabel={labels.open}
-                imageCredit={image ? `Kuvan lähde: ${image.credit}` : undefined}
+                imageCredit={image ? `${labels.photo} ${image.credit}` : undefined}
                 imageSource={image?.source}
               />
             );
