@@ -147,7 +147,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     summer: { eyebrow: "Hidden Coastal Finland", title: "Löydä rannikon rauhalliset reitit ja merimaisemat", text: "Pienet sillat, rantakalliot ja saaristotiet johdattavat pois kiireestä Suomen rannikon maisemiin.", cta: "Tutustu kohteisiin" },
     cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Kesämökki, järvi, laituri ja sauna tekevät kiireettömästä päivästä osan Suomen matkaa.", cta: "Katso majoituksia" },
     archipelago: { eyebrow: "Turun saaristo", title: "Pieni puutalo saariston keskellä", text: "Saaristomaisemaan asettuva puutalo kertoo elävästä saaristosta ja sen rauhallisesta arjesta.", cta: "Tutustu saaristoon" },
-    hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Aurinkoinen ranta ja avoin meri", text: "Hanko on kesää varten: hiekkaranta, Itämeri ja pitkä päivä etelärannikolla.", cta: "Tutustu Hankoon" },
+    hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Meri, rannat ja historiallinen Hanko", text: "Itämeren rannikko, hiekkarannat ja historiallinen puukaupunki tekevät Hangosta merellisen kohteen ympäri vuoden.", cta: "Tutustu Hankoon" },
     naantali: { eyebrow: "Naantali", title: "Kävele Naantalin vanhan kaupungin puutalokaduilla", text: "Historialliset puutalot ja kapeat kadut kutsuvat rauhalliselle kävelylle meren läheiseen vanhaan kaupunkiin.", cta: "Tutustu Naantaliin" },
     mathildedal: { eyebrow: "Mathildedal · Salo", title: "Tutustu Mathildedalin historialliseen ruukkimiljööseen", text: "Vuodelta 1852 peräisin oleva Anttipoffin rakennus kertoo kylän ruukkihistoriasta ja vanhoista työväenasunnoista.", cta: "Tutustu Mathildedaliin" },
     aland: { eyebrow: "Ahvenanmaa", title: "Tutustu Ahvenanmaan historialliseen Kastelholman linnaan", text: "Kastelholman linna kertoo Ahvenanmaan historiasta ja tarjoaa konkreettisen pysähdyspaikan saaristomatkalle.", cta: "Tutustu Ahvenanmaahan" },
@@ -160,7 +160,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     summer: { eyebrow: "Hidden Coastal Finland", title: "Descubre rutas tranquilas y paisajes costeros", text: "Pequeños puentes, rocas junto al mar y carreteras entre islas te alejan de las prisas y te acercan a la costa finlandesa.", cta: "Explorar destinos" },
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Cabaña de verano, lago, embarcadero y sauna para disfrutar Finlandia sin prisas.", cta: "Ver alojamientos" },
     archipelago: { eyebrow: "Archipiélago de Turku", title: "Una pequeña casa de madera entre las islas", text: "Una casa de madera en el archipiélago muestra el carácter habitado y tranquilo de las islas finlandesas.", cta: "Explorar el archipiélago" },
-    hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Playa soleada y mar abierto", text: "Arena, Báltico y un largo día de verano en el extremo sur de Finlandia.", cta: "Explorar Hanko" },
+    hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Mar, playas y un casco histórico junto al mar", text: "El Báltico, las playas de arena y las calles históricas de madera dan a Hanko un ambiente costero durante todo el año.", cta: "Explorar Hanko" },
     naantali: { eyebrow: "Naantali", title: "Pasea por las calles de madera del casco antiguo", text: "Las casas históricas de madera y las calles estrechas invitan a pasear sin prisa por esta localidad junto al mar.", cta: "Explorar Naantali" },
     mathildedal: { eyebrow: "Mathildedal · Salo", title: "Descubre el histórico pueblo siderúrgico de Mathildedal", text: "El edificio Anttipoffi, de 1852, cuenta la historia industrial del pueblo y de las antiguas viviendas de sus trabajadores.", cta: "Explorar Mathildedal" },
     aland: { eyebrow: "Åland", title: "Descubre el histórico castillo de Kastelholm", text: "El castillo de Kastelholm cuenta parte de la historia de Åland y ofrece una visita concreta durante tu viaje por las islas.", cta: "Explorar Åland" },
@@ -173,7 +173,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     summer: { eyebrow: "Hidden Coastal Finland", title: "Find quiet coastal routes and sea views", text: "Small bridges, rocky shores and island roads lead away from the rush and into Finland’s coastal landscapes.", cta: "Explore destinations" },
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A summer cottage, lake, jetty and sauna turn a quiet day into part of the journey.", cta: "See stays" },
     archipelago: { eyebrow: "Turku Archipelago", title: "A small wooden house among the islands", text: "A wooden house in the archipelago captures the lived-in, peaceful character of Finland’s island communities.", cta: "Explore the archipelago" },
-    hanko: { eyebrow: "Hanko · Finland's southern coast", title: "A sunlit beach and open sea", text: "Sand, Baltic Sea and a long summer day at Finland's southern tip.", cta: "Explore Hanko" },
+    hanko: { eyebrow: "Hanko · Finland's southern coast", title: "The sea, beaches and historic Hanko", text: "The Baltic Sea, sandy beaches and historic wooden streets give Hanko a distinctive coastal atmosphere throughout the year.", cta: "Explore Hanko" },
     naantali: { eyebrow: "Naantali", title: "Walk the wooden streets of Naantali’s old town", text: "Historic wooden houses and narrow streets invite you to slow down in this old town by the sea.", cta: "Explore Naantali" },
     mathildedal: { eyebrow: "Mathildedal · Salo", title: "Discover Mathildedal’s historic ironworks village", text: "The Anttipoffi building, dating from 1852, tells the story of the village’s ironworks and its former workers’ housing.", cta: "Explore Mathildedal" },
     aland: { eyebrow: "Åland", title: "Discover historic Kastelholm Castle", text: "Kastelholm Castle tells part of Åland’s history and makes a tangible stop on an island journey.", cta: "Explore Åland" },
@@ -313,40 +313,40 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           </div>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17261a]/65 via-[#17261a]/18 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17261a]/28 via-[#17261a]/8 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17261a]/82 via-[#17261a]/42 to-[#17261a]/12" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17261a]/48 via-[#17261a]/18 to-transparent" />
 
       <div className="relative z-10 flex min-h-[76svh] items-end pb-7 pt-[36svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
         <div className="container-narrow w-full">
           <div key={slide.key} className="max-w-4xl">
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
-            <h1 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-[-.03em] sm:text-6xl sm:leading-[.96] lg:text-[5.4rem]">{text.title}</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-5 text-white/90 sm:mt-6 sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
+            <h1 className="max-w-4xl font-display text-[clamp(2rem,8vw,3.4rem)] font-bold leading-[1.04] tracking-[-.03em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-6xl sm:leading-[.96] lg:text-[5.4rem]">{text.title}</h1>
+            <p className="mt-3 max-w-[48ch] text-base leading-6 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)] sm:mt-6 sm:max-w-2xl sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
           </div>
         </div>
       </div>
 
       <div className="relative z-20 border-t border-white/15 bg-[#fbf8f1] text-brand-950 shadow-[0_-10px_30px_rgba(47,65,49,0.10)]">
-        <div className="container-narrow flex min-h-[88px] items-center justify-between gap-4 py-4 sm:min-h-[104px] sm:py-5">
+        <div className="container-narrow flex min-h-[88px] flex-col items-stretch justify-between gap-3 py-3 sm:min-h-[104px] sm:flex-row sm:items-center sm:gap-4 sm:py-5">
           {href ? (
             slide.external ? (
-              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#e5eadc] px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-white sm:px-7 sm:text-base">
+              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 max-w-[72vw] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-brand-900 px-4 py-3 text-xs font-bold text-white transition hover:bg-brand-800 sm:max-w-none sm:px-7 sm:text-base">
                 {text.cta}
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </a>
             ) : (
-              <Link href={href} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gold-300 px-6 py-3 text-sm font-bold transition hover:bg-gold-200 sm:px-7 sm:text-base">
+              <Link href={href} className="inline-flex min-h-11 max-w-[72vw] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-gold-400 px-4 py-3 text-xs font-bold text-brand-950 transition hover:bg-gold-300 sm:max-w-none sm:px-7 sm:text-base">
                 {text.cta}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             )
           ) : null}
 
-          <div className="ml-auto flex items-center gap-2 sm:gap-3">
-            <button type="button" aria-label={ui.previous} onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d9e2d7] bg-white transition hover:bg-[#edf3ec]">
+          <div className="ml-auto flex items-center gap-2 self-end sm:gap-3">
+            <button type="button" aria-label={ui.previous} onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d9e2d7] bg-white transition hover:bg-[#edf3ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
-            <div className="flex max-w-[120px] items-center justify-center gap-1.5 overflow-hidden sm:max-w-none">
+            <div className="hidden max-w-[120px] items-center justify-center gap-2 overflow-hidden sm:flex sm:max-w-none">
               {activeSlides.map((item, index) => (
                 <button
                   key={item.key}
@@ -358,7 +358,8 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
                 />
               ))}
             </div>
-            <button type="button" aria-label={ui.next} onClick={() => setActive((current) => (current + 1) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50">
+            <span className="min-w-[3.5rem] text-center text-xs font-bold tabular-nums text-brand-900 sm:hidden">{active + 1} / {slideCount}</span>
+            <button type="button" aria-label={ui.next} onClick={() => setActive((current) => (current + 1) % slideCount)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
@@ -366,12 +367,14 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       </div>
 
       {slide.credit ? (
-        <div className="absolute bottom-[104px] right-3 z-20 max-w-[75%] rounded-full bg-black/45 px-3 py-1.5 text-[10px] text-white/85 backdrop-blur-sm sm:bottom-[120px] sm:right-6">
-          {slide.creditUrl ? (
-            <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-white/40 underline-offset-2 hover:decoration-white">{ui.imageCredit} {slide.credit}</a>
-          ) : (
-            <>{ui.imageCredit} {slide.credit}</>
-          )}
+        <div className="relative z-20 flex justify-end border-t border-[#e9e4d8] bg-[#fbf8f1] px-4 py-2 text-[10px] leading-4 text-slate-600 sm:px-6">
+          <span className="max-w-full text-right">
+            {slide.creditUrl ? (
+              <a href={slide.creditUrl} target="_blank" rel="noreferrer" className="underline decoration-slate-400 underline-offset-2 hover:text-brand-900">{ui.imageCredit} {slide.credit}</a>
+            ) : (
+              <>{ui.imageCredit} {slide.credit}</>
+            )}
+          </span>
         </div>
       ) : null}
     </section>
