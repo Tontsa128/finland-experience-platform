@@ -37,7 +37,7 @@ finland-experience-platform/
 
 ### Vaatimukset
 
-- Node.js 22
+- Node.js 24
 - npm
 - Supabase-projekti
 - Palveluntarjoajien omat varaus- ja maksukanavat
