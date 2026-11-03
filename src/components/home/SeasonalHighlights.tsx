@@ -11,7 +11,7 @@ const items = [
     endDate: "2026-10-18",
     key: "pumpkin",
     image: photoLibrary.pumpkinWeeks,
-    href: "https://visitsalo.fi/kurpitsaviikot/",
+    href: "https://visitsalo.fi/tapahtumat/",
     title: { fi: "Kurpitsaviikot Salossa", es: "Kurpitsaviikot: otoño en Salo", en: "Pumpkin Weeks in Salo" },
     text: {
       fi: "Kurpitsapuisto uudella paikalla Vaskiontie 50:ssä, Halikko. Puisto on avoinna klo 10–22.",
@@ -69,7 +69,7 @@ export default function SeasonalHighlights({ locale }: { locale: "fi" | "es" | "
             <p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{eyebrow}</p>
             <h2 className="mt-3 section-title">{title}</h2>
           </div>
-          <a href="https://visitsalo.fi/kurpitsaviikot/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-brand-800">
+          <a href="https://visitsalo.fi/tapahtumat/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-brand-800">
             {locale === "fi" ? "Ajantasaiset tapahtumat" : locale === "es" ? "Eventos actualizados" : "Current event listings"}
             <ArrowUpRight className="h-4 w-4" />
           </a>
