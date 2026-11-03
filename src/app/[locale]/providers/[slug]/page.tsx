@@ -396,7 +396,7 @@ const providerPhotoGalleries: Record<string, LocalPhoto[]> = {
     { src: "https://lohenrengas.wordpress.com/wp-content/uploads/2016/04/heijastus.jpg", alt: { fi: "Heijastus Lohenrenkaan järven pinnalla", en: "Reflections on the lake at Lohenrengas", es: "Reflejos en el lago de Lohenrengas" }, credit: "Lohenrengas", source: "https://lohenrengas.wordpress.com/galleria/" },
     { src: "https://lohenrengas.wordpress.com/wp-content/uploads/2016/04/kirjolohi.jpg", alt: { fi: "Kirjolohi Lohenrenkaan kalastuspaikalla", en: "Rainbow trout at the Lohenrengas fishing venue", es: "Trucha arcoíris en el centro de pesca Lohenrengas" }, credit: "Lohenrengas", source: "https://lohenrengas.wordpress.com/galleria/" },
     { src: "https://lohenrengas.wordpress.com/wp-content/uploads/2016/04/laituri_uusijarvi.jpg", alt: { fi: "Lohenrenkaan järven laituri", en: "Jetty at a Lohenrengas lake", es: "Embarcadero en un lago de Lohenrengas" }, credit: "Lohenrengas", source: "https://lohenrengas.wordpress.com/galleria/" }
-  ]
+  ],
 
 
   "salo-pertteli-koirametsa-rymy": [
