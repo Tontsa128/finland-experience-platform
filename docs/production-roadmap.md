@@ -76,13 +76,16 @@ Etusivu → alue → kylä/kohde → palvelukategoria → palveluntarjoajan oma 
 
 ### Vaihe 4 – DataHub ja kumppaniverkosto
 
-- Selvitä Visit Finland DataHubin ajantasainen API-dokumentaatio, käyttöehdot, versio ja käyttöoikeuksien hakutapa ennen toteutusta.
+**Ajantasainen selvitystila 3.11.2026:** Visit Finlandin 20.11.2025 päivätty DataHub-ohje kertoi vanhan DataHub-rajapinnan alasajosta 31.1.2026 ja ohjasi rekisteröitymään Business Finlandin API-portaaliin. Uusimman API-dokumentaation pitäisi löytyä DataHubin API-käyttäjän ohjesivulta, mutta sivu vaatii JavaScriptin ja Business Finlandin portaali kirjautumisen. Uutta API-versiota, endpointia, tunnistautumista ja ehtoja ei siksi ole tässä vahvistettu. Älä rakenna integraatiota vanhan rajapinnan tai vanhentuneiden esimerkkien varaan.
+
+- Hanki yrityksen/organisaation oikeuksilla pääsy Business Finlandin API-portaaliin ja nykyiseen DataHub API -dokumentaatioon; tallenna versionumero, endpoint, tunnistautuminen, käyttöehdot ja käyttöönottotapa.
+- Vahvista DataHubilta, saako tuoterivejä hakea Finland Experiencen kaupalliseen verkkopalveluun ja miten attribuutio sekä kuvat tulee näyttää.
 - Aloita rajatulla kokeilulla ja vertaa DataHubin tuotetietoa nykyisiin Salo/Kemiönsaari-tietueisiin.
 - Säilytä Finland Experiencen omat kohdetarinat, käännökset, kuratoidut reitit ja paikallinen laadunvarmistus.
 - Älä anna DataHub-synkronoinnin korvata manuaalisesti varmennettuja lähde- tai julkaisutiloja.
 - Tee kumppaneille selkeä profiilin tarkistus- ja päivityspolku ennen maksullisten näkyvyyspakettien rakentamista.
 
-**Valmis, kun:** tietojen alkuperä, päivitysaika, julkaisuoikeus ja ristiriitatilanteen käsittely ovat määriteltyjä.
+**Valmis, kun:** nykyinen API-sopimus ja pääsy on varmistettu, tietojen alkuperä/päivitysaika/julkaisuoikeus on mallinnettu ja rajattu tiedonhaku on validoitu.
 
 ### Vaihe 5 – Kansainvälisen kysynnän validointi
 
@@ -110,9 +113,10 @@ Lisää analytiikka yksityisyyttä kunnioittavasti ja tarkista suostumusten tarv
 ## Seuraavat konkreettiset työpaketit
 
 1. Supabase-migraatioiden toteutuneen tilan read-only inventointi.
-2. Sisältölähteiden kartta on tehty PR:ssä #67; seuraavaksi vertaa tietueet PR:ien #60/#53 sisältöön.
-3. PR #60:n ja #53:n sisältövertailu nykyiseen päähaaraan ja deduplikoitu sisältöjono.
-4. Salo-hierarkian selainkierros on vahvistettu FI:ssä tuotannossa; tee vastaava EN/ES sekä provider-linkkien sisältötarkistus.
+2. DataHub API -portaaliin kirjautuminen ja uuden API-version sekä kaupallisen käytön ehtojen varmistaminen; toteutusta ei aloiteta ennen näitä tietoja.
+3. Sisältölähteiden kartta on tehty PR:ssä #67; seuraavaksi vertaa tietueet PR:ien #60/#53 sisältöön.
+4. PR #60:n ja #53:n sisältövertailu nykyiseen päähaaraan ja deduplikoitu sisältöjono.
+5. Salo-hierarkian selainkierros on vahvistettu FI/EN/ES:ssä tuotannossa Teijo-otannalla; laajenna tarkistus muiden kylien ja linkkien kattavuuteen.
 5. Ensimmäinen ylläpidettävä reitti CMS:n tai nykyisen sisältöarkkitehtuurin kautta.
 
 Lähtöoletuksia, kuten DataHub-API:n nykyistä saatavuutta, tuotantomigraatioiden tilaa, liikenteen määrää, markkinointibudjettia tai kumppanien maksuhalukkuutta, ei käsitellä faktoina ennen tarkistusta.
