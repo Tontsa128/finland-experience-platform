@@ -532,7 +532,7 @@ export default async function CoastalFinlandPage({ params }: { params: Promise<{
             <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">Särkisalo & Salo Coast</h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-white/70">{copy.nearbyText}</p>
           </div>
-          <Link href={`/${locale}/salo`} className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">
+          <Link href={`/${locale}/salo/kylat`} className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">
             {locale === "fi" ? "Avaa Salo-opas" : locale === "es" ? "Abrir la guía de Salo" : "Open the Salo guide"}<ArrowRight className="h-4 w-4" />
           </Link>
         </div>
