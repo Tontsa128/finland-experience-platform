@@ -11,7 +11,7 @@ Visit Finlandin kansainvälistymiskriteerit on tarkoitettu kansainvälisille mar
 - Päähaara: `1733b122` (3.11.2026).
 - Viimeisin tarkastettu GitHub Actions -ajo läpäisi lintin, typecheckin, unit-testit ja tuotantobuildin.
 - Vercelin projektissa on READY-tilassa oleva tuotantojulkaisu, jonka lähdecommit on sama kuin nykyinen main-päähaara (`1733b122`). Tämä vahvistaa, että Vercel julkaisee GitHubin main-haaraa.
-- Vercel-projektin Node-versio on tällä hetkellä 24.x, mutta GitHub Actions käyttää Node 22:ta. Julkaisu toimii, mutta versioero pitää joko yhtenäistää tai kirjata tietoiseksi valinnaksi.
+- Vercel käyttää Node 24:ää. Tämä työpaketti päivittää CI:n käyttämään samaa Node-versiota; muutos pitää vielä vahvistaa GitHub Actions -ajossa ennen yhdistämistä. Erillinen manuaalinen Next.js-parametrien korjausworkflow käyttää edelleen Node 20:tä ja arvioidaan myöhemmin erikseen.
 - Repositoriossa on myös Cloudflare Workers -konfiguraatio. Varmista, onko workers.dev-osoite yhä rinnakkainen tuotanto, vanha julkaisu vai tapahtumasyötteen tekninen Worker.
 - Projektissa on Next.js 16 / React 19, Supabase/Auth, CMS-näkymiä, mediat, tapahtumahallinta, liidiominaisuuksia ja FI/EN/ES-reittejä.
 - Reititys- ja tietomallikoodia on sekä tietokannan/CMS:n yhteydessä että aluekohtaisissa lähdekoodikatalogeissa. Sisällön ensisijainen hallintapaikka pitää inventoida sisältötyypeittäin.
