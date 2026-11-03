@@ -210,8 +210,6 @@ export const luxuryDirectory: LuxuryDirectoryEntry[] = [
     },
     url: "https://www.luontoon.fi/fi/kohteet/teijon-kansallispuisto",
     linkLabel: { fi: "Tutustu Luontoon-palvelussa", es: "Ver el parque en Luontoon", en: "Explore the park on Luontoon" },
-    image: `${cdn}40f256f0-6b21-11ed-8b5d-750472ef9a58.jpeg?s=1280`,
-    imageCredit: "Visit Salo / Visit Finland DataHub",
     tags: ["national park", "fishing", "campfire", "kayaking"]
   }
 ];
