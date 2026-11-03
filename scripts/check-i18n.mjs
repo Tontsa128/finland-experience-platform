@@ -74,28 +74,33 @@ if (/lastModified:\s*new Date\(\)/.test(sitemapSource)) {
 const sitemapBasePaths = sitemapSource.match(/const basePaths = \[([\s\S]*?)\];/)?.[1] ?? "";
 if (/(?:^|\n)\s*["']mathildedal(?:\/[^"']*)?["']\s*,?/m.test(sitemapBasePaths)) {
   failed = true;
-  console.error("Sitemap check failed: legacy Mathildedal aliases redirect to the canonical destination and must not be listed.");
+  console.error("Sitemap check failed: legacy Mathildedal aliases redirect to the canonical village and must not be listed.");
 }
 
 // Navigation regression guard: public Salo links skip the retired intro page,
-// and all legacy Mathildedal URLs resolve directly to the canonical destination.
+// and Mathildedal URLs resolve to the canonical village and category routes.
 const coastalGuideSource = await readFile(path.resolve("src/app/[locale]/coastal-finland/page.tsx"), "utf8");
 const mathildedalLegacySource = await readFile(path.resolve("src/app/[locale]/mathildedal/page.tsx"), "utf8");
 const mathildedalCategoryLegacySource = await readFile(path.resolve("src/app/[locale]/mathildedal/[category]/page.tsx"), "utf8");
 const mathildedalMiddlewareSource = await readFile(path.resolve("middleware.ts"), "utf8");
 const ruukkikylaGuideSource = await readFile(path.resolve("src/components/salo/RuukkikylaGuide.tsx"), "utf8");
 const teijoDestinationSource = await readFile(path.resolve("src/app/[locale]/destinations/teijon-ruukkikyla/page.tsx"), "utf8");
+const destinationDetailSource = await readFile(path.resolve("src/app/[locale]/destinations/[slug]/page.tsx"), "utf8");
 const saloGuideLinksDirectly = coastalGuideSource.includes('href={\u0060/\u0024{locale}/salo/kylat\u0060}');
 const legacyMathildedalLinksDirectly = [mathildedalLegacySource, mathildedalCategoryLegacySource, mathildedalMiddlewareSource]
-  .every((source) => source.includes('/destinations/salo-mathildedal') && !source.includes('/salo/mathildedal'));
+  .every((source) => source.includes('/salo/mathildedal') && !source.includes('/destinations/salo-mathildedal'));
+const legacyDestinationCanonicalizes = destinationDetailSource.includes('slug === "salo-mathildedal"')
+  && destinationDetailSource.includes('/salo/mathildedal');
 const relatedMathildedalLinksDirectly = ruukkikylaGuideSource.includes('/destinations/salo-mathildedal')
-  && teijoDestinationSource.includes('/destinations/salo-mathildedal');
+  && teijoDestinationSource.includes('/destinations/salo-mathildedal')
+  && legacyDestinationCanonicalizes;
 if (!saloGuideLinksDirectly || !legacyMathildedalLinksDirectly || !relatedMathildedalLinksDirectly) {
   failed = true;
   console.error("Direct destination navigation check failed:", {
     saloGuideLinksDirectly,
     legacyMathildedalLinksDirectly,
     relatedMathildedalLinksDirectly,
+    legacyDestinationCanonicalizes,
   });
 }
 
@@ -144,7 +149,7 @@ const areaRouteGeneratesAllSlugs = saloAreaPageSource.includes("const areaSlugs 
 const saloLandingLinksToVillageIndex = saloPageSource.includes("redirect(`/${locale}/salo/kylat`)");
 const villageIndexUsesAreaGrid = saloVillageIndexSource.includes("<SaloAreaGrid locale={locale} />");
 const saloLandingDoesNotRenderVillageGrid = !saloPageSource.includes("<SaloAreaGrid");
-const areaCardsLinkToRoutes = saloAreaGridSource.includes("destinations/salo-mathildedal") && saloAreaGridSource.includes("/salo/${area}");
+const areaCardsLinkToRoutes = /href=\{\x60\/\$\{locale\}\/salo\/\$\{area\}\x60\}/.test(saloAreaGridSource);
 const areaCardsIncludeImages = saloAreaGridSource.includes("<Image src={image.src");
 const sitemapIncludesAreaRoutes = sitemapSource.includes("...saloAreaPaths");
 const sitemapIncludesVillageIndex = sitemapSource.includes('"salo/kylat"');
