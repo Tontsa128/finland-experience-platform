@@ -291,7 +291,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   }[locale];
 
   return (
-    <section className="relative overflow-hidden bg-brand-950 text-white">
+    <section className="relative overflow-hidden bg-[#dfe8df] text-white">
       <div className="absolute inset-0">
         {activeSlides.map((item, index) => (
           <div
@@ -308,29 +308,29 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               quality={100}
               unoptimized
               onError={() => markImageFailed(item.key)}
-              className="object-cover brightness-110 contrast-105"
+              className="object-cover brightness-[1.08] contrast-[1.02] saturate-[1.08]"
             />
           </div>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/25 via-black/5 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17261a]/65 via-[#17261a]/18 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17261a]/28 via-[#17261a]/8 to-transparent" />
 
       <div className="relative z-10 flex min-h-[76svh] items-end pb-7 pt-[36svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
         <div className="container-narrow w-full">
           <div key={slide.key} className="max-w-4xl">
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[.22em] text-gold-300 sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
             <h1 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-[-.03em] sm:text-6xl sm:leading-[.96] lg:text-[5.4rem]">{text.title}</h1>
             <p className="mt-3 max-w-2xl text-sm leading-5 text-white/90 sm:mt-6 sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
           </div>
         </div>
       </div>
 
-      <div className="relative z-20 border-t border-white/15 bg-white text-brand-950 shadow-[0_-10px_30px_rgba(15,23,42,0.12)]">
+      <div className="relative z-20 border-t border-white/15 bg-[#fbf8f1] text-brand-950 shadow-[0_-10px_30px_rgba(47,65,49,0.10)]">
         <div className="container-narrow flex min-h-[88px] items-center justify-between gap-4 py-4 sm:min-h-[104px] sm:py-5">
           {href ? (
             slide.external ? (
-              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gold-300 px-6 py-3 text-sm font-bold transition hover:bg-gold-200 sm:px-7 sm:text-base">
+              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#e5eadc] px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-white sm:px-7 sm:text-base">
                 {text.cta}
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -343,7 +343,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           ) : null}
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
-            <button type="button" aria-label={ui.previous} onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50">
+            <button type="button" aria-label={ui.previous} onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d9e2d7] bg-white transition hover:bg-[#edf3ec]">
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
             <div className="flex max-w-[120px] items-center justify-center gap-1.5 overflow-hidden sm:max-w-none">
@@ -354,7 +354,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
                   aria-label={ui.goToSlide(index + 1)}
                   aria-current={index === active ? "true" : undefined}
                   onClick={() => setActive(index)}
-                  className={`h-2.5 min-w-2.5 rounded-full transition-all ${index === active ? "w-8 bg-brand-800" : "w-2.5 bg-brand-200 hover:bg-brand-300"}`}
+                  className={`h-2.5 min-w-2.5 rounded-full transition-all ${index === active ? "w-8 bg-brand-700" : "w-2.5 bg-[#d6dfd4] hover:bg-brand-300"}`}
                 />
               ))}
             </div>

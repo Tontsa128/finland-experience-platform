@@ -99,7 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <VisitorCounter locale={locale as "fi" | "es" | "en"} />
       <Hero settings={homepage} />
 
-      <section className="relative isolate overflow-hidden py-16 text-white sm:py-24"><Image src={photoLibrary.turkuArchipelago} alt="" fill sizes="100vw" className="absolute inset-0 -z-20 object-cover object-center" /><div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-950/75 to-brand-950/45" /><div className="container-narrow"><div className="mx-auto max-w-5xl rounded-[2rem] border border-white/20 bg-brand-950/25 px-6 py-10 text-center shadow-2xl backdrop-blur-[2px] sm:px-12 sm:py-14"><p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{sh("advisorEyebrow")}</p><h2 className="mx-auto mt-4 max-w-3xl font-display text-3xl font-bold leading-tight text-white sm:text-5xl">{sh("advisorTitle")}</h2><p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">{sh("advisorText")}</p><Link href={`/${locale}/plan`} className="btn-gold mt-8 inline-flex items-center gap-2 shadow-xl">{locale === "es" ? "Diseña tu viaje" : locale === "en" ? "Plan your trip" : "Suunnittele matkasi"} <ArrowRight className="h-4 w-4"/></Link></div><TravelAdvisor
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#f5f1e8] via-[#fbfaf7] to-[#edf3ed] py-14 sm:py-20"><div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#dce9df]/60 blur-3xl" /><div className="pointer-events-none absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-[#f0e4d1]/70 blur-3xl" /><div className="container-narrow"><div className="mx-auto mb-10 max-w-4xl rounded-[2rem] border border-[#e8e1d5] bg-white/90 px-6 py-9 text-center shadow-[0_18px_60px_rgba(47,65,49,0.08)] sm:px-12 sm:py-12"><p className="text-xs font-bold uppercase tracking-[.24em] text-brand-700">{sh("advisorEyebrow")}</p><h2 className="mx-auto mt-4 max-w-3xl font-display text-3xl font-bold leading-tight text-brand-950 sm:text-5xl">{sh("advisorTitle")}</h2><p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">{sh("advisorText")}</p><Link href={`/${locale}/plan`} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#dfe9df] px-7 py-3.5 text-sm font-bold text-brand-950 shadow-sm transition hover:bg-[#cddfce]">{locale === "es" ? "Diseña tu viaje" : locale === "en" ? "Plan your trip" : "Suunnittele matkasi"} <ArrowRight className="h-4 w-4"/></Link></div><TravelAdvisor
   language={locale as "fi"|"es"|"en"}
   catalog={{
     destinations: catalogDestinations.map((d) => ({
@@ -138,34 +138,34 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <section className="bg-brand-950 py-16 text-white sm:py-20">
+      <section className="bg-[#f1f4ee] py-16 text-brand-950 sm:py-20">
         <div className="container-narrow">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
-              <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{sh("coastalEyebrow")}</p>
+              <p className="text-xs font-bold uppercase tracking-[.22em] text-brand-700">{sh("coastalEyebrow")}</p>
               <h2 className="mt-3 font-display text-4xl font-bold leading-tight sm:text-5xl">{sh("coastalTitle")}</h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">{sh("coastalText")}</p>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">{sh("coastalText")}</p>
             </div>
-            <Link href={`/${locale}/coastal-finland`} className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-gold-300 hover:text-white">
+            <Link href={`/${locale}/coastal-finland`} className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand-800 hover:text-brand-600">
               {sh("coastalCta")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {coastalHighlights.map((destination) => (
               <Link
                 key={destination.id}
                 href={destination.slug === "salo-mathildedal" ? `/${locale}/salo` : `/${locale}/coastal-finland#${destination.slug === "aland" ? "aland" : destination.slug === "turku" ? "turku-archipelago" : destination.slug}`}
-                className="group relative min-h-[280px] overflow-hidden rounded-[1.5rem] bg-brand-900"
+                className="group relative min-h-[340px] overflow-hidden rounded-[1.8rem] bg-brand-900 shadow-[0_14px_40px_rgba(38,58,42,0.12)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(38,58,42,0.18)] sm:min-h-[380px]"
               >
                 <Image
-                  src={destination.slug === "salo-mathildedal" ? photoLibrary.saloVeturitalli : destinations.find((item) => item.slug === destination.slug)?.images?.[0] || destination.images?.[0] || fallbackSummerImage}
+                  src={destination.slug === "salo-mathildedal" ? photoLibrary.mathildedalHarbour : destination.slug === "naantali" ? photoLibrary.naantaliOldTown : destination.slug === "turku" ? photoLibrary.turkuAura : destination.slug === "hanko" ? photoLibrary.hankoRegattaBeach : destination.slug === "aland" ? photoLibrary.aland : destinations.find((item) => item.slug === destination.slug)?.images?.[0] || destination.images?.[0] || fallbackSummerImage}
                   alt={destination.slug === "salo-mathildedal" ? (locale === "fi" ? "Salo ja lähikylät" : locale === "es" ? "Salo y pueblos cercanos" : "Salo and nearby villages") : destination.name[locale as keyof typeof destination.name] || destination.name.en}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <p className="text-[10px] font-bold uppercase tracking-[.18em] text-gold-300">{destination.region}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold">
@@ -183,17 +183,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <section className="bg-stone-50 py-16 sm:py-20">
         <div className="container-narrow">
-          <div className="grid overflow-hidden rounded-[2rem] bg-brand-950 text-white shadow-card lg:grid-cols-[1.05fr_.95fr]">
+          <div className="grid overflow-hidden rounded-[2rem] border border-[#e8e1d5] bg-white text-brand-950 shadow-[0_18px_60px_rgba(47,65,49,0.10)] lg:grid-cols-[1.05fr_.95fr]">
             <div className="relative min-h-[320px] sm:min-h-[420px]">
               <Image src={photoLibrary.rosalaVikingCentre} alt={locale === "fi" ? "Rosalan saaristoelämys Kemiönsaaressa" : locale === "es" ? "Experiencia del archipiélago en Rosala, Kimitoön" : "Archipelago experience in Rosala, Kimitoön"} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <span className="absolute bottom-5 left-5 rounded-full bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-brand-950">{locale === "fi" ? "Uusi kohdealue" : locale === "es" ? "Nuevo destino" : "New destination"}</span>
             </div>
             <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
-              <p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{locale === "fi" ? "Saariston portti · Varsinais-Suomi" : locale === "es" ? "Puerta al archipiélago · Finlandia suroccidental" : "Gateway to the archipelago · Southwest Finland"}</p>
+              <p className="text-xs font-bold uppercase tracking-[.22em] text-brand-700">{locale === "fi" ? "Saariston portti · Varsinais-Suomi" : locale === "es" ? "Puerta al archipiélago · Finlandia suroccidental" : "Gateway to the archipelago · Southwest Finland"}</p>
               <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">{locale === "fi" ? "Kemiö ja Kemiönsaari" : locale === "es" ? "Kimitoön y el archipiélago" : "Kimitoön and the Archipelago"}</h2>
-              <p className="mt-5 text-base leading-7 text-white/75">{locale === "fi" ? "Satamia, saaristokyliä, paikallisia makuja, historiaa ja merellisiä retkiä. Löydä saariston oma rytmi ja suunnittele matka suoraan paikallisten palveluntarjoajien avulla." : locale === "es" ? "Puertos, pueblos isleños, sabores locales, historia y excursiones marítimas. Descubre el ritmo del archipiélago y planifica tu viaje con proveedores locales." : "Harbours, island villages, local flavours, history and sea adventures. Discover the archipelago at your own pace and plan your trip with local providers."}</p>
-              <Link href={"/" + locale + "/destinations/kemionsaari"} className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-gold-100">
+              <p className="mt-5 text-base leading-7 text-slate-600">{locale === "fi" ? "Satamia, saaristokyliä, paikallisia makuja, historiaa ja merellisiä retkiä. Löydä saariston oma rytmi ja suunnittele matka suoraan paikallisten palveluntarjoajien avulla." : locale === "es" ? "Puertos, pueblos isleños, sabores locales, historia y excursiones marítimas. Descubre el ritmo del archipiélago y planifica tu viaje con proveedores locales." : "Harbours, island villages, local flavours, history and sea adventures. Discover the archipelago at your own pace and plan your trip with local providers."}</p>
+              <Link href={"/" + locale + "/destinations/kemionsaari"} className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-[#dfe9df] px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-[#cddfce]">
                 {locale === "fi" ? "Tutustu Kemiönsaareen" : locale === "es" ? "Descubre Kimitoön" : "Explore Kimitoön"} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -216,8 +216,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
-      <section className="relative overflow-hidden bg-brand-950 py-20 text-white sm:py-28">
-        <div className="container-narrow grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{sh("whyEyebrow")}</p><h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-6xl">{sh("whyTitle")}</h2><p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">{sh("whyText")}</p></div><div className="overflow-hidden rounded-[2rem] shadow-2xl"><Image src={summerImages[2]} alt={sh("whyTitle")} width={1200} height={900} className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105" /></div></div>
+      <section className="relative overflow-hidden bg-[#f1f4ee] py-20 text-brand-950 sm:py-28">
+        <div className="container-narrow grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-700">{sh("whyEyebrow")}</p><h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-6xl">{sh("whyTitle")}</h2><p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{sh("whyText")}</p></div><div className="overflow-hidden rounded-[2rem] shadow-2xl"><Image src={summerImages[2]} alt={sh("whyTitle")} width={1200} height={900} className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105" /></div></div>
       </section>
       <section className="bg-white py-20 sm:py-28"><div className="container-narrow"><div className="grid gap-6 lg:grid-cols-3">
         {[["smoke","sauna",`/${locale}/experiences`],["stay","stays",`/${locale}/accommodations`],["taste","food",`/${locale}/experiences`]].map(([key],index)=>{const images=[summerImages[1],summerImages[3],summerImages[0]];return <Link key={key} href={key==="smoke"?`/${locale}/experiences`:key==="stay"?`/${locale}/accommodations`:`/${locale}/experiences`} className="group relative min-h-[470px] overflow-hidden rounded-[2rem] bg-brand-950 text-white"><Image src={images[index]} alt={sh(key)} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-7"><p className="text-xs font-bold uppercase tracking-[.18em] text-gold-300">{sh("experienceEyebrow")}</p><h3 className="mt-3 font-display text-3xl font-bold">{sh(key)}</h3><p className="mt-3 text-sm leading-6 text-white/80">{sh(`${key}Desc`)}</p><span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-gold-300">{tc("learnMore")} <ArrowRight className="h-4 w-4" /></span></div></Link>})}
@@ -226,7 +226,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="bg-white py-20 sm:py-28"><div className="container-narrow"><div className="mb-10 flex items-end justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("destinationsEyebrow")}</p><h2 className="mt-3 section-title">{t("featuredDestinations")}</h2></div><Link href={`/${locale}/destinations`} className="btn-secondary hidden sm:inline-flex">{tc("viewAll")}</Link></div><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{featuredDestinations.map((d,i)=><DestinationCard key={d.id} destination={d} index={i}/>)}</div></div></section>
       <section className="bg-slate-50 py-20 sm:py-28"><div className="container-narrow"><div className="mb-10 flex items-end justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("staysEyebrow")}</p><h2 className="mt-3 section-title">{t("uniqueStays")}</h2></div><Link href={`/${locale}/accommodations`} className="btn-secondary hidden sm:inline-flex">{tc("viewAll")}</Link></div><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{featuredCabins.map((c,i)=><CabinCard key={c.id} cabin={c} index={i}/>)}</div></div></section>
       <section className="bg-white py-20 sm:py-28"><div className="container-narrow"><div className="mb-10"><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("experiencesEyebrow")}</p><h2 className="mt-3 section-title">{t("popularExperiences")}</h2></div><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{featuredExperiences.map((e,i)=><ExperienceCard key={e.id} experience={e} index={i}/>)}</div></div></section>
-      <section className="bg-brand-950 py-20 text-white sm:py-28"><div className="container-narrow grid items-center gap-10 lg:grid-cols-2"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-gold-300">{sh("directEyebrow")}</p><h2 className="mt-4 font-display text-4xl font-bold sm:text-5xl">{sh("directTitle")}</h2><p className="mt-5 max-w-xl text-lg leading-8 text-white/70">{sh("directText")}</p></div><div className="rounded-[2rem] border border-white/10 bg-white/5 p-8"><div className="text-5xl">01</div><p className="mt-4 font-display text-2xl font-bold">{sh("directStep1")}</p><div className="my-5 h-px bg-white/10"/><div className="text-5xl">02</div><p className="mt-4 font-display text-2xl font-bold">{sh("directStep2")}</p></div></div></section>
+      <section className="bg-[#edf2eb] py-20 text-brand-950 sm:py-28"><div className="container-narrow grid items-center gap-10 lg:grid-cols-2"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-700">{sh("directEyebrow")}</p><h2 className="mt-4 font-display text-4xl font-bold sm:text-5xl">{sh("directTitle")}</h2><p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">{sh("directText")}</p></div><div className="rounded-[2rem] border border-[#dce5da] bg-white/80 p-8 shadow-soft"><div className="text-5xl">01</div><p className="mt-4 font-display text-2xl font-bold">{sh("directStep1")}</p><div className="my-5 h-px bg-white/10"/><div className="text-5xl">02</div><p className="mt-4 font-display text-2xl font-bold">{sh("directStep2")}</p></div></div></section>
 
       <section className="relative isolate overflow-hidden bg-brand-950 py-24 text-center text-white sm:py-32"><Image src={summerImages[0]} alt="" fill sizes="100vw" className="absolute inset-0 -z-20 object-cover opacity-35" /><div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-950/75 via-brand-950/80 to-brand-950" /><div className="container-narrow"><p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{sh("finalEyebrow")}</p><h2 className="mx-auto mt-4 max-w-4xl font-display text-5xl font-bold leading-[.98] tracking-[-.03em] sm:text-7xl">{sh("finalTitle")}</h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/75">{sh("finalText")}</p><Link href={`/${locale}/destinations`} className="btn-gold mt-8 px-8 py-4 shadow-2xl">{sh("finalCta")} <ArrowRight className="h-4 w-4"/></Link></div></section>
     </>
