@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, ExternalLink, MapPin, Search, Sparkles } from "lucide-react";
 import type { Experience, Locale } from "@/types";
 import ExperienceMap from "@/components/experiences/ExperienceMap";
 
-type Props = { experiences: Experience[]; locale: Locale; initialCategory?: string };
+type Props = { experiences: Experience[]; locale: Locale };
 
 const categoryLabels: Record<string, Record<Locale, string>> = {
   nature: { fi: "Luonto", es: "Naturaleza", en: "Nature" },
@@ -104,10 +104,10 @@ function navigationUrl(item: Experience) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address || item.region || item.name.en || item.slug)}`;
 }
 
-export default function ExperienceDirectory({ experiences, locale, initialCategory }: Props) {
+export default function ExperienceDirectory({ experiences, locale }: Props) {
   const t = copy[locale];
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState(initialCategory || "all");
+  const [category, setCategory] = useState("all");
   const [audience, setAudience] = useState("all");
   const [season, setSeason] = useState("all");
   const [selectedSlug, setSelectedSlug] = useState<string | undefined>();
@@ -116,6 +116,13 @@ export default function ExperienceDirectory({ experiences, locale, initialCatego
     () => Array.from(new Set(experiences.map((item) => item.category))).filter(Boolean),
     [experiences],
   );
+
+  useEffect(() => {
+    const requestedCategory = new URLSearchParams(window.location.search).get("category");
+    if (requestedCategory && categories.includes(requestedCategory)) {
+      setCategory(requestedCategory);
+    }
+  }, [categories]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase();

@@ -17,13 +17,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description, path: "experiences" });
 }
 
-export default async function ExperiencesPage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ category?: string }> }) {
+export default async function ExperiencesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
-  const { category } = await searchParams;
-  const initialCategory = new Set(["nature", "water", "sauna-wellness", "cycling-action", "food-farm", "culture-history", "golf", "fishing"]).has(category || "")
-    ? category
-    : undefined;
   const cmsExperiences = await getPublishedExperiences();
   const experiences = cmsExperiences;
 
@@ -42,7 +38,7 @@ export default async function ExperiencesPage({ params, searchParams }: { params
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
-      <ExperienceDirectory experiences={experiences} locale={locale} initialCategory={initialCategory} />
+      <ExperienceDirectory experiences={experiences} locale={locale} />
     </>
   );
 }
