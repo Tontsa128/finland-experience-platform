@@ -161,7 +161,7 @@ export default async function SaloAreaPage({
                 href={`/${locale}/salo/${area}/${saloCategorySlugs[category]}`}
                 image={representative?.image}
                 imageAlt={representative?.nameByLocale?.[locale] || representative?.name || copy.title}
-                eyebrow={copy.eyebrow}
+                eyebrow={areaCopy[area][locale].eyebrow}
                 title={copy.title}
                 description={copy.intro}
                 actionLabel={locale === "fi" ? "Tutustu kategoriaan" : locale === "es" ? "Explorar categoría" : "Explore category"}
