@@ -54,6 +54,31 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
 // promotional card not appear on the homepage. Keep the dedicated stay and
 // restaurant cards on the Kimitoön destination guide instead.
 const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
+const homepageDestinationCardSource = await readFile(path.resolve("src/components/home/HomeDestinationFeatureCard.tsx"), "utf8");
+const homepageDestinationFeaturesSource = await readFile(path.resolve("src/lib/homepage-destination-features.ts"), "utf8");
+const homepageHasAllCoastalDestinations = [
+  '"salo-mathildedal"',
+  "naantali:",
+  "turku:",
+  "hanko:",
+  "aland:",
+].every((slug) => homepageDestinationFeaturesSource.includes(slug));
+const homepageUsesSharedFeatureCard = (homepageSource.match(/<HomeDestinationFeatureCard/g) || []).length >= 2
+  && homepageDestinationCardSource.includes("<Image")
+  && homepageDestinationCardSource.includes("imageCredit")
+  && homepageDestinationCardSource.includes("imageSource")
+  && homepageDestinationCardSource.includes("imageUsageNote");
+const homepageCityCopyIsLocalized = ["fi:", "en:", "es:"].every((localeKey) => {
+  return homepageDestinationFeaturesSource.includes(localeKey);
+});
+if (!homepageHasAllCoastalDestinations || !homepageUsesSharedFeatureCard || !homepageCityCopyIsLocalized) {
+  failed = true;
+  console.error("Homepage destination card check failed:", {
+    homepageHasAllCoastalDestinations,
+    homepageUsesSharedFeatureCard,
+    homepageCityCopyIsLocalized,
+  });
+}
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
 const homepageHasKansakouluCard = homepageSource.includes("KansakouluSpotlight")
   || homepageSource.includes("kansakoulu");
