@@ -6,9 +6,9 @@ import { saloProviders, type SaloProvider } from "@/lib/salo";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
 
 const labels = {
-  fi: { tourism: "Matkailuinfo", stay: "Majoitus", experience: "Elämykset", nature: "Luonto", food: "Lähiruoka & kyläelämä", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu", photoSource: "Kuvan lähde" },
-  es: { tourism: "Información turística", stay: "Alojamiento", experience: "Experiencias", nature: "Naturaleza", food: "Gastronomía local", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar", photoSource: "Fuente de la foto" },
-  en: { tourism: "Tourism", stay: "Accommodation", experience: "Experiences", nature: "Nature", food: "Local food & village life", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page", photoSource: "Photo source" },
+  fi: { tourism: "Palvelut ja matkailuinfo", stay: "Majoitus", experience: "Tekemistä ja aktiviteetit", nature: "Luonto ja ulkoilu", food: "Ruoka ja kahvilat", price: "Hinta", visit: "Siirry palveluntarjoajalle", guide: "Avaa virallinen opas", details: "Katso kohdesivu", photoSource: "Kuvan lähde" },
+  es: { tourism: "Servicios e información turística", stay: "Alojamiento", experience: "Qué hacer y actividades", nature: "Naturaleza y aire libre", food: "Gastronomía y cafeterías", price: "Precio", visit: "Ir al proveedor", guide: "Abrir guía oficial", details: "Ver ficha del lugar", photoSource: "Fuente de la foto" },
+  en: { tourism: "Local services & visitor information", stay: "Accommodation", experience: "Things to do & activities", nature: "Nature & outdoors", food: "Food & cafés", price: "Price", visit: "Visit provider", guide: "Open official guide", details: "View provider page", photoSource: "Photo source" },
 } as const;
 
 export function SaloDirectory({ locale, category, area }: { locale: Locale; category?: SaloProvider["category"]; area?: SaloArea }) {

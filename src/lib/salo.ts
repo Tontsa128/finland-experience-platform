@@ -38,6 +38,33 @@ const providerImages = {
   sauna: `${cdn}a2446f90-7cba-11ef-a1fa-c33120773bf0.png?s=1280`,
   actionPark: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/P1040591-1-1339x768.jpg",
   brewery: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Kyl%C3%A4panimo-laatikko-web.jpg",
+  ilolanArboretum: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/10/rodot-rissa-1157x768.jpg",
+  rinteenFarm: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/12/rinteen-tila-768x768.jpg",
+  kanginFarm: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/09/2017-07-29-003-1152x768.jpg",
+  hyypparaTrail: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/Hyypp%C3%A4r%C3%A4n-maisema-768x768.jpg",
+  kurjenFarm: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/12/kurjen-tila-1160x768.jpg",
+  korpiahoDesign: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2026/02/Korpiaho-Design_keramiikkastudio_keramiikkakurssi-1152x768.jpg",
+  pertteliChurch: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Perttelin-kirkko-ja-kellotapuli-web.jpg",
+  muurlaInstitute: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/visitsalo_opisto-1366x768.jpg",
+  muurlaStore: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/Muurla-1-web.jpg",
+  marynummiBeach: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/06/Uimaranta-M%C3%A4ry_-1366x768.jpg",
+  mutainenFishing: "https://lohenrengas.wordpress.com/wp-content/uploads/2015/03/kivijc3a4rvi-e1426164908827.jpg",
+  juurevastiTours: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2026/01/VisitSaloon-JuurevastiJuurista-kohdekortti-1920-x-1080-px-3-1366x768.jpg",
+  rymyDogForest: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/10/Koirametsa-Rymy-Salo-luonnollinen-maasto-1366x768.jpg",
+  ilolanRaspberries: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/ilola7-1153x768.jpeg",
+  marynummiFitnessTrail: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/08/IMG_1397-1024x768.jpg",
+  halikkoWiurila: "https://wiurila.fi/wp-content/uploads/2026/06/paarakennus_u_16.jpg",
+  wiurilaGasthaus: "https://wiurila.fi/wp-content/uploads/2026/04/IMG_8451-scaled-1-2.jpeg",
+  wiurilaRestaurant: "https://wiurila.fi/wp-content/uploads/2026/06/ravinteli.png",
+  vaskiCider: "https://cdn-datahub.visitfinland.com/images/fc6ca1d0-b181-11ef-b5a0-3d8c42928efa.jpeg?s=1280",
+  wanhantuvanAnkkala: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Ankkala.jpg",
+  vaskioBed: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/08/Vaskio-Bed-1-1-1024x768.jpg",
+  ylivesaFarm: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2023/01/20210616-DSC06887-1151x768.jpg",
+  villenVineyard: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/06/IMG_20200802_185343-1024x768.jpg",
+  salonArtLoan: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2022/10/311169416_415808624065753_1920076266043848120_n.jpg",
+  vuohensaariNature: "https://cdn-datahub.visitfinland.com/images/a8305e60-58e5-11ec-9ba4-0dc52985e5d5-Vuohensaari%20k%C3%A4velyll%C3%A4.jpg?s=1280",
+  vuohensaariMinigolf: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/05/vuohensaari-minigolf-1366x768.jpg",
+  rikalaRestaurant: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2020/11/Rikala-0009-1150x768.jpg",
 };
 
 export const saloProviders: SaloProvider[] = [
@@ -167,6 +194,7 @@ export const saloProviders: SaloProvider[] = [
     priceByLocale: { fi: "Rinneautoilu: 2 kierrosta 16 €, 4 kierrosta 26 €, 5 kierrosta 32 €/hlö", en: "Mountain carting: 2 rides €16, 4 rides €26, 5 rides €32 per person", es: "Kart de montaña: 2 vueltas 16 €, 4 vueltas 26 €, 5 vueltas 32 € por persona" },
     image: providerImages.actionPark,
     imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/teijo-ski-action-park/",
   },
   {
     id: "chill-out-fishing",
@@ -251,6 +279,7 @@ export const saloProviders: SaloProvider[] = [
     url: "https://kylapanimo.fi",
     image: providerImages.brewery,
     imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/mathildedalin-kylapanimo/",
   },
   {
     id: "saaristomokit-sarkisalo",
@@ -697,6 +726,680 @@ export const saloProviders: SaloProvider[] = [
     image: "https://cdn.prod.website-files.com/6338042ae68560db6a16c66f/640089c846690215630ca95d_20220826_150455%20re%203.jpg",
     imageCredit: "Saaristotila Lönnviken — Meri-Veikko official website",
     imageSource: "https://www.lonnviken.com/fi/meri-veikko",
+  },
+
+
+  {
+    id: "kisko-pohjolan-tila",
+    category: "food",
+    name: "Pohjolan tila",
+    description: {
+      fi: "Kiskossa toimiva marjatila ja lähiruokapuoti. Valikoimaan kuuluu tilan omia käsintehtyjä hilloja, mehuja ja muita jalosteita sekä satokauden tuoreita marjoja, vihanneksia ja avomaan leikkokukkia. Tilalla järjestetään myös tapahtumia, iltapäiväteitä, brunssitilaisuuksia ja tastingeja; ryhmät ovat tervetulleita ennakkosopimuksella.",
+      en: "A berry farm and local food shop in Kisko. The selection includes the farm's own handmade jams, juices and preserves, as well as seasonal fresh berries, vegetables and outdoor-grown cut flowers. The farm also hosts events, afternoon teas, brunches and tastings, and welcomes groups by arrangement.",
+      es: "Granja de frutos rojos y tienda de productos locales en Kisko. Ofrece mermeladas, zumos y conservas artesanales de la propia granja, además de bayas, verduras y flores de temporada. También organiza eventos, meriendas, brunches y degustaciones; los grupos pueden reservar con antelación.",
+    },
+    url: "https://www.pohjolanmaatila.fi/",
+    image: "https://cdn-datahub.visitfinland.com/images/2d63fa30-f5e8-11f0-ad78-29bd5b45e175.jpeg?s=1280",
+    imageCredit: "Pohjolan tila / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/pohjolan-tila-2/",
+  },
+  {
+    id: "kisko-metsaketun-kievari",
+    category: "experience",
+    name: "Metsäketun Kievari",
+    description: {
+      fi: "Taivasmaan maatilalla toimiva elämyskohde, jossa yhdistyvät käsintehdyt pizzat, maatilan pihapiiri ja luontoaktiviteetit. Kohteessa on pizzerian lisäksi seikkailurata, kesäisiä pihapelejä ja eläimiä sekä kausittain toimiva Kettukahvila ja peltokylpylä saunoineen ja paljuineen. Aukiolot ja palvelut vaihtelevat kauden mukaan; tarkista ajantasaiset tiedot suoraan yrittäjältä.",
+      en: "An experience destination at Taivasmaa farm combining handmade pizza, a rural farm setting and outdoor activities. Alongside the pizzeria, the site has an adventure course, seasonal yard games and animals, plus a seasonal café and field spa with saunas and a hot tub. Opening days and services vary by season; check current details directly with the operator.",
+      es: "Un espacio de experiencias en la granja Taivasmaa que combina pizza artesanal, ambiente rural y actividades al aire libre. Además de la pizzería, hay un circuito de aventura, juegos de jardín y animales en temporada, así como una cafetería y un spa rural con saunas y jacuzzi. Los horarios y servicios varían según la temporada; confirma los detalles directamente con el operador.",
+    },
+    url: "https://www.metsaketunpizzeria.com/",
+    image: "https://cdn-datahub.visitfinland.com/images/4415f430-366d-11f0-b5fd-d35a38627c06.jpeg?s=1280",
+    imageCredit: "Metsäketun Kievari / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/metsaketun-pizzeria/",
+  },
+  {
+    id: "kisko-puutarha-siimes",
+    category: "food",
+    name: "Puutarha Siimes",
+    description: {
+      fi: "Kiskossa toimiva perhepuutarha kasvattaa biolämmöllä kirsikkatomaatteja, yrttejä ja taimia sekä pientä valikoimaa muita vihanneksia. Tuotteet kypsyvät tilalla, ja niitä toimitetaan REKO-jakeluihin sekä sopimusasiakkaille. Tilamyymälä toimii itsepalveluperiaatteella.",
+      en: "A family-run greenhouse farm in Kisko growing cherry tomatoes with bioenergy, alongside herbs, seedlings and a small selection of other vegetables. Produce ripens on the farm and is supplied through REKO local-food groups and to contract customers. The farm shop operates on a self-service basis.",
+      es: "Una granja familiar de invernaderos en Kisko que cultiva tomates cherry con energía de biomasa, además de hierbas, plantones y una pequeña selección de otras verduras. Los productos maduran en la propia granja y se distribuyen mediante grupos REKO y a clientes con acuerdos. La tienda funciona en régimen de autoservicio.",
+    },
+    url: "https://www.puutarhasiimes.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Siimes2-1-1152x768.jpg",
+    imageCredit: "Puutarha Siimes / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/puutarha-siimes/",
+  },
+  {
+    id: "kisko-kalliolan-tila",
+    category: "food",
+    name: "Kalliolan Tila",
+    description: {
+      fi: "Kiskontien varrella toimiva suomenlammastila, jossa kasvatetaan suomenlampaita ja pidetään myös lapinlehmiä. Eläimet laiduntavat tilan ympäristössä kesäkaudella. Tilapuodista voi ostaa karitsan- ja lampaanlihaa, villalankaa ja lampaantaljoja; puodin aukiolo kannattaa tarkistaa ennen vierailua.",
+      en: "A Finnsheep farm along Kiskontie, also home to a few Lapland cows. The animals graze in the surrounding fields during the summer season. The farm shop sells lamb and mutton, wool yarn and sheepskins; check opening times before visiting.",
+      es: "Una granja de ovejas finlandesas junto a Kiskontie, donde también viven algunas vacas laplandesas. Los animales pastan en los prados de la finca durante el verano. La tienda vende carne de cordero, hilo de lana y pieles; consulta los horarios antes de la visita.",
+    },
+    url: "https://kohteet.visitsalo.fi/kalliolan-tila/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/kalliolantila1-1024x768.jpeg",
+    imageCredit: "Kalliolan Tila / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/kalliolan-tila/",
+  },
+  {
+    id: "kisko-purolan-tila",
+    category: "food",
+    name: "Purolan tila",
+    description: {
+      fi: "Purolan tila myy tuoreita kananmunia oman tilan viljalla ruokituilta kanoilta. Tilalla on ympäri vuorokauden palveleva itsepalvelukioski, jossa maksutapoina ovat käteinen, kortti ja MobilePay.",
+      en: "Purolan farm sells fresh eggs from hens fed with grain grown on the farm. Its self-service farm kiosk is open 24 hours a day and accepts cash, card and MobilePay.",
+      es: "La granja Purolan vende huevos frescos de gallinas alimentadas con cereal cultivado en la propia finca. Su quiosco de autoservicio está abierto las 24 horas y acepta efectivo, tarjeta y MobilePay.",
+    },
+    url: "https://www.purolantila.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2021/06/Purolan-Tila.jpg",
+    imageCredit: "Purolan tila / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/purolan-tila/",
+  },
+  {
+    id: "kisko-church",
+    category: "experience",
+    name: "Kiskon kirkko",
+    nameByLocale: { en: "Kisko Church", es: "Iglesia de Kisko" },
+    description: {
+      fi: "Kiskon puukirkko otettiin käyttöön vuonna 1810. Se on neljäs samalla paikalla sijainnut kirkko, ja sen kivinen sakaristo on säilynyt keskiaikaisesta kirkosta. Kirkko sijaitsee Kiskon kirkonkylässä.",
+      en: "Kisko's wooden church was inaugurated in 1810. It is the fourth church on the same site, and its stone sacristy has been preserved from a medieval church. The church stands in the historic village centre of Kisko.",
+      es: "La iglesia de madera de Kisko se inauguró en 1810. Es la cuarta iglesia construida en el mismo lugar y conserva una sacristía de piedra procedente de una iglesia medieval. Se encuentra en el centro histórico de Kisko.",
+    },
+    url: "https://kohteet.visitsalo.fi/en/kisko-church/",
+    image: photoLibrary.kiskoChurch,
+    imageCredit: "Islander / Wikimedia Commons — CC BY 3.0",
+    imageSource: "https://commons.wikimedia.org/wiki/File:Kisko.jpg",
+  },
+  {
+    id: "kuusjoki-kivisaaren-piapojauhoi",
+    category: "food",
+    name: "Kivisaaren Piapojauhoi",
+    description: {
+      fi: "Kuusjoen Raatalassa valmistetaan perinteisiä piapojauhoja tilan omalla myllyllä. Lähipelloilla kasvatettu kaura kuivataan suvussa kulkeneella reseptillä, ja jauhot pussitetaan perheen voimin. Tuotteita on saatavilla lähialueen kaupoista ja K-ryhmän myymälöistä.",
+      en: "Traditional Piapojauhoi flour is made in Raatala, Kuusjoki, using the farm's own mill. Oats grown in nearby fields are dried using a family recipe passed down through generations, and the flour is packed by the family. Products are available in local shops and K-group stores.",
+      es: "En Raatala, Kuusjoki, se elaboran harinas tradicionales Piapojauhoi en el molino de la propia finca. La avena cultivada en los campos cercanos se seca siguiendo una receta familiar transmitida durante generaciones y la familia se encarga del envasado. Los productos se venden en tiendas locales y establecimientos del grupo K.",
+    },
+    url: "https://www.piapo.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2025/01/Piapojauhojen-pakkaus-2.jpg",
+    imageCredit: "Kivisaaren Piapojauhoi / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/kivisaaren-piapojauhoi/",
+  },
+  {
+    id: "kuusjoki-ohrakasken-tila",
+    category: "food",
+    name: "Ohrakasken tila",
+    description: {
+      fi: "Kuusjoen ja Vaskion rajalla Raatalassa sijaitseva lähitila keskittyy pensasmustikan viljelyyn ja emolehmien pitoon. Pensasmustikoita voi poimia itse tai ostaa valmiiksi poimittuna tilapuodista tilauksesta. Satokausi alkaa yleensä heinäkuun lopulla ja jatkuu syyskuulle.",
+      en: "A local farm in Raatala, between Kuusjoki and Vaskio, specialising in blueberries and beef cattle. Blueberries can be picked by visitors or ordered ready-picked from the farm shop. The harvest season usually runs from late July into September.",
+      es: "Una granja local en Raatala, entre Kuusjoki y Vaskio, especializada en arándanos y ganado vacuno. Los visitantes pueden recoger los arándanos o pedirlos ya recolectados en la tienda de la granja. La temporada suele comenzar a finales de julio y continuar hasta septiembre.",
+    },
+    url: "https://kohteet.visitsalo.fi/ohrakasken-tila/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Ohrakaski1-576x768.jpg",
+    imageCredit: "Ohrakasken tila / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/ohrakasken-tila/",
+  },
+  {
+    id: "kuusjoki-ellun-kanat",
+    category: "food",
+    name: "Ellun kanat ja munat",
+    description: {
+      fi: "Raatalassa toimiva sukutila on toiminut vuodesta 1917. Tilalla kasvatetaan suomalaisia maatiaiskanoja, ja niiden munia myydään suoraan kotitilalta sekä REKO-ringeissä. Aina avoinna olevasta itsepalvelu-Munapuodista löytyy myös muita paikallisia lähiruokatuotteita ja kanojen tarvikkeita.",
+      en: "A family farm in Raatala with roots dating back to 1917. It raises Finnish landrace hens and sells their eggs directly from the farm and through REKO local-food groups. The always-open self-service egg shop also offers other local food products and supplies for keeping hens.",
+      es: "Una granja familiar en Raatala con una historia que se remonta a 1917. Cría gallinas autóctonas finlandesas y vende sus huevos directamente en la finca y mediante grupos REKO. La tienda de autoservicio de huevos, siempre abierta, también ofrece otros productos locales y artículos para la cría de gallinas.",
+    },
+    url: "https://www.ellunkanatjamunat.fi/",
+    image: "https://kohteet.visitsalo.fi/wp-content/uploads/sites/5/2024/11/Munakenno-10-1152x768.jpg",
+    imageCredit: "Ellun kanat ja munat / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/ellun-kanat-ja-munat/",
+  },
+  {
+    id: "kuusjoki-church",
+    category: "experience",
+    name: "Kuusjoen kirkko",
+    nameByLocale: { en: "Kuusjoki Church", es: "Iglesia de Kuusjoki" },
+    description: {
+      fi: "Kuusjoen puukirkko valmistui vuonna 1823 ja siinä on 350 istumapaikkaa. Kirkko rakennettiin alun perin pitäjäläisten voimin saarnahuoneeksi, ja se kuuluu Kuusjoen historialliseen kylämaisemaan.",
+      en: "Kuusjoki's wooden church was completed in 1823 and has seating for 350 people. Originally built by local residents as a preaching house, it forms part of the historic village landscape.",
+      es: "La iglesia de madera de Kuusjoki se terminó en 1823 y tiene capacidad para 350 personas. Construida originalmente por los habitantes como casa de predicación, forma parte del paisaje histórico del pueblo.",
+    },
+    url: "https://kohteet.visitsalo.fi/kuusjoen-kirkko/",
+    image: photoLibrary.kuusjokiHistoricChurch,
+    imageCredit: "Htm / Wikimedia Commons — CC BY 4.0",
+    imageSource: "https://commons.wikimedia.org/wiki/File:Kuusjoki_church_2.jpg",
+  },
+
+  {
+    id: "hajala-myllytyry",
+    category: "experience",
+    name: "Myllytyryn uimapaikka ja sauna",
+    description: {
+      fi: "Hajalan Myllytyry on lähdepohjainen metsälampi, jonka rannalla on kaksi hiekkarantaa, laituri, grillikatos ja puulämmitteinen sauna. Kyläyhdistykseltä voi tiedustella saunan yksityisvuokrausta. Uimapaikka on vapaasti käytettävissä; saunan käyttö ja varaukset tarkistetaan aina Hajalan kyläyhdistykseltä.",
+      en: "Myllytyry in Hajala is a spring-fed forest lake with two sandy beaches, a jetty, barbecue shelter and a wood-heated sauna. The village association handles enquiries about private sauna hire. The swimming area is freely accessible; check sauna access and bookings directly with the Hajala village association.",
+      es: "Myllytyry, en Hajala, es un lago forestal alimentado por manantiales con dos playas de arena, un muelle, una zona de barbacoa y una sauna de leña. La asociación local gestiona las consultas sobre el alquiler privado de la sauna. El baño es de acceso libre; confirma el uso y las reservas de la sauna directamente con la asociación.",
+    },
+    url: "https://www.hajala.fi/myllytyry/",
+    image: photoLibrary.hajalaMyllytyry,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/myllytyryn-uimapaikka/",
+  },
+  {
+    id: "kirjakkalan-ruukkikyla",
+    category: "stay",
+    name: "Kirjakkalan Ruukkikylä / Extreme Fun",
+    description: {
+      fi: "Kirjakkalan historiallisessa ruukkimiljöössä Hamarijärven rannalla toimii majoitus-, kokous- ja saunapalveluja sekä ulkoilu- ja melontakeskus. Ruukkikylän historia ulottuu vuoteen 1686, ja vanhat rakennukset sijaitsevat Teijon kansallispuiston retkeilyreittien äärellä. Tarkista huonevaihtoehdot, palvelut ja varausehdot suoraan yrittäjältä.",
+      en: "In the historic ironworks setting of Kirjakkala by Lake Hamarijärvi, the operator offers accommodation, meeting and sauna facilities, as well as an outdoor and paddling centre. The ironworks history dates back to 1686, and the restored buildings stand beside the trails of Teijo National Park. Check room options, services and booking terms directly with the operator.",
+      es: "En el entorno histórico de la ferrería de Kirjakkala, junto al lago Hamarijärvi, se ofrecen alojamiento, espacios para reuniones y sauna, además de un centro de actividades al aire libre y piragüismo. La historia de la ferrería se remonta a 1686 y los edificios restaurados están junto a los senderos del Parque Nacional de Teijo. Consulta directamente con el operador las habitaciones, los servicios y las condiciones de reserva.",
+    },
+    url: "https://www.ruukkikyla.fi/",
+    image: photoLibrary.kirjakkalaVillage,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/kirjakkalan-ruukkikyla-melontakeskus/",
+  },
+
+  {
+    id: "hajala-tromperin-kestikievari",
+    category: "experience",
+    name: "Trömperin kestikievari",
+    description: {
+      fi: "Hajalan historiallinen kestikievari on suojeltu rakennusperintökohde, jonka vanhin osa on 1700-luvulta. Tunnelmallisessa pihapiirissä toimii museokohde ja kesäkaudella kahvila. Aukioloajat ja opastukset kannattaa tarkistaa Salon historialliselta museolta ennen vierailua.",
+      en: "This historic roadside inn in Hajala is a protected heritage building, with its oldest section dating from the 18th century. The atmospheric courtyard houses a museum, with a café operating during the summer season. Check opening times and guided visits with Salo's historical museum before visiting.",
+      es: "Esta antigua posada de Hajala es un edificio protegido del patrimonio histórico; su parte más antigua data del siglo XVIII. En el acogedor patio hay un museo y, durante la temporada de verano, una cafetería. Consulta los horarios y las visitas guiadas con el museo histórico de Salo antes de ir.",
+    },
+    url: "https://salomus.fi/nae-ja-koe/tromperin-kestikievari/",
+    image: photoLibrary.hajalaTromperi,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/tromperin-kestikievari/",
+  },
+  {
+    id: "angelniemi-paula-achrenin-puutarha",
+    category: "food",
+    name: "Paula Achrénin Puutarha",
+    description: {
+      fi: "Angelniemellä sijaitseva puutarhatila kasvattaa omenoita, raparperia ja pensasmustikoita sekä jalostaa omenoita mehuksi ja siideriksi. Tilalta saa pastöroitua omenamehua ympäri vuoden, ja syksyisin mehuasemalla voi mehustaa omia omenoita ajanvarauksella. Siideripuodissa käynnistä sovitaan etukäteen yrittäjän kanssa.",
+      en: "This garden farm in Angelniemi grows apples, rhubarb and blueberries, and processes apples into juice and cider. Pasteurised apple juice is available year-round, while the autumn juice press can process visitors' own apples by appointment. Arrange a visit to the cider shop directly with the operator.",
+      es: "Esta finca-jardín de Angelniemi cultiva manzanas, ruibarbo y arándanos, y transforma las manzanas en zumo y sidra. Hay zumo de manzana pasteurizado durante todo el año y, en otoño, la prensa permite procesar manzanas propias con cita previa. Acuerda la visita a la tienda de sidra directamente con la productora.",
+    },
+    url: "https://www.paulanpuutarha.fi/",
+    image: photoLibrary.angelniemiPaulaGarden,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/paula-achrenin-puutarha/",
+  },
+  {
+    id: "angelniemi-kokkila-beach",
+    category: "nature",
+    name: "Kokkilan uimaranta",
+    description: {
+      fi: "Kokkilan esteetön hiekkaranta sijaitsee Halikonlahden rannalla lossin vieressä. Ranta-alueella on loivasti syvenevä uimapaikka, grillikota, beach volley -kenttiä ja lasten leikkipaikka. Rannalla ei ole uinninvalvontaa. Tarkista saunan ja muiden palvelujen ajantasainen käyttötilanne Salon liikuntapalveluilta.",
+      en: "Kokkila is an accessible sandy beach on Halikko Bay, next to the ferry. The area has a gently shelving swimming beach, a barbecue shelter, beach-volleyball courts and a children's play area. There is no lifeguard service. Check the current status of the sauna and other facilities with Salo Sports Services.",
+      es: "Kokkila es una playa de arena accesible situada en la bahía de Halikko, junto al transbordador. La zona cuenta con una playa de poca profundidad, una caseta de barbacoa, pistas de vóley-playa y un parque infantil. No hay servicio de socorrismo. Consulta con los servicios deportivos de Salo el estado actual de la sauna y otras instalaciones.",
+    },
+    url: "https://kohteet.visitsalo.fi/kokkilan-uimaranta/",
+    image: photoLibrary.angelniemiKokkilaBeach,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/kokkilan-uimaranta/",
+  },
+  {
+    id: "angelniemi-church",
+    category: "experience",
+    name: "Angelniemen kirkko",
+    description: {
+      fi: "Angelniemen puukirkko valmistui vuonna 1772 Kemiönsaaren pohjoispään kauniille niemelle. Kirkossa järjestetään jumalanpalveluksia muutaman kerran kesässä ja suurina kirkollisina juhlapyhinä. Kirkko on avoinna vierailuille vain tilauksesta; sovi käynnistä Salon seurakunnan kanssa.",
+      en: "Angelniemi's wooden church was completed in 1772 on a scenic peninsula at the northern end of Kimitoön. Services are held a few times each summer and on major church holidays. The church is open to visitors by arrangement only; contact Salo Parish to plan a visit.",
+      es: "La iglesia de madera de Angelniemi se terminó en 1772 en una pintoresca península del extremo norte de Kimitoön. Se celebran servicios algunas veces durante el verano y en las principales festividades religiosas. La iglesia solo abre a visitantes con cita previa; contacta con la parroquia de Salo para organizar la visita.",
+    },
+    url: "https://www.salonseurakunta.fi/",
+    image: photoLibrary.angelniemiChurchVisit,
+    imageCredit: "Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/angelniemen-kirkko/",
+  },
+
+
+  {
+    id: "kiikala-ilolan-arboretum",
+    name: "Ilolan Arboretum",
+    category: "nature",
+    description: {
+      fi: "Kiikalan 20 hehtaarin arboretumissa yhdistyvät puulajipuisto, metsäpuutarha ja maisemapuisto. Hoidettuja alueita on noin 15 hehtaaria, ja polkuverkosto on noin kolme kilometriä. Kevään ja alkukesän alppiruusut sekä syksyn ruska tekevät kohteesta kiinnostavan eri vuodenaikoina. Poluilla on korkeuseroja, joten alue ei ole täysin esteetön. Tarkista kausittaiset aukioloajat ja opastukset viralliselta sivulta.",
+      en: "Ilola Arboretum in Kiikala covers 20 hectares and combines a tree collection, woodland garden and landscape park. Around 15 hectares are maintained, with approximately three kilometres of paths. Rhododendrons in spring and early summer foliage in autumn make it worth visiting in different seasons. The paths include slopes and are not fully accessible. Check seasonal opening times and guided visits on the official page.",
+      es: "El arboreto de Ilola, en Kiikala, ocupa 20 hectáreas y combina un parque de especies arbóreas, un jardín forestal y un parque paisajístico. Unas 15 hectáreas están cuidadas y hay aproximadamente tres kilómetros de senderos. Los rododendros de primavera y los colores otoñales ofrecen motivos para visitarlo en distintas estaciones. Los caminos tienen desniveles y no son totalmente accesibles. Consulta los horarios estacionales y las visitas guiadas en la página oficial."
+    },
+    url: "https://kohteet.visitsalo.fi/ilolan-arboretum-ja-taimisto/",
+    image: providerImages.ilolanArboretum,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/ilolan-arboretum-ja-taimisto/",
+    officialGuide: true
+  },
+  {
+    id: "kiikala-rinteen-luomutila",
+    name: "Rinteen luomutila",
+    category: "food",
+    description: {
+      fi: "Kruusilassa toimiva perhetila kasvattaa luomuvihanneksia, kuten tomaatteja, kurkkuja, yrttejä ja juureksia. Tilalla tuotetaan myös vihannesten taimia, kesäkukkia ja amppeleita. Tuotteita myydään suoraan tilalta ja torimyynnissä. Varmista tuotteiden saatavuus ja myyntiajat suoraan tilalta.",
+      en: "A family-run organic farm in Kruusila growing vegetables such as tomatoes, cucumbers, herbs and root vegetables. The farm also produces vegetable seedlings, summer flowers and hanging baskets. Products are sold directly from the farm and at market stalls. Check current availability and sales times with the farm.",
+      es: "Esta granja familiar ecológica de Kruusila cultiva verduras como tomates, pepinos, hierbas y tubérculos. También produce plantones de hortalizas, flores de verano y cestas colgantes. Los productos se venden directamente en la granja y en mercados. Consulta con la granja la disponibilidad y los horarios de venta."
+    },
+    url: "https://kohteet.visitsalo.fi/rinteen-luomutila/",
+    image: providerImages.rinteenFarm,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/rinteen-luomutila/",
+    officialGuide: true
+  },
+  {
+    id: "kiikala-kangin-tila",
+    name: "Kängin tila",
+    category: "food",
+    description: {
+      fi: "Kruusilan pieni perhetila kasvattaa lampaita ja ylämaankarjaa. Tilalla painotetaan laidunnusta ja nurmiruokintaa, ja myynnissä on tilan omia lihatuotteita. Tilalle suositellaan ottamaan yhteyttä etukäteen, jotta yrittäjät ovat varmasti paikalla.",
+      en: "A small family farm in Kruusila raising sheep and Highland cattle. The farm focuses on grazing and grass-fed production and sells its own meat products. Contact the farm before visiting to make sure someone is available.",
+      es: "Pequeña granja familiar en Kruusila que cría ovejas y ganado Highland. La producción se basa en el pastoreo y la alimentación con hierba, y se venden productos cárnicos propios. Se recomienda contactar con la granja antes de la visita para confirmar que haya alguien disponible."
+    },
+    url: "https://www.kangintila.fi/",
+    image: providerImages.kanginFarm,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/kangin-tila/"
+  },
+  {
+    id: "kiikala-hyyppara-kultalahde",
+    name: "Hyyppärä-Kultalähteen luontopolku",
+    category: "nature",
+    description: {
+      fi: "Kiikalan Hyyppärän harjumaisemissa kulkeva luontopolku tarjoaa kaksi rengasreittivaihtoehtoa, 1,8 km ja 2,3 km. Reitillä on jyrkkiä nousuja ja laskuja, joten se on vaativa eikä sovellu liikuntarajoitteisille. Kohde on käytettävissä sulan maan aikaan, eikä reitillä ole talvikunnossapitoa. Pysy merkityllä polulla: Kultalähteen rannat ovat herkkiä ja kalastus sekä tulenteko ovat kiellettyjä.",
+      en: "This nature trail crosses the esker landscape of Hyyppärä in Kiikala. Visitors can choose between two circular routes of 1.8 km and 2.3 km. The trail has steep climbs and descents, is demanding and is not suitable for visitors with reduced mobility. It is intended for the unfrozen season and is not maintained in winter. Stay on marked paths: the shores of Kultalähde Spring are fragile, and fishing and campfires are prohibited.",
+      es: "Este sendero natural atraviesa el paisaje de crestas glaciares de Hyyppärä, en Kiikala. Hay dos rutas circulares, de 1,8 km y 2,3 km. El recorrido tiene subidas y bajadas pronunciadas, es exigente y no es adecuado para personas con movilidad reducida. Se utiliza durante la temporada sin hielo y no se mantiene en invierno. Permanece en los senderos señalizados: las orillas del manantial Kultalähde son frágiles y están prohibidas la pesca y las hogueras."
+    },
+    url: "https://kohteet.visitsalo.fi/hyyppara-kultalahde-luontopolku/",
+    image: providerImages.hyypparaTrail,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/hyyppara-kultalahde-luontopolku/",
+    officialGuide: true
+  },
+  {
+    id: "pertteli-kurjen-maatila",
+    name: "Kurjen maatila",
+    category: "food",
+    description: {
+      fi: "Perttelissä toimiva maatila tunnetaan mansikanviljelystä. Mansikoita myydään suoraan tilalta kuluttajille ja jälleenmyyjille, ja satokaudella tilalla voi myös poimia itse avomaan mansikoita. Tilapuoti palvelee satokauden mukaan; tarkista ajantasaiset aukioloajat ja saatavuus maatilan omilta sivuilta.",
+      en: "A farm in Pertteli specialising in strawberries. Berries are sold directly to consumers and retailers, and visitors can pick their own strawberries in the open fields during the season. The farm shop operates seasonally; check current opening times and availability on the farm's own website.",
+      es: "Granja de Pertteli especializada en el cultivo de fresas. Las fresas se venden directamente a consumidores y distribuidores, y durante la temporada se pueden recoger en los campos. La tienda de la granja abre según la temporada; consulta los horarios y la disponibilidad en la web oficial."
+    },
+    url: "https://kurjenmaatila.fi/",
+    image: providerImages.kurjenFarm,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/kurjen-maatila/"
+  },
+  {
+    id: "pertteli-korpiaho-design",
+    name: "Korpiaho Design",
+    category: "experience",
+    description: {
+      fi: "Perttelin maaseutumiljöössä toimiva keramiikkastudio järjestää keramiikkakursseja yksityisille ja ryhmille. Työpajoja voi tiedustella esimerkiksi juhliin, virkistyspäiviin ja pienille ryhmille. Studiolla on myös tekijän omaa taidekeramiikkaa ja käsintehtyjä käyttöesineitä. Vierailut ja kurssit sovitaan etukäteen.",
+      en: "A ceramics studio in the countryside of Pertteli offering pottery workshops for individuals and groups. Sessions can be arranged for celebrations, team days and small groups. The studio also sells the artist's own ceramic art and handmade objects. Visits and workshops are by prior arrangement.",
+      es: "Estudio de cerámica situado en el entorno rural de Pertteli que ofrece talleres para particulares y grupos. Se pueden organizar sesiones para celebraciones, jornadas de equipo y grupos pequeños. También vende piezas artísticas y objetos hechos a mano por la artista. Las visitas y los talleres se acuerdan con antelación."
+    },
+    url: "https://korpiahodesign.fi/",
+    image: providerImages.korpiahoDesign,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/keramiikkastudio-korpiaho-design/"
+  },
+  {
+    id: "pertteli-church",
+    name: "Perttelin kirkko",
+    category: "experience",
+    description: {
+      fi: "Perttelin keskiaikainen harmaakivikirkko on omistettu Pyhälle Bartholomeukselle. Kirkko on valmistunut arviolta 1500-luvun alussa. Erillisen puisen kellotapulin vanhimmat osat ovat 1720-luvulta. Kohde sijaitsee Uskelanjoen kulttuurimaisemassa; aukiolo ja vierailumahdollisuus kannattaa tarkistaa seurakunnalta.",
+      en: "Pertteli's medieval grey-stone church is dedicated to Saint Bartholomew and is believed to have been completed in the early 16th century. The oldest parts of its separate wooden bell tower date from the 1720s. The church stands in the cultural landscape of the Uskelanjoki River; check visiting arrangements with the parish.",
+      es: "La iglesia medieval de piedra gris de Pertteli está dedicada a San Bartolomé y se cree que fue terminada a principios del siglo XVI. Las partes más antiguas de su campanario de madera independiente datan de la década de 1720. La iglesia se encuentra en el paisaje cultural del río Uskelanjoki; consulta con la parroquia las condiciones de visita."
+    },
+    url: "https://www.salonseurakunta.fi/",
+    image: providerImages.pertteliChurch,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/perttelin-kirkko/",
+    officialGuide: true
+  },
+  {
+    id: "muurla-muurlan-opisto",
+    name: "Muurlan Opisto",
+    category: "stay",
+    description: {
+      fi: "Muurlan Opisto sijaitsee Ylisjärven rannalla ja tarjoaa majoitusta yksittäisille matkailijoille sekä ryhmille. Opiston tiloja voi varata myös juhliin, kokouksiin, koulutuksiin ja ryhmäpäiviin. Vierailuun voi yhdistää luontoelämyksiä, frisbeegolfia ja ravintolapalveluja. Lounasravintola on Visit Salon tietojen mukaan palvellut arkisin klo 11–13; varmista nykyinen tarjonta suoraan opistolta.",
+      en: "Muurlan Opisto is located by Lake Ylisjärvi and offers accommodation for individual guests and groups. Its facilities can also be booked for celebrations, meetings, courses and group events. A visit can be combined with outdoor activities, disc golf and restaurant services. Visit Salo lists weekday lunch service from 11:00 to 13:00; confirm current availability directly with the institute.",
+      es: "Muurlan Opisto está junto al lago Ylisjärvi y ofrece alojamiento para viajeros individuales y grupos. Sus instalaciones también se pueden reservar para celebraciones, reuniones, cursos y jornadas de grupo. La visita se puede combinar con actividades al aire libre, disc golf y servicios de restauración. Visit Salo indica un servicio de almuerzo entre semana de 11:00 a 13:00; confirma la disponibilidad actual directamente con el centro."
+    },
+    url: "https://www.muurlanopisto.fi/",
+    image: providerImages.muurlaInstitute,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/muurlan-opisto/"
+  },
+  {
+    id: "muurla-design",
+    name: "Muurla – myymälä ja kahvila-ravintola",
+    category: "food",
+    description: {
+      fi: "Muurlan yli tuhannen neliön myymälässä on Muurlan omia sisustus- ja kattaustuotteita sekä valikoituja tuotemerkkejä. Myymälän yhteydessä toimii kahvila-ravintola, jossa on lounasbuffet, kauden à la carte -annoksia ja oman leipomon tuotteita. Ajantasainen ruokalista löytyy ravintolan omasta kanavasta.",
+      en: "Muurla's more than 1,000-square-metre store presents its own home, tableware and design products alongside selected brands. A café-restaurant operates next to the store, serving a lunch buffet, seasonal à la carte dishes and products from its own bakery. Check the restaurant's current menu through its own channel.",
+      es: "La tienda de Muurla, de más de 1.000 metros cuadrados, reúne productos propios de decoración y mesa junto con marcas seleccionadas. Junto a la tienda hay una cafetería-restaurante con buffet de almuerzo, platos de temporada a la carta y productos de su propia panadería. Consulta el menú actualizado en el canal del restaurante."
+    },
+    url: "https://www.muurla.com/",
+    image: providerImages.muurlaStore,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/muurla/"
+  },
+  {
+    id: "marynummi-uimaranta",
+    name: "Märynummen uimaranta ja uimala",
+    category: "nature",
+    description: {
+      fi: "Märylammella sijaitsevaa uimalaa kiertää loivasti syvenevä hiekkaranta. Alueella on pukuhuoneet, sauna- ja pesutilat sekä lähellä beach volley -kenttiä, tennistä, ulkokuntoilua, kuntorata ja frisbeegolfrata. Rannalla ei ole uinninvalvontaa. Märylammen vedessä on havaittu kiehkuravesiruttoa: se ei ole ihmiselle vaarallinen, mutta uima-asut ja vesilelut on puhdistettava, jotta vieraslaji ei leviä muihin vesistöihin. Tarkista kaupungin ajantasaiset uimavesiohjeet.",
+      en: "The swimming area at Lake Märylampi has a gently shelving sandy beach. Facilities include changing rooms, sauna and washing facilities, with beach volleyball, tennis, outdoor fitness equipment, a fitness trail and disc golf nearby. There is no lifeguard on the beach. The invasive aquatic plant Nuttall's waterweed has been observed in the lake; it is not dangerous to people, but swimwear and water toys should be cleaned to prevent spreading it to other waters. Check the city's current bathing-water guidance.",
+      es: "La zona de baño del lago Märylampi cuenta con una playa de arena de pendiente suave. Hay vestuarios, sauna y duchas, además de voleibol playa, tenis, equipos de ejercicio al aire libre, un circuito de entrenamiento y disc golf en las inmediaciones. La playa no tiene socorrista. Se ha detectado la planta acuática invasora Elodea nuttallii; no es peligrosa para las personas, pero se deben limpiar los bañadores y juguetes acuáticos para evitar que se propague a otras aguas. Consulta la información municipal actualizada sobre la calidad del agua."
+    },
+    url: "https://kohteet.visitsalo.fi/marynummen-uimaranta/",
+    image: providerImages.marynummiBeach,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/marynummen-uimaranta/",
+    officialGuide: true
+  },
+  {
+    id: "marynummi-frisbeegolf",
+    name: "Märynummen frisbeegolfrata",
+    category: "experience",
+    description: {
+      fi: "Märynummen kyläyhdistyksen ylläpitämä 18-väyläinen metsärata valmistui vuonna 2017. Tekonurmipintaiset heittopaikat ja vaihtelevat metsäväylät tarjoavat tekemistä sekä aloittelijoille että kokeneemmille pelaajille. Uimaranta, kuntorata, tenniskenttä ja retkeilyreitti sijaitsevat lähellä. Tarkista mahdolliset käyttöohjeet ja olosuhteet kyläyhdistykseltä.",
+      en: "An 18-hole forest disc golf course maintained by the Märynummi Village Association and completed in 2017. Artificial-turf tee areas and varied woodland fairways offer a challenge for beginners and experienced players. The swimming beach, fitness trail, tennis court and hiking route are nearby. Check local use guidance and conditions with the village association.",
+      es: "Campo de disc golf de bosque con 18 hoyos, mantenido por la asociación vecinal de Märynummi y terminado en 2017. Las zonas de lanzamiento tienen césped artificial y los recorridos ofrecen retos para principiantes y jugadores experimentados. La playa, el circuito de entrenamiento, la pista de tenis y el sendero están cerca. Consulta las condiciones de uso con la asociación vecinal."
+    },
+    url: "https://marynummi.net/",
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/marynummen-frisbeegolfrata/"
+  },
+  {
+    id: "mutainen-lohenrengas",
+    name: "Lohenrengas",
+    category: "experience",
+    description: {
+      fi: "Lohenrengas on yksityinen virkistyskalastuspaikka Teijon alueella. Kohteessa on kolme noin viiden hehtaarin yhteispinta-alan järveä, joissa voi kalastaa muun muassa kirjolohta, siikaa ja taimenta. Kalastusvälineitä voi vuokrata ja ryhmille voidaan sopia omia kokonaisuuksia. Tarkista luvat, hinnat, kalalajit ja ajantasaiset aukioloajat suoraan Lohenrenkaalta ennen matkaa.",
+      en: "Lohenrengas is a private recreational fishing venue in the Teijo area. It has three lakes with a combined area of approximately five hectares, where visitors can fish for species including rainbow trout, whitefish and trout. Fishing equipment can be rented and group arrangements can be agreed in advance. Confirm permits, prices, available fish species and current opening times directly with Lohenrengas before travelling.",
+      es: "Lohenrengas es un lugar privado de pesca recreativa en la zona de Teijo. Cuenta con tres lagos que suman aproximadamente cinco hectáreas, donde se puede pescar, entre otras especies, trucha arcoíris, corégono y trucha. Se pueden alquilar equipos y organizar visitas para grupos con antelación. Confirma los permisos, precios, especies disponibles y horarios actuales directamente con Lohenrengas antes de viajar."
+    },
+    url: "https://lohenrengas.wordpress.com/",
+    image: providerImages.mutainenFishing,
+    imageCredit: "Lohenrengas",
+    imageSource: "https://lohenrengas.wordpress.com/galleria/"
+  },
+  {
+    id: "mutainen-kylayhdistys",
+    name: "Teijon Alueen Kyläyhdistys – Mutainen",
+    category: "tourism",
+    description: {
+      fi: "Teijon Alueen Kyläyhdistys kokoaa yhteen Mutaisen, Kirjakkalan, Teijon ja Mathildedalin kylät. Mutaisten omalla kyläsivulla esitellään Halikonlahden rannalla sijaitsevan kylän historiaa, maisemia, pyöräilyreittiä ja paikallista yhteisötoimintaa. Käytä sivua alueen taustatietojen ja kyläyhdistyksen ajankohtaisten tietojen lähteenä.",
+      en: "The Teijo Area Village Association brings together the villages of Mutainen, Kirjakkala, Teijo and Mathildedal. Its dedicated Mutainen page introduces the village on the shore of Halikonlahti Bay, including its history, landscapes, cycling route and community life. Use the page as the official source for local background and village-association updates.",
+      es: "La Asociación Vecinal de la Zona de Teijo reúne los pueblos de Mutainen, Kirjakkala, Teijo y Mathildedal. Su página dedicada a Mutainen presenta la historia, los paisajes, la ruta ciclista y la vida comunitaria del pueblo situado junto a la bahía de Halikonlahti. Utiliza esta página como fuente oficial de información local y novedades de la asociación."
+    },
+    url: "https://www.teijo.fi/tervetuloakyliin/mutainen/",
+    imageSource: "https://www.teijo.fi/tervetuloakyliin/mutainen/",
+    officialGuide: true
+  },
+  {
+    id: "mutainen-galleria-tuulitunneli",
+    name: "Galleria Tuulitunneli",
+    category: "experience",
+    description: {
+      fi: "Mutaisten kylässä toimiva taidegalleria esittelee grafiikkaa ja keramiikkaa. Taiteilija Aila Salmivaaran työhuoneeseen voi sopia vierailun erikseen. Kohde sopii paikallisen taiteen ja käsityön ystäville; sovi käynti etukäteen.",
+      en: "An art gallery in the village of Mutainen presenting graphic art and ceramics. Visits to artist Aila Salmivaara's studio are arranged by appointment. A local stop for visitors interested in art and crafts; arrange your visit in advance.",
+      es: "Galería de arte en el pueblo de Mutainen dedicada al grabado y la cerámica. Las visitas al estudio de la artista Aila Salmivaara se organizan con cita previa. Una parada local para quienes se interesan por el arte y la artesanía; acuerda la visita con antelación."
+    },
+    url: "https://www.teijo.fi/palveluja/erikoisliikkeita-ja-palveluita/",
+    imageSource: "https://www.teijo.fi/palveluja/erikoisliikkeita-ja-palveluita/",
+    officialGuide: true
+  },
+
+  {
+    id: "kiikala-juurevasti-juurista",
+    name: "Juurevasti juurista – opastetut kierrokset",
+    category: "experience",
+    description: {
+      fi: "Paikallisopas Sari Scimone järjestää tilauksesta teemallisia opastettuja kierroksia Salossa. Erityisteemoja ovat Ilolan Arboretum, puutarhat, kulttuuriympäristöt ja Salon historia. Ryhmille voidaan suunnitella omiin toiveisiin sopiva kierros ympäri vuoden; yleisöopastuksia järjestetään kausittain. Varaa opastus etukäteen.",
+      en: "Local guide Sari Scimone offers themed guided tours in Salo by arrangement. Special interests include Ilola Arboretum, gardens, cultural landscapes and local history. Tours for groups can be tailored throughout the year, while public tours are seasonal. Book in advance.",
+      es: "La guía local Sari Scimone ofrece visitas temáticas por Salo con reserva previa. Sus especialidades incluyen el arboreto de Ilola, jardines, paisajes culturales e historia local. Las visitas para grupos se pueden adaptar durante todo el año; las visitas abiertas al público son estacionales. Reserva con antelación."
+    },
+    url: "https://juurevastijuurista.johku.com",
+    image: providerImages.juurevastiTours,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/opastetut-kierrokset-salossa-juurevasti-juurista/",
+    officialGuide: true
+  },
+  {
+    id: "pertteli-koirametsa-rymy",
+    name: "Koirametsä Rymy",
+    category: "nature",
+    description: {
+      fi: "Koirametsä Rymy on noin 1,5 hehtaarin aidattu mäntymetsä, jonka voi vuokrata omaan käyttöön haluamakseen ajaksi. Koirat saavat liikkua vapaana turvallisesti rajatulla alueella. Kohde on avoinna ympäri vuoden, ja omassa teltassa yöpyminen on mahdollista palveluntarjoajan ehtojen mukaan. Tarkista varausajat ja säännöt suoraan Rymyltä.",
+      en: "Koirametsä Rymy is an enclosed 1.5-hectare pine forest that can be rented for private use for a chosen time. Dogs can roam freely within the fenced area. The venue is open year-round, and overnight stays in your own tent may be possible under the provider's conditions. Check booking times and rules directly with Rymy.",
+      es: "Koirametsä Rymy es un bosque de pinos vallado de aproximadamente 1,5 hectáreas que se puede alquilar para uso privado durante el tiempo elegido. Los perros pueden correr libremente dentro del recinto. El lugar abre todo el año y puede ser posible pasar la noche en una tienda propia según las condiciones del proveedor. Consulta directamente con Rymy los horarios y las normas."
+    },
+    url: "https://www.rymymetsa.fi/",
+    image: providerImages.rymyDogForest,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/koirametsa-rymy/"
+  },
+  {
+    id: "muurla-ilolan-vadelmatila",
+    name: "Ilolan vadelmatila",
+    category: "food",
+    description: {
+      fi: "Muurlassa toimiva toisen polven perhetila kasvattaa avomaan vadelmia, joita voi poimia itse tai tilata valmiiksi poimittuna. Tilalta saa myös lähihunajaa, jonka mehiläiset pölyttävät vadelmapensaat. Poiminta ja tilaukset sovitaan aina etukäteen, joten varmista saatavuus ja noutoajat suoraan tilalta.",
+      en: "A second-generation family farm in Muurla grows raspberries outdoors. Visitors can pick their own berries or order them ready-picked. The farm also sells local honey from bees that pollinate the raspberry bushes. Picking and orders are by arrangement, so confirm availability and collection times directly with the farm.",
+      es: "Granja familiar de segunda generación en Muurla que cultiva frambuesas al aire libre. Se pueden recoger las frutas personalmente o pedirlas ya recolectadas. La granja también vende miel local de abejas que polinizan los arbustos de frambuesa. La recolección y los pedidos se acuerdan previamente; confirma la disponibilidad y la recogida directamente con la granja."
+    },
+    url: "https://kohteet.visitsalo.fi/ilolan-tila/",
+    image: providerImages.ilolanRaspberries,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/ilolan-tila/",
+    officialGuide: true
+  },
+  {
+    id: "marynummi-kuntorata",
+    name: "Märynummen kuntorata ja ulkoilualue",
+    category: "nature",
+    description: {
+      fi: "Märynummen ulkoilualueella on 3,4 kilometrin valaistu kuntoratalenkki ja 0,8 kilometrin valaisematon lenkki. Talvikaudella reitillä on perinteisen ja luistelutyylin hiihtolatu sekä tykkilumilatu. Läheltä löytyvät 5,5 kilometrin retkeilyreitti, frisbeegolfrata, uimaranta, sauna ja tenniskenttä. Laavu on vapaassa käytössä, mutta omat polttopuut on tuotava mukana. Tarkista latu- ja reittitilanne ennen lähtöä.",
+      en: "The Märynummi outdoor area has a 3.4-kilometre illuminated fitness loop and a 0.8-kilometre unlit section. In winter, the route is prepared for both classic and skate skiing, with additional artificial-snow tracks. Nearby are a 5.5-kilometre hiking trail, disc golf course, swimming beach, sauna and tennis court. The lean-to shelter is freely available, but visitors must bring their own firewood. Check trail and ski conditions before setting out.",
+      es: "La zona recreativa de Märynummi cuenta con un circuito iluminado de 3,4 kilómetros y otro tramo sin iluminación de 0,8 kilómetros. En invierno se preparan pistas para esquí clásico y patinador, además de una pista de nieve artificial. Cerca hay un sendero de 5,5 kilómetros, campo de disc golf, playa, sauna y pista de tenis. El refugio está disponible gratuitamente, pero cada visitante debe llevar su propia leña. Consulta el estado de los senderos y las pistas antes de salir."
+    },
+    url: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/",
+    image: providerImages.marynummiFitnessTrail,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/halikon-marynummen-kuntorata/",
+    officialGuide: true
+  },
+
+  {
+    id: "halikko-wiurila-kartano",
+    name: "Wiurilan kartano",
+    category: "experience",
+    description: {
+      fi: "Wiurila on Halikossa sijaitseva historiallinen kartanomiljöö, jonka Armfeltin suku on omistanut vuodesta 1787. Kartanon alueella voi tutustua koti- ja hevosvaunumuseoihin, opastettuihin museokierroksiin, taidenäyttelyihin ja historialliseen puistoon. Alueella toimivat myös Gasthaus, ravintola, golf, padel ja hevostalli. Päärakennuksen museotiloissa on portaita eikä kohde ole esteetön; tarkista kierrosten ajankohdat ja varaukset suoraan Wiurilasta.",
+      en: "Wiurila is a historic manor estate in Halikko, owned by the Armfelt family since 1787. Visitors can explore the home and horse-carriage museums, guided museum tours, art exhibitions and the historic park. The estate also has a guesthouse, restaurant, golf, padel and a stable. The main building's museum rooms involve stairs and are not accessible; check tour dates and bookings directly with Wiurila.",
+      es: "Wiurila es una histórica finca señorial de Halikko, propiedad de la familia Armfelt desde 1787. Se pueden visitar los museos de la casa y de carruajes, participar en visitas guiadas, ver exposiciones de arte y pasear por el parque histórico. La finca también cuenta con alojamiento, restaurante, golf, pádel y establos. Las salas del museo en el edificio principal tienen escaleras y no son accesibles; consulta directamente las fechas y reservas."
+    },
+    url: "https://wiurila.fi/kartano/",
+    image: providerImages.halikkoWiurila,
+    imageCredit: "Wiurila",
+    imageSource: "https://wiurila.fi/kartano/"
+  },
+  {
+    id: "halikko-wiurila-gasthaus",
+    name: "Wiurila Gasthaus",
+    category: "stay",
+    description: {
+      fi: "Wiurilan kartanon pihapiirissä sijaitseva pieni majatalo tarjoaa neljä kahden hengen huonetta, joissa jokaisessa on oma kylpyhuone. Majoittujien yhteisessä aulassa voi viettää aikaa, ja aamiaisen voi tilata erikseen. Huoneen tai koko majatalon voi varata suoraan Wiurilan omasta varauskanavasta, sähköpostilla tai puhelimitse. Varmista ajantasainen hinta ja saatavuus ennen matkaa.",
+      en: "A small guesthouse in the grounds of Wiurila Manor, with four double rooms, each with a private bathroom. Guests share a lounge, and breakfast can be ordered separately. Rooms or the entire guesthouse can be booked through Wiurila's own booking channel, by email or by phone. Confirm current rates and availability before travelling.",
+      es: "Pequeña casa de huéspedes en la finca de Wiurila, con cuatro habitaciones dobles y baño privado en cada una. Los huéspedes comparten una sala de estar y se puede pedir el desayuno por separado. Las habitaciones o toda la casa se pueden reservar directamente en el canal de reservas de Wiurila, por correo electrónico o por teléfono. Confirma los precios y la disponibilidad actuales antes de viajar."
+    },
+    url: "https://wiurila.fi/majoitus/",
+    image: providerImages.wiurilaGasthaus,
+    imageCredit: "Wiurila",
+    imageSource: "https://wiurila.fi/majoitus/"
+  },
+  {
+    id: "halikko-wiurila-sigrid",
+    name: "Ravintola Wiurilan Sigrid",
+    category: "food",
+    description: {
+      fi: "Wiurilan kartanon talousrakennuksessa toimiva ravintola yhdistää historiallisen miljöön ja rennon ruokailun. Tarjolla on lounasta sekä à la carte -annoksia; ruokalista ja palveluajat vaihtelevat kauden mukaan. Ravintolan yhteydessä on terasseja, joilta avautuu näkymä kartanon puistoon ja golfkentälle. Tarkista ajantasainen ruokalista ja aukioloajat ravintolan omalta sivulta.",
+      en: "A restaurant in the historic service building of Wiurila Manor, combining an estate setting with relaxed dining. It serves lunch and à la carte dishes; menus and service hours vary by season. The restaurant has terraces overlooking the manor park and golf course. Check the current menu and opening times on the restaurant's own page.",
+      es: "Restaurante situado en el histórico edificio de servicio de la finca Wiurila, que combina un entorno señorial con una experiencia gastronómica relajada. Ofrece almuerzos y platos a la carta; el menú y los horarios cambian según la temporada. Sus terrazas tienen vistas al parque y al campo de golf. Consulta el menú y los horarios actualizados en la página del restaurante."
+    },
+    url: "https://wiurila.fi/ravintola/",
+    image: providerImages.wiurilaRestaurant,
+    imageCredit: "Wiurila",
+    imageSource: "https://wiurila.fi/ravintola/"
+  },
+  {
+    id: "halikko-vaski-cider",
+    name: "Vaski Cider & Distillery",
+    category: "experience",
+    description: {
+      fi: "Vaski Cider on Halikossa toimiva käsityöläissiideritalo, jossa siideri yhdistyy taiteeseen ja makumatkailuun. Vierailuun voi sisällyttää opastetun kierroksen, siiderinäyttelyn ja teemallisen tastingin. Ohjelmia räätälöidään myös pienille ryhmille, ja tiloissa toimii lisäksi suklaastudio sekä lounaskahvila. Siideritalo ja näyttely palvelevat tuotannon ollessa paikalla tai ennakkoon sovitusti; varaa vierailu etukäteen.",
+      en: "Vaski Cider is a craft cidery in Halikko where cider meets art and culinary travel. A visit can include a guided tour, a small cider exhibition and a themed tasting. Tailored programmes are available for small groups, and the premises also host a chocolate studio and lunch café. The cidery and exhibition operate when production staff are present or by prior arrangement; book your visit in advance.",
+      es: "Vaski Cider es una sidrería artesanal en Halikko donde la sidra se une al arte y al turismo gastronómico. La visita puede incluir un recorrido guiado, una pequeña exposición sobre la sidra y una cata temática. También se organizan programas para grupos pequeños y en el recinto hay un estudio de chocolate y una cafetería de almuerzos. La sidrería y la exposición abren cuando el personal de producción está presente o con cita previa; reserva la visita con antelación."
+    },
+    url: "https://www.vaskicider.fi/",
+    image: providerImages.vaskiCider,
+    imageCredit: "Vaski Cider & Distillery / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/siideritalo-vaski-cider-distillery-vierailukierrokset-ja-tastingit/",
+    officialGuide: true
+  },
+  {
+    id: "vaskio-wanhantuvan-ankkala",
+    name: "Wanhantuvan Ankkala",
+    category: "food",
+    description: {
+      fi: "Wanhantuvan Ankkala toimii yli 400 vuotta vanhalla sukutilalla Vaskion Toivilassa. Tilan päätuotantosuunta on ankan kasvatus, ja tuotteet myydään suoramyyntinä tilan omasta myymälästä. Valikoimaan kuuluu ankanlihatuotteita sekä ankan- ja viiriäisenmunia. Tarkista tuotteiden saatavuus ja myymälän palveluajat suoraan tilalta.",
+      en: "Wanhantuvan Ankkala is based on a family farm in Toivila, Vaskio, with a farming history of more than 400 years. The farm now specialises in raising ducks and sells its products directly from its own farm shop. The range includes duck meat products, duck eggs and quail eggs. Check product availability and shop hours directly with the farm.",
+      es: "Wanhantuvan Ankkala se encuentra en una finca familiar de Toivila, Vaskio, con más de 400 años de historia agrícola. Actualmente la granja se especializa en la cría de patos y vende sus productos directamente en la tienda de la finca. La oferta incluye carne de pato, huevos de pato y huevos de codorniz. Consulta directamente la disponibilidad y los horarios de la tienda."
+    },
+    url: "https://www.wanhantuvanankkala.fi/",
+    image: providerImages.wanhantuvanAnkkala,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/wanhantuvan-ankkala/"
+  },
+  {
+    id: "vaskio-bed",
+    name: "Vaskio-Bed",
+    category: "stay",
+    description: {
+      fi: "Vaskio-Bed tarjoaa kodinomaista majoitusta kolmessa huoneistossa. Jokaisessa on oma keittiö, wc ja suihku, ja jääkaapissa on perustarvikkeet aamiaisen valmistamiseen. Sauna on tilattavissa erikseen. Majoitus sopii omatoimiselle matkailijalle, joka arvostaa rauhallista kyläympäristöä. Tarkista huoneiden saatavuus ja varausehdot suoraan majoittajalta.",
+      en: "Vaskio-Bed offers homely accommodation in three apartments. Each has its own kitchen, toilet and shower, and the fridge contains basic breakfast supplies. A sauna can be booked separately. It suits independent travellers who appreciate a peaceful village setting. Check room availability and booking terms directly with the host.",
+      es: "Vaskio-Bed ofrece alojamiento acogedor en tres apartamentos. Cada uno dispone de cocina, aseo y ducha propios, y la nevera incluye productos básicos para preparar el desayuno. La sauna se puede reservar por separado. Es una opción para viajeros independientes que buscan tranquilidad en un entorno rural. Consulta directamente con el anfitrión la disponibilidad y las condiciones."
+    },
+    url: "https://vaskio-bed.fi/",
+    image: providerImages.vaskioBed,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/vaskio-bed/"
+  },
+  {
+    id: "kiikala-ylivesan-luomutila",
+    name: "Ylivesän luomutila",
+    category: "food",
+    description: {
+      fi: "Kruusilassa toimiva luomutila kasvattaa hereford-pihvikarjaa, joka laiduntaa kesäkaudella tilan laitumilla ja perinteisillä hakamailla. Tilalla tuotettu luomupihviliha myydään suoramyyntinä suoraan kuluttajille. Vierailusta ja ostoksista kannattaa sopia etukäteen, sillä kyseessä on toimiva maatila eikä jatkuvasti avoin matkailumyymälä.",
+      en: "An organic farm in Kruusila raising Hereford beef cattle, which graze on the farm's pastures and traditional wooded meadows during the summer season. The farm's organic beef is sold directly to consumers. Arrange visits and purchases in advance, as this is a working farm rather than a continuously open visitor shop.",
+      es: "Granja ecológica en Kruusila que cría ganado vacuno Hereford para carne y que pasta en los prados y pastizales tradicionales de la finca durante el verano. La carne ecológica se vende directamente al consumidor. Acuerda las visitas y compras con antelación, ya que se trata de una granja en funcionamiento y no de una tienda turística abierta continuamente."
+    },
+    url: "https://www.ylivesa.fi/",
+    image: providerImages.ylivesaFarm,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/ylivesan-luomutila/"
+  },
+  {
+    id: "pertteli-kalevala-retriitti",
+    name: "Kalevala-retriitti / InnerFree",
+    category: "stay",
+    description: {
+      fi: "Perttelin maaseudulla järjestettävä yksityinen retriitti on suunniteltu 1–2 henkilölle kerrallaan. Yhden yön vierailuun voi sisältyä sauna, jääkylpy, luontokävely, taidetuokio ja kalevalainen jäsenkorjaus. Majoitus on kodinomaisessa päärakennuksessa omalla sisäänkäynnillä, wc:llä ja keittiöllä. Iltapala ja aamiainen tarjoillaan huoneeseen. Palvelu suunnitellaan etukäteen; pyydä tarjous suoraan InnerFreeltä.",
+      en: "A private retreat in the countryside of Pertteli, designed for one or two guests at a time. An overnight stay can include a sauna, ice bath, nature walk, art session and traditional Kalevala bodywork. Accommodation is in a homely main building with a private entrance, toilet and kitchen. A light evening meal and breakfast are served in the room. The experience is arranged in advance; request an offer directly from InnerFree.",
+      es: "Retiro privado en el entorno rural de Pertteli, diseñado para una o dos personas. La estancia de una noche puede incluir sauna, baño de hielo, paseo por la naturaleza, actividad artística y terapia corporal tradicional Kalevala. El alojamiento se encuentra en la casa principal, con entrada privada, aseo y cocina. La cena ligera y el desayuno se sirven en la habitación. La experiencia se organiza con antelación; solicita una propuesta directamente a InnerFree."
+    },
+    url: "https://innerfree.fi/kalevalaretriitti/",
+    imageSource: "https://kohteet.visitsalo.fi/kalevala-retriitti/",
+    officialGuide: true
+  },
+  {
+    id: "pertteli-villen-viinitarha",
+    name: "Villen Viinitarha",
+    category: "experience",
+    description: {
+      fi: "Villen Viinitarha sijaitsee Uskelanjoen rinteillä Perttelissä. Tarhassa kasvatetaan noin 120 avomaan rypälelajiketta ja yhteensä noin 400 viiniköynnöstä. Yrittäjä järjestää viinitarhakierroksia ja opastaa pohjoisen viininviljelyn lajikevalinnoissa ja kasvatusmenetelmissä. Vierailut sovitaan etukäteen.",
+      en: "Villen Viinitarha is a vineyard on the slopes of the Uskelanjoki River in Pertteli. It grows around 120 outdoor grape varieties across approximately 400 vines. The owner arranges vineyard tours and explains grape varieties and growing methods suited to northern conditions. Visits are by prior arrangement.",
+      es: "Villen Viinitarha es un viñedo situado en las laderas del río Uskelanjoki, en Pertteli. Cultiva unas 120 variedades de uva al aire libre y aproximadamente 400 vides. El propietario organiza visitas guiadas y explica las variedades y técnicas de cultivo adecuadas para el clima nórdico. Las visitas se acuerdan previamente."
+    },
+    url: "https://villenviinitarha.com/",
+    image: providerImages.villenVineyard,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/villen-viinitarha/"
+  },
+  {
+    id: "salo-taidelainaamo",
+    name: "Salon taidelainaamo",
+    category: "experience",
+    description: {
+      fi: "Salon Taiteilijaseuran ylläpitämä taidelainaamo esittelee paikallisten ammattitaiteilijoiden teoksia ja vaihtuvia näyttelyitä. Taidetta voi lainata kotiin tai työpaikalle ja lunastaa myöhemmin omaksi; lainaushinta hyvitetään ostossa. Teosvalikoima uusiutuu säännöllisesti. Tarkista ajantasaiset aukioloajat ja näyttelyt taidelainaamon omalta sivulta.",
+      en: "Run by the Salo Artists' Association, this art-lending gallery presents works by local professional artists and changing exhibitions. Visitors can borrow artwork for their home or workplace and later purchase it, with rental payments credited towards the purchase price. The selection is regularly renewed. Check current opening times and exhibitions on the gallery's own page.",
+      es: "Esta galería de préstamo de arte, gestionada por la Asociación de Artistas de Salo, presenta obras de artistas profesionales locales y exposiciones temporales. Se pueden llevar obras prestadas a casa o al trabajo y comprarlas más adelante; las cuotas de préstamo se descuentan del precio de compra. La selección se renueva periódicamente. Consulta los horarios y exposiciones actuales en la página oficial."
+    },
+    url: "https://www.salontaiteilijaseura.fi/Lainaamo/",
+    image: providerImages.salonArtLoan,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/salon-taidelainaamo/"
+  },
+  {
+    id: "salo-vuohensaari-luontopolku",
+    name: "Vuohensaaren luontopolku",
+    category: "nature",
+    description: {
+      fi: "Vuohensaaren 1,2 kilometrin luontopolku kiertää Salonjoen suiston saarta vanhan metsän, rantojen, niittyjen ja teiden kautta. Reitin varrella on 17 luontorastia, jotka kertovat saaren historiasta, kasveista, linnuista ja eläimistä. Polku alkaa pysäköintialueelta ja päättyy uimarannalle. Vuohensaari on osittain esteetön lumettomaan aikaan; tarkista reitin kunto ja palvelut ennen vierailua.",
+      en: "The 1.2-kilometre nature trail on Vuohensaari loops around the island at the mouth of the River Salo through old woodland, shores, meadows and paths. Seventeen information points introduce the island's history, plants, birds and wildlife. The route starts at the car park and ends at the swimming beach. Vuohensaari is partly accessible in snow-free conditions; check trail conditions and services before visiting.",
+      es: "El sendero natural de 1,2 kilómetros de Vuohensaari recorre la isla situada en la desembocadura del río Salo, atravesando bosque antiguo, orillas, prados y caminos. Hay 17 paneles sobre la historia de la isla, sus plantas, aves y animales. El sendero comienza en el aparcamiento y termina en la playa. Vuohensaari es parcialmente accesible cuando no hay nieve; consulta el estado del recorrido y los servicios antes de visitarlo."
+    },
+    url: "https://kohteet.visitsalo.fi/vuohensaari/",
+    image: providerImages.vuohensaariNature,
+    imageCredit: "Visit Finland / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/vuohensaari/",
+    officialGuide: true
+  },
+  {
+    id: "salo-vuohensaari-minigolf",
+    name: "Vuohensaaren minigolf",
+    category: "experience",
+    description: {
+      fi: "Vuohensaaren saarella sijaitsee 18-reikäinen minigolfrata, jonka Visit Salon kohdesivu kertoo olevan kansainvälisen minigolfliiton hyväksymä. Rata kuuluu saaren kesäkauden aktiviteetteihin yhdessä uimarannan, luontopolun ja leirintäalueen kanssa. Varmista aukiolo ja pelivuorot suoraan Vuohensaaresta ennen vierailua.",
+      en: "Vuohensaari has an 18-hole minigolf course which Visit Salo describes as approved by the international minigolf federation. The course is one of the island's seasonal activities, alongside the beach, nature trail and camping area. Confirm opening times and play availability directly with Vuohensaari before visiting.",
+      es: "Vuohensaari cuenta con un campo de minigolf de 18 hoyos que Visit Salo describe como homologado por la federación internacional de minigolf. Es una de las actividades de temporada de la isla, junto con la playa, el sendero natural y el camping. Confirma directamente con Vuohensaari los horarios y la disponibilidad antes de la visita."
+    },
+    url: "https://www.visitvuohensaari.fi/",
+    image: providerImages.vuohensaariMinigolf,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/vuohensaaren-uimapaikka/"
+  },
+  {
+    id: "salo-ravintola-rikala",
+    name: "Ravintola Rikala",
+    category: "food",
+    description: {
+      fi: "Salon keskustassa Asemakadulla toimiva Ravintola Rikala tarjoaa suomalaiseen ruokaan perustuvia annoksia rennossa mutta tyylikkäässä ympäristössä. Ravintola kertoo valmistavansa annokset omassa keittiössään laadukkaista raaka-aineista. Visit Salon esittelyssä lounas on ollut tarjolla arkisin; tarkista ajantasainen lounaslista, aukioloajat ja pöytävaraukset ravintolan omasta kanavasta.",
+      en: "Ravintola Rikala is located on Asemakatu in central Salo and serves Finnish-inspired dishes in a relaxed yet stylish setting. The restaurant says its meals are prepared in its own kitchen using quality ingredients. Visit Salo's listing has described weekday lunch service; check the current lunch menu, opening times and table reservations through the restaurant's own channel.",
+      es: "Ravintola Rikala, situado en Asemakatu en el centro de Salo, ofrece platos de inspiración finlandesa en un ambiente relajado y elegante. El restaurante indica que prepara sus platos en su propia cocina con ingredientes de calidad. La ficha de Visit Salo ha indicado servicio de almuerzo entre semana; consulta el menú, los horarios y las reservas actuales en el canal oficial del restaurante."
+    },
+    url: "https://www.raflaamo.fi/en/restaurant/salo/restaurant-rikala",
+    image: providerImages.rikalaRestaurant,
+    imageCredit: "Salon Kohteet / Visit Salo",
+    imageSource: "https://kohteet.visitsalo.fi/en/restaurant-rikala/"
   },
 
 ];
