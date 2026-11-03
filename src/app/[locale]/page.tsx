@@ -313,6 +313,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             href={`/${locale}/destinations/kemionsaari`}
             image={photoLibrary.rosalaVikingCentre}
             imageAlt={locale === "fi" ? "Rosalan viikinkikeskus Kemiönsaarella" : locale === "es" ? "Centro Vikingo de Rosala en Kimitoön" : "Rosala Viking Centre on Kimitoön"}
+            imageBadge={locale === "fi" ? "Uusi kohdealue" : locale === "es" ? "Nuevo destino" : "New destination"}
+            headingLevel="h2"
+            imageSize="feature"
             eyebrow={locale === "fi" ? "Saariston portti · Varsinais-Suomi" : locale === "es" ? "Puerta al archipiélago · Finlandia suroccidental" : "Gateway to the archipelago · Southwest Finland"}
             title={locale === "fi" ? "Kemiö ja Kemiönsaari" : locale === "es" ? "Kimitoön y el archipiélago" : "Kimitoön and the Archipelago"}
             description={locale === "fi" ? "Satamia, saaristokyliä, paikallisia makuja, historiaa ja merellisiä retkiä. Löydä saariston oma rytmi ja suunnittele matka suoraan paikallisten palveluntarjoajien avulla." : locale === "es" ? "Puertos, pueblos isleños, sabores locales, historia y excursiones marítimas. Descubre el ritmo del archipiélago y planifica tu viaje con proveedores locales." : "Harbours, island villages, local flavours, history and sea adventures. Discover the archipelago at your own pace and plan your trip with local providers."}
