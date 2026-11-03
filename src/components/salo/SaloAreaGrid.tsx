@@ -41,7 +41,10 @@ function getAreaImage(area: SaloArea) {
       ? photoLibrary.teijoNationalPark
       : area === "sarkisalo"
         ? photoLibrary.sarkisalo
-        : photoLibrary.saloVeturitalli;
+        : area === "salo"
+          ? photoLibrary.saloVeturitalli
+          : null;
+  if (!src) return null;
   const attribution = photoCredits.find((photo) => photo.url === src);
   return attribution
     ? { src, credit: `${attribution.credit} · ${attribution.license}`, source: attribution.sourcePage }
