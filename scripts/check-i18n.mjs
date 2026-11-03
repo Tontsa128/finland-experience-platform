@@ -91,8 +91,10 @@ const legacyMathildedalLinksDirectly = [mathildedalLegacySource, mathildedalCate
   .every((source) => source.includes('/salo/mathildedal') && !source.includes('/destinations/salo-mathildedal'));
 const legacyDestinationCanonicalizes = destinationDetailSource.includes('slug === "salo-mathildedal"')
   && destinationDetailSource.includes('/salo/mathildedal');
-const relatedMathildedalLinksDirectly = [ruukkikylaGuideSource, teijoDestinationSource]
-  .every((source) => source.includes('/salo/mathildedal') && !source.includes('/destinations/salo-mathildedal'))
+const relatedMathildedalLinksDirectly = ruukkikylaGuideSource.includes('/salo/mathildedal')
+  && !ruukkikylaGuideSource.includes('/destinations/salo-mathildedal')
+  && teijoDestinationSource.includes('/salo/teijo')
+  && !teijoDestinationSource.includes('/destinations/salo-mathildedal')
   && legacyDestinationCanonicalizes;
 if (!saloGuideLinksDirectly || !legacyMathildedalLinksDirectly || !relatedMathildedalLinksDirectly) {
   failed = true;
