@@ -55,7 +55,7 @@ export function HomeDestinationFeatureCard({
             alt={imageAlt}
             fill
             priority={priority}
-            sizes="(max-width: 767px) 100vw, (max-width: 1280px) 50vw, 600px"
+            sizes={imageSize === "feature" ? "(max-width: 767px) 100vw, (max-width: 1280px) 50vw, 600px" : "(max-width: 767px) 100vw, (max-width: 1280px) 25vw, 300px"}
             className="object-cover transition duration-700 ease-out group-hover/image:scale-[1.04]"
           />
           {imageBadge ? (
@@ -65,7 +65,7 @@ export function HomeDestinationFeatureCard({
           ) : null}
         </Link>
         {imageCredit && imageUsageNote && imageSource ? (
-          <figcaption className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-stone-100 bg-white px-4 py-3 text-[10px] leading-4 text-slate-500 sm:px-5">
+          <figcaption className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-stone-100 bg-white px-4 py-3 text-[11px] leading-4 text-slate-500 sm:px-5">
             <span>{imageCredit}</span>
             <span aria-hidden="true">·</span>
             <span>{imageUsageNote}</span>
