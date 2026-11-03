@@ -209,6 +209,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     .filter(Boolean)
     .slice(0, 5) as typeof destinations;
 
+  const kimitoonPhoto = getHomepagePhotoCredit(photoLibrary.rosalaVikingCentre);
+  const kimitoonImageUsageNote = kimitoonPhoto && (kimitoonPhoto.license.startsWith("CC BY") || kimitoonPhoto.license === "Public domain")
+    ? kimitoonPhoto.license
+    : locale === "fi" ? "Palveluntarjoajan kuva" : locale === "es" ? "Imagen del proveedor" : "Provider image";
+
   return (
     <>
       <VisitorCounter locale={locale as "fi" | "es" | "en"} />
@@ -269,6 +274,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="mt-10 grid items-stretch gap-5 md:grid-cols-2">
             {coastalHighlights.map((destination, index) => {
               const feature = homepageDestinationFeatures[destination.slug as keyof typeof homepageDestinationFeatures];
+              if (!feature) return null;
               const photo = getHomepagePhotoCredit(feature.image);
               if (!photo) return null;
               const localizedName = destination.name[locale as HomeLocale] || destination.name.en;
@@ -303,27 +309,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <section className="bg-stone-50 py-16 sm:py-20">
         <div className="container-narrow">
-          {(() => {
-            const photo = getHomepagePhotoCredit(photoLibrary.rosalaVikingCentre);
-            const imageUsageNote = photo?.license.startsWith("CC BY") || photo?.license === "Public domain"
-              ? photo.license
-              : locale === "fi" ? "Palveluntarjoajan kuva" : locale === "es" ? "Imagen del proveedor" : "Provider image";
-            return (
-              <HomeDestinationFeatureCard
-                href={`/${locale}/destinations/kemionsaari`}
-                image={photoLibrary.rosalaVikingCentre}
-                imageAlt={locale === "fi" ? "Rosalan viikinkikeskus Kemiönsaarella" : locale === "es" ? "Centro Vikingo de Rosala en Kimitoön" : "Rosala Viking Centre on Kimitoön"}
-                eyebrow={locale === "fi" ? "Saariston portti · Varsinais-Suomi" : locale === "es" ? "Puerta al archipiélago · Finlandia suroccidental" : "Gateway to the archipelago · Southwest Finland"}
-                title={locale === "fi" ? "Kemiö ja Kemiönsaari" : locale === "es" ? "Kimitoön y el archipiélago" : "Kimitoön and the Archipelago"}
-                description={locale === "fi" ? "Satamia, saaristokyliä, paikallisia makuja, historiaa ja merellisiä retkiä. Löydä saariston oma rytmi ja suunnittele matka suoraan paikallisten palveluntarjoajien avulla." : locale === "es" ? "Puertos, pueblos isleños, sabores locales, historia y excursiones marítimas. Descubre el ritmo del archipiélago y planifica tu viaje con proveedores locales." : "Harbours, island villages, local flavours, history and sea adventures. Discover the archipelago at your own pace and plan your trip with local providers."}
-                actionLabel={locale === "fi" ? "Tutustu Kemiönsaareen" : locale === "es" ? "Descubre Kimitoön" : "Explore Kimitoön"}
-                imageCredit={photo?.credit}
-                imageUsageNote={imageUsageNote}
-                imageSource={photo?.sourcePage}
-                imageSourceLabel={locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la imagen" : "Image source"}
-              />
-            );
-          })()}          </div>
+          <HomeDestinationFeatureCard
+            href={`/${locale}/destinations/kemionsaari`}
+            image={photoLibrary.rosalaVikingCentre}
+            imageAlt={locale === "fi" ? "Rosalan viikinkikeskus Kemiönsaarella" : locale === "es" ? "Centro Vikingo de Rosala en Kimitoön" : "Rosala Viking Centre on Kimitoön"}
+            eyebrow={locale === "fi" ? "Saariston portti · Varsinais-Suomi" : locale === "es" ? "Puerta al archipiélago · Finlandia suroccidental" : "Gateway to the archipelago · Southwest Finland"}
+            title={locale === "fi" ? "Kemiö ja Kemiönsaari" : locale === "es" ? "Kimitoön y el archipiélago" : "Kimitoön and the Archipelago"}
+            description={locale === "fi" ? "Satamia, saaristokyliä, paikallisia makuja, historiaa ja merellisiä retkiä. Löydä saariston oma rytmi ja suunnittele matka suoraan paikallisten palveluntarjoajien avulla." : locale === "es" ? "Puertos, pueblos isleños, sabores locales, historia y excursiones marítimas. Descubre el ritmo del archipiélago y planifica tu viaje con proveedores locales." : "Harbours, island villages, local flavours, history and sea adventures. Discover the archipelago at your own pace and plan your trip with local providers."}
+            actionLabel={locale === "fi" ? "Tutustu Kemiönsaareen" : locale === "es" ? "Descubre Kimitoön" : "Explore Kimitoön"}
+            imageCredit={kimitoonPhoto?.credit}
+            imageUsageNote={kimitoonImageUsageNote}
+            imageSource={kimitoonPhoto?.sourcePage}
+            imageSourceLabel={locale === "fi" ? "Kuvan lähde" : locale === "es" ? "Fuente de la imagen" : "Image source"}
+          />
         </div>
       </section>
       <SeasonalHighlights locale={locale as "fi" | "es" | "en"} />
