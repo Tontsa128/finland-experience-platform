@@ -155,8 +155,20 @@ const providerIds = providerArrayStart >= 0 && providerArrayEnd > providerArrayS
 const providerArraySource = providerArrayStart >= 0 && providerArrayEnd > providerArrayStart
   ? saloDataSource.slice(providerArrayStart, providerArrayEnd)
   : "";
+const providerBlocks = [...providerArraySource.matchAll(/^\s{2}\{\s*id:\s*"([^"]+)"([\s\S]*?)^\s{2}\},/gm)];
 const providerImageCount = [...providerArraySource.matchAll(/^\s+image:\s*/gm)].length;
 const providerCreditCount = [...providerArraySource.matchAll(/^\s+imageCredit:\s*/gm)].length;
+// An image may be omitted intentionally while its reuse rights are being confirmed.
+// Keep this allow-list exact so other accidental image removals still fail CI.
+const approvedNoImageProviderIds = new Set(["meri-teijo-golf"]);
+const missingImageProviderIds = providerBlocks
+  .filter((match) => !/^\s+image:\s*/m.test(match[2]))
+  .map((match) => match[1]);
+const unapprovedMissingImageIds = missingImageProviderIds.filter((id) => !approvedNoImageProviderIds.has(id));
+const staleNoImageApprovals = [...approvedNoImageProviderIds].filter((id) => !missingImageProviderIds.includes(id));
+const imageWithoutCreditIds = providerBlocks
+  .filter((match) => /^\s+image:\s*/m.test(match[2]) && !/^\s+imageCredit:\s*/m.test(match[2]))
+  .map((match) => match[1]);
 const areaMapStart = saloAreaDataSource.indexOf("export const areaProviderIds:");
 const areaMapEnd = saloAreaDataSource.indexOf("\n};", areaMapStart);
 const areaMap = areaMapStart >= 0 && areaMapEnd > areaMapStart ? saloAreaDataSource.slice(areaMapStart, areaMapEnd) : "";
@@ -196,12 +208,16 @@ const photoSourceLabelIsLocalized = [
   'photoSource: "Fuente de la foto"',
   'photoSource: "Photo source"',
 ].every((label) => saloDirectorySource.includes(label));
-if (providerIds.length !== 48 || providerImageCount !== 48 || providerCreditCount !== 48 || unapprovedDuplicateAreaIds.length || invalidMultiLocationIds.length || missingAreaIds.length || unknownAreaIds.length || !areaPageHasCategoryLinks || !categoryRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !saloLandingLinksToVillageIndex || !villageIndexUsesAreaGrid || !saloLandingDoesNotRenderVillageGrid || !areaCardsLinkToRoutes || !areaCardsIncludeImages || !sitemapIncludesAreaRoutes || !sitemapIncludesVillageIndex || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
+if (providerIds.length !== 48 || providerBlocks.length !== providerIds.length || providerImageCount + missingImageProviderIds.length !== providerIds.length || providerCreditCount !== providerImageCount || unapprovedMissingImageIds.length || staleNoImageApprovals.length || imageWithoutCreditIds.length || unapprovedDuplicateAreaIds.length || invalidMultiLocationIds.length || missingAreaIds.length || unknownAreaIds.length || !areaPageHasCategoryLinks || !categoryRouteUsesDirectory || !areaRouteGeneratesAllSlugs || !saloLandingLinksToVillageIndex || !villageIndexUsesAreaGrid || !saloLandingDoesNotRenderVillageGrid || !areaCardsLinkToRoutes || !areaCardsIncludeImages || !sitemapIncludesAreaRoutes || !sitemapIncludesVillageIndex || !sitemapIncludesCategoryRoutes || !photoSourceLinkIsSafe || !photoSourceLabelIsLocalized || renderedAreas.length !== 8) {
   failed = true;
   console.error("Salo area directory check failed:", {
     providerCount: providerIds.length,
     providerImageCount,
     providerCreditCount,
+    missingImageProviderIds,
+    unapprovedMissingImageIds,
+    staleNoImageApprovals,
+    imageWithoutCreditIds,
     duplicateAreaIds,
     multiLocationProviderIds,
     unapprovedDuplicateAreaIds,
