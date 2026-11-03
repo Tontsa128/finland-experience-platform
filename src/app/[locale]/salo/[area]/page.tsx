@@ -9,6 +9,7 @@ import { photoCredits, photoLibrary } from "@/lib/photo-library";
 import { saloProviders } from "@/lib/salo";
 import { getSaloAreaCategories, saloCategoryCopy, saloCategorySlugs } from "@/lib/salo-categories";
 import { areaCopy, areaProviderIds, type SaloArea } from "@/lib/salo-areas";
+import { SaloEditorialCard } from "@/components/salo/SaloEditorialCard";
 
 const supportedLocales: Locale[] = ["fi", "en", "es"];
 const areaSlugs = Object.keys(areaProviderIds) as SaloArea[];
@@ -145,21 +146,28 @@ export default async function SaloAreaPage({
             {locale === "fi" ? "Valitse kategoria nähdäksesi alueelle kuuluvat palvelut ja niiden omat esittelysivut." : locale === "es" ? "Elige una categoría para ver los servicios de la zona y sus páginas informativas." : "Choose a category to see the services in this area and their individual profiles."}
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {getSaloAreaCategories(area).map((category) => {
             const copy = saloCategoryCopy[category][locale];
+            const representative = saloProviders.find(
+              (provider) =>
+                areaProviderIds[area].includes(provider.id) &&
+                provider.category === category &&
+                Boolean(provider.image),
+            );
             return (
-              <Link
+              <SaloEditorialCard
                 key={category}
                 href={`/${locale}/salo/${area}/${saloCategorySlugs[category]}`}
-                className="group rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card"
-              >
-                <h3 className="font-display text-2xl font-bold text-brand-950 group-hover:text-brand-700">{copy.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{copy.intro}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-brand-700">
-                  {locale === "fi" ? "Avaa kategoria" : locale === "es" ? "Abrir categoría" : "Open category"}<ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </Link>
+                image={representative?.image}
+                imageAlt={representative?.nameByLocale?.[locale] || representative?.name || copy.title}
+                eyebrow={areaContent.eyebrow}
+                title={copy.title}
+                description={copy.intro}
+                actionLabel={locale === "fi" ? "Tutustu kategoriaan" : locale === "es" ? "Explorar categoría" : "Explore category"}
+                imageCredit={representative?.imageCredit ? `Kuvan lähde: ${representative.imageCredit}` : undefined}
+                imageSource={representative?.imageSource || representative?.url}
+              />
             );
           })}
         </div>
