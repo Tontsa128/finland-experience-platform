@@ -23,7 +23,7 @@ Tästä seuraa ylläpitoriski: julkisen profiilin muutos voi vaatia koodimuutoks
 
 ## Koodista tarkistetut esimerkit
 
-- `/[locale]/salo` ohjaa kanoniseen kylähakemistoon `/[locale]/salo/kylat`. Alueiden reitit käyttävät `saloProviders`-, `areaProviderIds`- ja `saloCategoryCopy`-vientejä suoraan.
+- `/[locale]/salo` ohjaa kanoniseen kylähakemistoon `/[locale]/salo/kylat`. Etusivun Salo-kortti vie tähän kylähakemistoon. Kyläkortit avaavat saman `/[locale]/salo/[area]`-alueoppaan ja sen palvelukategoriat; Mathildedal käyttää nyt samaa reittiä kuin muut alueet. Alueiden reitit käyttävät `saloProviders`-, `areaProviderIds`- ja `saloCategoryCopy`-vientejä suoraan.
 - Salon kategoriakomponentti suodattaa `saloProviders`-taulukkoa alue- ja kategoriatunnisteilla. Sen julkinen korttilista ei hae Supabasen `providers`-taulua.
 - Kemiönsaaren kategoriaroute renderöi `KimitoonGuide`-näkymän. Katalogi on `kimitoonProviders`-taulukossa, johon on tallennettu kieliversiot, lähde-URL:t, kuva- ja krediittitiedot sekä yhteystietoja.
 - Yleinen kohdedetail käyttää `getPublishedDestinations()`-funktiota ja staattisia fallback-kohteita. Kemiönsaari käsitellään reitillä erikoistapauksena.
