@@ -99,7 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <VisitorCounter locale={locale as "fi" | "es" | "en"} />
       <Hero settings={homepage} />
 
-      <section className="bg-snow py-20 sm:py-28"><div className="container-narrow"><div className="mx-auto max-w-3xl text-center"><p className="text-xs font-bold uppercase tracking-[.22em] text-brand-600">{sh("advisorEyebrow")}</p><h2 className="mt-4 section-title">{sh("advisorTitle")}</h2><p className="mt-4 section-subtitle mx-auto">{sh("advisorText")}</p><Link href={`/${locale}/plan`} className="btn-gold mt-6 inline-flex">{locale === "es" ? "Diseña tu viaje" : locale === "en" ? "Plan your trip" : "Suunnittele matkasi"} <ArrowRight className="h-4 w-4"/></Link></div><div className="mx-auto mt-10 max-w-5xl rounded-[2rem] bg-white p-3 shadow-card"><div className="rounded-[1.5rem] bg-brand-50 p-5 sm:p-7"><TravelAdvisor
+      <section className="relative isolate overflow-hidden py-16 text-white sm:py-24"><Image src={photoLibrary.turkuArchipelago} alt="" fill sizes="100vw" className="absolute inset-0 -z-20 object-cover object-center" /><div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-950/75 to-brand-950/45" /><div className="container-narrow"><div className="mx-auto max-w-5xl rounded-[2rem] border border-white/20 bg-brand-950/25 px-6 py-10 text-center shadow-2xl backdrop-blur-[2px] sm:px-12 sm:py-14"><p className="text-xs font-bold uppercase tracking-[.24em] text-gold-300">{sh("advisorEyebrow")}</p><h2 className="mx-auto mt-4 max-w-3xl font-display text-3xl font-bold leading-tight text-white sm:text-5xl">{sh("advisorTitle")}</h2><p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">{sh("advisorText")}</p><Link href={`/${locale}/plan`} className="btn-gold mt-8 inline-flex items-center gap-2 shadow-xl">{locale === "es" ? "Diseña tu viaje" : locale === "en" ? "Plan your trip" : "Suunnittele matkasi"} <ArrowRight className="h-4 w-4"/></Link></div><TravelAdvisor
   language={locale as "fi"|"es"|"en"}
   catalog={{
     destinations: catalogDestinations.map((d) => ({
@@ -112,7 +112,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       slug: e.slug, name: e.name, description: e.shortDescription, region: e.region, tags: e.tags || [], price: e.price, verified: e.verified,
     })),
   }}
-/></div></div></div></section>
+/></div></section>
       <section className="border-y border-brand-100 bg-white py-7 sm:py-8">
         <div className="container-narrow">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
