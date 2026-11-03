@@ -18,7 +18,7 @@ assert.equal(new Set(providerIds).size, providerIds.length, "provider IDs must b
 for (const [index, block] of providerBlocks.entries()) {
   const id = providerIds[index];
   for (const locale of ["fi", "en", "es"]) {
-    assert.match(block, new RegExp("\\b" + locale + ":\\s*\\""), `provider ${id} must have a ${locale} description`);
+    assert.match(block, new RegExp("\\b" + locale + ':\\s*"'), `provider ${id} must have a ${locale} description`);
   }
   assert.match(block, /url:\s*"https?:\/\//, `provider ${id} must link to an official provider or source page`);
   if (/image:\s*(?:providerImages\.|"https?:\/\/)/.test(block)) {
