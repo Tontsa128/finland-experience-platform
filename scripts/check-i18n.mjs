@@ -112,6 +112,7 @@ const saloDirectorySource = await readFile(path.resolve("src/components/salo/Sal
 const saloPageSource = await readFile(path.resolve("src/app/[locale]/salo/page.tsx"), "utf8");
 const saloVillageIndexSource = await readFile(path.resolve("src/app/[locale]/salo/kylat/page.tsx"), "utf8");
 const saloAreaGridSource = await readFile(path.resolve("src/components/salo/SaloAreaGrid.tsx"), "utf8");
+const saloEditorialCardSource = await readFile(path.resolve("src/components/salo/SaloEditorialCard.tsx"), "utf8");
 const saloAreaPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/page.tsx"), "utf8");
 const saloCategoryPageSource = await readFile(path.resolve("src/app/[locale]/salo/[area]/[category]/page.tsx"), "utf8");
 const providerArrayStart = saloDataSource.indexOf("export const saloProviders: SaloProvider[] = [");
@@ -150,7 +151,9 @@ const saloLandingLinksToVillageIndex = saloPageSource.includes("redirect(`/${loc
 const villageIndexUsesAreaGrid = saloVillageIndexSource.includes("<SaloAreaGrid locale={locale} />");
 const saloLandingDoesNotRenderVillageGrid = !saloPageSource.includes("<SaloAreaGrid");
 const areaCardsLinkToRoutes = /href=\{\x60\/\$\{locale\}\/salo\/\$\{area\}\x60\}/.test(saloAreaGridSource);
-const areaCardsIncludeImages = saloAreaGridSource.includes("<Image src={image.src");
+const areaCardsIncludeImages = saloAreaGridSource.includes("<SaloEditorialCard")
+  && saloAreaPageSource.includes("<SaloEditorialCard")
+  && saloEditorialCardSource.includes("<Image");
 const sitemapIncludesAreaRoutes = sitemapSource.includes("...saloAreaPaths");
 const sitemapIncludesVillageIndex = sitemapSource.includes('"salo/kylat"');
 const sitemapIncludesCategoryRoutes = sitemapSource.includes("...saloCategoryPaths")
