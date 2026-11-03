@@ -55,6 +55,9 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
 // restaurant cards on the Kimitoön destination guide instead.
 const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
 const homepageDestinationCardSource = await readFile(path.resolve("src/components/home/HomeDestinationFeatureCard.tsx"), "utf8");
+  assert(homepageDestinationFeaturesSource.includes("Salo ja lähiseutu"), "Salo homepage title should use the wider regional name");
+  assert(!homepageDestinationFeaturesSource.includes("Mathildedal"), "Salo homepage feature copy must not mention Mathildedal");
+
 const homepageDestinationFeaturesSource = await readFile(path.resolve("src/lib/homepage-destination-features.ts"), "utf8");
 const homepageHasAllCoastalDestinations = [
   '"salo-mathildedal"',
