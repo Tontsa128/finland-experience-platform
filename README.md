@@ -1,6 +1,6 @@
 # Finland Experience Platform
 
-Monikielinen suomalaisia matkakohteita, majoituksia ja elämyksiä esittelevä alusta.
+Monikielinen suomalaisia matkakohteita, majoituksia ja elämyksiä esittelevä alusta. Finland Experience auttaa matkailijaa löytämään paikallisia kohteita ja palveluntarjoajia ja ohjaa varauksen palveluntarjoajan omaan kanavaan.
 
 ## Projektirakenne
 
@@ -18,14 +18,14 @@ finland-experience-platform/
 ├── supabase/
 │   └── migrations/           # Tietokannan ainoa migraatiolähde
 ├── public/                   # Staattiset resurssit
-├── docs/                     # Projektin ohjeistus
+├── docs/                     # Projektin ohjeistus ja toteutussuunnitelmat
 ├── package.json
 └── README.md
 ```
 
 ## Teknologiat
 
-- Next.js 14 ja React 18
+- Next.js 16 ja React 19
 - TypeScript
 - Tailwind CSS
 - next-intl (suomi, espanja ja englanti)
@@ -37,7 +37,7 @@ finland-experience-platform/
 
 ### Vaatimukset
 
-- Node.js 22
+- Node.js 24
 - npm
 - Supabase-projekti
 - Palveluntarjoajien omat varaus- ja maksukanavat
@@ -74,7 +74,7 @@ npm run build       # Tuotantobuild
 npm start            # Tuotantopalvelin
 npm run lint        # ESLint
 npm run typecheck   # TypeScript-tarkistus
-npm test             # TypeScript-yksikkötestit
+npm test             # Yksikkötestit
 npm run test:watch   # Testit watch-tilassa
 npm run db:push      # Supabase-migraatiot
 npm run db:reset     # Supabase-tietokannan nollaus
@@ -82,9 +82,9 @@ npm run db:reset     # Supabase-tietokannan nollaus
 
 ## Testaus ja CI
 
-Yksikkötestit käyttävät Node.js:n natiivia test runneria ja projektissa jo olevaa `tsx`-riippuvuutta. Testit löytyvät hakemistosta `src/__tests__/`.
+Yksikkötestit käyttävät Node.js:n natiivia test runneria ja projektissa olevaa `tsx`-riippuvuutta. Testit löytyvät hakemistosta `src/__tests__/`.
 
-Paikallinen tarkistus:
+Paikalliset tarkistukset:
 
 ```bash
 npm run lint
@@ -93,13 +93,13 @@ npm test
 npm run build
 ```
 
-GitHub Actions suorittaa samat neljä tarkistusta jokaisella main-haaran pushilla ja pull requestilla.
+GitHub Actions suorittaa lintin, TypeScript-tarkistuksen, testit ja tuotantobuildin main-haaran pushissa ja pull requesteissa. Vihreä CI-ajo todistaa koodin tarkistusten läpäisyn, ei tuotantoon julkaisua. Tuotannon julkaisualusta ja julkaistun version tarkistus kuvataan [tuotantotilanteen ja jatkotöiden tiekartassa](./docs/production-roadmap.md).
 
 ## CMS, mediat ja tapahtumasyöte
 
-Uusien CMS-ominaisuuksien käyttöönotto edellyttää Supabase-migraatioiden ajamista ennen sovelluspäivitystä. Uusin migraatio lisää mediasisällön käyttöoikeus- ja sijaintitiedot, sivujen ajastuksen sekä tapahtumien, tapahtumapaikkojen ja syötteiden taulut. Käytä tavallista julkaisuprosessia ja tarkista kohdeprojekti ennen `npm run db:push` -komentoa.
+Uusien CMS-ominaisuuksien käyttöönotto edellyttää Supabase-migraatioiden ajamista ennen sovelluspäivitystä. Uusin migraatio lisää mediasisällön käyttöoikeus- ja sijaintitiedot, sivujen ajastuksen sekä tapahtumien, tapahtumapaikkojen ja syötteiden taulut. Tarkista kohdeprojekti ja migraatioiden tila ennen `npm run db:push` -komentoa.
 
-CMS löytyy reitiltä `/admin/cms`. Sivujen editorilla voi tehdä luonnoksia, esikatsella sivuja, palauttaa tallennettuja versioita ja ajastaa julkaisuja. Olemassa olevien sauna-, maaseutu-, rannikko- ja Salo-laskeutumissivujen sisällön voi korvata luomalla CMS-sivun samalla slugilla ja halutulla kielellä.
+CMS löytyy reitiltä `/admin/cms`. Sivujen editorilla voi tehdä luonnoksia, esikatsella sivuja, palauttaa tallennettuja versioita ja ajastaa julkaisuja. Kaikkien aluekohtaisten kohde- ja palveluntarjoajatietojen CMS-hallinta pitää varmistaa erikseen; lähdekoodissa olevia katalogeja ei saa olettaa CMS:n kautta hallittaviksi.
 
 Tapahtumasyötteen käyttöönotto:
 
@@ -132,7 +132,7 @@ Lisätietoja:
 
 Julkinen sivusto ei myy matkapaketteja eikä käsittele asiakkaan varausta tai maksua omassa checkoutissa. Sivusto toimii inspiraatio- ja ohjauspalveluna: käyttäjä tutustuu kohteeseen ja siirtyy lopuksi suoraan palveluntarjoajan omalle sivulle, jossa varaus, sopimus ja maksu tehdään.
 
-Projektissa on edelleen Stripeen liittyviä legacy/admin-tietorakenteita ja dokumentaatiota vanhaa maksupolkua varten. Niitä ei tule käyttää julkisessa varauspolussa ilman erillistä käyttöönottoa ja liiketoimintamallin muutosta.
+Projektissa on edelleen Stripeen liittyviä legacy/admin-tietorakenteita ja dokumentaatiota vanhaa maksupolkua varten. Niitä ei tule käyttää julkisessa varauspolussa ilman erillistä liiketoimintamallin muutosta.
 
 ## Tietoturva
 
