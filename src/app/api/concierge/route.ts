@@ -111,55 +111,96 @@ export async function POST(request: Request) {
   }
 
   const buildCatalogFallback = () => {
-    const candidates: Array<Recommendation & { tags: string[] }> = [
-      ...catalog.destinations.map((item) => ({
+    type Candidate = Recommendation & {
+      tags: string[];
+      searchableText: string;
+      nightlyPrice?: number;
+      position: number;
+    };
+    const candidates: Candidate[] = [
+      ...catalog.destinations.map((item, position) => ({
         type: "destination" as const,
         slug: item.slug,
         reason: "",
         tags: [...(item.tags || []), ...(item.activities || [])],
+        searchableText: [item.name[language], item.description[language], item.name.fi, item.description.fi].join(" "),
+        position,
       })),
-      ...catalog.accommodations.map((item) => ({
+      ...catalog.accommodations.map((item, position) => ({
         type: "accommodation" as const,
         slug: item.slug,
         reason: "",
         tags: ["accommodation", ...(item.features || [])],
+        searchableText: [item.name[language], item.description[language], item.location, ...(item.features || [])].join(" "),
+        nightlyPrice: Number(item.price) || 0,
+        position: catalog.destinations.length + position,
       })),
-      ...catalog.experiences.map((item) => ({
+      ...catalog.experiences.map((item, position) => ({
         type: "experience" as const,
         slug: item.slug,
         reason: "",
         tags: item.tags || [],
+        searchableText: [item.name[language], item.description[language], item.region, ...(item.tags || [])].join(" "),
+        position: catalog.destinations.length + catalog.accommodations.length + position,
       })),
     ];
     const interestTags: Record<string, string[]> = {
-      nature: ["nature", "outdoors", "luonto"],
-      sauna: ["sauna", "sauna-wellness"],
-      sea: ["water", "sea", "archipelago"],
-      food: ["food", "food-farm", "gastronomy"],
-      romance: ["couples", "romance"],
+      nature: ["nature", "outdoors", "luonto", "forest", "hiking", "metsä", "park", "järvi"],
+      sauna: ["sauna", "sauna-wellness", "löyly", "smoke sauna"],
+      sea: ["water", "sea", "archipelago", "meri", "saaristo", "coast", "beach"],
+      food: ["food", "food-farm", "gastronomy", "ruoka", "restaurant", "kahvila"],
+      romance: ["couples", "romance", "romanttinen", "pariskunta"],
     };
     const preferredTags = interests.flatMap((interest) => interestTags[interest] || []);
-    const ranked = [...candidates].sort((a, b) => {
-      const score = (item: typeof a) =>
-        item.tags.some((tag) => preferredTags.some((preferred) => tag.toLowerCase().includes(preferred))) ? 1 : 0;
-      return score(b) - score(a);
-    });
+    const stopWords = new Set([
+      "the", "and", "for", "with", "from", "that", "this", "want", "would", "like",
+      "our", "have", "are", "was", "were", "you", "your", "trip", "days", "very",
+      "että", "joka", "jotka", "olemme", "haluamme", "haluaisimme", "kanssa", "meille",
+      "matka", "matkan", "päivää", "päivän", "kiinnostaa", "toivomme", "voisi", "olisi",
+      "para", "con", "una", "unos", "unas", "que", "del", "por", "viaje", "queremos",
+      "nos", "gustaría", "días", "muy", "junto",
+    ]);
+    const normalize = (value: string) =>
+      value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase();
+    const queryTerms = [...new Set(
+      normalize(question)
+        .split(/[^\p{L}\p{N}]+/u)
+        .filter((word) => word.length > 2 && !stopWords.has(word)),
+    )];
+
+    const score = (item: Candidate) => {
+      const text = normalize(item.searchableText);
+      const tags = item.tags.map(normalize);
+      const textScore = queryTerms.reduce((total, term) => total + (text.includes(term) ? 2 : 0), 0);
+      const interestScore = preferredTags.reduce(
+        (total, preferred) => total + (tags.some((tag) => tag.includes(normalize(preferred))) || text.includes(normalize(preferred)) ? 3 : 0),
+        0,
+      );
+      const budgetScore =
+        item.nightlyPrice == null
+          ? 0
+          : item.nightlyPrice <= budget
+            ? 1
+            : -2;
+      return textScore + interestScore + budgetScore;
+    };
+    const ranked = [...candidates].sort((a, b) => score(b) - score(a) || a.position - b.position);
     const selectedItems = ranked.slice(0, Math.min(days, 6, ranked.length));
     const copy = {
       fi: {
-        summary: "Tässä on matkan aloitusehdotus valituista kiinnostuksenkohteista ja tarkistetusta tarjonnasta.",
+        summary: "Tässä on matkan aloitusehdotus kiinnostustesi, kuvauksesi ja tarkistetun tarjonnan perusteella.",
         day: "Päivä",
-        reason: "Valittu kiinnostuksenkohteidesi ja tarkistettujen tietojen perusteella.",
+        reason: "Valittu kiinnostustesi ja matkatoiveessasi kuvaamasi asioiden perusteella.",
       },
       es: {
-        summary: "Aquí tienes una idea inicial basada en tus intereses y en la oferta verificada.",
+        summary: "Aquí tienes una idea inicial basada en tus intereses, tu descripción y la oferta verificada.",
         day: "Día",
-        reason: "Seleccionado según tus intereses y la información verificada.",
+        reason: "Seleccionado según tus intereses y lo que describes en tu solicitud.",
       },
       en: {
-        summary: "Here is a starting itinerary based on your interests and verified listings.",
+        summary: "Here is a starting itinerary based on your interests, description and verified listings.",
         day: "Day",
-        reason: "Selected to match your interests and verified information.",
+        reason: "Selected to match your interests and the details in your request.",
       },
     }[language as "fi" | "es" | "en"];
     return NextResponse.json({
