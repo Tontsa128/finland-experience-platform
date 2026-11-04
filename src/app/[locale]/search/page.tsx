@@ -26,20 +26,36 @@ type ProviderSearchResult = {
   dedupeKey: string;
 };
 
-function matchesAreaText(value: string, area: (typeof destinations)[number] | undefined, locale: Locale) {
-  if (!area) return true;
-  const terms = [area.slug, area.name?.fi, area.name?.es, area.name?.en]
-    .filter((term): term is string => Boolean(term))
-    .flatMap((term) => term.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/))
-    .filter((term) => term.length > 2 && !["archipelago", "saaristo", "and", "the", "islands", "coast", "western", "eastern", "y", "el", "ja", "de"].includes(term));
-  const haystack = value.toLocaleLowerCase(locale);
-  return terms.some((term) => haystack.includes(term));
+const areaAliases: Record<string, string[]> = {
+  "salo-mathildedal": ["salo", "mathildedal", "teijo", "särkisalo", "perniö", "halikko", "suomusjärvi", "vaskio", "förby", "kirjakkala"],
+  kemionsaari: ["kemiö", "kemiönsaari", "kimitoön", "kasnäs", "taalintehdas", "dalsbruk", "rosala", "högsåra", "bengtskär", "söderlångvik", "örö"],
+  naantali: ["naantali", "rymättylä", "aasla"],
+  turku: ["turku", "parainen", "pargas"],
+  hanko: ["hanko"],
+  aland: ["ahvenanmaa", "åland", "mariehamn"],
+  porvoo: ["porvoo", "emäsalo"],
+  "southeast-finland": ["kotka", "hamina", "loviisa"],
+};
+
+const areaStopWords = new Set(["archipelago", "saaristo", "and", "the", "islands", "coast", "western", "eastern", "y", "el", "ja", "de", "region", "area"]);
+
+function normalizedTokens(value: string) {
+  return value.toLocaleLowerCase().replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/).filter(Boolean);
 }
 
-function providerDedupeKey(name: string, location: string) {
-  const normalizedName = name.toLocaleLowerCase().replace(/\s+/g, " ").trim();
-  const primaryLocation = location.split(/[·,]/)[0].toLocaleLowerCase().trim();
-  return `${normalizedName}|${primaryLocation}`;
+function getAreaTerms(area: (typeof destinations)[number], locale: Locale) {
+  return Array.from(new Set([
+    ...[area.slug, area.name?.fi, area.name?.es, area.name?.en]
+      .filter((term): term is string => Boolean(term))
+      .flatMap(normalizedTokens),
+    ...(areaAliases[area.slug] || []),
+  ])).filter((term) => term.length > 2 && !areaStopWords.has(term));
+}
+
+function matchesAreaText(value: string, area: (typeof destinations)[number] | undefined, locale: Locale) {
+  if (!area) return true;
+  const locationTokens = new Set(normalizedTokens(value));
+  return getAreaTerms(area, locale).some((term) => locationTokens.has(term));
 }
 
 function matchesProviderCategory(requested: string, category: string, haystack: string) {
@@ -116,16 +132,12 @@ function matches(item: SearchableItem, query: string, locale: Locale, area?: (ty
     return true;
   }
 
-  const areaTerms = [area.slug, area.name?.fi, area.name?.es, area.name?.en]
-    .filter((term): term is string => Boolean(term))
-    .flatMap((term) => term.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/))
-    .filter((term) => term.length > 2 && !["archipelago", "saaristo", "and", "the", "islands", "coast", "western", "eastern", "y", "el", "ja", "de"].includes(term));
   const locationText = [
     item.location, item.locationByLocale?.fi, item.locationByLocale?.es, item.locationByLocale?.en,
     item.region, item.city, item.town, item.areaName, item.destinationName,
     ...(item.tags || []),
-  ].filter(Boolean).join(" ").toLocaleLowerCase(locale);
-  return areaTerms.some((term) => locationText.includes(term));
+  ].filter(Boolean).join(" ");
+  return matchesAreaText(locationText, area, locale);
 }
 
 export default async function SearchPage({
