@@ -132,8 +132,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?type=accommodation`, image: uniqueHomepageImage([featuredCabins[0]?.images?.[1], featuredCabins[0]?.images?.[0]], [photoLibrary.saunaCottage]), icon: BedDouble },
     // Show an actual restaurant dining scene for the food category.
     { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/search?type=experience&category=food`, image: uniqueHomepageImage([photoLibrary.mathildanMarinaDining]), icon: Utensils },
-    // Keep the experience category visually distinct with a real activity: a Finnish sauna boat.\n    { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/search?type=experience`, image: uniqueHomepageImage([photoLibrary.saunaBoat]), icon: Waves },
-    // Use a recognizable cultural attraction rather than another generic nature image.\n    { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?type=destination`, image: uniqueHomepageImage([photoLibrary.teijoNationalPark]), icon: Camera },
+    // Keep the experience category visually distinct with a real activity: a Finnish sauna boat.
+    { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/search?type=experience`, image: uniqueHomepageImage([photoLibrary.saunaBoat]), icon: Waves },
+    // Use a recognizable cultural attraction rather than another generic nature image.
+    { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?type=destination`, image: uniqueHomepageImage([photoLibrary.teijoNationalPark]), icon: Camera },
   ];
 
   const advisorCatalog = {
