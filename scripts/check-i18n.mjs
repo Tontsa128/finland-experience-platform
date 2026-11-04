@@ -93,9 +93,15 @@ if (!homepageHasAllCoastalDestinations || !homepageUsesPhotoAttribution || !home
 }
 const unifiedSearchSource = await readFile(path.resolve("src/app/[locale]/search/page.tsx"), "utf8");
 const unifiedSearchIncludesVerifiedLocalProviders = unifiedSearchSource.includes('from "@/lib/salo"')
+  && unifiedSearchSource.includes('from "@/lib/luxury-directory"')
+  && unifiedSearchSource.includes('from "@/lib/kimitoon-providers"')
   && unifiedSearchSource.includes("saloProviders.filter")
+  && unifiedSearchSource.includes("luxuryDirectory")
+  && unifiedSearchSource.includes("kimitoonProviders")
   && unifiedSearchSource.includes("areaProviderIds")
-  && unifiedSearchSource.includes('href={`/${locale}/providers/salo-${provider.id}`}');
+  && unifiedSearchSource.includes('href: `/${locale}/providers/salo-${provider.id}`')
+  && unifiedSearchSource.includes('href: `/${locale}/providers/directory-${provider.id}`')
+  && unifiedSearchSource.includes('href: `/${locale}/providers/kimitoon-${provider.id}`');
 if (!unifiedSearchIncludesVerifiedLocalProviders) {
   failed = true;
   console.error("Unified search check failed: include verified local providers with their canonical provider pages and locality mapping.");
