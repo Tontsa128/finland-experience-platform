@@ -37,7 +37,7 @@ function matchesAreaText(value: string, area: (typeof destinations)[number] | un
 }
 
 function providerDedupeKey(name: string, location: string) {
-  const normalizedName = name.toLocaleLowerCase().replace(/\\s+/g, " ").trim();
+  const normalizedName = name.toLocaleLowerCase().replace(/\s+/g, " ").trim();
   const primaryLocation = location.split(/[·,]/)[0].toLocaleLowerCase().trim();
   return `${normalizedName}|${primaryLocation}`;
 }
@@ -189,7 +189,7 @@ export default async function SearchPage({
         image: provider.image!,
         imageCredit: provider.imageCredit,
         price: provider.priceByLocale?.[locale] || provider.price,
-        dedupeKey: provider.url.toLowerCase().replace(/\/+$/, ""),
+        dedupeKey: providerDedupeKey(provider.nameByLocale?.[locale] || provider.name, providerArea ? areaCopy[providerArea][locale] : "Salo"),
       };
     });
 
@@ -216,7 +216,7 @@ export default async function SearchPage({
       image: provider.image!,
       imageCredit: provider.imageCredit,
       price: provider.priceByLocale?.[locale] || provider.price,
-      dedupeKey: provider.url.toLowerCase().replace(/\/+$/, ""),
+      dedupeKey: providerDedupeKey(provider.nameByLocale?.[locale] || provider.name, provider.locationByLocale?.[locale] || provider.location),
     }));
 
   const kimitoonCategoryMap: Record<KimitoonCategory, string> = {
