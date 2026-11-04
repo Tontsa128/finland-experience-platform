@@ -23,6 +23,7 @@ type ProviderSearchResult = {
   image: string;
   imageCredit?: string;
   price?: string;
+  dedupeKey: string;
 };
 
 function matchesAreaText(value: string, area: (typeof destinations)[number] | undefined, locale: Locale) {
@@ -176,6 +177,7 @@ export default async function SearchPage({
         image: provider.image!,
         imageCredit: provider.imageCredit,
         price: provider.priceByLocale?.[locale] || provider.price,
+        dedupeKey: provider.url.toLowerCase().replace(/\\/+$/, ""),
       };
     });
 
@@ -202,6 +204,7 @@ export default async function SearchPage({
       image: provider.image!,
       imageCredit: provider.imageCredit,
       price: provider.priceByLocale?.[locale] || provider.price,
+      dedupeKey: provider.url.toLowerCase().replace(/\\/+$/, ""),
     }));
 
   const kimitoonCategoryMap: Record<KimitoonCategory, string> = {
@@ -242,10 +245,11 @@ export default async function SearchPage({
       category: kimitoonCategoryMap[provider.categories[0]],
       image: (provider.image || provider.categoryImages?.[provider.categories[0]])!,
       imageCredit: provider.imageCredit,
+      dedupeKey: `${provider.name.fi.toLocaleLowerCase()}|${provider.location.fi.toLocaleLowerCase()}`,
     }));
 
   const foundProviders = [...saloProviderResults, ...directoryProviderResults, ...kimitoonProviderResults]
-    .filter((provider, index, all) => all.findIndex((item) => item.href === provider.href) === index);
+    .filter((provider, index, all) => all.findIndex((item) => item.dedupeKey === provider.dedupeKey) === index);
   const total = foundDestinations.length + foundCabins.length + foundExperiences.length + foundProviders.length;
 
   return (
