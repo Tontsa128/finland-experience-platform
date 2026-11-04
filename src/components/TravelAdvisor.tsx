@@ -14,9 +14,9 @@ type AdvisorCatalog = {
   experiences: { slug:string; name:Record<string,string>; description:Record<string,string>; region:string; tags:string[]; price:number; verified?:boolean }[];
 };
 
-export default function TravelAdvisor({ language: initialLanguage, catalog }: { language?: Language; catalog: AdvisorCatalog }) {
+export default function TravelAdvisor({ language: initialLanguage, catalog, embedded = false }: { language?: Language; catalog: AdvisorCatalog; embedded?: boolean }) {
   const [language, setLanguage] = useState<Language>(initialLanguage || 'fi');
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(Boolean(embedded));
   const [question, setQuestion] = useState('');
   const [aiAnswer, setAiAnswer] = useState('');
   const [aiLoading, setAiLoading] = useState(false);
@@ -37,9 +37,9 @@ export default function TravelAdvisor({ language: initialLanguage, catalog }: { 
       setAiError(language === 'fi' ? 'Avustaja ei ole juuri nyt saatavilla.' : language === 'es' ? 'El asistente no está disponible ahora.' : 'The advisor is unavailable right now.');
     } finally { setAiLoading(false); }
   }
-  return <div className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] left-3 right-auto z-[60] sm:bottom-5 sm:left-auto sm:right-24">
+  return <div className={embedded ? "w-full" : "fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] left-3 right-auto z-[60] sm:bottom-5 sm:left-auto sm:right-24"}>
     {!open && <button type="button" onClick={()=>setOpen(true)} aria-expanded="false" aria-label={t.button} title={t.button} className="group flex h-12 w-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-brand-950/95 p-0 text-sm font-extrabold text-white shadow-2xl shadow-black/20 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-brand-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-300 sm:h-auto sm:w-auto sm:px-5 sm:py-3.5"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold-400 text-brand-950"><Sparkles className="h-4 w-4" /></span><span className="hidden sm:inline">{t.button}</span><ArrowUpRight className="hidden h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:block" /></button>}
-    {open && <div role="dialog" aria-label={t.title} className="absolute bottom-0 left-0 max-h-[min(72dvh,640px)] w-[calc(100vw-1.5rem)] overflow-y-auto rounded-[1.5rem] border border-white/20 bg-white text-slate-900 shadow-2xl shadow-black/25 sm:bottom-0 sm:left-auto sm:right-0 sm:w-[min(92vw,430px)]">
+    {open && <div role="dialog" aria-label={t.title} className={embedded ? "relative w-full overflow-hidden rounded-[1.5rem] border border-white/70 bg-white/90 text-slate-900 shadow-[0_18px_50px_rgba(28,54,42,.12)] backdrop-blur-sm" : "absolute bottom-0 left-0 max-h-[min(72dvh,640px)] w-[calc(100vw-1.5rem)] overflow-y-auto rounded-[1.5rem] border border-white/20 bg-white text-slate-900 shadow-2xl shadow-black/25 sm:bottom-0 sm:left-auto sm:right-0 sm:w-[min(92vw,430px)]"}>
       <div className="flex items-center justify-between bg-brand-950 px-5 py-4 text-white"><div className="flex items-center gap-2 font-bold"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-gold-400 text-brand-950"><Sparkles className="h-4 w-4" /></span><div><div className="text-sm">{t.title}</div><div className="text-[10px] font-medium uppercase tracking-[.16em] text-white/55">Finland Experience</div></div></div><button type="button" onClick={()=>setOpen(false)} aria-label={language === "fi" ? "Sulje" : language === "es" ? "Cerrar" : "Close"} className="flex h-10 w-10 items-center justify-center rounded-full p-2 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-300"><X className="h-4 w-4" /></button></div>
       <div className="p-5"><p className="text-sm leading-6 text-slate-600">{t.intro}</p><div className="mt-3 inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[.14em] text-emerald-800">{language === "fi" ? "Tarkistettu katalogi" : language === "es" ? "Catálogo verificado" : "Verified catalogue"}</div>
         {aiLoading && <div className="mt-4 rounded-xl bg-slate-50 p-4 text-sm text-slate-500">{language === 'fi' ? 'Etsin varmennetusta katalogista...' : language === 'es' ? 'Buscando en el catálogo verificado...' : 'Searching the verified catalogue...'}</div>}
