@@ -153,8 +153,9 @@ const homepageHeroHasMatchedCafeCopy = [
 ].every((value) => homepageHeroSource.includes(value));
 const homepageHasNoLegacyDuskOrCoffeeImage = !photoLibrarySource.includes("Mathildedal_harbour_sunset.jpg")
   && !homepageHeroSource.includes("Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg")
-  && !homepageHeroSource.includes("Morning coffee by the water")
-  && !homepageHeroSource.includes("Aamukahvi veden äärellä");
+  && !homepageHeroSource.includes('title: "Morning coffee by the water"')
+  && !homepageHeroSource.includes('title: "Aamukahvi veden äärellä"')
+  && homepageHeroSource.includes("legacyCoffeeCaptions");
 const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasOutdoor]")
   && homepageDataSource.includes("images: [photoLibrary.matriHouseLounge, photoLibrary.matriHouseBedroom]")
   && homepageDataSource.includes("images: [photoLibrary.mathildanMarinaTerrace, photoLibrary.mathildedalHarbour]");
