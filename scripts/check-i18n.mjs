@@ -99,6 +99,8 @@ const unifiedSearchIncludesVerifiedLocalProviders = unifiedSearchSource.includes
   && unifiedSearchSource.includes("luxuryDirectory")
   && unifiedSearchSource.includes("kimitoonProviders")
   && unifiedSearchSource.includes("areaProviderIds")
+  && unifiedSearchSource.includes("matchesAreaText")
+  && unifiedSearchSource.includes("providerDedupeKey")
   && unifiedSearchSource.includes('href: `/${locale}/providers/salo-${provider.id}`')
   && unifiedSearchSource.includes('href: `/${locale}/providers/directory-${provider.id}`')
   && unifiedSearchSource.includes('href: `/${locale}/providers/kimitoon-${provider.id}`');
