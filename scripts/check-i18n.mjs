@@ -91,6 +91,15 @@ if (!homepageHasAllCoastalDestinations || !homepageUsesPhotoAttribution || !home
     homepageCategoriesUseUnifiedSearch,
   });
 }
+const unifiedSearchSource = await readFile(path.resolve("src/app/[locale]/search/page.tsx"), "utf8");
+const unifiedSearchIncludesVerifiedLocalProviders = unifiedSearchSource.includes('from "@/lib/salo"')
+  && unifiedSearchSource.includes("saloProviders.filter")
+  && unifiedSearchSource.includes("areaProviderIds")
+  && unifiedSearchSource.includes('href={`/${locale}/providers/${provider.id}`}');
+if (!unifiedSearchIncludesVerifiedLocalProviders) {
+  failed = true;
+  console.error("Unified search check failed: include verified local providers with their canonical provider pages and locality mapping.");
+}
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
 const homepageHasKansakouluCard = homepageSource.includes("KansakouluSpotlight")
   || homepageSource.includes("kansakoulu");
