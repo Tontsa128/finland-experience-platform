@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BedDouble, Utensils } from "lucide-react";
 import type { Locale } from "@/types";
 
 export function KimitoonKansakouluCategoryCard({locale,category}:{locale:Locale;category:"majoitus"|"ruoka"}) {
@@ -14,15 +13,22 @@ export function KimitoonKansakouluCategoryCard({locale,category}:{locale:Locale;
  return <article className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
   <Link href={href} className="block">
    {stay ? (
-    <div className="flex h-64 flex-col items-center justify-center gap-3 bg-gradient-to-br from-brand-900 via-brand-800 to-brand-950 text-white" aria-label={title}>
-     <BedDouble className="h-10 w-10 text-gold-300" aria-hidden="true"/>
-     <span className="text-xs font-bold uppercase tracking-[.22em] text-white/80">{locale==="fi"?"Majoitus":locale==="es"?"Alojamiento":"Accommodation"}</span>
-     <span className="font-display text-2xl font-semibold">Kansakoulu</span>
+    <div className="relative h-64 overflow-hidden bg-stone-100">
+     <img
+      src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/ravintola.jpg"
+      alt={locale==="fi"?"Kansakoulun vanhan koulurakennuksen ravintola- ja yhteistila":locale==="es"?"Comedor y espacio común de la antigua escuela Kansakoulu":"Dining and shared space inside the former Kansakoulu schoolhouse"}
+      loading="eager"
+      decoding="async"
+      className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+     />
+     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-5 pb-4 pt-12">
+      <span className="text-xs font-bold uppercase tracking-[.22em] text-white">{locale==="fi"?"Majatalo vanhassa koulussa":locale==="es"?"Alojamiento en una antigua escuela":"Guesthouse in a former school"}</span>
+     </div>
     </div>
    ) : (
     <div className="grid h-64 grid-cols-2 overflow-hidden bg-stone-100">
-     <img src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/ravintola.jpg" alt={locale==="fi"?"Kansakoulun ravintolan historiallinen miljöö":locale==="es"?"Ambiente histórico del restaurante Kansakoulu":"The historic restaurant setting at Kansakoulu"} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"/>
-     <img src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/lahiruoka.jpg" alt={locale==="fi"?"Kansakoulun lähiruokatuotteita":locale==="es"?"Productos locales de Kansakoulu":"Local food products at Kansakoulu"} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"/>
+     <img src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/ravintola.jpg" alt={locale==="fi"?"Kansakoulun ravintolan historiallinen miljöö":locale==="es"?"Ambiente histórico del restaurante Kansakoulu":"The historic restaurant setting at Kansakoulu"} loading="eager" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"/>
+     <img src="https://www.kansakouluun.fi/wp-content/uploads/2017/05/lahiruoka.jpg" alt={locale==="fi"?"Kansakoulun lähiruokatuotteita":locale==="es"?"Productos locales de Kansakoulu":"Local food products at Kansakoulu"} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"/>
     </div>
    )}
    <div className="p-6"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-700">Västanfjärd · Kemiönsaari</p><h2 className="mt-2 font-display text-2xl font-bold text-brand-950">{title}</h2><p className="mt-3 leading-7 text-slate-600">{description}</p><span className="mt-5 inline-flex text-sm font-bold text-brand-800">{locale==="fi"?"Tutustu palveluntarjoajaan":locale==="es"?"Descubrir el establecimiento":"Explore this provider"} →</span>
