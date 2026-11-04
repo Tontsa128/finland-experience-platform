@@ -259,8 +259,13 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           const cafeSlide = slides.find((item) => item.key === "mathildedalCafe");
           if (cafeSlide) {
             mappedCmsSlides.push({
-              ...cafeSlide,
+              key: cafeSlide.key,
+              image: cafeSlide.image,
+              durationMs: cafeSlide.durationMs ?? 5500,
+              credit: cafeSlide.credit,
+              creditUrl: cafeSlide.creditUrl,
               href: normalizeHomepageHref(cafeSlide.href),
+              external: cafeSlide.external ?? false,
               copy: copy[locale][cafeSlide.key],
             });
           }
