@@ -189,7 +189,7 @@ export default async function SearchPage({
         image: provider.image!,
         imageCredit: provider.imageCredit,
         price: provider.priceByLocale?.[locale] || provider.price,
-        dedupeKey: providerDedupeKey(provider.nameByLocale?.[locale] || provider.name, providerArea ? areaCopy[providerArea][locale] : "Salo"),
+        dedupeKey: providerDedupeKey(provider.nameByLocale?.[locale] || provider.name, providerArea ? areaCopy[providerArea][locale].eyebrow : "Salo"),
       };
     });
 
