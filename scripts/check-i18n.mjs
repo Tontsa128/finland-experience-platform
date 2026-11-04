@@ -95,7 +95,7 @@ const unifiedSearchSource = await readFile(path.resolve("src/app/[locale]/search
 const unifiedSearchIncludesVerifiedLocalProviders = unifiedSearchSource.includes('from "@/lib/salo"')
   && unifiedSearchSource.includes('from "@/lib/luxury-directory"')
   && unifiedSearchSource.includes('from "@/lib/kimitoon-providers"')
-  && unifiedSearchSource.includes("saloProviders.filter")
+  && unifiedSearchSource.includes("saloProviders") && unifiedSearchSource.includes("saloProviderResults")
   && unifiedSearchSource.includes("luxuryDirectory")
   && unifiedSearchSource.includes("kimitoonProviders")
   && unifiedSearchSource.includes("areaProviderIds")
