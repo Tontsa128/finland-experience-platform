@@ -291,12 +291,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   }[locale];
 
   return (
-    <section className="relative overflow-hidden bg-[#dfe8df] text-white">
+    <section className="relative isolate z-0 overflow-hidden bg-[#dfe8df] text-white">
       <div className="absolute inset-0">
         {activeSlides.map((item, index) => (
           <div
             key={item.key}
-            className={`absolute inset-x-0 top-0 h-[34svh] bg-brand-950 transition-opacity duration-700 sm:inset-0 sm:h-auto ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`}
+            className={`absolute inset-0 bg-brand-950 transition-opacity duration-700 ${index === active ? "opacity-100" : "pointer-events-none opacity-0"}`}
             aria-hidden={index !== active}
           >
             <Image
