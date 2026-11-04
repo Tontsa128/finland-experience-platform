@@ -29,7 +29,7 @@ function matchesAreaText(value: string, area: (typeof destinations)[number] | un
   if (!area) return true;
   const terms = [area.slug, area.name?.fi, area.name?.es, area.name?.en]
     .filter((term): term is string => Boolean(term))
-    .flatMap((term) => term.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\\s+/))
+    .flatMap((term) => term.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/))
     .filter((term) => term.length > 2);
   const haystack = value.toLocaleLowerCase(locale);
   return terms.some((term) => haystack.includes(term));
