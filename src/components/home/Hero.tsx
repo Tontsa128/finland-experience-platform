@@ -187,7 +187,22 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const [active, setActive] = useState(0);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
-  const cmsSlides = (settings?.homepageSlides ?? [])
+  const configuredSlides = settings?.homepageSlides ?? [];
+  const normalizeSlideText = (value?: string) =>
+    (value ?? "").normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
+  const legacyCoffeeCaptions = new Set([
+    "aamukahvi veden äärellä",
+    "morning coffee by the water",
+    "café junto al agua",
+  ]);
+  const isLegacyCoffeeSlide = (item: (typeof configuredSlides)[number]) =>
+    item.id === "cottage" ||
+    String(item.imageUrl ?? "").includes("Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg") ||
+    [item.copy?.fi?.title, item.copy?.en?.title, item.copy?.es?.title]
+      .some((title) => legacyCoffeeCaptions.has(normalizeSlideText(title)));
+  const hasLegacyCoffeeSlide = configuredSlides.some(isLegacyCoffeeSlide);
+
+  const cmsSlides = configuredSlides
     .filter((item) => {
       const localized = item.copy?.[locale];
       const finnishCopy = item.copy?.fi;
@@ -196,14 +211,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         localized.title.trim().length > 0 &&
         typeof localized?.text === "string" &&
         localized.text.trim().length > 0;
-      const normalize = (value?: string) =>
-        (value ?? "").normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
       const sameAsFinnishTitle =
-        Boolean(normalize(localized?.title)) &&
-        normalize(localized?.title) === normalize(finnishCopy?.title);
+        Boolean(normalizeSlideText(localized?.title)) &&
+        normalizeSlideText(localized?.title) === normalizeSlideText(finnishCopy?.title);
       const sameAsFinnishText =
-        Boolean(normalize(localized?.text)) &&
-        normalize(localized?.text) === normalize(finnishCopy?.text);
+        Boolean(normalizeSlideText(localized?.text)) &&
+        normalizeSlideText(localized?.text) === normalizeSlideText(finnishCopy?.text);
       // A copied description is strong evidence that the CMS language fields are
       // misconfigured. For titles, only reject longer phrases: short place names
       // such as "Nauvo" can legitimately be identical across languages.
@@ -216,7 +229,8 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         typeof item.imageUrl === "string" &&
         item.imageUrl.trim().length > 0 &&
         hasLocalizedCopy &&
-        !isUntranslatedCopy
+        !isUntranslatedCopy &&
+        !isLegacyCoffeeSlide(item)
       );
     })
     .sort((a, b) => a.sortOrder - b.sortOrder);
@@ -230,7 +244,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       // built-in image/copy pairs instead of leaving the hero stuck on a broken image.
       const usableCmsSlides = cmsSlides.filter((item) => !failedImages[item.id]);
       if (usableCmsSlides.length) {
-        return usableCmsSlides.map((item) => ({
+        const mappedCmsSlides = usableCmsSlides.map((item) => ({
           key: item.id,
           image: item.imageUrl,
           durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
@@ -240,6 +254,18 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           external: item.external ?? (String(item.href || "").startsWith("https://") || String(item.href || "").startsWith("http://")),
           copy: item.copy[locale],
         }));
+        // Replace the retired CMS cottage/coffee slide with the verified café slide.
+        if (hasLegacyCoffeeSlide && !mappedCmsSlides.some((item) => item.key === "mathildedalCafe")) {
+          const cafeSlide = slides.find((item) => item.key === "mathildedalCafe");
+          if (cafeSlide) {
+            mappedCmsSlides.push({
+              ...cafeSlide,
+              href: normalizeHomepageHref(cafeSlide.href),
+              copy: copy[locale][cafeSlide.key],
+            });
+          }
+        }
+        return mappedCmsSlides;
       }
 
       return slides.map((item) => ({
@@ -248,7 +274,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         copy: copy[locale][item.key],
       }));
     },
-    [cmsSlides, locale, failedImages],
+    [cmsSlides, locale, failedImages, hasLegacyCoffeeSlide],
   );
 
   const slideCount = activeSlides.length;
