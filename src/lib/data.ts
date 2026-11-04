@@ -227,7 +227,7 @@ export const cabins: Cabin[] = [
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
     pricePerNight: 190,
-    images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasOutdoor],
+    images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasLivingRoom],
     features: ["private sauna", "fireplace", "kitchen", "terrace", "beach", "bicycles"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.166, lng: 22.954 }, type: "villa",
     bookingUrl: "https://www.matildavillas.fi/en", provider: "Matilda Villas",
