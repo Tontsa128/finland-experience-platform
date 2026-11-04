@@ -60,6 +60,12 @@ function matchesAreaText(value: string, area: (typeof destinations)[number] | un
   return getAreaTerms(area, locale).some((term) => locationTokens.has(term));
 }
 
+function providerDedupeKey(name: string, location: string) {
+  const normalizedName = name.toLocaleLowerCase().replace(/\s+/g, " ").trim();
+  const primaryLocation = location.split(/[·,]/)[0].toLocaleLowerCase().trim();
+  return normalizedName + "|" + primaryLocation;
+}
+
 function matchesProviderCategory(requested: string, category: string, haystack: string) {
   if (!requested) return true;
   if (category === requested) return true;
