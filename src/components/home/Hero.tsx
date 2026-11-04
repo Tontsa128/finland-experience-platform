@@ -291,7 +291,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   }[locale];
 
   return (
-    <section className="relative overflow-hidden bg-[#dfe8df] text-white">
+    <section className="relative isolate z-0 overflow-hidden bg-[#dfe8df] text-white">
       <div className="absolute inset-0">
         {activeSlides.map((item, index) => (
           <div
