@@ -4,15 +4,17 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Search } from "lucide-react";
 import { destinations, cabins, experiences } from "@/lib/data";
 import { photoLibrary } from "@/lib/photo-library";
+import { saloProviders } from "@/lib/salo";
+import { areaProviderIds, areaCopy, type SaloArea } from "@/lib/salo-areas";
 import { getPublishedDestinations, getPublishedProperties, getPublishedExperiences } from "@/lib/public-content";
 
 type Locale = "fi" | "es" | "en";
 type SearchParams = { q?: string; type?: string; area?: string; category?: string };
 
 const labels = {
-  fi: { title: "Löydä sopivat palvelut", results: "Hakutulokset", empty: "Hakuehdoilla ei löytynyt tuloksia. Kokeile toista hakusanaa tai aluetta.", stays: "Majoitukset", experiences: "Elämykset", destinations: "Kohteet", search: "Hae", placeholder: "Mitä etsit?", all: "Kaikki palvelut", accommodation: "Majoitus", experience: "Elämykset", destination: "Kohteet", category: "Palvelun teema", allCategories: "Kaikki teemat", food: "Ruoka ja ravintolat", sauna: "Sauna", cruise: "Risteilyt ja veneily", hiking: "Luonto ja retkeily", culture: "Kulttuuri", price: "Hinta tarkistettava" },
-  es: { title: "Encuentra los servicios adecuados", results: "Resultados de búsqueda", empty: "No se encontraron resultados. Prueba con otra palabra o zona.", stays: "Alojamientos", experiences: "Experiencias", destinations: "Destinos", search: "Buscar", placeholder: "¿Qué estás buscando?", all: "Todos los servicios", accommodation: "Alojamiento", experience: "Experiencias", destination: "Destinos", category: "Tipo de experiencia", allCategories: "Todas las categorías", food: "Gastronomía", sauna: "Sauna", cruise: "Cruceros y navegación", hiking: "Naturaleza y senderismo", culture: "Cultura", price: "Consultar precio" },
-  en: { title: "Find the right services", results: "Search results", empty: "No results found. Try another search term or area.", stays: "Accommodation", experiences: "Experiences", destinations: "Destinations", search: "Search", placeholder: "What are you looking for?", all: "All services", accommodation: "Accommodation", experience: "Experiences", destination: "Destinations", category: "Experience category", allCategories: "All categories", food: "Food and dining", sauna: "Sauna", cruise: "Cruises and boating", hiking: "Nature and hiking", culture: "Culture", price: "Check price" },
+  fi: { title: "Löydä sopivat palvelut", results: "Hakutulokset", empty: "Hakuehdoilla ei löytynyt tuloksia. Kokeile toista hakusanaa tai aluetta.", stays: "Majoitukset", experiences: "Elämykset", destinations: "Kohteet", search: "Hae", placeholder: "Mitä etsit?", all: "Kaikki palvelut", accommodation: "Majoitus", experience: "Elämykset", destination: "Kohteet", category: "Palvelun teema", allCategories: "Kaikki teemat", food: "Ruoka ja ravintolat", sauna: "Sauna", cruise: "Risteilyt ja veneily", hiking: "Luonto ja retkeily", culture: "Kulttuuri", providers: "Paikalliset palveluntarjoajat", price: "Hinta tarkistettava" },
+  es: { title: "Encuentra los servicios adecuados", results: "Resultados de búsqueda", empty: "No se encontraron resultados. Prueba con otra palabra o zona.", stays: "Alojamientos", experiences: "Experiencias", destinations: "Destinos", search: "Buscar", placeholder: "¿Qué estás buscando?", all: "Todos los servicios", accommodation: "Alojamiento", experience: "Experiencias", destination: "Destinos", category: "Tipo de experiencia", allCategories: "Todas las categorías", food: "Gastronomía", sauna: "Sauna", cruise: "Cruceros y navegación", hiking: "Naturaleza y senderismo", culture: "Cultura", providers: "Proveedores locales", price: "Consultar precio" },
+  en: { title: "Find the right services", results: "Search results", empty: "No results found. Try another search term or area.", stays: "Accommodation", experiences: "Experiences", destinations: "Destinations", search: "Search", placeholder: "What are you looking for?", all: "All services", accommodation: "Accommodation", experience: "Experiences", destination: "Destinations", category: "Experience category", allCategories: "All categories", food: "Food and dining", sauna: "Sauna", cruise: "Cruises and boating", hiking: "Nature and hiking", culture: "Culture", providers: "Local providers", price: "Check price" },
 };
 
 function localized(value: Record<string, string> | undefined, locale: Locale): string {
@@ -105,7 +107,30 @@ export default async function SearchPage({
     ? allCabins.filter((item) => matches(item, query, locale, selectedArea)) : [];
   const foundExperiences = type === "all" || type === "experience"
     ? allExperiences.filter((item) => matches(item, query, locale, selectedArea) && (!category || item.category === category)) : [];
-  const total = foundDestinations.length + foundCabins.length + foundExperiences.length;
+
+  const selectedSaloArea = selectedArea?.slug === "salo-mathildedal"
+    ? "mathildedal"
+    : selectedArea?.slug && Object.prototype.hasOwnProperty.call(areaProviderIds, selectedArea.slug)
+      ? selectedArea.slug as SaloArea
+      : undefined;
+  const providerAreaById = new Map<string, SaloArea>(
+    Object.entries(areaProviderIds).flatMap(([area, ids]) => ids.map((id) => [id, area as SaloArea] as const)),
+  );
+  const foundProviders = saloProviders.filter((provider) => {
+    if (!provider.image) return false;
+    if (type === "destination") return false;
+    if (type === "accommodation" && provider.category !== "stay") return false;
+    if (type === "experience" && provider.category === "stay") return false;
+    if (category && provider.category !== category) return false;
+    const providerArea = providerAreaById.get(provider.id);
+    if (selectedArea && (!selectedSaloArea || providerArea !== selectedSaloArea)) return false;
+    const name = provider.nameByLocale?.[locale] || provider.name;
+    const haystack = [name, provider.description[locale], provider.category, providerArea ? areaCopy[providerArea][locale].eyebrow : ""]
+      .filter(Boolean).join(" ").toLocaleLowerCase(locale);
+    return !query || haystack.includes(query);
+  });
+
+  const total = foundDestinations.length + foundCabins.length + foundExperiences.length + foundProviders.length;
 
   return (
     <main className="container-narrow min-h-[65vh] py-10 sm:py-14">
@@ -129,6 +154,16 @@ export default async function SearchPage({
       {foundCabins.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.stays}</h2><div className="grid gap-4 sm:grid-cols-3">{foundCabins.map((item) => <Link key={item.slug} href={`/${locale}/accommodations/${item.slug}`} className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft"><div className="relative aspect-[16/9]"><Image src={item.images?.[0] || photoLibrary.saunaCottage} alt={localized(item.name, locale)} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div><div className="p-4"><h3 className="font-display text-lg font-bold text-brand-950">{localized(item.name, locale)}</h3><p className="mt-1 text-xs text-slate-500">{item.locationByLocale?.[locale] || item.location}</p><p className="mt-3 text-sm font-bold text-brand-900">{item.pricePerNight > 0 ? new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(item.pricePerNight) : t.price}</p></div></Link>)}</div></section>}
 
       {foundExperiences.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.experiences}</h2><div className="grid gap-4 sm:grid-cols-2">{foundExperiences.map((item) => <Link key={item.slug} href={`/${locale}/experiences/${item.slug}`} className="grid overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft sm:grid-cols-[.9fr_1.1fr]"><div className="relative min-h-40"><Image src={item.images?.[0] || photoLibrary.saunaTraditionalSmoke} alt={localized(item.name, locale)} fill sizes="(max-width:640px) 100vw,50vw" className="object-cover" /></div><div className="p-4"><h3 className="font-display text-lg font-bold text-brand-950">{localized(item.name, locale)}</h3><p className="mt-1 text-xs text-slate-500">{item.region}</p><p className="mt-2 text-sm text-slate-600">{localized(item.shortDescription, locale)}</p><span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-brand-900">{locale === "fi" ? "Katso palvelu" : locale === "es" ? "Ver servicio" : "View service"}<ArrowRight className="h-4 w-4" /></span></div></Link>)}</div></section>}
+      {foundProviders.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.providers}</h2><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{foundProviders.map((provider) => {
+        const providerArea = providerAreaById.get(provider.id);
+        const providerName = provider.nameByLocale?.[locale] || provider.name;
+        const providerPrice = provider.priceByLocale?.[locale] || provider.price;
+        return <Link key={provider.id} href={`/${locale}/providers/${provider.id}`} className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
+          <div className="relative aspect-[16/9]"><Image src={provider.image!} alt={providerName} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div>
+          <div className="p-4"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-brand-700">{providerArea ? areaCopy[providerArea][locale].eyebrow : ""}</p><h3 className="mt-1 font-display text-lg font-bold text-brand-950">{providerName}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>{providerPrice && <p className="mt-3 text-sm font-semibold text-brand-900">{providerPrice}</p>}{provider.imageCredit && <p className="mt-3 border-t border-slate-100 pt-2 text-[10px] leading-4 text-slate-500">{provider.imageCredit}</p>}</div>
+        </Link>;
+      })}</div></section>}
+
     </main>
   );
 }
