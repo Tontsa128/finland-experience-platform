@@ -54,7 +54,6 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
 // promotional card not appear on the homepage. Keep the dedicated stay and
 // restaurant cards on the Kimitoön destination guide instead.
 const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
-const homepageDestinationCardSource = await readFile(path.resolve("src/components/home/HomeDestinationFeatureCard.tsx"), "utf8");
 const homepageDestinationFeaturesSource = await readFile(path.resolve("src/lib/homepage-destination-features.ts"), "utf8");
 const homepageCopyHasNoMathildedal = !homepageDestinationFeaturesSource.includes("Mathildedal");
 
