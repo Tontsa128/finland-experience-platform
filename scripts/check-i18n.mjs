@@ -56,10 +56,7 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
 const homepageSource = await readFile(path.resolve("src/app/[locale]/page.tsx"), "utf8");
 const homepageDestinationCardSource = await readFile(path.resolve("src/components/home/HomeDestinationFeatureCard.tsx"), "utf8");
 const homepageDestinationFeaturesSource = await readFile(path.resolve("src/lib/homepage-destination-features.ts"), "utf8");
-const saloHomepageTitleIsLocalized = homepageSource.includes('"Salo ja lähiseutu"')
-  && homepageSource.includes('"Salo y sus alrededores"')
-  && homepageSource.includes('"Salo & Surroundings"');
-const saloHomepageCopyHasNoMathildedal = !homepageDestinationFeaturesSource.includes("Mathildedal");
+const homepageCopyHasNoMathildedal = !homepageDestinationFeaturesSource.includes("Mathildedal");
 
 const homepageHasAllCoastalDestinations = [
   '"salo-mathildedal"',
@@ -68,22 +65,31 @@ const homepageHasAllCoastalDestinations = [
   "hanko:",
   "aland:",
 ].every((slug) => homepageDestinationFeaturesSource.includes(slug));
-const homepageUsesSharedFeatureCard = (homepageSource.match(/<HomeDestinationFeatureCard/g) || []).length >= 2
-  && homepageDestinationCardSource.includes("<Image")
-  && homepageDestinationCardSource.includes("imageCredit")
-  && homepageDestinationCardSource.includes("imageSource")
-  && homepageDestinationCardSource.includes("imageUsageNote");
+const homepageUsesPhotoAttribution = homepageSource.includes("getHomepagePhotoCredit")
+  && homepageSource.includes("getHomepagePhotoUsageNote")
+  && homepageSource.includes("photo.sourcePage")
+  && homepageSource.includes("photo.license")
+  && homepageSource.includes("imageSourceLabel");
+const homepageAssistantIsBeforePopularDestinations = homepageSource.indexOf("<TravelAdvisor")
+  < homepageSource.indexOf("popular:") || homepageSource.indexOf("popular:") < 0;
+const homepageCategoriesUseUnifiedSearch = [
+  'search?type=accommodation',
+  'search?type=experience&category=food',
+  'search?type=experience',
+  'search?type=destination',
+].every((route) => homepageSource.includes(route));
 const homepageCityCopyIsLocalized = ["fi:", "en:", "es:"].every((localeKey) => {
   return homepageDestinationFeaturesSource.includes(localeKey);
 });
-if (!homepageHasAllCoastalDestinations || !homepageUsesSharedFeatureCard || !homepageCityCopyIsLocalized || !saloHomepageTitleIsLocalized || !saloHomepageCopyHasNoMathildedal) {
+if (!homepageHasAllCoastalDestinations || !homepageUsesPhotoAttribution || !homepageCityCopyIsLocalized || !homepageCopyHasNoMathildedal || !homepageAssistantIsBeforePopularDestinations || !homepageCategoriesUseUnifiedSearch) {
   failed = true;
-  console.error("Homepage destination card check failed:", {
+  console.error("Homepage discovery/attribution check failed:", {
     homepageHasAllCoastalDestinations,
-    homepageUsesSharedFeatureCard,
+    homepageUsesPhotoAttribution,
     homepageCityCopyIsLocalized,
-    saloHomepageTitleIsLocalized,
-    saloHomepageCopyHasNoMathildedal,
+    homepageCopyHasNoMathildedal,
+    homepageAssistantIsBeforePopularDestinations,
+    homepageCategoriesUseUnifiedSearch,
   });
 }
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
