@@ -67,7 +67,9 @@ export async function GET() {
 
 export async function POST(req:NextRequest) {
   try {
-    if (!await getAdminContext()) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
+    if (!["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"].includes(admin.profile.role)) return NextResponse.json({error:"FORBIDDEN"},{status:403});
     const body=await req.json() as Payload;
     if (admin.profile.role === "EDITOR" && body.status && body.status !== "draft") return NextResponse.json({error:"EDITOR_CAN_ONLY_SAVE_DRAFTS"},{status:403});
     const errors=validate(body);
@@ -130,7 +132,9 @@ export async function POST(req:NextRequest) {
 
 export async function PATCH(req:NextRequest) {
   try {
-    if (!await getAdminContext()) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
+    if (!["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"].includes(admin.profile.role)) return NextResponse.json({error:"FORBIDDEN"},{status:403});
     const body=await req.json() as Payload & {id:number};
     if (admin.profile.role === "EDITOR" && body.status && body.status !== "draft") return NextResponse.json({error:"EDITOR_CAN_ONLY_SAVE_DRAFTS"},{status:403});
     if(!body.id)return NextResponse.json({error:"id is required"},{status:400});
