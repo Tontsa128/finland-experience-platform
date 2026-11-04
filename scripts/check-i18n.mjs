@@ -68,10 +68,10 @@ const homepageHasAllCoastalDestinations = [
 const homepageUsesPhotoAttribution = homepageSource.includes("getHomepagePhotoCredit")
   && homepageSource.includes("getHomepagePhotoUsageNote")
   && homepageSource.includes("photo.sourcePage")
-  && homepageSource.includes("photo.license")
-  && homepageSource.includes("imageSourceLabel");
+  && homepageSource.includes("imageSourceLabel")
+  && homepageDestinationFeaturesSource.includes("photo.license");
 const homepageAssistantIsBeforePopularDestinations = homepageSource.indexOf("<TravelAdvisor")
-  < homepageSource.indexOf("popular:") || homepageSource.indexOf("popular:") < 0;
+  < homepageSource.indexOf('<section className="container-narrow pb-8 sm:pb-10">');
 const homepageCategoriesUseUnifiedSearch = [
   'search?type=accommodation',
   'search?type=experience&category=food',
