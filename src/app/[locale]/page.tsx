@@ -124,7 +124,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     }
     // No unused supplied or curated image remains. Keep the first real source
     // rather than fabricate an image or silently substitute unrelated content.
-    return candidates.find((image): image is string => Boolean(image)) || fallbacks[0] || photoLibrary.turkuAura;
+    return candidates.find((image): image is string => Boolean(image)) || fallbacks[0] || "";
   };
 
   const categoryCards = [
@@ -192,7 +192,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="container-narrow pb-8 sm:pb-10">
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.popular}</h2><Link href={`/${locale}/destinations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          {featuredDestinations.map((d, i) => {
+          {featuredDestinations.filter((d) => d.images?.length).map((d, i) => {
             const image = uniqueHomepageImage(d.images || []);
             const photo = getHomepagePhotoCredit(image);
             const usageNote = getHomepagePhotoUsageNote(photo, locale);
@@ -215,7 +215,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="container-narrow pb-9 sm:pb-12">
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.stays}</h2><Link href={`/${locale}/accommodations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid gap-4 sm:grid-cols-3">
-          {featuredCabins.map((c, i) => {
+          {featuredCabins.filter((c) => c.images?.length).map((c, i) => {
             const image = uniqueHomepageImage(c.images || []);
             return <Link key={c.slug} href={`/${locale}/accommodations/${c.slug}`} className="group overflow-hidden rounded-xl border border-slate-100 bg-white shadow-[0_5px_20px_rgba(25,45,35,.08)] transition hover:-translate-y-1 hover:shadow-card">
             <div className="relative aspect-[16/9] overflow-hidden"><Image src={image} alt={localized(c.name, locale)} fill priority={i === 0} sizes="(max-width:640px) 100vw,33vw" className="object-cover transition duration-700 group-hover:scale-105" /></div>
@@ -228,7 +228,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="container-narrow pb-12 sm:pb-16">
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.experiences}</h2><Link href={`/${locale}/experiences`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid gap-4 sm:grid-cols-2">
-          {featuredExperiences.map((e) => {
+          {featuredExperiences.filter((e) => e.images?.length).map((e) => {
             const image = uniqueHomepageImage(e.images || []);
             return <Link key={e.slug} href={`/${locale}/experiences/${e.slug}`} className="group grid overflow-hidden rounded-xl border border-slate-100 bg-white shadow-[0_5px_20px_rgba(25,45,35,.08)] sm:grid-cols-[.95fr_1.05fr]">
             <div className="relative min-h-44 overflow-hidden"><Image src={image} alt={localized(e.name, locale)} fill sizes="(max-width:640px) 100vw,50vw" className="object-cover transition duration-700 group-hover:scale-105" /></div>
