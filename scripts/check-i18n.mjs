@@ -119,6 +119,64 @@ if (homepageHasKansakouluCard || !guideKeepsCategoryCards) {
   console.error("Kansakoulu placement check failed: keep the homepage free of the Kansakoulu promotional card and retain the accommodation/food cards on the Kimitoön guide.");
 }
 
+// Homepage image regression guard: Mathildedal cards use verified, distinct provider imagery;
+// the retired dusk harbour and mismatched cottage/coffee hero must never return.
+const homepageHeroSource = await readFile(path.resolve("src/components/home/Hero.tsx"), "utf8");
+const photoLibrarySource = await readFile(path.resolve("src/lib/photo-library.ts"), "utf8");
+const homepageDataSource = await readFile(path.resolve("src/lib/data.ts"), "utf8");
+const homepageMathildedalOverrides = [
+  '"salo-mathildedal"',
+  '"matilda-villas"',
+  '"matri-house"',
+  '"mathildan-marina"',
+  '"local-food-mathildedal"',
+].every((slug) => homepageSource.includes(slug));
+const homepageMathildedalProviderPhotos = [
+  "matildaVillasBedroom",
+  "matildaVillasLivingRoom",
+  "matriHouseLounge",
+  "mathildanMarinaTerrace",
+  "cafeMathildedal",
+].every((image) => photoLibrarySource.includes(image));
+const homepageMathildedalPhotoCredits = [
+  "Matilda Villas — Salon Kohteet",
+  "Matri House — Salon Kohteet",
+  "Mathildan Marina",
+  "Visit Mathildedal",
+].every((credit) => photoLibrarySource.includes(credit));
+const homepageHeroHasMatchedCafeCopy = [
+  'key: "mathildedalCafe"',
+  "Kahvihetki ja tuoreet leivonnaiset",
+  "Café y repostería recién hecha",
+  "Coffee and freshly baked pastries",
+  "isLegacyCoffeeSlide",
+  "hasLegacyCoffeeSlide",
+].every((value) => homepageHeroSource.includes(value));
+const homepageHasNoLegacyDuskOrCoffeeImage = !photoLibrarySource.includes("Mathildedal_harbour_sunset.jpg")
+  && !homepageHeroSource.includes('title: "Morning coffee by the water"')
+  && !homepageHeroSource.includes('title: "Aamukahvi veden äärellä"')
+  // The old CMS image URL is intentionally recognised so it can be replaced at runtime.
+  && homepageHeroSource.includes("Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg")
+  && homepageHeroSource.includes("legacyCoffeeCaptions");
+const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasLivingRoom]")
+  && homepageDataSource.includes("images: [photoLibrary.matriHouseLounge, photoLibrary.matriHouseBedroom]")
+  && homepageDataSource.includes("images: [photoLibrary.mathildanMarinaTerrace, photoLibrary.mathildedalHarbour]");
+const homepageMidsummerCardMatchesBonfire = homepageDataSource.includes("images:[photoLibrary.midsummerBonfire]")
+  && photoLibrarySource.includes("Janne Karaste")
+  && photoLibrarySource.includes("CC BY-SA 2.0");
+if (!homepageMathildedalOverrides || !homepageMathildedalProviderPhotos || !homepageMathildedalPhotoCredits || !homepageHeroHasMatchedCafeCopy || !homepageHasNoLegacyDuskOrCoffeeImage || !homepageMathildedalDataUsesSpecificPhotos || !homepageMidsummerCardMatchesBonfire) {
+  failed = true;
+  console.error("Homepage Mathildedal photo check failed:", {
+    homepageMathildedalOverrides,
+    homepageMathildedalProviderPhotos,
+    homepageMathildedalPhotoCredits,
+    homepageHeroHasMatchedCafeCopy,
+    homepageHasNoLegacyDuskOrCoffeeImage,
+    homepageMathildedalDataUsesSpecificPhotos,
+    homepageMidsummerCardMatchesBonfire,
+  });
+}
+
 // Sitemap regression guards: do not advertise redirected Mathildedal
 // aliases as indexable pages or fabricate last-modified timestamps.
 const sitemapSource = await readFile(path.resolve("src/app/sitemap.ts"), "utf8");

@@ -138,6 +138,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?type=destination`, image: uniqueHomepageImage([photoLibrary.rosalaVikingCentre]), icon: Camera },
   ];
 
+  // Prefer the verified provider-specific image for known Mathildedal cards, even when
+  // CMS records reuse a generic gallery image. The shared allocator still prevents
+  // duplicates across the complete homepage in display order.
+  const homepageImageOverrides: Record<string, string[]> = {
+    "salo-mathildedal": [photoLibrary.mathildedalVillage, photoLibrary.mathildedalHarbour],
+    "matilda-villas": [photoLibrary.matildaVillasBedroom],
+    "salo-matilda-villas": [photoLibrary.matildaVillasBedroom],
+    "matri-house": [photoLibrary.matriHouseLounge],
+    "salo-matri-house": [photoLibrary.matriHouseLounge],
+    "mathildan-marina": [photoLibrary.mathildanMarinaTerrace],
+    "salo-mathildan-marina": [photoLibrary.mathildanMarinaTerrace],
+    "local-food-mathildedal": [photoLibrary.cafeMathildedal],
+  };
+  const homepageCardImage = (slug: string, images: Array<string | undefined>) =>
+    uniqueHomepageImage([...(homepageImageOverrides[slug] ?? []), ...images]);
+
   const advisorCatalog = {
     destinations: catalogDestinations.map((d) => ({ slug: d.slug, name: d.name, description: d.shortDescription, tags: d.tags || [], activities: d.activities || [], verified: d.verified })),
     accommodations: catalogCabins.map((c) => ({ slug: c.slug, name: c.name, description: c.description, location: c.location, features: c.features || [], price: c.pricePerNight, verified: c.verified })),
@@ -193,7 +209,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.popular}</h2><Link href={`/${locale}/destinations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {featuredDestinations.filter((d) => d.images?.length).map((d, i) => {
-            const image = uniqueHomepageImage(d.images || []);
+            const image = homepageCardImage(d.slug, d.images || []);
             const photo = getHomepagePhotoCredit(image);
             const usageNote = getHomepagePhotoUsageNote(photo, locale);
             return (
@@ -216,7 +232,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.stays}</h2><Link href={`/${locale}/accommodations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid gap-4 sm:grid-cols-3">
           {featuredCabins.filter((c) => c.images?.length).map((c, i) => {
-            const image = uniqueHomepageImage(c.images || []);
+            const image = homepageCardImage(c.slug, c.images || []);
             return <Link key={c.slug} href={`/${locale}/accommodations/${c.slug}`} className="group overflow-hidden rounded-xl border border-slate-100 bg-white shadow-[0_5px_20px_rgba(25,45,35,.08)] transition hover:-translate-y-1 hover:shadow-card">
             <div className="relative aspect-[16/9] overflow-hidden"><Image src={image} alt={localized(c.name, locale)} fill priority={i === 0} sizes="(max-width:640px) 100vw,33vw" className="object-cover transition duration-700 group-hover:scale-105" /></div>
             <div className="p-4"><h3 className="font-display text-lg font-bold text-brand-950">{localized(c.name, locale)}</h3><p className="mt-1 text-xs text-slate-500">{c.locationByLocale?.[locale] || c.location}</p><div className="mt-3 flex items-center justify-between gap-2"><span className="text-sm font-bold text-brand-900">{c.pricePerNight > 0 ? new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(c.pricePerNight) + (locale === "fi" ? " / yö" : locale === "es" ? " / noche" : " / night") : t.priceCheck}</span><span className="rounded-full bg-brand-950 px-3 py-2 text-[11px] font-bold text-white">{t.viewStay}<ArrowRight className="ml-1 inline h-3 w-3" /></span></div></div>
@@ -229,7 +245,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.experiences}</h2><Link href={`/${locale}/experiences`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid gap-4 sm:grid-cols-2">
           {featuredExperiences.filter((e) => e.images?.length).map((e) => {
-            const image = uniqueHomepageImage(e.images || []);
+            const image = homepageCardImage(e.slug, e.images || []);
             return <Link key={e.slug} href={`/${locale}/experiences/${e.slug}`} className="group grid overflow-hidden rounded-xl border border-slate-100 bg-white shadow-[0_5px_20px_rgba(25,45,35,.08)] sm:grid-cols-[.95fr_1.05fr]">
             <div className="relative min-h-44 overflow-hidden"><Image src={image} alt={localized(e.name, locale)} fill sizes="(max-width:640px) 100vw,50vw" className="object-cover transition duration-700 group-hover:scale-105" /></div>
             <div className="flex flex-col justify-center p-4"><h3 className="font-display text-lg font-bold text-brand-950">{localized(e.name, locale)}</h3><p className="mt-1 text-xs text-slate-500">{e.region}</p><p className="mt-2 line-clamp-2 text-sm text-slate-600">{localized(e.shortDescription, locale)}</p><span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-900">{t.viewExperience}<ArrowRight className="h-4 w-4" /></span></div>
