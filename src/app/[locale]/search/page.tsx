@@ -31,7 +31,7 @@ function matchesAreaText(value: string, area: (typeof destinations)[number] | un
   const terms = [area.slug, area.name?.fi, area.name?.es, area.name?.en]
     .filter((term): term is string => Boolean(term))
     .flatMap((term) => term.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/))
-    .filter((term) => term.length > 2);
+    .filter((term) => term.length > 2 && !["archipelago", "saaristo", "and", "the", "islands", "coast", "western", "eastern", "y", "el", "ja", "de"].includes(term));
   const haystack = value.toLocaleLowerCase(locale);
   return terms.some((term) => haystack.includes(term));
 }
@@ -119,7 +119,7 @@ function matches(item: SearchableItem, query: string, locale: Locale, area?: (ty
   const areaTerms = [area.slug, area.name?.fi, area.name?.es, area.name?.en]
     .filter((term): term is string => Boolean(term))
     .flatMap((term) => term.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/))
-    .filter((term) => term.length > 2);
+    .filter((term) => term.length > 2 && !["archipelago", "saaristo", "and", "the", "islands", "coast", "western", "eastern", "y", "el", "ja", "de"].includes(term));
   const locationText = [
     item.location, item.locationByLocale?.fi, item.locationByLocale?.es, item.locationByLocale?.en,
     item.region, item.city, item.town, item.areaName, item.destinationName,
