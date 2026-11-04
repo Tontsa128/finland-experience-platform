@@ -7,6 +7,7 @@ import { VisitorCounter } from "@/components/home/VisitorCounter";
 import TravelAdvisor from "@/components/TravelAdvisor";
 import { destinations, cabins, experiences } from "@/lib/data";
 import { photoLibrary } from "@/lib/photo-library";
+import { getHomepagePhotoCredit, getHomepagePhotoUsageNote } from "@/lib/homepage-destination-features";
 import {
   getHomepageSettings,
   getPublishedDestinations,
@@ -30,7 +31,7 @@ const copy = {
     advisorQuick: ["Mökki kahdelle", "Lähimmät ravintolat", "Perheaktiviteetit", "Saunaelämys"],
     events: "Tapahtumat", guides: "Alueoppaat", favourites: "Suunnittele matka",
     eventsText: "Näe mitä tapahtuu lähialueella", guidesText: "Suunnittele matkasi helposti", favouritesText: "Rakenna oma matkasuunnitelmasi",
-    locationUnknown: "Tutustu kohteeseen", priceCheck: "Tarkista hinta",
+    locationUnknown: "Tutustu kohteeseen", priceCheck: "Tarkista hinta", imageSourceLabel: "Kuvan lähde",
   },
   es: {
     subtitle: "Alojamientos, experiencias y servicios locales en un solo lugar.",
@@ -45,7 +46,7 @@ const copy = {
     advisorQuick: ["Cabaña para dos", "Restaurantes cercanos", "Planes en familia", "Experiencia de sauna"],
     events: "Eventos", guides: "Guías de zonas", favourites: "Planifica tu viaje",
     eventsText: "Descubre qué ocurre cerca", guidesText: "Planifica tu viaje fácilmente", favouritesText: "Crea tu propio plan de viaje",
-    locationUnknown: "Descubrir destino", priceCheck: "Consultar precio",
+    locationUnknown: "Descubrir destino", priceCheck: "Consultar precio", imageSourceLabel: "Fuente de la imagen",
   },
   en: {
     subtitle: "Stays, experiences and local services in one place.",
@@ -161,11 +162,21 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="container-narrow pb-8 sm:pb-10">
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.popular}</h2><Link href={`/${locale}/destinations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          {featuredDestinations.map((d, i) => <Link key={d.slug} href={`/${locale}/destinations/${d.slug}`} className="group relative isolate flex aspect-[1.35] overflow-hidden rounded-xl bg-brand-950 text-white shadow-soft">
-            <Image src={d.images?.[0] || photoLibrary.turkuArchipelago} alt={localized(d.name, locale)} fill sizes="(max-width:640px) 50vw,25vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
-            <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <span className="mt-auto p-3 sm:p-4"><span className="block font-display text-lg font-bold">{localized(d.name, locale)}</span><span className="mt-1 flex items-center gap-1 text-xs text-white/85"><MapPin className="h-3 w-3" />{d.region || t.locationUnknown}</span></span>
-          </Link>)}
+          {featuredDestinations.map((d, i) => {
+            const image = d.images?.[0] || photoLibrary.turkuArchipelago;
+            const photo = getHomepagePhotoCredit(image);
+            const usageNote = getHomepagePhotoUsageNote(photo, locale);
+            return (
+              <article key={d.slug} className="overflow-hidden rounded-xl bg-white shadow-soft">
+                <Link href={`/${locale}/destinations/${d.slug}`} className="group relative isolate flex aspect-[1.35] overflow-hidden bg-brand-950 text-white">
+                  <Image src={image} alt={localized(d.name, locale)} fill priority={i < 2} sizes="(max-width:640px) 50vw,25vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
+                  <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <span className="mt-auto p-3 sm:p-4"><span className="block font-display text-lg font-bold">{localized(d.name, locale)}</span><span className="mt-1 flex items-center gap-1 text-xs text-white/85"><MapPin className="h-3 w-3" />{d.region || t.locationUnknown}</span></span>
+                </Link>
+                {photo && <div className="flex items-center justify-between gap-2 px-3 py-2 text-[10px] leading-4 text-slate-500"><span>{photo.credit} · {usageNote}</span><a href={photo.sourcePage} target="_blank" rel="noopener noreferrer" className="shrink-0 font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-950">{t.imageSourceLabel}</a></div>}
+              </article>
+            );
+          })}
         </div>
       </section>
 
