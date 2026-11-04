@@ -19,9 +19,56 @@ function localized(value: Record<string, string> | undefined, locale: Locale): s
   return value?.[locale] || value?.en || "";
 }
 
-function matches(item: unknown, query: string, areaName: string) {
-  const haystack = JSON.stringify(item).toLocaleLowerCase();
-  return (!query || haystack.includes(query)) && (!areaName || haystack.includes(areaName));
+type SearchableItem = {
+  id?: string | number;
+  slug?: string;
+  name?: Record<string, string>;
+  description?: Record<string, string>;
+  shortDescription?: Record<string, string>;
+  location?: string;
+  locationByLocale?: Record<string, string>;
+  region?: string;
+  category?: string;
+  destination_id?: string;
+  destinationId?: string | number;
+  tags?: string[];
+  features?: string[];
+  activities?: string[];
+  audienceTags?: string[];
+  seasonTags?: string[];
+  experienceTags?: string[];
+  address?: string;
+  provider?: string;
+  providerName?: string;
+};
+
+function matches(item: SearchableItem, query: string, locale: Locale, area?: (typeof destinations)[number]) {
+  const searchableValues = [
+    item.slug,
+    item.name?.[locale], item.name?.fi, item.name?.es, item.name?.en,
+    item.description?.[locale], item.shortDescription?.[locale],
+    item.location, item.locationByLocale?.[locale], item.region,
+    item.category, item.address, item.provider, item.providerName,
+    ...(item.tags || []), ...(item.features || []), ...(item.activities || []),
+    ...(item.audienceTags || []), ...(item.seasonTags || []), ...(item.experienceTags || []),
+  ];
+  const haystack = searchableValues.filter(Boolean).join(" ").toLocaleLowerCase(locale);
+  const matchesQuery = !query || haystack.includes(query);
+  if (!matchesQuery) return false;
+  if (!area) return true;
+
+  const linkedDestinationId = item.destination_id ?? item.destinationId;
+  if (linkedDestinationId != null) return String(linkedDestinationId) === String(area.id);
+
+  const areaTerms = [
+    area.slug.replace(/-/g, " "),
+    area.name?.[locale],
+    area.name?.fi,
+    area.name?.es,
+    area.name?.en,
+  ].filter((value): value is string => Boolean(value)).map((value) => value.toLocaleLowerCase(locale));
+
+  return areaTerms.some((term) => term.length > 2 && haystack.includes(term));
 }
 
 export default async function SearchPage({
@@ -44,14 +91,13 @@ export default async function SearchPage({
   const allCabins = cmsCabins.length ? cmsCabins : cabins;
   const allExperiences = cmsExperiences.length ? cmsExperiences : experiences;
   const selectedArea = allDestinations.find((item) => item.slug === paramsValue.area);
-  const areaName = selectedArea ? localized(selectedArea.name, locale).toLocaleLowerCase() : "";
 
   const foundDestinations = type === "all" || type === "destination"
-    ? allDestinations.filter((item) => matches(item, query, areaName)) : [];
+    ? allDestinations.filter((item) => matches(item, query, locale, selectedArea)) : [];
   const foundCabins = type === "all" || type === "accommodation"
-    ? allCabins.filter((item) => matches(item, query, areaName)) : [];
+    ? allCabins.filter((item) => matches(item, query, locale, selectedArea)) : [];
   const foundExperiences = type === "all" || type === "experience"
-    ? allExperiences.filter((item) => matches(item, query, areaName)) : [];
+    ? allExperiences.filter((item) => matches(item, query, locale, selectedArea)) : [];
   const total = foundDestinations.length + foundCabins.length + foundExperiences.length;
 
   return (
