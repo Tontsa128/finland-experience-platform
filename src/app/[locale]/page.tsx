@@ -106,8 +106,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?type=accommodation`, image: featuredCabins[0]?.images?.[1] || featuredCabins[0]?.images?.[0] || photoLibrary.saunaCottage, icon: BedDouble },
     // Show an actual restaurant dining scene for the food category.
     { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/search?type=experience&category=food`, image: photoLibrary.mathildanMarinaDining, icon: Utensils },
-    { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/search?type=experience`, image: featuredExperiences[0]?.images?.[0] || photoLibrary.saunaBoat, icon: Waves },
-    { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?type=destination`, image: photoLibrary.teijoNationalPark, icon: Camera },
+    // Keep the experience category visually distinct with a real activity: a Finnish sauna boat.\n    { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/search?type=experience`, image: photoLibrary.saunaBoat, icon: Waves },
+    // Use a recognizable cultural attraction rather than another generic nature image.\n    { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?type=destination`, image: photoLibrary.rosalaVikingCentre, icon: Camera },
   ];
 
   const advisorCatalog = {
