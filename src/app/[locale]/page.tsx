@@ -149,31 +149,31 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <VisitorCounter locale={locale} />
       <Hero settings={homepage} />
 
-      <section className="relative z-20 isolate mx-auto w-full max-w-6xl px-4 pt-14 pb-8 sm:pt-16 sm:pb-10">
-        <form action={`/${locale}/search`} method="GET" className="grid gap-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_14px_45px_rgba(20,45,35,.16)] sm:grid-cols-[1fr_190px_190px_auto] sm:items-center sm:rounded-full sm:p-2">
+      <section className="relative z-20 isolate mx-auto w-full min-w-0 max-w-6xl overflow-x-clip px-4 pt-10 pb-8 sm:pt-16 sm:pb-10">
+        <form action={`/${locale}/search`} method="GET" className="grid w-full min-w-0 gap-2 overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_14px_45px_rgba(20,45,35,.16)] sm:grid-cols-[minmax(0,1fr)_190px_190px_auto] sm:items-center sm:rounded-full sm:p-2">
           <label className="flex min-w-0 items-center gap-3 px-3">
             <Compass className="h-5 w-5 shrink-0 text-brand-800" />
             <input name="q" placeholder={t.searchPlaceholder} className="min-h-11 w-full min-w-0 border-0 bg-transparent text-sm text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0" />
           </label>
-          <label className="flex min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
+          <label className="flex min-w-0 max-w-full min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
             <Sparkles className="h-4 w-4 text-brand-700" />
-            <select name="type" defaultValue="all" aria-label={t.allServices} className="w-full bg-transparent outline-none"><option value="all">{t.allServices}</option><option value="accommodation">{t.categories[0]}</option><option value="experience">{t.categories[2]}</option><option value="destination">{t.categories[3]}</option></select>
+            <select name="type" defaultValue="all" aria-label={t.allServices} className="w-full min-w-0 max-w-full truncate bg-transparent outline-none"><option value="all">{t.allServices}</option><option value="accommodation">{t.categories[0]}</option><option value="experience">{t.categories[2]}</option><option value="destination">{t.categories[3]}</option></select>
           </label>
           <label className="flex min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
             <MapPin className="h-4 w-4 text-brand-700" />
             <select name="area" defaultValue="" aria-label={t.allAreas} className="w-full bg-transparent outline-none"><option value="">{t.allAreas}</option>{catalogDestinations.map((d) => <option key={d.slug} value={d.slug}>{localized(d.name, locale)}</option>)}</select>
           </label>
-          <button type="submit" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand-950 px-7 text-sm font-bold text-white transition hover:bg-brand-800"><Compass className="h-4 w-4" />{t.search}</button>
+          <button type="submit" className="inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-brand-950 px-5 text-sm font-bold text-white transition hover:bg-brand-800 sm:w-auto sm:px-7"><Compass className="h-4 w-4" />{t.search}</button>
         </form>
       </section>
 
       <section className="container-narrow py-8 sm:py-10">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+        <div className="grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {categoryCards.map(({ title, subtitle, href, image, icon: Icon }) => (
-            <Link key={title} href={href} className="group relative isolate flex min-h-40 overflow-hidden rounded-2xl bg-brand-950 text-white shadow-soft transition hover:-translate-y-1 hover:shadow-card sm:min-h-48">
+            <Link key={title} href={href} className="group relative isolate flex min-h-40 min-w-0 max-w-full overflow-hidden rounded-2xl bg-brand-950 text-white shadow-soft transition hover:-translate-y-1 hover:shadow-card sm:min-h-48">
               <Image src={image} alt={title} fill sizes="(max-width:640px) 50vw,25vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
               <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/15 to-black/5" />
-              <span className="mt-auto w-full p-4 sm:p-5"><Icon className="mb-3 h-6 w-6" /><span className="block font-display text-xl font-bold">{title}</span><span className="mt-1 block text-xs text-white/85">{subtitle}</span></span>
+              <span className="mt-auto w-full p-4 sm:p-5"><Icon className="mb-3 h-6 w-6" /><span className="block break-words font-display text-base font-bold leading-tight sm:text-xl">{title}</span><span className="mt-1 block break-words text-xs leading-snug text-white/85">{subtitle}</span></span>
             </Link>
           ))}
         </div>
