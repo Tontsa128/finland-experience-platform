@@ -1,5 +1,3 @@
-"use server";
-
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -94,13 +92,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const experienceIds = homepage?.featuredExperienceIds ?? [];
   const featuredDestinations = (destinationIds.length
     ? destinationIds.map((id) => catalogDestinations.find((item) => String(item.id) === id)).filter(Boolean)
-    : catalogDestinations.filter((item) => item.featured)).slice(0, 4);
+    : catalogDestinations.filter((item) => item.featured)).slice(0, 4) as typeof destinations;
   const featuredCabins = (cabinIds.length
     ? cabinIds.map((id) => catalogCabins.find((item) => String(item.id) === id)).filter(Boolean)
-    : catalogCabins.slice(0, 3)).slice(0, 3);
+    : catalogCabins.slice(0, 3)).slice(0, 3) as typeof cabins;
   const featuredExperiences = (experienceIds.length
     ? experienceIds.map((id) => catalogExperiences.find((item) => String(item.id) === id)).filter(Boolean)
-    : catalogExperiences.slice(0, 2)).slice(0, 2);
+    : catalogExperiences.slice(0, 2)).slice(0, 2) as typeof experiences;
 
   const categoryCards = [
     { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/accommodations`, image: featuredCabins[0]?.images?.[0] || photoLibrary.saunaCottage, icon: BedDouble },
