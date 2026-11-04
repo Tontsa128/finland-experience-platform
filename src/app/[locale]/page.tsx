@@ -102,8 +102,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     : catalogExperiences.slice(0, 2)).slice(0, 2) as typeof experiences;
 
   const categoryCards = [
-    { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?type=accommodation`, image: featuredCabins[0]?.images?.[0] || photoLibrary.saunaCottage, icon: BedDouble },
-    { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/search?type=experience&category=food`, image: photoLibrary.mathildedalHarbour, icon: Utensils },
+    // Use an accommodation gallery image, not the harbour image previously used for Matilda Villas.
+    { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?type=accommodation`, image: featuredCabins[0]?.images?.[1] || featuredCabins[0]?.images?.[0] || photoLibrary.saunaCottage, icon: BedDouble },
+    // Show an actual restaurant dining scene for the food category.
+    { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/search?type=experience&category=food`, image: photoLibrary.mathildanMarinaDining, icon: Utensils },
     { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/search?type=experience`, image: featuredExperiences[0]?.images?.[0] || photoLibrary.saunaBoat, icon: Waves },
     { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?type=destination`, image: photoLibrary.teijoNationalPark, icon: Camera },
   ];
@@ -141,7 +143,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {categoryCards.map(({ title, subtitle, href, image, icon: Icon }) => (
             <Link key={title} href={href} className="group relative isolate flex min-h-40 overflow-hidden rounded-2xl bg-brand-950 text-white shadow-soft transition hover:-translate-y-1 hover:shadow-card sm:min-h-48">
-              <Image src={image} alt="" fill sizes="(max-width:640px) 50vw,25vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
+              <Image src={image} alt={title} fill sizes="(max-width:640px) 50vw,25vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
               <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/15 to-black/5" />
               <span className="mt-auto w-full p-4 sm:p-5"><Icon className="mb-3 h-6 w-6" /><span className="block font-display text-xl font-bold">{title}</span><span className="mt-1 block text-xs text-white/85">{subtitle}</span></span>
             </Link>
