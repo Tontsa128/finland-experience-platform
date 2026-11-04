@@ -71,7 +71,7 @@ function matches(item: SearchableItem, query: string, locale: Locale, area?: (ty
     area.name?.en,
   ]
     .filter((value): value is string => Boolean(value))
-    .flatMap((value) => value.toLocaleLowerCase(locale).split(/[^\p{L}\p{N}]+/u))
+    .flatMap((value) => value.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/))
     .filter((term) => term.length > 2);
 
   return areaTerms.some((term) => haystack.includes(term));
