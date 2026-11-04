@@ -158,7 +158,7 @@ export default async function SearchPage({
         const providerArea = providerAreaById.get(provider.id);
         const providerName = provider.nameByLocale?.[locale] || provider.name;
         const providerPrice = provider.priceByLocale?.[locale] || provider.price;
-        return <Link key={provider.id} href={`/${locale}/providers/${provider.id}`} className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
+        return <Link key={provider.id} href={`/${locale}/providers/salo-${provider.id}`} className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
           <div className="relative aspect-[16/9]"><Image src={provider.image!} alt={providerName} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div>
           <div className="p-4"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-brand-700">{providerArea ? areaCopy[providerArea][locale].eyebrow : ""}</p><h3 className="mt-1 font-display text-lg font-bold text-brand-950">{providerName}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>{providerPrice && <p className="mt-3 text-sm font-semibold text-brand-900">{providerPrice}</p>}{provider.imageCredit && <p className="mt-3 border-t border-slate-100 pt-2 text-[10px] leading-4 text-slate-500">{provider.imageCredit}</p>}</div>
         </Link>;
