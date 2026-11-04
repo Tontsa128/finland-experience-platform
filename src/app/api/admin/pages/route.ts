@@ -23,6 +23,9 @@ export async function POST(req:NextRequest) {
   const admin=await guard(); if (!admin) return NextResponse.json({error:"Forbidden"},{status:403});
   try{
     const body=await req.json();
+    if (admin.profile.role === "EDITOR" && body.published === true) {
+      return NextResponse.json({error:"EDITOR_CANNOT_PUBLISH_PAGES"},{status:403});
+    }
     const slug=String(body.slug||"").trim().toLowerCase().replace(/[^a-z0-9-]+/g,"-").replace(/^-|-$/g,"").slice(0,80);
     const locale=String(body.locale||"fi");
     const title=String(body.title||"").trim().slice(0,160);
@@ -45,7 +48,11 @@ export async function POST(req:NextRequest) {
 }
 
 export async function DELETE(req:NextRequest) {
-  if (!await guard()) return NextResponse.json({error:"Forbidden"},{status:403});
+  const admin = await guard();
+  if (!admin) return NextResponse.json({error:"Forbidden"},{status:403});
+  if (!["SUPER_ADMIN","ADMIN","CONTENT_MANAGER"].includes(admin.profile.role)) {
+    return NextResponse.json({error:"FORBIDDEN"},{status:403});
+  }
   const slug=req.nextUrl.searchParams.get("slug"); const locale=req.nextUrl.searchParams.get("locale");
   if(!slug||!locales.includes(locale as typeof locales[number]))return NextResponse.json({error:"Virheelliset tiedot."},{status:400});
   const {data:page}=await supabaseAdmin.from("site_pages").select("*").eq("slug",slug).eq("locale",locale).maybeSingle();

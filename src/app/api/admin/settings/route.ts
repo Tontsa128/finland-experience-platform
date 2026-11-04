@@ -30,7 +30,7 @@ export async function GET() {
 
 export async function PATCH(req: NextRequest) {
   const admin = await getAdminContext();
-  if (!admin || !["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"].includes(admin.profile.role)) {
+  if (!admin || !["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER"].includes(admin.profile.role)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
   try {
