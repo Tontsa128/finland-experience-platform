@@ -108,7 +108,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     try {
       const url = new URL(value);
       url.hash = "";
-      return url.toString().replace(/\\/$/, "");
+      return url.toString();
     } catch {
       return value.trim();
     }
