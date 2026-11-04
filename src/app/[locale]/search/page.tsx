@@ -70,6 +70,12 @@ type SearchableItem = {
   category?: string;
   destination_id?: string;
   destinationId?: string | number;
+  destination_slug?: string;
+  destinationSlug?: string;
+  city?: string;
+  town?: string;
+  areaName?: string;
+  destinationName?: string;
   tags?: string[];
   features?: string[];
   activities?: string[];
@@ -92,8 +98,7 @@ function matches(item: SearchableItem, query: string, locale: Locale, area?: (ty
     ...(item.audienceTags || []), ...(item.seasonTags || []), ...(item.experienceTags || []),
   ];
   const haystack = searchableValues.filter(Boolean).join(" ").toLocaleLowerCase(locale);
-  const matchesQuery = !query || haystack.includes(query);
-  if (!matchesQuery) return false;
+  if (query && !haystack.includes(query)) return false;
   if (!area) return true;
 
   const linkedDestinationId = item.destination_id ?? item.destinationId;
@@ -101,19 +106,20 @@ function matches(item: SearchableItem, query: string, locale: Locale, area?: (ty
   if (normalizedDestinationId && normalizedDestinationId !== "null" && normalizedDestinationId !== "undefined") {
     return normalizedDestinationId === String(area.id);
   }
+  if (String(item.id) === String(area.id) || item.slug === area.slug || item.destination_slug === area.slug || item.destinationSlug === area.slug) {
+    return true;
+  }
 
-  const areaTerms = [
-    area.slug,
-    area.name?.[locale],
-    area.name?.fi,
-    area.name?.es,
-    area.name?.en,
-  ]
-    .filter((value): value is string => Boolean(value))
-    .flatMap((value) => value.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/))
+  const areaTerms = [area.slug, area.name?.fi, area.name?.es, area.name?.en]
+    .filter((term): term is string => Boolean(term))
+    .flatMap((term) => term.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/))
     .filter((term) => term.length > 2);
-
-  return areaTerms.some((term) => haystack.includes(term));
+  const locationText = [
+    item.location, item.locationByLocale?.fi, item.locationByLocale?.es, item.locationByLocale?.en,
+    item.region, item.city, item.town, item.areaName, item.destinationName,
+    ...(item.tags || []),
+  ].filter(Boolean).join(" ").toLocaleLowerCase(locale);
+  return areaTerms.some((term) => locationText.includes(term));
 }
 
 export default async function SearchPage({
