@@ -51,7 +51,9 @@ function validate(body: Payload) {
 
 export async function GET() {
   try {
-    if (!await getAdminContext()) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
+    const admin = await getAdminContext();
+    if (!admin) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
+    if (!["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"].includes(admin.profile.role)) return NextResponse.json({error:"FORBIDDEN"},{status:403});
     const [{data:experiences,error:experienceError},{data:destinations},{data:categories},{data:providers}] = await Promise.all([
       supabaseAdmin.from("experiences").select("*, experience_translations(*), pricing_rules(*), experience_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en)), provider_experience_links(provider_id)").order("created_at",{ascending:false}),
       supabaseAdmin.from("destinations").select("id,slug,destination_translations(language_code,name)").order("slug"),
@@ -66,7 +68,9 @@ export async function GET() {
 export async function POST(req:NextRequest) {
   try {
     if (!await getAdminContext()) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
-    const body=await req.json() as Payload; const errors=validate(body);
+    const body=await req.json() as Payload;
+    if (admin.profile.role === "EDITOR" && body.status && body.status !== "draft") return NextResponse.json({error:"EDITOR_CAN_ONLY_SAVE_DRAFTS"},{status:403});
+    const errors=validate(body);
     if(errors.length) return NextResponse.json({error:"Validation failed",details:errors},{status:400});
     const status=body.status==="published"?"published":body.status==="archived"?"archived":"draft";
     if (body.providerId) {
@@ -127,7 +131,9 @@ export async function POST(req:NextRequest) {
 export async function PATCH(req:NextRequest) {
   try {
     if (!await getAdminContext()) return NextResponse.json({error:"UNAUTHORIZED"},{status:401});
-    const body=await req.json() as Payload & {id:number}; if(!body.id)return NextResponse.json({error:"id is required"},{status:400});
+    const body=await req.json() as Payload & {id:number};
+    if (admin.profile.role === "EDITOR" && body.status && body.status !== "draft") return NextResponse.json({error:"EDITOR_CAN_ONLY_SAVE_DRAFTS"},{status:403});
+    if(!body.id)return NextResponse.json({error:"id is required"},{status:400});
     const errors=validate(body); if(errors.length)return NextResponse.json({error:"Validation failed",details:errors},{status:400});
     const status=body.status==="published"?"published":body.status==="archived"?"archived":"draft";
     if (body.providerId && status === "published") {
