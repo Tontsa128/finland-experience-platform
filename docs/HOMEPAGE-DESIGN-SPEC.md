@@ -17,10 +17,10 @@ Finland Experience is a premium Finnish travel discovery and service-finding pla
 ## Approved homepage section order
 1. Global header: brand, primary navigation, FI / ES / EN switch, planning shortcut and account access.
 2. Hero: large Finnish landscape photography and concise destination-led headline.
-3. Prominent unified search: free-text query, service type and destination/area.
+3. Prominent unified search: free-text query, service type, experience category and destination/area.
 4. Four visual service categories: accommodation, food, experiences and attractions.
-5. Popular destinations: compact photo cards with name and location.
-6. Embedded AI travel assistant: full-width, directly usable search card after the four service-category cards and immediately before popular destinations. The user explicitly requested this placement between the search experience and popular destinations.
+5. Embedded AI travel assistant: full-width, directly usable search card after the four service-category cards and immediately before popular destinations. The user explicitly requested this placement between the search experience and popular destinations.
+6. Popular destinations: compact photo cards with name and location.
 7. Recommended accommodation: real photo, service name, location, sourced price only, and existing detail/provider link.
 8. Recommended experiences: real photo, service name, location, concise description and existing detail/provider link.
 9. Inspiration and current information: events, area guides and trip planning.
@@ -43,8 +43,9 @@ Finland Experience is a premium Finnish travel discovery and service-finding pla
 
 ## Acceptance criteria
 - Homepage structure follows the approved order at desktop and mobile widths.
-- AI assistant appears between popular destinations and accommodation, not as floating-only UI on the homepage.
-- Search submits query, type and area and displays matching catalog records.
+- AI assistant appears after the service categories and before popular destinations, with its search input visible immediately.
+- Search submits query, service type, experience category and area and displays matching catalog records.
+- Mobile navigation provides direct access to Home, Search, Map, My Trip and Account.
 - All visible copy and controls work in Finnish, Spanish and English; no Finnish text leaks into ES/EN.
 - Every card opens the correct canonical route and displays the correct image for its record.
 - No dead links, invented providers, placeholder prices or broken images.
