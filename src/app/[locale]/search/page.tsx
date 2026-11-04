@@ -36,6 +36,12 @@ function matchesAreaText(value: string, area: (typeof destinations)[number] | un
   return terms.some((term) => haystack.includes(term));
 }
 
+function providerDedupeKey(name: string, location: string) {
+  const normalizedName = name.toLocaleLowerCase().replace(/\\s+/g, " ").trim();
+  const primaryLocation = location.split(/[·,]/)[0].toLocaleLowerCase().trim();
+  return `${normalizedName}|${primaryLocation}`;
+}
+
 function matchesProviderCategory(requested: string, category: string, haystack: string) {
   if (!requested) return true;
   if (category === requested) return true;
@@ -251,7 +257,7 @@ export default async function SearchPage({
       category: kimitoonCategoryMap[provider.categories[0]],
       image: (provider.image || provider.categoryImages?.[provider.categories[0]])!,
       imageCredit: provider.imageCredit,
-      dedupeKey: `${provider.name.fi.toLocaleLowerCase()}|${provider.location.fi.toLocaleLowerCase()}`,
+      dedupeKey: providerDedupeKey(provider.name[locale], provider.location[locale]),
     }));
 
   const foundProviders = [...saloProviderResults, ...directoryProviderResults, ...kimitoonProviderResults]
