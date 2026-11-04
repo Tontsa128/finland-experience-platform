@@ -1,18 +1,21 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { getSupabaseUrl } from "@/lib/supabase-config";
 
 let adminClient: SupabaseClient | null = null;
+
+export function getSupabaseServiceRoleKey(): string {
+  const value = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!value) {
+    throw new Error("Supabase service role key is missing. Set SUPABASE_SERVICE_ROLE_KEY.");
+  }
+  return value;
+}
 
 export function getSupabaseAdmin(): SupabaseClient {
   if (adminClient) return adminClient;
 
-  const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!url || !serviceRoleKey) {
-    throw new Error('Supabase server configuration is missing. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.');
-  }
-
-  adminClient = createClient(url, serviceRoleKey, {
+  const url = process.env.SUPABASE_URL || getSupabaseUrl();
+  adminClient = createClient(url, getSupabaseServiceRoleKey(), {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
@@ -27,6 +30,6 @@ export const supabaseAdmin = new Proxy({} as SupabaseClient, {
   get(_target, property) {
     const client = getSupabaseAdmin() as any;
     const value = client[property];
-    return typeof value === 'function' ? value.bind(client) : value;
+    return typeof value === "function" ? value.bind(client) : value;
   },
 });
