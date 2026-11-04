@@ -119,7 +119,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <VisitorCounter locale={locale} />
       <Hero settings={homepage} />
 
-      <section className="relative z-10 mx-auto -mt-7 w-full max-w-6xl px-4 sm:-mt-9">
+      <section className="relative z-10 mx-auto mt-4 w-full max-w-6xl px-4 sm:mt-6">
         <form action={`/${locale}/search`} method="GET" className="grid gap-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_14px_45px_rgba(20,45,35,.16)] sm:grid-cols-[1fr_190px_190px_auto] sm:items-center sm:rounded-full sm:p-2">
           <label className="flex min-w-0 items-center gap-3 px-3">
             <Compass className="h-5 w-5 shrink-0 text-brand-800" />
