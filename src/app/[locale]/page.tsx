@@ -61,7 +61,7 @@ const copy = {
     advisorQuick: ["Cottage for two", "Nearby restaurants", "Family activities", "Sauna experience"],
     events: "Events", guides: "Area guides", favourites: "Plan your trip",
     eventsText: "See what is happening nearby", guidesText: "Plan your trip with ease", favouritesText: "Build your own travel plan",
-    locationUnknown: "Explore destination", priceCheck: "Check price",
+    locationUnknown: "Explore destination", priceCheck: "Check price", imageSourceLabel: "Image source",
   },
 } as const;
 
