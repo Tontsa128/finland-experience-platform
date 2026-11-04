@@ -37,7 +37,7 @@ const areaAliases: Record<string, string[]> = {
   "southeast-finland": ["kotka", "hamina", "loviisa"],
 };
 
-const areaStopWords = new Set(["archipelago", "saaristo", "and", "the", "islands", "coast", "western", "eastern", "y", "el", "ja", "de", "region", "area"]);
+const areaStopWords = new Set(["archipelago", "archipiélago", "archipielago", "saaristo", "and", "the", "islands", "coast", "western", "eastern", "y", "el", "ja", "de", "region", "area"]);
 
 function normalizedTokens(value: string) {
   return value.toLocaleLowerCase().replace(/[^a-z0-9À-ž]+/gi, " ").split(/\s+/).filter(Boolean);
