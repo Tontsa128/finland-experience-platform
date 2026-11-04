@@ -61,14 +61,17 @@ function matches(item: SearchableItem, query: string, locale: Locale, area?: (ty
   if (linkedDestinationId != null) return String(linkedDestinationId) === String(area.id);
 
   const areaTerms = [
-    area.slug.replace(/-/g, " "),
+    area.slug,
     area.name?.[locale],
     area.name?.fi,
     area.name?.es,
     area.name?.en,
-  ].filter((value): value is string => Boolean(value)).map((value) => value.toLocaleLowerCase(locale));
+  ]
+    .filter((value): value is string => Boolean(value))
+    .flatMap((value) => value.toLocaleLowerCase(locale).split(/[^\\p{L}\\p{N}]+/u))
+    .filter((term) => term.length > 2);
 
-  return areaTerms.some((term) => term.length > 2 && haystack.includes(term));
+  return areaTerms.some((term) => haystack.includes(term));
 }
 
 export default async function SearchPage({
