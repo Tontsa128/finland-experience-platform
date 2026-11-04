@@ -58,7 +58,10 @@ function matches(item: SearchableItem, query: string, locale: Locale, area?: (ty
   if (!area) return true;
 
   const linkedDestinationId = item.destination_id ?? item.destinationId;
-  if (linkedDestinationId != null) return String(linkedDestinationId) === String(area.id);
+  const normalizedDestinationId = linkedDestinationId == null ? "" : String(linkedDestinationId).trim();
+  if (normalizedDestinationId && normalizedDestinationId !== "null" && normalizedDestinationId !== "undefined") {
+    return normalizedDestinationId === String(area.id);
+  }
 
   const areaTerms = [
     area.slug,
