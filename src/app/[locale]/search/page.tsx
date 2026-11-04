@@ -5,11 +5,47 @@ import { ArrowRight, MapPin, Search } from "lucide-react";
 import { destinations, cabins, experiences } from "@/lib/data";
 import { photoLibrary } from "@/lib/photo-library";
 import { saloProviders } from "@/lib/salo";
+import { luxuryDirectory } from "@/lib/luxury-directory";
+import { kimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
 import { areaProviderIds, areaCopy, type SaloArea } from "@/lib/salo-areas";
 import { getPublishedDestinations, getPublishedProperties, getPublishedExperiences } from "@/lib/public-content";
 
 type Locale = "fi" | "es" | "en";
 type SearchParams = { q?: string; type?: string; area?: string; category?: string };
+
+type ProviderSearchResult = {
+  id: string;
+  href: string;
+  name: string;
+  description: string;
+  location: string;
+  category: string;
+  image: string;
+  imageCredit?: string;
+  price?: string;
+};
+
+function matchesAreaText(value: string, area: (typeof destinations)[number] | undefined, locale: Locale) {
+  if (!area) return true;
+  const terms = [area.slug, area.name?.fi, area.name?.es, area.name?.en]
+    .filter((term): term is string => Boolean(term))
+    .flatMap((term) => term.toLocaleLowerCase(locale).replace(/[^a-z0-9À-ž]+/gi, " ").split(/\\s+/))
+    .filter((term) => term.length > 2);
+  const haystack = value.toLocaleLowerCase(locale);
+  return terms.some((term) => haystack.includes(term));
+}
+
+function matchesProviderCategory(requested: string, category: string, haystack: string) {
+  if (!requested) return true;
+  if (category === requested) return true;
+  const aliases: Record<string, string[]> = {
+    sauna: ["sauna", "savusauna", "löyly", "smoke sauna"],
+    cruise: ["boat", "boating", "cruise", "sailing", "veneily", "purjehdus", "marina", "harbour"],
+    hiking: ["nature", "outdoors", "hiking", "trail", "retkeily", "luontopolku"],
+    culture: ["culture", "museum", "heritage", "history", "kulttuuri", "historia", "ruukki"],
+  };
+  return (aliases[requested] || []).some((term) => haystack.includes(term));
+}
 
 const labels = {
   fi: { title: "Löydä sopivat palvelut", results: "Hakutulokset", empty: "Hakuehdoilla ei löytynyt tuloksia. Kokeile toista hakusanaa tai aluetta.", stays: "Majoitukset", experiences: "Elämykset", destinations: "Kohteet", search: "Hae", placeholder: "Mitä etsit?", all: "Kaikki palvelut", accommodation: "Majoitus", experience: "Elämykset", destination: "Kohteet", category: "Palvelun teema", allCategories: "Kaikki teemat", food: "Ruoka ja ravintolat", sauna: "Sauna", cruise: "Risteilyt ja veneily", hiking: "Luonto ja retkeily", culture: "Kulttuuri", providers: "Paikalliset palveluntarjoajat", price: "Hinta tarkistettava" },
@@ -116,20 +152,100 @@ export default async function SearchPage({
   const providerAreaById = new Map<string, SaloArea>(
     Object.entries(areaProviderIds).flatMap(([area, ids]) => ids.map((id) => [id, area as SaloArea] as const)),
   );
-  const foundProviders = saloProviders.filter((provider) => {
-    if (!provider.image) return false;
-    if (type === "destination") return false;
-    if (type === "accommodation" && provider.category !== "stay") return false;
-    if (type === "experience" && provider.category === "stay") return false;
-    if (category && provider.category !== category) return false;
-    const providerArea = providerAreaById.get(provider.id);
-    if (selectedArea && (!selectedSaloArea || providerArea !== selectedSaloArea)) return false;
-    const name = provider.nameByLocale?.[locale] || provider.name;
-    const haystack = [name, provider.description[locale], provider.category, providerArea ? areaCopy[providerArea][locale].eyebrow : ""]
-      .filter(Boolean).join(" ").toLocaleLowerCase(locale);
-    return !query || haystack.includes(query);
-  });
+  const saloProviderResults: ProviderSearchResult[] = saloProviders
+    .filter((provider) => {
+      if (!provider.image || type === "destination") return false;
+      if (type === "accommodation" && provider.category !== "stay") return false;
+      if (type === "experience" && provider.category === "stay") return false;
+      const providerArea = providerAreaById.get(provider.id);
+      if (selectedArea && (!selectedSaloArea || providerArea !== selectedSaloArea)) return false;
+      const name = provider.nameByLocale?.[locale] || provider.name;
+      const haystack = [name, provider.description[locale], provider.category, providerArea ? areaCopy[providerArea][locale].eyebrow : ""]
+        .filter(Boolean).join(" ").toLocaleLowerCase(locale);
+      return (!query || haystack.includes(query)) && matchesProviderCategory(category, provider.category, haystack);
+    })
+    .map((provider) => {
+      const providerArea = providerAreaById.get(provider.id);
+      return {
+        id: `salo-${provider.id}`,
+        href: `/${locale}/providers/salo-${provider.id}`,
+        name: provider.nameByLocale?.[locale] || provider.name,
+        description: provider.description[locale],
+        location: providerArea ? areaCopy[providerArea][locale].eyebrow : "Salo",
+        category: provider.category,
+        image: provider.image!,
+        imageCredit: provider.imageCredit,
+        price: provider.priceByLocale?.[locale] || provider.price,
+      };
+    });
 
+  const directoryProviderResults: ProviderSearchResult[] = luxuryDirectory
+    .filter((provider) => {
+      if (!provider.image || type === "destination") return false;
+      if (type === "accommodation" && provider.category !== "stay") return false;
+      if (type === "experience" && provider.category === "stay") return false;
+      const name = provider.nameByLocale?.[locale] || provider.name;
+      const location = provider.locationByLocale?.[locale] || provider.location;
+      const haystack = [name, provider.description[locale], location, ...provider.tags]
+        .filter(Boolean).join(" ").toLocaleLowerCase(locale);
+      return (!query || haystack.includes(query))
+        && matchesProviderCategory(category, provider.category, haystack)
+        && matchesAreaText([location, provider.location, provider.locationByLocale?.fi, provider.locationByLocale?.es, provider.locationByLocale?.en].filter(Boolean).join(" "), selectedArea, locale);
+    })
+    .map((provider) => ({
+      id: `directory-${provider.id}`,
+      href: `/${locale}/providers/directory-${provider.id}`,
+      name: provider.nameByLocale?.[locale] || provider.name,
+      description: provider.description[locale],
+      location: provider.locationByLocale?.[locale] || provider.location,
+      category: provider.category,
+      image: provider.image!,
+      imageCredit: provider.imageCredit,
+      price: provider.priceByLocale?.[locale] || provider.price,
+    }));
+
+  const kimitoonCategoryMap: Record<KimitoonCategory, string> = {
+    majoitus: "stay",
+    ruoka: "food",
+    aktiviteetit: "experience",
+    saaristo: "cruise",
+    luonto: "hiking",
+    kulttuuri: "culture",
+    hyvinvointi: "sauna",
+    kuljetukset: "experience",
+    ostokset: "food",
+    talviaktiviteetit: "experience",
+    tapahtumapaikat: "culture",
+    "muut-palvelut": "experience",
+    tapahtumat: "culture",
+  };
+  const kimitoonProviderResults: ProviderSearchResult[] = kimitoonProviders
+    .filter((provider) => {
+      const image = provider.image || provider.categoryImages?.[provider.categories[0]];
+      if (!image || type === "destination") return false;
+      const categories = provider.categories.map((item) => kimitoonCategoryMap[item]);
+      if (type === "accommodation" && !categories.includes("stay")) return false;
+      if (type === "experience" && categories.includes("stay") && categories.length === 1) return false;
+      if (category && !categories.some((item) => item === category || matchesProviderCategory(category, item, provider.tags.join(" ").toLocaleLowerCase(locale)))) return false;
+      const location = provider.location[locale];
+      const haystack = [provider.name[locale], provider.description[locale], location, ...provider.tags]
+        .filter(Boolean).join(" ").toLocaleLowerCase(locale);
+      return (!query || haystack.includes(query))
+        && matchesAreaText([provider.location.fi, provider.location.en, provider.location.es].join(" "), selectedArea, locale);
+    })
+    .map((provider) => ({
+      id: `kimitoon-${provider.id}`,
+      href: `/${locale}/providers/kimitoon-${provider.id}`,
+      name: provider.name[locale],
+      description: provider.description[locale],
+      location: provider.location[locale],
+      category: kimitoonCategoryMap[provider.categories[0]],
+      image: (provider.image || provider.categoryImages?.[provider.categories[0]])!,
+      imageCredit: provider.imageCredit,
+    }));
+
+  const foundProviders = [...saloProviderResults, ...directoryProviderResults, ...kimitoonProviderResults]
+    .filter((provider, index, all) => all.findIndex((item) => item.href === provider.href) === index);
   const total = foundDestinations.length + foundCabins.length + foundExperiences.length + foundProviders.length;
 
   return (
@@ -154,15 +270,10 @@ export default async function SearchPage({
       {foundCabins.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.stays}</h2><div className="grid gap-4 sm:grid-cols-3">{foundCabins.map((item) => <Link key={item.slug} href={`/${locale}/accommodations/${item.slug}`} className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft"><div className="relative aspect-[16/9]"><Image src={item.images?.[0] || photoLibrary.saunaCottage} alt={localized(item.name, locale)} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div><div className="p-4"><h3 className="font-display text-lg font-bold text-brand-950">{localized(item.name, locale)}</h3><p className="mt-1 text-xs text-slate-500">{item.locationByLocale?.[locale] || item.location}</p><p className="mt-3 text-sm font-bold text-brand-900">{item.pricePerNight > 0 ? new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(item.pricePerNight) : t.price}</p></div></Link>)}</div></section>}
 
       {foundExperiences.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.experiences}</h2><div className="grid gap-4 sm:grid-cols-2">{foundExperiences.map((item) => <Link key={item.slug} href={`/${locale}/experiences/${item.slug}`} className="grid overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft sm:grid-cols-[.9fr_1.1fr]"><div className="relative min-h-40"><Image src={item.images?.[0] || photoLibrary.saunaTraditionalSmoke} alt={localized(item.name, locale)} fill sizes="(max-width:640px) 100vw,50vw" className="object-cover" /></div><div className="p-4"><h3 className="font-display text-lg font-bold text-brand-950">{localized(item.name, locale)}</h3><p className="mt-1 text-xs text-slate-500">{item.region}</p><p className="mt-2 text-sm text-slate-600">{localized(item.shortDescription, locale)}</p><span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-brand-900">{locale === "fi" ? "Katso palvelu" : locale === "es" ? "Ver servicio" : "View service"}<ArrowRight className="h-4 w-4" /></span></div></Link>)}</div></section>}
-      {foundProviders.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.providers}</h2><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{foundProviders.map((provider) => {
-        const providerArea = providerAreaById.get(provider.id);
-        const providerName = provider.nameByLocale?.[locale] || provider.name;
-        const providerPrice = provider.priceByLocale?.[locale] || provider.price;
-        return <Link key={provider.id} href={`/${locale}/providers/salo-${provider.id}`} className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
-          <div className="relative aspect-[16/9]"><Image src={provider.image!} alt={providerName} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div>
-          <div className="p-4"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-brand-700">{providerArea ? areaCopy[providerArea][locale].eyebrow : ""}</p><h3 className="mt-1 font-display text-lg font-bold text-brand-950">{providerName}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{provider.description[locale]}</p>{providerPrice && <p className="mt-3 text-sm font-semibold text-brand-900">{providerPrice}</p>}{provider.imageCredit && <p className="mt-3 border-t border-slate-100 pt-2 text-[10px] leading-4 text-slate-500">{provider.imageCredit}</p>}</div>
-        </Link>;
-      })}</div></section>}
+      {foundProviders.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.providers}</h2><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{foundProviders.map((provider) => <Link key={provider.id} href={provider.href} className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
+        <div className="relative aspect-[16/9]"><Image src={provider.image} alt={provider.name} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div>
+        <div className="p-4"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-brand-700">{provider.location}</p><h3 className="mt-1 font-display text-lg font-bold text-brand-950">{provider.name}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{provider.description}</p>{provider.price && <p className="mt-3 text-sm font-semibold text-brand-900">{provider.price}</p>}{provider.imageCredit && <p className="mt-3 border-t border-slate-100 pt-2 text-[10px] leading-4 text-slate-500">{provider.imageCredit}</p>}</div>
+      </Link>)}</div></section>}
 
     </main>
   );
