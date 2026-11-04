@@ -20,14 +20,14 @@ Finland Experience is a premium Finnish travel discovery and service-finding pla
 3. Prominent unified search: free-text query, service type and destination/area.
 4. Four visual service categories: accommodation, food, experiences and attractions.
 5. Popular destinations: compact photo cards with name and location.
-6. Embedded AI travel assistant: full-width feature card immediately after popular destinations and before recommended accommodation. This placement is intentional and approved.
+6. Embedded AI travel assistant: full-width, directly usable search card after the four service-category cards and immediately before popular destinations. The user explicitly requested this placement between the search experience and popular destinations.
 7. Recommended accommodation: real photo, service name, location, sourced price only, and existing detail/provider link.
 8. Recommended experiences: real photo, service name, location, concise description and existing detail/provider link.
 9. Inspiration and current information: events, area guides and trip planning.
 10. Existing site footer.
 
 ## AI travel assistant
-- Embed the existing verified-catalog assistant between popular destinations and recommended stays.
+- Embed the existing verified-catalog assistant after the service-category cards and before popular destinations. Its search input must be visible on initial page load, not hidden behind a launcher.
 - Keep the existing travel-advisor API integration.
 - Quick prompts populate the assistant question input.
 - Recommendations must resolve to real catalog records. Never invent providers, availability, prices, reviews or booking links.
