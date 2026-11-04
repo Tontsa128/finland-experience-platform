@@ -46,6 +46,7 @@ export async function GET() {
   try {
     const admin = await getAdminContext();
     if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
+    if (!["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"].includes(admin.profile.role)) return NextResponse.json({ error: 'FORBIDDEN' }, { status: 403 });
     const { data, error } = await supabaseAdmin
       .from('destinations')
       .select('id, slug, region, latitude, longitude, hero_image_url, status, published_at, publish_at, seo_title_fi, seo_title_es, seo_title_en, seo_description_fi, seo_description_es, seo_description_en, created_at, updated_at, destination_media(sort_order,media(id,filename,url,alt_fi,alt_es,alt_en)), destination_translations(language_code, name, short_description, full_description, highlights, travel_information)')
@@ -62,7 +63,9 @@ export async function POST(req: NextRequest) {
   try {
     const admin = await getAdminContext();
     if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
+    if (!["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"].includes(admin.profile.role)) return NextResponse.json({ error: 'FORBIDDEN' }, { status: 403 });
     const body = (await req.json()) as DestinationPayload;
+    if (admin.profile.role === "EDITOR" && body.status && body.status !== "draft") return NextResponse.json({ error: 'EDITOR_CAN_ONLY_SAVE_DRAFTS' }, { status: 403 });
     const errors = validatePayload(body);
     if (errors.length) return NextResponse.json({ error: 'Validation failed', details: errors }, { status: 400 });
 
@@ -108,7 +111,9 @@ export async function PATCH(req: NextRequest) {
   try {
     const admin = await getAdminContext();
     if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
+    if (!["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER", "EDITOR"].includes(admin.profile.role)) return NextResponse.json({ error: 'FORBIDDEN' }, { status: 403 });
     const body = (await req.json()) as DestinationPayload & { id: number };
+    if (admin.profile.role === "EDITOR" && body.status && body.status !== "draft") return NextResponse.json({ error: 'EDITOR_CAN_ONLY_SAVE_DRAFTS' }, { status: 403 });
     if (!body.id) return NextResponse.json({ error: 'id is required' }, { status: 400 });
     const errors = validatePayload(body);
     if (errors.length) return NextResponse.json({ error: 'Validation failed', details: errors }, { status: 400 });
@@ -137,6 +142,7 @@ export async function DELETE(req: NextRequest) {
   try {
     const admin = await getAdminContext();
     if (!admin) return NextResponse.json({ error: 'UNAUTHORIZED' }, { status: 401 });
+    if (!["SUPER_ADMIN", "ADMIN", "CONTENT_MANAGER"].includes(admin.profile.role)) return NextResponse.json({ error: 'FORBIDDEN' }, { status: 403 });
     const id = Number(new URL(req.url).searchParams.get('id'));
     if (!Number.isFinite(id)) return NextResponse.json({ error: 'id is required' }, { status: 400 });
     const { error } = await supabaseAdmin.from('destinations').update({ deleted_at: new Date().toISOString(), status: 'draft', updated_at: new Date().toISOString() }).eq('id', id);
