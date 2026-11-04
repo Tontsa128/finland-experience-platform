@@ -148,6 +148,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      <section className="container-narrow pb-9 sm:pb-12">
+        <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-[#e7f0ed] shadow-[0_18px_50px_rgba(28,54,42,.12)]">
+          <div className="absolute inset-0"><Image src={photoLibrary.teijoNationalPark} alt="" fill sizes="100vw" className="object-cover opacity-20" /><div className="absolute inset-0 bg-gradient-to-r from-[#e7f0ed] via-[#e7f0ed]/95 to-[#e7f0ed]/65" /></div>
+          <div className="relative grid gap-5 p-5 sm:p-7 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+            <div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-brand-700">FINLAND EXPERIENCE</p><h2 className="mt-2 font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.advisorTitle}</h2><p className="mt-2 max-w-xl text-sm leading-6 text-slate-700">{t.advisorText}</p></div>
+            <TravelAdvisor language={locale} catalog={advisorCatalog} embedded suggestions={[...t.advisorQuick]} />
+          </div>
+        </div>
+      </section>
+
       <section className="container-narrow pb-8 sm:pb-10">
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.popular}</h2><Link href={`/${locale}/destinations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
@@ -159,15 +169,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <section className="container-narrow pb-9 sm:pb-12">
-        <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-[#e7f0ed] shadow-[0_18px_50px_rgba(28,54,42,.12)]">
-          <div className="absolute inset-0"><Image src={photoLibrary.teijoNationalPark} alt="" fill sizes="100vw" className="object-cover opacity-20" /><div className="absolute inset-0 bg-gradient-to-r from-[#e7f0ed] via-[#e7f0ed]/95 to-[#e7f0ed]/65" /></div>
-          <div className="relative grid gap-5 p-5 sm:p-7 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-            <div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-brand-700">FINLAND EXPERIENCE</p><h2 className="mt-2 font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.advisorTitle}</h2><p className="mt-2 max-w-xl text-sm leading-6 text-slate-700">{t.advisorText}</p></div>
-            <TravelAdvisor language={locale} catalog={advisorCatalog} embedded suggestions={[...t.advisorQuick]} />
-          </div>
-        </div>
-      </section>
+      
 
       <section className="container-narrow pb-9 sm:pb-12">
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.stays}</h2><Link href={`/${locale}/accommodations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
