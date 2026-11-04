@@ -158,7 +158,10 @@ const homepageHasNoLegacyDuskOrCoffeeImage = !photoLibrarySource.includes("Mathi
 const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasOutdoor]")
   && homepageDataSource.includes("images: [photoLibrary.matriHouseLounge, photoLibrary.matriHouseBedroom]")
   && homepageDataSource.includes("images: [photoLibrary.mathildanMarinaTerrace, photoLibrary.mathildedalHarbour]");
-if (!homepageMathildedalOverrides || !homepageMathildedalProviderPhotos || !homepageMathildedalPhotoCredits || !homepageHeroHasMatchedCafeCopy || !homepageHasNoLegacyDuskOrCoffeeImage || !homepageMathildedalDataUsesSpecificPhotos) {
+const homepageMidsummerCardMatchesBonfire = homepageDataSource.includes("images:[photoLibrary.midsummerBonfire]")
+  && photoLibrarySource.includes("Janne Karaste")
+  && photoLibrarySource.includes("CC BY-SA 2.0");
+if (!homepageMathildedalOverrides || !homepageMathildedalProviderPhotos || !homepageMathildedalPhotoCredits || !homepageHeroHasMatchedCafeCopy || !homepageHasNoLegacyDuskOrCoffeeImage || !homepageMathildedalDataUsesSpecificPhotos || !homepageMidsummerCardMatchesBonfire) {
   failed = true;
   console.error("Homepage Mathildedal photo check failed:", {
     homepageMathildedalOverrides,
@@ -167,6 +170,7 @@ if (!homepageMathildedalOverrides || !homepageMathildedalProviderPhotos || !home
     homepageHeroHasMatchedCafeCopy,
     homepageHasNoLegacyDuskOrCoffeeImage,
     homepageMathildedalDataUsesSpecificPhotos,
+    homepageMidsummerCardMatchesBonfire,
   });
 }
 
