@@ -177,7 +177,7 @@ export default async function SearchPage({
         image: provider.image!,
         imageCredit: provider.imageCredit,
         price: provider.priceByLocale?.[locale] || provider.price,
-        dedupeKey: provider.url.toLowerCase().replace(/\\/+$/, ""),
+        dedupeKey: provider.url.toLowerCase().replace(/\/+$/, ""),
       };
     });
 
@@ -204,7 +204,7 @@ export default async function SearchPage({
       image: provider.image!,
       imageCredit: provider.imageCredit,
       price: provider.priceByLocale?.[locale] || provider.price,
-      dedupeKey: provider.url.toLowerCase().replace(/\\/+$/, ""),
+      dedupeKey: provider.url.toLowerCase().replace(/\/+$/, ""),
     }));
 
   const kimitoonCategoryMap: Record<KimitoonCategory, string> = {
