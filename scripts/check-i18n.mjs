@@ -152,9 +152,10 @@ const homepageHeroHasMatchedCafeCopy = [
   "hasLegacyCoffeeSlide",
 ].every((value) => homepageHeroSource.includes(value));
 const homepageHasNoLegacyDuskOrCoffeeImage = !photoLibrarySource.includes("Mathildedal_harbour_sunset.jpg")
-  && !homepageHeroSource.includes("Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg")
   && !homepageHeroSource.includes('title: "Morning coffee by the water"')
   && !homepageHeroSource.includes('title: "Aamukahvi veden äärellä"')
+  // The old CMS image URL is intentionally recognised so it can be replaced at runtime.
+  && homepageHeroSource.includes("Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg")
   && homepageHeroSource.includes("legacyCoffeeCaptions");
 const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasOutdoor]")
   && homepageDataSource.includes("images: [photoLibrary.matriHouseLounge, photoLibrary.matriHouseBedroom]")
