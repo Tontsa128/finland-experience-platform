@@ -55,6 +55,8 @@ function getAreaTerms(area: (typeof destinations)[number], locale: Locale) {
 function matchesAreaText(value: string, area: (typeof destinations)[number] | undefined, locale: Locale) {
   if (!area) return true;
   const locationTokens = new Set(normalizedTokens(value));
+  if (area.slug === "salo-mathildedal" && (locationTokens.has("kimitoön") || locationTokens.has("kemiönsaari"))) return false;
+  if (area.slug === "kemionsaari" && locationTokens.has("salo") && !locationTokens.has("kimitoön") && !locationTokens.has("kemiönsaari")) return false;
   return getAreaTerms(area, locale).some((term) => locationTokens.has(term));
 }
 
