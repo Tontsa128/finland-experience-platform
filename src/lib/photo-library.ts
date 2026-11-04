@@ -19,6 +19,7 @@ export const photoLibrary = {
   matriHouseBedroom: "https://cdn-datahub.visitfinland.com/images/e4a4fc40-1b99-11f1-b3a4-6d11235fc921.jpeg?s=1280",
   mathildanMarinaTerrace: "https://cdn-datahub.visitfinland.com/images/7c8c7840-2b3f-11f0-981a-3b9c14904d67.jpeg",
   cafeMathildedal: "https://visitmathildedal.fi/sites/default/files/bannerikuvat/kahvi-ravintolat-banneri.jpg",
+  midsummerBonfire: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Midsummer_bonfire.jpg",
   naantaliOldTown: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Old_Town_of_Naantali%2C_Finland.jpg",
   turkuAura: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Aura_river_in_Turku.jpg",
   hanko: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hanko_aerial_1.jpg",
