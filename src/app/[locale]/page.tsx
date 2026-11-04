@@ -101,10 +101,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     : catalogExperiences.slice(0, 2)).slice(0, 2) as typeof experiences;
 
   const categoryCards = [
-    { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/accommodations`, image: featuredCabins[0]?.images?.[0] || photoLibrary.saunaCottage, icon: BedDouble },
-    { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/experiences`, image: photoLibrary.mathildedalHarbour, icon: Utensils },
-    { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/experiences`, image: featuredExperiences[0]?.images?.[0] || photoLibrary.saunaBoat, icon: Waves },
-    { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/destinations`, image: photoLibrary.teijoNationalPark, icon: Camera },
+    { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?type=accommodation`, image: featuredCabins[0]?.images?.[0] || photoLibrary.saunaCottage, icon: BedDouble },
+    { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/search?type=experience&category=food`, image: photoLibrary.mathildedalHarbour, icon: Utensils },
+    { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/search?type=experience`, image: featuredExperiences[0]?.images?.[0] || photoLibrary.saunaBoat, icon: Waves },
+    { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?type=destination`, image: photoLibrary.teijoNationalPark, icon: Camera },
   ];
 
   const advisorCatalog = {
