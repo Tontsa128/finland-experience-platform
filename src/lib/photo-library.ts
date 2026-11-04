@@ -15,7 +15,7 @@ export const photoLibrary = {
   mathildanMarinaDining: "https://cdn-datahub.visitfinland.com/images/8d9a8210-e7a8-11ef-a1a5-c5de292a73ba.jpeg?s=1280",
   matildaVillasBedroom: "https://cdn-datahub.visitfinland.com/images/2c7e0300-f614-11f0-ad78-29bd5b45e175.jpeg?s=1280",
   matildaVillasLivingRoom: "https://www.visitmathildedal.fi/sites/default/files/styles/wide/public/listauskuvat/MatildaVillas120.jpg?itok=yJHBRSFk",
-  matriHouseLounge: "https://cdn-datahub.visitfinland.fi/images/eb8c1b10-1b99-11f1-b3a4-6d11235fc921.jpeg?s=1280",
+  matriHouseLounge: "https://cdn-datahub.visitfinland.com/images/eb8c1b10-1b99-11f1-b3a4-6d11235fc921.jpeg?s=1280",
   matriHouseBedroom: "https://visitmathildedal.fi/sites/default/files/bannerikuvat/matri-house-selma%2001.jpg",
   mathildanMarinaTerrace: "https://cdn-datahub.visitfinland.com/images/7c8c7840-2b3f-11f0-981a-3b9c14904d67.jpeg",
   cafeMathildedal: "https://visitmathildedal.fi/sites/default/files/bannerikuvat/kahvi-ravintolat-banneri.jpg",
