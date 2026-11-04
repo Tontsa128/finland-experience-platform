@@ -133,6 +133,7 @@ const homepageMathildedalOverrides = [
 ].every((slug) => homepageSource.includes(slug));
 const homepageMathildedalProviderPhotos = [
   "matildaVillasBedroom",
+  "matildaVillasLivingRoom",
   "matriHouseLounge",
   "mathildanMarinaTerrace",
   "cafeMathildedal",
@@ -157,7 +158,7 @@ const homepageHasNoLegacyDuskOrCoffeeImage = !photoLibrarySource.includes("Mathi
   // The old CMS image URL is intentionally recognised so it can be replaced at runtime.
   && homepageHeroSource.includes("Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg")
   && homepageHeroSource.includes("legacyCoffeeCaptions");
-const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasOutdoor]")
+const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasLivingRoom]")
   && homepageDataSource.includes("images: [photoLibrary.matriHouseLounge, photoLibrary.matriHouseBedroom]")
   && homepageDataSource.includes("images: [photoLibrary.mathildanMarinaTerrace, photoLibrary.mathildedalHarbour]");
 const homepageMidsummerCardMatchesBonfire = homepageDataSource.includes("images:[photoLibrary.midsummerBonfire]")
