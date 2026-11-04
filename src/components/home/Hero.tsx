@@ -223,7 +223,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       const isUntranslatedCopy =
         locale !== "fi" &&
         hasLocalizedCopy &&
-        (sameAsFinnishText || (sameAsFinnishTitle && normalize(localized?.title).split(" ").length >= 3));
+        (sameAsFinnishText || (sameAsFinnishTitle && normalizeSlideText(localized?.title).split(" ").length >= 3));
       return (
         item.enabled !== false &&
         typeof item.imageUrl === "string" &&
