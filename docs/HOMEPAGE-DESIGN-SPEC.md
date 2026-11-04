@@ -35,11 +35,11 @@ Finland Experience is a premium Finnish travel discovery and service-finding pla
 
 ## Search and content integrity
 - Search published Supabase records first and use the existing curated local catalog only as its safe fallback.
-- Search results link to canonical destination, accommodation and experience pages.
+- Search results link to canonical destination, accommodation, experience and provider detail pages, preserving each directory's route prefix.
 - Do not display fabricated prices or imply live availability without source data.
 - Provider booking, payment and contracts remain on the provider's own site.
 - Preserve existing CMS, destination hierarchy, provider records, source attribution and image rights.
-- If a category has no published records, do not create fake cards to fill the layout.
+- If a category has no published records or verified local providers, do not create fake cards to fill the layout.
 
 ## Acceptance criteria
 - Homepage structure follows the approved order at desktop and mobile widths.
