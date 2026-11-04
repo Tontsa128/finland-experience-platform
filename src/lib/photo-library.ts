@@ -63,6 +63,7 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.matriHouseBedroom, credit: "Visit Finland DataHub / Matri House — Salon Kohteet", license: "Visit Finland DataHub partner image", sourcePage: "https://kohteet.visitsalo.fi/en/matri-house-a-boutique-stay-in-the-beautiful-village-of-mathildedal/" },
   { url: photoLibrary.mathildanMarinaTerrace, credit: "Visit Finland DataHub / Mathildan Marina", license: "Visit Finland DataHub partner image", sourcePage: "https://www.luontoon.fi/en/destinations/teijo-national-park/service/mathildan-marina-restaurant-mathildan-marina-b3346a45-b8f4-4131-a0b1-0524a3e59963-en" },
   { url: photoLibrary.cafeMathildedal, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://visitmathildedal.fi/en/restaurants-and-cafes" },
+  { url: photoLibrary.midsummerBonfire, credit: "Janne Karaste", license: "CC BY-SA 2.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Midsummer_bonfire.jpg" },
   { url: photoLibrary.mathildedalVillage, credit: "Kotivalo", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
   { url: photoLibrary.naantaliOldTown, credit: "Tatu Kosonen", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg" },
   { url: photoLibrary.turkuAura, credit: "Anssi Koskinen", license: "CC BY 2.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Aura_river_in_Turku.jpg" },
