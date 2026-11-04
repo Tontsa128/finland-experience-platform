@@ -1,7 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Camera, Compass, Utensils, Waves, BedDouble, MapPin, Sparkles, CalendarDays, Heart } from "lucide-react";
+import { ArrowRight, Camera, Compass, Utensils, Waves, BedDouble, MapPin, Sparkles, CalendarDays } from "lucide-react";
 import { Hero } from "@/components/home/Hero";
 import { VisitorCounter } from "@/components/home/VisitorCounter";
 import TravelAdvisor from "@/components/TravelAdvisor";
@@ -28,8 +28,8 @@ const copy = {
     advisorTitle: "Kysy matkailuavustajalta",
     advisorText: "Löydä täydellinen majoitus, aktiviteetti tai ravintola helposti.",
     advisorQuick: ["Mökki kahdelle", "Lähimmät ravintolat", "Perheaktiviteetit", "Saunaelämys"],
-    events: "Tapahtumat", guides: "Alueoppaat", favourites: "Suosikit",
-    eventsText: "Näe mitä tapahtuu lähialueella", guidesText: "Suunnittele matkasi helposti", favouritesText: "Tallenna suosikkisi",
+    events: "Tapahtumat", guides: "Alueoppaat", favourites: "Suunnittele matka",
+    eventsText: "Näe mitä tapahtuu lähialueella", guidesText: "Suunnittele matkasi helposti", favouritesText: "Rakenna oma matkasuunnitelmasi",
     locationUnknown: "Tutustu kohteeseen", priceCheck: "Tarkista hinta",
   },
   es: {
@@ -43,8 +43,8 @@ const copy = {
     advisorTitle: "Pregunta al asistente de viaje",
     advisorText: "Encuentra fácilmente alojamiento, actividades o restaurantes.",
     advisorQuick: ["Cabaña para dos", "Restaurantes cercanos", "Planes en familia", "Experiencia de sauna"],
-    events: "Eventos", guides: "Guías de zonas", favourites: "Favoritos",
-    eventsText: "Descubre qué ocurre cerca", guidesText: "Planifica tu viaje fácilmente", favouritesText: "Guarda tus favoritos",
+    events: "Eventos", guides: "Guías de zonas", favourites: "Planifica tu viaje",
+    eventsText: "Descubre qué ocurre cerca", guidesText: "Planifica tu viaje fácilmente", favouritesText: "Crea tu propio plan de viaje",
     locationUnknown: "Descubrir destino", priceCheck: "Consultar precio",
   },
   en: {
@@ -58,8 +58,8 @@ const copy = {
     advisorTitle: "Ask the travel assistant",
     advisorText: "Find the right accommodation, activity or restaurant with ease.",
     advisorQuick: ["Cottage for two", "Nearby restaurants", "Family activities", "Sauna experience"],
-    events: "Events", guides: "Area guides", favourites: "Favourites",
-    eventsText: "See what is happening nearby", guidesText: "Plan your trip with ease", favouritesText: "Save your favourites",
+    events: "Events", guides: "Area guides", favourites: "Plan your trip",
+    eventsText: "See what is happening nearby", guidesText: "Plan your trip with ease", favouritesText: "Build your own travel plan",
     locationUnknown: "Explore destination", priceCheck: "Check price",
   },
 } as const;
@@ -102,7 +102,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   const categoryCards = [
     { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/accommodations`, image: featuredCabins[0]?.images?.[0] || photoLibrary.saunaCottage, icon: BedDouble },
-    { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/experiences?category=food`, image: photoLibrary.mathildedalHarbour, icon: Utensils },
+    { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/experiences`, image: photoLibrary.mathildedalHarbour, icon: Utensils },
     { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/experiences`, image: featuredExperiences[0]?.images?.[0] || photoLibrary.saunaBoat, icon: Waves },
     { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/destinations`, image: photoLibrary.teijoNationalPark, icon: Camera },
   ];
@@ -195,7 +195,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           {[
             { title: t.events, text: t.eventsText, href: `/${locale}/events`, image: photoLibrary.rosalaVikingHall, Icon: CalendarDays },
             { title: t.guides, text: t.guidesText, href: `/${locale}/destinations`, image: photoLibrary.turkuArchipelago, Icon: MapPin },
-            { title: t.favourites, text: t.favouritesText, href: `/${locale}/favorites`, image: photoLibrary.aland, Icon: Heart },
+            { title: t.favourites, text: t.favouritesText, href: `/${locale}/plan`, image: photoLibrary.aland, Icon: CalendarDays },
           ].map(({ title, text, href, image, Icon }) => <Link key={title} href={href} className="group relative isolate flex min-h-32 overflow-hidden rounded-xl bg-brand-950 text-white"><Image src={image} alt="" fill sizes="(max-width:640px) 100vw,33vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" /><span className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 to-black/20" /><span className="m-auto w-full p-5"><Icon className="mb-2 h-6 w-6" /><strong className="block font-display text-lg">{title}</strong><span className="mt-1 block text-xs text-white/85">{text}</span></span></Link>)}
         </div>
       </section>
