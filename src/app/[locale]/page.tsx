@@ -129,7 +129,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   const categoryCards = [
     // Use an accommodation gallery image, not the harbour image previously used for Matilda Villas.
-    { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?type=accommodation`, image: uniqueHomepageImage([featuredCabins[0]?.images?.[1], featuredCabins[0]?.images?.[0]], [photoLibrary.saunaCottage]), icon: BedDouble },
+    { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?kategoria=majoitus`, image: uniqueHomepageImage([featuredCabins[0]?.images?.[1], featuredCabins[0]?.images?.[0]], [photoLibrary.saunaCottage]), icon: BedDouble },
     // Show an actual restaurant dining scene for the food category.
     { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/search?type=experience&category=food`, image: uniqueHomepageImage([photoLibrary.mathildanMarinaDining]), icon: Utensils },
     // Keep the experience category visually distinct with a real activity: a Finnish sauna boat.
