@@ -72,11 +72,11 @@ const homepageUsesPhotoAttribution = homepageSource.includes("getHomepagePhotoCr
 const homepageAssistantIsBeforePopularDestinations = homepageSource.indexOf("<TravelAdvisor")
   < homepageSource.indexOf('<section className="container-narrow pb-8 sm:pb-10">');
 const homepageCategoriesUseUnifiedSearch = [
-  'search?type=accommodation',
-  'search?type=experience&category=food',
-  'search?type=experience',
-  'search?type=destination',
-].every((route) => homepageSource.includes(route));
+  /search\\?(?:type=accommodation|kategoria=majoitus)/.test(homepageSource),
+  /search\\?type=experience&category=food/.test(homepageSource),
+  /search\\?type=experience/.test(homepageSource),
+  /search\\?type=destination/.test(homepageSource),
+].every(Boolean);
 const homepageCityCopyIsLocalized = ["fi:", "en:", "es:"].every((localeKey) => {
   return homepageDestinationFeaturesSource.includes(localeKey);
 });
