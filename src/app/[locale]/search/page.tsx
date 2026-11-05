@@ -230,7 +230,7 @@ export default async function SearchPage({
       const haystack = [name, provider.description[locale], location, ...provider.tags]
         .filter(Boolean).join(" ").toLocaleLowerCase(locale);
       return (!query || haystack.includes(query))
-        && matchesProviderCategory(category, provider.category, haystack)
+        && matchesServices(provider.category, haystack)
         && matchesAreaText([location, provider.location, provider.locationByLocale?.fi, provider.locationByLocale?.es, provider.locationByLocale?.en].filter(Boolean).join(" "), selectedArea, locale);
     })
     .map((provider) => ({
