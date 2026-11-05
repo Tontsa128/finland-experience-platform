@@ -54,5 +54,8 @@
       "react/no-unescaped-entities": "off",
       "@next/next/no-sync-scripts": "off"
     }
+  },
+  "overrides": {
+    "@swc/core": "1.15.33"
   }
 }
