@@ -178,8 +178,8 @@ export default async function SearchPage({
   const foundCabins = type === "all" || type === "accommodation"
     ? allCabins.filter((item) => {
       if (!matches(item, query, locale, selectedArea)) return false;
-      const searchable = [item.category, ...(item.features || []), ...(item.tags || []), ...(item.activities || []), item.description?.[locale], item.shortDescription?.[locale]].filter(Boolean).join(" ").toLocaleLowerCase(locale);
-      return matchesServices(item.category || "", searchable);
+      const searchable = [item.type, ...(item.features || []), item.description?.[locale]].filter(Boolean).join(" ").toLocaleLowerCase(locale);
+      return matchesServices(item.type || "", searchable);
     }) : [];
   const foundExperiences = type === "all" || type === "experience"
     ? allExperiences.filter((item) => matches(item, query, locale, selectedArea) && serviceFilters.every((service) => matchesProviderCategory(service, item.category || "", [item.category, ...(item.tags || []), ...(item.features || [])].join(" ").toLocaleLowerCase(locale)))) : [];
