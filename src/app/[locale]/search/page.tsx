@@ -11,7 +11,7 @@ import { areaProviderIds, areaCopy, type SaloArea } from "@/lib/salo-areas";
 import { getPublishedDestinations, getPublishedProperties, getPublishedExperiences } from "@/lib/public-content";
 
 type Locale = "fi" | "es" | "en";
-type SearchParams = { q?: string; type?: string; area?: string; category?: string };
+type SearchParams = { q?: string; type?: string; area?: string; category?: string; kategoria?: string; palvelut?: string };
 
 type ProviderSearchResult = {
   id: string;
@@ -160,8 +160,9 @@ export default async function SearchPage({
   setRequestLocale(locale);
   const t = labels[locale];
   const query = (paramsValue.q || "").trim().toLocaleLowerCase();
-  const type = paramsValue.type || "all";
-  const category = paramsValue.category || "";
+  const rawType = paramsValue.type || paramsValue.kategoria || "all";
+  const type = ({ majoitus: "accommodation", accommodation: "accommodation", elamykset: "experience", elämykset: "experience", experience: "experience", kohteet: "destination", destination: "destination", kaikki: "all", all: "all" } as Record<string, string>)[rawType.toLocaleLowerCase()] || rawType;
+  const category = (paramsValue.palvelut || paramsValue.category || "").split(",").map((value) => value.trim().toLocaleLowerCase()).filter(Boolean)[0] || "";
   const [cmsDestinations, cmsCabins, cmsExperiences] = await Promise.all([
     getPublishedDestinations(), getPublishedProperties(), getPublishedExperiences(),
   ]);
@@ -173,7 +174,11 @@ export default async function SearchPage({
   const foundDestinations = type === "all" || type === "destination"
     ? allDestinations.filter((item) => matches(item, query, locale, selectedArea)) : [];
   const foundCabins = type === "all" || type === "accommodation"
-    ? allCabins.filter((item) => matches(item, query, locale, selectedArea)) : [];
+    ? allCabins.filter((item) => {
+      if (!matches(item, query, locale, selectedArea)) return false;
+      const searchable = [item.category, ...(item.features || []), ...(item.tags || []), ...(item.activities || []), item.description?.[locale], item.shortDescription?.[locale]].filter(Boolean).join(" ").toLocaleLowerCase(locale);
+      return matchesProviderCategory(category, item.category || "", searchable);
+    }) : [];
   const foundExperiences = type === "all" || type === "experience"
     ? allExperiences.filter((item) => matches(item, query, locale, selectedArea) && (!category || item.category === category)) : [];
 
@@ -294,7 +299,7 @@ export default async function SearchPage({
       <form action={`/${locale}/search`} method="GET" className="mb-10 grid w-full min-w-0 gap-2 overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-soft sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_160px_180px_180px_auto]">
         <input name="q" defaultValue={paramsValue.q || ""} placeholder={t.placeholder} className="min-h-11 w-full min-w-0 rounded-xl border border-slate-200 px-3 text-base outline-none focus:border-brand-700 sm:text-sm" />
         <select name="type" defaultValue={type} className="min-h-11 w-full min-w-0 max-w-full rounded-xl border border-slate-200 px-3 text-base sm:text-sm"><option value="all">{t.all}</option><option value="accommodation">{t.accommodation}</option><option value="experience">{t.experience}</option><option value="destination">{t.destination}</option></select>
-        <select name="category" defaultValue={category} aria-label={t.category} className="min-h-11 w-full min-w-0 max-w-full rounded-xl border border-slate-200 px-3 text-sm"><option value="">{t.allCategories}</option>{(["food", "sauna", "cruise", "hiking", "culture"] as const).map((key) => <option key={key} value={key}>{t[key]}</option>)}</select>
+        <select name="palvelut" defaultValue={category} aria-label={t.category} className="min-h-11 w-full min-w-0 max-w-full rounded-xl border border-slate-200 px-3 text-sm"><option value="">{t.allCategories}</option>{(["food", "sauna", "cruise", "hiking", "culture"] as const).map((key) => <option key={key} value={key}>{t[key]}</option>)}</select>
         <select name="area" defaultValue={paramsValue.area || ""} className="min-h-11 w-full min-w-0 max-w-full rounded-xl border border-slate-200 px-3 text-sm"><option value="">{locale === "fi" ? "Kaikki alueet" : locale === "es" ? "Todas las zonas" : "All areas"}</option>{allDestinations.map((item) => <option key={item.slug} value={item.slug}>{localized(item.name, locale)}</option>)}</select>
         <button type="submit" className="inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-brand-950 px-6 text-sm font-bold text-white sm:w-auto"><Search className="h-4 w-4" />{t.search}</button>
       </form>
