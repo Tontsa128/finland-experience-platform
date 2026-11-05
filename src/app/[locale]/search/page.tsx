@@ -182,7 +182,7 @@ export default async function SearchPage({
       return matchesServices(item.category || "", searchable);
     }) : [];
   const foundExperiences = type === "all" || type === "experience"
-    ? allExperiences.filter((item) => matches(item, query, locale, selectedArea) && (!category || item.category === category)) : [];
+    ? allExperiences.filter((item) => matches(item, query, locale, selectedArea) && serviceFilters.every((service) => matchesProviderCategory(service, item.category || "", [item.category, ...(item.tags || []), ...(item.features || [])].join(" ").toLocaleLowerCase(locale)))) : [];
 
   const selectedSaloArea = selectedArea?.slug === "salo-mathildedal"
     ? "mathildedal"
@@ -268,7 +268,7 @@ export default async function SearchPage({
       const categories = provider.categories.map((item) => kimitoonCategoryMap[item]);
       if (type === "accommodation" && !categories.includes("stay")) return false;
       if (type === "experience" && categories.includes("stay") && categories.length === 1) return false;
-      if (category && !categories.some((item) => item === category || matchesProviderCategory(category, item, provider.tags.join(" ").toLocaleLowerCase(locale)))) return false;
+      if (!serviceFilters.every((service) => categories.some((item) => item === service || matchesProviderCategory(service, item, provider.tags.join(" ").toLocaleLowerCase(locale))))) return false;
       const location = provider.location[locale];
       const haystack = [provider.name[locale], provider.description[locale], location, ...provider.tags]
         .filter(Boolean).join(" ").toLocaleLowerCase(locale);
