@@ -162,7 +162,9 @@ export default async function SearchPage({
   const query = (paramsValue.q || "").trim().toLocaleLowerCase();
   const rawType = paramsValue.type || paramsValue.kategoria || "all";
   const type = ({ majoitus: "accommodation", accommodation: "accommodation", elamykset: "experience", elämykset: "experience", experience: "experience", kohteet: "destination", destination: "destination", kaikki: "all", all: "all" } as Record<string, string>)[rawType.toLocaleLowerCase()] || rawType;
-  const category = (paramsValue.palvelut || paramsValue.category || "").split(",").map((value) => value.trim().toLocaleLowerCase()).filter(Boolean)[0] || "";
+  const serviceFilters = (paramsValue.palvelut || paramsValue.category || "").split(",").map((value) => value.trim().toLocaleLowerCase()).filter(Boolean);
+  const category = serviceFilters[0] || "";
+  const matchesServices = (providerCategory: string, haystack: string) => serviceFilters.every((service) => matchesProviderCategory(service, providerCategory, haystack));
   const [cmsDestinations, cmsCabins, cmsExperiences] = await Promise.all([
     getPublishedDestinations(), getPublishedProperties(), getPublishedExperiences(),
   ]);
@@ -177,7 +179,7 @@ export default async function SearchPage({
     ? allCabins.filter((item) => {
       if (!matches(item, query, locale, selectedArea)) return false;
       const searchable = [item.category, ...(item.features || []), ...(item.tags || []), ...(item.activities || []), item.description?.[locale], item.shortDescription?.[locale]].filter(Boolean).join(" ").toLocaleLowerCase(locale);
-      return matchesProviderCategory(category, item.category || "", searchable);
+      return matchesServices(item.category || "", searchable);
     }) : [];
   const foundExperiences = type === "all" || type === "experience"
     ? allExperiences.filter((item) => matches(item, query, locale, selectedArea) && (!category || item.category === category)) : [];
@@ -200,7 +202,7 @@ export default async function SearchPage({
       const name = provider.nameByLocale?.[locale] || provider.name;
       const haystack = [name, provider.description[locale], provider.category, providerArea ? areaCopy[providerArea][locale].eyebrow : ""]
         .filter(Boolean).join(" ").toLocaleLowerCase(locale);
-      return (!query || haystack.includes(query)) && matchesProviderCategory(category, provider.category, haystack);
+      return (!query || haystack.includes(query)) && matchesServices(provider.category, haystack);
     })
     .map((provider) => {
       const providerArea = providerAreaById.get(provider.id);
