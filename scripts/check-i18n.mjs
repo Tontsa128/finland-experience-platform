@@ -92,6 +92,7 @@ if (!homepageHasAllCoastalDestinations || !homepageUsesPhotoAttribution || !home
   });
 }
 const unifiedSearchSource = await readFile(path.resolve("src/app/[locale]/search/page.tsx"), "utf8");
+const homepageHeroSource = await readFile(path.resolve("src/components/home/Hero.tsx"), "utf8");
 const homepageDataSource = await readFile(path.resolve("src/lib/data.ts"), "utf8");
 const unifiedSearchIncludesVerifiedLocalProviders = unifiedSearchSource.includes('from "@/lib/salo"')
   && unifiedSearchSource.includes('from "@/lib/luxury-directory"')
@@ -170,7 +171,6 @@ if (!homepageReservesHeroPhotos || !homepageNoDuplicateFallback || !homepageNaan
 
 // Homepage image regression guard: Mathildedal cards use verified, distinct provider imagery;
 // the retired dusk harbour and mismatched cottage/coffee hero must never return.
-const homepageHeroSource = await readFile(path.resolve("src/components/home/Hero.tsx"), "utf8");
 const photoLibrarySource = await readFile(path.resolve("src/lib/photo-library.ts"), "utf8");
 const homepageMathildedalUsesNonHeroCardImage = homepageSource.includes('"salo-mathildedal": [photoLibrary.mathildedalHarbour, photoLibrary.mathildedalVillage]');
 const homepageMathildedalOverrides = [
