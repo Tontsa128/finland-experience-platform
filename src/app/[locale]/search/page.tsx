@@ -279,17 +279,20 @@ export default async function SearchPage({
       return matchesSearchQuery(query, haystack)
         && matchesAreaText([provider.location.fi, provider.location.en, provider.location.es].join(" "), selectedArea, locale);
     })
-    .map((provider) => ({
-      id: `kimitoon-${provider.id}`,
-      href: `/${locale}/providers/kimitoon-${provider.id}`,
-      name: provider.name[locale],
-      description: provider.description[locale],
-      location: provider.location[locale],
-      category: kimitoonCategoryMap[provider.categories[0]],
-      image: provider.image || provider.categoryImages?.[provider.categories[0]] || (categories.includes("sauna") ? photoLibrary.saunaTraditionalSmoke : categories.includes("stay") ? photoLibrary.saunaCottage : photoLibrary.turkuArchipelago),
-      imageCredit: provider.imageCredit,
-      dedupeKey: providerDedupeKey(provider.name[locale], provider.location[locale]),
-    }));
+    .map((provider) => {
+      const categories = provider.categories.map((item) => kimitoonCategoryMap[item]);
+      return {
+        id: `kimitoon-${provider.id}`,
+        href: `/${locale}/providers/kimitoon-${provider.id}`,
+        name: provider.name[locale],
+        description: provider.description[locale],
+        location: provider.location[locale],
+        category: categories[0] || "experience",
+        image: provider.image || provider.categoryImages?.[provider.categories[0]] || (categories.includes("sauna") ? photoLibrary.saunaTraditionalSmoke : categories.includes("stay") ? photoLibrary.saunaCottage : photoLibrary.turkuArchipelago),
+        imageCredit: provider.imageCredit,
+        dedupeKey: providerDedupeKey(provider.name[locale], provider.location[locale]),
+      };
+    });
 
   const featuredSaunaResults: ProviderSearchResult[] = (type === "all" || type === "experience")
     ? featuredSaunaPlaces
