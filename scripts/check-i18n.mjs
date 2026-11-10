@@ -133,6 +133,12 @@ if (!demoFallbacksAreOptIn) {
 }
 
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
+const eventsUseDedicatedNaantaliPage = eventsSource.includes('href={"/" + locale + "/naantali"}')
+  && !eventsSource.includes('href={"/" + locale + "/destinations/naantali"}');
+const porvooPageAvoidsDisabledDynamicSelfLink = porvooSource.includes('href={`/${locale}/coastal-finland`}')
+  && !porvooSource.includes('href={`/${locale}/destinations/porvoo`}');
+const eventsSource = await readFile(path.resolve("src/app/[locale]/events/page.tsx"), "utf8");
+const porvooSource = await readFile(path.resolve("src/app/[locale]/porvoo/page.tsx"), "utf8");
 const homepageHeroUsesExistingDestinationRoutes = [
   'href: "/turku"',
   'href: "/hanko"',
@@ -146,7 +152,7 @@ const homepageHasKansakouluCard = homepageSource.includes("KansakouluSpotlight")
   || homepageSource.includes("kansakoulu");
 const guideKeepsCategoryCards = kimitoonGuideSource.includes("KimitoonKansakouluCategoryCard")
   && /<KimitoonKansakouluCategoryCard\s+locale=/.test(kimitoonGuideSource);
-if (!homepageHeroUsesExistingDestinationRoutes || !rosalaCardUsesPublishedProviderRoute || homepageHasKansakouluCard || !guideKeepsCategoryCards) {
+if (!eventsUseDedicatedNaantaliPage || !porvooPageAvoidsDisabledDynamicSelfLink || !homepageHeroUsesExistingDestinationRoutes || !rosalaCardUsesPublishedProviderRoute || homepageHasKansakouluCard || !guideKeepsCategoryCards) {
   failed = true;
   console.error("Kansakoulu placement check failed: keep the homepage free of the Kansakoulu promotional card and retain the accommodation/food cards on the Kimitoön guide.");
 }
