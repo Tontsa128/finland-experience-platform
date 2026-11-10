@@ -4,13 +4,12 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Search } from "lucide-react";
 import { destinations, cabins, experiences } from "@/lib/data";
 import { photoLibrary } from "@/lib/photo-library";
-import { saloProviders } from "@/lib/salo";
+import { saloProviders, saloEvents } from "@/lib/salo";
 import { luxuryDirectory } from "@/lib/luxury-directory";
 import { kimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
 import { areaProviderIds, areaCopy, type SaloArea } from "@/lib/salo-areas";
 import { getPublishedDestinations, getPublishedProperties, getPublishedExperiences } from "@/lib/public-content";
 import { getPublishedEvents } from "@/lib/public-events";
-import { saloEvents } from "@/lib/salo";
 import { naantaliEvents } from "@/lib/naantali";
 import { matchesSearchQuery, matchesServiceFilters, normalizeSearchText } from "@/lib/search";
 
@@ -70,18 +69,6 @@ function providerDedupeKey(name: string, location: string) {
   const normalizedName = name.toLocaleLowerCase().replace(/\s+/g, " ").trim();
   const primaryLocation = location.split(/[·,]/)[0].toLocaleLowerCase().trim();
   return normalizedName + "|" + primaryLocation;
-}
-
-function matchesProviderCategory(requested: string, category: string, haystack: string) {
-  if (!requested) return true;
-  if (category === requested) return true;
-  const aliases: Record<string, string[]> = {
-    sauna: ["sauna", "savusauna", "löyly", "smoke sauna"],
-    cruise: ["boat", "boating", "cruise", "sailing", "veneily", "purjehdus", "marina", "harbour"],
-    hiking: ["nature", "outdoors", "hiking", "trail", "retkeily", "luontopolku"],
-    culture: ["culture", "museum", "heritage", "history", "kulttuuri", "historia", "ruukki"],
-  };
-  return (aliases[requested] || []).some((term) => haystack.includes(term));
 }
 
 const labels = {
@@ -186,7 +173,8 @@ export default async function SearchPage({
   const selectedArea = allDestinations.find((item) => item.slug === paramsValue.area);
 
   const foundDestinations = type === "all" || type === "destination"
-    ? allDestinations.filter((item) => matches(item, query, locale, selectedArea)) : [];
+    ? allDestinations.filter((item) => matches(item, query, locale, selectedArea)
+      && matchesServiceFilters(serviceFilters, "", [item.slug, ...Object.values(item.name || {}), ...Object.values(item.description || {}), ...(item.tags || []), ...(item.activities || [])])) : [];
   const foundCabins = type === "all" || type === "accommodation"
     ? allCabins.filter((item) => matches(item, query, locale, selectedArea)
       && matchesServiceFilters(serviceFilters, item.type || "", [item.slug, ...Object.values(item.name || {}), ...Object.values(item.description || {}), ...(item.features || []), item.location, item.region])) : [];
