@@ -38,7 +38,7 @@ function getAreaImage(area: SaloArea): { src: string; credit: string; source: st
   }
 
   const src = area === "mathildedal"
-    ? photoLibrary.mathildedalHarbour
+    ? photoLibrary.mathildanMarinaTerrace
     : area === "teijo"
       ? photoLibrary.teijoNationalPark
       : area === "sarkisalo"
