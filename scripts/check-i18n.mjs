@@ -133,12 +133,12 @@ if (!demoFallbacksAreOptIn) {
 }
 
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
+const eventsSource = await readFile(path.resolve("src/app/[locale]/events/page.tsx"), "utf8");
+const porvooSource = await readFile(path.resolve("src/app/[locale]/porvoo/page.tsx"), "utf8");
 const eventsUseDedicatedNaantaliPage = eventsSource.includes('href={"/" + locale + "/naantali"}')
   && !eventsSource.includes('href={"/" + locale + "/destinations/naantali"}');
 const porvooPageAvoidsDisabledDynamicSelfLink = porvooSource.includes('href={`/${locale}/coastal-finland`}')
   && !porvooSource.includes('href={`/${locale}/destinations/porvoo`}');
-const eventsSource = await readFile(path.resolve("src/app/[locale]/events/page.tsx"), "utf8");
-const porvooSource = await readFile(path.resolve("src/app/[locale]/porvoo/page.tsx"), "utf8");
 const homepageHeroUsesExistingDestinationRoutes = [
   'href: "/turku"',
   'href: "/hanko"',
