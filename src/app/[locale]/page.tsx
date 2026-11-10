@@ -6,6 +6,7 @@ import { Hero } from "@/components/home/Hero";
 import { VisitorCounter } from "@/components/home/VisitorCounter";
 import TravelAdvisor from "@/components/TravelAdvisor";
 import { destinations, cabins, experiences } from "@/lib/data";
+import { allowDemoFallback } from "@/lib/utils";
 import { photoLibrary } from "@/lib/photo-library";
 import { getHomepagePhotoCredit, getHomepagePhotoUsageNote } from "@/lib/homepage-destination-features";
 import {
@@ -83,9 +84,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   // Prefer published CMS records. Curated local records remain the safe fallback
   // until the corresponding CMS collection has published content.
-  const catalogDestinations = cmsDestinations.length ? cmsDestinations : destinations;
-  const catalogCabins = cmsCabins.length ? cmsCabins : cabins;
-  const catalogExperiences = cmsExperiences.length ? cmsExperiences : experiences;
+  const catalogDestinations = cmsDestinations.length ? cmsDestinations : allowDemoFallback ? destinations : [];
+  const catalogCabins = cmsCabins.length ? cmsCabins : allowDemoFallback ? cabins : [];
+  const catalogExperiences = cmsExperiences.length ? cmsExperiences : allowDemoFallback ? experiences : [];
   const t = copy[locale];
 
   const destinationIds = homepage?.featuredDestinationIds ?? [];
