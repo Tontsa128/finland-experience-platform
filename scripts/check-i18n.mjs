@@ -132,11 +132,20 @@ if (!demoFallbacksAreOptIn) {
 }
 
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
+const homepageHeroUsesExistingDestinationRoutes = [
+  'href: "/turku"',
+  'href: "/hanko"',
+  'href: "/naantali"',
+  'href: "/aland"',
+  'href: "/porvoo"',
+].every((href) => homepageHeroSource.includes(href));
+const rosalaCardUsesPublishedProviderRoute = kimitoonGuideSource.includes('url: "/providers/kimitoon-rosala-viking-centre"')
+  && !kimitoonGuideSource.includes('url: "/destinations/rosala"');
 const homepageHasKansakouluCard = homepageSource.includes("KansakouluSpotlight")
   || homepageSource.includes("kansakoulu");
 const guideKeepsCategoryCards = kimitoonGuideSource.includes("KimitoonKansakouluCategoryCard")
   && /<KimitoonKansakouluCategoryCard\s+locale=/.test(kimitoonGuideSource);
-if (homepageHasKansakouluCard || !guideKeepsCategoryCards) {
+if (!homepageHeroUsesExistingDestinationRoutes || !rosalaCardUsesPublishedProviderRoute || homepageHasKansakouluCard || !guideKeepsCategoryCards) {
   failed = true;
   console.error("Kansakoulu placement check failed: keep the homepage free of the Kansakoulu promotional card and retain the accommodation/food cards on the Kimitoön guide.");
 }
