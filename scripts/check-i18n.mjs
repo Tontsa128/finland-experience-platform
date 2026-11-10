@@ -423,5 +423,16 @@ if (!kimitoonCategoryPhotoProviders || !kimitoonWinterPhotoIsSpecific || !kimito
   });
 }
 
+const ruukkikylaSource = await readFile(path.resolve("src/components/salo/RuukkikylaGuide.tsx"), "utf8");
+const teijoPageUsesDistinctPhotos = !ruukkikylaSource.includes("image: teijoPhotos[1].src")
+  && !ruukkikylaSource.includes("teijo-national-park-rental-shop.webp")
+  && eventDataSource.includes("image: photoLibrary.naturaVivaTeijo");
+const pernioAreaUsesDedicatedPhoto = saloAreaPageSource.includes("photoLibrary.pernioChurch")
+  && photoLibrarySource.includes('credit: "Motopark", license: "CC BY-SA 3.0"');
+if (!teijoPageUsesDistinctPhotos || !pernioAreaUsesDedicatedPhoto) {
+  failed = true;
+  console.error("Teijo/Perniö image audit failed:", { teijoPageUsesDistinctPhotos, pernioAreaUsesDedicatedPhoto });
+}
+
 if (failed) process.exit(1);
 console.log(`i18n/SEO/Salo checks passed: ${locales.join(", ")} have identical key sets, locale-aware document language, safe sitemap routes and complete village/category guides.`);
