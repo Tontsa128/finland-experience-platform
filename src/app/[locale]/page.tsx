@@ -193,7 +193,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </label>
           <label className="flex min-w-0 max-w-full min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
             <Sparkles className="h-4 w-4 text-brand-700" />
-            <select name="type" defaultValue="all" aria-label={t.allServices} className="w-full min-w-0 max-w-full truncate bg-transparent outline-none"><option value="all">{t.allServices}</option><option value="accommodation">{t.categories[0]}</option><option value="experience">{t.categories[2]}</option><option value="destination">{t.categories[3]}</option></select>
+            <select name="type" defaultValue="all" aria-label={t.allServices} className="w-full min-w-0 max-w-full truncate bg-transparent outline-none"><option value="all">{t.allServices}</option><option value="accommodation">{t.categories[0]}</option><option value="experience">{t.categories[2]}</option><option value="destination">{t.categories[3]}</option><option value="event">{locale === "fi" ? "Tapahtumat" : locale === "es" ? "Eventos" : "Events"}</option><option value="article">{locale === "fi" ? "Artikkelit" : locale === "es" ? "Artículos" : "Articles"}</option></select>
           </label>
           <label className="flex min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
             <MapPin className="h-4 w-4 text-brand-700" />
