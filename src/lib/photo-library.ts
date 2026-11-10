@@ -68,7 +68,7 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.midsummerBonfire, credit: "Janne Karaste", license: "CC BY-SA 2.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Midsummer_bonfire.jpg" },
   { url: photoLibrary.mathildedalVillage, credit: "Kotivalo", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg" },
   { url: photoLibrary.naantaliOldTown, credit: "Tatu Kosonen", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg" },
-  { url: photoLibrary.naantaliHarbour, credit: "Pöllö", license: "CC BY-SA 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg" },
+  { url: photoLibrary.naantaliHarbour, credit: "Pöllö", license: "CC BY 3.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Naantali_harbour_and_church.jpg" },
   { url: photoLibrary.turkuAura, credit: "Anssi Koskinen", license: "CC BY 2.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Aura_river_in_Turku.jpg" },
   { url: photoLibrary.turkuArchipelagoHouse, credit: "Henri Sivonen", license: "CC BY 2.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Turku_archipelago_house.jpg" },
   { url: photoLibrary.hanko, credit: "Kallerna", license: "CC BY-SA 4.0", sourcePage: "https://commons.wikimedia.org/wiki/File:Hanko_aerial_1.jpg" },
