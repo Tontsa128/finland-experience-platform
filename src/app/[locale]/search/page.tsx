@@ -11,6 +11,7 @@ import { luxuryDirectory } from "@/lib/luxury-directory";
 import { kimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
 import { areaProviderIds, areaCopy, type SaloArea } from "@/lib/salo-areas";
 import { getPublishedDestinations, getPublishedProperties, getPublishedExperiences } from "@/lib/public-content";
+import { allowDemoFallback } from "@/lib/utils";
 
 type Locale = "fi" | "es" | "en";
 type SearchParams = { q?: string; type?: string; area?: string; category?: string };
@@ -178,9 +179,9 @@ export default async function SearchPage({
   const [cmsDestinations, cmsCabins, cmsExperiences] = await Promise.all([
     getPublishedDestinations(), getPublishedProperties(), getPublishedExperiences(),
   ]);
-  const allDestinations = cmsDestinations.length ? cmsDestinations : destinations;
-  const allCabins = cmsCabins.length ? cmsCabins : cabins;
-  const allExperiences = cmsExperiences.length ? cmsExperiences : experiences;
+  const allDestinations = cmsDestinations.length ? cmsDestinations : allowDemoFallback ? destinations : [];
+  const allCabins = cmsCabins.length ? cmsCabins : allowDemoFallback ? cabins : [];
+  const allExperiences = cmsExperiences.length ? cmsExperiences : allowDemoFallback ? experiences : [];
   const selectedArea = allDestinations.find((item) => item.slug === paramsValue.area);
 
   const foundDestinations = type === "all" || type === "destination"
