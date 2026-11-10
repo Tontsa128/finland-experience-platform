@@ -65,6 +65,48 @@ const copy = {
   },
 } as const;
 
+const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
+  fi: [
+    { label: "Saunat", href: "/search?palvelut=sauna" },
+    { label: "Hyvinvointi", href: "/search?palvelut=wellbeing" },
+    { label: "Majoitus", href: "/search?kategoria=majoitus" },
+    { label: "Majoitus saunalla", href: "/search?type=accommodation&palvelut=sauna" },
+    { label: "Ruoka ja ravintolat", href: "/search?palvelut=food" },
+    { label: "Veneily, satamat ja risteilyt", href: "/search?palvelut=cruise" },
+    { label: "Saaristo ja rannikko", href: "/search?palvelut=archipelago" },
+    { label: "Ostokset", href: "/search?palvelut=shopping" },
+    { label: "Luonto ja retkeily", href: "/search?palvelut=hiking" },
+    { label: "Kulttuuri ja nähtävyydet", href: "/search?palvelut=culture" },
+    { label: "Tapahtumat", href: "/search?type=event" },
+  ],
+  es: [
+    { label: "Saunas", href: "/search?palvelut=sauna" },
+    { label: "Bienestar", href: "/search?palvelut=wellbeing" },
+    { label: "Alojamiento", href: "/search?kategoria=majoitus" },
+    { label: "Alojamiento con sauna", href: "/search?type=accommodation&palvelut=sauna" },
+    { label: "Gastronomía", href: "/search?palvelut=food" },
+    { label: "Navegación, puertos y cruceros", href: "/search?palvelut=cruise" },
+    { label: "Archipiélago y costa", href: "/search?palvelut=archipelago" },
+    { label: "Tiendas locales", href: "/search?palvelut=shopping" },
+    { label: "Naturaleza y senderismo", href: "/search?palvelut=hiking" },
+    { label: "Cultura y lugares de interés", href: "/search?palvelut=culture" },
+    { label: "Eventos", href: "/search?type=event" },
+  ],
+  en: [
+    { label: "Saunas", href: "/search?palvelut=sauna" },
+    { label: "Wellbeing", href: "/search?palvelut=wellbeing" },
+    { label: "Accommodation", href: "/search?kategoria=majoitus" },
+    { label: "Stays with sauna", href: "/search?type=accommodation&palvelut=sauna" },
+    { label: "Food and restaurants", href: "/search?palvelut=food" },
+    { label: "Boating, marinas and cruises", href: "/search?palvelut=cruise" },
+    { label: "Archipelago and coast", href: "/search?palvelut=archipelago" },
+    { label: "Local shops", href: "/search?palvelut=shopping" },
+    { label: "Nature and hiking", href: "/search?palvelut=hiking" },
+    { label: "Culture and attractions", href: "/search?palvelut=culture" },
+    { label: "Events", href: "/search?type=event" },
+  ],
+};
+
 function localized(value: Record<string, string> | undefined, locale: Locale): string {
   return value?.[locale] || value?.en || "";
 }
@@ -157,7 +199,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </label>
           <label className="flex min-w-0 max-w-full min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
             <Sparkles className="h-4 w-4 text-brand-700" />
-            <select name="type" defaultValue="all" aria-label={t.allServices} className="w-full min-w-0 max-w-full truncate bg-transparent outline-none"><option value="all">{t.allServices}</option><option value="accommodation">{t.categories[0]}</option><option value="experience">{t.categories[2]}</option><option value="destination">{t.categories[3]}</option></select>
+            <select name="type" defaultValue="all" aria-label={t.allServices} className="w-full min-w-0 max-w-full truncate bg-transparent outline-none"><option value="all">{t.allServices}</option><option value="accommodation">{t.categories[0]}</option><option value="experience">{t.categories[2]}</option><option value="destination">{t.categories[3]}</option><option value="event">{locale === "fi" ? "Tapahtumat" : locale === "es" ? "Eventos" : "Events"}</option><option value="article">{locale === "fi" ? "Artikkelit" : locale === "es" ? "Artículos" : "Articles"}</option></select>
           </label>
           <label className="flex min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
             <MapPin className="h-4 w-4 text-brand-700" />
@@ -166,6 +208,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <button type="submit" className="inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-brand-950 px-5 text-sm font-bold text-white transition hover:bg-brand-800 sm:w-auto sm:px-7"><Compass className="h-4 w-4" />{t.search}</button>
         </form>
       </section>
+
+      <nav aria-label={locale === "fi" ? "Suositut haut" : locale === "es" ? "Búsquedas populares" : "Popular searches"} className="container-narrow flex flex-wrap gap-2 pb-5">
+        {quickSearches[locale].map((item) => <Link key={item.label} href={`/${locale}${item.href}`} className="inline-flex min-h-10 items-center rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-900 transition hover:border-brand-700 hover:bg-brand-50">{item.label}</Link>)}
+      </nav>
 
       <section className="container-narrow py-8 sm:py-10">
         <div className="grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
