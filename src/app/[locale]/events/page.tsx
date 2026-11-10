@@ -185,7 +185,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
             <p className="text-xs font-bold uppercase tracking-[.18em] text-gold-300">Salo & Naantali</p>
             <h2 className="mt-3 font-display text-3xl font-bold">{copy.verifyTitle}</h2>
             <p className="mt-4 max-w-3xl leading-7 text-white/70">{copy.verifyText}</p>
-            <Link href={"/" + locale + "/destinations/naantali"} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-gold-300">{copy.verifyCta}<ArrowRight className="h-4 w-4" /></Link>
+            <Link href={"/" + locale + "/naantali"} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-gold-300">{copy.verifyCta}<ArrowRight className="h-4 w-4" /></Link>
           </div>
         </div>
       </section>
