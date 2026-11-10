@@ -109,6 +109,27 @@ if (!unifiedSearchIncludesVerifiedLocalProviders) {
   failed = true;
   console.error("Unified search check failed: include verified local providers with their canonical provider pages and locality mapping.");
 }
+// Production catalogue regression guard: curated demo fallbacks are opt-in only.
+// A listing must never publish fallback links when its detail route rejects those records.
+const homepageFallbackSource = homepageSource;
+const searchFallbackSource = unifiedSearchSource;
+const accommodationListingSource = await readFile(path.resolve("src/app/[locale]/accommodations/page.tsx"), "utf8");
+const destinationListingSource = await readFile(path.resolve("src/app/[locale]/destinations/page.tsx"), "utf8");
+const destinationDetailSource = await readFile(path.resolve("src/app/[locale]/destinations/[slug]/page.tsx"), "utf8");
+const demoFallbacksAreOptIn = homepageFallbackSource.includes("allowDemoFallback ? destinations : []")
+  && homepageFallbackSource.includes("allowDemoFallback ? cabins : []")
+  && homepageFallbackSource.includes("allowDemoFallback ? experiences : []")
+  && searchFallbackSource.includes("allowDemoFallback ? destinations : []")
+  && searchFallbackSource.includes("allowDemoFallback ? cabins : []")
+  && searchFallbackSource.includes("allowDemoFallback ? experiences : []")
+  && accommodationListingSource.includes("allowDemoFallback ? fallbackCabins : []")
+  && destinationListingSource.includes("allowDemoFallback ? fallbackDestinations : []")
+  && destinationDetailSource.includes("allowDemoFallback ? fallbackDestinations : []");
+if (!demoFallbacksAreOptIn) {
+  failed = true;
+  console.error("Demo fallback consistency check failed: production listings must not publish records whose detail routes are disabled.");
+}
+
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
 const homepageHasKansakouluCard = homepageSource.includes("KansakouluSpotlight")
   || homepageSource.includes("kansakoulu");
