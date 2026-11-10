@@ -222,7 +222,7 @@ export default async function SearchPage({
   );
   const saloProviderResults: ProviderSearchResult[] = saloProviders
     .filter((provider) => {
-      if (type === "destination" || type === "event") return false;
+      if (type === "destination" || type === "event" || type === "article") return false;
       if (type === "accommodation" && provider.category !== "stay") return false;
       if (type === "experience" && provider.category === "stay") return false;
       const providerArea = providerAreaById.get(provider.id);
@@ -249,7 +249,7 @@ export default async function SearchPage({
 
   const directoryProviderResults: ProviderSearchResult[] = luxuryDirectory
     .filter((provider) => {
-      if (type === "destination" || type === "event") return false;
+      if (type === "destination" || type === "event" || type === "article") return false;
       if (type === "accommodation" && provider.category !== "stay") return false;
       if (type === "experience" && provider.category === "stay") return false;
       const name = provider.nameByLocale?.[locale] || provider.name;
@@ -289,7 +289,7 @@ export default async function SearchPage({
   };
   const kimitoonProviderResults: ProviderSearchResult[] = kimitoonProviders
     .filter((provider) => {
-      if (type === "destination" || type === "event") return false;
+      if (type === "destination" || type === "event" || type === "article") return false;
       const categories = provider.categories.map((item) => kimitoonCategoryMap[item]);
       if (type === "accommodation" && !categories.includes("stay")) return false;
       if (type === "experience" && categories.includes("stay") && categories.length === 1) return false;
@@ -331,7 +331,7 @@ export default async function SearchPage({
     .filter((provider) => {
       const category = naantaliCategoryMap[provider.category];
       if (existingProviderNames.has(normalizeSearchText(provider.name))) return false;
-      if (type === "destination" || type === "event") return false;
+      if (type === "destination" || type === "event" || type === "article") return false;
       if (type === "accommodation" && category !== "stay") return false;
       if (type === "experience" && category === "stay") return false;
       const haystack = [provider.name, ...Object.values(provider.description), category, "Naantali", "Naantali archipelago"];
