@@ -2,7 +2,7 @@ const synonymGroups: Record<string, string[]> = {
   sauna: ["sauna", "saun", "saunat", "saunominen", "savusauna", "loyly", "smoke", "steam", "bano"],
   wellbeing: ["wellbeing", "wellness", "hyvinvointi", "massage", "hieronta", "yoga", "jooga", "relaxation", "recovery", "spa"],
   food: ["food", "ruoka", "ravintola", "ravintolat", "kahvila", "kahvilat", "restaurant", "restaurants", "cafe", "cafes", "gastronomia", "comida", "restaurante"],
-  cruise: ["cruise", "risteily", "risteilyt", "veneily", "vene", "purjehdus", "veneilysatama", "venesatama", "vierasvenesatama", "venepaikka", "satama", "marina", "harbour", "harbor", "vieraslaituri", "vieraslaiturit", "guest", "pier", "dock", "boat", "boating", "sailing", "barco", "navegacion"],
+  cruise: ["cruise", "risteily", "risteilyt", "veneily", "vene", "purjehdus", "veneilysatama", "venesatama", "vierasvenesatama", "vieraslaituri", "vieraslaiturit", "venepaikka", "satama", "marina", "harbour", "harbor", "boat", "boating", "sailing", "barco", "navegacion"],
   archipelago: ["archipelago", "archipielago", "saaristo", "saaristomeri", "island", "islands", "coast", "coastal", "merellinen", "isla", "islas"],
   shopping: ["shopping", "shop", "shops", "store", "stores", "market", "marketplace", "kauppa", "kaupat", "ostokset", "ostoksia", "boutique", "souvenir", "compras", "tienda", "tiendas"],
   hiking: ["nature", "luonto", "retkeily", "vaellus", "hiking", "trail", "outdoors", "naturaleza", "senderismo", "forest", "metsa"],
