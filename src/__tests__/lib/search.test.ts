@@ -22,6 +22,14 @@ test("service filters match amenities even when the main category is accommodati
   assert.equal(matchesServiceFilter("sauna", "stay", ["Villa", "oma sauna", "merinäköala"]), true);
   assert.equal(matchesServiceFilter("sauna", "stay", ["Villa", "terassi", "merinäköala"]), false);
 });
+test("keeps boating, archipelago and shopping categories distinct", () => {
+  assert.equal(matchesServiceFilter("cruise", "archipelago", ["island accommodation"]), false);
+  assert.equal(matchesServiceFilter("archipelago", "saaristo", []), true);
+  assert.equal(matchesServiceFilter("shopping", "ostokset", []), true);
+  assert.equal(matchesServiceFilter("food", "shopping", ["gift shop"]), false);
+  assert.equal(matchesServiceFilter("cruise", "marina", ["boat berths"]), true);
+});
+
 test("service filters support multilingual categories and AND combinations", () => {
   assert.equal(matchesServiceFilter("food", "restaurant", ["local dining"]), true);
   assert.equal(matchesServiceFilter("sauna", "sauna", ["savusauna"]), true);
