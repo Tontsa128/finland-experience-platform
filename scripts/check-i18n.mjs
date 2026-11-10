@@ -141,13 +141,18 @@ if (homepageHasKansakouluCard || !guideKeepsCategoryCards) {
   console.error("Kansakoulu placement check failed: keep the homepage free of the Kansakoulu promotional card and retain the accommodation/food cards on the Kimitoön guide.");
 }
 
+const homepageReservesHeroPhotos = homepageSource.includes("const builtInHeroImages = [")
+  && homepageSource.includes("photoLibrary.mathildedalVillage")
+  && homepageSource.includes("homepage?.homepageSlides")
+  && homepageSource.includes("[...builtInHeroImages, ...configuredHeroImages].map(imageKey)");
 const homepageNoDuplicateFallback = homepageSource.includes('return "";')
   && homepageSource.includes("If a record has no distinct");
 const homepageNaantaliUsesDistinctPhotos = homepageDataSource.includes("images: [photoLibrary.naantaliOldTown, photoLibrary.naantaliHarbour]");
 const homepageTurkuUsesDistinctPhotos = homepageDataSource.includes("images: [photoLibrary.turkuAura, photoLibrary.turkuArchipelagoHouse]");
-if (!homepageNoDuplicateFallback || !homepageNaantaliUsesDistinctPhotos || !homepageTurkuUsesDistinctPhotos) {
+if (!homepageReservesHeroPhotos || !homepageNoDuplicateFallback || !homepageNaantaliUsesDistinctPhotos || !homepageTurkuUsesDistinctPhotos) {
   failed = true;
   console.error("Homepage duplicate-image guard failed:", {
+    homepageReservesHeroPhotos,
     homepageNoDuplicateFallback,
     homepageNaantaliUsesDistinctPhotos,
     homepageTurkuUsesDistinctPhotos,
