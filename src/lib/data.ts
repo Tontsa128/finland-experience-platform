@@ -48,7 +48,7 @@ export const destinations: Destination[] = [
       en: "Old town, archipelago, Moominworld and long summer evenings"
     },
     region: "Southwest Finland",
-    images: [naantaliSummer, naantaliSummer],
+    images: [photoLibrary.naantaliOldTown, photoLibrary.naantaliHarbour],
     priceFrom: 69,
     featured: true,
     coordinates: { lat: 60.467, lng: 22.025 },
@@ -183,7 +183,7 @@ export const destinations: Destination[] = [
       en: "Aura River, history and gateway to the islands"
     },
     region: "Southwest Finland",
-    images: [archipelagoRoad, archipelagoRoad],
+    images: [photoLibrary.turkuAura, photoLibrary.turkuArchipelagoHouse],
     priceFrom: 110,
     featured: false,
     coordinates: { lat: 60.452, lng: 22.267 },
