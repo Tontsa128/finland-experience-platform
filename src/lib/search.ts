@@ -15,7 +15,7 @@ for (const [group, aliases] of Object.entries(synonymGroups)) {
     }
   }
 }
-const ignoredQueryTokens = new Set(["and", "the", "for", "with", "ja", "tai", "sekä", "de", "del", "la", "el", "los", "las", "y", "en"]);
+const ignoredQueryTokens = new Set(["and", "the", "for", "with", "from", "near", "in", "at", "on", "to", "by", "of", "ja", "tai", "sekä", "de", "del", "la", "el", "los", "las", "y", "en", "con", "para", "por"]);
 export function normalizeSearchText(value: string): string {
   return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase().replace(/ß/g, "ss").replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
 }
