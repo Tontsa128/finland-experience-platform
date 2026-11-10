@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoCredits } from "@/lib/photo-library";
 
 type Locale = "fi" | "en" | "es";
@@ -32,6 +34,17 @@ const copy = {
     sourceNote: "Fuente / nota sobre derechos",
   },
 } satisfies Record<Locale, Record<string, string>>;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = rawLocale === "es" ? "es" : rawLocale === "en" ? "en" : "fi";
+  const copy = {
+    fi: { title: "Kuvien lähteet ja tekijätiedot | Finland Experience", description: "Finland Experience -sivuston kuvien lähteet, tekijätiedot ja käyttöehdot." },
+    es: { title: "Fuentes y atribución de imágenes | Finland Experience", description: "Fuentes, créditos de autor y condiciones de uso de las imágenes de Finland Experience." },
+    en: { title: "Image sources and attribution | Finland Experience", description: "Image sources, photographer credits and usage notes for Finland Experience." },
+  }[locale];
+  return buildLocalizedMetadata({ locale, ...copy, path: "photo-credits" });
+}
+
 
 export default async function PhotoCreditsPage({
   params,

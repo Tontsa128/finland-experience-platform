@@ -25,7 +25,7 @@ export const destinations: Destination[] = [
       en: "Ironworks village, sea, forest and slow summer days"
     },
     region: "Southwest Finland",
-    images: [summerMathildedal, mathildedalHouse],
+    images: [mathildedalHouse, summerMathildedal],
     priceFrom: 149,
     featured: true,
     coordinates: { lat: 60.166, lng: 22.954 },
@@ -48,7 +48,7 @@ export const destinations: Destination[] = [
       en: "Old town, archipelago, Moominworld and long summer evenings"
     },
     region: "Southwest Finland",
-    images: [naantaliSummer, naantaliSummer],
+    images: [photoLibrary.naantaliOldTown, photoLibrary.naantaliHarbour],
     priceFrom: 69,
     featured: true,
     coordinates: { lat: 60.467, lng: 22.025 },
@@ -71,7 +71,7 @@ export const destinations: Destination[] = [
       en: "Sea, red granite, cycling and island calm"
     },
     region: "Åland",
-    images: [alandSea, alandSea],
+    images: [alandSea],
     priceFrom: 180,
     featured: true,
     coordinates: { lat: 60.178, lng: 19.915 },
@@ -183,7 +183,7 @@ export const destinations: Destination[] = [
       en: "Aura River, history and gateway to the islands"
     },
     region: "Southwest Finland",
-    images: [archipelagoRoad, archipelagoRoad],
+    images: [photoLibrary.turkuAura, photoLibrary.turkuArchipelagoHouse],
     priceFrom: 110,
     featured: false,
     coordinates: { lat: 60.452, lng: 22.267 },
@@ -227,7 +227,7 @@ export const cabins: Cabin[] = [
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
     pricePerNight: 190,
-    images: [summerMathildedal, "https://cdn-datahub.visitfinland.com/images/f9ad30d0-0a6f-11f0-88da-256e05b1f1a0.jpeg?s=1600"],
+    images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasLivingRoom],
     features: ["private sauna", "fireplace", "kitchen", "terrace", "beach", "bicycles"],
     maxGuests: 6, bedrooms: 2, coordinates: { lat: 60.166, lng: 22.954 }, type: "villa",
     bookingUrl: "https://www.matildavillas.fi/en", provider: "Matilda Villas",
@@ -243,7 +243,7 @@ export const cabins: Cabin[] = [
     location: "Mathildedal, Salo",
     region: "Southwest Finland",
     pricePerNight: 180,
-    images: [mathildedalHouse, photoLibrary.mathildedalHarbour],
+    images: [photoLibrary.matriHouseLounge, photoLibrary.matriHouseBedroom],
     features: ["historic house", "breakfast", "garden", "design", "village centre"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.956 }, type: "hotel",
     bookingUrl: "https://matrihouse.fi/", provider: "Matri House",
@@ -259,7 +259,7 @@ export const cabins: Cabin[] = [
     location: "Mathildedal harbour",
     region: "Southwest Finland",
     pricePerNight: 179,
-    images: [photoLibrary.mathildedalHarbour, photoLibrary.mathildedalVillage],
+    images: [photoLibrary.mathildanMarinaTerrace, photoLibrary.mathildedalHarbour],
     features: ["harbour", "breakfast", "sea view", "restaurant", "wifi"],
     maxGuests: 4, bedrooms: 1, coordinates: { lat: 60.166, lng: 22.960 }, type: "hotel",
     bookingUrl: "https://mathildanmarina.fi/majoitus/", provider: "Mathildan Marina",
@@ -449,9 +449,9 @@ export const experiences: Experience[] = [
   { id:"e3", slug:"archipelago-cycling", name:{fi:"Saaristopyöräily",es:"Ciclismo por el archipiélago",en:"Archipelago Cycling"}, description:{fi:"Rauhallinen pyöräilypäivä saaristoteillä, kylissä ja satamissa. Reitin voi rakentaa lyhyeksi päiväretkeksi tai useamman päivän lomaksi.",es:"Un día tranquilo en bicicleta por islas, pueblos y puertos. Puedes hacer una excursión o varios días.",en:"A relaxed cycling day through islands, villages and harbours, from a day trip to a multi-day ride."}, shortDescription:{fi:"Pyörällä meren, kylien ja saariston keskellä",es:"En bici entre mar, pueblos e islas",en:"Cycle between sea, villages and islands"}, price:25, duration:"1 päivä", images:[archipelagoRoad], category:"hiking", region:"Southwest Finland", maxParticipants:10 },
   { id:"e4", slug:"viking-island-naantali", name:{fi:"Viikinkisaari-päivä",es:"Día en la isla vikinga",en:"Viking Island Day"}, description:{fi:"Kesäinen saaristopäivä, jossa yhdistyvät veneily, saaritunnelma ja historiallinen ohjelma. Saatavuus ja ohjelma tarkistetaan palveluntarjoajalta.",es:"Un día de verano en una isla con barco, ambiente de archipiélago y programa histórico.",en:"A summer island day combining a boat trip, archipelago atmosphere and historical activities."}, shortDescription:{fi:"Saaripäivä ja pala viikinkiajan tunnelmaa",es:"Un día de isla con ambiente vikingo",en:"An island day with a touch of Viking history"}, price:55, duration:"puolipäivä", images:[naantaliSummer], category:"culture", region:"Naantali", maxParticipants:20, providerName:"Visit Naantali", providerUrl:"https://visitnaantali.com/" },
   { id:"e5", slug:"moominworld-naantali", name:{fi:"Muumimaailma Naantalissa",es:"Moominworld en Naantali",en:"Moominworld in Naantali"}, description:{fi:"Naantalin kesän klassikko. Tarkista päiväliput ja aukiolo suoraan Muumimaailmasta.",es:"Un clásico del verano en Naantali. Comprueba entradas y horarios directamente con Moominworld.",en:"A classic Naantali summer day. Check tickets and opening times directly with Moominworld."}, shortDescription:{fi:"Kesäpäivä Muumien maailmassa",es:"Un día de verano en el mundo de los Moomins",en:"A summer day in the Moomin world"}, price:0, duration:"1 päivä", images:[photoLibrary.naantaliHarbour], category:"culture", region:"Naantali", maxParticipants:0, providerName:"Muumimaailma", providerUrl:"https://www.muumimaailma.fi/" },
-  { id:"e6", slug:"local-food-mathildedal", name:{fi:"Mathildedalin paikalliset maut",es:"Sabores locales de Mathildedal",en:"Local Flavours of Mathildedal"}, description:{fi:"Kyläpanimo, kahvilat, ravintolat, leipomot ja pienet puodit. Rakennetaan lomapäivä paikallisten palveluiden ympärille ilman valmista matkapakettia.",es:"Cervecería, cafés, restaurantes, panadería y pequeñas tiendas. Diseña tu propio día con negocios locales.",en:"Brewery, cafés, restaurants, bakery and small shops. Build your own day around local businesses instead of a package."}, shortDescription:{fi:"Syö, kahvittele ja tutustu ruukkikylän pienyrittäjiin",es:"Come, toma café y descubre los pequeños negocios",en:"Eat, drink coffee and discover local makers"}, price:0, duration:"oma tahti", images:[mathildedalHouse], category:"food", region:"Mathildedal", maxParticipants:0, providerName:"Visit Mathildedal", providerUrl:"https://visitmathildedal.fi/" },
+  { id:"e6", slug:"local-food-mathildedal", name:{fi:"Mathildedalin paikalliset maut",es:"Sabores locales de Mathildedal",en:"Local Flavours of Mathildedal"}, description:{fi:"Kyläpanimo, kahvilat, ravintolat, leipomot ja pienet puodit. Rakennetaan lomapäivä paikallisten palveluiden ympärille ilman valmista matkapakettia.",es:"Cervecería, cafés, restaurantes, panadería y pequeñas tiendas. Diseña tu propio día con negocios locales.",en:"Brewery, cafés, restaurants, bakery and small shops. Build your own day around local businesses instead of a package."}, shortDescription:{fi:"Syö, kahvittele ja tutustu ruukkikylän pienyrittäjiin",es:"Come, toma café y descubre los pequeños negocios",en:"Eat, drink coffee and discover local makers"}, price:0, duration:"oma tahti", images:[photoLibrary.cafeMathildedal], category:"food", region:"Mathildedal", maxParticipants:0, providerName:"Visit Mathildedal", providerUrl:"https://visitmathildedal.fi/" },
   { id:"e7", slug:"summer-fishing-sarkisalo", name:{fi:"Kalastus Särkisalon saaristossa",es:"Pesca en Särkisalo",en:"Fishing in Särkisalo"}, description:{fi:"Särkisalon saaristo sopii rauhalliseen kalastuslomaan. Mökkimajoitukseen voi yhdistää veneen tai kalastusoppaan palveluntarjoajan kautta.",es:"El archipiélago de Särkisalo es ideal para unas vacaciones tranquilas de pesca.",en:"The Särkisalo archipelago is a strong setting for a quiet fishing holiday, with boats and guides available through local providers."}, shortDescription:{fi:"Meri, mökki, vene ja rauhallinen kalastuspäivä",es:"Mar, cabaña, barco y pesca tranquila",en:"Sea, cottage, boat and a quiet day of fishing"}, price:0, duration:"1 päivä", images:[finnishCottage], category:"cruise", region:"Särkisalo", maxParticipants:6, providerName:"Chill Out Fishing", providerUrl:"https://www.chilloutfishing.fi/" },
-  { id:"e8", slug:"juhannus-by-the-sea", name:{fi:"Juhannus meren rannalla",es:"San Juan junto al mar",en:"Midsummer by the Sea"}, description:{fi:"Kokko, sauna, savukala, uudet perunat, uinti ja valoisa ilta – vain silloin kun palveluntarjoaja järjestää nämä palvelut. Sivusto auttaa löytämään paikan, ei myy pakettia.",es:"Hoguera, sauna, pescado ahumado, patatas nuevas, baño y una noche luminosa, según la oferta local.",en:"Bonfire, sauna, smoked fish, new potatoes, swimming and a bright Nordic evening, depending on local providers."}, shortDescription:{fi:"Suomalainen juhannus – meri, sauna ja valoisa yö",es:"San Juan finlandés: mar, sauna y noche luminosa",en:"Finnish Midsummer: sea, sauna and a bright night"}, price:0, duration:"kesäilta", images:[summerMathildedal], category:"culture", region:"Southern Finland", maxParticipants:0 }
+  { id:"e8", slug:"juhannus-by-the-sea", name:{fi:"Juhannus meren rannalla",es:"San Juan junto al mar",en:"Midsummer by the Sea"}, description:{fi:"Kokko, sauna, savukala, uudet perunat, uinti ja valoisa ilta – vain silloin kun palveluntarjoaja järjestää nämä palvelut. Sivusto auttaa löytämään paikan, ei myy pakettia.",es:"Hoguera, sauna, pescado ahumado, patatas nuevas, baño y una noche luminosa, según la oferta local.",en:"Bonfire, sauna, smoked fish, new potatoes, swimming and a bright Nordic evening, depending on local providers."}, shortDescription:{fi:"Suomalainen juhannus – meri, sauna ja valoisa yö",es:"San Juan finlandés: mar, sauna y noche luminosa",en:"Finnish Midsummer: sea, sauna and a bright night"}, price:0, duration:"kesäilta", images:[photoLibrary.midsummerBonfire], category:"culture", region:"Southern Finland", maxParticipants:0 }
 ];
 
 export const blogPosts: BlogPost[] = [

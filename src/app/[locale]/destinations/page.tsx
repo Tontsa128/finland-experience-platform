@@ -7,7 +7,7 @@ import type { Locale } from "@/types";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
-import { canonicalDestinationSlug } from "@/lib/utils";
+import { allowDemoFallback, canonicalDestinationSlug } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
@@ -24,7 +24,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
   const cmsDestinations = await getPublishedDestinations();
-  const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
+  const destinations = cmsDestinations.length ? cmsDestinations : allowDemoFallback ? fallbackDestinations : [];
 
   const itemListSchema = {
     "@context": "https://schema.org",

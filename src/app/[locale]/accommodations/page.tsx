@@ -8,6 +8,7 @@ import { CabinCard } from "@/components/ui/CabinCard";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
+import { allowDemoFallback } from "@/lib/utils";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
 
 const copy = {
@@ -64,7 +65,7 @@ export default async function AccommodationsPage({ params }: { params: Promise<{
   const locale = rawLocale as Locale;
   const c = copy[locale] || copy.en;
   const cmsCabins = await getPublishedProperties();
-  const cabins = cmsCabins.length ? cmsCabins : fallbackCabins;
+  const cabins = cmsCabins.length ? cmsCabins : allowDemoFallback ? fallbackCabins : [];
 
   const jsonLd = {
     "@context": "https://schema.org",

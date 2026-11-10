@@ -20,7 +20,6 @@ function isSaloArea(value: string): value is SaloArea {
 
 function getAreaImage(area: SaloArea): { src: string; credit: string; source: string } | null {
   const providerImageIds: Partial<Record<SaloArea, string>> = {
-    pernio: "leipyolin-tila",
     halikko: "topilan-tupa",
     vaskio: "onnenperan-mokki",
     suomusjarvi: "villa-frans",
@@ -37,8 +36,13 @@ function getAreaImage(area: SaloArea): { src: string; credit: string; source: st
       : null;
   }
 
+  if (area === "pernio") {
+    const attribution = photoCredits.find((photo) => photo.url === photoLibrary.pernioChurch);
+    return attribution ? { src: photoLibrary.pernioChurch, credit: `${attribution.credit} · ${attribution.license}`, source: attribution.sourcePage } : null;
+  }
+
   const src = area === "mathildedal"
-    ? photoLibrary.mathildedalHarbour
+    ? photoLibrary.mathildanMarinaTerrace
     : area === "teijo"
       ? photoLibrary.teijoNationalPark
       : area === "sarkisalo"

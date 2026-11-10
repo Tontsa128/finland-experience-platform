@@ -6,7 +6,7 @@ import { ArrowRight, ArrowUpRight, BedDouble, MapPin, Sparkles } from "lucide-re
 import { getPublishedDestinations } from "@/lib/public-content";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
 import type { Locale } from "@/types";
-import { locales } from "@/lib/utils";
+import { allowDemoFallback, locales } from "@/lib/utils";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (slug === "kemionsaari") return buildLocalizedMetadata({ locale, title: locale === "fi" ? "Kemiönsaari – saaristo, majoitus ja paikalliset maut" : locale === "es" ? "Kimitoön – archipiélago, alojamiento y gastronomía local" : "Kimitoön – archipelago, stays and local flavours", description: locale === "fi" ? "Löydä Kemiönsaaren saaristokohteet, majoitus, ravintolat ja paikalliset elämykset. Varaa suoraan palveluntarjoajalta." : locale === "es" ? "Descubre el archipiélago de Kimitoön, alojamientos, restaurantes y experiencias locales. Reserva directamente." : "Discover Kimitoön’s archipelago, places to stay, restaurants and local experiences. Book directly with providers.", path: "destinations/kemionsaari", image: photoLibrary.rosalaVikingCentre });
   const cmsDestinations = await getPublishedDestinations();
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
-  const source = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
+  const source = cmsDestinations.length ? cmsDestinations : allowDemoFallback ? fallbackDestinations : [];
   const destination = source.find((item) => item.slug === slug) ?? source.find((item) => item.slug === canonicalSlug);
   if (!destination) return {};
   const seo = destination.seo?.[locale] as { title?: string; description?: string } | undefined;
@@ -44,7 +44,7 @@ export default async function DestinationDetail({ params }: { params: Promise<{ 
     return <div className="bg-white"><KimitoonGuide locale={locale} /></div>;
   }
   const cmsDestinations = await getPublishedDestinations();
-  const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
+  const destinations = cmsDestinations.length ? cmsDestinations : allowDemoFallback ? fallbackDestinations : [];
   const canonicalSlug = slug === "mathildedal" ? "salo-mathildedal" : slug;
   const d = destinations.find((x) => x.slug === slug) ?? destinations.find((x) => x.slug === canonicalSlug);
   if (!d) notFound();

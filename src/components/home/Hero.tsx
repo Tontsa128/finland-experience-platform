@@ -68,32 +68,32 @@ const slides: Slide[] = [
     href: "/destinations",
   },
   {
-    key: "cottage",
-    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
-    credit: "Kospo75 / Wikimedia Commons (CC BY-SA 3.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
-    href: "/accommodations",
+    key: "mathildedalCafe",
+    image: photoLibrary.cafeMathildedal,
+    credit: "Visit Mathildedal",
+    creditUrl: "https://visitmathildedal.fi/en/restaurants-and-cafes",
+    href: "/salo/mathildedal",
   },
   {
     key: "archipelago",
     image: photoLibrary.turkuArchipelago,
     credit: "Rob Sinclair / Wikimedia Commons (CC BY-SA 2.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
-    href: "/destinations/turku",
+    href: "/turku",
   },
   {
     key: "hanko",
     image: photoLibrary.hankoRegattaBeach,
     credit: "W.carter / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
-    href: "/destinations/hanko",
+    href: "/hanko",
   },
   {
     key: "naantali",
     image: photoLibrary.naantaliOldTown,
     credit: "Tatu Kosonen / Wikimedia Commons (CC BY-SA 4.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg",
-    href: "/destinations/naantali",
+    href: "/naantali",
   },
   {
     key: "mathildedal",
@@ -107,14 +107,14 @@ const slides: Slide[] = [
     image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholms-slott-1.jpg",
     credit: "Helgi Þorsteinsson / norden.org (CC BY 2.5)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholms-slott-1.jpg",
-    href: "/destinations/aland",
+    href: "/aland",
   },
   {
     key: "porvoo",
     image: photoLibrary.porvoo,
     credit: "Teemu Eskola / Wikimedia Commons (CC BY-SA 3.0)",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg",
-    href: "/destinations/porvoo",
+    href: "/porvoo",
   },
   {
     key: "herrankukkaro",
@@ -130,7 +130,7 @@ const fallbackImages: Record<string, string> = {
   spring: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
   autumn: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
   summer: photoLibrary.sarkisalo,
-  cottage: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
+  mathildedalCafe: photoLibrary.cafeMathildedal,
   archipelago: photoLibrary.turkuArchipelago,
   hanko: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
   naantali: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Old_Town_of_Naantali,_Finland.jpg",
@@ -145,7 +145,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kukkivat valkovuokot ja raikas kevätilma kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
     autumn: { eyebrow: "Syksy Nauvon saaristossa", title: "Nauvon kirkonkylä syksyn väreissä", text: "Ilmakuva näyttää Kyrkbackenin kylän syksyisenä kokonaisuutena, kun puiden ruska värittää saaristomaisemaa.", cta: "Tutustu saaristoon" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Löydä rannikon rauhalliset reitit ja merimaisemat", text: "Pienet sillat, rantakalliot ja saaristotiet johdattavat pois kiireestä Suomen rannikon maisemiin.", cta: "Tutustu kohteisiin" },
-    cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Kesämökki, järvi, laituri ja sauna tekevät kiireettömästä päivästä osan Suomen matkaa.", cta: "Katso majoituksia" },
+    mathildedalCafe: { eyebrow: "Café Mathildedal · Mathildedal", title: "Kahvihetki ja tuoreet leivonnaiset", text: "Valoisa kahvila, vastapaistetut korvapuustit ja pannukahvi kutsuvat pysähtymään historiallisen ruukkikylän keskellä.", cta: "Tutustu Mathildedaliin" },
     archipelago: { eyebrow: "Turun saaristo", title: "Pieni puutalo saariston keskellä", text: "Saaristomaisemaan asettuva puutalo kertoo elävästä saaristosta ja sen rauhallisesta arjesta.", cta: "Tutustu saaristoon" },
     hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Meri, rannat ja historiallinen Hanko", text: "Itämeren rannikko, hiekkarannat ja historiallinen puukaupunki tekevät Hangosta merellisen kohteen ympäri vuoden.", cta: "Tutustu Hankoon" },
     naantali: { eyebrow: "Naantali", title: "Kävele Naantalin vanhan kaupungin puutalokaduilla", text: "Historialliset puutalot ja kapeat kadut kutsuvat rauhalliselle kävelylle meren läheiseen vanhaan kaupunkiin.", cta: "Tutustu Naantaliin" },
@@ -158,7 +158,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, anémonas de bosque en flor y aire fresco de primavera invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
     autumn: { eyebrow: "Otoño en el archipiélago de Nagu", title: "El pueblo de Nagu bajo los colores del otoño", text: "La vista aérea muestra Kyrkbacken en otoño, con los colores de los árboles transformando el paisaje del archipiélago.", cta: "Explorar el archipiélago" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Descubre rutas tranquilas y paisajes costeros", text: "Pequeños puentes, rocas junto al mar y carreteras entre islas te alejan de las prisas y te acercan a la costa finlandesa.", cta: "Explorar destinos" },
-    cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Cabaña de verano, lago, embarcadero y sauna para disfrutar Finlandia sin prisas.", cta: "Ver alojamientos" },
+    mathildedalCafe: { eyebrow: "Café Mathildedal · Mathildedal", title: "Café y repostería recién hecha", text: "Una cafetería luminosa, bollos de canela recién horneados y café tradicional invitan a hacer una pausa en el histórico pueblo siderúrgico.", cta: "Descubrir Mathildedal" },
     archipelago: { eyebrow: "Archipiélago de Turku", title: "Una pequeña casa de madera entre las islas", text: "Una casa de madera en el archipiélago muestra el carácter habitado y tranquilo de las islas finlandesas.", cta: "Explorar el archipiélago" },
     hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Mar, playas y un casco histórico junto al mar", text: "El Báltico, las playas de arena y las calles históricas de madera dan a Hanko un ambiente costero durante todo el año.", cta: "Explorar Hanko" },
     naantali: { eyebrow: "Naantali", title: "Pasea por las calles de madera del casco antiguo", text: "Las casas históricas de madera y las calles estrechas invitan a pasear sin prisa por esta localidad junto al mar.", cta: "Explorar Naantali" },
@@ -171,7 +171,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
     spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, blooming wood anemones and crisp spring air invite you outdoors.", cta: "Explore spring destinations" },
     autumn: { eyebrow: "Autumn in the Nagu archipelago", title: "Nagu village in its autumn colours", text: "The aerial view shows Kyrkbacken in autumn, with colourful foliage transforming the archipelago landscape.", cta: "Explore the archipelago" },
     summer: { eyebrow: "Hidden Coastal Finland", title: "Find quiet coastal routes and sea views", text: "Small bridges, rocky shores and island roads lead away from the rush and into Finland’s coastal landscapes.", cta: "Explore destinations" },
-    cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A summer cottage, lake, jetty and sauna turn a quiet day into part of the journey.", cta: "See stays" },
+    mathildedalCafe: { eyebrow: "Café Mathildedal · Mathildedal", title: "Coffee and freshly baked pastries", text: "A bright café, freshly baked cinnamon buns and traditional pot-brewed coffee make a welcoming stop in the historic ironworks village.", cta: "Explore Mathildedal" },
     archipelago: { eyebrow: "Turku Archipelago", title: "A small wooden house among the islands", text: "A wooden house in the archipelago captures the lived-in, peaceful character of Finland’s island communities.", cta: "Explore the archipelago" },
     hanko: { eyebrow: "Hanko · Finland's southern coast", title: "The sea, beaches and historic Hanko", text: "The Baltic Sea, sandy beaches and historic wooden streets give Hanko a distinctive coastal atmosphere throughout the year.", cta: "Explore Hanko" },
     naantali: { eyebrow: "Naantali", title: "Walk the wooden streets of Naantali’s old town", text: "Historic wooden houses and narrow streets invite you to slow down in this old town by the sea.", cta: "Explore Naantali" },
@@ -187,7 +187,22 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const [active, setActive] = useState(0);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
-  const cmsSlides = (settings?.homepageSlides ?? [])
+  const configuredSlides = settings?.homepageSlides ?? [];
+  const normalizeSlideText = (value?: string) =>
+    (value ?? "").normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
+  const legacyCoffeeCaptions = new Set([
+    "aamukahvi veden äärellä",
+    "morning coffee by the water",
+    "café junto al agua",
+  ]);
+  const isLegacyCoffeeSlide = (item: (typeof configuredSlides)[number]) =>
+    item.id === "cottage" ||
+    String(item.imageUrl ?? "").includes("Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg") ||
+    [item.copy?.fi?.title, item.copy?.en?.title, item.copy?.es?.title]
+      .some((title) => legacyCoffeeCaptions.has(normalizeSlideText(title)));
+  const hasLegacyCoffeeSlide = configuredSlides.some(isLegacyCoffeeSlide);
+
+  const cmsSlides = configuredSlides
     .filter((item) => {
       const localized = item.copy?.[locale];
       const finnishCopy = item.copy?.fi;
@@ -196,27 +211,26 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         localized.title.trim().length > 0 &&
         typeof localized?.text === "string" &&
         localized.text.trim().length > 0;
-      const normalize = (value?: string) =>
-        (value ?? "").normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
       const sameAsFinnishTitle =
-        Boolean(normalize(localized?.title)) &&
-        normalize(localized?.title) === normalize(finnishCopy?.title);
+        Boolean(normalizeSlideText(localized?.title)) &&
+        normalizeSlideText(localized?.title) === normalizeSlideText(finnishCopy?.title);
       const sameAsFinnishText =
-        Boolean(normalize(localized?.text)) &&
-        normalize(localized?.text) === normalize(finnishCopy?.text);
+        Boolean(normalizeSlideText(localized?.text)) &&
+        normalizeSlideText(localized?.text) === normalizeSlideText(finnishCopy?.text);
       // A copied description is strong evidence that the CMS language fields are
       // misconfigured. For titles, only reject longer phrases: short place names
       // such as "Nauvo" can legitimately be identical across languages.
       const isUntranslatedCopy =
         locale !== "fi" &&
         hasLocalizedCopy &&
-        (sameAsFinnishText || (sameAsFinnishTitle && normalize(localized?.title).split(" ").length >= 3));
+        (sameAsFinnishText || (sameAsFinnishTitle && normalizeSlideText(localized?.title).split(" ").length >= 3));
       return (
         item.enabled !== false &&
         typeof item.imageUrl === "string" &&
         item.imageUrl.trim().length > 0 &&
         hasLocalizedCopy &&
-        !isUntranslatedCopy
+        !isUntranslatedCopy &&
+        !isLegacyCoffeeSlide(item)
       );
     })
     .sort((a, b) => a.sortOrder - b.sortOrder);
@@ -230,7 +244,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       // built-in image/copy pairs instead of leaving the hero stuck on a broken image.
       const usableCmsSlides = cmsSlides.filter((item) => !failedImages[item.id]);
       if (usableCmsSlides.length) {
-        return usableCmsSlides.map((item) => ({
+        const mappedCmsSlides = usableCmsSlides.map((item) => ({
           key: item.id,
           image: item.imageUrl,
           durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
@@ -240,6 +254,23 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           external: item.external ?? (String(item.href || "").startsWith("https://") || String(item.href || "").startsWith("http://")),
           copy: item.copy[locale],
         }));
+        // Replace the retired CMS cottage/coffee slide with the verified café slide.
+        if (hasLegacyCoffeeSlide && !mappedCmsSlides.some((item) => item.key === "mathildedalCafe")) {
+          const cafeSlide = slides.find((item) => item.key === "mathildedalCafe");
+          if (cafeSlide) {
+            mappedCmsSlides.push({
+              key: cafeSlide.key,
+              image: cafeSlide.image,
+              durationMs: cafeSlide.durationMs ?? 5500,
+              credit: cafeSlide.credit,
+              creditUrl: cafeSlide.creditUrl,
+              href: normalizeHomepageHref(cafeSlide.href),
+              external: cafeSlide.external ?? false,
+              copy: copy[locale][cafeSlide.key],
+            });
+          }
+        }
+        return mappedCmsSlides;
       }
 
       return slides.map((item) => ({
@@ -248,7 +279,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         copy: copy[locale][item.key],
       }));
     },
-    [cmsSlides, locale, failedImages],
+    [cmsSlides, locale, failedImages, hasLegacyCoffeeSlide],
   );
 
   const slideCount = activeSlides.length;

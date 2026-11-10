@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!locales.includes(locale)) return {};
   const copy = {
     fi: {
-      title: "Suomen rannikko, saaristo ja elämykset | Finland Experience",
+      title: "Suomen rannikko, saaristo ja elämykset",
       description: "Löydä suomalaiset rannikkokohteet, mökit, saaristo, sauna, luonto ja paikalliset elämykset ympäri vuoden.",
     },
     es: {

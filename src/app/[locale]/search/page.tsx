@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { buildLocalizedMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, Search } from "lucide-react";
@@ -9,9 +11,21 @@ import { luxuryDirectory } from "@/lib/luxury-directory";
 import { kimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-providers";
 import { areaProviderIds, areaCopy, type SaloArea } from "@/lib/salo-areas";
 import { getPublishedDestinations, getPublishedProperties, getPublishedExperiences } from "@/lib/public-content";
+import { allowDemoFallback } from "@/lib/utils";
 
 type Locale = "fi" | "es" | "en";
 type SearchParams = { q?: string; type?: string; area?: string; category?: string };
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = rawLocale === "es" ? "es" : rawLocale === "en" ? "en" : "fi";
+  const copy = {
+    fi: { title: "Hae majoituksia, elämyksiä ja kohteita | Finland Experience", description: "Etsi Suomen rannikon majoituksia, paikallisia palveluita, elämyksiä ja matkakohteita." },
+    es: { title: "Buscar alojamientos, experiencias y destinos | Finland Experience", description: "Busca alojamientos, servicios locales, experiencias y destinos en la costa de Finlandia." },
+    en: { title: "Search stays, experiences and destinations | Finland Experience", description: "Search accommodation, local services, experiences and destinations along Finland’s coast." },
+  }[locale];
+  return buildLocalizedMetadata({ locale, ...copy, path: "search" });
+}
+
 
 type ProviderSearchResult = {
   id: string;
@@ -165,9 +179,9 @@ export default async function SearchPage({
   const [cmsDestinations, cmsCabins, cmsExperiences] = await Promise.all([
     getPublishedDestinations(), getPublishedProperties(), getPublishedExperiences(),
   ]);
-  const allDestinations = cmsDestinations.length ? cmsDestinations : destinations;
-  const allCabins = cmsCabins.length ? cmsCabins : cabins;
-  const allExperiences = cmsExperiences.length ? cmsExperiences : experiences;
+  const allDestinations = cmsDestinations.length ? cmsDestinations : allowDemoFallback ? destinations : [];
+  const allCabins = cmsCabins.length ? cmsCabins : allowDemoFallback ? cabins : [];
+  const allExperiences = cmsExperiences.length ? cmsExperiences : allowDemoFallback ? experiences : [];
   const selectedArea = allDestinations.find((item) => item.slug === paramsValue.area);
 
   const foundDestinations = type === "all" || type === "destination"

@@ -92,6 +92,8 @@ if (!homepageHasAllCoastalDestinations || !homepageUsesPhotoAttribution || !home
   });
 }
 const unifiedSearchSource = await readFile(path.resolve("src/app/[locale]/search/page.tsx"), "utf8");
+const homepageHeroSource = await readFile(path.resolve("src/components/home/Hero.tsx"), "utf8");
+const homepageDataSource = await readFile(path.resolve("src/lib/data.ts"), "utf8");
 const unifiedSearchIncludesVerifiedLocalProviders = unifiedSearchSource.includes('from "@/lib/salo"')
   && unifiedSearchSource.includes('from "@/lib/luxury-directory"')
   && unifiedSearchSource.includes('from "@/lib/kimitoon-providers"')
@@ -109,14 +111,128 @@ if (!unifiedSearchIncludesVerifiedLocalProviders) {
   failed = true;
   console.error("Unified search check failed: include verified local providers with their canonical provider pages and locality mapping.");
 }
+// Production catalogue regression guard: curated demo fallbacks are opt-in only.
+// A listing must never publish fallback links when its detail route rejects those records.
+const homepageFallbackSource = homepageSource;
+const searchFallbackSource = unifiedSearchSource;
+const accommodationListingSource = await readFile(path.resolve("src/app/[locale]/accommodations/page.tsx"), "utf8");
+const destinationListingSource = await readFile(path.resolve("src/app/[locale]/destinations/page.tsx"), "utf8");
+const destinationDetailSource = await readFile(path.resolve("src/app/[locale]/destinations/[slug]/page.tsx"), "utf8");
+const demoFallbacksAreOptIn = homepageFallbackSource.includes("allowDemoFallback ? destinations : []")
+  && homepageFallbackSource.includes("allowDemoFallback ? cabins : []")
+  && homepageFallbackSource.includes("allowDemoFallback ? experiences : []")
+  && searchFallbackSource.includes("allowDemoFallback ? destinations : []")
+  && searchFallbackSource.includes("allowDemoFallback ? cabins : []")
+  && searchFallbackSource.includes("allowDemoFallback ? experiences : []")
+  && accommodationListingSource.includes("allowDemoFallback ? fallbackCabins : []")
+  && destinationListingSource.includes("allowDemoFallback ? fallbackDestinations : []")
+  && destinationDetailSource.includes("allowDemoFallback ? fallbackDestinations : []");
+if (!demoFallbacksAreOptIn) {
+  failed = true;
+  console.error("Demo fallback consistency check failed: production listings must not publish records whose detail routes are disabled.");
+}
+
 const kimitoonGuideSource = await readFile(path.resolve("src/components/salo/KimitoonGuide.tsx"), "utf8");
+const eventsSource = await readFile(path.resolve("src/app/[locale]/events/page.tsx"), "utf8");
+const porvooSource = await readFile(path.resolve("src/app/[locale]/porvoo/page.tsx"), "utf8");
+const eventsUseDedicatedNaantaliPage = eventsSource.includes('href={"/" + locale + "/naantali"}')
+  && !eventsSource.includes('href={"/" + locale + "/destinations/naantali"}');
+const porvooPageAvoidsDisabledDynamicSelfLink = porvooSource.includes('href={`/${locale}/coastal-finland`}')
+  && !porvooSource.includes('href={`/${locale}/destinations/porvoo`}');
+const homepageHeroUsesExistingDestinationRoutes = [
+  'href: "/turku"',
+  'href: "/hanko"',
+  'href: "/naantali"',
+  'href: "/aland"',
+  'href: "/porvoo"',
+].every((href) => homepageHeroSource.includes(href));
+const rosalaCardUsesPublishedProviderRoute = kimitoonGuideSource.includes('url: "/providers/kimitoon-rosala-viking-centre"')
+  && !kimitoonGuideSource.includes('url: "/destinations/rosala"');
 const homepageHasKansakouluCard = homepageSource.includes("KansakouluSpotlight")
   || homepageSource.includes("kansakoulu");
 const guideKeepsCategoryCards = kimitoonGuideSource.includes("KimitoonKansakouluCategoryCard")
   && /<KimitoonKansakouluCategoryCard\s+locale=/.test(kimitoonGuideSource);
-if (homepageHasKansakouluCard || !guideKeepsCategoryCards) {
+if (!eventsUseDedicatedNaantaliPage || !porvooPageAvoidsDisabledDynamicSelfLink || !homepageHeroUsesExistingDestinationRoutes || !rosalaCardUsesPublishedProviderRoute || homepageHasKansakouluCard || !guideKeepsCategoryCards) {
   failed = true;
   console.error("Kansakoulu placement check failed: keep the homepage free of the Kansakoulu promotional card and retain the accommodation/food cards on the Kimitoön guide.");
+}
+
+const homepageReservesHeroPhotos = homepageSource.includes("const builtInHeroImages = [")
+  && homepageSource.includes("photoLibrary.mathildedalVillage")
+  && homepageSource.includes("homepage?.homepageSlides")
+  && homepageSource.includes("[...builtInHeroImages, ...configuredHeroImages].map(imageKey)");
+const homepageNoDuplicateFallback = homepageSource.includes('return "";')
+  && homepageSource.includes("If a record has no distinct");
+const homepageNaantaliUsesDistinctPhotos = homepageDataSource.includes("images: [photoLibrary.naantaliOldTown, photoLibrary.naantaliHarbour]");
+const homepageTurkuUsesDistinctPhotos = homepageDataSource.includes("images: [photoLibrary.turkuAura, photoLibrary.turkuArchipelagoHouse]");
+if (!homepageReservesHeroPhotos || !homepageNoDuplicateFallback || !homepageNaantaliUsesDistinctPhotos || !homepageTurkuUsesDistinctPhotos) {
+  failed = true;
+  console.error("Homepage duplicate-image guard failed:", {
+    homepageReservesHeroPhotos,
+    homepageNoDuplicateFallback,
+    homepageNaantaliUsesDistinctPhotos,
+    homepageTurkuUsesDistinctPhotos,
+  });
+}
+
+// Homepage image regression guard: Mathildedal cards use verified, distinct provider imagery;
+// the retired dusk harbour and mismatched cottage/coffee hero must never return.
+const photoLibrarySource = await readFile(path.resolve("src/lib/photo-library.ts"), "utf8");
+const homepageMathildedalUsesNonHeroCardImage = homepageSource.includes('"salo-mathildedal": [photoLibrary.mathildedalHarbour, photoLibrary.mathildedalVillage]');
+const homepageMathildedalOverrides = [
+  '"salo-mathildedal"',
+  '"matilda-villas"',
+  '"matri-house"',
+  '"mathildan-marina"',
+  '"local-food-mathildedal"',
+].every((slug) => homepageSource.includes(slug));
+const homepageMathildedalProviderPhotos = [
+  "matildaVillasBedroom",
+  "matildaVillasLivingRoom",
+  "matriHouseLounge",
+  "mathildanMarinaTerrace",
+  "cafeMathildedal",
+].every((image) => photoLibrarySource.includes(image));
+const homepageMathildedalPhotoCredits = [
+  "Matilda Villas — Salon Kohteet",
+  "Matri House — Salon Kohteet",
+  "Mathildan Marina",
+  "Visit Mathildedal",
+].every((credit) => photoLibrarySource.includes(credit));
+const homepageHeroHasMatchedCafeCopy = [
+  'key: "mathildedalCafe"',
+  "Kahvihetki ja tuoreet leivonnaiset",
+  "Café y repostería recién hecha",
+  "Coffee and freshly baked pastries",
+  "isLegacyCoffeeSlide",
+  "hasLegacyCoffeeSlide",
+].every((value) => homepageHeroSource.includes(value));
+const homepageHasNoLegacyDuskOrCoffeeImage = !photoLibrarySource.includes("Mathildedal_harbour_sunset.jpg")
+  && !homepageHeroSource.includes('title: "Morning coffee by the water"')
+  && !homepageHeroSource.includes('title: "Aamukahvi veden äärellä"')
+  // The old CMS image URL is intentionally recognised so it can be replaced at runtime.
+  && homepageHeroSource.includes("Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg")
+  && homepageHeroSource.includes("legacyCoffeeCaptions");
+const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasLivingRoom]")
+  && homepageDataSource.includes("images: [photoLibrary.matriHouseLounge, photoLibrary.matriHouseBedroom]")
+  && homepageDataSource.includes("images: [photoLibrary.mathildanMarinaTerrace, photoLibrary.mathildedalHarbour]");
+const naantaliHarbourLicenseIsCorrect = photoLibrarySource.includes('credit: "Pöllö", license: "CC BY 3.0"');
+const homepageMidsummerCardMatchesBonfire = homepageDataSource.includes("images:[photoLibrary.midsummerBonfire]")
+  && photoLibrarySource.includes("Janne Karaste")
+  && photoLibrarySource.includes("CC BY-SA 2.0");
+if (!homepageMathildedalUsesNonHeroCardImage || !homepageMathildedalOverrides || !homepageMathildedalProviderPhotos || !homepageMathildedalPhotoCredits || !homepageHeroHasMatchedCafeCopy || !homepageHasNoLegacyDuskOrCoffeeImage || !homepageMathildedalDataUsesSpecificPhotos || !homepageMidsummerCardMatchesBonfire) {
+  failed = true;
+  console.error("Homepage Mathildedal photo check failed:", {
+    homepageMathildedalUsesNonHeroCardImage,
+    naantaliHarbourLicenseIsCorrect,
+    homepageMathildedalOverrides,
+    homepageMathildedalProviderPhotos,
+    homepageMathildedalPhotoCredits,
+    homepageHeroHasMatchedCafeCopy,
+    homepageHasNoLegacyDuskOrCoffeeImage,
+    homepageMathildedalDataUsesSpecificPhotos,
+    homepageMidsummerCardMatchesBonfire,
+  });
 }
 
 // Sitemap regression guards: do not advertise redirected Mathildedal
@@ -140,7 +256,7 @@ const mathildedalCategoryLegacySource = await readFile(path.resolve("src/app/[lo
 const mathildedalMiddlewareSource = await readFile(path.resolve("middleware.ts"), "utf8");
 const ruukkikylaGuideSource = await readFile(path.resolve("src/components/salo/RuukkikylaGuide.tsx"), "utf8");
 const teijoDestinationSource = await readFile(path.resolve("src/app/[locale]/destinations/teijon-ruukkikyla/page.tsx"), "utf8");
-const destinationDetailSource = await readFile(path.resolve("src/app/[locale]/destinations/[slug]/page.tsx"), "utf8");
+
 const saloGuideLinksDirectly = coastalGuideSource.includes('href={\u0060/\u0024{locale}/salo/kylat\u0060}');
 const legacyMathildedalLinksDirectly = [mathildedalLegacySource, mathildedalCategoryLegacySource, mathildedalMiddlewareSource]
   .every((source) => source.includes('/salo/mathildedal') && !source.includes('/destinations/salo-mathildedal'));
@@ -262,6 +378,60 @@ if (providerIds.length !== 48 || providerBlocks.length !== providerIds.length ||
     photoSourceLinkIsSafe,
     photoSourceLabelIsLocalized,
   });
+}
+
+// Image audit regression guards for the remaining high-traffic destination pages.
+const eventDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
+const kimitoonCategorySource = kimitoonGuideSource.split("const categories:")[1]?.split("const places =")[0] ?? "";
+const kimitoonCategoryPhotoProviders = [
+  "villa-aurora-35", "amos-krog", "kajakkivuokraus-hiittinen",
+  "bengtskar-lighthouse-stay", "soderlangvik-glamping", "merigalleria-fabrik",
+  "spa-hotel-kasnas", "haahkasafari-bengtskar", "holmbergs-four-c",
+  "baltic-jazz", "kubu-kulturhus",
+].every((id) => kimitoonCategorySource.includes(`providerPhoto("${id}")`));
+const kimitoonWinterPhotoIsSpecific = kimitoonCategorySource.includes("sundsvedja-vindskydd15-760x570.jpg")
+  && kimitoonCategorySource.includes("winter-in-the-archipelago");
+const kimitoonRosalaPhotosAreDistinct = kimitoonGuideSource.includes("src={photoLibrary.rosalaVikingHall}")
+  && kimitoonGuideSource.includes("image: photoLibrary.rosalaVikingCentre")
+  && kimitoonGuideSource.includes('providerPhoto("jahti-eugenia").image');
+const kimitoonCategoryCreditsAreVisible = kimitoonGuideSource.includes("item.imageCredit && item.imageSource")
+  && kimitoonGuideSource.includes("item.image ? <img");
+const porvooUsesDistinctRiversidePhoto = porvooSource.includes("src={photoLibrary.porvoo}")
+  && porvooSource.includes("src={photoLibrary.porvooRiverside}")
+  && photoLibrarySource.includes('credit: "kallerna", license: "CC BY-SA 3.0"');
+const mathildedalAreaUsesDistinctPhoto = saloAreaPageSource.includes("? photoLibrary.mathildanMarinaTerrace");
+const mathildedalEventsUseDistinctPhotos = !eventDataSource.includes('id: "mathildedal-christmas-2"')
+  && eventDataSource.includes("image: photoLibrary.mathildedalChristmas")
+  && eventDataSource.includes("image: photoLibrary.mathildedalVillage")
+  && eventDataSource.includes("image: photoLibrary.mathildanMarinaTerrace");
+const naantaliHarbourCreditIsUniqueAndCorrect = (photoLibrarySource.match(/credit: "Pöllö"/g) ?? []).length === 1
+  && photoLibrarySource.includes('credit: "Pöllö", license: "CC BY 3.0"');
+if (!kimitoonCategoryPhotoProviders || !kimitoonWinterPhotoIsSpecific || !kimitoonRosalaPhotosAreDistinct
+  || !kimitoonCategoryCreditsAreVisible || !porvooUsesDistinctRiversidePhoto
+  || !mathildedalAreaUsesDistinctPhoto || !mathildedalEventsUseDistinctPhotos
+  || !naantaliHarbourCreditIsUniqueAndCorrect) {
+  failed = true;
+  console.error("Destination image audit failed:", {
+    kimitoonCategoryPhotoProviders,
+    kimitoonWinterPhotoIsSpecific,
+    kimitoonRosalaPhotosAreDistinct,
+    kimitoonCategoryCreditsAreVisible,
+    porvooUsesDistinctRiversidePhoto,
+    mathildedalAreaUsesDistinctPhoto,
+    mathildedalEventsUseDistinctPhotos,
+    naantaliHarbourCreditIsUniqueAndCorrect,
+  });
+}
+
+const ruukkikylaSource = await readFile(path.resolve("src/components/salo/RuukkikylaGuide.tsx"), "utf8");
+const teijoPageUsesDistinctPhotos = !ruukkikylaSource.includes("image: teijoPhotos[1].src")
+  && !ruukkikylaSource.includes("teijo-national-park-rental-shop.webp")
+  && eventDataSource.includes("image: photoLibrary.naturaVivaTeijo");
+const pernioAreaUsesDedicatedPhoto = saloAreaPageSource.includes("photoLibrary.pernioChurch")
+  && photoLibrarySource.includes('credit: "Motopark", license: "CC BY-SA 3.0"');
+if (!teijoPageUsesDistinctPhotos || !pernioAreaUsesDedicatedPhoto) {
+  failed = true;
+  console.error("Teijo/Perniö image audit failed:", { teijoPageUsesDistinctPhotos, pernioAreaUsesDedicatedPhoto });
 }
 
 if (failed) process.exit(1);
