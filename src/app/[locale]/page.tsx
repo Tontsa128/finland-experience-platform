@@ -102,9 +102,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     ? experienceIds.map((id) => catalogExperiences.find((item) => String(item.id) === id)).filter(Boolean)
     : catalogExperiences.slice(0, 2)).slice(0, 2) as typeof experiences;
 
-  // Allocate homepage imagery once, in display order, so duplicate CMS/gallery
-  // URLs cannot silently produce repeated cards across different homepage sections.
-  const usedHomepageImages = new Set<string>();
+  // Reserve every image that the hero may render before allocating card imagery.
+  // Hero slides are all present in the DOM (including visually hidden slides), so
+  // a card must not reuse a hero photo merely because that slide is not active yet.
   const imageKey = (value: string) => {
     try {
       const url = new URL(value);
@@ -114,6 +114,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       return value.trim();
     }
   };
+  const builtInHeroImages = [
+    "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
+    photoLibrary.sarkisalo,
+    photoLibrary.cafeMathildedal,
+    photoLibrary.turkuArchipelago,
+    photoLibrary.hankoRegattaBeach,
+    photoLibrary.naantaliOldTown,
+    photoLibrary.mathildedalVillage,
+    "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholms-slott-1.jpg",
+    photoLibrary.porvoo,
+    photoLibrary.saunaWhisking,
+  ];
+  const configuredHeroImages = (homepage?.homepageSlides ?? [])
+    .filter((slide) => slide.enabled !== false && Boolean(slide.imageUrl?.trim()))
+    .map((slide) => slide.imageUrl);
+  const usedHomepageImages = new Set(
+    [...builtInHeroImages, ...configuredHeroImages].map(imageKey),
+  );
   const uniqueHomepageImage = (candidates: Array<string | undefined>, fallbacks: string[] = []) => {
     for (const image of [...candidates, ...fallbacks]) {
       if (!image) continue;
