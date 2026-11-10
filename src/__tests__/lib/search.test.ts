@@ -28,6 +28,7 @@ test("keeps boating, archipelago and shopping categories distinct", () => {
   assert.equal(matchesServiceFilter("shopping", "ostokset", []), true);
   assert.equal(matchesServiceFilter("food", "shopping", ["gift shop"]), false);
   assert.equal(matchesServiceFilter("cruise", "marina", ["boat berths"]), true);
+  assert.equal(matchesServiceFilter("cruise", "sauna", ["lake pier and beach sauna"]), false);
 });
 
 test("service filters support multilingual categories and AND combinations", () => {
