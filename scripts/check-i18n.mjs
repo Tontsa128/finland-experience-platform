@@ -119,6 +119,19 @@ if (homepageHasKansakouluCard || !guideKeepsCategoryCards) {
   console.error("Kansakoulu placement check failed: keep the homepage free of the Kansakoulu promotional card and retain the accommodation/food cards on the Kimitoön guide.");
 }
 
+const homepageNoDuplicateFallback = homepageSource.includes('return "";')
+  && homepageSource.includes("If a record has no distinct");
+const homepageNaantaliUsesDistinctPhotos = homepageDataSource.includes("images: [photoLibrary.naantaliOldTown, photoLibrary.naantaliHarbour]");
+const homepageTurkuUsesDistinctPhotos = homepageDataSource.includes("images: [photoLibrary.turkuAura, photoLibrary.turkuArchipelagoHouse]");
+if (!homepageNoDuplicateFallback || !homepageNaantaliUsesDistinctPhotos || !homepageTurkuUsesDistinctPhotos) {
+  failed = true;
+  console.error("Homepage duplicate-image guard failed:", {
+    homepageNoDuplicateFallback,
+    homepageNaantaliUsesDistinctPhotos,
+    homepageTurkuUsesDistinctPhotos,
+  });
+}
+
 // Homepage image regression guard: Mathildedal cards use verified, distinct provider imagery;
 // the retired dusk harbour and mismatched cottage/coffee hero must never return.
 const homepageHeroSource = await readFile(path.resolve("src/components/home/Hero.tsx"), "utf8");
