@@ -68,6 +68,7 @@ const copy = {
 const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
   fi: [
     { label: "Saunat", href: "/search?palvelut=sauna" },
+    { label: "Hyvinvointi", href: "/search?palvelut=wellbeing" },
     { label: "Majoitus", href: "/search?kategoria=majoitus" },
     { label: "Majoitus saunalla", href: "/search?type=accommodation&palvelut=sauna" },
     { label: "Ruoka ja ravintolat", href: "/search?palvelut=food" },
@@ -78,6 +79,7 @@ const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
   ],
   es: [
     { label: "Saunas", href: "/search?palvelut=sauna" },
+    { label: "Bienestar", href: "/search?palvelut=wellbeing" },
     { label: "Alojamiento", href: "/search?kategoria=majoitus" },
     { label: "Alojamiento con sauna", href: "/search?type=accommodation&palvelut=sauna" },
     { label: "Gastronomía", href: "/search?palvelut=food" },
@@ -88,6 +90,7 @@ const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
   ],
   en: [
     { label: "Saunas", href: "/search?palvelut=sauna" },
+    { label: "Wellbeing", href: "/search?palvelut=wellbeing" },
     { label: "Accommodation", href: "/search?kategoria=majoitus" },
     { label: "Stays with sauna", href: "/search?type=accommodation&palvelut=sauna" },
     { label: "Food and restaurants", href: "/search?palvelut=food" },
