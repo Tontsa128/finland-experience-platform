@@ -71,7 +71,7 @@ export const destinations: Destination[] = [
       en: "Sea, red granite, cycling and island calm"
     },
     region: "Åland",
-    images: [alandSea, alandSea],
+    images: [alandSea],
     priceFrom: 180,
     featured: true,
     coordinates: { lat: 60.178, lng: 19.915 },
