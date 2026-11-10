@@ -196,6 +196,7 @@ const homepageHasNoLegacyDuskOrCoffeeImage = !photoLibrarySource.includes("Mathi
 const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("images: [photoLibrary.matildaVillasBedroom, photoLibrary.matildaVillasLivingRoom]")
   && homepageDataSource.includes("images: [photoLibrary.matriHouseLounge, photoLibrary.matriHouseBedroom]")
   && homepageDataSource.includes("images: [photoLibrary.mathildanMarinaTerrace, photoLibrary.mathildedalHarbour]");
+const naantaliHarbourLicenseIsCorrect = photoLibrarySource.includes('credit: "Pöllö", license: "CC BY 3.0"');
 const homepageMidsummerCardMatchesBonfire = homepageDataSource.includes("images:[photoLibrary.midsummerBonfire]")
   && photoLibrarySource.includes("Janne Karaste")
   && photoLibrarySource.includes("CC BY-SA 2.0");
@@ -203,6 +204,7 @@ if (!homepageMathildedalUsesNonHeroCardImage || !homepageMathildedalOverrides ||
   failed = true;
   console.error("Homepage Mathildedal photo check failed:", {
     homepageMathildedalUsesNonHeroCardImage,
+    naantaliHarbourLicenseIsCorrect,
     homepageMathildedalOverrides,
     homepageMathildedalProviderPhotos,
     homepageMathildedalPhotoCredits,
