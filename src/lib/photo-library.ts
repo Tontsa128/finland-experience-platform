@@ -33,8 +33,6 @@ export const photoLibrary = {
   hankoRegattaBeach: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Regattanranta_beach_in_the_city_center_of_Hanko%2C_Finland%2C_2021.jpg/1280px-Regattanranta_beach_in_the_city_center_of_Hanko%2C_Finland%2C_2021.jpg",
   sarkisalo: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ulkoluotosilta3.jpg",
   turkuArchipelago: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Turku_Archipelago.jpg",
-  turkuArchipelagoHouse: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Turku_archipelago_house.jpg",
-  naantaliHarbour: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Naantali_harbour_and_church.jpg",
   hamina: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Raittiustalo_Hamina_2026-07-13_a.jpg",
   saloVeturitalli: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Veturitalli.jpg",
   sauna: "https://commons.wikimedia.org/wiki/Special:Redirect/file/L%C3%B6yly_Sauna,_Helsinki_(2022).jpg",
