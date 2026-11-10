@@ -69,26 +69,32 @@ const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
   fi: [
     { label: "Saunat", href: "/search?palvelut=sauna" },
     { label: "Majoitus", href: "/search?kategoria=majoitus" },
+    { label: "Majoitus saunalla", href: "/search?type=accommodation&palvelut=sauna" },
     { label: "Ruoka ja ravintolat", href: "/search?palvelut=food" },
     { label: "Veneily ja risteilyt", href: "/search?palvelut=cruise" },
     { label: "Luonto ja retkeily", href: "/search?palvelut=hiking" },
     { label: "Kulttuuri ja nähtävyydet", href: "/search?palvelut=culture" },
+    { label: "Tapahtumat", href: "/search?type=event" },
   ],
   es: [
     { label: "Saunas", href: "/search?palvelut=sauna" },
     { label: "Alojamiento", href: "/search?kategoria=majoitus" },
+    { label: "Alojamiento con sauna", href: "/search?type=accommodation&palvelut=sauna" },
     { label: "Gastronomía", href: "/search?palvelut=food" },
     { label: "Barcos y cruceros", href: "/search?palvelut=cruise" },
     { label: "Naturaleza y senderismo", href: "/search?palvelut=hiking" },
     { label: "Cultura y lugares de interés", href: "/search?palvelut=culture" },
+    { label: "Eventos", href: "/search?type=event" },
   ],
   en: [
     { label: "Saunas", href: "/search?palvelut=sauna" },
     { label: "Accommodation", href: "/search?kategoria=majoitus" },
+    { label: "Stays with sauna", href: "/search?type=accommodation&palvelut=sauna" },
     { label: "Food and restaurants", href: "/search?palvelut=food" },
     { label: "Boating and cruises", href: "/search?palvelut=cruise" },
     { label: "Nature and hiking", href: "/search?palvelut=hiking" },
     { label: "Culture and attractions", href: "/search?palvelut=culture" },
+    { label: "Events", href: "/search?type=event" },
   ],
 };
 
