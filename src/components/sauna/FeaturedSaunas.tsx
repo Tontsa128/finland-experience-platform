@@ -2,7 +2,7 @@ import { ArrowUpRight, MapPin, Users } from "lucide-react";
 import type { Locale } from "@/types";
 
 type Localized = Record<Locale, string>;
-type SaunaPlace = {
+export type SaunaPlace = {
   name: string;
   location: string;
   description: Localized;
@@ -16,7 +16,7 @@ type SaunaPlace = {
   capacity?: string;
 };
 
-const places: SaunaPlace[] = [
+export const featuredSaunaPlaces: SaunaPlace[] = [
   {
     name: "Matildanjärven rantasauna",
     location: "Teijon kansallispuisto · Matildanjärventie 84",
@@ -375,7 +375,7 @@ export function FeaturedSaunas({ locale }: { locale: Locale }) {
         <p className="mt-5 text-lg leading-8 text-slate-700">{x.intro}</p>
       </div>
       <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {places.map((place) => {
+        {featuredSaunaPlaces.map((place) => {
           const isRental = place.type.fi.toLowerCase().includes("vuokr");
           const isBeach = place.type.fi.includes("uimaranta") || place.type.fi.includes("uimapaikka");
           const kind = isRental ? x.rental : isBeach ? x.beach : x.public;
