@@ -232,7 +232,7 @@ const mathildedalCategoryLegacySource = await readFile(path.resolve("src/app/[lo
 const mathildedalMiddlewareSource = await readFile(path.resolve("middleware.ts"), "utf8");
 const ruukkikylaGuideSource = await readFile(path.resolve("src/components/salo/RuukkikylaGuide.tsx"), "utf8");
 const teijoDestinationSource = await readFile(path.resolve("src/app/[locale]/destinations/teijon-ruukkikyla/page.tsx"), "utf8");
-const destinationDetailSource = await readFile(path.resolve("src/app/[locale]/destinations/[slug]/page.tsx"), "utf8");
+
 const saloGuideLinksDirectly = coastalGuideSource.includes('href={\u0060/\u0024{locale}/salo/kylat\u0060}');
 const legacyMathildedalLinksDirectly = [mathildedalLegacySource, mathildedalCategoryLegacySource, mathildedalMiddlewareSource]
   .every((source) => source.includes('/salo/mathildedal') && !source.includes('/destinations/salo-mathildedal'));
