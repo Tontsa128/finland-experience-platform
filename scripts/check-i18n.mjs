@@ -158,6 +158,7 @@ if (!homepageNoDuplicateFallback || !homepageNaantaliUsesDistinctPhotos || !home
 // the retired dusk harbour and mismatched cottage/coffee hero must never return.
 const homepageHeroSource = await readFile(path.resolve("src/components/home/Hero.tsx"), "utf8");
 const photoLibrarySource = await readFile(path.resolve("src/lib/photo-library.ts"), "utf8");
+const homepageMathildedalUsesNonHeroCardImage = homepageSource.includes('"salo-mathildedal": [photoLibrary.mathildedalHarbour, photoLibrary.mathildedalVillage]');
 const homepageMathildedalOverrides = [
   '"salo-mathildedal"',
   '"matilda-villas"',
@@ -198,9 +199,10 @@ const homepageMathildedalDataUsesSpecificPhotos = homepageDataSource.includes("i
 const homepageMidsummerCardMatchesBonfire = homepageDataSource.includes("images:[photoLibrary.midsummerBonfire]")
   && photoLibrarySource.includes("Janne Karaste")
   && photoLibrarySource.includes("CC BY-SA 2.0");
-if (!homepageMathildedalOverrides || !homepageMathildedalProviderPhotos || !homepageMathildedalPhotoCredits || !homepageHeroHasMatchedCafeCopy || !homepageHasNoLegacyDuskOrCoffeeImage || !homepageMathildedalDataUsesSpecificPhotos || !homepageMidsummerCardMatchesBonfire) {
+if (!homepageMathildedalUsesNonHeroCardImage || !homepageMathildedalOverrides || !homepageMathildedalProviderPhotos || !homepageMathildedalPhotoCredits || !homepageHeroHasMatchedCafeCopy || !homepageHasNoLegacyDuskOrCoffeeImage || !homepageMathildedalDataUsesSpecificPhotos || !homepageMidsummerCardMatchesBonfire) {
   failed = true;
   console.error("Homepage Mathildedal photo check failed:", {
+    homepageMathildedalUsesNonHeroCardImage,
     homepageMathildedalOverrides,
     homepageMathildedalProviderPhotos,
     homepageMathildedalPhotoCredits,
