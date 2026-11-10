@@ -379,12 +379,16 @@ export default async function SearchPage({
     : [];
 
   const catalogueNames = new Set([
+    ...foundDestinations.flatMap((item) => Object.values(item.name || {})),
     ...foundCabins.flatMap((item) => Object.values(item.name || {})),
     ...foundExperiences.flatMap((item) => Object.values(item.name || {})),
   ].map((name) => normalizeSearchText(name)));
+  const eventNames = new Set(foundEvents.map((event) => normalizeSearchText(event.title)));
+  const articleNames = new Set(foundArticles.map((article) => normalizeSearchText(article.title)));
   const foundProviders = [...saloProviderResults, ...directoryProviderResults, ...kimitoonProviderResults, ...naantaliProviderResults, ...featuredSaunaResults]
     .filter((provider) => !catalogueNames.has(normalizeSearchText(provider.name)))
-    .filter((provider, index, all) => all.findIndex((item) => item.dedupeKey === provider.dedupeKey) === index);
+    .filter((provider) => !eventNames.has(normalizeSearchText(provider.name)) && !articleNames.has(normalizeSearchText(provider.name)))
+    .filter((provider, index, all) => all.findIndex((item) => normalizeSearchText(item.name) === normalizeSearchText(provider.name)) === index);
   const total = foundDestinations.length + foundCabins.length + foundExperiences.length + foundProviders.length + foundEvents.length + foundArticles.length;
 
   return (
