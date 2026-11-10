@@ -13,6 +13,11 @@ test("finds sauna across Finnish inflections and English aliases", () => {
 test("requires every meaningful search word to match", () => {
   assert.equal(matchesSearchQuery("sauna Mathildedal", ["Sauna Naantalissa"]), false);
 });
+test("ignores connector words in natural-language searches", () => {
+  assert.equal(matchesSearchQuery("sauna in Naantali", ["Naantali", "seaside hotel with sauna world"]), true);
+  assert.equal(matchesSearchQuery("sauna near Salo", ["Salo", "public sauna sessions"]), true);
+});
+
 test("service filters match amenities even when the main category is accommodation", () => {
   assert.equal(matchesServiceFilter("sauna", "stay", ["Villa", "oma sauna", "merinäköala"]), true);
   assert.equal(matchesServiceFilter("sauna", "stay", ["Villa", "terassi", "merinäköala"]), false);
