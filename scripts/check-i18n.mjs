@@ -380,5 +380,48 @@ if (providerIds.length !== 48 || providerBlocks.length !== providerIds.length ||
   });
 }
 
+// Image audit regression guards for the remaining high-traffic destination pages.
+const eventDataSource = await readFile(path.resolve("src/lib/salo.ts"), "utf8");
+const kimitoonCategorySource = kimitoonGuideSource.split("const categories:")[1]?.split("const places =")[0] ?? "";
+const kimitoonCategoryPhotoProviders = [
+  "villa-aurora-35", "amos-krog", "kajakkivuokraus-hiittinen",
+  "bengtskar-lighthouse-stay", "soderlangvik-glamping", "merigalleria-fabrik",
+  "spa-hotel-kasnas", "haahkasafari-bengtskar", "holmbergs-four-c",
+  "baltic-jazz", "kubu-kulturhus",
+].every((id) => kimitoonCategorySource.includes(`providerPhoto("${id}")`));
+const kimitoonWinterPhotoIsSpecific = kimitoonCategorySource.includes("sundsvedja-vindskydd15-760x570.jpg")
+  && kimitoonCategorySource.includes("winter-in-the-archipelago");
+const kimitoonRosalaPhotosAreDistinct = kimitoonGuideSource.includes("src={photoLibrary.rosalaVikingHall}")
+  && kimitoonGuideSource.includes("image: photoLibrary.rosalaVikingCentre")
+  && kimitoonGuideSource.includes('providerPhoto("jahti-eugenia").image');
+const kimitoonCategoryCreditsAreVisible = kimitoonGuideSource.includes("item.imageCredit && item.imageSource")
+  && kimitoonGuideSource.includes("item.image ? <img");
+const porvooUsesDistinctRiversidePhoto = porvooSource.includes("src={photoLibrary.porvoo}")
+  && porvooSource.includes("src={photoLibrary.porvooRiverside}")
+  && photoLibrarySource.includes('credit: "kallerna", license: "CC BY-SA 3.0"');
+const mathildedalAreaUsesDistinctPhoto = saloAreaPageSource.includes("? photoLibrary.mathildanMarinaTerrace");
+const mathildedalEventsUseDistinctPhotos = !eventDataSource.includes('id: "mathildedal-christmas-2"')
+  && eventDataSource.includes("image: photoLibrary.mathildedalChristmas")
+  && eventDataSource.includes("image: photoLibrary.mathildedalVillage")
+  && eventDataSource.includes("image: photoLibrary.mathildanMarinaTerrace");
+const naantaliHarbourCreditIsUniqueAndCorrect = (photoLibrarySource.match(/credit: "Pöllö"/g) ?? []).length === 1
+  && photoLibrarySource.includes('credit: "Pöllö", license: "CC BY 3.0"');
+if (!kimitoonCategoryPhotoProviders || !kimitoonWinterPhotoIsSpecific || !kimitoonRosalaPhotosAreDistinct
+  || !kimitoonCategoryCreditsAreVisible || !porvooUsesDistinctRiversidePhoto
+  || !mathildedalAreaUsesDistinctPhoto || !mathildedalEventsUseDistinctPhotos
+  || !naantaliHarbourCreditIsUniqueAndCorrect) {
+  failed = true;
+  console.error("Destination image audit failed:", {
+    kimitoonCategoryPhotoProviders,
+    kimitoonWinterPhotoIsSpecific,
+    kimitoonRosalaPhotosAreDistinct,
+    kimitoonCategoryCreditsAreVisible,
+    porvooUsesDistinctRiversidePhoto,
+    mathildedalAreaUsesDistinctPhoto,
+    mathildedalEventsUseDistinctPhotos,
+    naantaliHarbourCreditIsUniqueAndCorrect,
+  });
+}
+
 if (failed) process.exit(1);
 console.log(`i18n/SEO/Salo checks passed: ${locales.join(", ")} have identical key sets, locale-aware document language, safe sitemap routes and complete village/category guides.`);
