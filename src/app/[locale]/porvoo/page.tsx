@@ -159,7 +159,7 @@ export default async function PorvooPage({ params }: { params: Promise<{ locale:
             </a>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-card">
-            <Image src={photoLibrary.porvoo} alt={locale === "fi" ? "Vanha Porvoo" : locale === "es" ? "Casco antiguo de Porvoo" : "Old Porvoo"} fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+            <Image src={photoLibrary.porvooRiverside} alt={locale === "fi" ? "Porvoonjoen vanhat ranta-aitat" : locale === "es" ? "Antiguos almacenes junto al río de Porvoo" : "Old riverside warehouses in Porvoo"} fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
           </div>
         </div>
       </section>
