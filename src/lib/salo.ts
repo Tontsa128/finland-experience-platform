@@ -829,24 +829,12 @@ export const saloEvents: SaloEvent[] = [
     title: { fi: "Mathildedalin joulumarkkinat", es: "Mercado de Navidad de Mathildedal", en: "Mathildedal Christmas Market" },
     location: "Mathildedalin Ruukkitehtaat",
     description: {
-      fi: "Joulutunnelmaa, käsityöläisiä, lähituottajia ja kylän putiikkeja.",
-      es: "Ambiente navideño, artesanos, productores locales y tiendas del pueblo.",
-      en: "Christmas atmosphere, local makers, producers and village shops.",
+      fi: "Joulumarkkinat järjestetään 21. ja 28.11.2026. Joulutunnelmaa, käsityöläisiä, lähituottajia ja kylän putiikkeja.",
+      es: "El mercado se celebra el 21 y el 28 de noviembre de 2026, con artesanos, productores locales y tiendas del pueblo.",
+      en: "The market takes place on 21 and 28 November 2026, with local makers, producers and village shops.",
     },
     url: "https://tapahtumat.salo.fi/mathildedalin-joulumarkkinat-5/",
-    category: "christmas",
-  },
-  {
-    id: "mathildedal-christmas-2",
-    start: "2026-11-28",
-    title: { fi: "Mathildedalin joulumarkkinat", es: "Mercado de Navidad de Mathildedal", en: "Mathildedal Christmas Market" },
-    location: "Mathildedalin Ruukkitehtaat",
-    description: {
-      fi: "Toinen joulumarkkinapäivä Mathildedalin ruukkikylässä.",
-      es: "Segunda jornada del mercado navideño en Mathildedal.",
-      en: "Second Christmas Market day in Mathildedal.",
-    },
-    url: "https://tapahtumat.salo.fi/mathildedalin-joulumarkkinat-5/",
+    image: photoLibrary.mathildedalChristmas,
     category: "christmas",
   },
   {
@@ -903,6 +891,7 @@ export const saloEvents: SaloEvent[] = [
       en: "A quiet moment before Christmas in Mathildedal.",
     },
     url: "https://visitmathildedal.fi/fi/tapahtumat",
+    image: photoLibrary.mathildedalVillage,
     category: "christmas",
   },
   {
@@ -916,6 +905,7 @@ export const saloEvents: SaloEvent[] = [
       en: "New Year's celebration in Mathildedal village.",
     },
     url: "https://visitmathildedal.fi/fi/tapahtumat",
+    image: photoLibrary.mathildanMarinaTerrace,
     category: "new-year",
   },
   {
