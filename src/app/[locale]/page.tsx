@@ -143,7 +143,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   // CMS records reuse a generic gallery image. The shared allocator still prevents
   // duplicates across the complete homepage in display order.
   const homepageImageOverrides: Record<string, string[]> = {
-    "salo-mathildedal": [photoLibrary.mathildedalVillage, photoLibrary.mathildedalHarbour],
+    "salo-mathildedal": [photoLibrary.mathildedalHarbour, photoLibrary.mathildedalVillage],
     "matilda-villas": [photoLibrary.matildaVillasBedroom],
     "salo-matilda-villas": [photoLibrary.matildaVillasBedroom],
     "matri-house": [photoLibrary.matriHouseLounge],
