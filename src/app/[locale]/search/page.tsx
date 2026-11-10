@@ -10,7 +10,7 @@ import { kimitoonProviders, type KimitoonCategory } from "@/lib/kimitoon-provide
 import { areaProviderIds, areaCopy, type SaloArea } from "@/lib/salo-areas";
 import { getPublishedDestinations, getPublishedProperties, getPublishedExperiences } from "@/lib/public-content";
 import { getPublishedEvents } from "@/lib/public-events";
-import { naantaliEvents } from "@/lib/naantali";
+import { naantaliEvents, naantaliProviders } from "@/lib/naantali";
 import { matchesSearchQuery, matchesServiceFilters, normalizeSearchText } from "@/lib/search";
 import { featuredSaunaPlaces } from "@/components/sauna/FeaturedSaunas";
 
@@ -294,6 +294,48 @@ export default async function SearchPage({
       };
     });
 
+  const naantaliCategoryMap: Record<string, string> = {
+    tourism: "tourism",
+    sight: "culture",
+    stay: "stay",
+    experience: "experience",
+    nature: "hiking",
+    food: "food",
+  };
+  const existingProviderNames = new Set([
+    ...saloProviders.map((provider) => normalizeSearchText(provider.name)),
+    ...luxuryDirectory.map((provider) => normalizeSearchText(provider.name)),
+    ...kimitoonProviders.map((provider) => normalizeSearchText(provider.name.fi)),
+  ]);
+  const naantaliProviderResults: ProviderSearchResult[] = naantaliProviders
+    .filter((provider) => {
+      const category = naantaliCategoryMap[provider.category];
+      if (existingProviderNames.has(normalizeSearchText(provider.name))) return false;
+      if (type === "destination" || type === "event") return false;
+      if (type === "accommodation" && category !== "stay") return false;
+      if (type === "experience" && category === "stay") return false;
+      const haystack = [provider.name, ...Object.values(provider.description), category, "Naantali", "Naantali archipelago"];
+      return matchesSearchQuery(query, haystack)
+        && matchesServiceFilters(serviceFilters, category, haystack)
+        && matchesAreaText("Naantali Naantalin saaristo", selectedArea, locale);
+    })
+    .map((provider) => {
+      const category = naantaliCategoryMap[provider.category];
+      return {
+        id: `naantali-${provider.id}`,
+        href: provider.url,
+        name: provider.name,
+        description: provider.description[locale],
+        location: "Naantali",
+        category,
+        image: provider.image || (category === "stay" ? photoLibrary.naantaliOldTown : category === "food" ? photoLibrary.mathildanMarinaDining : photoLibrary.turkuArchipelago),
+        imageCredit: provider.imageCredit,
+        price: provider.price,
+        dedupeKey: providerDedupeKey(provider.name, "Naantali"),
+        external: true,
+      };
+    });
+
   const featuredSaunaResults: ProviderSearchResult[] = (type === "all" || type === "experience")
     ? featuredSaunaPlaces
       .filter((place) => {
@@ -316,7 +358,7 @@ export default async function SearchPage({
       }))
     : [];
 
-  const foundProviders = [...saloProviderResults, ...directoryProviderResults, ...kimitoonProviderResults, ...featuredSaunaResults]
+  const foundProviders = [...saloProviderResults, ...directoryProviderResults, ...kimitoonProviderResults, ...naantaliProviderResults, ...featuredSaunaResults]
     .filter((provider, index, all) => all.findIndex((item) => item.dedupeKey === provider.dedupeKey) === index);
   const total = foundDestinations.length + foundCabins.length + foundExperiences.length + foundProviders.length + foundEvents.length;
 
