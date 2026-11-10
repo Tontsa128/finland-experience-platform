@@ -1,7 +1,7 @@
 const synonymGroups: Record<string, string[]> = {
   sauna: ["sauna", "saun", "saunat", "saunominen", "savusauna", "loyly", "smoke", "wellness", "hyvinvointi", "steam", "bano"],
   food: ["food", "ruoka", "ravintola", "ravintolat", "kahvila", "kahvilat", "restaurant", "restaurants", "cafe", "cafes", "gastronomia", "comida", "restaurante"],
-  cruise: ["cruise", "risteily", "risteilyt", "veneily", "vene", "purjehdus", "boat", "boating", "sailing", "barco", "navegacion"],
+  cruise: ["cruise", "risteily", "risteilyt", "veneily", "vene", "purjehdus", "saaristo", "archipelago", "archipielago", "island", "islands", "boat", "boating", "sailing", "barco", "navegacion"],
   hiking: ["nature", "luonto", "retkeily", "vaellus", "hiking", "trail", "outdoors", "naturaleza", "senderismo", "forest", "metsa"],
   culture: ["culture", "kulttuuri", "museo", "museum", "historia", "history", "heritage", "ruukki", "cultura"],
   stay: ["stay", "majoitus", "majoitukset", "alojamiento", "accommodation", "hotel", "hotellit", "cabin", "cottage", "mokki", "guesthouse"],
