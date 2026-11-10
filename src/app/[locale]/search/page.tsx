@@ -12,6 +12,7 @@ import { getPublishedDestinations, getPublishedProperties, getPublishedExperienc
 import { getPublishedEvents } from "@/lib/public-events";
 import { naantaliEvents } from "@/lib/naantali";
 import { matchesSearchQuery, matchesServiceFilters, normalizeSearchText } from "@/lib/search";
+import { featuredSaunaPlaces } from "@/components/sauna/FeaturedSaunas";
 
 type Locale = "fi" | "es" | "en";
 type SearchParams = { q?: string; type?: string; area?: string; category?: string; kategoria?: string; palvelut?: string };
@@ -27,6 +28,7 @@ type ProviderSearchResult = {
   imageCredit?: string;
   price?: string;
   dedupeKey: string;
+  external?: boolean;
 };
 
 type EventSearchResult = { id: string; title: string; description: string; location: string; start: string; url: string; image?: string };
@@ -60,8 +62,8 @@ function getAreaTerms(area: (typeof destinations)[number], locale: Locale) {
 function matchesAreaText(value: string, area: (typeof destinations)[number] | undefined, locale: Locale) {
   if (!area) return true;
   const locationTokens = new Set(normalizedTokens(value));
-  if (area.slug === "salo-mathildedal" && (locationTokens.has("kimitoön") || locationTokens.has("kemiönsaari"))) return false;
-  if (area.slug === "kemionsaari" && locationTokens.has("salo") && !locationTokens.has("kimitoön") && !locationTokens.has("kemiönsaari")) return false;
+  if (area.slug === "salo-mathildedal" && (locationTokens.has("kimitoon") || locationTokens.has("kemionsaari"))) return false;
+  if (area.slug === "kemionsaari" && locationTokens.has("salo") && !locationTokens.has("kimitoon") && !locationTokens.has("kemionsaari")) return false;
   return getAreaTerms(area, locale).some((term) => locationTokens.has(term));
 }
 
@@ -289,7 +291,29 @@ export default async function SearchPage({
       dedupeKey: providerDedupeKey(provider.name[locale], provider.location[locale]),
     }));
 
-  const foundProviders = [...saloProviderResults, ...directoryProviderResults, ...kimitoonProviderResults]
+  const featuredSaunaResults: ProviderSearchResult[] = (type === "all" || type === "experience")
+    ? featuredSaunaPlaces
+      .filter((place) => {
+        const searchable = [place.name, place.location, ...Object.values(place.description), ...Object.values(place.access), ...Object.values(place.type), ...Object.values(place.status || {}), place.capacity || ""];
+        return matchesSearchQuery(query, searchable)
+          && matchesServiceFilters(serviceFilters, "sauna", searchable)
+          && matchesAreaText(place.location, selectedArea, locale);
+      })
+      .map((place) => ({
+        id: `sauna-${normalizeSearchText(place.name).replace(/ /g, "-")}`,
+        href: place.booking || place.source,
+        name: place.name,
+        description: place.status?.[locale] ? `${place.description[locale]} ${place.status[locale]}` : place.description[locale],
+        location: place.location,
+        category: "sauna",
+        image: place.image,
+        imageCredit: place.imageCredit,
+        dedupeKey: providerDedupeKey(place.name, place.location),
+        external: true,
+      }))
+    : [];
+
+  const foundProviders = [...saloProviderResults, ...directoryProviderResults, ...kimitoonProviderResults, ...featuredSaunaResults]
     .filter((provider, index, all) => all.findIndex((item) => item.dedupeKey === provider.dedupeKey) === index);
   const total = foundDestinations.length + foundCabins.length + foundExperiences.length + foundProviders.length + foundEvents.length;
 
@@ -315,10 +339,12 @@ export default async function SearchPage({
       {foundCabins.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.stays}</h2><div className="grid gap-4 sm:grid-cols-3">{foundCabins.map((item) => <Link key={item.slug} href={`/${locale}/accommodations/${item.slug}`} className="min-w-0 max-w-full overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft"><div className="relative aspect-[16/9]"><Image src={item.images?.[0] || photoLibrary.saunaCottage} alt={localized(item.name, locale)} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div><div className="min-w-0 p-4"><h3 className="break-words font-display text-lg font-bold text-brand-950">{localized(item.name, locale)}</h3><p className="mt-1 break-words text-xs text-slate-500">{item.locationByLocale?.[locale] || item.location}</p><p className="mt-3 text-sm font-bold text-brand-900">{item.pricePerNight > 0 ? new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(item.pricePerNight) : t.price}</p></div></Link>)}</div></section>}
 
       {foundExperiences.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.experiences}</h2><div className="grid gap-4 sm:grid-cols-2">{foundExperiences.map((item) => <Link key={item.slug} href={`/${locale}/experiences/${item.slug}`} className="grid min-w-0 max-w-full overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft sm:grid-cols-[.9fr_1.1fr]"><div className="relative min-h-40"><Image src={item.images?.[0] || photoLibrary.saunaTraditionalSmoke} alt={localized(item.name, locale)} fill sizes="(max-width:640px) 100vw,50vw" className="object-cover" /></div><div className="min-w-0 break-words p-4"><h3 className="break-words font-display text-lg font-bold text-brand-950">{localized(item.name, locale)}</h3><p className="mt-1 break-words text-xs text-slate-500">{item.region}</p><p className="mt-2 break-words text-sm text-slate-600">{localized(item.shortDescription, locale)}</p><span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-brand-900">{locale === "fi" ? "Katso palvelu" : locale === "es" ? "Ver servicio" : "View service"}<ArrowRight className="h-4 w-4" /></span></div></Link>)}</div></section>}
-      {foundProviders.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.providers}</h2><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{foundProviders.map((provider) => <Link key={provider.id} href={provider.href} className="min-w-0 max-w-full overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">
-        <div className="relative aspect-[16/9]"><Image src={provider.image} alt={provider.name} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div>
-        <div className="min-w-0 break-words p-4"><p className="break-words text-[10px] font-bold uppercase tracking-[.14em] text-brand-700">{provider.location}</p><h3 className="mt-1 break-words font-display text-lg font-bold text-brand-950">{provider.name}</h3><p className="mt-2 break-words text-sm leading-6 text-slate-600">{provider.description}</p>{provider.price && <p className="mt-3 text-sm font-semibold text-brand-900">{provider.price}</p>}{provider.imageCredit && <p className="mt-3 border-t border-slate-100 pt-2 text-[10px] leading-4 text-slate-500">{provider.imageCredit}</p>}</div>
-      </Link>)}</div></section>}
+      {foundProviders.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.providers}</h2><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{foundProviders.map((provider) => {
+        const content = <><div className="relative aspect-[16/9]"><Image src={provider.image} alt={provider.name} fill sizes="(max-width:640px) 100vw,33vw" className="object-cover" /></div><div className="min-w-0 break-words p-4"><p className="break-words text-[10px] font-bold uppercase tracking-[.14em] text-brand-700">{provider.location}</p><h3 className="mt-1 break-words font-display text-lg font-bold text-brand-950">{provider.name}</h3><p className="mt-2 break-words text-sm leading-6 text-slate-600">{provider.description}</p>{provider.price && <p className="mt-3 text-sm font-semibold text-brand-900">{provider.price}</p>}{provider.imageCredit && <p className="mt-3 border-t border-slate-100 pt-2 text-[10px] leading-4 text-slate-500">{provider.imageCredit}</p>}</div></>;
+        return provider.external
+          ? <a key={provider.id} href={provider.href} target="_blank" rel="noopener noreferrer" className="min-w-0 max-w-full overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">{content}</a>
+          : <Link key={provider.id} href={provider.href} className="min-w-0 max-w-full overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card">{content}</Link>;
+      })}</div></section>}
       {foundEvents.length > 0 && <section className="mb-10"><h2 className="mb-4 font-display text-2xl font-bold text-brand-950">{t.events}</h2><div className="grid gap-4 sm:grid-cols-2">{foundEvents.map((event) => <a key={event.id} href={event.url} target="_blank" rel="noreferrer" className="grid min-w-0 overflow-hidden rounded-xl border border-slate-100 bg-white shadow-soft sm:grid-cols-[.8fr_1.2fr]"><div className="relative min-h-36"><Image src={event.image || photoLibrary.saunaTraditionalSmoke} alt={event.title} fill sizes="(max-width:640px) 100vw,40vw" className="object-cover" /></div><div className="min-w-0 p-4"><p className="text-xs font-semibold text-brand-700">{new Date(event.start).toLocaleDateString(locale === "fi" ? "fi-FI" : locale === "es" ? "es-ES" : "en-GB", { day: "numeric", month: "long", year: "numeric" })} · {event.location}</p><h3 className="mt-2 font-display text-lg font-bold text-brand-950">{event.title}</h3><p className="mt-2 text-sm text-slate-600">{event.description}</p><span className="mt-3 inline-flex text-xs font-bold text-brand-900">{t.eventProvider} <ArrowRight className="ml-1 h-4 w-4" /></span></div></a>)}</div></section>}
 
     </main>
