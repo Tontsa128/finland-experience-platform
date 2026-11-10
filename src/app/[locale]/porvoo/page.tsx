@@ -122,7 +122,7 @@ export default async function PorvooPage({ params }: { params: Promise<{ locale:
             <a href="https://www.visitporvoo.fi/en/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-brand-950">
               {c.official}<ArrowUpRight className="h-4 w-4" />
             </a>
-            <Link href={`/${locale}/destinations/porvoo`} className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur">
+            <Link href={`/${locale}/coastal-finland`} className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur">
               {c.explore}<ArrowRight className="h-4 w-4" />
             </Link>
           </div>
