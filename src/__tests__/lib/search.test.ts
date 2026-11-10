@@ -24,7 +24,10 @@ test("service filters match amenities even when the main category is accommodati
 });
 test("service filters support multilingual categories and AND combinations", () => {
   assert.equal(matchesServiceFilter("food", "restaurant", ["local dining"]), true);
-  assert.equal(matchesServiceFilter("sauna", "hyvinvointi", ["savusauna"]), true);
+  assert.equal(matchesServiceFilter("sauna", "sauna", ["savusauna"]), true);
+  assert.equal(matchesServiceFilter("sauna", "wellbeing", ["massage", "wellness trail"]), false);
+  assert.equal(matchesServiceFilter("sauna", "wellbeing", ["traditional sauna and massage"]), true);
+  assert.equal(matchesServiceFilter("wellbeing", "hyvinvointi", ["massage"]), true);
   assert.equal(matchesServiceFilters(["sauna", "cruise"], "experience", ["savusauna", "boat trip"]), true);
   assert.equal(matchesServiceFilters(["sauna", "food"], "experience", ["savusauna", "boat trip"]), false);
 });
