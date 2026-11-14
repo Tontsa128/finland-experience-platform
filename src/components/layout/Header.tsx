@@ -72,7 +72,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <nav aria-label={ui.languages} className="flex shrink-0 items-center gap-1 rounded-full border border-slate-200 bg-slate-50 p-1">
+          <nav aria-label={ui.languages} translate="no" className="notranslate flex shrink-0 items-center gap-1 rounded-full border border-slate-200 bg-slate-50 p-1">
             {languageOptions.map(({ locale: targetLocale, label, full, flag }) => {
               const active = targetLocale === locale;
               return (
@@ -80,12 +80,14 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                   key={targetLocale}
                   href={languageHref(targetLocale)}
                   aria-current={active ? "page" : undefined}
-                  aria-label={full}
+                  aria-label={`${full} (${label})`}
                   title={full}
-                  className={`inline-flex min-h-9 min-w-10 items-center justify-center gap-1 rounded-full px-2 text-[11px] font-extrabold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 sm:min-w-[58px] sm:px-2.5 ${active ? "bg-brand-950 text-white shadow-sm" : "text-slate-600 hover:bg-white hover:text-brand-950"}`}
+                  lang={targetLocale}
+                  translate="no"
+                  className={`notranslate inline-flex min-h-9 items-center justify-center gap-1 rounded-full px-2 text-[10px] font-extrabold tracking-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 sm:px-2.5 ${active ? "bg-brand-950 text-white shadow-sm" : "text-slate-600 hover:bg-white hover:text-brand-950"}`}
                 >
                   <span aria-hidden="true">{flag}</span>
-                  <span>{label}</span>
+                  <span lang={targetLocale}>{full}</span>
                 </Link>
               );
             })}
