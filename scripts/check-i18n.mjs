@@ -50,6 +50,22 @@ if (!hasServerLocale || !hasDynamicHtmlLanguage) {
   console.error("Document language check failed: src/app/layout.tsx must set <html lang={locale}> using getLocale() from next-intl/server.");
 }
 
+// Language switcher regression guard: keep language names in their own native
+// spelling and prevent browser translation from corrupting the selector labels.
+const headerSource = await readFile(path.resolve("src/components/layout/Header.tsx"), "utf8");
+const nativeLanguageLabels = [
+  '{ locale: "fi", label: "FI", full: "Suomi", flag: "🇫🇮" }',
+  '{ locale: "en", label: "EN", full: "English", flag: "🇬🇧" }',
+  '{ locale: "es", label: "ES", full: "Español", flag: "🇪🇸" }',
+].every((label) => headerSource.includes(label));
+const languageSelectorIsTranslationSafe = /<nav aria-label=\{ui\.languages\} translate="no"/.test(headerSource)
+  && /lang=\{targetLocale\}/.test(headerSource)
+  && /translate="no"/.test(headerSource);
+if (!nativeLanguageLabels || !languageSelectorIsTranslationSafe) {
+  failed = true;
+  console.error("Language selector check failed: FI/EN/ES must use native language names and be excluded from automatic browser translation.");
+}
+
 // Kansakoulu placement regression guard: the user requested that its
 // promotional card not appear on the homepage. Keep the dedicated stay and
 // restaurant cards on the Kimitoön destination guide instead.
