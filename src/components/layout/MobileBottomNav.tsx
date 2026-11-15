@@ -32,18 +32,18 @@ export function MobileBottomNav() {
   ];
 
   return (
-    <nav aria-label={t.label} className="fixed inset-x-0 bottom-0 z-[55] border-t border-slate-200 bg-white/95 px-1 pt-2 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_rgba(15,23,42,0.08)] backdrop-blur-lg lg:hidden">
-      <ul className="mx-auto grid max-w-lg grid-cols-5 gap-0.5">
+    <nav aria-label={t.label} className="fixed inset-x-0 bottom-0 z-[55] w-full max-w-full border-t border-slate-200 bg-white/95 px-1 pt-1.5 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_rgba(15,23,42,0.08)] backdrop-blur-lg lg:hidden">
+      <ul className="mx-auto grid w-full max-w-lg grid-cols-5 gap-0">
         {items.map(({ href, label, icon: Icon, active }) => (
-          <li key={href}>
+          <li key={href} className="min-w-0">
             <Link
               href={href}
               aria-label={label}
               aria-current={active ? "page" : undefined}
-              className={"flex min-h-12 flex-col items-center justify-center gap-1 rounded-xl px-0.5 py-1.5 text-[10px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 " + (active ? "bg-brand-50 text-brand-900" : "text-slate-600 hover:bg-slate-50 hover:text-brand-900")}
+              className={"flex min-h-12 min-w-0 flex-col items-center justify-center gap-1 overflow-hidden rounded-xl px-0 py-1.5 text-[clamp(9px,2.5vw,11px)] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 " + (active ? "bg-brand-50 text-brand-900" : "text-slate-600 hover:bg-slate-50 hover:text-brand-900")}
             >
-              <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={active ? 2.5 : 2} />
-              <span className="leading-none">{label}</span>
+              <Icon aria-hidden="true" className="h-[19px] w-[19px] shrink-0" strokeWidth={active ? 2.5 : 2} />
+              <span className="max-w-full truncate leading-none">{label}</span>
             </Link>
           </li>
         ))}
