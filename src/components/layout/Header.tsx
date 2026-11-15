@@ -54,11 +54,11 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#e9eee9] bg-white/95 backdrop-blur-xl">
-      <div className="container-narrow flex min-h-[68px] items-center justify-between gap-2 sm:gap-3">
-        <Link href={href("")} aria-label="Finland Experience – home" className="flex shrink-0 items-center gap-2.5 text-brand-950">
-          <Waves className="h-9 w-9 text-brand-800" strokeWidth={1.8} aria-hidden="true" />
-          <span className="flex flex-col font-display text-[13px] font-extrabold leading-[1.05] tracking-[.12em] sm:text-sm">
+    <header className="sticky top-0 z-50 w-full max-w-full border-b border-[#e9eee9] bg-white/95 backdrop-blur-xl">
+      <div className="container-narrow flex min-h-[64px] w-full min-w-0 items-center justify-between gap-2 sm:min-h-[68px] sm:gap-3">
+        <Link href={href("")} aria-label="Finland Experience – home" className="flex min-w-0 shrink items-center gap-2 text-brand-950 sm:gap-2.5">
+          <Waves className="h-8 w-8 shrink-0 text-brand-800 sm:h-9 sm:w-9" strokeWidth={1.8} aria-hidden="true" />
+          <span className="flex min-w-0 flex-col whitespace-nowrap font-display text-[11px] font-extrabold leading-[1.05] tracking-[.1em] sm:text-sm sm:tracking-[.12em]">
             <span>FINLAND</span><span>EXPERIENCE</span>
           </span>
         </Link>
@@ -71,8 +71,8 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <nav aria-label={ui.languages} translate="no" className="notranslate flex shrink-0 items-center gap-1 rounded-full border border-slate-200 bg-slate-50 p-1">
+        <div className="flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-3">
+          <nav aria-label={ui.languages} translate="no" className="notranslate flex shrink-0 items-center gap-0.5 rounded-full border border-slate-200 bg-slate-50 p-0.5 sm:gap-1 sm:p-1">
             {languageOptions.map(({ locale: targetLocale, label, full, flag }) => {
               const active = targetLocale === locale;
               return (
@@ -84,17 +84,18 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                   title={full}
                   lang={targetLocale}
                   translate="no"
-                  className={`notranslate inline-flex min-h-9 items-center justify-center gap-1 rounded-full px-2 text-[10px] font-extrabold tracking-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 sm:px-2.5 ${active ? "bg-brand-950 text-white shadow-sm" : "text-slate-600 hover:bg-white hover:text-brand-950"}`}
+                  className={`notranslate inline-flex min-h-8 items-center justify-center gap-1 rounded-full px-1.5 text-[10px] font-extrabold tracking-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 sm:min-h-9 sm:px-2.5 ${active ? "bg-brand-950 text-white shadow-sm" : "text-slate-600 hover:bg-white hover:text-brand-950"}`}
                 >
                   <span aria-hidden="true">{flag}</span>
-                  <span lang={targetLocale}>{full}</span>
+                  <span className="sm:hidden">{label}</span>
+                  <span className="hidden sm:inline" lang={targetLocale}>{full}</span>
                 </Link>
               );
             })}
           </nav>
           <Link href={`/${locale}/plan`} aria-label={ui.plan} title={ui.plan} className="hidden h-10 w-10 items-center justify-center rounded-full text-brand-950 transition hover:bg-brand-50 sm:flex"><Heart className="h-5 w-5" strokeWidth={1.8} /></Link>
           <Link href={`/${locale}/account/login`} className="hidden min-h-10 items-center gap-2 rounded-full bg-brand-950 px-4 text-xs font-bold text-white transition hover:bg-brand-800 sm:inline-flex"><UserRound className="h-4 w-4" />{ui.account}</Link>
-          <button type="button" className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-brand-950 shadow-sm xl:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open}>
+          <button type="button" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-brand-950 shadow-sm sm:h-10 sm:w-10 xl:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? ui.close : ui.open} aria-expanded={open}>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
