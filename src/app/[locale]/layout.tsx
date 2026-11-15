@@ -50,9 +50,9 @@ export default async function LocaleLayout({
   const [messages, navigation] = await Promise.all([getMessages(), getPublishedNavigation(locale as "fi" | "es" | "en")]);
   return (
     <NextIntlClientProvider messages={messages}>
-      <div className="flex min-h-screen flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
+      <div className="flex min-h-screen w-full min-w-0 flex-col overflow-x-clip pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
         <Header navigation={navigation} />
-        <main className="flex-1">{children}</main>
+        <main className="w-full min-w-0 flex-1">{children}</main>
         <Footer />
         <MobileBottomNav />
         <WhatsAppButton locale={locale} />
