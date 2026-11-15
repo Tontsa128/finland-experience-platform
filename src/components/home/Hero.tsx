@@ -308,7 +308,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               quality={100}
               unoptimized
               onError={() => markImageFailed(item.key)}
-              className="object-cover brightness-[1.08] contrast-[1.02] saturate-[1.08]"
+              className="object-cover object-[50%_60%] brightness-[1.08] contrast-[1.02] saturate-[1.08]"
             />
           </div>
         ))}
@@ -316,7 +316,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17261a]/82 via-[#17261a]/42 to-[#17261a]/12" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17261a]/48 via-[#17261a]/18 to-transparent" />
 
-      <div className="relative z-10 flex min-h-[76svh] items-end pb-7 pt-[36svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
+      <div className="relative z-10 flex min-h-[62svh] items-end pb-6 pt-[22svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
         <div className="container-narrow w-full">
           <div key={slide.key} className="max-w-4xl">
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
@@ -327,22 +327,22 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       </div>
 
       <div className="relative z-20 border-t border-white/15 bg-[#fbf8f1] text-brand-950 shadow-[0_-10px_30px_rgba(47,65,49,0.10)]">
-        <div className="container-narrow flex min-h-[88px] flex-col items-stretch justify-between gap-3 py-3 sm:min-h-[104px] sm:flex-row sm:items-center sm:gap-4 sm:py-5">
+        <div className="container-narrow flex min-h-[76px] flex-row items-center justify-between gap-2 py-3 sm:min-h-[104px] sm:gap-4 sm:py-5">
           {href ? (
             slide.external ? (
-              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 max-w-[72vw] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-brand-900 px-4 py-3 text-xs font-bold text-white transition hover:bg-brand-800 sm:max-w-none sm:px-7 sm:text-base">
+              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 min-w-0 max-w-[min(68%,18rem)] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-brand-900 px-3 py-3 text-xs font-bold text-white transition hover:bg-brand-800 sm:max-w-none sm:px-7 sm:text-base">
                 {text.cta}
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </a>
             ) : (
-              <Link href={href} className="inline-flex min-h-11 max-w-[72vw] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-gold-400 px-4 py-3 text-xs font-bold text-brand-950 transition hover:bg-gold-300 sm:max-w-none sm:px-7 sm:text-base">
+              <Link href={href} className="inline-flex min-h-11 min-w-0 max-w-[min(68%,18rem)] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-gold-400 px-3 py-3 text-xs font-bold text-brand-950 transition hover:bg-gold-300 sm:max-w-none sm:px-7 sm:text-base">
                 {text.cta}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             )
           ) : null}
 
-          <div className="ml-auto flex items-center gap-2 self-end sm:gap-3">
+          <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-3">
             <button type="button" aria-label={ui.previous} onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d9e2d7] bg-white transition hover:bg-[#edf3ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
