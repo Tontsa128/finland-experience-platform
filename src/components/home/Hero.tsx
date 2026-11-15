@@ -291,7 +291,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   }[locale];
 
   return (
-    <section className="relative isolate z-0 overflow-hidden bg-[#dfe8df] text-white">
+    <section className="relative isolate z-0 w-full min-w-0 max-w-full overflow-hidden bg-[#dfe8df] text-white">
       <div className="absolute inset-0">
         {activeSlides.map((item, index) => (
           <div
@@ -308,7 +308,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               quality={100}
               unoptimized
               onError={() => markImageFailed(item.key)}
-              className="object-cover brightness-[1.08] contrast-[1.02] saturate-[1.08]"
+              className="origin-bottom object-cover scale-[1.42] brightness-[1.08] contrast-[1.02] saturate-[1.08] sm:origin-center sm:scale-100"
             />
           </div>
         ))}
@@ -316,26 +316,26 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17261a]/82 via-[#17261a]/42 to-[#17261a]/12" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17261a]/48 via-[#17261a]/18 to-transparent" />
 
-      <div className="relative z-10 flex min-h-[76svh] items-end pb-7 pt-[36svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
-        <div className="container-narrow w-full">
-          <div key={slide.key} className="max-w-4xl">
+      <div className="relative z-10 flex min-h-[min(62svh,620px)] w-full min-w-0 items-end pb-6 pt-[20svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
+        <div className="container-narrow w-full min-w-0">
+          <div key={slide.key} className="w-full min-w-0 max-w-4xl">
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
-            <h1 className="max-w-4xl font-display text-[clamp(2rem,8vw,3.4rem)] font-bold leading-[1.04] tracking-[-.03em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-6xl sm:leading-[.96] lg:text-[5.4rem]">{text.title}</h1>
-            <p className="mt-3 max-w-[48ch] text-base leading-6 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)] sm:mt-6 sm:max-w-2xl sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
+            <h1 className="max-w-[18ch] break-words font-display text-[clamp(1.85rem,7.2vw,3.4rem)] font-bold leading-[1.04] tracking-[-.03em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:max-w-4xl sm:text-6xl sm:leading-[.96] lg:text-[5.4rem]">{text.title}</h1>
+            <p className="mt-3 max-w-[42ch] text-sm leading-6 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)] sm:mt-6 sm:max-w-2xl sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
           </div>
         </div>
       </div>
 
       <div className="relative z-20 border-t border-white/15 bg-[#fbf8f1] text-brand-950 shadow-[0_-10px_30px_rgba(47,65,49,0.10)]">
-        <div className="container-narrow flex min-h-[88px] flex-col items-stretch justify-between gap-3 py-3 sm:min-h-[104px] sm:flex-row sm:items-center sm:gap-4 sm:py-5">
+        <div className="container-narrow flex min-h-[76px] w-full min-w-0 flex-col items-stretch justify-between gap-2 py-3 sm:min-h-[104px] sm:flex-row sm:items-center sm:gap-4 sm:py-5">
           {href ? (
             slide.external ? (
-              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 max-w-[72vw] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-brand-900 px-4 py-3 text-xs font-bold text-white transition hover:bg-brand-800 sm:max-w-none sm:px-7 sm:text-base">
+              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 w-fit max-w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-4 py-3 text-left text-xs font-bold leading-snug text-white transition hover:bg-brand-800 sm:max-w-none sm:px-7 sm:text-base">
                 {text.cta}
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </a>
             ) : (
-              <Link href={href} className="inline-flex min-h-11 max-w-[72vw] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-gold-400 px-4 py-3 text-xs font-bold text-brand-950 transition hover:bg-gold-300 sm:max-w-none sm:px-7 sm:text-base">
+              <Link href={href} className="inline-flex min-h-11 w-fit max-w-full items-center justify-center gap-2 rounded-full bg-gold-400 px-4 py-3 text-left text-xs font-bold leading-snug text-brand-950 transition hover:bg-gold-300 sm:max-w-none sm:px-7 sm:text-base">
                 {text.cta}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
