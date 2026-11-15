@@ -1,10 +1,11 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { getSupabaseAdmin } from "@/lib/supabase";
+import { getSupabaseAnonKey, getSupabaseUrl } from "@/lib/supabase-config";
 
 export type AdminRole = "SUPER_ADMIN" | "ADMIN" | "CONTENT_MANAGER" | "BOOKING_MANAGER" | "EDITOR";
 
-const ADMIN_ROLES = new Set<AdminRole>([
+export const ADMIN_ROLES = new Set<AdminRole>([
   "SUPER_ADMIN",
   "ADMIN",
   "CONTENT_MANAGER",
@@ -14,28 +15,44 @@ const ADMIN_ROLES = new Set<AdminRole>([
 
 export async function getAdminContext() {
   const cookieStore = await cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)!,
-    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => undefined } }
-  );
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return null;
 
-  const { data: profile } = await getSupabaseAdmin()
+  const supabase = createServerClient(getSupabaseUrl(), getSupabaseAnonKey(), {
+    cookies: {
+      getAll: () => cookieStore.getAll(),
+      setAll: () => undefined,
+    },
+  });
+
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return null;
+  }
+
+  const { data: profile, error } = await getSupabaseAdmin()
     .from("profiles")
-    .select("id,full_name,role")
+    .select("id, full_name, role")
     .eq("id", user.id)
-    .single();
+    .maybeSingle();
 
-  if (!profile || !ADMIN_ROLES.has(profile.role as AdminRole)) return null;
+  if (error) {
+    console.error("Admin profile lookup failed", error);
+    return null;
+  }
+
+  if (!profile || !ADMIN_ROLES.has(profile.role as AdminRole)) {
+    return null;
+  }
 
   return {
     user,
-    profile: profile as {
-      id: string;
-      full_name: string | null;
-      role: AdminRole;
+    profile: {
+      id: profile.id,
+      full_name: profile.full_name ?? null,
+      role: profile.role as AdminRole,
     },
   };
 }
@@ -43,6 +60,10 @@ export async function getAdminContext() {
 export async function requireAdmin(roles?: AdminRole[]) {
   const context = await getAdminContext();
   if (!context) throw new Error("UNAUTHORIZED");
-  if (roles && !roles.includes(context.profile.role)) throw new Error("FORBIDDEN");
+
+  if (roles && !roles.includes(context.profile.role)) {
+    throw new Error("FORBIDDEN");
+  }
+
   return context;
 }
