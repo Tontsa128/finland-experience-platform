@@ -246,7 +246,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       // homepage image and its localized copy are a single CMS-managed pair.
       // If no matching hero image is configured, render no image carousel.
       const configuredImage = settings?.heroImageUrl?.trim();
-      if (!configuredImage) return [];
+      if (!configuredImage || failedImages["configured-homepage"]) return [];
 
       return [{
         key: "configured-homepage",
@@ -280,7 +280,23 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     return () => window.clearTimeout(timer);
   }, [active, activeSlides, slideCount]);
 
-  if (!slideCount) return null;
+  if (!slideCount) {
+    return (
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#173d35] via-[#24594b] to-[#b18a55] text-white">
+        <div className="container-narrow flex min-h-[300px] items-end py-10 sm:min-h-[360px] sm:py-14">
+          <div className="max-w-4xl">
+            <p className="text-xs font-bold uppercase tracking-[.22em] text-[#fff3d8]">FINLAND EXPERIENCE</p>
+            <h1 className="mt-3 max-w-4xl font-display text-[clamp(2.1rem,7vw,4.6rem)] font-bold leading-[1.02] tracking-[-.035em]">
+              {locale === "fi" ? "Löydä Suomen salaiset helmet" : locale === "es" ? "Descubre los tesoros ocultos de Finlandia" : "Discover Finland’s hidden gems"}
+            </h1>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-white/90">
+              {locale === "fi" ? "Paikkoja, elämyksiä ja tarinoita, jotka tekevät Suomesta unohtumattoman." : locale === "es" ? "Lugares, experiencias e historias para descubrir una Finlandia inolvidable." : "Places, experiences and stories that make Finland unforgettable."}
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const slide = activeSlides[active] ?? activeSlides[0];
   const text = slide.copy || copy[locale][slide.key] || copy[locale].summer;
