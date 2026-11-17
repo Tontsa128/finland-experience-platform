@@ -11,7 +11,7 @@ type Campaign = {
   id: string; campaign_name: string; advertiser_name: string; provider_url: string;
   billing_model: "monthly" | "campaign"; price_eur: number; placement: "homepage" | "map" | "directory" | "category";
   region: string; status: "draft" | "pending" | "approved" | "paused" | "archived";
-  starts_at: string | null; ends_at: string | null; slide_interval_ms: number; slides: Slide[];
+  starts_at: string | null; ends_at: string | null; slide_interval_ms: number; slides: Slide[];\n  metrics?: { impressions: number | null; clicks: number | null };
 };
 type Form = Omit<Campaign, "id" | "starts_at" | "ends_at"> & { starts_at: string; ends_at: string };
 const emptyCopy = (): Copy => ({ fi: "", es: "", en: "" });
@@ -29,7 +29,7 @@ const blank = (): Form => ({
 });
 
 const localeNames: Record<Locale, string> = { fi: "Suomi", es: "Español", en: "English" };
-const statusNames: Record<Campaign["status"], string> = { draft: "Luonnos", pending: "Odottaa hyväksyntää", approved: "Hyväksytty", paused: "Keskeytetty", archived: "Arkistoitu" };
+const statusNames: Record<Campaign["status"], string> = { draft: "Luonnos", pending: "Odottaa hyväksyntää", approved: "Hyväksytty", paused: "Keskeytetty", archived: "Arkistoitu" };\nfunction metricsText(campaign: Campaign) {\n  const impressions = campaign.metrics?.impressions;\n  const clicks = campaign.metrics?.clicks;\n  if (impressions == null || clicks == null) return "Raportointi aktivoituu tietokantapäivityksen jälkeen";\n  const rate = impressions > 0 ? (clicks / impressions) * 100 : 0;\n  return `${impressions.toLocaleString("fi-FI")} näyttöä · ${clicks.toLocaleString("fi-FI")} klikkausta · ${rate.toFixed(1)} % klikkausaste`;\n}
 
 export default function AdCampaignsAdmin() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -163,7 +163,7 @@ export default function AdCampaignsAdmin() {
           <h2 className="mb-4 text-xl font-bold text-slate-950">Tallennetut kampanjat</h2>
           <div className="grid gap-3">{campaigns.map((campaign) => (
             <article key={campaign.id} className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5">
-              <div className="min-w-0"><div className="flex flex-wrap items-center gap-2"><h3 className="font-bold text-slate-950">{campaign.campaign_name}</h3><span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">{statusNames[campaign.status]}</span></div><p className="mt-1 text-sm text-slate-500">{campaign.advertiser_name} · {campaign.billing_model === "monthly" ? "Kuukausinäkyvyys" : "Kampanja"} · {campaign.price_eur.toFixed(2)} € · {campaign.slides.length} diaa</p></div>
+              <div className="min-w-0"><div className="flex flex-wrap items-center gap-2"><h3 className="font-bold text-slate-950">{campaign.campaign_name}</h3><span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">{statusNames[campaign.status]}</span></div><p className="mt-1 text-sm text-slate-500">{campaign.advertiser_name} · {campaign.billing_model === "monthly" ? "Kuukausinäkyvyys" : "Kampanja"} · {campaign.price_eur.toFixed(2)} € · {campaign.slides.length} diaa</p><p className="mt-2 text-xs font-medium text-slate-500">{metricsText(campaign)}</p></div>
               <div className="flex gap-3"><button type="button" onClick={() => edit(campaign)} className="text-sm font-semibold text-emerald-700">Muokkaa</button><button type="button" onClick={() => archive(campaign.id)} className="text-sm font-semibold text-red-600">Arkistoi</button></div>
             </article>
           ))}{campaigns.length === 0 && <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">Kampanjoita ei ole vielä luotu.</p>}</div>
