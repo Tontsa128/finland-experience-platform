@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 type Locale = "fi" | "es" | "en";
 type Copy = Record<Locale, string>;
 type Slide = { imageUrl: string; href: string; title: Copy; text: Copy; ctaLabel: Copy; alt: Copy };
+type MediaItem = { id: string; filename: string; url: string };
 type Campaign = {
   id: string; campaign_name: string; advertiser_name: string; provider_url: string;
   billing_model: "monthly" | "campaign"; price_eur: number; placement: "homepage" | "map" | "directory" | "category";
@@ -15,7 +16,7 @@ type Campaign = {
 type Form = Omit<Campaign, "id" | "starts_at" | "ends_at"> & { starts_at: string; ends_at: string };
 const emptyCopy = (): Copy => ({ fi: "", es: "", en: "" });
 const emptySlide = (): Slide => ({ imageUrl: "", href: "", title: emptyCopy(), text: emptyCopy(), ctaLabel: emptyCopy(), alt: emptyCopy() });
-const blank = (): Form => ({
+function toLocalInput(value: string | null) {\n  if (!value) return "";\n  const date = new Date(value);\n  return new Date(date.getTime() - date.getTimezoneOffset() * 60_000).toISOString().slice(0, 16);\n}\n\nconst blank = (): Form => ({
   campaign_name: "", advertiser_name: "", provider_url: "", billing_model: "monthly", price_eur: 0,
   placement: "homepage", region: "southwest_finland", status: "draft", starts_at: "", ends_at: "",
   slide_interval_ms: 6000, slides: [emptySlide(), emptySlide(), emptySlide()],
@@ -25,7 +26,7 @@ const localeNames: Record<Locale, string> = { fi: "Suomi", es: "Español", en: "
 const statusNames: Record<Campaign["status"], string> = { draft: "Luonnos", pending: "Odottaa hyväksyntää", approved: "Hyväksytty", paused: "Keskeytetty", archived: "Arkistoitu" };
 
 export default function AdCampaignsAdmin() {
-  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);\n  const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
   const [form, setForm] = useState<Form>(blank());
   const [editing, setEditing] = useState<string | null>(null);
   const [error, setError] = useState("");
@@ -37,7 +38,7 @@ export default function AdCampaignsAdmin() {
     if (!response.ok) throw new Error(body.error || "Kampanjoita ei voitu ladata");
     setCampaigns(body.campaigns || []);
   }
-  useEffect(() => { load().catch((e) => setError(e.message)); }, []);
+  useEffect(() => { load().catch((e) => setError(e.message)); }, []);\n  useEffect(() => {\n    fetch("/api/admin/media", { cache: "no-store" }).then(async (response) => {\n      const body = await response.json();\n      if (response.ok) setMediaItems(body.media || []);\n    }).catch(() => undefined);\n  }, []);
 
   function update<K extends keyof Form>(key: K, value: Form[K]) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -109,7 +110,7 @@ export default function AdCampaignsAdmin() {
             <label className="grid gap-1 text-sm font-medium text-slate-700">Myyntimalli<select value={form.billing_model} onChange={(e) => update("billing_model", e.target.value as Form["billing_model"])} className="rounded-xl border p-3"><option value="monthly">Kuukausinäkyvyys</option><option value="campaign">Määräaikainen kampanja</option></select></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Sovittu hinta (€)<input type="number" min="0" step="0.01" value={form.price_eur} onChange={(e) => update("price_eur", Number(e.target.value))} className="rounded-xl border p-3" /></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Sijoittelu<select value={form.placement} onChange={(e) => update("placement", e.target.value as Form["placement"])} className="rounded-xl border p-3"><option value="homepage">Etusivu</option><option value="map">Karttasivu</option><option value="directory">Kohdehakemisto</option><option value="category">Kategoriat</option></select></label>
-            <label className="grid gap-1 text-sm font-medium text-slate-700">Alue<select value={form.region} onChange={(e) => update("region", e.target.value)} className="rounded-xl border p-3"><option value="southwest_finland">Lounais-Suomi (Salo, Perniö, Mathildedal, Teijo)</option><option value="finland">Koko Suomi</option></select></label>
+            <label className="grid gap-1 text-sm font-medium text-slate-700">Alue<select value={form.region} onChange={(e) => update("region", e.target.value)} className="rounded-xl border p-3"><option value="southwest_finland">Lounais-Suomi (Salo, Perniö, Mathildedal, Teijo)</option></select></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Julkaisutila<select value={form.status} onChange={(e) => update("status", e.target.value as Form["status"])} className="rounded-xl border p-3">{Object.entries(statusNames).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Dian kesto<select value={form.slide_interval_ms} onChange={(e) => update("slide_interval_ms", Number(e.target.value))} className="rounded-xl border p-3"><option value={5000}>5 sekuntia</option><option value={6000}>6 sekuntia</option><option value={7000}>7 sekuntia</option></select></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Alkaa<input type="datetime-local" value={form.starts_at} onChange={(e) => update("starts_at", e.target.value)} className="rounded-xl border p-3" /></label>
@@ -123,7 +124,7 @@ export default function AdCampaignsAdmin() {
               <details key={index} open className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                 <summary className="cursor-pointer font-semibold text-slate-900">Dia {index + 1}</summary>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Kuvan URL<input value={slide.imageUrl} onChange={(e) => updateSlide(index, { imageUrl: e.target.value })} placeholder="https://... tai /..." className="rounded-lg border bg-white p-3 text-sm font-normal" /></label>
+                  <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Valitse kuva nykyisestä CMS-kuvapankista<select value={slide.imageUrl} onChange={(e) => updateSlide(index, { imageUrl: e.target.value })} className="rounded-lg border bg-white p-3 text-sm font-normal"><option value="">Valitse kuvapankin kuva…</option>{mediaItems.map((item) => <option key={item.id} value={item.url}>{item.filename}</option>)}</select></label>\n                  <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Tai anna kuvan URL<input value={slide.imageUrl} onChange={(e) => updateSlide(index, { imageUrl: e.target.value })} placeholder="https://... tai /..." className="rounded-lg border bg-white p-3 text-sm font-normal" /></label>
                   <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Kohdelinkki<input value={slide.href} onChange={(e) => updateSlide(index, { href: e.target.value })} placeholder="https://palveluntarjoaja.fi" className="rounded-lg border bg-white p-3 text-sm font-normal" /></label>
                   {(["fi", "es", "en"] as Locale[]).map((locale) => (
                     <fieldset key={locale} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3">
