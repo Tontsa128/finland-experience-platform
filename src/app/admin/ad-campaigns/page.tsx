@@ -78,8 +78,8 @@ export default function AdCampaignsAdmin() {
       campaign_name: campaign.campaign_name, advertiser_name: campaign.advertiser_name, provider_url: campaign.provider_url,
       billing_model: campaign.billing_model, price_eur: campaign.price_eur, placement: campaign.placement,
       region: campaign.region, status: campaign.status,
-      starts_at: campaign.starts_at ? new Date(campaign.starts_at).toISOString().slice(0, 16) : "",
-      ends_at: campaign.ends_at ? new Date(campaign.ends_at).toISOString().slice(0, 16) : "",
+      starts_at: toLocalInput(campaign.starts_at),
+      ends_at: toLocalInput(campaign.ends_at),
       slide_interval_ms: campaign.slide_interval_ms, slides: campaign.slides,
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
