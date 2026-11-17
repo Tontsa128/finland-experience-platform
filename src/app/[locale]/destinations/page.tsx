@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
-import { getPublishedDestinations } from "@/lib/public-content";
+import { getPublishedDestinations, getActiveAdCampaigns } from "@/lib/public-content";
+import PaidAdSlideshow from "@/components/ads/PaidAdSlideshow";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -23,7 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function DestinationsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
-  const cmsDestinations = await getPublishedDestinations();
+  const [cmsDestinations, paidAdCampaigns] = await Promise.all([
+    getPublishedDestinations(),
+    getActiveAdCampaigns("directory", "southwest_finland"),
+  ]);
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
 
   const itemListSchema = {
@@ -69,6 +73,7 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
           <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-brand-950 px-5 py-3 text-sm font-bold text-white">{locale === "fi" ? "Avaa kartta" : locale === "es" ? "Abrir mapa" : "Open map"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
         </Link>
       </section>
+      <PaidAdSlideshow campaigns={paidAdCampaigns} locale={locale} />
 
       <section className="container-narrow py-14 sm:py-20">
         <div className="mb-10 flex items-end justify-between gap-5">
