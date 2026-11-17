@@ -6,7 +6,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
-import { photoLibrary } from "@/lib/photo-library";
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
 function normalizeHomepageHref(href: string): string {
@@ -51,7 +50,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const [active, setActive] = useState(0);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
-  const cmsSlides = (settings?.homepageSlides ?? [])
+  const cmsSlides = useMemo(() => (settings?.homepageSlides ?? [])
     .filter((item) => {
       const localized = item.copy?.[locale];
       const finnishCopy = item.copy?.fi;
@@ -83,7 +82,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         !isUntranslatedCopy
       );
     })
-    .sort((a, b) => a.sortOrder - b.sortOrder);
+    .sort((a, b) => a.sortOrder - b.sortOrder), [settings?.homepageSlides, locale]);
 
   const activeSlides = useMemo<Slide[]>(
     () => {
@@ -123,7 +122,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         },
       }];
     },
-    [cmsSlides, locale, failedImages],
+    [cmsSlides, locale, failedImages, settings?.heroImageUrl, settings?.heroCtaUrl, settings?.heroEyebrow, settings?.heroTitle, settings?.heroDescription, settings?.heroCtaLabel],
   );
 
   const slideCount = activeSlides.length;
