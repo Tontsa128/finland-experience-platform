@@ -1,7 +1,6 @@
 import { NextRequest,NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
-import { isSafeUrlOrPath } from "@/lib/utils";
 export const dynamic="force-dynamic";
 const locales=["fi","en","es"] as const;
 function canReadSlides(role:string){return ["SUPER_ADMIN","ADMIN","CONTENT_MANAGER","BOOKING_MANAGER","EDITOR"].includes(role)}
