@@ -44,7 +44,7 @@ export function Footer() {
           <div className="space-y-3 text-sm text-brand-100">
             <Link href={`/${locale}/contact`} className="inline-flex items-center gap-2 hover:text-white">
               <MapPin className="h-4 w-4" aria-hidden="true" />
-              {c("contact")}
+              {locale === "fi" ? "Avaa yhteydenottolomake" : locale === "es" ? "Abrir formulario de contacto" : "Open contact form"}
             </Link>
             <p className="text-xs leading-5 text-brand-200">Finland</p>
           </div>
