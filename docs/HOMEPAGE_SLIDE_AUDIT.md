@@ -32,6 +32,7 @@
 ## Publishing safeguards
 
 - Keep the image and its localized FI/ES/EN copy as one inseparable content record.
+- The CMS editor now requires an explicit per-slide visual review checkbox before an enabled slide can be saved. Changing the image, eyebrow, title or description clears that approval. The API repeats the same approval, HTTPS image, link and localized-copy checks server-side.
 - Prefer current provider-owned photos for provider/service slides, with permission/source recorded.
 - For destination inspiration, use destination-specific photos and factual descriptions.
 - Never substitute an unrelated image when an asset fails to load.
