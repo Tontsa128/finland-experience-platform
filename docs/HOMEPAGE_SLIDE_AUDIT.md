@@ -26,7 +26,7 @@
 3. Align the `naantali` slide copy with the documented harbour-and-church image.
 4. Consider tightening the `mathildedal` and `porvoo` copy to name the documented building/viewpoint.
 5. Keep the `aland` text factual and generic or explicitly describe the landscape near Kastelholm; the current copy does not claim that the castle is pictured.
-6. Confirm the exact Herrankukkaro CDN image visually; if it does not show the smoke sauna described, replace it with an approved provider-owned sauna photo or keep the slide disabled until verified.
+6. Refine the Herrankukkaro title so it describes the confirmed indoor underground smoke-sauna image, not a sea view.
 7. Perform a browser-level review of all ten slides on desktop and mobile, including crop, text contrast, attribution visibility, image load and carousel timing.
 
 ## Publishing safeguards
@@ -103,10 +103,30 @@ These are editorial proposals based on the current CMS JSON and the documented s
 | ES | Porvoo | El casco antiguo de Porvoo desde el aire | Desde las alturas se abre una vista del histórico río y del casco antiguo de Porvoo. |
 | EN | Porvoo | Porvoo Old Town from above | The elevated view opens over Porvoo’s historic riverside and old town. |
 
-### `herrankukkaro` — image verification required
+### `herrankukkaro` — use the verified smoke-sauna interior copy
 
-Do not approve or rewrite this slide as a smoke-sauna image until the exact CDN asset has been visually checked against the provider’s official sauna gallery. If the current image is not clearly the smoke sauna, replace it with a provider-approved image or leave the slide disabled. Keep the provider credit and external provider link.
+The exact CMS image filename is the same asset identified on Herrankukkaro’s official English sauna page as the interior of its underground smoke sauna. The current title “Smoke sauna by the sea” does not describe what the photo shows.
 
-### `cottage` and `archipelago` — avoid details not visible in the selected crop
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Rymättylä · Naantali | Herrankukkaron maasavusauna | Kuva näyttää Herrankukkaron perinteisen maasavusaunan sisätilaa. Savusaunaperinne on osa saariston ainutlaatuista vierailukokemusta. |
+| ES | Rymättylä · Naantali | La sauna de humo subterránea de Herrankukkaro | La imagen muestra el interior de la tradicional sauna de humo subterránea de Herrankukkaro, una parte singular de la experiencia del archipiélago. |
+| EN | Rymättylä · Naantali | Herrankukkaro’s underground smoke sauna | The image shows the interior of Herrankukkaro’s traditional underground smoke sauna, a distinctive part of the archipelago experience. |
 
-The cottage image source identifies a Finnish summer cottage by a lake. Before claiming a private sauna or jetty, verify that those features are visible in the selected image or clearly label them as destination context rather than pictured details. For the archipelago slide, keep the wording broad enough to fit the actual selected photograph; do not describe specific rocks, trees or buildings unless visible in the crop.
+Keep the provider-owned image, provider credit and direct provider link.
+
+### `cottage` — keep the copy to the cottage and lake
+
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Keuruu · Järvi-Suomi | Kesämökki järven rannalla | Keuruulla sijaitseva suomalainen kesämökki kutsuu nauttimaan järvimaisemasta ja kesän rauhasta. |
+| ES | Keuruu · región de los lagos | Una cabaña junto al lago | Esta cabaña finlandesa en Keuruu invita a disfrutar del paisaje lacustre y la tranquilidad del verano. |
+| EN | Keuruu · Lakeland Finland | A summer cottage by the lake | This Finnish summer cottage in Keuruu invites you to enjoy the lake scenery and the calm of summer. |
+
+### `archipelago` — describe the small wooden house
+
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Turun saaristo | Pieni puutalo saariston keskellä | Pieni puutalo sijaitsee keskellä Turun saaristoa, saarten ja merimaisemien ympäröimänä. |
+| ES | Archipiélago de Turku | Una pequeña casa de madera entre las islas | Una pequeña casa de madera se encuentra en el archipiélago de Turku, rodeada de islas y mar. |
+| EN | Turku Archipelago | A small wooden house among the islands | A small wooden house sits in the Turku Archipelago, surrounded by islands and sea views. |
