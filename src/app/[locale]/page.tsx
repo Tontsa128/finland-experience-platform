@@ -267,6 +267,26 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       
 
       <section className="container-narrow pb-9 sm:pb-12">
+        <div className="mb-4 flex items-end justify-between gap-3">
+          <div>
+            <h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{locale === "fi" ? "Löydä Suomi alueittain" : locale === "es" ? "Descubre Finlandia por regiones" : "Explore Finland by region"}</h2>
+            <p className="mt-1 text-sm text-slate-600">{locale === "fi" ? "Tutustu eri puolilla Suomea sijaitseviin kohteisiin." : locale === "es" ? "Explora destinos de distintas partes de Finlandia." : "Discover destinations in different parts of Finland."}</p>
+          </div>
+          <Link href={`/${locale}/destinations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link>
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+          {catalogDestinations.filter((destination) => destination.images?.length).slice(0, 6).map((destination) => {
+            const image = uniqueHomepageImage(destination.images || []);
+            return <Link key={destination.slug} href={`/${locale}/search?area=${encodeURIComponent(destination.slug)}`} className="group relative isolate flex min-h-36 overflow-hidden rounded-xl bg-brand-950 text-white shadow-soft sm:min-h-44">
+              <Image src={image} alt={localized(destination.name, locale)} fill sizes="(max-width:640px) 50vw,33vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
+              <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+              <span className="mt-auto p-3 sm:p-4"><strong className="block font-display text-lg">{localized(destination.name, locale)}</strong><span className="mt-1 flex items-center gap-1 text-xs text-white/85"><MapPin className="h-3 w-3" />{destination.region || t.locationUnknown}</span></span>
+            </Link>;
+          })}
+        </div>
+      </section>
+
+      <section className="container-narrow pb-9 sm:pb-12">
         <div className="mb-4 flex items-end justify-between gap-3"><h2 className="font-display text-2xl font-bold text-brand-950 sm:text-3xl">{t.stays}</h2><Link href={`/${locale}/accommodations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link></div>
         <div className="grid gap-4 sm:grid-cols-3">
           {featuredCabins.filter((c) => c.images?.length).map((c, i) => {
