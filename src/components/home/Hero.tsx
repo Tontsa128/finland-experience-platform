@@ -15,23 +15,24 @@ function normalizeHomepageHref(href: string): string {
   const lower = value.toLowerCase();
   if (!value || lower.startsWith("http://") || lower.startsWith("https://") || value.startsWith("//")) return value;
 
-  const path = value.split(/[?#]/, 1)[0].replace(/\/$/, "");
-  const withoutLocale = path.startsWith("/fi/") || path.startsWith("/es/") || path.startsWith("/en/")
-    ? path.slice(3)
-    : path;
+  const suffixIndex = value.search(/[?#]/);
+  const pathname = suffixIndex >= 0 ? value.slice(0, suffixIndex) : value;
+  const suffix = suffixIndex >= 0 ? value.slice(suffixIndex) : "";
+  const withoutLocale = pathname.replace(/^\/(fi|es|en)(?=\/|$)/, "") || "/";
+  const path = withoutLocale.replace(/\/$/, "") || "/";
 
-  if (withoutLocale === "/salo" || withoutLocale === "/salo/kylat") {
-    return "/salo/kylat";
+  if (path === "/salo" || path === "/salo/kylat") {
+    return `/salo/kylat${suffix}`;
   }
   if (
-    withoutLocale === "/salo/mathildedal" ||
-    withoutLocale.startsWith("/salo/mathildedal/") ||
-    withoutLocale === "/mathildedal" ||
-    withoutLocale.startsWith("/mathildedal/")
+    path === "/salo/mathildedal" ||
+    path.startsWith("/salo/mathildedal/") ||
+    path === "/mathildedal" ||
+    path.startsWith("/mathildedal/")
   ) {
-    return "/destinations/salo-mathildedal";
+    return `/destinations/salo-mathildedal${suffix}`;
   }
-  return value;
+  return `${path}${suffix}`;
 }
 
 type Slide = {
