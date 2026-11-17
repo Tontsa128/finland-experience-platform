@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { firstInvalidHomepageSlideIndex, getHomepageSlideValidationErrors } from "@/lib/homepage-slide-validation";
+import { firstInvalidHomepageSlideIndex, getHomepageSlideValidationErrors } from "../../lib/homepage-slide-validation";
 
 const validSlide = {
   enabled: true,
