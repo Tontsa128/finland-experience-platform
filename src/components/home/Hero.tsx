@@ -144,7 +144,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   fi: {
     spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kukkivat valkovuokot ja raikas kevätilma kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
     autumn: { eyebrow: "Syksy Nauvon saaristossa", title: "Nauvon kirkonkylä syksyn väreissä", text: "Ilmakuva näyttää Kyrkbackenin kylän syksyisenä kokonaisuutena, kun puiden ruska värittää saaristomaisemaa.", cta: "Tutustu saaristoon" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Löydä rannikon rauhalliset reitit ja merimaisemat", text: "Pienet sillat, rantakalliot ja saaristotiet johdattavat pois kiireestä Suomen rannikon maisemiin.", cta: "Tutustu kohteisiin" },
+    summer: { eyebrow: "Suomen luonnon rauha", title: "Löydä paikkoja, joihin et ehkä muuten päätyisi", text: "Järvimaisemat, idylliset kylät, metsät ja saariston tiet kutsuvat löytöretkelle ympäri Suomen.", cta: "Tutustu kohteisiin" },
     cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Kesämökki, järvi, laituri ja sauna tekevät kiireettömästä päivästä osan Suomen matkaa.", cta: "Katso majoituksia" },
     archipelago: { eyebrow: "Turun saaristo", title: "Pieni puutalo saariston keskellä", text: "Saaristomaisemaan asettuva puutalo kertoo elävästä saaristosta ja sen rauhallisesta arjesta.", cta: "Tutustu saaristoon" },
     hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Meri, rannat ja historiallinen Hanko", text: "Itämeren rannikko, hiekkarannat ja historiallinen puukaupunki tekevät Hangosta merellisen kohteen ympäri vuoden.", cta: "Tutustu Hankoon" },
@@ -157,7 +157,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   es: {
     spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, anémonas de bosque en flor y aire fresco de primavera invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
     autumn: { eyebrow: "Otoño en el archipiélago de Nagu", title: "El pueblo de Nagu bajo los colores del otoño", text: "La vista aérea muestra Kyrkbacken en otoño, con los colores de los árboles transformando el paisaje del archipiélago.", cta: "Explorar el archipiélago" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Descubre rutas tranquilas y paisajes costeros", text: "Pequeños puentes, rocas junto al mar y carreteras entre islas te alejan de las prisas y te acercan a la costa finlandesa.", cta: "Explorar destinos" },
+    summer: { eyebrow: "La tranquilidad de Finlandia", title: "Descubre lugares que quizá nunca encontrarías", text: "Lagos, pueblos idílicos, bosques y caminos entre islas te invitan a explorar Finlandia.", cta: "Explorar destinos" },
     cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Cabaña de verano, lago, embarcadero y sauna para disfrutar Finlandia sin prisas.", cta: "Ver alojamientos" },
     archipelago: { eyebrow: "Archipiélago de Turku", title: "Una pequeña casa de madera entre las islas", text: "Una casa de madera en el archipiélago muestra el carácter habitado y tranquilo de las islas finlandesas.", cta: "Explorar el archipiélago" },
     hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Mar, playas y un casco histórico junto al mar", text: "El Báltico, las playas de arena y las calles históricas de madera dan a Hanko un ambiente costero durante todo el año.", cta: "Explorar Hanko" },
@@ -170,7 +170,7 @@ const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
   en: {
     spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, blooming wood anemones and crisp spring air invite you outdoors.", cta: "Explore spring destinations" },
     autumn: { eyebrow: "Autumn in the Nagu archipelago", title: "Nagu village in its autumn colours", text: "The aerial view shows Kyrkbacken in autumn, with colourful foliage transforming the archipelago landscape.", cta: "Explore the archipelago" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Find quiet coastal routes and sea views", text: "Small bridges, rocky shores and island roads lead away from the rush and into Finland’s coastal landscapes.", cta: "Explore destinations" },
+    summer: { eyebrow: "The quiet side of Finland", title: "Find places you might never discover otherwise", text: "Lake views, idyllic villages, forests and island roads invite you to explore all of Finland.", cta: "Explore destinations" },
     cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A summer cottage, lake, jetty and sauna turn a quiet day into part of the journey.", cta: "See stays" },
     archipelago: { eyebrow: "Turku Archipelago", title: "A small wooden house among the islands", text: "A wooden house in the archipelago captures the lived-in, peaceful character of Finland’s island communities.", cta: "Explore the archipelago" },
     hanko: { eyebrow: "Hanko · Finland's southern coast", title: "The sea, beaches and historic Hanko", text: "The Baltic Sea, sandy beaches and historic wooden streets give Hanko a distinctive coastal atmosphere throughout the year.", cta: "Explore Hanko" },
@@ -316,12 +316,13 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17261a]/82 via-[#17261a]/42 to-[#17261a]/12" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17261a]/48 via-[#17261a]/18 to-transparent" />
 
-      <div className="relative z-10 flex min-h-[62svh] items-end pb-6 pt-[22svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
+      <div className="relative z-10 flex min-h-[390px] items-end pb-7 pt-28 sm:min-h-[450px] sm:pb-9 sm:pt-28 lg:min-h-[500px] lg:pb-12 lg:pt-28">
         <div className="container-narrow w-full">
           <div key={slide.key} className="max-w-4xl">
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
-            <h1 className="max-w-4xl font-display text-[clamp(2rem,8vw,3.4rem)] font-bold leading-[1.04] tracking-[-.03em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-6xl sm:leading-[.96] lg:text-[5.4rem]">{text.title}</h1>
-            <p className="mt-3 max-w-[48ch] text-base leading-6 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)] sm:mt-6 sm:max-w-2xl sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
+            <h1 className="max-w-4xl font-display text-[clamp(2.1rem,7vw,4.6rem)] font-bold leading-[1.02] tracking-[-.035em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">{locale === "fi" ? "Löydä Suomen salaiset helmet" : locale === "es" ? "Descubre los tesoros ocultos de Finlandia" : "Discover Finland’s hidden gems"}</h1>
+            <p className="mb-2 mt-3 text-[10px] text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
+            <h2 className="max-w-3xl font-display text-xl font-bold leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-2xl lg:text-3xl">{text.title}</h2>
+            <p className="mt-2 max-w-[48ch] text-sm leading-6 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)] sm:mt-3 sm:max-w-2xl sm:text-base sm:leading-7 lg:text-lg lg:leading-8">{text.text}</p>
           </div>
         </div>
       </div>
