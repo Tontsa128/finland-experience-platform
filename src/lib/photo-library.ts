@@ -40,7 +40,7 @@ export const photoLibrary = {
   naturaVivaTeijo: "https://cdn.johku.com/naturaviva/largefiles/676/webp/teijo-national-park-rental-shop.webp",
   pumpkinWeeks: "https://visitsalo.fi/wp-content/uploads/sites/2/2025/08/Kurpitsapuistossa-pyoraileva-luuranko-450x253.jpg",
   mathildedalChristmas: "https://visitmathildedal.fi/sites/default/files/galleriakuvat/2026/valimo.jpg",
-  matildanKesakauppa: "https://visitmathildedal.fi/sites/default/files/styles/390_s_c/public/listauskuvat/kesakauppa.png?itok=8IAi9w4T",
+  matildanKesakauppa: "https://static.wixstatic.com/media/684b51_bf257045a9ee49d0aca3cccda11f6ed8~mv2.jpeg/v1/fill/w_163%2Ch_118%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/684b51_bf257045a9ee49d0aca3cccda11f6ed8~mv2.jpeg",
   rosalaVikingCentre: "https://cdn.johku.com/rosala/largefiles/577.jpg",
   rosalaVikingHall: "https://cdn.johku.com/rosala/largefiles/44-RVC%20hallen%20forneldar%202017.jpg",
 } as const;
@@ -79,7 +79,7 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.naturaVivaTeijo, credit: "Natura Viva", license: "Provider website image", sourcePage: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop" },
   { url: photoLibrary.pumpkinWeeks, credit: "Visit Salo / Kurpitsaviikot", license: "Visit Salo website image", sourcePage: "https://visitsalo.fi/kurpitsaviikot/" },
   { url: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://visitmathildedal.fi/fi/valimo" },
-  { url: photoLibrary.matildanKesakauppa, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://visitmathildedal.fi/fi/ostokset" },
+  { url: photoLibrary.matildanKesakauppa, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://www.visitteijo.com/puodit" },
   { url: photoLibrary.rosalaVikingCentre, credit: "Rosala & Bengtskär Booking Office / Rosala Viking Centre", license: "Provider/partner image", sourcePage: "https://rosala.johku.com/fi_FI/tietoa-varaustoimistosta" },
   { url: photoLibrary.rosalaVikingHall, credit: "Rosala & Bengtskär Booking Office / Rosala Viking Centre", license: "Provider/partner image", sourcePage: "https://rosala.johku.com/fi_FI/tietoa-varaustoimistosta" },
 ];
