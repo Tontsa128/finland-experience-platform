@@ -634,12 +634,10 @@ export async function getActiveAdCampaigns(
       .eq("status", "approved")
       .eq("placement", placement)
       .eq("region", region)
-      .or(`starts_at.is.null,starts_at.lte.${now}`)
-      .or(`ends_at.is.null,ends_at.gte.${now}`)
       .order("created_at", { ascending: false });
     if (error || !data?.length) return [];
 
-    return data.flatMap((row) => {
+    return data.filter((row) => (!row.starts_at || row.starts_at <= now) && (!row.ends_at || row.ends_at >= now)).flatMap((row) => {
       const slides = Array.isArray(row.slides) ? row.slides : [];
       if (slides.length < 3 || slides.length > 5 || !isSafeUrlOrPath(row.provider_url)) return [];
       const cleanSlides = slides.flatMap((item) => {
