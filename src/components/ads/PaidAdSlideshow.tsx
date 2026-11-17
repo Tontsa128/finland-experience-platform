@@ -18,7 +18,8 @@ function CampaignSlideshow({ campaign, locale }: { campaign: PaidAdCampaign; loc
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(false);
-  const articleRef = useRef<HTMLElement | null>(null);\n  const touchStartX = useRef<number | null>(null);
+  const articleRef = useRef<HTMLElement | null>(null);
+  const touchStartX = useRef<number | null>(null);
   const slide = campaign.slides[index] as PaidAdSlide;
   const labels = {
     fi: { sponsored: "Mainos · Yhteistyökumppani", pause: "Keskeytä diaesitys", play: "Jatka diaesitystä", previous: "Edellinen mainosdia", next: "Seuraava mainosdia", of: " / " },
