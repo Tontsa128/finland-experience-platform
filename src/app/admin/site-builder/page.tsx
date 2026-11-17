@@ -34,7 +34,8 @@ export default function SiteBuilder(){
  async function saveSlides(){
   setError("");setNotice("");
   const incompleteIndex=slides.findIndex(slide=>slide.enabled!==false&&(
-   !isSecureImageUrl(slide.imageUrl.trim())||\n   Boolean(brokenSlideImages[slide.id])||
+   !isSecureImageUrl(slide.imageUrl.trim())||
+   Boolean(brokenSlideImages[slide.id])||
    !isSafeSlideLink(slide.href)||
    (Boolean(slide.creditUrl?.trim())&&!isSafeSlideLink(slide.creditUrl||""))||
    locales.some(([language])=>{
