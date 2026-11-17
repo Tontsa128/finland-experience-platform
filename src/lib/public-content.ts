@@ -634,7 +634,8 @@ export async function getActiveAdCampaigns(
       .eq("status", "approved")
       .eq("placement", placement)
       .eq("region", region)
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: false })
+      .limit(3);
     if (error || !data?.length) return [];
 
     return data.filter((row) => (!row.starts_at || row.starts_at <= now) && (!row.ends_at || row.ends_at >= now)).flatMap((row) => {
