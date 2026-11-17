@@ -17,7 +17,7 @@
 ## Current PR implementation
 1. Localized interactive map at `/[locale]/map` with Salo, Perniö, Mathildedal and Teijo plus Turku/Helsinki reference points.
 2. Discovery link from the destination directory to the map.
-3. Additive Supabase migration `0047_paid_advertising.sql` for separate paid campaigns and event metrics.
+3. Additive Supabase migration `20261117093000_paid_advertising.sql` for separate paid campaigns and event metrics.
 4. Paid slideshow component with 3–5 localized slides, 5/6/7-second timing, pause/manual controls, reduced-motion support, no audio, sponsored labeling and outbound links.
 5. Display placements on the homepage, map, destination directory, accommodation directory and experience directory.
 6. CMS campaign editor at `/admin/ad-campaigns`, linked from the existing CMS. Uses the existing media library and supports monthly/campaign billing models, scheduling, region/placement, drafts, approval and archive.
@@ -26,7 +26,7 @@
 
 ## Remaining work before production
 - Run and pass lint, TypeScript, unit tests and production build on the final PR head.
-- Apply migration `0047_paid_advertising.sql` to the connected Supabase project only after review/approval.
+- Apply migration `20261117093000_paid_advertising.sql` to the connected Supabase project only after review/approval.
 - Test all three locales, desktop/mobile image crops, keyboard controls, reduced motion, campaign scheduling and role permissions.
 - Verify that campaign images are selected from the existing CMS media library and that all links lead to the intended provider.
 - Validate analytics against actual rendered views and clicks; event click rate is not a unique-user conversion rate.
