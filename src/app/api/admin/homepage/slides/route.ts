@@ -1,32 +1,16 @@
 import { NextRequest,NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getAdminContext } from "@/lib/admin-auth";
+import { firstInvalidHomepageSlideIndex } from "@/lib/homepage-slide-validation";
 export const dynamic="force-dynamic";
 const locales=["fi","en","es"] as const;
 function canReadSlides(role:string){return ["SUPER_ADMIN","ADMIN","CONTENT_MANAGER","BOOKING_MANAGER","EDITOR"].includes(role)}
 function canWriteSlides(role:string){return ["SUPER_ADMIN","ADMIN","CONTENT_MANAGER","BOOKING_MANAGER"].includes(role)}
 async function readGuard(){const a=await getAdminContext();return a&&canReadSlides(a.profile.role)?a:null}
 async function writeGuard(){const a=await getAdminContext();return a&&canWriteSlides(a.profile.role)?a:null}
-function isSafeSlideLink(value:string){
- const url=value.trim();
- if(url.startsWith("/")&&!url.startsWith("//"))return true;
- try{return new URL(url).protocol==="https:";}catch{return false;}
-}
-function isHttpsImageUrl(value:string){
- try{const url=new URL(value);return url.protocol==="https:"&&Boolean(url.hostname);}catch{return false;}
-}
-function validateSlides(slides:any[]){
- return slides.findIndex(slide=>slide.enabled!==false&&(
-  !isHttpsImageUrl(slide.imageUrl)||
-  slide.imageReviewed!==true||
-  !isSafeSlideLink(slide.href)||
-  (Boolean(slide.creditUrl?.trim())&&!isSafeSlideLink(slide.creditUrl))||
-  locales.some(locale=>!slide.copy?.[locale]?.title?.trim()||!slide.copy?.[locale]?.text?.trim()||!slide.copy?.[locale]?.cta?.trim())
- ));
-}
 function clean(v:any){
  if(!Array.isArray(v))return [];
  return v.slice(0,30).map((r:any,i:number)=>({id:String(r?.id||crypto.randomUUID()),imageUrl:String(r?.imageUrl||"").trim(),credit:String(r?.credit||"").slice(0,300),creditUrl:String(r?.creditUrl||"").slice(0,500),href:String(r?.href||"/destinations"),external:Boolean(r?.external),sortOrder:i,durationMs:Math.max(1500,Math.min(20000,Number(r?.durationMs||3000))),enabled:r?.enabled!==false,imageReviewed:r?.imageReviewed===true,copy:Object.fromEntries(locales.map(l=>[l,{eyebrow:String(r?.copy?.[l]?.eyebrow||"").slice(0,300),title:String(r?.copy?.[l]?.title||"").slice(0,300),text:String(r?.copy?.[l]?.text||"").slice(0,2000),cta:String(r?.copy?.[l]?.cta||"").slice(0,200)}]))})).filter((r:any)=>r.imageUrl);
 }
 export async function GET(){const a=await readGuard();if(!a)return NextResponse.json({error:"Forbidden"},{status:403});const {data,error}=await supabaseAdmin.from("site_settings").select("homepage_slides").eq("singleton",true).maybeSingle();if(error)return NextResponse.json({error:error.message},{status:500});return NextResponse.json({slides:Array.isArray(data?.homepage_slides)?data.homepage_slides:[]})}
-export async function PUT(req:NextRequest){const a=await writeGuard();if(!a)return NextResponse.json({error:"Forbidden"},{status:403});try{const slides=clean((await req.json())?.slides);const invalidIndex=validateSlides(slides);if(invalidIndex>=0)return NextResponse.json({error:`Dia ${invalidIndex+1}: kuvan, tekstien, linkkien ja kuvan tarkistuksen pitää olla kunnossa ennen tallennusta.`},{status:400});const {data,error}=await supabaseAdmin.from("site_settings").upsert({singleton:true,homepage_slides:slides,updated_at:new Date().toISOString()},{onConflict:"singleton"}).select("homepage_slides").single();if(error)return NextResponse.json({error:error.message},{status:400});await supabaseAdmin.from("cms_revisions").insert({entity_type:"homepage_slides",entity_id:"singleton",payload:{slides},created_by:a.user.id});return NextResponse.json({slides:data?.homepage_slides||slides})}catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Virhe"},{status:400})}}
+export async function PUT(req:NextRequest){const a=await writeGuard();if(!a)return NextResponse.json({error:"Forbidden"},{status:403});try{const slides=clean((await req.json())?.slides);const invalidIndex=firstInvalidHomepageSlideIndex(slides);if(invalidIndex>=0)return NextResponse.json({error:`Dia ${invalidIndex+1}: kuvan, tekstien, linkkien ja kuvan tarkistuksen pitää olla kunnossa ennen tallennusta.`},{status:400});const {data,error}=await supabaseAdmin.from("site_settings").upsert({singleton:true,homepage_slides:slides,updated_at:new Date().toISOString()},{onConflict:"singleton"}).select("homepage_slides").single();if(error)return NextResponse.json({error:error.message},{status:400});await supabaseAdmin.from("cms_revisions").insert({entity_type:"homepage_slides",entity_id:"singleton",payload:{slides},created_by:a.user.id});return NextResponse.json({slides:data?.homepage_slides||slides})}catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Virhe"},{status:400})}}
