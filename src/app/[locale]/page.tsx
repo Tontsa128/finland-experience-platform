@@ -183,7 +183,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?palvelut=hiking`, image: uniqueHomepageImage([photoLibrary.teijoNationalPark]), icon: TreePine },
     { title: t.categories[4], subtitle: t.categorySub[4], href: `/${locale}/search?palvelut=sauna`, image: uniqueHomepageImage([photoLibrary.herrankukkaroSauna, photoLibrary.saunaTraditionalSmoke]), icon: Flame },
     { title: t.categories[5], subtitle: t.categorySub[5], href: `/${locale}/search?palvelut=culture`, image: uniqueHomepageImage([photoLibrary.rosalaVikingCentre]), icon: Landmark },
-    { title: t.categories[6], subtitle: t.categorySub[6], href: `/${locale}/search?palvelut=shopping`, image: uniqueHomepageImage([photoLibrary.mathildedalVillage]), icon: ShoppingBag },
+    { title: t.categories[6], subtitle: t.categorySub[6], href: `/${locale}/search?palvelut=shopping`, image: uniqueHomepageImage([photoLibrary.matildanKesakauppa]), icon: ShoppingBag },
     { title: t.categories[7], subtitle: t.categorySub[7], href: `/${locale}/search?type=event`, image: uniqueHomepageImage([photoLibrary.pumpkinWeeks]), icon: CalendarDays },
   ];
 
@@ -234,13 +234,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <section className="container-narrow py-8 sm:py-10">
         <div className="grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          {categoryCards.map(({ title, subtitle, href, image, icon: Icon }) => (
-            <Link key={title} href={href} className="group relative isolate flex min-h-40 min-w-0 max-w-full overflow-hidden rounded-2xl bg-brand-950 text-white shadow-soft transition hover:-translate-y-1 hover:shadow-card sm:min-h-48">
-              <Image src={image} alt={title} fill sizes="(max-width:640px) 50vw,25vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
-              <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/15 to-black/5" />
-              <span className="mt-auto w-full p-4 sm:p-5"><Icon className="mb-3 h-6 w-6" /><span className="block break-words font-display text-base font-bold leading-tight sm:text-xl">{title}</span><span className="mt-1 block break-words text-xs leading-snug text-white/85">{subtitle}</span></span>
-            </Link>
-          ))}
+          {categoryCards.map(({ title, subtitle, href, image, icon: Icon }) => {
+            const photo = getHomepagePhotoCredit(image);
+            const usageNote = getHomepagePhotoUsageNote(photo, locale);
+            return (
+              <article key={title} className="min-w-0 overflow-hidden rounded-2xl bg-white shadow-soft">
+                <Link href={href} className="group relative isolate flex min-h-40 min-w-0 max-w-full overflow-hidden rounded-2xl bg-brand-950 text-white transition hover:-translate-y-1 hover:shadow-card sm:min-h-48">
+                  <Image src={image} alt={title} fill sizes="(max-width:640px) 50vw,25vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
+                  <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/15 to-black/5" />
+                  <span className="mt-auto w-full p-4 sm:p-5"><Icon className="mb-3 h-6 w-6" /><span className="block break-words font-display text-base font-bold leading-tight sm:text-xl">{title}</span><span className="mt-1 block break-words text-xs leading-snug text-white/85">{subtitle}</span></span>
+                </Link>
+                {photo && <div className="flex items-center justify-between gap-2 px-3 py-2 text-[10px] leading-4 text-slate-500"><span>{photo.credit} · {usageNote}</span><a href={photo.sourcePage} target="_blank" rel="noopener noreferrer" className="shrink-0 font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-950">{t.imageSourceLabel}</a></div>}
+              </article>
+            );
+          })}
         </div>
       </section>
 
