@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/types";
 import type { PaidAdCampaign, PaidAdSlide } from "@/lib/public-content";
 
@@ -17,6 +17,8 @@ function track(campaignId: string, event: "impression" | "click", locale: Locale
 function CampaignSlideshow({ campaign, locale }: { campaign: PaidAdCampaign; locale: Locale }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const articleRef = useRef<HTMLElement | null>(null);
   const slide = campaign.slides[index] as PaidAdSlide;
   const labels = {
     fi: { sponsored: "Mainos · Yhteistyökumppani", pause: "Keskeytä diaesitys", play: "Jatka diaesitystä", previous: "Edellinen mainosdia", next: "Seuraava mainosdia", of: " / " },
@@ -26,22 +28,27 @@ function CampaignSlideshow({ campaign, locale }: { campaign: PaidAdCampaign; loc
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setPaused(true);
+    const element = articleRef.current;
+    if (!element) return;
+    const observer = new IntersectionObserver((entries) => setVisible(Boolean(entries[0]?.isIntersecting)), { threshold: 0.5 });
+    observer.observe(element);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    if (paused || campaign.slides.length < 2) return;
+    if (paused || !visible || campaign.slides.length < 2) return;
     const timer = window.setInterval(() => setIndex((current) => (current + 1) % campaign.slides.length), campaign.slideIntervalMs);
     return () => window.clearInterval(timer);
-  }, [campaign.id, campaign.slideIntervalMs, campaign.slides.length, paused]);
+  }, [campaign.id, campaign.slideIntervalMs, campaign.slides.length, paused, visible]);
 
   useEffect(() => {
-    track(campaign.id, "impression", locale, campaign.placement, index);
-  }, [campaign.id, campaign.placement, index, locale]);
+    if (visible) track(campaign.id, "impression", locale, campaign.placement, index);
+  }, [campaign.id, campaign.placement, index, locale, visible]);
 
   const move = (direction: -1 | 1) => setIndex((current) => (current + direction + campaign.slides.length) % campaign.slides.length);
   const external = /^https?:\/\//i.test(slide.href);
   return (
-    <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-soft">
+    <article ref={articleRef} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-soft">
       <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-5">
         <p className="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">{labels.sponsored}</p>
         <span className="text-xs font-semibold text-slate-500">{campaign.advertiserName}</span>
