@@ -5,6 +5,7 @@ import { ArrowRight, Camera, Compass, Utensils, Waves, BedDouble, MapPin, Sparkl
 import { Hero } from "@/components/home/Hero";
 import { VisitorCounter } from "@/components/home/VisitorCounter";
 import TravelAdvisor from "@/components/TravelAdvisor";
+import PaidAdSlideshow from "@/components/ads/PaidAdSlideshow";
 import { destinations, cabins, experiences } from "@/lib/data";
 import { photoLibrary } from "@/lib/photo-library";
 import { getHomepagePhotoCredit, getHomepagePhotoUsageNote } from "@/lib/homepage-destination-features";
@@ -13,6 +14,7 @@ import {
   getPublishedDestinations,
   getPublishedProperties,
   getPublishedExperiences,
+  getActiveAdCampaigns,
 } from "@/lib/public-content";
 
 type Locale = "fi" | "es" | "en";
@@ -116,11 +118,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const locale = (["fi", "es", "en"].includes(rawLocale) ? rawLocale : "fi") as Locale;
   setRequestLocale(locale);
 
-  const [homepage, cmsDestinations, cmsCabins, cmsExperiences] = await Promise.all([
+  const [homepage, cmsDestinations, cmsCabins, cmsExperiences, paidAdCampaigns] = await Promise.all([
     getHomepageSettings(),
     getPublishedDestinations(),
     getPublishedProperties(),
     getPublishedExperiences(),
+    getActiveAdCampaigns("homepage", "southwest_finland"),
   ]);
 
   // Prefer published CMS records. Curated local records remain the safe fallback
@@ -190,6 +193,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <VisitorCounter locale={locale} />
       <Hero settings={homepage} />
+      <PaidAdSlideshow campaigns={paidAdCampaigns} locale={locale} />
 
       <section className="relative z-20 isolate mx-auto w-full min-w-0 max-w-6xl overflow-x-clip px-4 pt-10 pb-8 sm:pt-16 sm:pb-10">
         <form action={`/${locale}/search`} method="GET" className="grid w-full min-w-0 gap-2 overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_14px_45px_rgba(20,45,35,.16)] sm:grid-cols-[minmax(0,1fr)_190px_190px_auto] sm:items-center sm:rounded-full sm:p-2">
