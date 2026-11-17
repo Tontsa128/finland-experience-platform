@@ -22,16 +22,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!locales.includes(locale)) return {};
   const copy = {
     fi: {
-      title: "Suomen rannikko, saaristo ja elämykset | Finland Experience",
-      description: "Löydä suomalaiset rannikkokohteet, mökit, saaristo, sauna, luonto ja paikalliset elämykset ympäri vuoden.",
+      title: "Löydä Suomen salaiset helmet | Finland Experience",
+      description: "Löydä Suomen idylliset kohteet, majoitukset, saunat, paikalliset maut, luontoelämykset ja tapahtumat ympäri vuoden.",
     },
     es: {
-      title: "Viajes a Finlandia | Costa, archipiélago y experiencias",
-      description: "Descubre la costa finlandesa, cabañas, archipiélago, saunas, naturaleza y experiencias locales durante todo el año.",
+      title: "Descubre los tesoros ocultos de Finlandia | Finland Experience",
+      description: "Descubre pueblos idílicos, alojamientos, saunas, gastronomía local, naturaleza y experiencias por toda Finlandia.",
     },
     en: {
-      title: "Finland Travel | Coast, Archipelago and Experiences",
-      description: "Discover Finland’s coast, cabins, archipelago, sauna, nature and authentic local experiences all year round.",
+      title: "Discover Finland’s Hidden Gems | Finland Experience",
+      description: "Discover idyllic villages, stays, saunas, local food, nature experiences and events across Finland."
     },
   }[locale];
   return buildLocalizedMetadata({ locale, title: copy.title, description: copy.description });
