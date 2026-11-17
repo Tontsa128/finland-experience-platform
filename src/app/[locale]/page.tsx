@@ -222,9 +222,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         {quickSearches[locale].map((item) => <Link key={item.label} href={`/${locale}${item.href}`} className="inline-flex min-h-10 items-center rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-900 transition hover:border-brand-700 hover:bg-brand-50">{item.label}</Link>)}
       </nav>
 
-      <section className="container-narrow pb-7 sm:pb-9" aria-label={locale === "fi" ? "Esittelyssä olevat kumppanit" : locale === "es" ? "Socios destacados" : "Featured partners"}>
-        <PaidAdSlideshow campaigns={paidAdCampaigns} locale={locale} />
-      </section>
+      {paidAdCampaigns.length > 0 && (
+        <section className="container-narrow pb-7 sm:pb-9" aria-label={locale === "fi" ? "Esittelyssä olevat kumppanit" : locale === "es" ? "Socios destacados" : "Featured partners"}>
+          <PaidAdSlideshow campaigns={paidAdCampaigns} locale={locale} />
+        </section>
+      )}
 
       <section className="container-narrow py-8 sm:py-10">
         <div className="grid min-w-0 grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
