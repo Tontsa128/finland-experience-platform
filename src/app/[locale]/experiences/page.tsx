@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { getPublishedExperiences } from "@/lib/public-content";
+import { getPublishedExperiences, getActiveAdCampaigns } from "@/lib/public-content";
+import PaidAdSlideshow from "@/components/ads/PaidAdSlideshow";
 import ExperienceDirectory from "@/components/experiences/ExperienceDirectory";
 
 export const revalidate = 60;
@@ -20,7 +21,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ExperiencesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
-  const cmsExperiences = await getPublishedExperiences();
+  const [cmsExperiences, paidAdCampaigns] = await Promise.all([
+    getPublishedExperiences(),
+    getActiveAdCampaigns("category", "southwest_finland"),
+  ]);
   const experiences = cmsExperiences;
 
   const itemListSchema = {
@@ -39,6 +43,7 @@ export default async function ExperiencesPage({ params }: { params: Promise<{ lo
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <ExperienceDirectory experiences={experiences} locale={locale} />
+      <PaidAdSlideshow campaigns={paidAdCampaigns} locale={locale} />
     </>
   );
 }
