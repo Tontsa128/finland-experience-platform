@@ -12,9 +12,12 @@ function isSafeSlideLink(value:string){
  if(url.startsWith("/")&&!url.startsWith("//"))return true;
  try{return new URL(url).protocol==="https:";}catch{return false;}
 }
+function isHttpsImageUrl(value:string){
+ try{const url=new URL(value);return url.protocol==="https:"&&Boolean(url.hostname);}catch{return false;}
+}
 function validateSlides(slides:any[]){
  return slides.findIndex(slide=>slide.enabled!==false&&(
-  !/^https:\/\//i.test(slide.imageUrl)||
+  !isHttpsImageUrl(slide.imageUrl)||
   slide.imageReviewed!==true||
   !isSafeSlideLink(slide.href)||
   (Boolean(slide.creditUrl?.trim())&&!isSafeSlideLink(slide.creditUrl))||
