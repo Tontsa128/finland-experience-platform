@@ -26,8 +26,9 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
     ["plan", "plan"], ["sauna", "sauna"], ["blog", "blog"], ["contact", "contact"],
   ] as const;
   const baseItems = navigation.length ? navigation.map((item) => [item.id, item.href] as const) : fallbackItems;
-  const items = baseItems.some(([key]) => key === "home") ? baseItems : [["home", ""] as const, ...baseItems];
-  const desktopOrder = ["home", "destinations", "experiences", "events", "coastalFinland"];
+  const withMap = baseItems.some(([key]) => key === "map") ? baseItems : [...baseItems.slice(0, 2), ["map", "map"] as const, ...baseItems.slice(2)];
+  const items = withMap.some(([key]) => key === "home") ? withMap : [["home", ""] as const, ...withMap];
+  const desktopOrder = ["home", "destinations", "map", "experiences", "events", "coastalFinland"];
   const desktopItems = desktopOrder.flatMap((key) => {
     const item = items.find(([id]) => id === key);
     return item ? [item] : [];
@@ -49,6 +50,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
     return `/${targetLocale}${withoutLocale || ""}`;
   };
   const labelFor = (key: string) => {
+    if (key === "map") return locale === "fi" ? "Kartta" : locale === "es" ? "Mapa" : "Map";
     const translatedKeys = new Set(["home", "destinations", "accommodations", "experiences", "sauna", "plan", "coastalFinland", "blog", "contact", "events"]);
     return translatedKeys.has(key) ? t(key) : labels.get(key) || key;
   };

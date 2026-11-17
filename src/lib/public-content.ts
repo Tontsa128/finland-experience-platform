@@ -593,3 +593,85 @@ export async function getActiveBanners(locale: Locale): Promise<SiteBanner[]> {
     }));
   } catch { return []; }
 }
+
+export type PaidAdSlide = {
+  imageUrl: string;
+  href: string;
+  title: Record<Locale, string>;
+  text: Record<Locale, string>;
+  ctaLabel: Record<Locale, string>;
+  alt: Record<Locale, string>;
+};
+export type PaidAdCampaign = {
+  id: string;
+  campaignName: string;
+  advertiserName: string;
+  providerUrl: string;
+  placement: "homepage" | "map" | "directory" | "category";
+  region: string;
+  slideIntervalMs: number;
+  slides: PaidAdSlide[];
+};
+
+function localizedAdCopy(value: unknown): Record<Locale, string> {
+  const source = value && typeof value === "object" ? value as Record<string, unknown> : {};
+  return {
+    fi: typeof source.fi === "string" ? source.fi.trim() : "",
+    es: typeof source.es === "string" ? source.es.trim() : "",
+    en: typeof source.en === "string" ? source.en.trim() : "",
+  };
+}
+
+export async function getActiveAdCampaigns(
+  placement: PaidAdCampaign["placement"],
+  region = "southwest_finland",
+): Promise<PaidAdCampaign[]> {
+  try {
+    const now = new Date().toISOString();
+    const { data, error } = await supabaseAdmin
+      .from("ad_campaigns")
+      .select("id,campaign_name,advertiser_name,provider_url,placement,region,slide_interval_ms,slides,starts_at,ends_at")
+      .eq("status", "approved")
+      .eq("placement", placement)
+      .eq("region", region)
+      .order("created_at", { ascending: false });
+    if (error || !data?.length) return [];
+
+    // Filter the schedule before limiting the visible campaigns. Limiting the
+    // database query first could hide an older campaign that is still active
+    // behind newer drafts that have already expired.
+    const activeCampaigns = data.filter(
+      (row) => (!row.starts_at || row.starts_at <= now) && (!row.ends_at || row.ends_at >= now),
+    ).flatMap((row) => {
+      const slides = Array.isArray(row.slides) ? row.slides : [];
+      if (slides.length < 3 || slides.length > 5 || !isSafeUrlOrPath(row.provider_url)) return [];
+      const cleanSlides = slides.flatMap((item) => {
+        if (!item || typeof item !== "object") return [];
+        const slide = item as Record<string, unknown>;
+        if (typeof slide.imageUrl !== "string" || !isSafeUrlOrPath(slide.imageUrl)) return [];
+        const href = typeof slide.href === "string" && isSafeUrlOrPath(slide.href) ? slide.href : row.provider_url;
+        const title = localizedAdCopy(slide.title);
+        const text = localizedAdCopy(slide.text);
+        const ctaLabel = localizedAdCopy(slide.ctaLabel);
+        const alt = localizedAdCopy(slide.alt);
+        if (!title.fi || !title.es || !title.en) return [];
+        return [{ imageUrl: slide.imageUrl.trim(), href, title, text, ctaLabel, alt }];
+      });
+      if (cleanSlides.length !== slides.length) return [];
+      return [{
+        id: String(row.id),
+        campaignName: String(row.campaign_name),
+        advertiserName: String(row.advertiser_name),
+        providerUrl: row.provider_url.trim(),
+        placement: row.placement as PaidAdCampaign["placement"],
+        region: String(row.region),
+        slideIntervalMs: Math.max(5000, Math.min(7000, Number(row.slide_interval_ms) || 6000)),
+        slides: cleanSlides,
+      }];
+    });
+
+    return activeCampaigns.slice(0, 3);
+  } catch {
+    return [];
+  }
+}

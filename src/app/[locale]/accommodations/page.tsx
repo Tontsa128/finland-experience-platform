@@ -3,12 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { cabins as fallbackCabins } from "@/lib/data";
-import { getPublishedProperties } from "@/lib/public-content";
+import { getPublishedProperties, getActiveAdCampaigns } from "@/lib/public-content";
 import { CabinCard } from "@/components/ui/CabinCard";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata, siteUrl } from "@/lib/seo";
 import { photoLibrary } from "@/lib/photo-library";
 import { SaloDirectory } from "@/components/salo/SaloDirectory";
+import PaidAdSlideshow from "@/components/ads/PaidAdSlideshow";
 
 const copy = {
   fi: {
@@ -63,7 +64,10 @@ export default async function AccommodationsPage({ params }: { params: Promise<{
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
   const c = copy[locale] || copy.en;
-  const cmsCabins = await getPublishedProperties();
+  const [cmsCabins, paidAdCampaigns] = await Promise.all([
+    getPublishedProperties(),
+    getActiveAdCampaigns("category", "southwest_finland"),
+  ]);
   const cabins = cmsCabins.length ? cmsCabins : fallbackCabins;
 
   const jsonLd = {
@@ -128,6 +132,8 @@ export default async function AccommodationsPage({ params }: { params: Promise<{
           </div>
         )}
       </section>
+
+      <PaidAdSlideshow campaigns={paidAdCampaigns} locale={locale} />
 
       <SaloDirectory locale={locale} category="stay" />
 

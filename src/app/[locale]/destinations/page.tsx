@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { destinations as fallbackDestinations, getLocalized } from "@/lib/data";
-import { getPublishedDestinations } from "@/lib/public-content";
+import { getPublishedDestinations, getActiveAdCampaigns } from "@/lib/public-content";
+import PaidAdSlideshow from "@/components/ads/PaidAdSlideshow";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -23,7 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function DestinationsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = rawLocale as Locale;
-  const cmsDestinations = await getPublishedDestinations();
+  const [cmsDestinations, paidAdCampaigns] = await Promise.all([
+    getPublishedDestinations(),
+    getActiveAdCampaigns("directory", "southwest_finland"),
+  ]);
   const destinations = cmsDestinations.length ? cmsDestinations : fallbackDestinations;
 
   const itemListSchema = {
@@ -58,6 +62,18 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
           </Link>
         </div>
       </section>
+
+      <section className="container-narrow pt-10">
+        <Link href={`/${locale}/map`} className="group flex flex-col gap-4 overflow-hidden rounded-3xl border border-brand-100 bg-brand-50 p-6 transition hover:border-brand-300 hover:shadow-soft sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[.18em] text-terracotta">{locale === "fi" ? "Tutustu kartalla" : locale === "es" ? "Explora el mapa" : "Explore on the map"}</p>
+            <h2 className="mt-2 font-display text-2xl font-bold text-brand-950 sm:text-3xl">{locale === "fi" ? "Löydä, missä Suomen rannikon kohteet sijaitsevat." : locale === "es" ? "Descubre dónde se encuentran los destinos de la costa finlandesa." : "See where Finland’s coastal destinations are located."}</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{locale === "fi" ? "Aloita Salosta, Perniöstä, Mathildedalista ja Teijosta." : locale === "es" ? "Empieza por Salo, Perniö, Mathildedal y Teijo." : "Start with Salo, Perniö, Mathildedal and Teijo."}</p>
+          </div>
+          <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-brand-950 px-5 py-3 text-sm font-bold text-white">{locale === "fi" ? "Avaa kartta" : locale === "es" ? "Abrir mapa" : "Open map"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+        </Link>
+      </section>
+      <PaidAdSlideshow campaigns={paidAdCampaigns} locale={locale} />
 
       <section className="container-narrow py-14 sm:py-20">
         <div className="mb-10 flex items-end justify-between gap-5">

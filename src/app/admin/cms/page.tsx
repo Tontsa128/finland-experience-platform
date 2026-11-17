@@ -16,6 +16,7 @@ const sections = [
   { href: "/admin/blog", label: "Blogi", text: "Kirjoita, käännä ja julkaise monikielisiä matkaoppaita.", icon: Newspaper },
   { href: "/admin/navigation", label: "Navigaatio", text: "Päävalikko, CTA-linkit ja sivuston rakenteen hallinta.", icon: Menu },
   { href: "/admin/banners", label: "Bannerit", text: "Kampanjat, sesonkiviestit ja ajastetut CTA-bannerit.", icon: Sparkles },
+  { href: "/admin/ad-campaigns", label: "Maksettu mainosnäkyvyys", text: "Kumppanien 3–5 dian mainoskampanjat, kuukausinäkyvyys, ajastus ja hyväksyntä.", icon: Sparkles },
 ];
 
 export default function CmsPage() {

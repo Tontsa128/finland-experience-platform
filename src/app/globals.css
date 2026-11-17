@@ -31,3 +31,7 @@
   .leaflet-control-attribution { font-size: 10px !important; background: rgba(255,255,255,.9) !important; padding: 2px 5px !important; }
   .leaflet-tooltip { border: 0 !important; border-radius: 10px !important; box-shadow: 0 4px 16px rgba(0,0,0,.15) !important; font-weight: 700; }
 }
+
+.finland-map-marker { background: transparent !important; border: 0 !important; }
+.finland-map-marker__dot { display: block; width: 18px; height: 18px; border: 3px solid #fff; border-radius: 9999px; background: #b7791f; box-shadow: 0 2px 10px rgba(15,23,42,.35); }
+.finland-map-marker__reference { display: block; width: 10px; height: 10px; border: 2px solid #fff; border-radius: 9999px; background: #64748b; box-shadow: 0 1px 6px rgba(15,23,42,.3); }

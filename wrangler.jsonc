@@ -4,10 +4,14 @@
   "main": "custom-worker.ts",
   "compatibility_date": "2025-03-25",
   "previews": {},
-  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_compat_populate_process_env"
+  ],
   "vars": {
     "SUPABASE_URL": "https://pxazouraakldvwbswwtg.supabase.co",
-    "NEXT_PUBLIC_SUPABASE_URL": "https://pxazouraakldvwbswwtg.supabase.co"
+    "NEXT_PUBLIC_SUPABASE_URL": "https://pxazouraakldvwbswwtg.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_TpTU_WEWP1TF2Q5JOITx9g_I7D3qwQF"
   },
   "assets": {
     "directory": ".open-next/assets",
@@ -20,6 +24,8 @@
     }
   ],
   "triggers": {
-    "crons": ["0 */6 * * *"]
+    "crons": [
+      "0 */6 * * *"
+    ]
   }
 }
