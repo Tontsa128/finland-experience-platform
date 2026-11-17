@@ -48,3 +48,64 @@
 - [Kastelholm 2026-08-09 image12 — Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kastelholm_2026-08-09_image12.jpg)
 - [Porvoo Old Town from a hot-air balloon — Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg)
 - [Herrankukkaro sauna and baths — official provider page](https://www.herrankukkaro.fi/kokous/saunat-ja-kylvyt)
+
+
+## Ready-to-enter copy proposals for the CMS
+
+These are editorial proposals based on the current CMS JSON and the documented source subjects. They are **not yet written to production**.
+
+### `summer` — replace the old coastal campaign wording
+
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Turun saaristo | Kesäpäiviä Turun saariston pienissä paikoissa | Saariston kylät, merimaisemat ja kesän rauhallinen rytmi kutsuvat viipymään. |
+| ES | Archipiélago de Turku | Días de verano en los pequeños pueblos del archipiélago de Turku | Pueblos isleños, paisajes marinos y el ritmo tranquilo del verano invitan a quedarse. |
+| EN | Turku Archipelago | Summer days in the small places of the Turku Archipelago | Island villages, sea views and the slower rhythm of summer invite you to stay a little longer. |
+
+### `hanko` — make the aerial viewpoint explicit
+
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Hanko · Suomen eteläkärki | Hanko ylhäältä – meri ja niemi | Ilmakuva näyttää Hangon niemen, meren ja pitkän rantaviivan. |
+| ES | Hanko · sur de Finlandia | Hanko desde el aire: mar y península | La vista aérea muestra la península de Hanko, el mar y su extensa línea costera. |
+| EN | Hanko · southern Finland | Hanko from above: sea and peninsula | The aerial view reveals the Hanko Peninsula, the sea and its long shoreline. |
+
+### `naantali` — match the harbour and church
+
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Naantali | Naantalin vanha satama ja kirkko | Satamanäkymä ja Naantalin kirkko kertovat kaupungin pitkästä historiasta meren äärellä. |
+| ES | Naantali | El puerto antiguo y la iglesia de Naantali | El puerto y la iglesia de Naantali reflejan la larga historia de la ciudad junto al mar. |
+| EN | Naantali | Naantali’s old harbour and church | The harbour and Naantali Church reflect the town’s long history by the sea. |
+
+### `aland` — describe the documented landscape, not the castle
+
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Ahvenanmaa · Sund | Maisema Kastelholmin lähistöllä | Kallioinen saaristomaisema avautuu Sundissa Kastelholmin seudulla. |
+| ES | Åland · Sund | Paisaje cerca de Kastelholm | Un paisaje rocoso del archipiélago se abre en la zona de Kastelholm, en Sund. |
+| EN | Åland · Sund | A landscape near Kastelholm | A rocky archipelago landscape opens up near Kastelholm in Sund. |
+
+### `mathildedal` — make the historic building subject clearer
+
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Mathildedal · Salo | Mathildedalin historiallista ruukkikylää | Anttipoffi ja vanhat työväenasunnot kertovat Mathildedalin ruukkikylän historiasta. |
+| ES | Mathildedal · Salo | El histórico pueblo industrial de Mathildedal | Anttipoffi y las antiguas viviendas obreras cuentan la historia de este pueblo industrial. |
+| EN | Mathildedal · Salo | The historic ironworks village of Mathildedal | Anttipoffi and the former workers’ quarters tell the story of this historic ironworks village. |
+
+### `porvoo` — name the elevated viewpoint
+
+| Locale | Eyebrow | Title | Text |
+|---|---|---|---|
+| FI | Porvoo | Porvoon vanha kaupunki yläilmoista | Ylhäältä avautuu näkymä Porvoon historialliseen jokirantaan ja vanhaan kaupunkiin. |
+| ES | Porvoo | El casco antiguo de Porvoo desde el aire | Desde las alturas se abre una vista del histórico río y del casco antiguo de Porvoo. |
+| EN | Porvoo | Porvoo Old Town from above | The elevated view opens over Porvoo’s historic riverside and old town. |
+
+### `herrankukkaro` — image verification required
+
+Do not approve or rewrite this slide as a smoke-sauna image until the exact CDN asset has been visually checked against the provider’s official sauna gallery. If the current image is not clearly the smoke sauna, replace it with a provider-approved image or leave the slide disabled. Keep the provider credit and external provider link.
+
+### `cottage` and `archipelago` — avoid details not visible in the selected crop
+
+The cottage image source identifies a Finnish summer cottage by a lake. Before claiming a private sauna or jetty, verify that those features are visible in the selected image or clearly label them as destination context rather than pictured details. For the archipelago slide, keep the wording broad enough to fit the actual selected photograph; do not describe specific rocks, trees or buildings unless visible in the crop.
