@@ -28,7 +28,8 @@ export default function SiteBuilder(){
  function addBlock(type:string){setBlocks(b=>[...b,emptyBlock(type)]);}
  function selectImage(url:string,index:number){patchBlock(index,{imageUrl:url});}
  async function saveBlocks(){if(!page)return;setBusy(true);setError("");setNotice("");try{const r=await fetch("/api/admin/pages/blocks",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({slug:page.slug,locale:page.locale,blocks})});const b=await r.json();if(!r.ok)throw new Error(b.error||"Tallennus epäonnistui.");setPage({...page,blocks:b.page.blocks});setPages(ps=>ps.map(p=>p.id===page.id?{...p,blocks:b.page.blocks}:p));setNotice("Sivu tallennettu.");}catch(e){setError(e instanceof Error?e.message:"Tallennus epäonnistui.");}finally{setBusy(false);}}
- function setSlideImage(index:number,url:string){const slide=slides[index];if(slide)setBrokenSlideImages(current=>({...current,[slide.id]:false}));setSlides(current=>current.map((item,n)=>n===index?{...item,imageUrl:url}:item));}\n function isSecureImageUrl(value:string){try{return new URL(value).protocol==="https:";}catch{return false;}}
+ function setSlideImage(index:number,url:string){const slide=slides[index];if(slide)setBrokenSlideImages(current=>({...current,[slide.id]:false}));setSlides(current=>current.map((item,n)=>n===index?{...item,imageUrl:url}:item));}
+ function isSecureImageUrl(value:string){try{return new URL(value).protocol==="https:";}catch{return false;}}
  function isSafeSlideLink(value:string){const url=value.trim();if(url.startsWith("/")&&!url.startsWith("//"))return true;try{return new URL(url).protocol==="https:";}catch{return false;}}
  async function saveSlides(){
   setError("");setNotice("");
