@@ -22,15 +22,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!locales.includes(locale)) return {};
   const copy = {
     fi: {
-      title: "Löydä Suomen salaiset helmet | Finland Experience",
+      title: "Löydä Suomen salaiset helmet",
       description: "Löydä Suomen idylliset kohteet, majoitukset, saunat, paikalliset maut, luontoelämykset ja tapahtumat ympäri vuoden.",
     },
     es: {
-      title: "Descubre los tesoros ocultos de Finlandia | Finland Experience",
+      title: "Descubre los tesoros ocultos de Finlandia",
       description: "Descubre pueblos idílicos, alojamientos, saunas, gastronomía local, naturaleza y experiencias por toda Finlandia.",
     },
     en: {
-      title: "Discover Finland’s Hidden Gems | Finland Experience",
+      title: "Discover Finland’s Hidden Gems",
       description: "Discover idyllic villages, stays, saunas, local food, nature experiences and events across Finland."
     },
   }[locale];
