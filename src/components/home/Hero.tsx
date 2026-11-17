@@ -242,11 +242,25 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         }));
       }
 
-      return slides.map((item) => ({
-        ...item,
-        href: normalizeHomepageHref(item.href),
-        copy: copy[locale][item.key],
-      }));
+      // Do not fall back to unrelated stock/Commons slides. The configured
+      // homepage image and its localized copy are a single CMS-managed pair.
+      // If no matching hero image is configured, render no image carousel.
+      const configuredImage = settings?.heroImageUrl?.trim();
+      if (!configuredImage) return [];
+
+      return [{
+        key: "configured-homepage",
+        image: configuredImage,
+        durationMs: 5500,
+        credit: "",
+        href: normalizeHomepageHref(settings?.heroCtaUrl || "/destinations"),
+        copy: {
+          eyebrow: settings?.heroEyebrow?.[locale] || "",
+          title: settings?.heroTitle?.[locale] || "",
+          text: settings?.heroDescription?.[locale] || "",
+          cta: settings?.heroCtaLabel?.[locale] || "",
+        },
+      }];
     },
     [cmsSlides, locale, failedImages],
   );
