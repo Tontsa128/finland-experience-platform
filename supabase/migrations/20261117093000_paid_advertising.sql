@@ -28,7 +28,7 @@ CREATE INDEX IF NOT EXISTS idx_ad_campaigns_public_schedule
 ALTER TABLE public.ad_campaigns ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "public can read approved active ad campaigns" ON public.ad_campaigns;
 CREATE POLICY "public can read approved active ad campaigns"
-  ON public.ad_campaigns FOR SELECT
+  ON public.ad_campaigns FOR SELECT TO anon, authenticated
   USING (
     status = 'approved'
     AND (starts_at IS NULL OR starts_at <= now())
@@ -48,4 +48,11 @@ CREATE INDEX IF NOT EXISTS idx_ad_campaign_events_campaign_date
   ON public.ad_campaign_events (campaign_id, created_at DESC);
 
 ALTER TABLE public.ad_campaign_events ENABLE ROW LEVEL SECURITY;
--- Events are written only by the server using the service role. No public read or direct insert policy.
+
+-- Public visitors may only read campaigns that pass the RLS schedule policy.
+-- All writes and event reporting are server-side through the service role.
+REVOKE ALL ON TABLE public.ad_campaigns, public.ad_campaign_events FROM anon, authenticated;
+GRANT SELECT ON TABLE public.ad_campaigns TO anon, authenticated;
+GRANT ALL ON TABLE public.ad_campaigns, public.ad_campaign_events TO service_role;
+
+-- Event rows are private: no public or authenticated policies or grants.
