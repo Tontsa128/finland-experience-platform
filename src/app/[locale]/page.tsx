@@ -1,7 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Camera, Compass, Utensils, Waves, BedDouble, MapPin, Sparkles, CalendarDays } from "lucide-react";
+import { ArrowRight, Camera, Compass, Utensils, Waves, BedDouble, MapPin, Sparkles, CalendarDays, TreePine, ShoppingBag, Landmark, Flame } from "lucide-react";
 import { Hero } from "@/components/home/Hero";
 import { VisitorCounter } from "@/components/home/VisitorCounter";
 import TravelAdvisor from "@/components/TravelAdvisor";
@@ -24,8 +24,8 @@ const copy = {
     subtitle: "Paikkoja, elämyksiä ja tarinoita, jotka tekevät Suomesta unohtumattoman.",
     searchPlaceholder: "Hae kohdetta tai palvelua...",
     allServices: "Kaikki palvelut", allAreas: "Kaikki alueet", search: "Etsi",
-    categories: ["Majoitus", "Ruoka", "Elämykset", "Nähtävyydet"],
-    categorySub: ["Hotellit, mökit ja majatalot", "Ravintolat ja kahvilat", "Aktiviteetit ja tekeminen", "Luonto ja kulttuuri"],
+    categories: ["Majoitus", "Ruoka", "Elämykset", "Luonto", "Saunat", "Kulttuuri", "Paikalliset putiikit", "Tapahtumat"],
+    categorySub: ["Hotellit, mökit ja majatalot", "Ravintolat ja kahvilat", "Aktiviteetit ja tekeminen", "Kansallispuistot ja retkeily", "Perinteiset ja modernit saunat", "Museot ja nähtävyydet", "Paikalliset tuotteet ja käsityöt", "Tapahtumat ympäri Suomen"],
     popular: "Suositut kohteet", stays: "Suositellut majoitukset", experiences: "Suositellut elämykset",
     showAll: "Näytä kaikki", viewStay: "Katso majoitus", viewExperience: "Katso lisää",
     advisorTitle: "Kysy matkailuavustajalta",
@@ -39,8 +39,8 @@ const copy = {
     subtitle: "Lugares, experiencias e historias para descubrir una Finlandia inolvidable.",
     searchPlaceholder: "Busca un destino o servicio...",
     allServices: "Todos los servicios", allAreas: "Todas las zonas", search: "Buscar",
-    categories: ["Alojamiento", "Gastronomía", "Experiencias", "Lugares de interés"],
-    categorySub: ["Hoteles, cabañas y casas rurales", "Restaurantes y cafeterías", "Actividades y planes", "Naturaleza y cultura"],
+    categories: ["Alojamiento", "Gastronomía", "Experiencias", "Naturaleza", "Saunas", "Cultura", "Tiendas locales", "Eventos"],
+    categorySub: ["Hoteles, cabañas y casas rurales", "Restaurantes y cafeterías", "Actividades y planes", "Parques nacionales y rutas", "Saunas tradicionales y modernas", "Museos y lugares de interés", "Productos locales y artesanía", "Eventos en toda Finlandia"],
     popular: "Destinos populares", stays: "Alojamientos recomendados", experiences: "Experiencias recomendadas",
     showAll: "Ver todos", viewStay: "Ver alojamiento", viewExperience: "Ver más",
     advisorTitle: "Pregunta al asistente de viaje",
@@ -54,8 +54,8 @@ const copy = {
     subtitle: "Places, experiences and stories that make Finland unforgettable.",
     searchPlaceholder: "Search destinations or services...",
     allServices: "All services", allAreas: "All areas", search: "Search",
-    categories: ["Accommodation", "Food", "Experiences", "Attractions"],
-    categorySub: ["Hotels, cottages and guesthouses", "Restaurants and cafés", "Activities and things to do", "Nature and culture"],
+    categories: ["Accommodation", "Food", "Experiences", "Nature", "Saunas", "Culture", "Local shops", "Events"],
+    categorySub: ["Hotels, cottages and guesthouses", "Restaurants and cafés", "Activities and things to do", "National parks and trails", "Traditional and modern saunas", "Museums and attractions", "Local products and crafts", "Events across Finland"],
     popular: "Popular destinations", stays: "Recommended stays", experiences: "Recommended experiences",
     showAll: "View all", viewStay: "View stay", viewExperience: "View more",
     advisorTitle: "Ask the travel assistant",
@@ -173,14 +173,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   };
 
   const categoryCards = [
-    // Use an accommodation gallery image, not the harbour image previously used for Matilda Villas.
-    { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?type=accommodation`, image: uniqueHomepageImage([featuredCabins[0]?.images?.[1], featuredCabins[0]?.images?.[0]], [photoLibrary.saunaCottage]), icon: BedDouble },
-    // Show an actual restaurant dining scene for the food category.
+    // Provider images are used where we have a known provider-owned asset.
+    { title: t.categories[0], subtitle: t.categorySub[0], href: `/${locale}/search?type=accommodation`, image: uniqueHomepageImage([featuredCabins[0]?.images?.[1], featuredCabins[0]?.images?.[0], photoLibrary.storfinnhova]), icon: BedDouble },
     { title: t.categories[1], subtitle: t.categorySub[1], href: `/${locale}/search?type=experience&category=food`, image: uniqueHomepageImage([photoLibrary.mathildanMarinaDining]), icon: Utensils },
-    // Keep the experience category visually distinct with a real activity: a Finnish sauna boat.
     { title: t.categories[2], subtitle: t.categorySub[2], href: `/${locale}/search?type=experience`, image: uniqueHomepageImage([photoLibrary.saunaBoat]), icon: Waves },
-    // Use a recognizable cultural attraction rather than another generic nature image.
-    { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?type=destination`, image: uniqueHomepageImage([photoLibrary.rosalaVikingCentre]), icon: Camera },
+    { title: t.categories[3], subtitle: t.categorySub[3], href: `/${locale}/search?palvelut=hiking`, image: uniqueHomepageImage([photoLibrary.teijoNationalPark]), icon: TreePine },
+    { title: t.categories[4], subtitle: t.categorySub[4], href: `/${locale}/search?palvelut=sauna`, image: uniqueHomepageImage([photoLibrary.herrankukkaroSauna, photoLibrary.saunaTraditionalSmoke]), icon: Flame },
+    { title: t.categories[5], subtitle: t.categorySub[5], href: `/${locale}/search?palvelut=culture`, image: uniqueHomepageImage([photoLibrary.rosalaVikingCentre]), icon: Landmark },
+    { title: t.categories[6], subtitle: t.categorySub[6], href: `/${locale}/search?palvelut=shopping`, image: uniqueHomepageImage([photoLibrary.mathildedalVillage]), icon: ShoppingBag },
+    { title: t.categories[7], subtitle: t.categorySub[7], href: `/${locale}/search?type=event`, image: uniqueHomepageImage([photoLibrary.pumpkinWeeks]), icon: CalendarDays },
   ];
 
   const advisorCatalog = {
