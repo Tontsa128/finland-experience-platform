@@ -14,9 +14,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: { default: "Finland Experience | Finnish Summer & Slow Travel", template: "%s | Finland Experience" },
-  description: "Discover peaceful Finnish summer stays: Mathildedal, Salo, Naantali, the archipelago, Åland and the western and southeastern coast. Accommodation and activities are booked directly with local providers.",
-  keywords: ["Finland summer","Mathildedal","Salo accommodation","Naantali cottages","Åland cottages","Finnish archipelago","Finnish sauna","glamping Finland"],
+  title: { default: "Finland Experience", template: "%s | Finland Experience" },
+  description: "Discover destinations, accommodation, saunas, local food, nature, culture and events across Finland. Contact and book directly with local providers.",
+  keywords: ["Finland travel","Finland destinations","Finnish accommodation","Finnish sauna","local food Finland","Finnish nature","Finnish culture","Finland events","Mathildedal","Salo","Naantali","Åland"],
   openGraph: { type: "website", locale: "en_IE", siteName: "Finland Experience" },
   manifest: "/manifest.json",
 };

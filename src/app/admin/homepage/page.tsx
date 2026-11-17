@@ -130,7 +130,7 @@ export default function HomepageCmsPage() {
 
         <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-slate-950">Hero-kuva</h2>
-          <p className="mt-1 text-sm text-slate-500">Valitse kuvapankista yksi kuva. Jos et valitse kuvaa, sivusto käyttää oletuskuvaa.</p>
+          <p className="mt-1 text-sm text-slate-500">Valitse kuva, joka vastaa täsmälleen etusivun otsikkoa ja kuvausta. Jos sopivaa kuvaa ei ole valittu, sivusto näyttää brändätyn taustan eikä korvaa kuvaa toisella, aiheeseen liittymättömällä kuvalla.</p>
           <div className="mt-5">
             <MediaPicker value={mediaIds} onChange={(ids: string[]) => {
               setMediaIds(ids.slice(-1));

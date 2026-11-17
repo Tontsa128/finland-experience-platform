@@ -25,7 +25,7 @@ function toLocalInput(value: string | null) {
 
 const blank = (): Form => ({
   campaign_name: "", advertiser_name: "", provider_url: "", billing_model: "monthly", price_eur: 0,
-  placement: "homepage", region: "southwest_finland", status: "draft", starts_at: "", ends_at: "",
+  placement: "homepage", region: "finland", status: "draft", starts_at: "", ends_at: "",
   slide_interval_ms: 6000, slides: [emptySlide(), emptySlide(), emptySlide()],
 });
 
@@ -131,7 +131,7 @@ export default function AdCampaignsAdmin() {
             <label className="grid gap-1 text-sm font-medium text-slate-700">Myyntimalli<select value={form.billing_model} onChange={(e) => update("billing_model", e.target.value as Form["billing_model"])} className="rounded-xl border p-3"><option value="monthly">Kuukausinäkyvyys</option><option value="campaign">Määräaikainen kampanja</option></select></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Sovittu hinta (€)<input type="number" min="0" step="0.01" value={form.price_eur} onChange={(e) => update("price_eur", Number(e.target.value))} className="rounded-xl border p-3" /></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Sijoittelu<select value={form.placement} onChange={(e) => update("placement", e.target.value as Form["placement"])} className="rounded-xl border p-3"><option value="homepage">Etusivu</option><option value="map">Karttasivu</option><option value="directory">Kohdehakemisto</option><option value="category">Kategoriat</option></select></label>
-            <label className="grid gap-1 text-sm font-medium text-slate-700">Alue<select value={form.region} onChange={(e) => update("region", e.target.value)} className="rounded-xl border p-3"><option value="southwest_finland">Lounais-Suomi (Salo, Perniö, Mathildedal, Teijo)</option></select></label>
+            <label className="grid gap-1 text-sm font-medium text-slate-700">Alue<select value={form.region} onChange={(e) => update("region", e.target.value)} className="rounded-xl border p-3"><option value="finland">Koko Suomi</option><option value="southwest_finland">Lounais-Suomi (Salo, Perniö, Mathildedal, Teijo)</option></select></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Julkaisutila<select value={form.status} onChange={(e) => update("status", e.target.value as Form["status"])} className="rounded-xl border p-3">{Object.entries(statusNames).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Dian kesto<select value={form.slide_interval_ms} onChange={(e) => update("slide_interval_ms", Number(e.target.value))} className="rounded-xl border p-3"><option value={5000}>5 sekuntia</option><option value={6000}>6 sekuntia</option><option value={7000}>7 sekuntia</option></select></label>
             <label className="grid gap-1 text-sm font-medium text-slate-700">Alkaa<input type="datetime-local" value={form.starts_at} onChange={(e) => update("starts_at", e.target.value)} className="rounded-xl border p-3" /></label>

@@ -6,7 +6,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocale } from "next-intl";
 import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import type { HomepageSettings } from "@/lib/public-content";
-import { photoLibrary } from "@/lib/photo-library";
 
 type SlideCopy = { eyebrow: string; title: string; text: string; cta: string };
 function normalizeHomepageHref(href: string): string {
@@ -16,23 +15,24 @@ function normalizeHomepageHref(href: string): string {
   const lower = value.toLowerCase();
   if (!value || lower.startsWith("http://") || lower.startsWith("https://") || value.startsWith("//")) return value;
 
-  const path = value.split(/[?#]/, 1)[0].replace(/\/$/, "");
-  const withoutLocale = path.startsWith("/fi/") || path.startsWith("/es/") || path.startsWith("/en/")
-    ? path.slice(3)
-    : path;
+  const suffixIndex = value.search(/[?#]/);
+  const pathname = suffixIndex >= 0 ? value.slice(0, suffixIndex) : value;
+  const suffix = suffixIndex >= 0 ? value.slice(suffixIndex) : "";
+  const withoutLocale = pathname.replace(/^\/(fi|es|en)(?=\/|$)/, "") || "/";
+  const path = withoutLocale.replace(/\/$/, "") || "/";
 
-  if (withoutLocale === "/salo" || withoutLocale === "/salo/kylat") {
-    return "/salo/kylat";
+  if (path === "/salo" || path === "/salo/kylat") {
+    return `/salo/kylat${suffix}`;
   }
   if (
-    withoutLocale === "/salo/mathildedal" ||
-    withoutLocale.startsWith("/salo/mathildedal/") ||
-    withoutLocale === "/mathildedal" ||
-    withoutLocale.startsWith("/mathildedal/")
+    path === "/salo/mathildedal" ||
+    path.startsWith("/salo/mathildedal/") ||
+    path === "/mathildedal" ||
+    path.startsWith("/mathildedal/")
   ) {
-    return "/destinations/salo-mathildedal";
+    return `/destinations/salo-mathildedal${suffix}`;
   }
-  return value;
+  return `${path}${suffix}`;
 }
 
 type Slide = {
@@ -43,143 +43,7 @@ type Slide = {
   creditUrl?: string;
   href: string;
   external?: boolean;
-};
-
-const slides: Slide[] = [
-  {
-    key: "spring",
-    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
-    credit: "Sanzzu / Wikimedia Commons (CC BY-SA 4.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
-    href: "/destinations",
-  },
-  {
-    key: "autumn",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
-    credit: "Fred Sundén / Wikimedia Commons (CC BY-SA 4.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
-    href: "/destinations",
-  },
-  {
-    key: "summer",
-    image: photoLibrary.sarkisalo,
-    credit: "Motopark / Wikimedia Commons (CC BY-SA 3.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Ulkoluotosilta3.jpg",
-    href: "/destinations",
-  },
-  {
-    key: "cottage",
-    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
-    credit: "Kospo75 / Wikimedia Commons (CC BY-SA 3.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
-    href: "/accommodations",
-  },
-  {
-    key: "archipelago",
-    image: photoLibrary.turkuArchipelago,
-    credit: "Rob Sinclair / Wikimedia Commons (CC BY-SA 2.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Turku_Archipelago.jpg",
-    href: "/destinations/turku",
-  },
-  {
-    key: "hanko",
-    image: photoLibrary.hankoRegattaBeach,
-    credit: "W.carter / Wikimedia Commons (CC BY-SA 4.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
-    href: "/destinations/hanko",
-  },
-  {
-    key: "naantali",
-    image: photoLibrary.naantaliOldTown,
-    credit: "Tatu Kosonen / Wikimedia Commons (CC BY-SA 4.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Old_Town_of_Naantali,_Finland.jpg",
-    href: "/destinations/naantali",
-  },
-  {
-    key: "mathildedal",
-    image: photoLibrary.mathildedalVillage,
-    credit: "Kotivalo / Wikimedia Commons (CC BY-SA 3.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Anttipoffi_workers%27_quarters_in_Mathildedal.jpg",
-    href: "/destinations/salo-mathildedal",
-  },
-  {
-    key: "aland",
-    image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholms-slott-1.jpg",
-    credit: "Helgi Þorsteinsson / norden.org (CC BY 2.5)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Kastelholms-slott-1.jpg",
-    href: "/destinations/aland",
-  },
-  {
-    key: "porvoo",
-    image: photoLibrary.porvoo,
-    credit: "Teemu Eskola / Wikimedia Commons (CC BY-SA 3.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Porvoo_old_town.jpg",
-    href: "/destinations/porvoo",
-  },
-  {
-    key: "herrankukkaro",
-    image: photoLibrary.saunaWhisking,
-    credit: "Ville Kurki / Wikimedia Commons (CC BY-SA 4.0)",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Traditional_Finnish_sauna_whisking_and_l%C3%B6yly.jpg",
-    href: "https://www.herrankukkaro.fi/",
-    external: true,
-  },
-];
-
-const fallbackImages: Record<string, string> = {
-  spring: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Forest_path_through_a_deciduous_forest_in_spring,_Finland.jpg",
-  autumn: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg/1280px-Kyrkbacken_i_Nagu_h%C3%B6sten_2019_01.jpg",
-  summer: photoLibrary.sarkisalo,
-  cottage: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Finnish_summer_cottage_and_a_lake_in_Keuruu.jpg",
-  archipelago: photoLibrary.turkuArchipelago,
-  hanko: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Regattanranta_beach_in_the_city_center_of_Hanko,_Finland,_2021.jpg",
-  naantali: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Old_Town_of_Naantali,_Finland.jpg",
-  mathildedal: photoLibrary.mathildedalVillage,
-  aland: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kastelholms-slott-1.jpg",
-  porvoo: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Porvoo_old_town.jpg",
-  herrankukkaro: photoLibrary.saunaWhisking,
-};
-
-const copy: Record<"fi" | "es" | "en", Record<string, SlideCopy>> = {
-  fi: {
-    spring: { eyebrow: "Kevät Suomessa", title: "Herää kevääseen Suomen vehreissä metsissä", text: "Valoisat metsäpolut, kukkivat valkovuokot ja raikas kevätilma kutsuvat ulos luontoon.", cta: "Löydä kevään kohteet" },
-    autumn: { eyebrow: "Syksy Nauvon saaristossa", title: "Nauvon kirkonkylä syksyn väreissä", text: "Ilmakuva näyttää Kyrkbackenin kylän syksyisenä kokonaisuutena, kun puiden ruska värittää saaristomaisemaa.", cta: "Tutustu saaristoon" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Löydä rannikon rauhalliset reitit ja merimaisemat", text: "Pienet sillat, rantakalliot ja saaristotiet johdattavat pois kiireestä Suomen rannikon maisemiin.", cta: "Tutustu kohteisiin" },
-    cottage: { eyebrow: "Suomen mökkikesä", title: "Aamukahvi veden äärellä", text: "Kesämökki, järvi, laituri ja sauna tekevät kiireettömästä päivästä osan Suomen matkaa.", cta: "Katso majoituksia" },
-    archipelago: { eyebrow: "Turun saaristo", title: "Pieni puutalo saariston keskellä", text: "Saaristomaisemaan asettuva puutalo kertoo elävästä saaristosta ja sen rauhallisesta arjesta.", cta: "Tutustu saaristoon" },
-    hanko: { eyebrow: "Hanko · Suomen etelärannikko", title: "Meri, rannat ja historiallinen Hanko", text: "Itämeren rannikko, hiekkarannat ja historiallinen puukaupunki tekevät Hangosta merellisen kohteen ympäri vuoden.", cta: "Tutustu Hankoon" },
-    naantali: { eyebrow: "Naantali", title: "Kävele Naantalin vanhan kaupungin puutalokaduilla", text: "Historialliset puutalot ja kapeat kadut kutsuvat rauhalliselle kävelylle meren läheiseen vanhaan kaupunkiin.", cta: "Tutustu Naantaliin" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Tutustu Mathildedalin historialliseen ruukkimiljööseen", text: "Vuodelta 1852 peräisin oleva Anttipoffin rakennus kertoo kylän ruukkihistoriasta ja vanhoista työväenasunnoista.", cta: "Tutustu Mathildedaliin" },
-    aland: { eyebrow: "Ahvenanmaa", title: "Tutustu Ahvenanmaan historialliseen Kastelholman linnaan", text: "Kastelholman linna kertoo Ahvenanmaan historiasta ja tarjoaa konkreettisen pysähdyspaikan saaristomatkalle.", cta: "Tutustu Ahvenanmaahan" },
-    porvoo: { eyebrow: "Porvoo", title: "Näe Porvoon vanha kaupunki yläilmoista", text: "Ilmasta avautuva näkymä näyttää historiallisen kaupungin kokonaisuutena ja kutsuu tutustumaan sen kaduille.", cta: "Tutustu Porvooseen" },
-    herrankukkaro: { eyebrow: "Suomalainen saunaperinne", title: "Koe suomalainen saunominen ja vihtominen", text: "Perinteinen vihta, löyly ja rauhallinen saunahetki kuuluvat suomalaiseen saunaperinteeseen.", cta: "Siirry palveluntarjoajalle" },
-  },
-  es: {
-    spring: { eyebrow: "Primavera en Finlandia", title: "Despierta entre los bosques verdes de Finlandia", text: "Senderos luminosos, anémonas de bosque en flor y aire fresco de primavera invitan a descubrir la naturaleza.", cta: "Descubrir destinos de primavera" },
-    autumn: { eyebrow: "Otoño en el archipiélago de Nagu", title: "El pueblo de Nagu bajo los colores del otoño", text: "La vista aérea muestra Kyrkbacken en otoño, con los colores de los árboles transformando el paisaje del archipiélago.", cta: "Explorar el archipiélago" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Descubre rutas tranquilas y paisajes costeros", text: "Pequeños puentes, rocas junto al mar y carreteras entre islas te alejan de las prisas y te acercan a la costa finlandesa.", cta: "Explorar destinos" },
-    cottage: { eyebrow: "Verano en una cabaña finlandesa", title: "Café junto al agua", text: "Cabaña de verano, lago, embarcadero y sauna para disfrutar Finlandia sin prisas.", cta: "Ver alojamientos" },
-    archipelago: { eyebrow: "Archipiélago de Turku", title: "Una pequeña casa de madera entre las islas", text: "Una casa de madera en el archipiélago muestra el carácter habitado y tranquilo de las islas finlandesas.", cta: "Explorar el archipiélago" },
-    hanko: { eyebrow: "Hanko · costa sur de Finlandia", title: "Mar, playas y un casco histórico junto al mar", text: "El Báltico, las playas de arena y las calles históricas de madera dan a Hanko un ambiente costero durante todo el año.", cta: "Explorar Hanko" },
-    naantali: { eyebrow: "Naantali", title: "Pasea por las calles de madera del casco antiguo", text: "Las casas históricas de madera y las calles estrechas invitan a pasear sin prisa por esta localidad junto al mar.", cta: "Explorar Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Descubre el histórico pueblo siderúrgico de Mathildedal", text: "El edificio Anttipoffi, de 1852, cuenta la historia industrial del pueblo y de las antiguas viviendas de sus trabajadores.", cta: "Explorar Mathildedal" },
-    aland: { eyebrow: "Åland", title: "Descubre el histórico castillo de Kastelholm", text: "El castillo de Kastelholm cuenta parte de la historia de Åland y ofrece una visita concreta durante tu viaje por las islas.", cta: "Explorar Åland" },
-    porvoo: { eyebrow: "Porvoo", title: "Contempla el casco antiguo de Porvoo desde el aire", text: "La vista aérea muestra el conjunto histórico de la ciudad e invita a descubrir sus calles a pie.", cta: "Explorar Porvoo" },
-    herrankukkaro: { eyebrow: "Tradición finlandesa", title: "Descubre la sauna finlandesa y el uso de la vihta", text: "La vihta, el vapor y un momento tranquilo en la sauna forman parte de la tradición finlandesa.", cta: "Ir al proveedor" },
-  },
-  en: {
-    spring: { eyebrow: "Spring in Finland", title: "Wake up to Finland’s fresh green forests", text: "Sunlit woodland paths, blooming wood anemones and crisp spring air invite you outdoors.", cta: "Explore spring destinations" },
-    autumn: { eyebrow: "Autumn in the Nagu archipelago", title: "Nagu village in its autumn colours", text: "The aerial view shows Kyrkbacken in autumn, with colourful foliage transforming the archipelago landscape.", cta: "Explore the archipelago" },
-    summer: { eyebrow: "Hidden Coastal Finland", title: "Find quiet coastal routes and sea views", text: "Small bridges, rocky shores and island roads lead away from the rush and into Finland’s coastal landscapes.", cta: "Explore destinations" },
-    cottage: { eyebrow: "Finnish cottage summer", title: "Morning coffee by the water", text: "A summer cottage, lake, jetty and sauna turn a quiet day into part of the journey.", cta: "See stays" },
-    archipelago: { eyebrow: "Turku Archipelago", title: "A small wooden house among the islands", text: "A wooden house in the archipelago captures the lived-in, peaceful character of Finland’s island communities.", cta: "Explore the archipelago" },
-    hanko: { eyebrow: "Hanko · Finland's southern coast", title: "The sea, beaches and historic Hanko", text: "The Baltic Sea, sandy beaches and historic wooden streets give Hanko a distinctive coastal atmosphere throughout the year.", cta: "Explore Hanko" },
-    naantali: { eyebrow: "Naantali", title: "Walk the wooden streets of Naantali’s old town", text: "Historic wooden houses and narrow streets invite you to slow down in this old town by the sea.", cta: "Explore Naantali" },
-    mathildedal: { eyebrow: "Mathildedal · Salo", title: "Discover Mathildedal’s historic ironworks village", text: "The Anttipoffi building, dating from 1852, tells the story of the village’s ironworks and its former workers’ housing.", cta: "Explore Mathildedal" },
-    aland: { eyebrow: "Åland", title: "Discover historic Kastelholm Castle", text: "Kastelholm Castle tells part of Åland’s history and makes a tangible stop on an island journey.", cta: "Explore Åland" },
-    porvoo: { eyebrow: "Porvoo", title: "See Porvoo’s old town from above", text: "The aerial view reveals the historic town as a whole and invites you to explore its streets on foot.", cta: "Explore Porvoo" },
-    herrankukkaro: { eyebrow: "Finnish sauna tradition", title: "Experience Finnish sauna and birch whisking", text: "A birch whisk, rising steam and a quiet sauna moment are part of Finland’s bathing tradition.", cta: "Visit provider" },
-  },
+  copy: SlideCopy;
 };
 
 export function Hero({ settings }: { settings?: HomepageSettings | null }) {
@@ -187,7 +51,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const [active, setActive] = useState(0);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
-  const cmsSlides = (settings?.homepageSlides ?? [])
+  const cmsSlides = useMemo(() => (settings?.homepageSlides ?? [])
     .filter((item) => {
       const localized = item.copy?.[locale];
       const finnishCopy = item.copy?.fi;
@@ -219,15 +83,12 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         !isUntranslatedCopy
       );
     })
-    .sort((a, b) => a.sortOrder - b.sortOrder);
+    .sort((a, b) => a.sortOrder - b.sortOrder), [settings?.homepageSlides, locale]);
 
-  const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(
+  const activeSlides = useMemo<Slide[]>(
     () => {
-      // The built-in slides use explicit image/copy pairs. Never guess an image from keywords:
-      // keyword matching previously caused a valid caption to be paired with an unrelated photo.
-      // A CMS slide takes precedence only while its image has loaded successfully.
-      // Broken CMS image URLs are skipped; if all CMS images fail, use the verified
-      // built-in image/copy pairs instead of leaving the hero stuck on a broken image.
+      // CMS slide image and localized copy are one inseparable pair.
+      // If an image fails, skip that slide; never substitute a different photo.
       const usableCmsSlides = cmsSlides.filter((item) => !failedImages[item.id]);
       if (usableCmsSlides.length) {
         return usableCmsSlides.map((item) => ({
@@ -242,13 +103,27 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         }));
       }
 
-      return slides.map((item) => ({
-        ...item,
-        href: normalizeHomepageHref(item.href),
-        copy: copy[locale][item.key],
-      }));
+      // Do not fall back to unrelated stock/Commons slides. The configured
+      // homepage image and its localized copy are a single CMS-managed pair.
+      // If no matching hero image is configured, render no image carousel.
+      const configuredImage = settings?.heroImageUrl?.trim();
+      if (!configuredImage || failedImages["configured-homepage"]) return [];
+
+      return [{
+        key: "configured-homepage",
+        image: configuredImage,
+        durationMs: 5500,
+        credit: "",
+        href: normalizeHomepageHref(settings?.heroCtaUrl || "/destinations"),
+        copy: {
+          eyebrow: settings?.heroEyebrow?.[locale] || "",
+          title: settings?.heroTitle?.[locale] || "",
+          text: settings?.heroDescription?.[locale] || "",
+          cta: settings?.heroCtaLabel?.[locale] || "",
+        },
+      }];
     },
-    [cmsSlides, locale, failedImages],
+    [cmsSlides, locale, failedImages, settings?.heroImageUrl, settings?.heroCtaUrl, settings?.heroEyebrow, settings?.heroTitle, settings?.heroDescription, settings?.heroCtaLabel],
   );
 
   const slideCount = activeSlides.length;
@@ -266,19 +141,31 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
     return () => window.clearTimeout(timer);
   }, [active, activeSlides, slideCount]);
 
-  if (!slideCount) return null;
+  if (!slideCount) {
+    return (
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#173d35] via-[#24594b] to-[#b18a55] text-white">
+        <div className="container-narrow flex min-h-[300px] items-end py-10 sm:min-h-[360px] sm:py-14">
+          <div className="max-w-4xl">
+            <p className="text-xs font-bold uppercase tracking-[.22em] text-[#fff3d8]">FINLAND EXPERIENCE</p>
+            <h1 className="mt-3 max-w-4xl font-display text-[clamp(2.1rem,7vw,4.6rem)] font-bold leading-[1.02] tracking-[-.035em]">
+              {locale === "fi" ? "Löydä Suomen salaiset helmet" : locale === "es" ? "Descubre los tesoros ocultos de Finlandia" : "Discover Finland’s hidden gems"}
+            </h1>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-white/90">
+              {locale === "fi" ? "Paikkoja, elämyksiä ja tarinoita, jotka tekevät Suomesta unohtumattoman." : locale === "es" ? "Lugares, experiencias e historias para descubrir una Finlandia inolvidable." : "Places, experiences and stories that make Finland unforgettable."}
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const slide = activeSlides[active] ?? activeSlides[0];
-  const text = slide.copy || copy[locale][slide.key] || copy[locale].summer;
+  const text = slide.copy;
   const href = slide.external ? slide.href : `/${locale}${slide.href}`;
 
-  const getImage = (item: Slide & { copy?: SlideCopy }) => {
-    if (!failedImages[item.key]) return item.image;
-
-    // Only use a fallback explicitly assigned to this built-in slide key.
-    // Never infer replacement imagery from copy keywords: that can show the wrong place.
-    return fallbackImages[item.key] || item.image;
-  };
+  // Keep the displayed photo bound to its own CMS slide record.
+  // Failed images are removed from activeSlides; no fallback photo is substituted.
+  const getImage = (item: Slide) => item.image;
 
   const markImageFailed = (key: string) => {
     setFailedImages((current) => (current[key] ? current : { ...current, [key]: true }));
@@ -301,7 +188,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           >
             <Image
               src={getImage(item)}
-              alt=""
+              alt={item.copy.title}
               fill
               priority={index === 0}
               sizes="100vw"
@@ -316,12 +203,13 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17261a]/82 via-[#17261a]/42 to-[#17261a]/12" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17261a]/48 via-[#17261a]/18 to-transparent" />
 
-      <div className="relative z-10 flex min-h-[62svh] items-end pb-6 pt-[22svh] sm:min-h-[600px] sm:pb-12 sm:pt-28 lg:min-h-[680px] lg:pb-16 lg:pt-32">
+      <div className="relative z-10 flex min-h-[390px] items-end pb-7 pt-28 sm:min-h-[450px] sm:pb-9 sm:pt-28 lg:min-h-[500px] lg:pb-12 lg:pt-28">
         <div className="container-narrow w-full">
           <div key={slide.key} className="max-w-4xl">
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
-            <h1 className="max-w-4xl font-display text-[clamp(2rem,8vw,3.4rem)] font-bold leading-[1.04] tracking-[-.03em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-6xl sm:leading-[.96] lg:text-[5.4rem]">{text.title}</h1>
-            <p className="mt-3 max-w-[48ch] text-base leading-6 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)] sm:mt-6 sm:max-w-2xl sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">{text.text}</p>
+            <h1 className="max-w-4xl font-display text-[clamp(2.1rem,7vw,4.6rem)] font-bold leading-[1.02] tracking-[-.035em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">{locale === "fi" ? "Löydä Suomen salaiset helmet" : locale === "es" ? "Descubre los tesoros ocultos de Finlandia" : "Discover Finland’s hidden gems"}</h1>
+            <p className="mb-2 mt-3 text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
+            <h2 className="max-w-3xl font-display text-xl font-bold leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-2xl lg:text-3xl">{text.title}</h2>
+            <p className="mt-2 max-w-[48ch] text-sm leading-6 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)] sm:mt-3 sm:max-w-2xl sm:text-base sm:leading-7 lg:text-lg lg:leading-8">{text.text}</p>
           </div>
         </div>
       </div>
