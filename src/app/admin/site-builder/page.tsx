@@ -49,7 +49,8 @@ export default function SiteBuilder(){
     const copy=slides[incompleteIndex]?.copy?.[language];
     return !copy?.title?.trim()||!copy?.text?.trim()||!copy?.cta?.trim();
    }).map(([,name])=>name);
-   const imageReviewMissing=slides[incompleteIndex]?.imageReviewed!==true;\n   setError(`Karusellin dia ${incompleteIndex+1}: varmista HTTPS-kuva, turvallinen linkki, kuvan ja tekstien vastaavuus sekä otsikko, kuvaus ja painiketeksti kaikilla kielillä.${imageReviewMissing?" Kuva/teksti-tarkistus puuttuu.":""} Puutteelliset kielet: ${missing.join(", ")}.`);
+   const imageReviewMissing=slides[incompleteIndex]?.imageReviewed!==true;
+   setError(`Karusellin dia ${incompleteIndex+1}: varmista HTTPS-kuva, turvallinen linkki, kuvan ja tekstien vastaavuus sekä otsikko, kuvaus ja painiketeksti kaikilla kielillä.${imageReviewMissing?" Kuva/teksti-tarkistus puuttuu.":""} Puutteelliset kielet: ${missing.join(", ")}.`);
    return;
   }
   setBusy(true);
