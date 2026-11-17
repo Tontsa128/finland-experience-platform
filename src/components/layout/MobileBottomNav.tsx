@@ -19,7 +19,7 @@ export function MobileBottomNav() {
   const t = copy[locale] || copy.en;
   const homeHref = `/${locale}`;
   const searchHref = `/${locale}/search`;
-  const mapHref = `/${locale}/experiences#experience-map`;
+  const mapHref = `/${locale}/map`;
   const planHref = `/${locale}/plan`;
   const accountHref = `/${locale}/account/login`;
 

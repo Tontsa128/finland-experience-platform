@@ -21,7 +21,7 @@ type Locale = "fi" | "es" | "en";
 
 const copy = {
   fi: {
-    subtitle: "Paikkoja, elämyksiä ja tarinoita, jotka tekevät Suomesta unohtumattoman.",
+    subtitle: "Tutustu paikallisiin palveluihin, löydä uusia suosikkeja ja suunnittele oma reittisi.",
     searchPlaceholder: "Hae kohdetta tai palvelua...",
     allServices: "Kaikki palvelut", allAreas: "Kaikki alueet", search: "Etsi",
     categories: ["Majoitus", "Ruoka", "Elämykset", "Luonto", "Saunat", "Kulttuuri", "Paikalliset putiikit", "Tapahtumat"],
@@ -33,10 +33,10 @@ const copy = {
     advisorQuick: ["Mökki kahdelle", "Lähimmät ravintolat", "Perheaktiviteetit", "Saunaelämys"],
     events: "Tapahtumat", guides: "Alueoppaat", favourites: "Suunnittele matka",
     eventsText: "Näe mitä tapahtuu lähialueella", guidesText: "Suunnittele matkasi helposti", favouritesText: "Rakenna oma matkasuunnitelmasi",
-    locationUnknown: "Tutustu kohteeseen", priceCheck: "Tarkista hinta", imageSourceLabel: "Kuvan lähde",
+    locationUnknown: "Tutustu kohteeseen", priceCheck: "Tarkista hinta", imageSourceLabel: "©",
   },
   es: {
-    subtitle: "Lugares, experiencias e historias para descubrir una Finlandia inolvidable.",
+    subtitle: "Descubre servicios locales, encuentra nuevos favoritos y crea tu propia ruta.",
     searchPlaceholder: "Busca un destino o servicio...",
     allServices: "Todos los servicios", allAreas: "Todas las zonas", search: "Buscar",
     categories: ["Alojamiento", "Gastronomía", "Experiencias", "Naturaleza", "Saunas", "Cultura", "Tiendas locales", "Eventos"],
@@ -48,10 +48,10 @@ const copy = {
     advisorQuick: ["Cabaña para dos", "Restaurantes cercanos", "Planes en familia", "Experiencia de sauna"],
     events: "Eventos", guides: "Guías de zonas", favourites: "Planifica tu viaje",
     eventsText: "Descubre qué ocurre cerca", guidesText: "Planifica tu viaje fácilmente", favouritesText: "Crea tu propio plan de viaje",
-    locationUnknown: "Descubrir destino", priceCheck: "Consultar precio", imageSourceLabel: "Fuente de la imagen",
+    locationUnknown: "Descubrir destino", priceCheck: "Consultar precio", imageSourceLabel: "©",
   },
   en: {
-    subtitle: "Places, experiences and stories that make Finland unforgettable.",
+    subtitle: "Explore local services, find new favourites and shape your own journey.",
     searchPlaceholder: "Search destinations or services...",
     allServices: "All services", allAreas: "All areas", search: "Search",
     categories: ["Accommodation", "Food", "Experiences", "Nature", "Saunas", "Culture", "Local shops", "Events"],
@@ -63,57 +63,26 @@ const copy = {
     advisorQuick: ["Cottage for two", "Nearby restaurants", "Family activities", "Sauna experience"],
     events: "Events", guides: "Area guides", favourites: "Plan your trip",
     eventsText: "See what is happening nearby", guidesText: "Plan your trip with ease", favouritesText: "Build your own travel plan",
-    locationUnknown: "Explore destination", priceCheck: "Check price", imageSourceLabel: "Image source",
+    locationUnknown: "Explore destination", priceCheck: "Check price", imageSourceLabel: "©",
   },
 } as const;
 
-const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
-  fi: [
-    { label: "Saunat", href: "/search?palvelut=sauna" },
-    { label: "Hyvinvointi", href: "/search?palvelut=wellbeing" },
-    { label: "Majoitus", href: "/search?kategoria=majoitus" },
-    { label: "Majoitus saunalla", href: "/search?type=accommodation&palvelut=sauna" },
-    { label: "Ruoka ja ravintolat", href: "/search?palvelut=food" },
-    { label: "Veneily, satamat ja risteilyt", href: "/search?palvelut=cruise" },
-    { label: "Saaristo ja vesistöt", href: "/search?palvelut=archipelago" },
-    { label: "Ostokset", href: "/search?palvelut=shopping" },
-    { label: "Luonto ja retkeily", href: "/search?palvelut=hiking" },
-    { label: "Kulttuuri ja nähtävyydet", href: "/search?palvelut=culture" },
-    { label: "Kohteet", href: "/search?type=destination" },
-    { label: "Tapahtumat", href: "/search?type=event" },
-  ],
-  es: [
-    { label: "Saunas", href: "/search?palvelut=sauna" },
-    { label: "Bienestar", href: "/search?palvelut=wellbeing" },
-    { label: "Alojamiento", href: "/search?kategoria=majoitus" },
-    { label: "Alojamiento con sauna", href: "/search?type=accommodation&palvelut=sauna" },
-    { label: "Gastronomía", href: "/search?palvelut=food" },
-    { label: "Navegación, puertos y cruceros", href: "/search?palvelut=cruise" },
-    { label: "Archipiélago y aguas", href: "/search?palvelut=archipelago" },
-    { label: "Tiendas locales", href: "/search?palvelut=shopping" },
-    { label: "Naturaleza y senderismo", href: "/search?palvelut=hiking" },
-    { label: "Cultura y lugares de interés", href: "/search?palvelut=culture" },
-    { label: "Destinos", href: "/search?type=destination" },
-    { label: "Eventos", href: "/search?type=event" },
-  ],
-  en: [
-    { label: "Saunas", href: "/search?palvelut=sauna" },
-    { label: "Wellbeing", href: "/search?palvelut=wellbeing" },
-    { label: "Accommodation", href: "/search?kategoria=majoitus" },
-    { label: "Stays with sauna", href: "/search?type=accommodation&palvelut=sauna" },
-    { label: "Food and restaurants", href: "/search?palvelut=food" },
-    { label: "Boating, marinas and cruises", href: "/search?palvelut=cruise" },
-    { label: "Archipelago and waterways", href: "/search?palvelut=archipelago" },
-    { label: "Local shops", href: "/search?palvelut=shopping" },
-    { label: "Nature and hiking", href: "/search?palvelut=hiking" },
-    { label: "Culture and attractions", href: "/search?palvelut=culture" },
-    { label: "Destinations", href: "/search?type=destination" },
-    { label: "Events", href: "/search?type=event" },
-  ],
-};
 
 function localized(value: Record<string, string> | undefined, locale: Locale): string {
   return value?.[locale] || value?.en || "";
+}
+
+function localizedRegion(region: string | undefined, locale: Locale): string {
+  if (!region) return locale === "fi" ? "Koko Suomi" : locale === "es" ? "Toda Finlandia" : "Across Finland";
+  const regions: Record<string, Record<Locale, string>> = {
+    "Southwest Finland": { fi: "Lounais-Suomi", es: "Suroeste de Finlandia", en: "Southwest Finland" },
+    "Western Finland": { fi: "Länsi-Suomi", es: "Oeste de Finlandia", en: "Western Finland" },
+    "Southern Finland": { fi: "Etelä-Suomi", es: "Sur de Finlandia", en: "Southern Finland" },
+    "Eastern Uusimaa": { fi: "Itä-Uusimaa", es: "Uusimaa oriental", en: "Eastern Uusimaa" },
+    "Åland": { fi: "Ahvenanmaa", es: "Åland", en: "Åland" },
+    "Mathildedal harbour": { fi: "Mathildedalin satama", es: "Puerto de Mathildedal", en: "Mathildedal harbour" },
+  };
+  return regions[region]?.[locale] || region;
 }
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -172,7 +141,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     }
     // No unused supplied or curated image remains. Keep the first real source
     // rather than fabricate an image or silently substitute unrelated content.
-    return candidates.find((image): image is string => Boolean(image)) || fallbacks[0] || "";
+    return "";
   };
 
   const categoryCards = [
@@ -198,33 +167,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <VisitorCounter locale={locale} />
       <Hero settings={homepage} />
 
-      <section className="relative z-20 isolate mx-auto w-full min-w-0 max-w-6xl overflow-x-clip px-4 pt-7 pb-5 sm:pt-10 sm:pb-7">
-        <div className="mb-4 text-center"><p className="text-[10px] font-bold uppercase tracking-[.22em] text-brand-700">FINLAND EXPERIENCE</p><h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-brand-950 sm:text-3xl">{locale === "fi" ? "Mitä haluaisit löytää Suomesta?" : locale === "es" ? "¿Qué te gustaría descubrir en Finlandia?" : "What would you like to discover in Finland?"}</h2><p className="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-600">{t.subtitle}</p></div>
-        <form action={`/${locale}/search`} method="GET" className="grid w-full min-w-0 gap-2 overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_14px_45px_rgba(20,45,35,.16)] sm:grid-cols-[minmax(0,1fr)_190px_190px_auto] sm:items-center sm:rounded-full sm:p-2">
-          <label className="flex min-w-0 items-center gap-3 px-3">
-            <Compass className="h-5 w-5 shrink-0 text-brand-800" />
-            <input name="q" placeholder={t.searchPlaceholder} className="min-h-11 w-full min-w-0 border-0 bg-transparent text-base text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0" />
-          </label>
-          <label className="flex min-w-0 max-w-full min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
-            <Sparkles className="h-4 w-4 text-brand-700" />
-            <select name="type" defaultValue="all" aria-label={t.allServices} className="w-full min-w-0 max-w-full truncate bg-transparent outline-none"><option value="all">{t.allServices}</option><option value="accommodation">{t.categories[0]}</option><option value="experience">{t.categories[2]}</option><option value="destination">{t.categories[3]}</option><option value="event">{locale === "fi" ? "Tapahtumat" : locale === "es" ? "Eventos" : "Events"}</option><option value="article">{locale === "fi" ? "Artikkelit" : locale === "es" ? "Artículos" : "Articles"}</option></select>
-          </label>
-          <label className="flex min-h-11 items-center gap-2 border-t border-slate-100 px-3 text-sm text-slate-700 sm:border-l sm:border-t-0">
-            <MapPin className="h-4 w-4 text-brand-700" />
-            <select name="area" defaultValue="" aria-label={t.allAreas} className="w-full bg-transparent outline-none"><option value="">{t.allAreas}</option>{catalogDestinations.map((d) => <option key={d.slug} value={d.slug}>{localized(d.name, locale)}</option>)}</select>
-          </label>
-          <button type="submit" className="inline-flex min-h-11 w-full min-w-0 items-center justify-center gap-2 rounded-full bg-brand-950 px-5 text-sm font-bold text-white transition hover:bg-brand-800 sm:w-auto sm:px-7"><Compass className="h-4 w-4" />{t.search}</button>
-        </form>
-        <div className="mx-auto mt-4 max-w-4xl rounded-2xl border border-brand-100 bg-[#f4f7f3] p-3 shadow-[0_8px_28px_rgba(20,45,35,.07)] sm:p-5">
-          <div className="mb-2 flex items-center gap-2"><Sparkles className="h-5 w-5 text-brand-700" /><h3 className="font-display text-lg font-bold text-brand-950">{t.advisorTitle}</h3></div>
+      <section aria-labelledby="travel-advisor-heading" className="relative z-20 isolate mx-auto w-full min-w-0 max-w-5xl overflow-x-clip px-4 pt-5 pb-6 sm:pt-7 sm:pb-8">
+        <div className="mb-3 text-center"><h2 id="travel-advisor-heading" className="font-display text-xl font-bold tracking-tight text-brand-950 sm:text-2xl">{locale === "fi" ? "Suunnittele matkasi tekoälyn avulla" : locale === "es" ? "Planifica tu viaje con ayuda de IA" : "Plan your trip with AI"}</h2><p className="mx-auto mt-1 max-w-2xl text-sm leading-6 text-slate-600">{t.subtitle}</p></div>
+        <div className="mx-auto max-w-4xl rounded-2xl border border-brand-100 bg-[#f4f7f3] p-3 shadow-[0_8px_28px_rgba(20,45,35,.07)] sm:p-4">
+          <div className="mb-2 flex items-center gap-2"><Sparkles className="h-5 w-5 shrink-0 text-brand-700" /><h3 className="min-w-0 break-words font-display text-base font-bold text-brand-950 sm:text-lg">{t.advisorTitle}</h3></div>
           <p className="mb-3 text-sm text-slate-600">{locale === "fi" ? "Kuvaile omin sanoin millaista paikkaa, majoitusta tai elämystä etsit. AI auttaa löytämään sopivia vaihtoehtoja." : locale === "es" ? "Describe el lugar, alojamiento o experiencia que buscas. La IA te ayudará a encontrar opciones adecuadas." : "Describe the place, accommodation or experience you are looking for. AI will help you find suitable options."}</p>
           <TravelAdvisor language={locale} catalog={advisorCatalog} embedded suggestions={[...t.advisorQuick]} />
         </div>
       </section>
 
-      <nav aria-label={locale === "fi" ? "Suositut haut" : locale === "es" ? "Búsquedas populares" : "Popular searches"} className="container-narrow flex flex-wrap gap-2 pb-5">
-        {quickSearches[locale].map((item) => <Link key={item.label} href={`/${locale}${item.href}`} className="inline-flex min-h-10 items-center rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-900 transition hover:border-brand-700 hover:bg-brand-50">{item.label}</Link>)}
-      </nav>
+
 
       {paidAdCampaigns.length > 0 && (
         <section className="container-narrow pb-7 sm:pb-9" aria-label={locale === "fi" ? "Esittelyssä olevat kumppanit" : locale === "es" ? "Socios destacados" : "Featured partners"}>
@@ -258,6 +210,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {featuredDestinations.filter((d) => d.images?.length).map((d, i) => {
             const image = uniqueHomepageImage(d.images || []);
+            if (!image) return null;
             const photo = getHomepagePhotoCredit(image);
             const usageNote = getHomepagePhotoUsageNote(photo, locale);
             return (
@@ -265,7 +218,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <Link href={`/${locale}/destinations/${d.slug}`} className="group relative isolate flex aspect-[1.35] overflow-hidden bg-brand-950 text-white">
                   <Image src={image} alt={localized(d.name, locale)} fill priority={i < 2} sizes="(max-width:640px) 50vw,25vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
                   <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                  <span className="mt-auto p-3 sm:p-4"><span className="block font-display text-lg font-bold">{localized(d.name, locale)}</span><span className="mt-1 flex items-center gap-1 text-xs text-white/85"><MapPin className="h-3 w-3" />{d.region || t.locationUnknown}</span></span>
+                  <span className="mt-auto p-3 sm:p-4"><span className="block font-display text-lg font-bold">{localized(d.name, locale)}</span><span className="mt-1 flex items-center gap-1 text-xs text-white/85"><MapPin className="h-3 w-3" />{localizedRegion(d.region, locale)}</span></span>
                 </Link>
                 {photo && <div className="flex items-center justify-between gap-2 px-3 py-2 text-[10px] leading-4 text-slate-500"><span>{photo.credit} · {usageNote}</span><a href={photo.sourcePage} target="_blank" rel="noopener noreferrer" className="shrink-0 font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-950">{t.imageSourceLabel}</a></div>}
               </article>
@@ -285,12 +238,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <Link href={`/${locale}/destinations`} className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-brand-900 hover:text-brand-600">{t.showAll}<ArrowRight className="h-4 w-4" /></Link>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-          {catalogDestinations.filter((destination) => destination.images?.length).slice(0, 6).map((destination) => {
+          {catalogDestinations.filter((destination) => destination.images?.length && !featuredDestinations.some((featured) => featured.slug === destination.slug)).slice(0, 6).map((destination) => {
             const image = uniqueHomepageImage(destination.images || []);
+            if (!image) return null;
             return <Link key={destination.slug} href={`/${locale}/search?area=${encodeURIComponent(destination.slug)}`} className="group relative isolate flex min-h-36 overflow-hidden rounded-xl bg-brand-950 text-white shadow-soft sm:min-h-44">
               <Image src={image} alt={localized(destination.name, locale)} fill sizes="(max-width:640px) 50vw,33vw" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-105" />
               <span className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
-              <span className="mt-auto p-3 sm:p-4"><strong className="block font-display text-lg">{localized(destination.name, locale)}</strong><span className="mt-1 flex items-center gap-1 text-xs text-white/85"><MapPin className="h-3 w-3" />{destination.region || t.locationUnknown}</span></span>
+              <span className="mt-auto p-3 sm:p-4"><strong className="block font-display text-lg">{localized(destination.name, locale)}</strong><span className="mt-1 flex items-center gap-1 text-xs text-white/85"><MapPin className="h-3 w-3" />{localizedRegion(destination.region, locale)}</span></span>
             </Link>;
           })}
         </div>
@@ -301,6 +255,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="grid gap-4 sm:grid-cols-3">
           {featuredCabins.filter((c) => c.images?.length).map((c, i) => {
             const image = uniqueHomepageImage(c.images || []);
+            if (!image) return null;
             return <Link key={c.slug} href={`/${locale}/accommodations/${c.slug}`} className="group overflow-hidden rounded-xl border border-slate-100 bg-white shadow-[0_5px_20px_rgba(25,45,35,.08)] transition hover:-translate-y-1 hover:shadow-card">
             <div className="relative aspect-[16/9] overflow-hidden"><Image src={image} alt={localized(c.name, locale)} fill priority={i === 0} sizes="(max-width:640px) 100vw,33vw" className="object-cover transition duration-700 group-hover:scale-105" /></div>
             <div className="p-4"><h3 className="font-display text-lg font-bold text-brand-950">{localized(c.name, locale)}</h3><p className="mt-1 text-xs text-slate-500">{c.locationByLocale?.[locale] || c.location}</p><div className="mt-3 flex items-center justify-between gap-2"><span className="text-sm font-bold text-brand-900">{c.pricePerNight > 0 ? new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(c.pricePerNight) + (locale === "fi" ? " / yö" : locale === "es" ? " / noche" : " / night") : t.priceCheck}</span><span className="rounded-full bg-brand-950 px-3 py-2 text-[11px] font-bold text-white">{t.viewStay}<ArrowRight className="ml-1 inline h-3 w-3" /></span></div></div>
@@ -314,6 +269,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="grid gap-4 sm:grid-cols-2">
           {featuredExperiences.filter((e) => e.images?.length).map((e) => {
             const image = uniqueHomepageImage(e.images || []);
+            if (!image) return null;
             return <Link key={e.slug} href={`/${locale}/experiences/${e.slug}`} className="group grid overflow-hidden rounded-xl border border-slate-100 bg-white shadow-[0_5px_20px_rgba(25,45,35,.08)] sm:grid-cols-[.95fr_1.05fr]">
             <div className="relative min-h-44 overflow-hidden"><Image src={image} alt={localized(e.name, locale)} fill sizes="(max-width:640px) 100vw,50vw" className="object-cover transition duration-700 group-hover:scale-105" /></div>
             <div className="flex flex-col justify-center p-4"><h3 className="font-display text-lg font-bold text-brand-950">{localized(e.name, locale)}</h3><p className="mt-1 text-xs text-slate-500">{e.region}</p><p className="mt-2 line-clamp-2 text-sm text-slate-600">{localized(e.shortDescription, locale)}</p><span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-brand-900">{t.viewExperience}<ArrowRight className="h-4 w-4" /></span></div>

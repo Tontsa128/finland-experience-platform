@@ -94,7 +94,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         return usableCmsSlides.map((item) => ({
           key: item.id,
           image: item.imageUrl,
-          durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 1500 ? item.durationMs : 5500,
+          durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 5000 ? item.durationMs : 5500,
           credit: item.credit || "",
           creditUrl: item.creditUrl,
           href: normalizeHomepageHref(item.href || "/destinations"),
@@ -234,7 +234,7 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
             <button type="button" aria-label={ui.previous} onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d9e2d7] bg-white transition hover:bg-[#edf3ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
-            <div className="hidden max-w-[120px] items-center justify-center gap-2 overflow-hidden sm:flex sm:max-w-none">
+            <div className="flex max-w-[120px] items-center justify-center gap-1 overflow-hidden sm:max-w-none sm:gap-2">
               {activeSlides.map((item, index) => (
                 <button
                   key={item.key}
@@ -242,11 +242,11 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
                   aria-label={ui.goToSlide(index + 1)}
                   aria-current={index === active ? "true" : undefined}
                   onClick={() => setActive(index)}
-                  className={`h-2.5 min-w-2.5 rounded-full transition-all ${index === active ? "w-8 bg-brand-700" : "w-2.5 bg-[#d6dfd4] hover:bg-brand-300"}`}
+                  className={`h-2 min-w-2 rounded-full transition-all sm:h-2.5 sm:min-w-2.5 ${index === active ? "w-5 bg-brand-700 sm:w-8" : "w-2 bg-[#d6dfd4] hover:bg-brand-300 sm:w-2.5"}`}
                 />
               ))}
             </div>
-            <span className="min-w-[3.5rem] text-center text-xs font-bold tabular-nums text-brand-900 sm:hidden">{active + 1} / {slideCount}</span>
+            
             <button type="button" aria-label={ui.next} onClick={() => setActive((current) => (current + 1) % slideCount)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>

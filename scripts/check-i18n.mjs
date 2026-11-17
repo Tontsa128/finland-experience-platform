@@ -91,7 +91,11 @@ const homepageCategoriesUseUnifiedSearch = [
   'search?type=accommodation',
   'search?type=experience&category=food',
   'search?type=experience',
-  'search?type=destination',
+  'search?palvelut=hiking',
+  'search?palvelut=sauna',
+  'search?palvelut=culture',
+  'search?palvelut=shopping',
+  'search?type=event',
 ].every((route) => homepageSource.includes(route));
 const homepageCityCopyIsLocalized = ["fi:", "en:", "es:"].every((localeKey) => {
   return homepageDestinationFeaturesSource.includes(localeKey);

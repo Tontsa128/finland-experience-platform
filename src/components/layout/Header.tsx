@@ -10,8 +10,8 @@ type NavigationItem = { id: string; label: string; href: string; sortOrder: numb
 
 const languageOptions = [
   { locale: "fi", label: "FI", full: "Suomi", flag: "🇫🇮" },
-  { locale: "en", label: "EN", full: "English", flag: "🇬🇧" },
   { locale: "es", label: "ES", full: "Español", flag: "🇪🇸" },
+  { locale: "en", label: "EN", full: "English", flag: "🇬🇧" },
 ] as const;
 
 export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
@@ -86,7 +86,7 @@ export function Header({ navigation = [] }: { navigation?: NavigationItem[] }) {
                   title={full}
                   lang={targetLocale}
                   translate="no"
-                  className={`notranslate inline-flex min-h-8 items-center justify-center gap-1 rounded-full px-1.5 text-[10px] font-extrabold tracking-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 sm:min-h-9 sm:px-2.5 ${active ? "bg-brand-950 text-white shadow-sm" : "text-slate-600 hover:bg-white hover:text-brand-950"}`}
+                  className={`notranslate inline-flex min-h-10 min-w-10 items-center justify-center gap-1 rounded-full px-2 text-[11px] font-extrabold tracking-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 sm:min-h-10 sm:min-w-10 sm:px-2.5 ${active ? "bg-brand-950 text-white shadow-sm" : "text-slate-600 hover:bg-white hover:text-brand-950"}`}
                 >
                   <span aria-hidden="true">{flag}</span>
                   <span className="sm:hidden">{label}</span>
