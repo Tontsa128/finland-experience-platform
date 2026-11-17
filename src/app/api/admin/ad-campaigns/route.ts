@@ -19,7 +19,9 @@ function safeHttps(value: unknown): value is string {
   try { return new URL(value).protocol === "https:"; } catch { return false; }
 }
 
-function cleanSlides(value: unknown) {
+type CleanSlide = { imageUrl: string; href: string; title: Record<"fi" | "es" | "en", string>; text: Record<"fi" | "es" | "en", string>; ctaLabel: Record<"fi" | "es" | "en", string>; alt: Record<"fi" | "es" | "en", string> };
+
+function cleanSlides(value: unknown): CleanSlide[] | null {
   if (!Array.isArray(value) || value.length < 3 || value.length > 5) return null;
   const slides = value.map((item) => {
     if (!item || typeof item !== "object") return null;
@@ -37,28 +39,29 @@ function cleanSlides(value: unknown) {
     if (locales.some((locale) => !title[locale] || !alt[locale])) return null;
     return { imageUrl: slide.imageUrl.trim(), href: slide.href.trim(), title, text, ctaLabel, alt };
   });
-  return slides.some((slide) => !slide) ? null : slides;
+  if (slides.some((slide) => !slide)) return null;
+  return slides as CleanSlide[];
 }
 
 function validate(body: Record<string, unknown>, role: string) {
   const campaignName = String(body.campaign_name || "").trim();
   const advertiserName = String(body.advertiser_name || "").trim();
   const providerUrl = body.provider_url;
-  const billingModel = body.billing_model;
+  const billingModel = String(body.billing_model || "");
   const price = Number(body.price_eur);
-  const placement = body.placement;
+  const placement = String(body.placement || "");
   const region = String(body.region || "southwest_finland");
-  const status = body.status || "draft";
+  const status = String(body.status || "draft");
   const slides = cleanSlides(body.slides);
   const interval = Number(body.slide_interval_ms || 6000);
   const startsAt = body.starts_at ? String(body.starts_at) : null;
   const endsAt = body.ends_at ? String(body.ends_at) : null;
 
   if (!campaignName || campaignName.length > 120 || !advertiserName || advertiserName.length > 120 ||
-      !safeHttps(providerUrl) || !validBilling.includes(String(billingModel)) ||
+      !safeHttps(providerUrl) || !validBilling.includes(billingModel) ||
       !Number.isFinite(price) || price < 0 || price > 100000 ||
-      !validPlacements.includes(String(placement)) || !/^[a-z0-9_-]{2,60}$/.test(region) ||
-      !validStatuses.includes(String(status)) || !slides ||
+      !validPlacements.includes(placement) || !/^[a-z0-9_-]{2,60}$/.test(region) ||
+      !validStatuses.includes(status) || !slides ||
       !Number.isInteger(interval) || interval < 5000 || interval > 7000) return null;
   if (startsAt && Number.isNaN(Date.parse(startsAt))) return null;
   if (endsAt && Number.isNaN(Date.parse(endsAt))) return null;
