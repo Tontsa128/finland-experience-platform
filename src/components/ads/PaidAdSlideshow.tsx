@@ -18,7 +18,7 @@ function CampaignSlideshow({ campaign, locale }: { campaign: PaidAdCampaign; loc
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(false);
-  const articleRef = useRef<HTMLElement | null>(null);
+  const articleRef = useRef<HTMLElement | null>(null);\n  const touchStartX = useRef<number | null>(null);
   const slide = campaign.slides[index] as PaidAdSlide;
   const labels = {
     fi: { sponsored: "Mainos · Yhteistyökumppani", pause: "Keskeytä diaesitys", play: "Jatka diaesitystä", previous: "Edellinen mainosdia", next: "Seuraava mainosdia", of: " / " },
@@ -53,7 +53,7 @@ function CampaignSlideshow({ campaign, locale }: { campaign: PaidAdCampaign; loc
         <p className="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">{labels.sponsored}</p>
         <span className="text-xs font-semibold text-slate-500">{campaign.advertiserName}</span>
       </div>
-      <a href={slide.href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer sponsored" : "sponsored"} onClick={() => track(campaign.id, "click", locale, campaign.placement, index)} className="group relative isolate block aspect-[16/9] overflow-hidden bg-brand-950 text-white sm:aspect-[21/8]">
+      <a href={slide.href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer sponsored" : "sponsored"} onClick={() => track(campaign.id, "click", locale, campaign.placement, index)} className="group relative isolate block touch-pan-y aspect-[16/9] overflow-hidden bg-brand-950 text-white sm:aspect-[21/8]" onTouchStart={(event) => { touchStartX.current = event.changedTouches[0]?.clientX ?? null; }} onTouchEnd={(event) => { const start = touchStartX.current; touchStartX.current = null; if (start === null) return; const delta = event.changedTouches[0]?.clientX - start; if (Math.abs(delta) > 45) move(delta < 0 ? 1 : -1); }}>
         <Image src={slide.imageUrl} alt={slide.alt[locale] || slide.title[locale]} fill unoptimized sizes="(max-width: 640px) 100vw, 1200px" className="absolute inset-0 -z-20 object-cover transition duration-700 group-hover:scale-[1.02]" />
         <span className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/45 to-black/10" />
         <span className="absolute inset-0 flex flex-col items-start justify-center p-5 sm:p-9">
