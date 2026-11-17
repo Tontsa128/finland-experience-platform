@@ -77,6 +77,7 @@ export default function FinlandExperienceMap({ locale }: { locale: Locale }) {
         marker.bindPopup(popup);
       });
 
+      map.fitBounds(L.latLngBounds(points.map((point) => [point.lat, point.lng])).pad(0.15), { maxZoom: 8 });
       mapInstance.current = map;
       createdMap = map;
       window.requestAnimationFrame(() => map.invalidateSize());
