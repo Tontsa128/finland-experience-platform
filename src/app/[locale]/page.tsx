@@ -79,6 +79,7 @@ const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
     { label: "Ostokset", href: "/search?palvelut=shopping" },
     { label: "Luonto ja retkeily", href: "/search?palvelut=hiking" },
     { label: "Kulttuuri ja nähtävyydet", href: "/search?palvelut=culture" },
+    { label: "Kohteet", href: "/search?type=destination" },
     { label: "Tapahtumat", href: "/search?type=event" },
   ],
   es: [
@@ -92,6 +93,7 @@ const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
     { label: "Tiendas locales", href: "/search?palvelut=shopping" },
     { label: "Naturaleza y senderismo", href: "/search?palvelut=hiking" },
     { label: "Cultura y lugares de interés", href: "/search?palvelut=culture" },
+    { label: "Destinos", href: "/search?type=destination" },
     { label: "Eventos", href: "/search?type=event" },
   ],
   en: [
@@ -105,6 +107,7 @@ const quickSearches: Record<Locale, Array<{ label: string; href: string }>> = {
     { label: "Local shops", href: "/search?palvelut=shopping" },
     { label: "Nature and hiking", href: "/search?palvelut=hiking" },
     { label: "Culture and attractions", href: "/search?palvelut=culture" },
+    { label: "Destinations", href: "/search?type=destination" },
     { label: "Events", href: "/search?type=event" },
   ],
 };
