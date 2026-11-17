@@ -36,6 +36,7 @@ export default function SiteBuilder(){
   const incompleteIndex=slides.findIndex(slide=>slide.enabled!==false&&(
    !isSecureImageUrl(slide.imageUrl.trim())||
    Boolean(brokenSlideImages[slide.id])||
+   slide.imageReviewed!==true||
    !isSafeSlideLink(slide.href)||
    (Boolean(slide.creditUrl?.trim())&&!isSafeSlideLink(slide.creditUrl||""))||
    locales.some(([language])=>{
