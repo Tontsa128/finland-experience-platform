@@ -79,7 +79,7 @@ export const photoCredits: PhotoCredit[] = [
   { url: photoLibrary.naturaVivaTeijo, credit: "Natura Viva", license: "Provider website image", sourcePage: "https://naturaviva.fi/en_US/forest-hut-matildanjarvi/teijo-rental-shop" },
   { url: photoLibrary.pumpkinWeeks, credit: "Visit Salo / Kurpitsaviikot", license: "Visit Salo website image", sourcePage: "https://visitsalo.fi/kurpitsaviikot/" },
   { url: photoLibrary.mathildedalChristmas, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://visitmathildedal.fi/fi/valimo" },
-  { url: photoLibrary.matildanKesakauppa, credit: "Visit Mathildedal", license: "Visit Mathildedal website image", sourcePage: "https://www.visitteijo.com/puodit" },
+  { url: photoLibrary.matildanKesakauppa, credit: "Visit Teijo", license: "Visit Teijo website image", sourcePage: "https://www.visitteijo.com/puodit" },
   { url: photoLibrary.rosalaVikingCentre, credit: "Rosala & Bengtskär Booking Office / Rosala Viking Centre", license: "Provider/partner image", sourcePage: "https://rosala.johku.com/fi_FI/tietoa-varaustoimistosta" },
   { url: photoLibrary.rosalaVikingHall, credit: "Rosala & Bengtskär Booking Office / Rosala Viking Centre", license: "Provider/partner image", sourcePage: "https://rosala.johku.com/fi_FI/tietoa-varaustoimistosta" },
 ];
