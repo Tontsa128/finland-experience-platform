@@ -17,6 +17,10 @@ import {
   getActiveAdCampaigns,
 } from "@/lib/public-content";
 
+// Homepage data (including the CMS-managed hero slideshow) must be loaded at request time.
+// Static generation would bake an empty CMS result into the FI/ES/EN production pages.
+export const dynamic = "force-dynamic";
+
 type Locale = "fi" | "es" | "en";
 
 const copy = {
