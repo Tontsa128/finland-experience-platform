@@ -16,7 +16,13 @@ type Campaign = {
 type Form = Omit<Campaign, "id" | "starts_at" | "ends_at"> & { starts_at: string; ends_at: string };
 const emptyCopy = (): Copy => ({ fi: "", es: "", en: "" });
 const emptySlide = (): Slide => ({ imageUrl: "", href: "", title: emptyCopy(), text: emptyCopy(), ctaLabel: emptyCopy(), alt: emptyCopy() });
-function toLocalInput(value: string | null) {\n  if (!value) return "";\n  const date = new Date(value);\n  return new Date(date.getTime() - date.getTimezoneOffset() * 60_000).toISOString().slice(0, 16);\n}\n\nconst blank = (): Form => ({
+function toLocalInput(value: string | null) {
+  if (!value) return "";
+  const date = new Date(value);
+  return new Date(date.getTime() - date.getTimezoneOffset() * 60_000).toISOString().slice(0, 16);
+}
+
+const blank = (): Form => ({
   campaign_name: "", advertiser_name: "", provider_url: "", billing_model: "monthly", price_eur: 0,
   placement: "homepage", region: "southwest_finland", status: "draft", starts_at: "", ends_at: "",
   slide_interval_ms: 6000, slides: [emptySlide(), emptySlide(), emptySlide()],
@@ -26,7 +32,8 @@ const localeNames: Record<Locale, string> = { fi: "Suomi", es: "Español", en: "
 const statusNames: Record<Campaign["status"], string> = { draft: "Luonnos", pending: "Odottaa hyväksyntää", approved: "Hyväksytty", paused: "Keskeytetty", archived: "Arkistoitu" };
 
 export default function AdCampaignsAdmin() {
-  const [campaigns, setCampaigns] = useState<Campaign[]>([]);\n  const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
   const [form, setForm] = useState<Form>(blank());
   const [editing, setEditing] = useState<string | null>(null);
   const [error, setError] = useState("");
@@ -38,7 +45,13 @@ export default function AdCampaignsAdmin() {
     if (!response.ok) throw new Error(body.error || "Kampanjoita ei voitu ladata");
     setCampaigns(body.campaigns || []);
   }
-  useEffect(() => { load().catch((e) => setError(e.message)); }, []);\n  useEffect(() => {\n    fetch("/api/admin/media", { cache: "no-store" }).then(async (response) => {\n      const body = await response.json();\n      if (response.ok) setMediaItems(body.media || []);\n    }).catch(() => undefined);\n  }, []);
+  useEffect(() => { load().catch((e) => setError(e.message)); }, []);
+  useEffect(() => {
+    fetch("/api/admin/media", { cache: "no-store" }).then(async (response) => {
+      const body = await response.json();
+      if (response.ok) setMediaItems(body.media || []);
+    }).catch(() => undefined);
+  }, []);
 
   function update<K extends keyof Form>(key: K, value: Form[K]) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -124,7 +137,8 @@ export default function AdCampaignsAdmin() {
               <details key={index} open className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                 <summary className="cursor-pointer font-semibold text-slate-900">Dia {index + 1}</summary>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Valitse kuva nykyisestä CMS-kuvapankista<select value={slide.imageUrl} onChange={(e) => updateSlide(index, { imageUrl: e.target.value })} className="rounded-lg border bg-white p-3 text-sm font-normal"><option value="">Valitse kuvapankin kuva…</option>{mediaItems.map((item) => <option key={item.id} value={item.url}>{item.filename}</option>)}</select></label>\n                  <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Tai anna kuvan URL<input value={slide.imageUrl} onChange={(e) => updateSlide(index, { imageUrl: e.target.value })} placeholder="https://... tai /..." className="rounded-lg border bg-white p-3 text-sm font-normal" /></label>
+                  <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Valitse kuva nykyisestä CMS-kuvapankista<select value={slide.imageUrl} onChange={(e) => updateSlide(index, { imageUrl: e.target.value })} className="rounded-lg border bg-white p-3 text-sm font-normal"><option value="">Valitse kuvapankin kuva…</option>{mediaItems.map((item) => <option key={item.id} value={item.url}>{item.filename}</option>)}</select></label>
+                  <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Tai anna kuvan URL<input value={slide.imageUrl} onChange={(e) => updateSlide(index, { imageUrl: e.target.value })} placeholder="https://... tai /..." className="rounded-lg border bg-white p-3 text-sm font-normal" /></label>
                   <label className="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Kohdelinkki<input value={slide.href} onChange={(e) => updateSlide(index, { href: e.target.value })} placeholder="https://palveluntarjoaja.fi" className="rounded-lg border bg-white p-3 text-sm font-normal" /></label>
                   {(["fi", "es", "en"] as Locale[]).map((locale) => (
                     <fieldset key={locale} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3">
