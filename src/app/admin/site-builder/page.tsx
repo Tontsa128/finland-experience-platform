@@ -16,7 +16,7 @@ export default function SiteBuilder(){
  const [mode,setMode]=useState<"pages"|"carousel">("pages");
  const [pages,setPages]=useState<any[]>([]); const [page,setPage]=useState<any>(null); const [locale,setLocale]=useState<Locale>("fi");
  const [blocks,setBlocks]=useState<Block[]>([]); const [slides,setSlides]=useState<Slide[]>([]);
- const [media,setMedia]=useState<any[]>([]); const [notice,setNotice]=useState(""); const [error,setError]=useState(""); const [busy,setBusy]=useState(false);
+ const [media,setMedia]=useState<any[]>([]); const [notice,setNotice]=useState(""); const [error,setError]=useState(""); const [busy,setBusy]=useState(false); const [slidePreviewLocale,setSlidePreviewLocale]=useState<Locale>("fi");
 
  useEffect(()=>{Promise.all([fetch("/api/admin/pages",{cache:"no-store"}),fetch("/api/admin/media",{cache:"no-store"}),fetch("/api/admin/homepage/slides",{cache:"no-store"})]).then(async([p,m,s])=>{const pb=await p.json(),mb=await m.json(),sb=await s.json();setPages(pb.pages||[]);setMedia(mb.media||[]);setSlides(sb.slides||[]);}).catch(e=>setError(e.message||"Lataus epäonnistui."));},[]);
  const localizedPages=useMemo(()=>pages.filter(p=>p.locale===locale),[pages,locale]);
@@ -28,10 +28,14 @@ export default function SiteBuilder(){
  function addBlock(type:string){setBlocks(b=>[...b,emptyBlock(type)]);}
  function selectImage(url:string,index:number){patchBlock(index,{imageUrl:url});}
  async function saveBlocks(){if(!page)return;setBusy(true);setError("");setNotice("");try{const r=await fetch("/api/admin/pages/blocks",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({slug:page.slug,locale:page.locale,blocks})});const b=await r.json();if(!r.ok)throw new Error(b.error||"Tallennus epäonnistui.");setPage({...page,blocks:b.page.blocks});setPages(ps=>ps.map(p=>p.id===page.id?{...p,blocks:b.page.blocks}:p));setNotice("Sivu tallennettu.");}catch(e){setError(e instanceof Error?e.message:"Tallennus epäonnistui.");}finally{setBusy(false);}}
+ function isSecureImageUrl(value:string){try{return new URL(value).protocol==="https:";}catch{return false;}}
+ function isSafeSlideLink(value:string){const url=value.trim();if(url.startsWith("/")&&!url.startsWith("//"))return true;try{return new URL(url).protocol==="https:";}catch{return false;}}
  async function saveSlides(){
   setError("");setNotice("");
   const incompleteIndex=slides.findIndex(slide=>slide.enabled!==false&&(
-   !slide.imageUrl.trim()||
+   !isSecureImageUrl(slide.imageUrl.trim())||
+   !isSafeSlideLink(slide.href)||
+   (Boolean(slide.creditUrl?.trim())&&!isSafeSlideLink(slide.creditUrl||""))||
    locales.some(([language])=>{
     const copy=slide.copy?.[language];
     return !copy?.title?.trim()||!copy?.text?.trim()||!copy?.cta?.trim();
@@ -42,7 +46,7 @@ export default function SiteBuilder(){
     const copy=slides[incompleteIndex]?.copy?.[language];
     return !copy?.title?.trim()||!copy?.text?.trim()||!copy?.cta?.trim();
    }).map(([,name])=>name);
-   setError(`Karusellin dia ${incompleteIndex+1}: tarkista kuva sekä otsikko, kuvaus ja painiketeksti kaikilla kielillä. Puutteelliset kielet: ${missing.join(", ")}.`);
+   setError(`Karusellin dia ${incompleteIndex+1}: varmista HTTPS-kuva, turvallinen linkki sekä otsikko, kuvaus ja painiketeksti kaikilla kielillä. Puutteelliset kielet: ${missing.join(", ")}.`);
    return;
   }
   setBusy(true);
@@ -74,8 +78,9 @@ export default function SiteBuilder(){
    </section>
   </div>:<section className="mt-6 space-y-5">
    <div className="flex flex-wrap items-center gap-3"><div className="mr-auto max-w-3xl text-sm text-slate-600"><p>Täällä hallitset etusivun kaikki diat, kuvat, tekstit, linkit ja vaihtumisajan.</p><p className="mt-2 rounded-lg bg-amber-50 p-3 text-amber-900">Tärkeää: valitse jokaiseen diaan kuva, joka näyttää juuri tekstissä mainitun kohteen tai palvelun. Suosi palveluntarjoajan omia kuvia. Majoitusdiaan majoituksen kuva, ravintoladiaan ravintolan kuva ja saunadiaan kyseisen saunan kuva. Älä käytä yleistä tai toiseen palveluun kuuluvaa kuvaa vain täytteenä.</p></div><button onClick={()=>setSlides(s=>[...s,emptySlide()])} className="rounded-xl border bg-white px-4 py-3 text-sm font-bold">+ Lisää dia</button><button disabled={busy} onClick={saveSlides} className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-bold text-white">{busy?"Tallennetaan…":"Tallenna karuselli"}</button></div>
+   <div className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-white p-3"><span className="mr-2 text-xs font-bold uppercase tracking-wide text-slate-500">Esikatselun kieli</span>{locales.map(([l,n])=><button type="button" key={l} onClick={()=>setSlidePreviewLocale(l)} className={slidePreviewLocale===l?"rounded-lg bg-slate-950 px-3 py-2 text-xs font-bold text-white":"rounded-lg border px-3 py-2 text-xs font-bold text-slate-600"}>{n}</button>)}</div>
    {slides.map((s,i)=><article key={s.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><div className="flex items-center gap-2"><b>Dia {i+1}</b><button onClick={()=>setSlides(x=>x.filter((_,n)=>n!==i))} className="ml-auto rounded-lg border border-red-200 px-3 py-1 text-xs text-red-700">Poista</button></div>
-    <div className="mt-4 grid gap-4 lg:grid-cols-[260px_1fr]"><div><div className="aspect-[4/3] overflow-hidden rounded-xl bg-slate-100">{s.imageUrl&&<img src={s.imageUrl} alt="" className="h-full w-full object-cover"/>}</div>{mediaButtons(url=>setSlides(x=>x.map((z,n)=>n===i?{...z,imageUrl:url}:z)))}</div>
+    <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(280px,0.9fr)_1.1fr]"><div><div className="relative aspect-video overflow-hidden rounded-xl bg-slate-900 text-white">{s.imageUrl&&<img src={s.imageUrl} alt="" className="absolute inset-0 h-full w-full object-cover"/>}<div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/35 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-4 sm:p-5"><p className="text-[10px] font-bold uppercase tracking-[.18em] text-amber-200">{s.copy[slidePreviewLocale].eyebrow||" "}</p><h3 className="mt-1 line-clamp-2 text-lg font-bold leading-tight sm:text-xl">{s.copy[slidePreviewLocale].title||"Dian otsikko"}</h3><p className="mt-2 line-clamp-3 text-xs leading-5 text-white/90 sm:text-sm">{s.copy[slidePreviewLocale].text||"Dian kuvaus näkyy tässä esikatselussa."}</p><span className="mt-3 inline-flex rounded-full bg-amber-300 px-3 py-2 text-xs font-bold text-slate-950">{s.copy[slidePreviewLocale].cta||"Painiketeksti"}</span></div></div>{mediaButtons(url=>setSlides(x=>x.map((z,n)=>n===i?{...z,imageUrl:url}:z)))}</div>
     <div className="grid gap-3 md:grid-cols-2"><label className="text-xs font-bold">Kuvan URL<input value={s.imageUrl} onChange={e=>setSlides(x=>x.map((z,n)=>n===i?{...z,imageUrl:e.target.value}:z))} className="mt-1 w-full rounded-lg border px-3 py-2"/></label><label className="text-xs font-bold">Linkki<input value={s.href} onChange={e=>setSlides(x=>x.map((z,n)=>n===i?{...z,href:e.target.value}:z))} className="mt-1 w-full rounded-lg border px-3 py-2"/></label><label className="text-xs font-bold">Krediitti<input value={s.credit||""} onChange={e=>setSlides(x=>x.map((z,n)=>n===i?{...z,credit:e.target.value}:z))} className="mt-1 w-full rounded-lg border px-3 py-2"/></label><label className="text-xs font-bold">Krediittilinkki<input value={s.creditUrl||""} onChange={e=>setSlides(x=>x.map((z,n)=>n===i?{...z,creditUrl:e.target.value}:z))} className="mt-1 w-full rounded-lg border px-3 py-2"/></label><label className="text-xs font-bold">Vaihtumisaika (ms)<input type="number" min="1500" max="20000" value={s.durationMs||3000} onChange={e=>setSlides(x=>x.map((z,n)=>n===i?{...z,durationMs:Number(e.target.value)}:z))} className="mt-1 w-full rounded-lg border px-3 py-2"/></label><label className="flex items-center gap-2 text-xs font-bold"><input type="checkbox" checked={s.enabled!==false} onChange={e=>setSlides(x=>x.map((z,n)=>n===i?{...z,enabled:e.target.checked}:z))}/> Dia käytössä</label>
      </div></div>
     <div className="mt-5 border-t pt-5">{locales.map(([l,n])=><div key={l} className="mt-4"><p className="text-xs font-bold uppercase text-slate-400">{n}</p><div className="mt-2 grid gap-3 md:grid-cols-2">{(["eyebrow","title","text","cta"] as const).map(k=><label key={k} className="text-xs font-bold">{k}<textarea rows={k==="text"?3:1} value={s.copy[l][k]} onChange={e=>setSlides(x=>x.map((z,nr)=>nr===i?{...z,copy:{...z.copy,[l]:{...z.copy[l],[k]:e.target.value}}}:z))} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm"/></label>)}</div></div>)}</div>
