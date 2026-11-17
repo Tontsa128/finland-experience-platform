@@ -87,7 +87,20 @@ export async function GET() {
   if (!context) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const { data, error } = await supabaseAdmin.from("ad_campaigns").select("*").order("created_at", { ascending: false });
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ campaigns: data || [] });
+  const campaigns = await Promise.all((data || []).map(async (campaign) => {
+    const [impressionsResult, clicksResult] = await Promise.all([
+      supabaseAdmin.from("ad_campaign_events").select("id", { count: "exact", head: true }).eq("campaign_id", campaign.id).eq("event_type", "impression"),
+      supabaseAdmin.from("ad_campaign_events").select("id", { count: "exact", head: true }).eq("campaign_id", campaign.id).eq("event_type", "click"),
+    ]);
+    return {
+      ...campaign,
+      metrics: {
+        impressions: impressionsResult.error ? null : impressionsResult.count ?? 0,
+        clicks: clicksResult.error ? null : clicksResult.count ?? 0,
+      },
+    };
+  }));
+  return NextResponse.json({ campaigns });
 }
 
 export async function POST(request: NextRequest) {
