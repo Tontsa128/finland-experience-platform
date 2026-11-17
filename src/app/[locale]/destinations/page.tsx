@@ -59,6 +59,17 @@ export default async function DestinationsPage({ params }: { params: Promise<{ l
         </div>
       </section>
 
+      <section className="container-narrow pt-10">
+        <Link href={`/${locale}/map`} className="group flex flex-col gap-4 overflow-hidden rounded-3xl border border-brand-100 bg-brand-50 p-6 transition hover:border-brand-300 hover:shadow-soft sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[.18em] text-terracotta">{locale === "fi" ? "Tutustu kartalla" : locale === "es" ? "Explora el mapa" : "Explore on the map"}</p>
+            <h2 className="mt-2 font-display text-2xl font-bold text-brand-950 sm:text-3xl">{locale === "fi" ? "Löydä, missä Suomen rannikon kohteet sijaitsevat." : locale === "es" ? "Descubre dónde se encuentran los destinos de la costa finlandesa." : "See where Finland’s coastal destinations are located."}</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{locale === "fi" ? "Aloita Salosta, Perniöstä, Mathildedalista ja Teijosta." : locale === "es" ? "Empieza por Salo, Perniö, Mathildedal y Teijo." : "Start with Salo, Perniö, Mathildedal and Teijo."}</p>
+          </div>
+          <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-brand-950 px-5 py-3 text-sm font-bold text-white">{locale === "fi" ? "Avaa kartta" : locale === "es" ? "Abrir mapa" : "Open map"}<ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+        </Link>
+      </section>
+
       <section className="container-narrow py-14 sm:py-20">
         <div className="mb-10 flex items-end justify-between gap-5">
           <div><p className="text-xs font-bold uppercase tracking-[.2em] text-terracotta">{locale === "fi" ? "Suomi · ympäri vuoden" : locale === "es" ? "Finlandia · todo el año" : "Finland · all year round"}</p><h2 className="mt-3 font-display text-4xl font-bold text-brand-950 sm:text-5xl">{copy.story}</h2></div>
