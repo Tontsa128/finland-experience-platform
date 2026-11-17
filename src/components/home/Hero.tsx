@@ -223,11 +223,8 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
 
   const activeSlides = useMemo<Array<Slide & { copy?: SlideCopy }>>(
     () => {
-      // The built-in slides use explicit image/copy pairs. Never guess an image from keywords:
-      // keyword matching previously caused a valid caption to be paired with an unrelated photo.
-      // A CMS slide takes precedence only while its image has loaded successfully.
-      // Broken CMS image URLs are skipped; if all CMS images fail, use the verified
-      // built-in image/copy pairs instead of leaving the hero stuck on a broken image.
+      // CMS slide image and localized copy are one inseparable pair.
+      // If an image fails, skip that slide; never substitute a different photo.
       const usableCmsSlides = cmsSlides.filter((item) => !failedImages[item.id]);
       if (usableCmsSlides.length) {
         return usableCmsSlides.map((item) => ({
@@ -302,13 +299,9 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
   const text = slide.copy || copy[locale][slide.key] || copy[locale].summer;
   const href = slide.external ? slide.href : `/${locale}${slide.href}`;
 
-  const getImage = (item: Slide & { copy?: SlideCopy }) => {
-    if (!failedImages[item.key]) return item.image;
-
-    // Only use a fallback explicitly assigned to this built-in slide key.
-    // Never infer replacement imagery from copy keywords: that can show the wrong place.
-    return fallbackImages[item.key] || item.image;
-  };
+  // Keep the displayed photo bound to its own CMS slide record.
+  // Failed images are removed from activeSlides; no fallback photo is substituted.
+  const getImage = (item: Slide & { copy?: SlideCopy }) => item.image;
 
   const markImageFailed = (key: string) => {
     setFailedImages((current) => (current[key] ? current : { ...current, [key]: true }));
