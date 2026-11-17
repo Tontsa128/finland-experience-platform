@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import type { Locale } from "@/types";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import FinlandExperienceMap from "@/components/map/FinlandExperienceMap";
+import PaidAdSlideshow from "@/components/ads/PaidAdSlideshow";
+import { getActiveAdCampaigns } from "@/lib/public-content";
 
 const copy: Record<Locale, { eyebrow: string; title: string; intro: string; region: string; context: string; locations: string[] }> = {
   fi: { eyebrow: "Löydä oikea paikka", title: "Missä päin Suomea haluat vierailla?", intro: "Aloita Lounais-Suomesta. Kartta auttaa hahmottamaan, missä Salo, Perniö, Mathildedal ja Teijon kansallispuisto sijaitsevat suhteessa Turkuun ja Helsinkiin.", region: "Aloitamme Lounais-Suomesta", context: "Turku ja Helsinki ovat kartalla vertailukohtia. Kartan pisteet näyttävät alueiden sijainnin, eivät reittiohjeita tai tarkkoja ajoaikoja.", locations: ["Salo", "Perniö", "Mathildedal", "Teijon kansallispuisto"] },
@@ -24,6 +26,7 @@ export default async function MapPage({ params }: { params: Promise<{ locale: st
   const { locale: rawLocale } = await params;
   const locale = (["fi", "es", "en"].includes(rawLocale) ? rawLocale : "fi") as Locale;
   const text = copy[locale];
+  const paidAdCampaigns = await getActiveAdCampaigns("map", "southwest_finland");
   return (
     <div className="bg-white">
       <section className="bg-brand-950 text-white"><div className="container-narrow py-14 sm:py-20">
@@ -40,6 +43,7 @@ export default async function MapPage({ params }: { params: Promise<{ locale: st
           <p className="self-end text-sm leading-6 text-slate-600">{text.context}</p>
         </div>
       </section>
+      <PaidAdSlideshow campaigns={paidAdCampaigns} locale={locale} />
     </div>
   );
 }
