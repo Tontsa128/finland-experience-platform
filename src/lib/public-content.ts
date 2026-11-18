@@ -1,4 +1,4 @@
-import { supabaseAdmin } from "@/lib/supabase";
+import { getSupabasePublicAsync, supabaseAdmin } from "@/lib/supabase";
 import { firstValidHttpUrl, isSafeUrlOrPath } from "@/lib/utils";
 import type { Cabin, Destination, Experience, ExperienceStatus, Locale, BlogPost } from "@/types";
 import { getSaloExperienceFallback } from "@/lib/salo-experience-fallback";
@@ -522,7 +522,10 @@ export type HomepageSlide = { id:string; imageUrl:string; credit?:string; credit
 
 export async function getHomepageSettings(): Promise<HomepageSettings | null> {
   try {
-    const { data, error } = await supabaseAdmin
+    // This is a request-time CMS read. Use OpenNext's async Cloudflare
+    // context so Worker secrets are available to the Supabase server client.
+    const supabase = await getSupabasePublicAsync();
+    const { data, error } = await supabase
       .from("site_settings")
       .select("hero_image_url,hero_eyebrow_fi,hero_eyebrow_es,hero_eyebrow_en,hero_title_fi,hero_title_es,hero_title_en,hero_description_fi,hero_description_es,hero_description_en,hero_cta_label_fi,hero_cta_label_es,hero_cta_label_en,hero_cta_url,hero_secondary_label_fi,hero_secondary_label_es,hero_secondary_label_en,hero_secondary_url,homepage_slides,homepage_featured_destination_ids,homepage_featured_property_ids,homepage_featured_experience_ids")
       .eq("singleton", true)

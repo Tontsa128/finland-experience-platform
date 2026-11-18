@@ -3,7 +3,13 @@
   "name": "finland-experience-platform",
   "main": "custom-worker.ts",
   "compatibility_date": "2025-03-25",
-  "previews": {},
+  "previews": {
+    "vars": {
+      "SUPABASE_URL": "https://pxazouraakldvwbswwtg.supabase.co",
+      "NEXT_PUBLIC_SUPABASE_URL": "https://pxazouraakldvwbswwtg.supabase.co",
+      "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_TpTU_WEWP1TF2Q5JOITx9g_I7D3qwQF"
+    }
+  },
   "compatibility_flags": [
     "nodejs_compat",
     "nodejs_compat_populate_process_env"
