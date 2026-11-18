@@ -1,0 +1,36 @@
+name: Curate homepage slide images
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Curate and visually review candidate images
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_VISION_MODEL: ${{ vars.OPENAI_VISION_MODEL }}
+        run: node scripts/curate-slide-images.mjs
+      - name: Publish report in workflow summary
+        if: always()
+        run: |
+          if [ -f reports/slide-image-report.md ]; then
+            cat reports/slide-image-report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No report was generated. Check the previous step for errors." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homepage-slide-image-candidates
+          path: reports/
+          if-no-files-found: warn
+          retention-days: 14
