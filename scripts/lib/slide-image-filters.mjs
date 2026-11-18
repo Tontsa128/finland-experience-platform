@@ -3,7 +3,7 @@ function metaText(info, key) {
 }
 export function isAllowedSlideLicense(info) {
   const value = (metaText(info, "LicenseShortName") + " " + metaText(info, "UsageTerms")).toLowerCase();
-  return /cc0|public domain|cc by|cc-by|cc by-sa|cc-by-sa/i.test(value);
+  return /^(cc0|pd|public domain|cc by(?:-sa)?)(?:\\s|$)/i.test(value.trim());
 }
 export function passesSlideImageFilters(info, brief) {
   if (!info || !["image/jpeg", "image/png", "image/webp"].includes(info.mime)) return false;
