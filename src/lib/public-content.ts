@@ -528,7 +528,17 @@ export async function getHomepageSettings(): Promise<HomepageSettings | null> {
       .eq("singleton", true)
       .maybeSingle();
 
-    if (error || !data) return null;
+    if (error) {
+      console.error("[homepage-settings] Supabase query failed", {
+        code: error.code ?? null,
+        message: error.message,
+      });
+      return null;
+    }
+    if (!data) {
+      console.warn("[homepage-settings] site_settings singleton row was not found");
+      return null;
+    }
 
     const value = (key: string) => String((data as Record<string, unknown>)[key] ?? "");
     const heroEyebrow = { fi: value("hero_eyebrow_fi"), es: value("hero_eyebrow_es"), en: value("hero_eyebrow_en") };
@@ -550,7 +560,10 @@ export async function getHomepageSettings(): Promise<HomepageSettings | null> {
       featuredExperienceIds: idList((data as Record<string, unknown>).homepage_featured_experience_ids),
       homepageSlides: Array.isArray((data as Record<string, unknown>).homepage_slides) ? (data as Record<string, unknown>).homepage_slides as HomepageSlide[] : [],
     };
-  } catch {
+  } catch (error) {
+    console.error("[homepage-settings] Unexpected CMS settings failure", {
+      message: error instanceof Error ? error.message : "Unknown error",
+    });
     return null;
   }
 }
