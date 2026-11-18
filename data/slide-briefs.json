@@ -1,0 +1,241 @@
+{
+  "cottage": {
+    "place": "Järvi-Suomi",
+    "aliases": [
+      "Keuruu",
+      "Finnish Lakeland",
+      "Järvi-Suomi"
+    ],
+    "mustShow": [
+      "järvi tai rantavesi",
+      "kesämökki tai mökkiranta"
+    ],
+    "niceToHave": [
+      "laituri",
+      "rantasauna",
+      "soutuvene",
+      "aamuvalo"
+    ],
+    "season": "summer",
+    "mood": "rauhallinen, valoisa",
+    "avoid": [
+      "talvi",
+      "lähikuvat ihmisistä"
+    ],
+    "composition": "Vaakasuuntainen kesäinen järvimaisema; mökki tai mökkiranta näkyy selvästi ja kuvan alaosaan jää rauhallinen tummahko tekstialue."
+  },
+  "hanko": {
+    "place": "Hanko",
+    "aliases": [
+      "Hanko",
+      "Hangö",
+      "Hangon niemi"
+    ],
+    "mustShow": [
+      "hiekkaranta tai rantapromenadi",
+      "avoin meri"
+    ],
+    "niceToHave": [
+      "puuvillat",
+      "purjeveneet",
+      "laituri"
+    ],
+    "season": "summer",
+    "mood": "lämmin, raikas",
+    "avoid": [
+      "lumi",
+      "jää",
+      "ilmakuva korkealta",
+      "satama-alue",
+      "kartat"
+    ],
+    "composition": "Kesäinen silmän tasolta kuvattu ranta ja avoin meri; ei talvista ilmakuvaa."
+  },
+  "mathildedal": {
+    "place": "Mathildedal, Salo",
+    "aliases": [
+      "Mathildedal",
+      "Mathildedalin ruukki",
+      "Mathildedals bruk"
+    ],
+    "mustShow": [
+      "vanha ruukkikylän rakennus tai kylämiljöö"
+    ],
+    "niceToHave": [
+      "merenranta",
+      "metsäpolku",
+      "kahvila tai käsityöpuoti"
+    ],
+    "season": "summer",
+    "mood": "rauhallinen, historiallinen",
+    "avoid": [
+      "moottoripyörät",
+      "autot etualalla",
+      "ihmisjoukot",
+      "kyltit"
+    ],
+    "composition": "Kesäinen historiallinen ruukkikylän katunäkymä; rakennus tai kylämiljöö selkeä pääaihe."
+  },
+  "aland": {
+    "place": "Ahvenanmaa",
+    "aliases": [
+      "Ahvenanmaa",
+      "Åland",
+      "Ålands skärgård"
+    ],
+    "mustShow": [
+      "avoin meri",
+      "kalliosaaria tai luotoja",
+      "näkyvä horisontti"
+    ],
+    "niceToHave": [
+      "punagraniitti",
+      "männyt",
+      "purjevene"
+    ],
+    "season": "summer",
+    "mood": "avara, kirkas valo",
+    "avoid": [
+      "pelkkä kalliojyrkänne ilman merta",
+      "linna pääaiheena",
+      "lähikuvat ihmisistä"
+    ],
+    "composition": "Avara kesäinen saaristonäkymä, jossa meri, saaret ja horisontti näkyvät yhtä aikaa."
+  },
+  "summer": {
+    "place": "Ruissalo, Turku",
+    "aliases": [
+      "Ruissalo",
+      "Turku Archipelago",
+      "Turun saaristo"
+    ],
+    "mustShow": [
+      "kesähuvila tai puutalo",
+      "meren tai saariston ympäristö"
+    ],
+    "niceToHave": [
+      "vehreä puisto",
+      "ranta"
+    ],
+    "season": "summer",
+    "mood": "valoisa, merellinen",
+    "avoid": [
+      "talvi",
+      "lumi"
+    ],
+    "composition": "Kesäinen Ruissalon huvila- tai rantamaisema."
+  },
+  "archipelago": {
+    "place": "Turun saaristo",
+    "aliases": [
+      "Turku Archipelago",
+      "Turun saaristo"
+    ],
+    "mustShow": [
+      "pieni puutalo tai saaren rakennus",
+      "saaristo tai meri"
+    ],
+    "niceToHave": [
+      "metsäinen saari",
+      "laituri"
+    ],
+    "season": "summer",
+    "mood": "rauhallinen",
+    "avoid": [
+      "talvi",
+      "lumi"
+    ],
+    "composition": "Kesäinen saaristonäkymä, jossa pieni puutalo ja ympäröivä saaristo näkyvät."
+  },
+  "naantali": {
+    "place": "Naantali",
+    "aliases": [
+      "Naantali",
+      "Nådendal"
+    ],
+    "mustShow": [
+      "Naantalin satama tai venesatama",
+      "Naantalin kirkko"
+    ],
+    "niceToHave": [
+      "vanhat puutalot",
+      "veneet"
+    ],
+    "season": "summer",
+    "mood": "valoisa, historiallinen",
+    "avoid": [
+      "talvi",
+      "lumi"
+    ],
+    "composition": "Kesäinen satamanäkymä, jossa satama ja kirkko erottuvat."
+  },
+  "porvoo": {
+    "place": "Porvoo",
+    "aliases": [
+      "Porvoo",
+      "Borgå"
+    ],
+    "mustShow": [
+      "Porvoon vanha kaupunki",
+      "jokiranta tai punaiset rantamakasiinit"
+    ],
+    "niceToHave": [
+      "ilmakuva",
+      "kirkko"
+    ],
+    "season": "summer",
+    "mood": "historiallinen, lämmin",
+    "avoid": [
+      "talvi",
+      "lumi"
+    ],
+    "composition": "Kesäinen näkymä Porvoon vanhaan kaupunkiin ja jokirantaan."
+  },
+  "herrankukkaro": {
+    "place": "Herrankukkaro, Rymättylä",
+    "aliases": [
+      "Herrankukkaro",
+      "Rymättylä",
+      "Naantali archipelago"
+    ],
+    "mustShow": [
+      "savusaunan sisätila tai perinteinen savusauna"
+    ],
+    "niceToHave": [
+      "hirsirakenteet",
+      "kiuas"
+    ],
+    "season": "summer",
+    "mood": "perinteinen, tunnelmallinen",
+    "avoid": [
+      "moderni kylpylä",
+      "talvi"
+    ],
+    "composition": "Aito ja rauhallinen kuva perinteisestä savusaunasta; ei geneeristä saunakuvaa."
+  },
+  "hankoBeach": {
+    "place": "Hanko",
+    "aliases": [
+      "Regattanranta",
+      "Hanko beach",
+      "Hangö strand"
+    ],
+    "mustShow": [
+      "hiekkaranta",
+      "avoin meri"
+    ],
+    "niceToHave": [
+      "kesäaurinko",
+      "rantaviiva"
+    ],
+    "season": "summer",
+    "mood": "aurinkoinen, raikas",
+    "avoid": [
+      "lumi",
+      "jää",
+      "satama",
+      "ilmakuva korkealta"
+    ],
+    "composition": "Kesäinen hiekkaranta ja meri, tekstille rauhallinen alaosa."
+  }
+}
