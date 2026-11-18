@@ -5,6 +5,48 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 let adminClient: SupabaseClient | null = null;
 
+/**
+ * Request-time Supabase admin client for OpenNext on Cloudflare.
+ * Cloudflare's async context mode is required when bindings are read from
+ * Next.js request handlers / server components.
+ */
+export async function getSupabaseAdminAsync(): Promise<SupabaseClient> {
+  if (adminClient) return adminClient;
+
+  let url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+  let serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!url || !serviceRoleKey) {
+    try {
+      const context = await getCloudflareContext({ async: true });
+      const bindings = context.env as unknown as {
+        SUPABASE_URL?: string;
+        NEXT_PUBLIC_SUPABASE_URL?: string;
+        SUPABASE_SERVICE_ROLE_KEY?: string;
+      };
+      url = url || bindings.SUPABASE_URL || bindings.NEXT_PUBLIC_SUPABASE_URL;
+      serviceRoleKey = serviceRoleKey || bindings.SUPABASE_SERVICE_ROLE_KEY;
+    } catch (error) {
+      console.warn("[supabase-admin] Async Cloudflare runtime bindings unavailable", {
+        message: error instanceof Error ? error.message : "Unknown context error",
+      });
+    }
+  }
+
+  if (!url || !serviceRoleKey) {
+    console.error("[supabase-admin] Required Supabase configuration is unavailable", {
+      hasUrl: Boolean(url),
+      hasServiceRoleKey: Boolean(serviceRoleKey),
+    });
+    throw new Error("Supabase server configuration is missing.");
+  }
+
+  adminClient = createClient(url, serviceRoleKey, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+  return adminClient;
+}
+
 export function getSupabaseAdmin(): SupabaseClient {
   if (adminClient) return adminClient;
 
