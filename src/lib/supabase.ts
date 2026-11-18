@@ -5,6 +5,58 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 let adminClient: SupabaseClient | null = null;
 
+let publicClient: SupabaseClient | null = null;
+
+/**
+ * Public, RLS-governed Supabase client for server-rendered public CMS content.
+ * Never use the service-role key for data that visitors are allowed to read.
+ */
+export async function getSupabasePublicAsync(): Promise<SupabaseClient> {
+  if (publicClient) return publicClient;
+
+  let url = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+  let publishableKey =
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.SUPABASE_ANON_KEY;
+
+  if (!url || !publishableKey) {
+    try {
+      const context = await getCloudflareContext({ async: true });
+      const bindings = context.env as unknown as {
+        SUPABASE_URL?: string;
+        NEXT_PUBLIC_SUPABASE_URL?: string;
+        NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY?: string;
+        NEXT_PUBLIC_SUPABASE_ANON_KEY?: string;
+        SUPABASE_ANON_KEY?: string;
+      };
+      url = url || bindings.NEXT_PUBLIC_SUPABASE_URL || bindings.SUPABASE_URL;
+      publishableKey =
+        publishableKey ||
+        bindings.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+        bindings.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+        bindings.SUPABASE_ANON_KEY;
+    } catch (error) {
+      console.warn("[supabase-public] Async Cloudflare runtime bindings unavailable", {
+        message: error instanceof Error ? error.message : "Unknown context error",
+      });
+    }
+  }
+
+  if (!url || !publishableKey) {
+    console.error("[supabase-public] Required public Supabase configuration is unavailable", {
+      hasUrl: Boolean(url),
+      hasPublishableKey: Boolean(publishableKey),
+    });
+    throw new Error("Supabase public configuration is missing.");
+  }
+
+  publicClient = createClient(url, publishableKey, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+  return publicClient;
+}
+
 /**
  * Request-time Supabase admin client for OpenNext on Cloudflare.
  * Cloudflare's async context mode is required when bindings are read from
