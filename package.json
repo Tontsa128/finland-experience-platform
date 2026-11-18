@@ -14,7 +14,8 @@
     "db:push": "npx --yes supabase@1.226.4 db push",
     "db:reset": "npx --yes supabase@1.226.4 db reset",
     "test:i18n": "node scripts/check-i18n.mjs",
-    "build:cloudflare": "opennextjs-cloudflare build"
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "curate:homepage-slides": "node scripts/curate-slide-images.mjs"
   },
   "dependencies": {
     "next": "16.4.2",
