@@ -1,3 +1,4 @@
+import { passesSlideImageFilters } from "./lib/slide-image-filters.mjs";
 import fs from "node:fs/promises";
 const API = "https://commons.wikimedia.org/w/api.php";
 const USER_AGENT = "FinlandExperienceSlideCurator/1.0 (homepage editorial review)";
@@ -23,25 +24,6 @@ async function commons(params) {
 }
 function metaText(info, key) {
   return String(info.extmetadata?.[key]?.value ?? "").replace(/<[^>]*>/g, " ").replace(/&amp;/g, "&").trim();
-}
-function allowedLicense(info) {
-  const value = (metaText(info, "LicenseShortName") + " " + metaText(info, "UsageTerms")).toLowerCase();
-  return /cc0|public domain|cc by|cc-by|cc by-sa|cc-by-sa/i.test(value);
-}
-function metadataPass(info, brief) {
-  if (!info || !["image/jpeg", "image/png", "image/webp"].includes(info.mime)) return false;
-  if (Number(info.width) < 1600 || Number(info.width) / Math.max(1, Number(info.height)) < 1.4) return false;
-  if (!allowedLicense(info) || !info.thumburl) return false;
-  const text = (String(info.title ?? "") + " " + metaText(info, "ImageDescription") + " " + metaText(info, "Categories")).toLowerCase();
-  if (/\b(map|flag|coat of arms|logo|diagram|chart|kartta|lippu|vaakuna)\b/i.test(text)) return false;
-  if (brief.season === "summer" && /\b(winter|snow|ice|lumi|jää|vinter|talvi)\b/i.test(text)) return false;
-  if (brief.avoid.some((word) => text.includes(word.toLowerCase()))) return false;
-  const original = metaText(info, "DateTimeOriginal");
-  if (brief.season === "summer" && original) {
-    const month = Number(original.match(/^(?:\d{4})[:-](\d{2})/)?.[1] ?? 0);
-    if (month >= 11 || (month > 0 && month <= 3)) return false;
-  }
-  return true;
 }
 async function searchTitles(brief) {
   const terms = [...new Set(brief.searchTerms ?? brief.aliases.flatMap((place) => brief.mustShow.map((subject) => place + " " + subject)).slice(0, 8))].slice(0, 8);
@@ -89,7 +71,7 @@ for (const [id, brief] of Object.entries(briefs)) {
   const titles = await searchTitles(brief), candidates = [];
   for (const title of titles) {
     const info = await fetchInfo(title);
-    if (metadataPass(info, brief) && !used.has(info.thumburl)) candidates.push({ title, info });
+    if (passesSlideImageFilters(info, brief) && !used.has(info.thumburl)) candidates.push({ title, info });
   }
   const judged = [];
   for (const candidate of candidates.slice(0, 8)) {
