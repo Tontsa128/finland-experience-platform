@@ -44,11 +44,18 @@ function metadataPass(info, brief) {
   return true;
 }
 async function searchTitles(brief) {
-  const terms = [...new Set(brief.aliases.flatMap((place) => brief.mustShow.map((subject) => place + " " + subject)).slice(0, 8))];
+  const terms = [...new Set(brief.searchTerms ?? brief.aliases.flatMap((place) => brief.mustShow.map((subject) => place + " " + subject)).slice(0, 8))].slice(0, 8);
   const found = new Set();
   for (const term of terms) {
     const data = await commons({ action: "query", generator: "search", gsrsearch: term, gsrnamespace: 6, gsrlimit: 30, prop: "imageinfo", iiprop: "url|size|mime|extmetadata", iiurlwidth: 1280 });
     for (const page of Object.values(data.query?.pages ?? {})) found.add(page.title);
+  }
+  for (const alias of brief.aliases) {
+    const categories = await commons({ action: "query", list: "allcategories", acprefix: alias, aclimit: 8 });
+    for (const category of categories.query?.allcategories ?? []) {
+      const data = await commons({ action: "query", generator: "categorymembers", gcmtitle: "Category:" + category["*"], gcmtype: "file", gcmlimit: 30, prop: "imageinfo", iiprop: "url|size|mime|extmetadata", iiurlwidth: 1280 });
+      for (const page of Object.values(data.query?.pages ?? {})) found.add(page.title);
+    }
   }
   return [...found];
 }
@@ -60,7 +67,7 @@ async function judge(brief, info, slideId) {
   const key = process.env.OPENAI_API_KEY, model = process.env.OPENAI_VISION_MODEL;
   if (!key || !model) throw new Error("Set OPENAI_API_KEY and OPENAI_VISION_MODEL.");
   const content = [
-    { type: "input_text", text: JSON.stringify({ slideId, brief, imageTitle: info.title, imageDescription: metaText(info, "ImageDescription"), task: prompt }) },
+    { type: "input_text", text: JSON.stringify({ slideId, copy: brief.copy, brief, imageTitle: info.title, imageDescription: metaText(info, "ImageDescription"), task: prompt }) },
     { type: "input_image", image_url: info.thumburl, detail: "high" }
   ];
   const response = await fetch("https://api.openai.com/v1/responses", {
