@@ -195,19 +195,20 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
               quality={100}
               unoptimized
               onError={() => markImageFailed(item.key)}
-              className="object-cover object-[50%_60%] brightness-[1.08] contrast-[1.02] saturate-[1.08]"
+              className="object-cover object-[50%_60%] contrast-[1.02] saturate-[1.08]"
             />
           </div>
         ))}
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17261a]/82 via-[#17261a]/42 to-[#17261a]/12" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17261a]/48 via-[#17261a]/18 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black/80 via-black/55 to-transparent" />
 
       <div className="relative z-10 flex min-h-[390px] items-end pb-7 pt-28 sm:min-h-[450px] sm:pb-9 sm:pt-28 lg:min-h-[500px] lg:pb-12 lg:pt-28">
         <div className="container-narrow w-full">
           <div key={slide.key} className="max-w-4xl">
             <h1 className="max-w-4xl font-display text-[clamp(2.1rem,7vw,4.6rem)] font-bold leading-[1.02] tracking-[-.035em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">{locale === "fi" ? "Löydä Suomen salaiset helmet" : locale === "es" ? "Descubre los tesoros ocultos de Finlandia" : "Discover Finland’s hidden gems"}</h1>
-            <p className="mb-2 mt-3 text-[10px] font-bold uppercase tracking-[.22em] text-[#fff3d8] drop-shadow-sm sm:mb-4 sm:text-xs sm:tracking-[.24em]">{text.eyebrow}</p>
+            <p className="mb-3 mt-4 inline-flex max-w-full rounded-full bg-black/45 px-3 py-1 text-xs font-semibold uppercase tracking-[.18em] text-white drop-shadow-sm sm:mb-4 sm:mt-3 sm:tracking-[.24em]">{text.eyebrow}</p>
             <h2 className="max-w-3xl font-display text-xl font-bold leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-2xl lg:text-3xl">{text.title}</h2>
             <p className="mt-2 max-w-[48ch] text-sm leading-6 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)] sm:mt-3 sm:max-w-2xl sm:text-base sm:leading-7 lg:text-lg lg:leading-8">{text.text}</p>
           </div>
@@ -215,26 +216,27 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
       </div>
 
       <div className="relative z-20 border-t border-white/15 bg-[#fbf8f1] text-brand-950 shadow-[0_-10px_30px_rgba(47,65,49,0.10)]">
-        <div className="container-narrow flex min-h-[76px] flex-row items-center justify-between gap-2 py-3 sm:min-h-[104px] sm:gap-4 sm:py-5">
+        <div className="container-narrow flex min-h-[76px] flex-col items-stretch gap-3 py-3 sm:min-h-[104px] sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-5">
           {href ? (
             slide.external ? (
-              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 min-w-0 max-w-[min(68%,18rem)] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-brand-900 px-3 py-3 text-xs font-bold text-white transition hover:bg-brand-800 sm:max-w-none sm:px-7 sm:text-base">
+              <a href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-brand-900 px-4 py-3 text-center text-sm font-bold leading-snug text-white transition hover:bg-brand-800 sm:w-auto sm:justify-start sm:whitespace-nowrap sm:px-7 sm:text-base">
                 {text.cta}
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
               </a>
             ) : (
-              <Link href={href} className="inline-flex min-h-11 min-w-0 max-w-[min(68%,18rem)] items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap rounded-full bg-gold-400 px-3 py-3 text-xs font-bold text-brand-950 transition hover:bg-gold-300 sm:max-w-none sm:px-7 sm:text-base">
+              <Link href={href} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-gold-400 px-4 py-3 text-center text-sm font-bold leading-snug text-brand-950 transition hover:bg-gold-300 sm:w-auto sm:justify-start sm:whitespace-nowrap sm:px-7 sm:text-base">
                 {text.cta}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
               </Link>
             )
           ) : null}
 
-          <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-3">
+          <div className="flex w-full shrink-0 items-center justify-between gap-3 sm:ml-auto sm:w-auto sm:justify-end sm:gap-3">
             <button type="button" aria-label={ui.previous} onClick={() => setActive((current) => (current - 1 + slideCount) % slideCount)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d9e2d7] bg-white transition hover:bg-[#edf3ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
-            <div className="flex max-w-[120px] items-center justify-center gap-1 overflow-hidden sm:max-w-none sm:gap-2">
+            <span className="min-w-[4.5rem] text-center text-sm font-semibold tabular-nums text-brand-900 sm:hidden">{active + 1} / {slideCount}</span>
+            <div className="hidden max-w-[120px] items-center justify-center gap-1 overflow-hidden sm:flex sm:max-w-none sm:gap-2">
               {activeSlides.map((item, index) => (
                 <button
                   key={item.key}
@@ -246,7 +248,6 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
                 />
               ))}
             </div>
-            
             <button type="button" aria-label={ui.next} onClick={() => setActive((current) => (current + 1) % slideCount)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-200 bg-white transition hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700">
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
