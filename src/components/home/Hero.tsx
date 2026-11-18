@@ -38,6 +38,8 @@ function normalizeHomepageHref(href: string): string {
 type Slide = {
   key: string;
   image: string;
+  alt: string;
+  focal?: { x: number; y: number };
   durationMs?: number;
   credit: string;
   creditUrl?: string;
@@ -94,6 +96,8 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
         return usableCmsSlides.map((item) => ({
           key: item.id,
           image: item.imageUrl,
+          alt: item.imageAlt?.[locale]?.trim() || item.copy[locale].title,
+          focal: item.focal,
           durationMs: Number.isFinite(item.durationMs) && (item.durationMs ?? 0) >= 5000 ? item.durationMs : 5500,
           credit: item.credit || "",
           creditUrl: item.creditUrl,
@@ -188,14 +192,15 @@ export function Hero({ settings }: { settings?: HomepageSettings | null }) {
           >
             <Image
               src={getImage(item)}
-              alt={item.copy.title}
+              alt={item.alt}
               fill
               priority={index === 0}
               sizes="100vw"
               quality={100}
               unoptimized
               onError={() => markImageFailed(item.key)}
-              className="object-cover object-[50%_60%] contrast-[1.02] saturate-[1.08]"
+              style={{ objectPosition: item.focal ? `${item.focal.x}% ${item.focal.y}%` : "50% 60%" }}
+              className="object-cover contrast-[1.02] saturate-[1.08]"
             />
           </div>
         ))}
