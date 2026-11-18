@@ -22,12 +22,19 @@ export function getSupabaseAdmin(): SupabaseClient {
       };
       url = url || bindings.SUPABASE_URL || bindings.NEXT_PUBLIC_SUPABASE_URL;
       serviceRoleKey = serviceRoleKey || bindings.SUPABASE_SERVICE_ROLE_KEY;
-    } catch {
+    } catch (error) {
       // Vercel and plain Node.js do not have a Cloudflare request context.
+      console.warn("[supabase-admin] Cloudflare runtime bindings unavailable", {
+        message: error instanceof Error ? error.message : "Unknown context error",
+      });
     }
   }
 
   if (!url || !serviceRoleKey) {
+    console.error("[supabase-admin] Required Supabase configuration is unavailable", {
+      hasUrl: Boolean(url),
+      hasServiceRoleKey: Boolean(serviceRoleKey),
+    });
     throw new Error('Supabase server configuration is missing. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.');
   }
 
