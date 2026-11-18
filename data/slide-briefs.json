@@ -22,7 +22,23 @@
       "talvi",
       "lähikuvat ihmisistä"
     ],
-    "composition": "Vaakasuuntainen kesäinen järvimaisema; mökki tai mökkiranta näkyy selvästi ja kuvan alaosaan jää rauhallinen tummahko tekstialue."
+    "composition": "Vaakasuuntainen kesäinen järvimaisema; mökki tai mökkiranta näkyy selvästi ja kuvan alaosaan jää rauhallinen tummahko tekstialue.",
+    "copy": {
+      "fi": {
+        "title": "Aamukahvi veden äärellä",
+        "text": "Valoisa mökkipäivä alkaa järven rannalta – oma sauna, laituri ja luonto aivan vieressä."
+      },
+      "en": {
+        "title": "Morning coffee by the water",
+        "text": "A bright summer day by the lake, with a private sauna, jetty and nature at your doorstep."
+      }
+    },
+    "searchTerms": [
+      "Keuruu summer cottage lake",
+      "Keuruu mökki järvi",
+      "Finnish summer cottage by lake",
+      "Kesämökki järven rannalla"
+    ]
   },
   "hanko": {
     "place": "Hanko",
@@ -49,7 +65,23 @@
       "satama-alue",
       "kartat"
     ],
-    "composition": "Kesäinen silmän tasolta kuvattu ranta ja avoin meri; ei talvista ilmakuvaa."
+    "composition": "Kesäinen silmän tasolta kuvattu ranta ja avoin meri; ei talvista ilmakuvaa.",
+    "copy": {
+      "fi": {
+        "title": "Meri, hiekka ja pitkä kesäpäivä",
+        "text": "Hanko yhdistää rannat, puutalot ja saariston raikkaan merituulen."
+      },
+      "en": {
+        "title": "Sea, sand and a long summer day",
+        "text": "Beaches, wooden houses and the fresh breeze of the Baltic Sea."
+      }
+    },
+    "searchTerms": [
+      "Hanko sandy beach summer",
+      "Hangö sandstrand sommar",
+      "Hangon hiekkaranta kesä",
+      "Hanko beach Finland summer"
+    ]
   },
   "mathildedal": {
     "place": "Mathildedal, Salo",
@@ -74,7 +106,23 @@
       "ihmisjoukot",
       "kyltit"
     ],
-    "composition": "Kesäinen historiallinen ruukkikylän katunäkymä; rakennus tai kylämiljöö selkeä pääaihe."
+    "composition": "Kesäinen historiallinen ruukkikylän katunäkymä; rakennus tai kylämiljöö selkeä pääaihe.",
+    "copy": {
+      "fi": {
+        "title": "Pieni ruukkikylä, suuri tunnelma",
+        "text": "Käsityöläisiä, kahviloita, merta ja metsäpolkuja yhden rauhallisen kylän ympärillä."
+      },
+      "en": {
+        "title": "A small ironworks village with a big atmosphere",
+        "text": "Crafts, cafés, the sea and forest paths around one peaceful village."
+      }
+    },
+    "searchTerms": [
+      "Mathildedal ironworks village summer",
+      "Mathildedals bruk sommar",
+      "Mathildedal ruukkikylä kesä",
+      "Anttipoffi Mathildedal"
+    ]
   },
   "aland": {
     "place": "Ahvenanmaa",
@@ -100,7 +148,23 @@
       "linna pääaiheena",
       "lähikuvat ihmisistä"
     ],
-    "composition": "Avara kesäinen saaristonäkymä, jossa meri, saaret ja horisontti näkyvät yhtä aikaa."
+    "composition": "Avara kesäinen saaristonäkymä, jossa meri, saaret ja horisontti näkyvät yhtä aikaa.",
+    "copy": {
+      "fi": {
+        "title": "Saariston valo jatkuu horisonttiin",
+        "text": "Meri, kalliosaaret ja kesän kirkas pohjoismainen valo."
+      },
+      "en": {
+        "title": "The light of the archipelago reaches the horizon",
+        "text": "Sea, rocky islands and the bright Nordic light of summer."
+      }
+    },
+    "searchTerms": [
+      "Åland rocky islands sea summer",
+      "Ahvenanmaa kalliosaaret meri kesä",
+      "Ålands skärgård summer sea",
+      "Åland archipelago rocky shore"
+    ]
   },
   "summer": {
     "place": "Ruissalo, Turku",
@@ -123,7 +187,23 @@
       "talvi",
       "lumi"
     ],
-    "composition": "Kesäinen Ruissalon huvila- tai rantamaisema."
+    "composition": "Kesäinen Ruissalon huvila- tai rantamaisema.",
+    "copy": {
+      "fi": {
+        "title": "Kesäpäiviä Turun saariston pienissä paikoissa",
+        "text": "Saariston kylät, merimaisemat ja kesän rauhallinen rytmi kutsuvat viipymään."
+      },
+      "en": {
+        "title": "Summer days in the small places of the Turku Archipelago",
+        "text": "Island villages, sea views and the slower rhythm of summer invite you to stay a little longer."
+      }
+    },
+    "searchTerms": [
+      "Ruissalo summer villa",
+      "Ruissalo kesähuvila",
+      "Ruissalo sommarvilla",
+      "Turku archipelago summer house"
+    ]
   },
   "archipelago": {
     "place": "Turun saaristo",
@@ -145,7 +225,23 @@
       "talvi",
       "lumi"
     ],
-    "composition": "Kesäinen saaristonäkymä, jossa pieni puutalo ja ympäröivä saaristo näkyvät."
+    "composition": "Kesäinen saaristonäkymä, jossa pieni puutalo ja ympäröivä saaristo näkyvät.",
+    "copy": {
+      "fi": {
+        "title": "Pieni puutalo saariston keskellä",
+        "text": "Pieni puutalo sijaitsee keskellä Turun saaristoa, saarten ja merimaisemien ympäröimänä."
+      },
+      "en": {
+        "title": "A small wooden house among the islands",
+        "text": "A small wooden house sits in the Turku Archipelago, surrounded by islands and sea views."
+      }
+    },
+    "searchTerms": [
+      "Turku archipelago wooden house",
+      "Turun saaristo puutalo",
+      "Turku skärgård trähus",
+      "Turku archipelago island house"
+    ]
   },
   "naantali": {
     "place": "Naantali",
@@ -167,7 +263,23 @@
       "talvi",
       "lumi"
     ],
-    "composition": "Kesäinen satamanäkymä, jossa satama ja kirkko erottuvat."
+    "composition": "Kesäinen satamanäkymä, jossa satama ja kirkko erottuvat.",
+    "copy": {
+      "fi": {
+        "title": "Naantalin vanha satama ja kirkko",
+        "text": "Satamanäkymä ja Naantalin kirkko kertovat kaupungin pitkästä historiasta meren äärellä."
+      },
+      "en": {
+        "title": "Naantali’s old harbour and church",
+        "text": "The harbour and Naantali Church reflect the town’s long history by the sea."
+      }
+    },
+    "searchTerms": [
+      "Naantali harbour church summer",
+      "Nådendal hamn kyrka sommar",
+      "Naantalin satama kirkko kesä",
+      "Naantali old harbour"
+    ]
   },
   "porvoo": {
     "place": "Porvoo",
@@ -189,7 +301,23 @@
       "talvi",
       "lumi"
     ],
-    "composition": "Kesäinen näkymä Porvoon vanhaan kaupunkiin ja jokirantaan."
+    "composition": "Kesäinen näkymä Porvoon vanhaan kaupunkiin ja jokirantaan.",
+    "copy": {
+      "fi": {
+        "title": "Porvoon vanha kaupunki yläilmoista",
+        "text": "Ylhäältä avautuu näkymä Porvoon historialliseen jokirantaan ja vanhaan kaupunkiin."
+      },
+      "en": {
+        "title": "Porvoo Old Town from above",
+        "text": "The elevated view opens over Porvoo’s historic riverside and old town."
+      }
+    },
+    "searchTerms": [
+      "Porvoo old town river summer",
+      "Borgå gamla stan å sommar",
+      "Porvoon vanha kaupunki jokiranta",
+      "Porvoo aerial old town"
+    ]
   },
   "herrankukkaro": {
     "place": "Herrankukkaro, Rymättylä",
@@ -211,7 +339,23 @@
       "moderni kylpylä",
       "talvi"
     ],
-    "composition": "Aito ja rauhallinen kuva perinteisestä savusaunasta; ei geneeristä saunakuvaa."
+    "composition": "Aito ja rauhallinen kuva perinteisestä savusaunasta; ei geneeristä saunakuvaa.",
+    "copy": {
+      "fi": {
+        "title": "Herrankukkaron maasavusauna",
+        "text": "Kuva näyttää Herrankukkaron perinteisen maasavusaunan sisätilaa."
+      },
+      "en": {
+        "title": "Herrankukkaro’s underground smoke sauna",
+        "text": "The image shows the interior of Herrankukkaro’s traditional underground smoke sauna."
+      }
+    },
+    "searchTerms": [
+      "Herrankukkaro smoke sauna interior",
+      "Herrankukkaro savusauna sisätila",
+      "Rymättylä underground smoke sauna",
+      "Herrankukkaro rökbastu"
+    ]
   },
   "hankoBeach": {
     "place": "Hanko",
@@ -236,6 +380,22 @@
       "satama",
       "ilmakuva korkealta"
     ],
-    "composition": "Kesäinen hiekkaranta ja meri, tekstille rauhallinen alaosa."
+    "composition": "Kesäinen hiekkaranta ja meri, tekstille rauhallinen alaosa.",
+    "copy": {
+      "fi": {
+        "title": "Kesäpäivä Hangon hiekkarannalla",
+        "text": "Aurinkoinen hiekkaranta ja avoin meri kutsuvat nauttimaan Hangon kesästä."
+      },
+      "en": {
+        "title": "A summer day on Hanko’s sandy beach",
+        "text": "A sunny sandy beach and open sea invite you to enjoy summer in Hanko."
+      }
+    },
+    "searchTerms": [
+      "Regattanranta Hanko beach summer",
+      "Hangö Regatta beach summer",
+      "Hangon Regattanranta hiekkaranta",
+      "Hanko sandy beach"
+    ]
   }
 }
