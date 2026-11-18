@@ -21,6 +21,9 @@ test("rejects portrait and near-square images", () => {
 test("rejects unapproved licenses", () => {
   assert.equal(isAllowedSlideLicense({ extmetadata: { LicenseShortName: { value: "All rights reserved" } } }), false);
 });
+test("rejects non-commercial Creative Commons licenses", () => {
+  assert.equal(isAllowedSlideLicense({ extmetadata: { LicenseShortName: { value: "CC BY-NC 4.0" } } }), false);
+});
 test("rejects winter images for summer slides", () => {
   assert.equal(passesSlideImageFilters(image({ title: "Snowy winter lake" }), brief), false);
 });
