@@ -1,0 +1,48 @@
+name: Export directory content for Finspot
+
+on:
+  push:
+    branches:
+      - export/finspot-directory-data
+    paths:
+      - 'scripts/export-finspot-directory.ts'
+      - 'src/lib/salo.ts'
+      - 'src/lib/naantali.ts'
+      - 'src/lib/kimitoon-providers.ts'
+      - 'src/lib/photo-library.ts'
+      - '.github/workflows/export-finspot-directory.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v4
+        with:
+          ref: export/finspot-directory-data
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Export curated provider records
+        run: npx --yes tsx scripts/export-finspot-directory.ts
+
+      - name: Commit generated import manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/finspot-directory-export.json
+          if git diff --cached --quiet; then
+            echo "No export changes."
+            exit 0
+          fi
+          git commit -m "chore: generate Finspot directory import manifest"
+          git push origin HEAD:export/finspot-directory-data
