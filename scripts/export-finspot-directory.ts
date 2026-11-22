@@ -6,7 +6,7 @@ import { kimitoonProviders } from '../src/lib/kimitoon-providers.ts';
 import { luxuryDirectory } from '../src/lib/luxury-directory.ts';
 
 const SOURCE_PROJECT = 'Tontsa128/finland-experience-platform';
-const SEASONS = ['kevat', 'kesa', 'syksy', 'talvi'];
+const SEASONS: string[] = [];
 
 function cleanText(value: unknown): string {
   return typeof value === 'string' ? value.trim() : '';
@@ -209,6 +209,7 @@ const output = {
     images: 'imported with copyright_confirmed=false and require administrator review',
     prices_and_opening_hours: 'not imported unless represented by dedicated Finspot fields',
     events: 'excluded from the destination listing import',
+    seasons: 'left empty until an administrator verifies seasonal availability',
   },
   summary: {
     salo_source_records: saloProviders.length,
