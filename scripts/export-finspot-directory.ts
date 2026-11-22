@@ -162,7 +162,7 @@ for (const provider of kimitoonProviders) {
 
 const unique = new Map();
 for (const record of records) {
-  const title = (record.title.fi || '').normalize('NFKC').toLocaleLowerCase('fi').replace(/\\s+/g, ' ').trim();
+  const title = (record.title.fi || '').normalize('NFKC').toLocaleLowerCase('fi').trim().split(' ').filter(Boolean).join(' ');
   const key = `${record.municipality}| ${title}|${record.booking_url}`.toLocaleLowerCase('fi');
   if (!unique.has(key)) unique.set(key, record);
 }
