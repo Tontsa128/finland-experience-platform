@@ -115,7 +115,7 @@ for (const provider of saloProviders) {
     name,
     description: localizedText(provider.description),
     bookingUrl: provider.url,
-    sourceUrl: provider.imageSource || provider.url,
+    sourceUrl: provider.url,
     imageUrl: provider.image,
     imageCredit: provider.imageCredit,
     imageSourceUrl: provider.imageSource || provider.url,
