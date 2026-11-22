@@ -103,7 +103,8 @@ function buildRecord(input: {
   };
 }
 
-async function main() {\nconst records = [];
+async function main() {
+const records = [];
 for (const provider of saloProviders) {
   const name = { fi: cleanText(provider.name), ...localizedText(provider.nameByLocale) };
   const record = buildRecord({
@@ -190,4 +191,10 @@ const output = {
 const outputPath = resolve('data/finspot-directory-export.json');
 await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, JSON.stringify(output, null, 2) + '\\n', 'utf8');
-console.log(JSON.stringify(output.summary));\n}\n\nvoid main().catch((error) => {\n  console.error(error);\n  process.exitCode = 1;\n});
+console.log(JSON.stringify(output.summary));
+}
+
+void main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
