@@ -1,6 +1,6 @@
 {
   "source_project": "Tontsa128/finland-experience-platform",
-  "generated_at": "2026-11-22T18:32:17.330Z",
+  "generated_at": "2026-11-22T18:39:23.737Z",
   "import_policy": {
     "status": "draft",
     "verified_at": null,
@@ -103,7 +103,7 @@
     {
       "source_project": "Tontsa128/finland-experience-platform",
       "source_record_id": "salo:hotel-mathildedal",
-      "source_url": "https://mathildedal.fi/majoitus/",
+      "source_url": "https://mathildedal.fi/",
       "owner_id": null,
       "region": "rannikko",
       "category": "majoitus",
@@ -144,7 +144,7 @@
     {
       "source_project": "Tontsa128/finland-experience-platform",
       "source_record_id": "salo:mathildan-marina",
-      "source_url": "https://kohteet.visitsalo.fi/mathildan-marinan-hotelli-meren-ja-kansallispuiston-syleilyssa/",
+      "source_url": "https://mathildanmarina.fi/",
       "owner_id": null,
       "region": "rannikko",
       "category": "majoitus",
@@ -185,7 +185,7 @@
     {
       "source_project": "Tontsa128/finland-experience-platform",
       "source_record_id": "salo:matilda-villas",
-      "source_url": "https://kohteet.visitsalo.fi/matilda-villas-kaunis-mokkikyla-mathildedalissa-joka-majoittaa-isommankin-seurueen-laadukkaasti/",
+      "source_url": "https://www.matildavillas.fi/",
       "owner_id": null,
       "region": "rannikko",
       "category": "majoitus",
@@ -226,7 +226,7 @@
     {
       "source_project": "Tontsa128/finland-experience-platform",
       "source_record_id": "salo:matri-house",
-      "source_url": "https://kohteet.visitsalo.fi/en/matri-house-a-boutique-stay-in-the-beautiful-village-of-mathildedal/",
+      "source_url": "https://matrihouse.fi/",
       "owner_id": null,
       "region": "rannikko",
       "category": "majoitus",
@@ -394,7 +394,7 @@
     {
       "source_project": "Tontsa128/finland-experience-platform",
       "source_record_id": "salo:chill-out-fishing",
-      "source_url": "https://kohteet.visitsalo.fi/en/chill-grill-boat-trip-excursion/",
+      "source_url": "https://chilloutfishing.fi/",
       "owner_id": null,
       "region": "rannikko",
       "category": "luonto",
