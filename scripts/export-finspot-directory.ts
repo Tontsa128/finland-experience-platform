@@ -190,7 +190,7 @@ const output = {
 
 const outputPath = resolve('data/finspot-directory-export.json');
 await mkdir(dirname(outputPath), { recursive: true });
-await writeFile(outputPath, JSON.stringify(output, null, 2) + '\\n', 'utf8');
+await writeFile(outputPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
 console.log(JSON.stringify(output.summary));
 }
 
