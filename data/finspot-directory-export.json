@@ -1,6 +1,6 @@
 {
   "source_project": "Tontsa128/finland-experience-platform",
-  "generated_at": "2026-11-22T18:39:23.737Z",
+  "generated_at": "2026-11-22T18:40:24.386Z",
   "import_policy": {
     "status": "draft",
     "verified_at": null,
@@ -279,9 +279,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Majoitus Mathildedal",
-        "en": "Accommodation in Mathildedal",
-        "es": "Alojamiento en Mathildedal"
+        "fi": "Majoitus Mathildedal"
       },
       "description": {
         "fi": "Hyvin varusteltu 84 m²:n lomamökki merenrantakylässä Mathildedalissa. Mökissä on kaksi makuuhuonetta, parvi, olohuone-keittiö, sauna ja terassi. Majoitus sopii kahdeksalle hengelle, ja erillisestä piharakennuksesta voi tiedustella lisämajoitusta kolmelle. Vuokraan kuuluu ulkoporeammeen käyttö ja mökillä on yksityinen hiekkaranta. Tarkista ehdot ja saatavuus suoraan majoittajalta.",
@@ -322,9 +320,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Teijon Masuuni",
-        "en": "Teijo Masuuni",
-        "es": "Teijo Masuuni"
+        "fi": "Teijon Masuuni"
       },
       "description": {
         "fi": "Vuonna 1686 perustetun Teijon ruukin historiallisessa miljöössä toimiva taiteen ja kädentaitojen keskus: vaihtuvia näyttelyitä, kahvila, taide- ja käsityöputiikki sekä tapahtumia.",
@@ -488,9 +484,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Teijon kansallispuisto",
-        "en": "Teijo National Park",
-        "es": "Parque Nacional de Teijo"
+        "fi": "Teijon kansallispuisto"
       },
       "description": {
         "fi": "Järviä, metsiä, kallioita ja reittejä ympäri vuoden. Kansallispuiston perusluonto on maksuton; vuokrattavista palveluista veloitetaan erikseen.",
@@ -560,9 +554,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Ravintola Terho",
-        "en": "Restaurant Terho",
-        "es": "Restaurante Terho"
+        "fi": "Ravintola Terho"
       },
       "description": {
         "fi": "Mathildedalin kyläravintola tunnetaan kiviarinauunissa paistetuista pizzoista, oman paahtimon kahvista, paikallisista juomista ja takapihan keikoista.",
@@ -603,9 +595,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Mathildedalin Kyläpanimo",
-        "en": "Mathildedal Village Brewery",
-        "es": "Cervecería del pueblo de Mathildedal"
+        "fi": "Mathildedalin Kyläpanimo"
       },
       "description": {
         "fi": "Kyläläisten perustama pienpanimo Mathildedalin sydämessä. Ryhmille järjestetään panimoesittelyjä.",
@@ -646,9 +636,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Saaristomökit Särkisalossa",
-        "en": "Archipelago Cottages in Särkisalo",
-        "es": "Cabañas del archipiélago en Särkisalo"
+        "fi": "Saaristomökit Särkisalossa"
       },
       "description": {
         "fi": "Kahdeksan merenrantamökkiä Salon eteläisessä saaristossa. Vaihtoehtoja pienistä mökeistä suurempiin huviloihin, puusauna, laituri ja terassi.",
@@ -689,9 +677,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Matildanjärven kämpät",
-        "en": "Matildanjärvi Rental Cabins",
-        "es": "Cabañas de alquiler de Matildanjärvi"
+        "fi": "Matildanjärven kämpät"
       },
       "description": {
         "fi": "Kaksi vuokrattavaa kämppää Teijon kansallispuistossa Luontokeskuksen lähellä. Kummassakin majoittuu enintään kuusi; saunavuoro kuuluu majoitukseen.",
@@ -814,9 +800,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Saaristoravintola Nixor",
-        "en": "Nixor Archipelago Restaurant",
-        "es": "Restaurante del archipiélago Nixor"
+        "fi": "Saaristoravintola Nixor"
       },
       "description": {
         "fi": "Rento terassiravintola Särkisalon Niksaaressa. Kesäruokaa, saaristomaisemaa ja ohjelmaa kuten livemusiikkia.",
@@ -898,9 +882,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Krailan tila – tilausristeilyt",
-        "en": "Kraila Farm – Private Cruises",
-        "es": "Granja Kraila – Cruceros privados"
+        "fi": "Krailan tila – tilausristeilyt"
       },
       "description": {
         "fi": "Tilausristeilyjä m/s Sabrinalla Särkisalon ja lähialueiden vesillä. Ryhmille suunniteltu tapa kokea saariston maisemat mereltä.",
@@ -1023,9 +1005,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Niksaaren sauna",
-        "en": "Niksari Sauna",
-        "es": "Sauna de Niksari"
+        "fi": "Niksaaren sauna"
       },
       "description": {
         "fi": "Salon kaupungin ylläpitämä pieni merellinen sauna Förbyssä, noin 7–8 henkilölle, suihku- ja pukutiloineen.",
@@ -1066,9 +1046,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Ylöstalo – saaristokalastus",
-        "en": "Ylöstalo – Archipelago Fishing",
-        "es": "Ylöstalo – Pesca en el archipiélago"
+        "fi": "Ylöstalo – saaristokalastus"
       },
       "description": {
         "fi": "Saaristokalastuslomia Särkisalossa Ylöstalon mökeissä. Kohteisiin voi yhdistää veneen ja kalastusoppaan.",
@@ -1109,9 +1087,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Lempeä rantajooga – Förby",
-        "en": "Gentle Beach Yoga – Förby",
-        "es": "Yoga suave en la playa – Förby"
+        "fi": "Lempeä rantajooga – Förby"
       },
       "description": {
         "fi": "Rantajoogaa Förbyn rauhallisessa merellisessä ympäristössä, veden ja luonnon äänien keskellä.",
@@ -1152,9 +1128,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Vuohensaaren leirintäalue",
-        "en": "Vuohensaari Camping",
-        "es": "Camping Vuohensaari"
+        "fi": "Vuohensaaren leirintäalue"
       },
       "description": {
         "fi": "Meren ympäröimä majoituskohde lähellä Salon keskustaa. Leirintämökkejä ja -huoneita, sauna, uimaranta sekä kesäkauden ravintola ja aktiviteetteja.",
@@ -1195,9 +1169,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Tentsile-majoitus Teijon kansallispuistossa",
-        "en": "Tentsile Tree Tent in Teijo National Park",
-        "es": "Alojamiento Tentsile en el Parque Nacional de Teijo"
+        "fi": "Tentsile-majoitus Teijon kansallispuistossa"
       },
       "description": {
         "fi": "Kolmen hengen Tentsile-puumajoite Matildanjärven lähellä. Majoitukseen kuuluu Luontokeskuksen peseytymistilojen käyttö ja saunavuoroalennus.",
@@ -1238,9 +1210,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Kattohuone – Elämysmajoitus",
-        "en": "Rooftop Container Accommodation",
-        "es": "Alojamiento en contenedores en la azotea"
+        "fi": "Kattohuone – Elämysmajoitus"
       },
       "description": {
         "fi": "Mathildedalin vanhan kokoonpanohallin katolle rakennettu merikonttimajoitus. Maisemaikkuna, oma kylpyhuone ja hotellin aamiainen.",
@@ -1855,9 +1825,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Villa Frans",
-        "en": "Villa Frans",
-        "es": "Villa Frans"
+        "fi": "Villa Frans"
       },
       "description": {
         "fi": "Lomalaperlan ympärivuotinen huvila Suomusjärvellä. Kolme makuuhuonetta, sähkösauna, suihku, sisä-WC ja terassin poreallas. Vahvista vuodepaikat, ehdot ja hinnat suoraan majoittajalta.",
@@ -1939,9 +1907,7 @@
       ],
       "municipality": "Salo",
       "title": {
-        "fi": "Kruuvan mökit",
-        "en": "Kruuva Cottages",
-        "es": "Cabañas Kruuva"
+        "fi": "Kruuvan mökit"
       },
       "description": {
         "fi": "Kahdeksan hengen Villa Kruuva merenlahden äärellä. Varusteltu ympärivuotiseen lomailuun, saunat ja merimaisemat.",
@@ -3075,9 +3041,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Aurora #35",
-        "en": "Villa Aurora #35",
-        "es": "Villa Aurora #35"
+        "fi": "Villa Aurora #35"
       },
       "description": {
         "fi": "Merikruunun alueella sijaitseva vuonna 2022 valmistunut 44 m² huvila. Virallisessa kohde-esittelyssä mainitaan sauna, terassi, täysin varusteltu keittiö sekä majoitus enintään viidelle hengelle.",
@@ -3118,9 +3082,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Bergholmen",
-        "en": "Villa Bergholmen",
-        "es": "Villa Bergholmen"
+        "fi": "Villa Bergholmen"
       },
       "description": {
         "fi": "Oma saarikohde Taalintehtaan edustalla. Virallinen esittely kertoo venekuljetuksesta, huvilan kahdeksan hengen kapasiteetista sekä mahdollisuudesta kokouksiin, juhliin ja kalastusretkiin.",
@@ -3161,9 +3123,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Cecilia #55",
-        "en": "Villa Cecilia #55",
-        "es": "Villa Cecilia #55"
+        "fi": "Villa Cecilia #55"
       },
       "description": {
         "fi": "Merikruunun saaristokylässä sijaitseva vuonna 2022 valmistunut huvila. Virallinen esittely kuvaa metsänreunan merimaisemaa, terassia ja poreallasta. Tarkista henkilömäärä ja ehdot suoraan vuokraajalta.",
@@ -3204,9 +3164,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Eden #16",
-        "en": "Villa Eden #16",
-        "es": "Villa Eden #16"
+        "fi": "Villa Eden #16"
       },
       "description": {
         "fi": "Merikruunun saaristokylän huvila, jossa virallisen esittelyn mukaan on sauna, meriterassi ja ulkoporeallas. Vuonna 2022 valmistunut 44 m² huvila sijaitsee hotellin palveluiden lähellä.",
@@ -3247,9 +3205,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Edith #4",
-        "en": "Villa Edith #4",
-        "es": "Villa Edith #4"
+        "fi": "Villa Edith #4"
       },
       "description": {
         "fi": "Kemiönsaaren virallisessa matkailuhakemistossa esiteltävä Merikruunun alueen huvila. Tarkista huonejako, varustelu, henkilömäärä ja ajantasainen saatavuus kohteen omalta sivulta.",
@@ -3290,9 +3246,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Eko #8",
-        "en": "Villa Eko #8",
-        "es": "Villa Eko #8"
+        "fi": "Villa Eko #8"
       },
       "description": {
         "fi": "Kemiönsaaren viralliseen matkailuhakemistoon kuuluva huvila. Tarkista kohteen ajantasainen kuvaus, varustelu ja varauskanava suoraan virallisesta kohdekortista.",
@@ -3333,9 +3287,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Isla #7",
-        "en": "Villa Isla #7",
-        "es": "Villa Isla #7"
+        "fi": "Villa Isla #7"
       },
       "description": {
         "fi": "Kemiönsaaren virallisen matkailuhakemiston huvila. Varmista majoituksen yksityiskohdat, palvelut ja saatavuus suoraan kohteen omasta varauskanavasta.",
@@ -3376,9 +3328,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Jolla #2",
-        "en": "Villa Jolla #2",
-        "es": "Villa Jolla #2"
+        "fi": "Villa Jolla #2"
       },
       "description": {
         "fi": "Kemiönsaaren virallisessa hakemistossa esiteltävä huvila. Tarkista ajantasaiset majoitustiedot, varustelu ja ehdot suoraan kohteen omalta sivulta.",
@@ -3419,9 +3369,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Kruunula #39",
-        "en": "Villa Kruunula #39",
-        "es": "Villa Kruunula #39"
+        "fi": "Villa Kruunula #39"
       },
       "description": {
         "fi": "Merikruunun alueen huvila Kemiönsaaren virallisessa matkailuhakemistossa. Tarkista kohteen omalta sivulta ajantasainen varustelu, henkilömäärä ja varausohjeet.",
@@ -3462,9 +3410,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Lux #3",
-        "en": "Villa Lux #3",
-        "es": "Villa Lux #3"
+        "fi": "Villa Lux #3"
       },
       "description": {
         "fi": "Kemiönsaaren virallisessa matkailuhakemistossa esiteltävä huvila. Tarkista kohteen yksityiskohtaiset tiedot, varustelu ja saatavuus suoraan virallisesta kohdekortista.",
@@ -3505,9 +3451,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Matilda #19",
-        "en": "Villa Matilda #19",
-        "es": "Villa Matilda #19"
+        "fi": "Villa Matilda #19"
       },
       "description": {
         "fi": "Kemiönsaaren viralliseen matkailuhakemistoon kuuluva huvila. Ajantasaiset tilat, henkilömäärä, hinnat ja varausohjeet tarkistetaan suoraan kohteen omalta sivulta.",
@@ -3548,9 +3492,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Mimosa #37",
-        "en": "Villa Mimosa #37",
-        "es": "Villa Mimosa #37"
+        "fi": "Villa Mimosa #37"
       },
       "description": {
         "fi": "Merikruunun Tähdistö-huvila, jonka virallinen esittely kertoo omasta saunasta, ulkoporeammeesta ja noin 30 m²:n meriterassista. Huvila on 44 m² ja sopii parhaiten 2–4 hengelle, enintään kuudelle.",
@@ -3591,9 +3533,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Orion #57",
-        "en": "Villa Orion #57",
-        "es": "Villa Orion #57"
+        "fi": "Villa Orion #57"
       },
       "description": {
         "fi": "Vuonna 2023 valmistunut Merikruunun Tähdistö-huvila. Virallisessa esittelyssä mainitaan kaksi terassia, ulkoporeamme, grillauspaikka ja majoitus 2+3 hengelle.",
@@ -3634,9 +3574,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Otava #15",
-        "en": "Villa Otava #15",
-        "es": "Villa Otava #15"
+        "fi": "Villa Otava #15"
       },
       "description": {
         "fi": "Kemiönsaaren virallisessa matkailuhakemistossa esitelty huvila. Tarkista kohteen omalta sivulta majoitustiedot, varustelu ja saatavuus.",
@@ -3677,9 +3615,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Pohjantähti #18",
-        "en": "Villa Pohjantähti #18",
-        "es": "Villa Pohjantähti #18"
+        "fi": "Villa Pohjantähti #18"
       },
       "description": {
         "fi": "Merikruunun Tähdistö-huvila, jossa on virallisen esittelyn mukaan oma sauna merinäkymällä, kaksi yläparvea ja poreallas. 44 m²:n huvila sopii parhaiten 2–4 hengelle, enintään kuudelle.",
@@ -3720,9 +3656,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Sirius #56",
-        "en": "Villa Sirius #56",
-        "es": "Villa Sirius #56"
+        "fi": "Villa Sirius #56"
       },
       "description": {
         "fi": "Merikruunun Tähdistö-huvila, jonka virallinen esittely kertoo omasta ulkoporealtaasta, suurista terasseista ja hotellin läheisyydestä. Majoitus on ilmoitettu 2+4 hengelle.",
@@ -3763,9 +3697,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Ulrika",
-        "en": "Villa Ulrika",
-        "es": "Villa Ulrika"
+        "fi": "Villa Ulrika"
       },
       "description": {
         "fi": "Kemiönsaaren virallisessa matkailuhakemistossa esiteltävä majoituskohde. Ajantasaiset tiedot ja varauskanava tarkistetaan kohteen omalta sivulta.",
@@ -3806,9 +3738,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Valo #9",
-        "en": "Villa Valo #9",
-        "es": "Villa Valo #9"
+        "fi": "Villa Valo #9"
       },
       "description": {
         "fi": "Merikruunun alueen huvila Kemiönsaaren virallisessa majoitushakemistossa. Tarkista huvilan ajantasaiset tilat, henkilömäärä, hinnat ja varaus suoraan kohteen omalta sivulta.",
@@ -3849,9 +3779,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Spa Hotel Kasnäs",
-        "en": "Spa Hotel Kasnäs",
-        "es": "Spa Hotel Kasnäs"
+        "fi": "Spa Hotel Kasnäs"
       },
       "description": {
         "fi": "Kasnäsin merellinen hotelli- ja lomakeskus. Virallinen matkailusivusto nostaa esiin hotellin, kylpylän, ravintolan, vierasvenesataman ja caravan-alueen.",
@@ -3892,9 +3820,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Söderlångvik Glamping",
-        "en": "Söderlångvik Glamping",
-        "es": "Söderlångvik Glamping"
+        "fi": "Söderlångvik Glamping"
       },
       "description": {
         "fi": "Glamping-majoitus Söderlångvikin kartanon alueella. Tarkista kauden ajankohta, majoituksen sisältö ja saatavuus suoraan palveluntarjoajalta.",
@@ -3935,9 +3861,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Yö Bengtskärin majakassa",
-        "en": "Stay overnight at Bengtskär Lighthouse",
-        "es": "Alojamiento en el faro de Bengtskär"
+        "fi": "Yö Bengtskärin majakassa"
       },
       "description": {
         "fi": "Yöpymismahdollisuus avomeren majakkasaarella. Merikuljetus, kausi, huoneet ja vierailun ehdot on tarkistettava suoraan majakan ylläpitäjältä.",
@@ -3978,9 +3902,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Sebbholmen EcoCamp – mökit",
-        "en": "Sebbholmen EcoCamp – cabins",
-        "es": "Sebbholmen EcoCamp – cabañas"
+        "fi": "Sebbholmen EcoCamp – mökit"
       },
       "description": {
         "fi": "Saaristossa sijaitseva mökkimajoitus. Tarkista mökkien varustelu, kulkuyhteydet, kausi ja varaus suoraan EcoCampin omasta palvelusta.",
@@ -4021,9 +3943,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Sebbholmen EcoCamp – Tentsile-teltat",
-        "en": "Sebbholmen EcoCamp – Tentsile tents",
-        "es": "Sebbholmen EcoCamp – tiendas Tentsile"
+        "fi": "Sebbholmen EcoCamp – Tentsile-teltat"
       },
       "description": {
         "fi": "Tentsile-telttamajoitus EcoCampin saaristokohteessa. Tarkista kausi, varustelu, saapumisohjeet ja saatavuus suoraan palveluntarjoajalta.",
@@ -4064,9 +3984,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Hotelli & Ravintola Merikruunu",
-        "en": "Hotel & Restaurant Merikruunu",
-        "es": "Hotel y Restaurante Merikruunu"
+        "fi": "Hotelli & Ravintola Merikruunu"
       },
       "description": {
         "fi": "Historiallinen saaristohotelli Dragsfjärdissä. Virallinen kohdesivu esittelee hotellin ja ravintolan; tarkista huoneet, palvelut, hinnat ja aukiolo suoraan hotellilta.",
@@ -4107,9 +4025,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "B & B Hembacka",
-        "en": "B&B Hembacka",
-        "es": "B&B Hembacka"
+        "fi": "B & B Hembacka"
       },
       "description": {
         "fi": "Bed & breakfast -majoitus Kemiönsaaren virallisessa matkailuhakemistossa. Tarkista huonetyypit, aamiainen, palvelut ja varaus suoraan majoittajalta.",
@@ -4150,9 +4066,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Dals Inn Bed & Breakfast",
-        "en": "Dals Inn Bed & Breakfast",
-        "es": "Dals Inn Bed & Breakfast"
+        "fi": "Dals Inn Bed & Breakfast"
       },
       "description": {
         "fi": "Bed & breakfast -majoitus Taalintehtaan alueella. Tarkista huoneiden saatavuus, palvelut ja varausehdot suoraan majoituspaikalta.",
@@ -4193,9 +4107,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ekniemen lomakylä",
-        "en": "Ekniemi Holiday Village",
-        "es": "Complejo vacacional Ekniemi"
+        "fi": "Ekniemen lomakylä"
       },
       "description": {
         "fi": "Meren äärellä sijaitseva lomakylä, jonka virallinen esittely nostaa esiin luonnonrauhan, majoituksen ja elämykset. Tarkista mökkivalikoima ja saatavuus suoraan toimijalta.",
@@ -4236,9 +4148,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Holmbergs Fisk & Café Four C",
-        "en": "Holmbergs Fisk & Café Four C",
-        "es": "Holmbergs Fisk & Café Four C"
+        "fi": "Holmbergs Fisk & Café Four C"
       },
       "description": {
         "fi": "Taalintehtaan vanhassa postitalossa toimiva kalakaupan ja kahvilan yhdistelmä. Tarkista päivän kalavalikoima, kahvilatuotteet ja aukiolo suoraan yritykseltä.",
@@ -4279,9 +4189,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ravintola Amos Krog",
-        "en": "Restaurant Amos Krog",
-        "es": "Restaurante Amos Krog"
+        "fi": "Ravintola Amos Krog"
       },
       "description": {
         "fi": "Söderlångvikin kartanon ravintola. Yhdistä ruokailu kartanon, museon, näyttelyiden ja omenatarhojen vierailuun; tarkista ajankohtainen menu ja aukiolo ravintolalta.",
@@ -4322,9 +4230,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Stall’s Bar & Food",
-        "en": "Stall’s Bar & Food",
-        "es": "Stall’s Bar & Food"
+        "fi": "Stall’s Bar & Food"
       },
       "description": {
         "fi": "Kemiönsaaren virallisen matkailusivuston ravintola- ja kahvilahakemistossa esitelty ruokapaikka. Tarkista nykyinen ruokalista, palvelut ja aukiolo suoraan ravintolalta.",
@@ -4365,9 +4271,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Farmors Café",
-        "en": "Farmors Café",
-        "es": "Farmors Café"
+        "fi": "Farmors Café"
       },
       "description": {
         "fi": "Högsåran saarella historiallisessa Gamla Lillstuganin luotsimökissä toimiva saaristokahvila ja ravintola. Farmors Café on palvellut vuodesta 1994. Päivittäin vaihtuva ruokalista rakentuu sesongin ja paikallisten tuottajien raaka-aineista, ja annoksia viimeistellään oman puutarhan kukilla ja yrteillä. Saareen saavutaan Svartnäsin lossilla; auto kannattaa jättää Svartnäsiin ja jatkaa kävellen tai pyörällä.",
@@ -4408,9 +4312,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Rumpan Bar",
-        "en": "Rumpan Bar",
-        "es": "Rumpan Bar"
+        "fi": "Rumpan Bar"
       },
       "description": {
         "fi": "Rumpan Bar kuuluu Visit Kemiönsaaren ravintola- ja kahvilahakemistoon. Tarkista palvelun tämänhetkinen kausi, ruoka- ja juomatarjonta sekä aukiolo suoraan toimijalta.",
@@ -4451,9 +4353,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "DB Bistro Runda Munken",
-        "en": "DB Bistro Runda Munken",
-        "es": "DB Bistro Runda Munken"
+        "fi": "DB Bistro Runda Munken"
       },
       "description": {
         "fi": "Taalintehtaan ruokapaikka Kemiönsaaren virallisessa matkailuhakemistossa. Tarkista ruokalista, palveluajat ja mahdolliset pöytävaraukset suoraan ravintolalta.",
@@ -4494,9 +4394,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Örö Ravintola 12",
-        "en": "Örö Restaurant 12",
-        "es": "Restaurante 12 de Örö"
+        "fi": "Örö Ravintola 12"
       },
       "description": {
         "fi": "Örön linnakesaaren ravintola. Tarkista merikuljetukset, kauden aukiolo, päivän menu ja palvelut ennen saarelle lähtöä.",
@@ -4537,9 +4435,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Jahti Eugenia – purjehdukset ja yleisöretket",
-        "en": "Yacht Eugenia – sailing trips",
-        "es": "Yate Eugenia – excursiones a vela"
+        "fi": "Jahti Eugenia – purjehdukset ja yleisöretket"
       },
       "description": {
         "fi": "Perinteinen purjealus, jolla järjestetään yleisöpurjehduksia, tilauspurjehduksia ja teemaristeilyjä Kemiönsaaren saaristossa. Tarkista reitit ja lähtöpäivät järjestäjältä.",
@@ -4580,9 +4476,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Haahkasafari Bengtskärin majakalle",
-        "en": "Eider safari to Bengtskär Lighthouse",
-        "es": "Safari de eideres al faro de Bengtskär"
+        "fi": "Haahkasafari Bengtskärin majakalle"
       },
       "description": {
         "fi": "Merellinen retkituote Bengtskärin majakan suuntaan. Tarkista retken toteutuminen, ajankohta, lähtöpaikka ja sääehdot suoraan järjestäjältä.",
@@ -4623,9 +4517,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kajakkivuokraus Hiittisissä",
-        "en": "Kayak rental in Hiittinen",
-        "es": "Alquiler de kayaks en Hiittinen"
+        "fi": "Kajakkivuokraus Hiittisissä"
       },
       "description": {
         "fi": "Kajakkivuokraus Hiittisten saaristossa. Varmista kaluston saatavuus, vuokrausehdot, turvallisuusohjeet ja säärajat suoraan palveluntarjoajalta.",
@@ -4666,9 +4558,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kalliokiipeily ja laskeutuminen",
-        "en": "Rock climbing and abseiling",
-        "es": "Escalada en roca y rápel"
+        "fi": "Kalliokiipeily ja laskeutuminen"
       },
       "description": {
         "fi": "Kemiönsaaren aktiviteettihakemistossa esitelty kiipeilyelämys. Varmista toteutuspaikka, ohjaus, osallistujavaatimukset ja varaus suoraan järjestäjältä.",
@@ -4709,9 +4599,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Nordic Gravel Series Kemiönsaari",
-        "en": "Nordic Gravel Series Kimitoön",
-        "es": "Nordic Gravel Series Kimitoön"
+        "fi": "Nordic Gravel Series Kemiönsaari"
       },
       "description": {
         "fi": "Kemiönsaaren soratiepyöräilyyn liittyvä tapahtuma ja reittikokonaisuus. Tarkista tulevat tapahtumapäivät, reitit ja osallistumisohjeet järjestäjän omista kanavista.",
@@ -4752,9 +4640,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Opastettu kävely Taalintehtaalla",
-        "en": "Guided walk in Dalsbruk",
-        "es": "Paseo guiado por Dalsbruk"
+        "fi": "Opastettu kävely Taalintehtaalla"
       },
       "description": {
         "fi": "Opastettu kävely Taalintehtaan ruukkikylässä. Tarkista kierroksen kieli, kesto, lähtöpaikka ja varaus suoraan oppaalta tai järjestäjältä.",
@@ -4795,9 +4681,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Opastetut melontaretket ja kajakkivuokraus",
-        "en": "Guided kayak tours and kayak rental",
-        "es": "Rutas guiadas en kayak y alquiler"
+        "fi": "Opastetut melontaretket ja kajakkivuokraus"
       },
       "description": {
         "fi": "Opastettuja melontaretkiä ja kajakkivuokrausta Saaristomerellä. Tarkista reitit, kalusto, turvallisuusohjeet ja säästä riippuvat ehdot järjestäjältä.",
@@ -4838,9 +4722,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Saariston loistoreitti – Bengtskär ja Viikinkikeskus",
-        "en": "Archipelago Lighthouse Route – Bengtskär and Viking Centre",
-        "es": "Ruta de los faros – Bengtskär y Centro Vikingo"
+        "fi": "Saariston loistoreitti – Bengtskär ja Viikinkikeskus"
       },
       "description": {
         "fi": "Meriretki, joka yhdistää Bengtskärin majakan ja Rosalan Viikinkikeskuksen. Lähtöajat, liikennöintikausi ja sääehdot tarkistetaan suoraan varauspalvelusta.",
@@ -4881,9 +4763,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Sauva – kalastuselämys",
-        "en": "Sauva – fishing experience",
-        "es": "Sauva – experiencia de pesca"
+        "fi": "Sauva – kalastuselämys"
       },
       "description": {
         "fi": "Kalastuselämys Kemiönsaaren saaristossa. Tarkista kalastusmuoto, välineet, kesto, osallistujamäärä ja varaus suoraan järjestäjältä.",
@@ -4924,9 +4804,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Merigalleria Fabrik",
-        "en": "Merigalleria Fabrik",
-        "es": "Merigalleria Fabrik"
+        "fi": "Merigalleria Fabrik"
       },
       "description": {
         "fi": "Taidegalleria Kemiönsaaren kulttuurikohteiden hakemistossa. Tarkista ajankohtaiset näyttelyt, aukiolo ja vierailuohjeet suoraan gallerialta.",
@@ -4967,9 +4845,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Glassgaraget – tilapuoti ja kahvila",
-        "en": "Glassgaraget – farm shop and café",
-        "es": "Glassgaraget – tienda de granja y cafetería"
+        "fi": "Glassgaraget – tilapuoti ja kahvila"
       },
       "description": {
         "fi": "Söderlångvikin kartanon tilapuoti, käsityömyymälä ja jäätelökahvila Amos Andersonin entisessä autotallissa. Valikoimaan kuuluu kartanon omenoista valmistettuja tuotteita, kuten omenamehua ja -hilloa, oman mehiläistarhan hunajaa sekä paikallisia käsitöitä, koruja ja tekstiilejä. Kahvilassa tarjoillaan Söderlångvik Glass -jäätelöä. Tarkista kausittaiset aukioloajat suoraan kartanolta.",
@@ -4998,9 +4874,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taalintehtaan vierasvenesatama",
-        "en": "Dalsbruk Guest Harbour",
-        "es": "Puerto deportivo de Dalsbruk"
+        "fi": "Taalintehtaan vierasvenesatama"
       },
       "description": {
         "fi": "Taalintehtaan vierasvenesatama on yksi Kemiönsaaren virallisen matkailusivuston esiin nostamista satamista. Tarkista palvelut, venepaikat ja satamatoimiston aukiolo sataman omista tiedoista.",
@@ -5041,9 +4915,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kasnäsin vierasvenesatama",
-        "en": "Kasnäs Guest Harbour",
-        "es": "Puerto deportivo de Kasnäs"
+        "fi": "Kasnäsin vierasvenesatama"
       },
       "description": {
         "fi": "Kasnäsin satama toimii tärkeänä porttina ulkosaaristoon ja yhteyksiin Örön sekä muiden merikohteiden suuntaan. Tarkista satamapalvelut ja yhteydet ennen matkaa.",
@@ -5084,9 +4956,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Örön vierasvenesatama",
-        "en": "Örö Guest Harbour",
-        "es": "Puerto deportivo de Örö"
+        "fi": "Örön vierasvenesatama"
       },
       "description": {
         "fi": "Örön linnakesaaren vierasvenesatama palvelee omalla veneellä saapuvia. Tarkista sataman ajantasaiset palvelut, paikkatilanne ja saaren muut palvelut ennen lähtöä.",
@@ -5127,9 +4997,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Sagalundin museo",
-        "en": "Sagalund Museum",
-        "es": "Museo Sagalund"
+        "fi": "Sagalundin museo"
       },
       "description": {
         "fi": "Kemiön ulkomuseo ja kulttuurikohde, jossa esitellään paikallista historiaa ja rakennusperintöä. Tarkista näyttelyt, tapahtumat ja vierailuajat museon omilta sivuilta.",
@@ -5170,9 +5038,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taalintehtaan ruukkiperintö",
-        "en": "Dalsbruk Ironworks Heritage",
-        "es": "Patrimonio siderúrgico de Dalsbruk"
+        "fi": "Taalintehtaan ruukkiperintö"
       },
       "description": {
         "fi": "Taalintehtaan historiallinen ruukkimiljöö kertoo alueen teollisesta historiasta. Tutustu alueen reitteihin ja nähtävyyksiin paikan päällä sekä virallisissa matkailutiedoissa.",
@@ -5213,9 +5079,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Storfinnhova Gård",
-        "en": "Storfinnhova Gård",
-        "es": "Storfinnhova Gård"
+        "fi": "Storfinnhova Gård"
       },
       "description": {
         "fi": "Björkbodassa sijaitseva maatilakohde, jossa voi yöpyä huviloissa ja puumajoissa. Palveluihin kuuluvat ravintola ja catering sekä maanalainen graniittinen savusauna ja perinteinen sauna. Soveltuu myös ryhmille ja tapahtumille.",
@@ -5256,9 +5120,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ragnar Antonin Lomakylä",
-        "en": "Ragnar Anton's Holiday Village",
-        "es": "Complejo vacacional Ragnar Anton"
+        "fi": "Ragnar Antonin Lomakylä"
       },
       "description": {
         "fi": "Merenrantamökkejä ja mukavuuksilla varustettuja loma-asuntoja Kemiönsaaren luonnon keskellä. Lomakylän ympärillä on suojaisia merialueita kalastukseen, saaristoluontoa, kotieläimiä ja historiallisia nähtävyyksiä.",
@@ -5299,9 +5161,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Bjärkas Golf",
-        "en": "Bjärkas Golf",
-        "es": "Bjärkas Golf"
+        "fi": "Bjärkas Golf"
       },
       "description": {
         "fi": "Västanfjärdin historiallisella tilalla sijaitseva kaikille avoin 18-reikäinen par 57 -golfkenttä. Tilan toimintaan yhdistyvät golf, majoitus ja ruokailujen järjestäminen suuremmillekin ryhmille. Ilmoitettu tavanomainen pelikausi on huhtikuusta marraskuuhun.",
@@ -5330,9 +5190,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Rosalan Viikinkikeskus",
-        "en": "Rosala Viking Centre",
-        "es": "Centro Vikingo de Rosala"
+        "fi": "Rosalan Viikinkikeskus"
       },
       "description": {
         "fi": "Rosalan viikinkikylä on elävöittävä vierailukeskus, jossa tutustutaan rautakauden loppuun ja viikinkiaikaan. Pääsylippuun sisältyy lyhyt opastus ja kartta lähes 30 kohteeseen. Ryhmille voi varata opastuksia, ohjelmaa, juhlia ja kokouksia; Rodeborgin päällikön halli toimii juhlatilana.",
@@ -5361,9 +5219,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Örön linnakesaari",
-        "en": "Örö Fortress Island",
-        "es": "Isla fortificada de Örö"
+        "fi": "Örön linnakesaari"
       },
       "description": {
         "fi": "Saaristomeren kansallispuistossa sijaitseva historiallinen linnakesaari. Saarella on kasarmialueita, Obuhov-tykkejä ja puolustusasemia sekä luontoarvoja. KSG:n palvelukuvauksen mukaan saarella on vierasvenesatama, kaksi ravintolaa, kesäpuoti, kolme saunaa, kokoustiloja ja majoitusta jopa 150 hengelle. Merimatka Kasnäsistä kestää noin 30–60 minuuttia; tarkista yhteydet ja palvelujen kausi suoraan Öröltä.",
@@ -5404,9 +5260,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Hitis Rodd- och Kanotklubb",
-        "en": "Hitis Rowing and Canoeing Club",
-        "es": "Club de remo y piragüismo de Hitis"
+        "fi": "Hitis Rodd- och Kanotklubb"
       },
       "description": {
         "fi": "Hiittisten alueen soutu- ja melontayhdistys, joka kuuluu Kemiönsaaren palveluoppaan aktiviteettitoimijoihin. Tarkista yhdistyksen omista kanavista mahdolliset tapahtumat, toiminta ja vierailijoille tarjolla olevat palvelut.",
@@ -5435,9 +5289,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Arkipelag Workshop / Ateljé Tjuda Pedagogi",
-        "en": "Arkipelag Workshop / Ateljé Tjuda Pedagogi",
-        "es": "Arkipelag Workshop / Ateljé Tjuda Pedagogi"
+        "fi": "Arkipelag Workshop / Ateljé Tjuda Pedagogi"
       },
       "description": {
         "fi": "Taidegrafiikan työpaja Kemiössä. Tarjolla on taidekursseja lapsille ja aikuisille sekä työskentelytilaa ammattilaisille ja harrastajille päivä- tai viikkovuokralla.",
@@ -5466,9 +5318,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Finlandia Sailing",
-        "en": "Finlandia Sailing",
-        "es": "Finlandia Sailing"
+        "fi": "Finlandia Sailing"
       },
       "description": {
         "fi": "Kasnäsissä toimiva venevuokraus- ja charter-palvelu. Kemiönsaaren palveluoppaan mukaan vuokraveneitä on tarjolla Suomen lisäksi Tukholman saaristossa, Välimerellä sekä Karibialla. Tarkista venevalikoima, alueet ja ehdot suoraan toimijalta.",
@@ -5509,9 +5359,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kalkholmen Marina",
-        "en": "Kalkholmen Marina",
-        "es": "Kalkholmen Marina"
+        "fi": "Kalkholmen Marina"
       },
       "description": {
         "fi": "Västanfjärdin vierasvenesatama ja merellinen palvelukeskus. KSG:n mukaan alueella voi ruokailla, saunoa, pelata padelia ja tankata; satamassa on myös vuokrattavia sesonkipaikkoja. Tarkista venepaikat ja palvelujen kausi suoraan marinasta.",
@@ -5540,9 +5388,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kemiönsaaren oppaat ry",
-        "en": "Kimitoön Guides Association",
-        "es": "Asociación de guías de Kimitoön"
+        "fi": "Kemiönsaaren oppaat ry"
       },
       "description": {
         "fi": "Paikallisten oppaiden yhdistys, joka kuuluu Kemiönsaaren palveluoppaan opastus- ja matkailupalveluihin. Kysy opastettuja kierroksia, kielivaihtoehtoja ja ryhmille sopivia ohjelmia suoraan yhdistykseltä.",
@@ -5571,9 +5417,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Lemonlake Snooker",
-        "en": "Lemonlake Snooker",
-        "es": "Lemonlake Snooker"
+        "fi": "Lemonlake Snooker"
       },
       "description": {
         "fi": "Sisäaktiviteetti Kemiönsaaren palveluoppaan vapaa-ajan tarjonnassa. Tarkista pelimahdollisuudet, varaus ja aukiolo suoraan toimijalta.",
@@ -5602,9 +5446,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Made in Hitis",
-        "en": "Made in Hitis",
-        "es": "Made in Hitis"
+        "fi": "Made in Hitis"
       },
       "description": {
         "fi": "Hiittisten paikalliseen käsityöhön ja tuotteisiin liittyvä toimija Kemiönsaaren palveluoppaassa. Tarkista ajankohtainen tuotevalikoima, myyntipaikat ja vierailumahdollisuudet suoraan toimijalta.",
@@ -5633,9 +5475,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Uppgårds Fotisgolf",
-        "en": "Uppgårds Footgolf",
-        "es": "Footgolf Uppgårds"
+        "fi": "Uppgårds Fotisgolf"
       },
       "description": {
         "fi": "Jalkapallogolfiin perustuva ulkoaktiviteetti Kemiönsaaren palveluoppaan vapaa-ajan tarjonnassa. Tarkista kentän aukiolo, ryhmävaraukset ja mahdolliset tapahtumat suoraan toimijalta.",
@@ -5664,9 +5504,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "UteTop Oy",
-        "en": "UteTop Oy",
-        "es": "UteTop Oy"
+        "fi": "UteTop Oy"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaan urheilu- ja vapaa-ajan toimija. Tarkista ajankohtaiset ulkoilu- ja aktiviteettipalvelut suoraan yritykseltä ennen vierailua.",
@@ -5695,9 +5533,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Café DaCapo",
-        "en": "Café DaCapo",
-        "es": "Café DaCapo"
+        "fi": "Café DaCapo"
       },
       "description": {
         "fi": "Kemiön keskustan kahvila, josta voi tilata täyte- ja voileipäkakkuja. Palveluopas mainitsee myös pitopalvelun, joten yritys sopii sekä kahvila- että juhlapalveluhakuun.",
@@ -5738,9 +5574,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Backom Café & Pub",
-        "en": "Backom Café & Pub",
-        "es": "Backom Café & Pub"
+        "fi": "Backom Café & Pub"
       },
       "description": {
         "fi": "Hiittisten kesäkahvila ja pubi Hitisvägenin varrella. Tarkista kauden aukiolo, tarjoilu ja tapahtumat suoraan toimijalta.",
@@ -5769,9 +5603,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Cafe Kompass",
-        "en": "Cafe Kompass",
-        "es": "Cafe Kompass"
+        "fi": "Cafe Kompass"
       },
       "description": {
         "fi": "Kemiön keskustan kahvila Engelsbyntiellä. Tarkista kahvilan tämänhetkinen valikoima, aukiolo ja mahdolliset tilaukset suoraan kahvilalta.",
@@ -5800,9 +5632,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Bistro Marita",
-        "en": "Bistro Marita",
-        "es": "Bistro Marita"
+        "fi": "Bistro Marita"
       },
       "description": {
         "fi": "Rosalan kylässä toimiva bistro, jossa palveluoppaan mukaan on bistroruokaa, kahvilatuotteita, viinejä ja olutvalikoima. Tarkista aukiolo ja tarjonta ennen saaristomatkaa.",
@@ -5831,9 +5661,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Bistro & Bar Road Cafe Yttis",
-        "en": "Bistro & Bar Road Cafe Yttis",
-        "es": "Bistro & Bar Road Cafe Yttis"
+        "fi": "Bistro & Bar Road Cafe Yttis"
       },
       "description": {
         "fi": "Kärran kylässä toimiva ruokapaikka, jonka listalla palveluoppaan mukaan on pizzoja, hampurilaisia, bistroannoksia sekä tunnettu lohikeitto saaristolaisleivän kanssa. Tarkista ajantasainen menu ja aukiolo toimijalta.",
@@ -5862,9 +5690,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kasnäs Paviljong",
-        "en": "Kasnäs Paviljong",
-        "es": "Kasnäs Paviljong"
+        "fi": "Kasnäs Paviljong"
       },
       "description": {
         "fi": "Kasnäsin satama-alueen grillin, pizzan ja kahvilan yhdistelmä. Kemiönsaaren palveluopas listaa paikan ravintola- ja lounaspalveluihin. Tarkista kauden ruokalista ja aukiolo Kasnäsistä.",
@@ -5893,9 +5719,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Laituri Grilli",
-        "en": "Laituri Grilli",
-        "es": "Laituri Grilli"
+        "fi": "Laituri Grilli"
       },
       "description": {
         "fi": "Taalintehtaan sataman vieressä Tehtaan portilla sijaitseva ravintola. Palveluoppaan mukaan tarjolla on aamiaista, lounasta ja illallista, ja paikalla on myös drive-in-mahdollisuus. Tarkista aukiolo ja päivän tarjonta suoraan ravintolalta.",
@@ -5924,9 +5748,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ravintola Portside",
-        "en": "Restaurant Portside",
-        "es": "Restaurante Portside"
+        "fi": "Ravintola Portside"
       },
       "description": {
         "fi": "Taalintehtaan merellinen terassi ja rantamakasiini. Palveluoppaan mukaan ravintola palvelee toukokuusta elokuuhun; tarkista kauden aukiolo, ruokalista ja tapahtumat suoraan Portsidesta.",
@@ -5967,9 +5789,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Rigges Thai",
-        "en": "Rigges Thai",
-        "es": "Rigges Thai"
+        "fi": "Rigges Thai"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaan catering- ja ruokatuotantotoimija. Tarkista nykyinen ruoka- ja tilauspalveluvalikoima sekä mahdolliset tapahtumatarjoilut suoraan yritykseltä.",
@@ -5998,9 +5818,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Mac Daniel's Grill ja Ravintola Galaxy",
-        "en": "Mac Daniel's Grill and Restaurant Galaxy",
-        "es": "Mac Daniel's Grill y Restaurante Galaxy"
+        "fi": "Mac Daniel's Grill ja Ravintola Galaxy"
       },
       "description": {
         "fi": "Kemiön keskustassa toimiva kahvila-, ravintola- ja pubikokonaisuus. Palveluoppaan mukaan tiloihin kuuluu ruokasali, kokouskabinetti ja juhlapalvelu. Ravintola Galaxy soveltuu suurempiin tilaisuuksiin, tanssi-iltoihin ja kokouksiin; oppaassa mainitaan myös hotellipalvelu.",
@@ -6029,9 +5847,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Café Adéle",
-        "en": "Café Adéle",
-        "es": "Café Adéle"
+        "fi": "Café Adéle"
       },
       "description": {
         "fi": "Kemiön keskustan kahvila ja lounaspaikka, jossa on myös catering-palvelu. KSG:n mukaan lounaslistalla on kasvisvaihtoehtoja ja ruokaa saa mukaan. Tunnelmallista tilaa voi vuokrata juhliin, kokouksiin ja muistotilaisuuksiin.",
@@ -6060,9 +5876,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Konditori Mazarin",
-        "en": "Konditori Mazarin",
-        "es": "Konditori Mazarin"
+        "fi": "Konditori Mazarin"
       },
       "description": {
         "fi": "Konditoria, leipomo ja kahvila Kemiön keskustassa. KSG:n mukaan leipä leivotaan alusta asti itse hapanjuurella ja pitkällä kohotusajalla. Kahville voi tulla paikan päälle tai ostaa leipää mukaan.",
@@ -6091,9 +5905,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ren-Lyx & Saaristorapu",
-        "en": "Ren-Lyx & Saaristorapu",
-        "es": "Ren-Lyx & Saaristorapu"
+        "fi": "Ren-Lyx & Saaristorapu"
       },
       "description": {
         "fi": "Kemiönsaaren catering- ja tapahtumapalvelu. KSG:n mukaan yritys järjestää juhlia ja tapahtumia sekä tarjoaa aamiaista, lounaspöytää, à la carte -ruokaa ja pizzaa. Samalla yritys tarjoaa siivouspalveluja.",
@@ -6122,9 +5934,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Tmi Kerstin Forsbom",
-        "en": "Tmi Kerstin Forsbom",
-        "es": "Tmi Kerstin Forsbom"
+        "fi": "Tmi Kerstin Forsbom"
       },
       "description": {
         "fi": "Dragsfjärdissä toimiva lounas- ja pitopalvelu. KSG:n mukaan tarjolla on arkiruokaa, kotiruokaa, kenttäkeittiöpalvelua ja kotiinkuljetusta.",
@@ -6153,9 +5963,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Catering Thomas Åhlberg",
-        "en": "Catering Thomas Åhlberg",
-        "es": "Catering Thomas Åhlberg"
+        "fi": "Catering Thomas Åhlberg"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaassa catering- ja ruokatuotantopalveluihin listattu toimija. Kysy suoraan järjestäjältä tapahtumatarjoiluista, menuvaihtoehdoista ja saatavuudesta.",
@@ -6184,9 +5992,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Terrassn Restaurant",
-        "en": "Terrassn Restaurant",
-        "es": "Terrassn Restaurant"
+        "fi": "Terrassn Restaurant"
       },
       "description": {
         "fi": "Kalkholmen Marinan kesäravintola Västanfjärdissä. KSG:n mukaan ruokalistalla on salaatteja, hampurilaisia sekä kala- ja liharuokia, ja raaka-aineissa hyödynnetään mahdollisuuksien mukaan paikallisia kesätuotteita. Julkaistut aukioloajat kannattaa varmistaa ennen matkaa.",
@@ -6215,9 +6021,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Holmströms Lanthandel",
-        "en": "Holmströms Lanthandel",
-        "es": "Holmströms Lanthandel"
+        "fi": "Holmströms Lanthandel"
       },
       "description": {
         "fi": "Aito saaristokauppa Hiittisissä laajalla päivittäistavara- ja paikallistuotevalikoimalla. Café Vikinnessä tarjoillaan lounasta ja pikaruokaa muina kuin kesäkuukausina sekä kylmiä ja lämpimiä juomia. KSG ilmoittaa kaupan olevan avoinna joka päivä.",
@@ -6246,9 +6050,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kasnäs Handel",
-        "en": "Kasnäs Handel",
-        "es": "Kasnäs Handel"
+        "fi": "Kasnäs Handel"
       },
       "description": {
         "fi": "Kasnäsin ympärivuotinen päivittäistavarakauppa sataman ja lomakeskuksen yhteydessä. Tarkista ajankohtaiset palvelut ja aukiolo suoraan kaupasta.",
@@ -6277,9 +6079,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Anttis Taxi Ab Oy",
-        "en": "Anttis Taxi Ab Oy",
-        "es": "Anttis Taxi Ab Oy"
+        "fi": "Anttis Taxi Ab Oy"
       },
       "description": {
         "fi": "Kemiönsaarella toimiva taksipalvelu. KSG:n mukaan käytössä on kaksi 1+8-paikkaista autoa, paarivarustus ja pyörätuolivarustus. Palveluihin kuuluvat Kela-kuljetukset ja vapaa-ajan matkat.",
@@ -6308,9 +6108,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taksiasema Kemiönsaari",
-        "en": "Taxistation Kimitoön",
-        "es": "Taxis Kimitoön"
+        "fi": "Taksiasema Kemiönsaari"
       },
       "description": {
         "fi": "Paikallinen taksiasema, jonka KSG ilmoittaa tarjoavan 1+8-paikkaisen auton sekä paarien ja pyörätuolin kuljetusmahdollisuuden. Palveluihin kuuluvat myös Kela- ja matkapalvelukuljetukset.",
@@ -6339,9 +6137,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Oy Kimirent Ab",
-        "en": "Oy Kimirent Ab",
-        "es": "Oy Kimirent Ab"
+        "fi": "Oy Kimirent Ab"
       },
       "description": {
         "fi": "Kemiönsaaren vuokrauspalvelu, jonka kalustoon KSG:n mukaan kuuluu muun muassa vesijettejä, perävaunuja, henkilönostimia ja muita koneita. Tarkista vesijettien saatavuus, vuokrausehdot ja muut kalustot suoraan yritykseltä.",
@@ -6370,9 +6166,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Actiwell Ab Oy",
-        "en": "Actiwell Ab Oy",
-        "es": "Actiwell Ab Oy"
+        "fi": "Actiwell Ab Oy"
       },
       "description": {
         "fi": "Kemiössä toimiva hieronta- ja kehonhoitopalvelu, joka kuuluu myös KSG:n urheilu- ja vapaa-ajan aktiviteetteihin. Tarkista hoidot, ajanvaraus ja palvelujen saatavuus suoraan yritykseltä.",
@@ -6401,9 +6195,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ullman's Villa",
-        "en": "Ullman's Villa",
-        "es": "Ullman's Villa"
+        "fi": "Ullman's Villa"
       },
       "description": {
         "fi": "Majoituskohde Taalintehtaan sydämessä. Kemiönsaaren palveluopas listaa sen hotellien, hostellien ja aamiaismajoitusten joukkoon. Tarkista huonetyypit, saatavuus ja varaus suoraan majoituspaikalta.",
@@ -6432,9 +6224,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Strandhotellet",
-        "en": "Strandhotellet",
-        "es": "Strandhotellet"
+        "fi": "Strandhotellet"
       },
       "description": {
         "fi": "Pieni hotelli Taalintehtaan keskustassa, jonka vanhoissa mutta kodikkaissa huoneissa on useista merinäköala. Alakerran Ravintola Strand tarjoilee bistromenua ympäri vuoden. Palveluopas mainitsee lisäksi dartsin, biljardin ja minigolfin.",
@@ -6463,9 +6253,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Björkbodan Ruukinkartano",
-        "en": "Björkboda Manor",
-        "es": "Casa señorial de Björkboda"
+        "fi": "Björkbodan Ruukinkartano"
       },
       "description": {
         "fi": "Björkbodan idyllisellä ruukkialueella vuokrattavia vapaa-ajan asuntoja sekä juhla- ja kokoustiloja 5–60 henkilölle vanhassa viljamakasiinissa. Asukkaiden käytössä on sauna ja ranta. Kohteessa on myös ratsastustalli ja hevosten kuntoutuspalveluja.",
@@ -6494,9 +6282,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Hotel Galaxy",
-        "en": "Hotel Galaxy",
-        "es": "Hotel Galaxy"
+        "fi": "Hotel Galaxy"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaan mukaan Hotel Galaxy on korkeatasoinen pieni hotelli, jossa on 10 huonetta, joista kahdessa on keittiö. Tarkista huoneiden tarkemmat varustelut, hinnat ja saatavuus suoraan hotellilta.",
@@ -6525,9 +6311,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Saariloma.net",
-        "en": "Saariloma.net",
-        "es": "Saariloma.net"
+        "fi": "Saariloma.net"
       },
       "description": {
         "fi": "Vapaa-ajan asuntoja ja mökkejä Björkbodan ja Taalintehtaan ruukkimiljöössä. Tarkista kohteiden sijainnit, varustelu, vuokraehdot ja saatavuus suoraan vuokraajalta.",
@@ -6556,9 +6340,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Majoitusliike Pikkutikka",
-        "en": "Pikkutikka Holiday Accommodation",
-        "es": "Alojamiento Pikkutikka"
+        "fi": "Majoitusliike Pikkutikka"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaan majoitushakemistossa lomahuvilan vuokraajana listattu toimija. Tarkista huvilan sijainti, varustelu, vuokraehdot ja vapaat ajankohdat virallisesta palveluoppaasta ja vuokraajalta.",
@@ -6587,9 +6369,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "DB Hostel",
-        "en": "DB Hostel",
-        "es": "DB Hostel"
+        "fi": "DB Hostel"
       },
       "description": {
         "fi": "Hostelli Taalintehtaan keskustassa, noin sadan metrin päässä torilta. KSG:n esittely korostaa laadukkaita huoneita ja hyvin varusteltuja yhteistiloja. Tarkista huonetyypit, varustelu ja saatavuus suoraan hostellilta.",
@@ -6630,9 +6410,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Viggskärin vuokramökit",
-        "en": "Viggskär Rental Cottages",
-        "es": "Cabañas de alquiler de Viggskär"
+        "fi": "Viggskärin vuokramökit"
       },
       "description": {
         "fi": "Vuokramökkejä Viggskärissä Kemiönsaaren saaristossa. Tarkista mökkien varustelu, kulkuyhteydet, vuokraehdot ja saatavuus suoraan vuokraajalta.",
@@ -6661,9 +6439,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Villa Lyxfällan",
-        "en": "Villa Lyxfällan",
-        "es": "Villa Lyxfällan"
+        "fi": "Villa Lyxfällan"
       },
       "description": {
         "fi": "Vuokramökki Kemiönsaaren palveluoppaan majoituslistauksessa. Tarkista mökin sijainti, varustelu, henkilömäärä, vuokraehdot ja saatavuus suoraan vuokraajalta.",
@@ -6692,9 +6468,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Vänö Stugor",
-        "en": "Vänö Stugor",
-        "es": "Vänö Stugor"
+        "fi": "Vänö Stugor"
       },
       "description": {
         "fi": "Vänön saaristossa toimiva mökkivuokraaja. KSG:n mukaan palveluihin kuuluu myös veneiden talvisäilytys. Tarkista mökkien tiedot, venepaikat, kuljetukset ja varaus suoraan toimijalta.",
@@ -6723,9 +6497,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ab Seaside Oy LKV – mökkivuokraus",
-        "en": "Ab Seaside Oy LKV – cottage rentals",
-        "es": "Ab Seaside Oy LKV – alquiler de cabañas"
+        "fi": "Ab Seaside Oy LKV – mökkivuokraus"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaan mukaan yritys välittää kiinteistöjä ja mökkivuokrausta Kemiönsaarella, Turunmaalla ja Länsi-Uudellamaalla. Tarkista vuokrattavat kohteet ja ehdot suoraan yritykseltä.",
@@ -6754,9 +6526,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Luddes Taxi",
-        "en": "Luddes Taxi",
-        "es": "Luddes Taxi"
+        "fi": "Luddes Taxi"
       },
       "description": {
         "fi": "Taksi- ja henkilökuljetuspalvelu Västanfjärdissä. Tarkista auton koko, esteettömyys ja matkan saatavuus suoraan kuljettajalta.",
@@ -6785,9 +6555,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taksi Suominen Kjell",
-        "en": "Taxi Suominen Kjell",
-        "es": "Taxi Suominen Kjell"
+        "fi": "Taksi Suominen Kjell"
       },
       "description": {
         "fi": "Taksipalvelu Dalsbrukissa. KSG:n mukaan käytössä on 1+4- ja 1+8-paikkaiset autot sekä pyörätuolivarustus. Tarkista esteettömyyden ja kuljetustarpeen sopivuus suoraan kuljettajalta.",
@@ -6816,9 +6584,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Nickes Taxi / Taxi Niklas Johansson",
-        "en": "Nickes Taxi / Taxi Niklas Johansson",
-        "es": "Nickes Taxi / Taxi Niklas Johansson"
+        "fi": "Nickes Taxi / Taxi Niklas Johansson"
       },
       "description": {
         "fi": "Kemiönsaaren taksi- ja henkilökuljetuspalvelu, jonka KSG mainitsee myös Kela- ja vammaispalvelukuljetuksiin. Varmista kuljetusmuoto, esteettömyys ja aikataulu suoraan kuljettajalta.",
@@ -6847,9 +6613,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Thomas Sjöblom taksi",
-        "en": "Thomas Sjöblom Taxi",
-        "es": "Taxi Thomas Sjöblom"
+        "fi": "Thomas Sjöblom taksi"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaassa taksi- ja henkilökuljetuksiin listattu paikallinen kuljettaja. Varaa matka ja varmista kuljetuksen yksityiskohdat suoraan kuljettajalta.",
@@ -6878,9 +6642,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "J & M Launokorpi Oy – tilausajot",
-        "en": "J & M Launokorpi Oy – charter buses",
-        "es": "J & M Launokorpi Oy – autobuses privados"
+        "fi": "J & M Launokorpi Oy – tilausajot"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaan mukaan yritys järjestää tilausajoja 20–56-paikkaisilla linja-autoilla. Soveltuu ryhmien kuljetuksiin ja retkien järjestelyihin; varmista reitti, kalusto ja tarjous suoraan yritykseltä.",
@@ -6909,9 +6671,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kemiönsaaren Venekeskus Oy",
-        "en": "Kimitoön Boat Centre",
-        "es": "Centro Náutico de Kimitoön"
+        "fi": "Kemiönsaaren Venekeskus Oy"
       },
       "description": {
         "fi": "Veneiden myyntiä, välitystä, säilytystä ja huoltoa tarjoava paikallinen venepalvelu. KSG listaa yrityksen myös venepaikkojen ja talvisäilytyksen yhteydessä. Tarkista palvelut ja vapaat säilytyspaikat suoraan yritykseltä.",
@@ -6940,9 +6700,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kone Wuorio Maskin Oy Ab – Taalintehdas",
-        "en": "Kone Wuorio Maskin Oy Ab – Dalsbruk",
-        "es": "Kone Wuorio Maskin Oy Ab – Dalsbruk"
+        "fi": "Kone Wuorio Maskin Oy Ab – Taalintehdas"
       },
       "description": {
         "fi": "Taalintehtaan vene- ja kalastustarvikkeiden erikoisliike. Kemiönsaaren palveluopas listaa yrityksen veneilyyn liittyvien erikoiskauppojen joukkoon.",
@@ -6971,9 +6729,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "K-Knallis",
-        "en": "K-Knallis",
-        "es": "K-Knallis"
+        "fi": "K-Knallis"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaassa elintarvikekaupaksi listattu paikallinen kauppa. Palveluihin kuuluvat myös asiamiesposti, Veikkaus ja lääkekaappi. Tarkista ajantasainen valikoima ja aukiolo kaupasta.",
@@ -7002,9 +6758,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "K-Market Kompis",
-        "en": "K-Market Kompis",
-        "es": "K-Market Kompis"
+        "fi": "K-Market Kompis"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaan mukaan K-Market Kompis tarjoaa saariston paikallista kauppapalvelua. Tarkista ajantasaiset aukioloajat ja palvelut kaupasta.",
@@ -7033,9 +6787,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "K-Supermarket Kompass",
-        "en": "K-Supermarket Kompass",
-        "es": "K-Supermarket Kompass"
+        "fi": "K-Supermarket Kompass"
       },
       "description": {
         "fi": "Kemiön keskustan ruokakauppa palvelutiskillä. Kemiönsaaren palveluopas listaa sen elintarvike- ja päivittäistavarakauppojen joukkoon.",
@@ -7064,9 +6816,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Antikvariat Kojan",
-        "en": "Antikvariat Kojan",
-        "es": "Antikvariat Kojan"
+        "fi": "Antikvariat Kojan"
       },
       "description": {
         "fi": "Antikvariaatti ja paperipuoti, josta Kemiönsaaren palveluoppaan mukaan löytyy myös paikallisia lahja- ja käsityötuotteita, leluja ja pelejä.",
@@ -7095,9 +6845,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Aanmaa",
-        "en": "Aanmaa",
-        "es": "Aanmaa"
+        "fi": "Aanmaa"
       },
       "description": {
         "fi": "Suomalaiseen käsityöhön erikoistunut paikallinen toimija. KSG listaa Aanmaan myös vaatteiden, kenkien ja tekstiilien tarjontaan.",
@@ -7126,9 +6874,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ateljé Rosenblad",
-        "en": "Ateljé Rosenblad",
-        "es": "Ateljé Rosenblad"
+        "fi": "Ateljé Rosenblad"
       },
       "description": {
         "fi": "Lastenvaatteiden omaa valmistusta ja maalaisromanttista tyyliä. Kemiönsaaren palveluopas listaa ateljeen käsityö- ja tekstiilialan toimijaksi.",
@@ -7157,9 +6903,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Öns Pärlor – Yrsa Brunström",
-        "en": "Öns Pärlor – Yrsa Brunström",
-        "es": "Öns Pärlor – Yrsa Brunström"
+        "fi": "Öns Pärlor – Yrsa Brunström"
       },
       "description": {
         "fi": "Paikallista savustettua kalaa tarjoava saaristotoimija. Kemiönsaaren palveluopas listaa sen elintarvikkeisiin, käsityöhön ja vierasvenesatamien palveluihin liittyvissä hauissa.",
@@ -7188,9 +6932,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "K.J. Koru Oy",
-        "en": "K.J. Koru Oy",
-        "es": "K.J. Koru Oy"
+        "fi": "K.J. Koru Oy"
       },
       "description": {
         "fi": "Kemiönsaaren palveluoppaassa erikoisliikkeeksi listattu Classic-hopeakorujen myyjä.",
@@ -7219,9 +6961,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Café Våffelstugan",
-        "en": "Café Våffelstugan",
-        "es": "Café Våffelstugan"
+        "fi": "Café Våffelstugan"
       },
       "description": {
         "fi": "Kasnäsin alueen kahvilapalvelu, joka on listattu Kemiönsaaren palveluoppaan kahviloihin ja leipomoihin. Tarkista kauden aukiolo, vohvelivalikoima ja muut tarjoilut suoraan kahvilalta.",
@@ -7250,9 +6990,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Nordic Activities & Solutions",
-        "en": "Nordic Activities & Solutions",
-        "es": "Nordic Activities & Solutions"
+        "fi": "Nordic Activities & Solutions"
       },
       "description": {
         "fi": "Kemiönsaarella toimiva elämys- ja välinevuokrausyritys. Palveluihin kuuluvat kajakkivuokraus, opastetut melonta- ja eräretket, kalliokiipeily ja laskeutuminen sekä talvella ski touring ja splitboarding. Yritys räätälöi myös asiakkaan toiveisiin sopivia retkiä.",
@@ -7281,9 +7019,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Vainion Liikenne",
-        "en": "Vainion Liikenne",
-        "es": "Vainion Liikenne"
+        "fi": "Vainion Liikenne"
       },
       "description": {
         "fi": "Kemiönsaarelle kulkeva linja-autoyhtiö. Virallisella reittisivulla on Salo–Kemiö-yhteys sekä kesäkauden Helsinki–Teijo–Kemiö–Taalintehdas–Kasnäs-linja. Aikataulut ja kausivuorot muuttuvat, joten tarkista voimassa oleva PDF ja liput ennen matkaa.",
@@ -7312,9 +7048,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Seutu+ – paikallisliikenteen liput",
-        "en": "Seutu+ – regional transport tickets",
-        "es": "Seutu+ – billetes de transporte regional"
+        "fi": "Seutu+ – paikallisliikenteen liput"
       },
       "description": {
         "fi": "Seutu+ on Turun seudun ja Kemiönsaaren paikallisliikenteen lippupalvelu. Kemiönsaarta palvelevat muun muassa vuorot 720–727 Turku–Kemiönsaari–Sauvo sekä linja 530 Salo–Kemiö. Tarkista matkustuskausi ja ajantasaiset aikataulut Seutu+-palvelusta.",
@@ -7343,9 +7077,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "M/S Aurora – Kasnäs–Rosala",
-        "en": "M/S Aurora – Kasnäs–Rosala",
-        "es": "M/S Aurora – Kasnäs–Rosala"
+        "fi": "M/S Aurora – Kasnäs–Rosala"
       },
       "description": {
         "fi": "Maksuton autolautta yhdistää Kasnäsin ja Rosalan ympäri vuoden. Merimatka kestää noin 30 minuuttia. Tarkista päivän aikataulu ja mahdolliset poikkeukset Rosalan viralliselta sivulta ennen lähtöä.",
@@ -7374,9 +7106,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kemiönsaaren aktiviteettikartta",
-        "en": "Kimitoön Activity Map",
-        "es": "Mapa de actividades de Kimitoön"
+        "fi": "Kemiönsaaren aktiviteettikartta"
       },
       "description": {
         "fi": "Kemiönsaaren virallinen aktiviteettikartta kokoaa 277 karttakohdetta. Suodattimilla voi etsiä sisä- ja ulkoaktiviteetteja, vesiretkeilyä, retkeilyreittejä, kausikohteita ja esteettömiä paikkoja. Kartta sisältää muun muassa luontopolkuja, uimarantoja, satamia, hiihtolatuja, kiipeilykallioita ja liikuntapaikkoja.",
@@ -7405,9 +7135,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Ekniemen luontopolut ja talviuintipaikka",
-        "en": "Ekniemi Nature Trails and Winter Swimming",
-        "es": "Senderos y baño invernal de Ekniemi"
+        "fi": "Ekniemen luontopolut ja talviuintipaikka"
       },
       "description": {
         "fi": "Ekniemen lomakylän yhteydessä on luontopolkuja, uimaranta ja talviuintipaikka. Aktiviteettikartta listaa myös alueen opastaulut ja näköalatornin. Tarkista alueen palvelut ja mahdolliset rajoitukset kartasta.",
@@ -7436,9 +7164,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Biskopsön luontopolku ja näköalatorni",
-        "en": "Biskopsö Nature Trail and Lookout Tower",
-        "es": "Sendero y mirador de Biskopsö"
+        "fi": "Biskopsön luontopolku ja näköalatorni"
       },
       "description": {
         "fi": "Biskopsön luontopolku ja näköalatorni ovat Kemiönsaaren virallisessa aktiviteettikartassa. Tarkista reitin lähtöpiste, kulkuyhteydet ja mahdolliset kausirajoitukset kartasta.",
@@ -7467,9 +7193,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kasnäsin geologinen luontopolku",
-        "en": "Kasnäs Geological Nature Trail",
-        "es": "Sendero geológico de Kasnäs"
+        "fi": "Kasnäsin geologinen luontopolku"
       },
       "description": {
         "fi": "Kasnäsin geologinen luontopolku on merkitty Kemiönsaaren viralliseen aktiviteettikarttaan. Reitin opastaulut esittelevät alueen geologiaa. Tarkista reitin lähtöpaikka ja ajantasaiset tiedot kartasta.",
@@ -7498,9 +7222,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Lammalan luontopolku",
-        "en": "Lammala Nature Trail",
-        "es": "Sendero natural de Lammala"
+        "fi": "Lammalan luontopolku"
       },
       "description": {
         "fi": "Lammalan luontopolku on Kemiönsaaren aktiviteettikartassa merkitty retkikohde. Kartasta löytyvät myös polun opastaulut ja lähialueen palvelusatama.",
@@ -7529,9 +7251,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Höglandin luontopolku",
-        "en": "Högland Nature Trail",
-        "es": "Sendero natural de Högland"
+        "fi": "Höglandin luontopolku"
       },
       "description": {
         "fi": "Höglandin luontopolku, näköalatorni, telttailualue ja tulentekopaikka löytyvät Kemiönsaaren aktiviteettikartasta. Tarkista reitin pituus ja palvelut kartasta ennen retkeä.",
@@ -7560,9 +7280,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Yxskärin luontopolku",
-        "en": "Yxskär Nature Trail",
-        "es": "Sendero natural de Yxskär"
+        "fi": "Yxskärin luontopolku"
       },
       "description": {
         "fi": "Yxskärin luontopolku, opastaulu, retkisatama ja tulentekopaikka on merkitty Kemiönsaaren viralliseen aktiviteettikarttaan. Tarkista saareen pääsy ja mahdolliset vene- tai säärajoitukset ennen retkeä.",
@@ -7591,9 +7309,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taalintehtaan hiihtolatu",
-        "en": "Dalsbruk Ski Track",
-        "es": "Pista de esquí de Dalsbruk"
+        "fi": "Taalintehtaan hiihtolatu"
       },
       "description": {
         "fi": "Taalintehtaan hiihtolatu on merkitty Kemiönsaaren aktiviteettikarttaan. Ladun kunto ja ylläpito riippuvat lumitilanteesta; tarkista ajantasainen tieto kartasta ennen lähtöä.",
@@ -7622,9 +7338,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Långdalenin peltolatu",
-        "en": "Långdalen Field Ski Track",
-        "es": "Pista de esquí de Långdalen"
+        "fi": "Långdalenin peltolatu"
       },
       "description": {
         "fi": "Långdalenin peltolatu on Kemiönsaaren aktiviteettikarttaan merkitty talviliikuntakohde. Tarkista lumitilanne ja ladun ajantasainen ylläpito ennen lähtöä.",
@@ -7653,9 +7367,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Labbnäsin talviuintipaikka",
-        "en": "Labbnäs Winter Swimming",
-        "es": "Baño invernal de Labbnäs"
+        "fi": "Labbnäsin talviuintipaikka"
       },
       "description": {
         "fi": "Labbnäsin talviuintipaikka on merkitty Kemiönsaaren aktiviteettikarttaan. Tarkista pukutilat, käyttöehdot ja ajantasainen ylläpito suoraan kohteesta.",
@@ -7684,9 +7396,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Söderlångvikin talviuintipaikka",
-        "en": "Söderlångvik Winter Swimming",
-        "es": "Baño invernal de Söderlångvik"
+        "fi": "Söderlångvikin talviuintipaikka"
       },
       "description": {
         "fi": "Söderlångvikin talviuintipaikka on listattu Kemiönsaaren aktiviteettikarttaan. Tarkista kulku, käyttöehdot ja mahdolliset palvelut kartasta ja kohteen ylläpitäjältä.",
@@ -7715,9 +7425,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Senatsbergetin hyvinvointipolku",
-        "en": "Senatsberget Wellbeing Trail",
-        "es": "Sendero de bienestar de Senatsberget"
+        "fi": "Senatsbergetin hyvinvointipolku"
       },
       "description": {
         "fi": "Senatsbergetin hyvinvointipolku, laavu ja näköalatorni on merkitty Kemiönsaaren aktiviteettikarttaan. Kohde sopii rauhalliseen ulkoiluun ja luonnossa palautumiseen. Tarkista reitin tiedot kartasta.",
@@ -7746,9 +7454,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Björknäs Care Oy – vesitaksi",
-        "en": "Björknäs Care Oy – water taxi",
-        "es": "Björknäs Care Oy – taxi acuático"
+        "fi": "Björknäs Care Oy – vesitaksi"
       },
       "description": {
         "fi": "Kemiönsaaren palveluopas listaa Björknäs Care Oy:n enintään 11 henkilön vesitaksipalveluna. Varmista reitti, matkustajamäärä, aikataulu ja sääolosuhteisiin liittyvät käytännöt suoraan toimijalta.",
@@ -7777,9 +7483,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Dalsbruks Sjötrafik Ab",
-        "en": "Dalsbruks Sjötrafik Ab",
-        "es": "Dalsbruks Sjötrafik Ab"
+        "fi": "Dalsbruks Sjötrafik Ab"
       },
       "description": {
         "fi": "Taalintehtaan ja lähisaariston vesitaksiliikenne. KSG:n mukaan yritys tarjoaa taksivenekuljetuksia Dalsbrukin ympäristössä. Varaa reitti ja varmista kuljetuksen kapasiteetti suoraan yritykseltä.",
@@ -7808,9 +7512,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "DB Marina",
-        "en": "DB Marina",
-        "es": "DB Marina"
+        "fi": "DB Marina"
       },
       "description": {
         "fi": "Taalintehtaan veneilijöiden palvelupiste. Kemiönsaaren palveluopas kuvaa DB Marinan palvelupisteeksi veneenomistajien tarpeisiin. Tarkista laituripaikat, palvelut ja kausitiedot suoraan marinasta.",
@@ -7839,9 +7541,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Fma Leif Gustafsson",
-        "en": "Fma Leif Gustafsson",
-        "es": "Fma Leif Gustafsson"
+        "fi": "Fma Leif Gustafsson"
       },
       "description": {
         "fi": "Kemiönsaaren palveluopas listaa yrityksen venepaikkoihin, veneiden lämmin- ja kylmäsäilytykseen, venehuoltoon, venetrailerien vuokraukseen, mökkihuoltoon ja pieniin merikuljetuksiin.",
@@ -7870,9 +7570,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Jimmy's Boat Service",
-        "en": "Jimmy's Boat Service",
-        "es": "Jimmy's Boat Service"
+        "fi": "Jimmy's Boat Service"
       },
       "description": {
         "fi": "Veneiden, moottoreiden ja mönkijöiden huoltopalvelu. KSG:n mukaan yritys tarjoaa myös Polaris-merkin valtuutettua huoltoa.",
@@ -7901,9 +7599,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Rosala Gästhamn – TB-Marin",
-        "en": "Rosala Guest Harbour – TB-Marin",
-        "es": "Puerto deportivo de Rosala – TB-Marin"
+        "fi": "Rosala Gästhamn – TB-Marin"
       },
       "description": {
         "fi": "Rosalan vierasvenesatama, jossa KSG:n mukaan on veneiden ja moottoreiden talvisäilytystä, rakennustöitä, elintarvikekioski ja vierasvenesatama. Tarkista laituripaikat, kioskikausi ja satamapalvelut suoraan toimijalta.",
@@ -7932,9 +7628,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Wilson Charter Oy Ab",
-        "en": "Wilson Charter Oy Ab",
-        "es": "Wilson Charter Oy Ab"
+        "fi": "Wilson Charter Oy Ab"
       },
       "description": {
         "fi": "Saariston tilausvenekuljetuksia ja risteilyjä tarjoava yritys. KSG:n mukaan käytössä on 135-, 80- ja 40-paikkaisia taksiveneitä, ja risteilykohteisiin kuuluvat Bengtskär ja Örö. Tarkista reitit, aikataulut ja ryhmävaraukset suoraan yritykseltä.",
@@ -7963,9 +7657,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taalintehtaan vierasvenesatama",
-        "en": "Dalsbruk Guest Harbour",
-        "es": "Puerto deportivo de Dalsbruk"
+        "fi": "Taalintehtaan vierasvenesatama"
       },
       "description": {
         "fi": "Täyden palvelun vierasvenesatama Taalintehtaan keskustassa. Tarkista ajantasaiset laituripaikat, palvelut, satamamaksut ja kausitiedot sataman omasta palvelukanavasta.",
@@ -7994,9 +7686,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kasnäsin taksivene",
-        "en": "Kasnäs Water Taxi",
-        "es": "Taxi acuático de Kasnäs"
+        "fi": "Kasnäsin taksivene"
       },
       "description": {
         "fi": "Kasnäsistä lähtevä taksivenepalvelu. KSG:n mukaan veneisiin mahtuu enintään 8 tai 12 matkustajaa. Varmista reitti, matkustajamäärä ja varaus suoraan kuljettajalta.",
@@ -8025,9 +7715,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "D-Marin Oy Ab",
-        "en": "D-Marin Oy Ab",
-        "es": "D-Marin Oy Ab"
+        "fi": "D-Marin Oy Ab"
       },
       "description": {
         "fi": "Veneiden ja moottoreiden korjauspalvelu sekä vuokrattavia laituripaikkoja. KSG listaa yrityksen myös vierasvenesatamien yhteydessä.",
@@ -8056,9 +7744,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Dalsbruks Båtservice Ab",
-        "en": "Dalsbruks Båtservice Ab",
-        "es": "Dalsbruks Båtservice Ab"
+        "fi": "Dalsbruks Båtservice Ab"
       },
       "description": {
         "fi": "Taalintehtaan venealan palveluyritys. KSG:n mukaan palveluihin kuuluvat moottorihuolto ja korjaus, veneiden säilytys sekä laituripaikat.",
@@ -8087,9 +7773,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Biskopsö båt- och fastighetsservice",
-        "en": "Biskopsö Boat and Property Service",
-        "es": "Servicio náutico e inmobiliario de Biskopsö"
+        "fi": "Biskopsö båt- och fastighetsservice"
       },
       "description": {
         "fi": "Biskopsön alueen vene- ja kiinteistöpalvelu. KSG:n mukaan yritys tarjoaa venetaksia ja veneiden säilytystä. Varmista kuljetukset, reitit ja säilytysmahdollisuudet suoraan toimijalta.",
@@ -8118,9 +7802,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "BE-Marina Oy Ab",
-        "en": "BE-Marina Oy Ab",
-        "es": "BE-Marina Oy Ab"
+        "fi": "BE-Marina Oy Ab"
       },
       "description": {
         "fi": "Taalintehtaan venepaikkoja tarjoava marina. Tarkista vapaat paikat, laituripalvelut ja kausiehdot suoraan marinasta.",
@@ -8149,9 +7831,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Söljeholmen Marina Ab Oy",
-        "en": "Söljeholmen Marina Ab Oy",
-        "es": "Söljeholmen Marina Ab Oy"
+        "fi": "Söljeholmen Marina Ab Oy"
       },
       "description": {
         "fi": "Palvelullisia venepaikkoja tarjoava marina. KSG:n mukaan alueella on Volvo Penta -huolto sekä Suzuki- ja Honda-palveluja. Tarkista vapaat paikat ja huoltopalvelut suoraan marinasta.",
@@ -8180,9 +7860,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Seapoint Dalsbruk",
-        "en": "Seapoint Dalsbruk",
-        "es": "Seapoint Dalsbruk"
+        "fi": "Seapoint Dalsbruk"
       },
       "description": {
         "fi": "Veneiden ja autojen polttoainemyynti Taalintehtaalla ympäri vuorokauden. Tarkista maksutavat ja polttoainelaadut suoraan palvelupisteestä.",
@@ -8211,9 +7889,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kemiönsaaren Meripelastajat ry",
-        "en": "Kimitoön Sea Rescue Association",
-        "es": "Asociación de Salvamento Marítimo de Kimitoön"
+        "fi": "Kemiönsaaren Meripelastajat ry"
       },
       "description": {
         "fi": "Vapaaehtoinen meripelastusyhdistys, jonka tehtävänä on auttaa vesillä liikkuvia. Hätätilanteessa soita aina yleiseen hätänumeroon 112; yhdistyksen omat kanavat on tarkoitettu lisätietoon ja toimintaan osallistumiseen.",
@@ -8242,9 +7918,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kimitoöns Båtservice Ab",
-        "en": "Kimitoöns Båtservice Ab",
-        "es": "Kimitoöns Båtservice Ab"
+        "fi": "Kimitoöns Båtservice Ab"
       },
       "description": {
         "fi": "Veneilyvarusteiden myyntiä ja ammattimaista asennusta Kemiönsaarella. Tarkista tuotevalikoima ja asennuspalvelut suoraan yritykseltä.",
@@ -8273,9 +7947,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Österbergs Båt och Trä",
-        "en": "Österbergs Båt och Trä",
-        "es": "Österbergs Båt och Trä"
+        "fi": "Österbergs Båt och Trä"
       },
       "description": {
         "fi": "Puisten veneiden rakentamista ja korjausta. Kemiönsaaren palveluopas listaa yrityksen venealan toimijaksi.",
@@ -8304,9 +7976,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "AG Service Ab Oy",
-        "en": "AG Service Ab Oy",
-        "es": "AG Service Ab Oy"
+        "fi": "AG Service Ab Oy"
       },
       "description": {
         "fi": "Veneiden, mönkijöiden ja vesijettien säilytys- ja moottorihuoltopalvelu. KSG listaa yrityksen venepaikkojen ja talvisäilytyksen toimijaksi.",
@@ -8335,9 +8005,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Lillbackan vieraslaituri",
-        "en": "Lillbacka Guest Pier",
-        "es": "Embarcadero de visitantes de Lillbacka"
+        "fi": "Lillbackan vieraslaituri"
       },
       "description": {
         "fi": "Vieraslaituri, jossa on paikkoja noin 50 veneelle poijuissa ja ankkurissa. KSG:n mukaan alueella on hiekkaranta, kaunis ympäristö, puulämmitteinen sauna ja rantamökki, jossa on baari. Tarkista paikkatilanne ja palvelujen aukiolo suoraan ylläpitäjältä.",
@@ -8366,9 +8034,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Rosala Taxi",
-        "en": "Rosala Taxi",
-        "es": "Rosala Taxi"
+        "fi": "Rosala Taxi"
       },
       "description": {
         "fi": "Rosalan alueen taksi- ja henkilökuljetuspalvelu Kemiönsaaren palveluoppaan mukaan. Varmista noutopaikka, aikataulu ja kuljetuksen saatavuus suoraan kuljettajalta.",
@@ -8397,9 +8063,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taxi Hellsberg Ab Oy",
-        "en": "Taxi Hellsberg Ab Oy",
-        "es": "Taxi Hellsberg Ab Oy"
+        "fi": "Taxi Hellsberg Ab Oy"
       },
       "description": {
         "fi": "Taksi- ja henkilökuljetuspalvelu Kemiönsaarella. KSG:n mukaan käytössä on 1+4-paikkainen taksi. Varmista kuljetuksen saatavuus ja mahdollinen esteettömyys suoraan kuljettajalta.",
@@ -8428,9 +8092,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taxi Jan Wallenius",
-        "en": "Taxi Jan Wallenius",
-        "es": "Taxi Jan Wallenius"
+        "fi": "Taxi Jan Wallenius"
       },
       "description": {
         "fi": "Paikallinen taksi- ja henkilökuljetuspalvelu Kemiönsaaren palveluoppaan mukaan. Varaa matka ja varmista auton sopivuus omiin tarpeisiin suoraan kuljettajalta.",
@@ -8459,9 +8121,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taxi Kim Gustafsson",
-        "en": "Taxi Kim Gustafsson",
-        "es": "Taxi Kim Gustafsson"
+        "fi": "Taxi Kim Gustafsson"
       },
       "description": {
         "fi": "Paikallinen taksi- ja henkilökuljetuspalvelu Kemiönsaarella. Tarkista matkan saatavuus, noutopaikka ja aikataulu suoraan kuljettajalta.",
@@ -8490,9 +8150,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taxi Sahlgren",
-        "en": "Taxi Sahlgren",
-        "es": "Taxi Sahlgren"
+        "fi": "Taxi Sahlgren"
       },
       "description": {
         "fi": "Paikallinen taksi- ja henkilökuljetuspalvelu Kemiönsaaren palveluoppaan mukaan. Varmista kuljetuksen saatavuus ja varaus suoraan kuljettajalta.",
@@ -8521,9 +8179,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Brukshallen – liikunta- ja kuntosali",
-        "en": "Brukshallen – sports and fitness hall",
-        "es": "Brukshallen – pabellón deportivo y gimnasio"
+        "fi": "Brukshallen – liikunta- ja kuntosali"
       },
       "description": {
         "fi": "Taalintehtaan kuntosali ja liikuntahalli Kemiönsaaren palveluoppaan urheilu- ja vapaa-aikakohteissa. Tarkista käyttövuorot, kertamaksut, kulku ja mahdolliset yleisövuorot suoraan ylläpitäjältä.",
@@ -8552,9 +8208,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Björkboda Dressage rf",
-        "en": "Björkboda Dressage Association",
-        "es": "Asociación Björkboda Dressage"
+        "fi": "Björkboda Dressage rf"
       },
       "description": {
         "fi": "Björkbodassa toimiva hevos- ja ratsastustoiminnan yhdistys. Kemiönsaaren palveluopas listaa yhdistyksen eläinpalveluihin ja urheilu- ja vapaa-ajan toimintaan. Kysy suoraan yhdistykseltä vierailuista, tunneista ja yleisötapahtumista.",
@@ -8583,9 +8237,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kimitoöns Ryttare r.f.",
-        "en": "Kimitoöns Ryttare Riding Association",
-        "es": "Asociación ecuestre Kimitoöns Ryttare"
+        "fi": "Kimitoöns Ryttare r.f."
       },
       "description": {
         "fi": "Kemiönsaaren ratsastus- ja hevosurheiluyhdistys. Palveluopas listaa yhdistyksen urheilu- ja vapaa-aikatoimijoihin. Tarkista mahdolliset yleisötapahtumat, ratsastustoiminta ja vierailumahdollisuudet suoraan yhdistykseltä.",
@@ -8614,9 +8266,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Salon Oppaat ry – Kemiönsaari",
-        "en": "Salo Guides – Kimitoön",
-        "es": "Guías de Salo – Kimitoön"
+        "fi": "Salon Oppaat ry – Kemiönsaari"
       },
       "description": {
         "fi": "Suomen Opasliiton auktorisoituja matkailuoppaita Kemiönsaarella ja Salossa. Kysy opastettuja kierroksia, kielivaihtoehtoja ja ryhmille sopivia ohjelmia suoraan yhdistykseltä.",
@@ -8645,9 +8295,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Taxi Friberg Oy Ab",
-        "en": "Taxi Friberg Oy Ab",
-        "es": "Taxi Friberg Oy Ab"
+        "fi": "Taxi Friberg Oy Ab"
       },
       "description": {
         "fi": "Kemiönsaaren taksipalvelu. KSG:n mukaan käytössä on 1+8-paikkainen auto pyörätuoli- ja paarivarustuksella sekä 1+4-paikkainen taksi. Varmista ajoneuvon sopivuus ja varaus suoraan yritykseltä.",
@@ -8676,9 +8324,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Jani Launokorpi – tilausajot",
-        "en": "Jani Launokorpi – charter transport",
-        "es": "Jani Launokorpi – transporte privado"
+        "fi": "Jani Launokorpi – tilausajot"
       },
       "description": {
         "fi": "Kemiönsaaren palveluopas listaa Jani Launokorven linja-auton tilausajopalveluihin. Kysy suoraan reiteistä, ryhmäkuljetuksista, kalustosta ja tarjouksesta.",
@@ -8707,9 +8353,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Carwash Kimito",
-        "en": "Carwash Kimito",
-        "es": "Carwash Kimito"
+        "fi": "Carwash Kimito"
       },
       "description": {
         "fi": "Automaattinen autopesu Kemiössä. Kemiönsaaren palveluopas ilmoittaa palvelun olevan käytettävissä ympäri vuorokauden. Tarkista pesuohjelmat ja maksutavat paikan päällä.",
@@ -8738,9 +8382,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Bruks Bilservice Ab",
-        "en": "Bruks Bilservice Ab",
-        "es": "Bruks Bilservice Ab"
+        "fi": "Bruks Bilservice Ab"
       },
       "description": {
         "fi": "Taalintehtaan ajoneuvohuolto, joka tarjoaa autojen huoltoja, korjauksia ja rengastöitä. Tarkista palvelut ja ajanvaraus suoraan korjaamolta.",
@@ -8769,9 +8411,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Höijers Mekaniska",
-        "en": "Höijers Mekaniska",
-        "es": "Höijers Mekaniska"
+        "fi": "Höijers Mekaniska"
       },
       "description": {
         "fi": "Autokorjaamo, joka tarjoaa monipuolisia huolto-, korjaus-, rengas- ja vikadiagnostiikkapalveluja. Varaa huolto ja tarkista ajankohtainen palveluvalikoima suoraan korjaamolta.",
@@ -8800,9 +8440,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Colorshine / Matias Friman",
-        "en": "Colorshine / Matias Friman",
-        "es": "Colorshine / Matias Friman"
+        "fi": "Colorshine / Matias Friman"
       },
       "description": {
         "fi": "Ajoneuvojen kolarikorjaus- ja tuulilasipalvelu Kemiönsaarella. Kemiönsaaren palveluopas mainitsee kolarikorjaukset ja tuulilasien vaihdot.",
@@ -8831,9 +8469,7 @@
       ],
       "municipality": "Kemiönsaari",
       "title": {
-        "fi": "Kemiön Automaalaamo ja Alustasuojaus Ky",
-        "en": "Kimito Vehicle Paint and Underbody Protection",
-        "es": "Taller de pintura y protección de bajos de Kimito"
+        "fi": "Kemiön Automaalaamo ja Alustasuojaus Ky"
       },
       "description": {
         "fi": "Kolarikorjauksia ja hinauspalvelua Kemiönsaarella ja lähialueilla. Tarkista palvelun saatavuus ja hinausalue suoraan yritykseltä.",
