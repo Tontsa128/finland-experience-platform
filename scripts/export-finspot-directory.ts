@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { saloProviders } from '../src/lib/salo.ts';
 import { naantaliProviders } from '../src/lib/naantali.ts';
 import { kimitoonProviders } from '../src/lib/kimitoon-providers.ts';
+import { luxuryDirectory } from '../src/lib/luxury-directory.ts';
 
 const SOURCE_PROJECT = 'Tontsa128/finland-experience-platform';
 const SEASONS = ['kevat', 'kesa', 'syksy', 'talvi'];
@@ -53,7 +54,7 @@ function categoryForKimitoon(categories: string[], tags: string[], name: string)
 
 function buildRecord(input: {
   sourceId: string;
-  region: 'rannikko';
+  region: 'rannikko' | 'etela';
   municipality: string;
   name: Record<string, string>;
   description: Record<string, string>;
@@ -161,6 +162,34 @@ for (const provider of kimitoonProviders) {
   if (record) records.push(record);
 }
 
+for (const provider of luxuryDirectory) {
+  const locationParts = cleanText(provider.location).split('·').map((part) => part.trim()).filter(Boolean);
+  const municipality = locationParts.length > 1 ? locationParts[locationParts.length - 1] : locationParts[0];
+  if (!municipality) continue;
+  const region = /porvoo|helsinki/i.test(municipality) ? 'etela' : 'rannikko';
+  const category = provider.category === 'stay'
+    ? 'majoitus'
+    : provider.category === 'sauna'
+      ? 'sauna'
+      : provider.category === 'food'
+        ? 'ruoka'
+        : 'luonto';
+  const record = buildRecord({
+    sourceId: `luxury:${provider.id}`,
+    region,
+    municipality,
+    name: { fi: cleanText(provider.name) },
+    description: localizedText(provider.description),
+    bookingUrl: provider.url,
+    sourceUrl: provider.url,
+    imageUrl: provider.image,
+    imageCredit: provider.imageCredit,
+    imageSourceUrl: provider.url,
+    category,
+  });
+  if (record) records.push(record);
+}
+
 const unique = new Map();
 for (const record of records) {
   const title = (record.title.fi || '').normalize('NFKC').toLocaleLowerCase('fi').trim().split(' ').filter(Boolean).join(' ');
@@ -184,6 +213,7 @@ const output = {
     salo_source_records: saloProviders.length,
     naantali_source_records: naantaliProviders.length,
     kimitoon_source_records: kimitoonProviders.length,
+    luxury_directory_source_records: luxuryDirectory.length,
     exported_unique_listings: unique.size,
     listings_with_reviewable_images: [...unique.values()].filter((record) => record.media.length > 0).length,
   },
