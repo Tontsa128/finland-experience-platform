@@ -91,7 +91,7 @@ function buildRecord(input: {
     status: 'draft',
     verified_at: null,
     media: imageUrl && imageCredit ? [{
-      image_url: imageUrl,
+      source_media_id: `${input.sourceId}:image:0`,\n      image_url: imageUrl,
       image_credit: imageCredit,
       source_url: imageSourceUrl,
       sort_order: 0,
@@ -103,7 +103,7 @@ function buildRecord(input: {
   };
 }
 
-const records = [];
+async function main() {\nconst records = [];
 for (const provider of saloProviders) {
   const name = { fi: cleanText(provider.name), ...localizedText(provider.nameByLocale) };
   const record = buildRecord({
@@ -190,4 +190,4 @@ const output = {
 const outputPath = resolve('data/finspot-directory-export.json');
 await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, JSON.stringify(output, null, 2) + '\\n', 'utf8');
-console.log(JSON.stringify(output.summary));
+console.log(JSON.stringify(output.summary));\n}\n\nvoid main().catch((error) => {\n  console.error(error);\n  process.exitCode = 1;\n});
