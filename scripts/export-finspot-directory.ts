@@ -164,7 +164,8 @@ for (const provider of kimitoonProviders) {
 
 for (const provider of luxuryDirectory) {
   const locationParts = cleanText(provider.location).split('·').map((part) => part.trim()).filter(Boolean);
-  const municipality = locationParts.length > 1 ? locationParts[locationParts.length - 1] : locationParts[0];
+  const knownMunicipalities = ['Hanko', 'Helsinki', 'Kemiönsaari', 'Naantali', 'Parainen', 'Porvoo', 'Salo', 'Turku'];
+  const municipality = locationParts.find((part) => knownMunicipalities.includes(part)) || locationParts[0];
   if (!municipality) continue;
   const region = /porvoo|helsinki/i.test(municipality) ? 'etela' : 'rannikko';
   const category = provider.category === 'stay'
