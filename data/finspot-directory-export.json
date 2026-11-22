@@ -1,6 +1,6 @@
 {
   "source_project": "Tontsa128/finland-experience-platform",
-  "generated_at": "2026-11-22T18:40:24.386Z",
+  "generated_at": "2026-11-22T18:41:20.429Z",
   "import_policy": {
     "status": "draft",
     "verified_at": null,
@@ -14,8 +14,9 @@
     "salo_source_records": 48,
     "naantali_source_records": 28,
     "kimitoon_source_records": 175,
-    "exported_unique_listings": 241,
-    "listings_with_reviewable_images": 123
+    "luxury_directory_source_records": 13,
+    "exported_unique_listings": 251,
+    "listings_with_reviewable_images": 127
   },
   "listings": [
     {
@@ -8478,6 +8479,344 @@
       },
       "opening_hours": {},
       "booking_url": "https://ksg.fi/sv/foretag/kimito-bilmaleri-underredsbehandling-kb/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": []
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:herrankukkaro",
+      "source_url": "https://www.herrankukkaro.fi/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "sauna",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Rymättylä",
+      "title": {
+        "fi": "Herrankukkaro"
+      },
+      "description": {
+        "fi": "Aito savusauna, saaristolaisruoka, mökkimajoitus, meriuinti ja avanto samassa saaristokohteessa.",
+        "es": "Sauna de humo, gastronomía del archipiélago, cabañas, baño en el mar y experiencias auténticas.",
+        "en": "Smoke sauna, archipelago food, cottage stays, sea swimming and authentic Finnish sauna culture."
+      },
+      "opening_hours": {},
+      "booking_url": "https://www.herrankukkaro.fi/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": [
+        {
+          "source_media_id": "luxury:herrankukkaro:image:0",
+          "image_url": "https://le-de.cdn-website.com/437c2bac51dd486c80c3e153a9033393/dms3rep/multi/opt/Kuva8-8066abf8-1920w.jpg",
+          "image_credit": "Herrankukkaro",
+          "source_url": "https://www.herrankukkaro.fi/",
+          "sort_order": 0,
+          "overlay_title": {},
+          "overlay_badge": {},
+          "overlay_position": "bottom-left",
+          "copyright_confirmed": false
+        }
+      ]
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:airisto-spa",
+      "source_url": "https://airistospa.fi/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "sauna",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Parainen",
+      "title": {
+        "fi": "Airisto Spa"
+      },
+      "description": {
+        "fi": "Merenrannan savusauna, saunat ja altaat, saaristomajoitus, illallinen, kalastus ja veneily.",
+        "es": "Sauna de humo junto al mar, piscinas, alojamiento, gastronomía, pesca y navegación.",
+        "en": "Seaside smoke sauna, pools, archipelago accommodation, dining, fishing and boating."
+      },
+      "opening_hours": {},
+      "booking_url": "https://airistospa.fi/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": []
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:aurora-igloo-porvoo",
+      "source_url": "https://www.auroraigloo.fi/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "majoitus",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Emäsalo",
+      "title": {
+        "fi": "Aurora Igloo Porvoo"
+      },
+      "description": {
+        "fi": "Lasi-iglu, merellinen maisema, sauna ja romanttinen yöpyminen Porvoon saaristossa.",
+        "es": "Iglú de cristal, paisaje marítimo, sauna y una estancia romántica cerca de Porvoo.",
+        "en": "A glass igloo, sea views, sauna and a romantic stay near Porvoo."
+      },
+      "opening_hours": {},
+      "booking_url": "https://www.auroraigloo.fi/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": []
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:archipelago-live-igloos",
+      "source_url": "https://www.archipelagolive.fi/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "majoitus",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Rymättylä",
+      "title": {
+        "fi": "Archipelago Live Igloos"
+      },
+      "description": {
+        "fi": "AuroraHut-iglumajoitus Aaslaassa: merimaisemat, auringonlaskut ja tähtitaivas panoraamaikkunoista.",
+        "es": "Alojamiento en iglú flotante con vistas al mar, puestas de sol y cielo estrellado.",
+        "en": "AuroraHut igloo accommodation with sea views, sunsets and panoramic views of the night sky."
+      },
+      "opening_hours": {},
+      "booking_url": "https://www.archipelagolive.fi/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": [
+        {
+          "source_media_id": "luxury:archipelago-live-igloos:image:0",
+          "image_url": "https://static.wixstatic.com/media/fcabc2_794847b2185d4a65b6a6c8eae56fc0a3~mv2.jpg",
+          "image_credit": "Archipelago Live",
+          "source_url": "https://www.archipelagolive.fi/",
+          "sort_order": 0,
+          "overlay_title": {},
+          "overlay_badge": {},
+          "overlay_position": "bottom-left",
+          "copyright_confirmed": false
+        }
+      ]
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:mathildan-marina",
+      "source_url": "https://www.mathildanmarina.fi/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "majoitus",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Salo",
+      "title": {
+        "fi": "Mathildan Marina"
+      },
+      "description": {
+        "fi": "Satamahotelli meren äärellä, sauna, meriterassi, ravintola ja vierasvenesatama.",
+        "es": "Hotel junto al puerto con sauna, terraza junto al mar, restaurante y marina.",
+        "en": "Harbour hotel with sauna, sea terrace, restaurant and guest marina."
+      },
+      "opening_hours": {},
+      "booking_url": "https://www.mathildanmarina.fi/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": [
+        {
+          "source_media_id": "luxury:mathildan-marina:image:0",
+          "image_url": "https://cdn-datahub.visitfinland.com/images/e6b2c520-c1cf-11ed-8fb6-cd05a147400e.jpeg?s=1280",
+          "image_credit": "Visit Salo / Visit Finland DataHub",
+          "source_url": "https://www.mathildanmarina.fi/",
+          "sort_order": 0,
+          "overlay_title": {},
+          "overlay_badge": {},
+          "overlay_position": "bottom-left",
+          "copyright_confirmed": false
+        }
+      ]
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:mathildan-marina-restaurant",
+      "source_url": "https://mathildanmarina.fi/ravintola/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "ruoka",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Salo",
+      "title": {
+        "fi": "Mathildan Marina Restaurant"
+      },
+      "description": {
+        "fi": "Sesonkien mukaan vaihtuvaa saaristoruokaa, kalaa, riistaa ja viiden annoksen maistelumenu.",
+        "es": "Cocina de temporada con pescado, caza y un menú degustación de cinco platos.",
+        "en": "Seasonal archipelago cuisine with fish, game and a five-course tasting menu."
+      },
+      "opening_hours": {},
+      "booking_url": "https://mathildanmarina.fi/ravintola/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": [
+        {
+          "source_media_id": "luxury:mathildan-marina-restaurant:image:0",
+          "image_url": "https://cdn-datahub.visitfinland.com/images/e6b2c520-c1cf-11ed-8fb6-cd05a147400e.jpeg?s=1280",
+          "image_credit": "Mathildan Marina",
+          "source_url": "https://mathildanmarina.fi/ravintola/",
+          "sort_order": 0,
+          "overlay_title": {},
+          "overlay_badge": {},
+          "overlay_position": "bottom-left",
+          "copyright_confirmed": false
+        }
+      ]
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:lepola-drinks",
+      "source_url": "https://lepoladrinks.fi/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "ruoka",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Salo",
+      "title": {
+        "fi": "Lepola Drinks"
+      },
+      "description": {
+        "fi": "Käsintehtyjä omenasiidereitä paikallisista omenoista. Siiderimyymälä ja terassi palvelevat kesäkaudella.",
+        "es": "Sidras artesanales elaboradas con manzanas locales. Tienda y terraza en temporada de verano.",
+        "en": "Handcrafted apple ciders made from local apples, with a shop and terrace in summer."
+      },
+      "opening_hours": {},
+      "booking_url": "https://lepoladrinks.fi/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": []
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:bistro-bruket",
+      "source_url": "https://mathildedal.fi/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "ruoka",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Salo",
+      "title": {
+        "fi": "Bistro Bruket"
+      },
+      "description": {
+        "fi": "Ruukkikylän ravintola, jossa sesongit, lähiraaka-aineet ja kylän tunnelma kohtaavat.",
+        "es": "Restaurante del pueblo siderúrgico donde se encuentran los productos locales y los sabores de temporada.",
+        "en": "A Mathildedal restaurant bringing together local ingredients, seasonal flavours and ironworks-village atmosphere."
+      },
+      "opening_hours": {},
+      "booking_url": "https://mathildedal.fi/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": []
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:kirjakkala",
+      "source_url": "https://www.ruukkikyla.fi/eng/",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "luonto",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Salo",
+      "title": {
+        "fi": "Kirjakkalan Ruukkikylä"
+      },
+      "description": {
+        "fi": "Pieni ruukkikylä Teijon alueella, josta löytyy paikallisia luonto- ja kalastuselämyksiä.",
+        "es": "Pequeño pueblo siderúrgico de la zona de Teijo con experiencias de naturaleza y pesca.",
+        "en": "A small ironworks village in the Teijo area with local nature and fishing experiences."
+      },
+      "opening_hours": {},
+      "booking_url": "https://www.ruukkikyla.fi/eng/",
+      "tier": "basic",
+      "status": "draft",
+      "verified_at": null,
+      "media": []
+    },
+    {
+      "source_project": "Tontsa128/finland-experience-platform",
+      "source_record_id": "luxury:teijo-national-park",
+      "source_url": "https://www.luontoon.fi/fi/kohteet/teijon-kansallispuisto",
+      "owner_id": null,
+      "region": "rannikko",
+      "category": "luonto",
+      "seasons": [
+        "kevat",
+        "kesa",
+        "syksy",
+        "talvi"
+      ],
+      "municipality": "Salo",
+      "title": {
+        "fi": "Teijon kansallispuisto"
+      },
+      "description": {
+        "fi": "Järviä, metsiä, kallioita ja reittejä. Kalastus, melonta, soutu ja nuotiopaikat tekevät päivästä aidosti suomalaisen.",
+        "es": "Lagos, bosques, rocas y senderos. Pesca, kayak, remo y lugares de fuego para una experiencia finlandesa auténtica.",
+        "en": "Lakes, forests, rocks and trails, with fishing, paddling, rowing and campfire spots for an authentic Finnish day outdoors."
+      },
+      "opening_hours": {},
+      "booking_url": "https://www.luontoon.fi/fi/kohteet/teijon-kansallispuisto",
       "tier": "basic",
       "status": "draft",
       "verified_at": null,
