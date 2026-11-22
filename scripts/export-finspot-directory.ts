@@ -65,8 +65,8 @@ function buildRecord(input: {
   imageSourceUrl?: string;
   category: string;
 }) {
-  const fiTitle = input.name.fi || input.name.en || input.name.es || '';
-  const fiDescription = input.description.fi || input.description.en || input.description.es || '';
+  const fiTitle = input.name.fi || '';
+  const fiDescription = input.description.fi || '';
   const bookingUrl = safeHttps(input.bookingUrl);
   if (!fiTitle || !fiDescription || !bookingUrl) return null;
 
