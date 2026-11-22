@@ -107,7 +107,7 @@ function buildRecord(input: {
 async function main() {
 const records = [];
 for (const provider of saloProviders) {
-  const name = { fi: cleanText(provider.name), ...localizedText(provider.nameByLocale) };
+  const name = { fi: cleanText(provider.name) };
   const record = buildRecord({
     sourceId: `salo:${provider.id}`,
     region: 'rannikko',
@@ -143,7 +143,8 @@ for (const provider of naantaliProviders) {
 
 for (const provider of kimitoonProviders) {
   if (provider.categories.includes('tapahtumat')) continue;
-  const name = localizedText(provider.name);
+  const localizedName = localizedText(provider.name);
+  const name = { fi: localizedName.fi || localizedName.en || localizedName.es || '' };
   const record = buildRecord({
     sourceId: `kimitoon:${provider.id}`,
     region: 'rannikko',
