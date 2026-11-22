@@ -91,7 +91,8 @@ function buildRecord(input: {
     status: 'draft',
     verified_at: null,
     media: imageUrl && imageCredit ? [{
-      source_media_id: `${input.sourceId}:image:0`,\n      image_url: imageUrl,
+      source_media_id: `${input.sourceId}:image:0`,
+      image_url: imageUrl,
       image_credit: imageCredit,
       source_url: imageSourceUrl,
       sort_order: 0,
