@@ -1,6 +1,6 @@
 {
   "source_project": "Tontsa128/finland-experience-platform",
-  "generated_at": "2026-11-22T18:41:20.429Z",
+  "generated_at": "2026-11-22T18:41:39.966Z",
   "import_policy": {
     "status": "draft",
     "verified_at": null,
@@ -15,8 +15,8 @@
     "naantali_source_records": 28,
     "kimitoon_source_records": 175,
     "luxury_directory_source_records": 13,
-    "exported_unique_listings": 251,
-    "listings_with_reviewable_images": 127
+    "exported_unique_listings": 250,
+    "listings_with_reviewable_images": 126
   },
   "listings": [
     {
@@ -8486,47 +8486,6 @@
     },
     {
       "source_project": "Tontsa128/finland-experience-platform",
-      "source_record_id": "luxury:herrankukkaro",
-      "source_url": "https://www.herrankukkaro.fi/",
-      "owner_id": null,
-      "region": "rannikko",
-      "category": "sauna",
-      "seasons": [
-        "kevat",
-        "kesa",
-        "syksy",
-        "talvi"
-      ],
-      "municipality": "Rymättylä",
-      "title": {
-        "fi": "Herrankukkaro"
-      },
-      "description": {
-        "fi": "Aito savusauna, saaristolaisruoka, mökkimajoitus, meriuinti ja avanto samassa saaristokohteessa.",
-        "es": "Sauna de humo, gastronomía del archipiélago, cabañas, baño en el mar y experiencias auténticas.",
-        "en": "Smoke sauna, archipelago food, cottage stays, sea swimming and authentic Finnish sauna culture."
-      },
-      "opening_hours": {},
-      "booking_url": "https://www.herrankukkaro.fi/",
-      "tier": "basic",
-      "status": "draft",
-      "verified_at": null,
-      "media": [
-        {
-          "source_media_id": "luxury:herrankukkaro:image:0",
-          "image_url": "https://le-de.cdn-website.com/437c2bac51dd486c80c3e153a9033393/dms3rep/multi/opt/Kuva8-8066abf8-1920w.jpg",
-          "image_credit": "Herrankukkaro",
-          "source_url": "https://www.herrankukkaro.fi/",
-          "sort_order": 0,
-          "overlay_title": {},
-          "overlay_badge": {},
-          "overlay_position": "bottom-left",
-          "copyright_confirmed": false
-        }
-      ]
-    },
-    {
-      "source_project": "Tontsa128/finland-experience-platform",
       "source_record_id": "luxury:airisto-spa",
       "source_url": "https://airistospa.fi/",
       "owner_id": null,
@@ -8559,7 +8518,7 @@
       "source_record_id": "luxury:aurora-igloo-porvoo",
       "source_url": "https://www.auroraigloo.fi/",
       "owner_id": null,
-      "region": "rannikko",
+      "region": "etela",
       "category": "majoitus",
       "seasons": [
         "kevat",
@@ -8567,7 +8526,7 @@
         "syksy",
         "talvi"
       ],
-      "municipality": "Emäsalo",
+      "municipality": "Porvoo",
       "title": {
         "fi": "Aurora Igloo Porvoo"
       },
@@ -8596,7 +8555,7 @@
         "syksy",
         "talvi"
       ],
-      "municipality": "Rymättylä",
+      "municipality": "Naantali",
       "title": {
         "fi": "Archipelago Live Igloos"
       },
